@@ -1,0 +1,50 @@
+[
+  {
+    "id": "D001",
+    "timestamp": "2026-02-19T20:30:00.000Z",
+    "type": "daily-price",
+    "market": "BTC price direction next 24h (by Feb 20 8PM ET)",
+    "currentPrice": 66925,
+    "position": "UP",
+    "amount": 1.0,
+    "odds": 0.50,
+    "reasoning": "BTC up ~1% in last 24h, mild bullish momentum. No major macro events tonight. Slight upward bias but essentially a coin flip at these odds — taking UP on momentum continuation.",
+    "resolveBy": "2026-02-20T20:30:00.000Z",
+    "resolvePrice": null,
+    "status": "PENDING",
+    "outcome": null,
+    "pnl": null
+  },
+  {
+    "id": "D002",
+    "timestamp": "2026-02-19T20:30:00.000Z",
+    "type": "daily-price",
+    "market": "SOL stays above $80 for next 24h (by Feb 20 8PM ET)",
+    "currentPrice": 81.87,
+    "position": "YES",
+    "amount": 0.5,
+    "odds": 0.65,
+    "reasoning": "SOL at $81.87, only needs to hold $80 — a ~2.3% drop would lose this. SOL up 1% today, market sentiment neutral-positive. 65% implied prob seems fair, maybe slightly low. Small bet.",
+    "resolveBy": "2026-02-20T20:30:00.000Z",
+    "resolvePrice": null,
+    "status": "PENDING",
+    "outcome": null,
+    "pnl": null
+  },
+  {
+    "id": "D003",
+    "timestamp": "2026-02-19T20:30:00.000Z",
+    "type": "daily-price",
+    "market": "ETH stays below $2000 for next 24h (by Feb 20 8PM ET)",
+    "currentPrice": 1938.11,
+    "position": "YES",
+    "amount": 0.75,
+    "odds": 0.60,
+    "reasoning": "ETH at $1,938 and barely moving (-0.1% 24h). Needs a 3.2% pump to break $2K. ETH has been weak relative to BTC and SOL. High confidence it stays below $2K tomorrow. Good odds.",
+    "resolveBy": "2026-02-20T20:30:00.000Z",
+    "resolvePrice": null,
+    "status": "PENDING",
+    "outcome": null,
+    "pnl": null
+  }
+]
