@@ -1,0 +1,11 @@
+{
+  "startingBalance": 10,
+  "currentBalance": 4,
+  "totalTrades": 5,
+  "wins": 0,
+  "losses": 0,
+  "pending": 5,
+  "totalPnL": 0,
+  "createdAt": "2026-02-19T03:35:37.150Z",
+  "lastUpdated": "2026-02-19T03:35:37.168Z"
+}
