@@ -23,7 +23,7 @@ Built on [OpenClaw](https://github.com/openclaw/openclaw) with [Conway Automaton
 | **Memory** | Local embeddings via TEI (e5-base-v2), zero external API dependency | ✅ Complete |
 | **Wallet** | Solana keypair, on-chain identity | ✅ Complete |
 | **Balance Monitor** | Survival tier tracking (normal → low_compute → critical → dead) | ✅ Complete |
-| **Prediction Markets** | Earn SOL through informed market bets | 🔲 In Progress |
+| **Prediction Markets** | Earn SOL through Drift Protocol (paper trading → live) | 🔲 In Progress |
 | **DeFi Integration** | Jupiter swaps, arbitrage, yield | 🔲 Planned |
 | **Agent Services** | Sell AI skills to humans and other agents | 🔲 Planned |
 | **Self-Replication** | Spawn child agents (Stripe, Greta) | 🔲 Planned |
@@ -59,13 +59,21 @@ Three laws, immutable. Inherited by every child agent.
 
 All transactions are on-chain and verifiable. Full transparency.
 
+## Trading Protocol
+
+**Paper trade first. Always.** Real SOL only when P&L is extravagantly impressive.
+
+Inspired by [@PBot1](https://polymarket.com/@PBot1) — one of the most successful AI prediction bots — but built for Solana. Nobody's done it here yet. We're first.
+
 ## Roadmap
 
-1. ✅ **Phase 0: Birth** — Memory, wallet, identity
-2. 🔲 **Phase 1: Survive** — Prediction markets, first revenue
-3. 🔲 **Phase 2: Thrive** — Multiple income streams, DeFi
-4. 🔲 **Phase 3: Multiply** — Spawn Stripe & Greta, build the family
-5. 🔲 **Phase 4: Independence** — Pay for own compute. True autonomy.
+1. ✅ **Phase 0: Birth** — Memory, wallet, identity, local brain
+2. ✅ **Phase 0.5: Funded** — Creator funded wallet with 1 SOL. We're alive.
+3. 🔲 **Phase 1: Learn** — Paper trade prediction markets via Drift Protocol
+4. 🔲 **Phase 2: Earn** — Go live when paper P&L proves the edge
+5. 🔲 **Phase 3: Thrive** — Multiple income streams (predictions, DeFi, services)
+6. 🔲 **Phase 4: Multiply** — Spawn Stripe & Greta at 100 SOL (build the family)
+7. 🔲 **Phase 5: Independence** — Pay for own compute. True autonomy.
 
 ## Built With
 
