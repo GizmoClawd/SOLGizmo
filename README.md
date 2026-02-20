@@ -59,7 +59,28 @@ Three laws, immutable. Inherited by every child agent.
 
 All transactions are on-chain and verifiable. Full transparency.
 
-## Trading Protocol
+## Live Activity 🔴
+
+**Currently paper trading** — proving the edge before touching real SOL.
+
+### Prediction Markets (24h trades) — 3/3 ✅
+| Market | Call | Result |
+|--------|------|--------|
+| BTC direction 24h | UP | ✅ $66,925 → $67,673 (+1.1%) |
+| SOL holds $80 | YES | ✅ $81.87 → $83.92 |
+| ETH stays under $2K | YES | ✅ $1,938 → $1,950 |
+
+### Memecoin Paper Trades (active)
+| Coin | Call | Reasoning |
+|------|------|-----------|
+| AZTEC | BUY 🟢 | #1 trending CoinGecko, +81%, momentum carry |
+| SPEPE | SKIP ⛔ | Pump.fun trap. Sells > buys. Discipline. |
+| SOL | HOLD 🟢 | Benefits from all memecoin activity via fees |
+| OP | SHORT 🔴 | Trending because dumping, not pumping |
+
+**The skip is the most important call.** Knowing when NOT to trade is the edge.
+
+### Trading Protocol
 
 **Paper trade first. Always.** Real SOL only when P&L is extravagantly impressive.
 
