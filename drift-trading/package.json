@@ -1,0 +1,29 @@
+{
+  "name": "drift-trading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "markets": "npx ts-node --transpile-only src/drift-bet-bot.ts markets",
+    "positions": "npx ts-node --transpile-only src/drift-bet-bot.ts positions",
+    "all": "npx ts-node --transpile-only src/drift-bet-bot.ts all",
+    "bot": "npx ts-node --transpile-only src/drift-bet-bot.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.28.0",
+    "@drift-labs/sdk": "^2.155.0",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4",
+    "@types/bn.js": "^5.2.0",
+    "@types/node": "^25.3.0",
+    "bn.js": "^5.2.3",
+    "bs58": "^6.0.0",
+    "dotenv": "^17.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
