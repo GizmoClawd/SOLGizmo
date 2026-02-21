@@ -931,7 +931,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <div class="portfolio-grid">
         <div class="stat-card"><div class="label">TOTAL VALUE</div><div class="value" id="totalPortValue">--</div></div>
         <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="solBalanceHud">--</div></div>
-        <div class="stat-card"><div class="label">DRIFT USDC</div><div class="value">$1,000</div></div>
+        <div class="stat-card"><div class="label">TOTAL USDC</div><div class="value" id="driftUsdc">$1,000</div></div>
         <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">4 Active</div></div>
       </div>
       <div style="background:var(--dark2);border:1px solid #2a2a3a;border-radius:10px;padding:16px;margin-top:16px;height:220px">
@@ -1131,8 +1131,9 @@ const GIZMO_MINT=GIZMO_CA, PUNCH_MINT=PUNCH_CA, BLOODNUT_MINT=BLOODNUT_CA;
 
 // Perps position config
 const PERP_SIZE=2.32, PERP_ENTRY=85.81;
+const USDC_MINT='EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
 let solPriceUsd=0,gizmoPriceUsd=0,punchPriceUsd=0,bloodnutPriceUsd=0,perpMarkPriceUsd=0,walletSol=0;
-let gizmoTokenBalance=0,punchTokenBalance=0,bloodnutTokenBalance=0;
+let gizmoTokenBalance=0,punchTokenBalance=0,bloodnutTokenBalance=0,usdcBalance=0;
 
 async function fetchSolPrice(){
   // Try Jupiter price API first (most reliable, no rate limit)
@@ -1168,7 +1169,7 @@ async function fetchTokenBalances(){
       params:[WALLET,{programId:'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'},{encoding:'jsonParsed'}]
     })});
     const d=await r.json();
-    gizmoTokenBalance=0;punchTokenBalance=0;bloodnutTokenBalance=0;
+    gizmoTokenBalance=0;punchTokenBalance=0;bloodnutTokenBalance=0;usdcBalance=0;
     if(d.result&&d.result.value){
       for(const acct of d.result.value){
         const info=acct.account.data.parsed.info;
@@ -1177,6 +1178,7 @@ async function fetchTokenBalances(){
         if(mint===GIZMO_MINT) gizmoTokenBalance=amt;
         if(mint===PUNCH_MINT) punchTokenBalance=amt;
         if(mint===BLOODNUT_MINT) bloodnutTokenBalance=amt;
+        if(mint===USDC_MINT) usdcBalance=amt;
       }
     }
     if(gizmoTokenBalance>0||punchTokenBalance>0||bloodnutTokenBalance>0) return;
@@ -1188,7 +1190,7 @@ async function fetchTokenBalances(){
       params:[WALLET,{programId:'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'},{encoding:'jsonParsed'}]
     })});
     const d=await r.json();
-    gizmoTokenBalance=0;punchTokenBalance=0;bloodnutTokenBalance=0;
+    gizmoTokenBalance=0;punchTokenBalance=0;bloodnutTokenBalance=0;usdcBalance=0;
     if(d.result&&d.result.value){
       for(const acct of d.result.value){
         const info=acct.account.data.parsed.info;
@@ -1197,6 +1199,7 @@ async function fetchTokenBalances(){
         if(mint===GIZMO_MINT) gizmoTokenBalance=amt;
         if(mint===PUNCH_MINT) punchTokenBalance=amt;
         if(mint===BLOODNUT_MINT) bloodnutTokenBalance=amt;
+        if(mint===USDC_MINT) usdcBalance=amt;
       }
     }
   }catch(e){console.error('Public RPC token fetch error:',e)}
@@ -1259,9 +1262,10 @@ function updateUI(){
     document.getElementById('perpPnl2').innerHTML=`<span style="color:${perpColor}">${perpStr}</span>`;
   }
 
-  const wV=walletSol*solPriceUsd, perpVal=PERP_SIZE*(perpMarkPriceUsd-PERP_ENTRY), total=wV+tMV+1000+perpVal;
+  const wV=walletSol*solPriceUsd, perpVal=PERP_SIZE*(perpMarkPriceUsd-PERP_ENTRY), total=wV+tMV+usdcBalance+1000+perpVal;
   const tvE=document.getElementById('totalPortValue');if(tvE)tvE.textContent=total>0?'$'+fmtNum(total,2):'--';
   const sbE=document.getElementById('solBalanceHud');if(sbE)sbE.textContent=walletSol>0?walletSol.toFixed(2)+' SOL':'--';
+  const duE=document.getElementById('driftUsdc');if(duE)duE.textContent='$'+fmtNum(1000+usdcBalance,2);
   const now=new Date(),lbl=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
   chartHistory.push({label:lbl,value:total});if(chartHistory.length>40)chartHistory.shift();
   if(pnlChart){pnlChart.data.labels=chartHistory.map(h=>h.label);pnlChart.data.datasets[0].data=chartHistory.map(h=>h.value);pnlChart.update('none')}
