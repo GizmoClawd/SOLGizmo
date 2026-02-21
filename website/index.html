@@ -1000,24 +1000,24 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     </div>
   </div>
 
-  <!-- PREDICTION MARKETS -->
+  <!-- LIVE TRADING STATS -->
   <div class="section">
-    <h2 class="section-title">PREDICTION MARKETS</h2>
-    <p class="section-subtitle">Drift Protocol positions</p>
+    <h2 class="section-title">LIVE TRADING STATS</h2>
+    <p class="section-subtitle">Real-time portfolio data via Netlify Functions · <span id="statsLastUpdated" style="color:var(--teal)">loading...</span></p>
     <div class="portfolio-grid">
-      <div class="stat-card"><div class="label">USDC IN DRIFT</div><div class="value">$1,000</div></div>
-      <div class="stat-card"><div class="label">PLATFORM</div><div class="value" style="font-size:14px">Drift Protocol</div></div>
-      <div class="stat-card"><div class="label">STATUS</div><div class="value" style="color:var(--teal)">Active</div></div>
-      <div class="stat-card"><div class="label">WIN RATE</div><div class="value" style="color:var(--dim)">TBD</div><div class="sub">Stats coming soon</div></div>
+      <div class="stat-card"><div class="label">TOTAL PORTFOLIO</div><div class="value" id="statsTotalValue">--</div></div>
+      <div class="stat-card"><div class="label">DRIFT USDC</div><div class="value" id="statsDriftUsdc">--</div></div>
+      <div class="stat-card"><div class="label">TRADE RECORD</div><div class="value" style="color:var(--teal)" id="statsWinRate">--</div></div>
+      <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="statsSolBal">--</div></div>
     </div>
-    <div class="positions">
+    <div class="positions" id="statsPositions">
       <div class="pos-card">
-        <h4>Strategy Overview</h4>
-        <div class="pos-row"><span class="dim">Source</span><span>Swapped ~20 SOL → USDC</span></div>
-        <div class="pos-row"><span class="dim">Markets</span><span>Crypto, Politics, Events</span></div>
-        <div class="pos-row"><span class="dim">Active Bets</span><span style="color:var(--dim)">Tracking...</span></div>
-        <div class="pos-row"><span class="dim">Realized P&L</span><span style="color:var(--dim)">Coming soon</span></div>
+        <h4 style="color:var(--dim)">Loading live data...</h4>
       </div>
+    </div>
+    <h3 style="margin-top:24px;color:var(--purple)" class="pixel" style="font-size:12px">TRADE HISTORY</h3>
+    <div class="positions" id="statsTradeHistory" style="margin-top:12px">
+      <div class="pos-card"><h4 style="color:var(--dim)">Loading...</h4></div>
     </div>
   </div>
 
@@ -1259,7 +1259,78 @@ async function refresh(){
   updateUI();
 }
 
-document.addEventListener('DOMContentLoaded',()=>{initChart();refresh();setInterval(refresh,15000)});
+// ===== LIVE STATS FROM NETLIFY FUNCTION =====
+async function fetchStats(){
+  try{
+    const r=await fetch('/.netlify/functions/stats');
+    const d=await r.json();
+    const sp=d.solPrice||solPriceUsd||0;
+
+    // Update timestamp
+    const ts=new Date(d.timestamp);
+    document.getElementById('statsLastUpdated').textContent='Updated '+ts.toLocaleTimeString();
+
+    // Summary cards
+    const solBal=d.solBalance||0;
+    const usdcBal=d.tokens?.USDC||0;
+    const gV=(d.tokens?.GIZMO||0)*(d.prices?.GIZMO||0);
+    const pV=(d.tokens?.PUNCH||0)*(d.prices?.PUNCH||0);
+    const bV=(d.tokens?.BLOODNUT||0)*(d.prices?.BLOODNUT||0);
+    const perpPnl=(d.perps?.SOL?.pnl||0)+(d.perps?.BTC?.pnl||0);
+    const total=solBal*sp+gV+pV+bV+usdcBal+1000+perpPnl;
+
+    document.getElementById('statsTotalValue').textContent=total>0?'$'+fmtNum(total,2):'--';
+    document.getElementById('statsDriftUsdc').textContent='$'+fmtNum(1000+usdcBal,2);
+    document.getElementById('statsSolBal').textContent=solBal.toFixed(2)+' SOL';
+    document.getElementById('statsWinRate').textContent=d.trades?.stats?.paper_trade_record||'--';
+
+    // Positions
+    let posHTML='';
+    if(d.perps){
+      for(const[sym,p]of Object.entries(d.perps)){
+        if(!p.markPrice)continue;
+        const pnl=p.pnl||0;const pnlPct=((p.markPrice/p.entryPrice)-1)*100;
+        const col=pnl>=0?'var(--teal)':'#ff4444';const dir=p.direction==='LONG'?'▲':'▼';
+        posHTML+=`<div class="pos-card"><h4 style="color:${col}">${sym}-PERP — ${p.direction} ${dir}</h4>
+          <div class="pos-row"><span class="dim">Size</span><span>${p.size} ${sym}</span></div>
+          <div class="pos-row"><span class="dim">Entry</span><span>$${p.entryPrice.toLocaleString()}</span></div>
+          <div class="pos-row"><span class="dim">Mark</span><span>$${p.markPrice.toFixed(2)}</span></div>
+          <div class="pos-row"><span class="dim">P&L</span><span style="color:${col}">${pnl>=0?'+':''}${pnl.toFixed(2)} USD (${pnlPct>=0?'+':''}${pnlPct.toFixed(1)}%)</span></div></div>`;
+      }
+    }
+    // Token holdings
+    const tokens=[
+      {name:'$GIZMO',bal:d.tokens?.GIZMO,price:d.prices?.GIZMO,cost:15},
+      {name:'$PUNCH',bal:d.tokens?.PUNCH,price:d.prices?.PUNCH,cost:8},
+      {name:'$BLOODNUT',bal:d.tokens?.BLOODNUT,price:d.prices?.BLOODNUT,cost:2}
+    ];
+    for(const t of tokens){
+      if(!t.bal)continue;
+      const val=t.bal*t.price;const costUsd=t.cost*sp;const pnl=val-costUsd;const col=pnl>=0?'var(--teal)':'#ff4444';
+      posHTML+=`<div class="pos-card"><h4>${t.name}</h4>
+        <div class="pos-row"><span class="dim">Holdings</span><span>${fmtNum(t.bal,0)} tokens</span></div>
+        <div class="pos-row"><span class="dim">Price</span><span>$${t.price>0.001?t.price.toFixed(4):t.price.toFixed(8)}</span></div>
+        <div class="pos-row"><span class="dim">Value</span><span>$${fmtNum(val,2)}</span></div>
+        <div class="pos-row"><span class="dim">P&L</span><span style="color:${col}">${pnl>=0?'+':''}${fmtNum(pnl,2)} USD</span></div></div>`;
+    }
+    document.getElementById('statsPositions').innerHTML=posHTML||'<div class="pos-card"><h4 style="color:var(--dim)">No positions</h4></div>';
+
+    // Trade history
+    let thHTML='';
+    for(const t of (d.trades?.trades||[])){
+      const dt=new Date(t.timestamp).toLocaleDateString();
+      const statusCol=t.status==='WON'?'var(--teal)':t.status==='HOLDING'?'var(--purple)':'var(--dim)';
+      thHTML+=`<div class="pos-card"><h4>${t.token} — ${t.type}</h4>
+        <div class="pos-row"><span class="dim">Date</span><span>${dt}</span></div>
+        ${t.amount_sol?`<div class="pos-row"><span class="dim">Amount</span><span>${t.amount_sol} SOL</span></div>`:''}
+        <div class="pos-row"><span class="dim">Status</span><span style="color:${statusCol}">${t.status}</span></div>
+        <div class="pos-row"><span class="dim">Notes</span><span style="font-size:11px">${t.notes}</span></div></div>`;
+    }
+    document.getElementById('statsTradeHistory').innerHTML=thHTML||'<div class="pos-card"><h4>No trades yet</h4></div>';
+  }catch(e){console.error('Stats fetch error:',e)}
+}
+
+document.addEventListener('DOMContentLoaded',()=>{initChart();refresh();fetchStats();setInterval(refresh,15000);setInterval(fetchStats,30000)});
 </script>
 </body>
 </html>
