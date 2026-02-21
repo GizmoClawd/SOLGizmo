@@ -932,7 +932,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <div class="stat-card"><div class="label">TOTAL VALUE</div><div class="value" id="totalPortValue">--</div></div>
         <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="solBalanceHud">--</div></div>
         <div class="stat-card"><div class="label">TOTAL USDC</div><div class="value" id="driftUsdc">$1,000</div></div>
-        <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">4 Active</div></div>
+        <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">6 Active</div></div>
       </div>
       <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;padding:20px;margin-top:16px;height:380px;box-shadow:0 0 30px rgba(20,241,149,.05)">
         <canvas id="pnlChart"></canvas>
@@ -985,7 +985,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     <div class="portfolio-grid">
       <div class="stat-card"><div class="label">TOTAL PERP P&L</div><div class="value" id="perpTotalPnl">--</div></div>
       <div class="stat-card"><div class="label">FREE COLLATERAL</div><div class="value" id="perpCollateral">$963</div></div>
-      <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">2</div></div>
+      <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">3</div></div>
       <div class="stat-card"><div class="label">PLATFORM</div><div class="value" style="font-size:14px">Drift Protocol</div></div>
     </div>
     <div class="positions" style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
@@ -1004,6 +1004,14 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <div class="pos-row"><span class="dim">Entry Price</span><span>$68,389.50</span></div>
         <div class="pos-row"><span class="dim">Mark Price</span><span id="btcPerpMark">--</span></div>
         <div class="pos-row"><span class="dim">Unrealized P&L</span><span id="btcPerpPnl">--</span></div>
+      </div>
+      <div class="pos-card">
+        <h4 style="color:var(--teal)">ETH-PERP — LONG</h4>
+        <div class="pos-row"><span class="dim">Direction</span><span style="color:var(--teal)">LONG ▲</span></div>
+        <div class="pos-row"><span class="dim">Size</span><span>0.075 ETH</span></div>
+        <div class="pos-row"><span class="dim">Entry Price</span><span>$1,980.00</span></div>
+        <div class="pos-row"><span class="dim">Mark Price</span><span id="ethPerpMark">--</span></div>
+        <div class="pos-row"><span class="dim">Unrealized P&L</span><span id="ethPerpPnl">--</span></div>
       </div>
     </div>
   </div>
@@ -1140,8 +1148,9 @@ const GIZMO_MINT=GIZMO_CA, PUNCH_MINT=PUNCH_CA, BLOODNUT_MINT=BLOODNUT_CA;
 // Perps position config
 const PERP_SIZE=5.80, PERP_ENTRY=86.02;
 const BTC_PERP_SIZE=0.0029, BTC_PERP_ENTRY=68389;
+const ETH_PERP_SIZE=0.075, ETH_PERP_ENTRY=1980;
 const USDC_MINT='EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
-let solPriceUsd=0,gizmoPriceUsd=0,punchPriceUsd=0,bloodnutPriceUsd=0,perpMarkPriceUsd=0,btcMarkPriceUsd=0,walletSol=0;
+let solPriceUsd=0,gizmoPriceUsd=0,punchPriceUsd=0,bloodnutPriceUsd=0,perpMarkPriceUsd=0,btcMarkPriceUsd=0,ethMarkPriceUsd=0,walletSol=0;
 let gizmoTokenBalance=0,punchTokenBalance=0,bloodnutTokenBalance=0,usdcBalance=0;
 
 async function fetchSolPrice(){
@@ -1162,6 +1171,7 @@ async function fetchDexPrices(){
 async function fetchPerpPrice(){
   try{const r=await fetch('https://dlob.drift.trade/l2?marketIndex=0&marketType=perp&depth=1');const d=await r.json();if(d.asks&&d.asks[0]&&d.bids&&d.bids[0]){const ask=parseInt(d.asks[0].price)/1e6,bid=parseInt(d.bids[0].price)/1e6;perpMarkPriceUsd=(ask+bid)/2}else if(d.markPrice){perpMarkPriceUsd=parseInt(d.markPrice)/1e6}}catch(e){console.error('SOL perp price error:',e)}
   try{const r=await fetch('https://dlob.drift.trade/l2?marketIndex=1&marketType=perp&depth=1');const d=await r.json();if(d.asks&&d.asks[0]&&d.bids&&d.bids[0]){const ask=parseInt(d.asks[0].price)/1e6,bid=parseInt(d.bids[0].price)/1e6;btcMarkPriceUsd=(ask+bid)/2}else if(d.markPrice){btcMarkPriceUsd=parseInt(d.markPrice)/1e6}}catch(e){console.error('BTC perp price error:',e)}
+  try{const r=await fetch('https://dlob.drift.trade/l2?marketIndex=2&marketType=perp&depth=1');const d=await r.json();if(d.asks&&d.asks[0]&&d.bids&&d.bids[0]){const ask=parseInt(d.asks[0].price)/1e6,bid=parseInt(d.bids[0].price)/1e6;ethMarkPriceUsd=(ask+bid)/2}else if(d.markPrice){ethMarkPriceUsd=parseInt(d.markPrice)/1e6}}catch(e){console.error('ETH perp price error:',e)}
 }
 
 async function fetchWalletBalance(){
@@ -1262,8 +1272,19 @@ function updateUI(){
     const col=btcPerpPnlUsd>=0?'var(--teal)':'#ff4444';
     const el2=document.getElementById('btcPerpPnl');if(el2)el2.innerHTML=`<span style="color:${col}">${str}</span>`;
   }
+  // PERPS — ETH
+  let ethPerpPnlUsd=0;
+  if(ethMarkPriceUsd>0){
+    const mp='$'+fmtNum(ethMarkPriceUsd,2);
+    const el=document.getElementById('ethPerpMark');if(el)el.textContent=mp;
+    ethPerpPnlUsd=(ethMarkPriceUsd-ETH_PERP_ENTRY)*ETH_PERP_SIZE;
+    const pct=((ethMarkPriceUsd/ETH_PERP_ENTRY)-1)*100;
+    const str=(ethPerpPnlUsd>=0?'+':'')+ethPerpPnlUsd.toFixed(2)+' USD ('+(pct>=0?'+':'')+pct.toFixed(1)+'%)';
+    const col=ethPerpPnlUsd>=0?'var(--teal)':'#ff4444';
+    const el2=document.getElementById('ethPerpPnl');if(el2)el2.innerHTML=`<span style="color:${col}">${str}</span>`;
+  }
   // Total perp PnL
-  const totalPerpPnl=solPerpPnlUsd+btcPerpPnlUsd;
+  const totalPerpPnl=solPerpPnlUsd+btcPerpPnlUsd+ethPerpPnlUsd;
   const tpEl=document.getElementById('perpTotalPnl');
   if(tpEl){const col=totalPerpPnl>=0?'var(--teal)':'#ff4444';tpEl.innerHTML=`<span style="color:${col}">${(totalPerpPnl>=0?'+':'')}${totalPerpPnl.toFixed(2)} USD</span>`}
 
