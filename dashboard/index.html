@@ -7,14 +7,18 @@
 <style>
 :root {
   --green: #00ff41;
+  --bright-green: #39ff14;
   --dim: #00aa2a;
   --dark: #0a0a0a;
   --panel: #0d1117;
   --border: #1a3a1a;
   --red: #ff3333;
+  --bright-red: #ff4444;
   --yellow: #ffcc00;
   --cyan: #00ffff;
   --orange: #ff8800;
+  --profit: #00ff41;
+  --loss: #ff3333;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
@@ -30,7 +34,7 @@ body {
   background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,65,0.015) 2px, rgba(0,255,65,0.015) 4px);
   pointer-events: none; z-index: 9999;
 }
-.container { max-width: 1100px; margin: 0 auto; padding: 12px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 12px; }
 header {
   text-align: center;
   padding: 20px 0 10px;
@@ -41,7 +45,7 @@ header {
 .logo span { color: var(--cyan); }
 .subtitle { color: var(--dim); font-size: 12px; margin-top: 4px; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-@media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 750px) { .grid { grid-template-columns: 1fr; } }
 .panel {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -66,6 +70,69 @@ header {
 .tier-CRITICAL { background: #330800; color: var(--orange); border: 1px solid var(--orange); }
 .tier-DEAD { background: #330000; color: var(--red); border: 1px solid var(--red); animation: blink 1s infinite; }
 @keyframes blink { 50% { opacity: 0.3; } }
+
+/* P&L Summary Bar */
+.pnl-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.pnl-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px 16px;
+  text-align: center;
+}
+.pnl-card-label { color: var(--dim); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.pnl-card-value { font-size: 22px; font-weight: bold; margin-top: 4px; }
+.pnl-card-sub { font-size: 11px; margin-top: 2px; }
+.profit { color: var(--profit); }
+.loss { color: var(--loss); }
+.neutral { color: var(--dim); }
+
+/* Positions Table */
+.pos-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.pos-table th {
+  color: var(--dim);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.pos-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #111;
+  vertical-align: middle;
+}
+.pos-token { display: flex; align-items: center; gap: 8px; }
+.pos-icon {
+  width: 28px; height: 28px; border-radius: 50%; background: #1a1a2e;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0; overflow: hidden;
+}
+.pos-icon img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.pos-symbol { color: var(--cyan); font-weight: bold; }
+.pos-ca { color: var(--dim); font-size: 10px; }
+.pos-pnl-bar {
+  height: 4px; border-radius: 2px; margin-top: 4px; min-width: 40px;
+  background: #222;
+  position: relative; overflow: hidden;
+}
+.pos-pnl-fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
+.pos-pnl-fill.profit-bar { background: var(--green); }
+.pos-pnl-fill.loss-bar { background: var(--red); }
+
+@media (max-width: 750px) {
+  .pos-table { font-size: 11px; }
+  .pos-table th, .pos-table td { padding: 6px 4px; }
+  .pos-icon { width: 22px; height: 22px; font-size: 11px; }
+}
+
 .token-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #111; }
 .token-name { color: var(--cyan); }
 .token-amount { color: var(--green); }
@@ -95,6 +162,10 @@ footer { text-align: center; padding: 16px 0 8px; color: var(--dim); font-size: 
 .loading { color: var(--dim); animation: pulse 1.5s infinite; }
 @keyframes pulse { 50% { opacity: 0.4; } }
 .win-rate { color: var(--green); font-size: 20px; font-weight: bold; }
+.flash { animation: flash-green 0.6s ease-out; }
+@keyframes flash-green { 0% { background: rgba(0,255,65,0.15); } 100% { background: transparent; } }
+.flash-red { animation: flash-r 0.6s ease-out; }
+@keyframes flash-r { 0% { background: rgba(255,51,51,0.15); } 100% { background: transparent; } }
 </style>
 </head>
 <body>
@@ -102,14 +173,56 @@ footer { text-align: center; padding: 16px 0 8px; color: var(--dim); font-size: 
 <div class="container">
   <header>
     <div class="logo">🛸 <span>GIZMO</span> TRADING TERMINAL</div>
-    <div class="subtitle">SOL SPACE STATION — LIVE DASHBOARD — WALLET: FXdM...GAkn</div>
+    <div class="subtitle">SOL SPACE STATION — LIVE P&L DASHBOARD — WALLET: FXdM...GAkn</div>
     <div id="refresh-bar"></div>
   </header>
+
+  <!-- Portfolio P&L Summary -->
+  <div class="pnl-summary" id="pnl-summary">
+    <div class="pnl-card">
+      <div class="pnl-card-label">Total Invested</div>
+      <div class="pnl-card-value" id="pnl-invested"><span class="loading">—</span></div>
+    </div>
+    <div class="pnl-card">
+      <div class="pnl-card-label">Current Value</div>
+      <div class="pnl-card-value" id="pnl-current"><span class="loading">—</span></div>
+    </div>
+    <div class="pnl-card">
+      <div class="pnl-card-label">Unrealized P&L</div>
+      <div class="pnl-card-value" id="pnl-total"><span class="loading">—</span></div>
+      <div class="pnl-card-sub" id="pnl-total-pct"></div>
+    </div>
+    <div class="pnl-card">
+      <div class="pnl-card-label">SOL Price</div>
+      <div class="pnl-card-value" id="sol-price-card"><span class="loading">—</span></div>
+    </div>
+  </div>
+
+  <!-- Live Positions -->
+  <div class="panel full" style="margin-bottom:12px; overflow-x:auto;">
+    <div class="panel-title">◈ Live Positions — P&L Tracker</div>
+    <table class="pos-table">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Invested</th>
+          <th>Entry Price</th>
+          <th>Current Price</th>
+          <th>Current Value</th>
+          <th>P&L (SOL)</th>
+          <th>P&L (%)</th>
+        </tr>
+      </thead>
+      <tbody id="pos-body">
+        <tr><td colspan="7" class="loading" style="text-align:center">FETCHING LIVE PRICES...</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="grid">
     <!-- Balance Panel -->
     <div class="panel">
-      <div class="panel-title">◈ Wallet Balance</div>
+      <div class="panel-title">◈ Wallet Balance (on-chain)</div>
       <div class="balance-big" id="sol-balance"><span class="loading">LOADING...</span></div>
       <div class="balance-usd" id="sol-usd"></div>
       <div id="tier-badge"></div>
@@ -128,9 +241,9 @@ footer { text-align: center; padding: 16px 0 8px; color: var(--dim); font-size: 
       <div class="stats-row"><span class="stats-label">Last Refresh:</span><span id="last-refresh">—</span></div>
     </div>
 
-    <!-- Token Holdings -->
+    <!-- Token Holdings (on-chain) -->
     <div class="panel">
-      <div class="panel-title">◈ Token Holdings</div>
+      <div class="panel-title">◈ On-Chain Token Holdings</div>
       <div id="token-list"><span class="loading">SCANNING TOKENS...</span></div>
     </div>
 
@@ -148,7 +261,7 @@ footer { text-align: center; padding: 16px 0 8px; color: var(--dim); font-size: 
   </div>
 
   <footer>
-    GIZMO SPACE STATION v1.0 — Auto-refresh: 30s — Powered by Solana RPC<br>
+    GIZMO SPACE STATION v1.1 — P&L refreshes every 15s — Balance/TX every 30s — Powered by Solana RPC + DexScreener<br>
     <a class="link" href="https://github.com/GizmoClawd/SOLGizmo" target="_blank">GitHub</a>
   </footer>
 </div>
@@ -157,6 +270,36 @@ footer { text-align: center; padding: 16px 0 8px; color: var(--dim); font-size: 
 const WALLET = 'FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn';
 const RPC = 'https://api.mainnet-beta.solana.com';
 const REFRESH_INTERVAL = 30000;
+const PNL_REFRESH_INTERVAL = 15000;
+
+// Positions config
+const POSITIONS = [
+  {
+    symbol: '$GIZMO',
+    contract: '8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump',
+    investedSol: 15,
+    emoji: '🛸',
+    type: 'dex'
+  },
+  {
+    symbol: '$PUNCH',
+    contract: 'NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump',
+    investedSol: 8,
+    emoji: '👊',
+    type: 'dex'
+  },
+  {
+    symbol: 'USDC',
+    contract: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    investedSol: 20,
+    emoji: '💵',
+    type: 'stable',
+    note: 'Deployed to Drift prediction markets'
+  }
+];
+
+let solPriceUsd = 0;
+let lastPnlData = {};
 
 function getTier(sol) {
   if (sol > 1) return 'NORMAL';
@@ -164,6 +307,11 @@ function getTier(sol) {
   if (sol > 0.01) return 'CRITICAL';
   return 'DEAD';
 }
+
+function fmt(n, d=4) { return n < 0.0001 && n > 0 ? n.toExponential(2) : n.toFixed(d); }
+function fmtUsd(n) { return '$' + Math.abs(n).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+function pnlClass(v) { return v >= 0 ? 'profit' : 'loss'; }
+function pnlSign(v) { return v >= 0 ? '+' : ''; }
 
 async function rpc(method, params) {
   const r = await fetch(RPC, {
@@ -174,6 +322,187 @@ async function rpc(method, params) {
   return (await r.json()).result;
 }
 
+// Fetch SOL price
+async function fetchSolPrice() {
+  try {
+    const r = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');
+    const d = await r.json();
+    if (d.solana) { solPriceUsd = d.solana.usd; }
+  } catch(e) {
+    // fallback: try from dexscreener SOL pairs
+    try {
+      const r = await fetch('https://api.dexscreener.com/latest/dex/tokens/So11111111111111111111111111111111111111112');
+      const d = await r.json();
+      if (d.pairs && d.pairs[0]) solPriceUsd = parseFloat(d.pairs[0].priceUsd) || 0;
+    } catch(e2) {}
+  }
+  document.getElementById('sol-price-card').textContent = solPriceUsd ? fmtUsd(solPriceUsd) : '—';
+}
+
+// Fetch live token data from DexScreener
+async function fetchDexData(contract) {
+  try {
+    const r = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${contract}`);
+    const d = await r.json();
+    if (d.pairs && d.pairs.length > 0) {
+      // Pick the pair with highest liquidity
+      const sorted = d.pairs.sort((a,b) => (b.liquidity?.usd||0) - (a.liquidity?.usd||0));
+      const pair = sorted[0];
+      return {
+        priceUsd: parseFloat(pair.priceUsd) || 0,
+        priceNative: parseFloat(pair.priceNative) || 0,
+        icon: pair.info?.imageUrl || null,
+        name: pair.baseToken?.name || '',
+        symbol: pair.baseToken?.symbol || '',
+        priceChange24h: pair.priceChange?.h24 || 0,
+        volume24h: pair.volume?.h24 || 0,
+        liquidity: pair.liquidity?.usd || 0,
+        fdv: pair.fdv || 0,
+        pairAddress: pair.pairAddress || '',
+        dexUrl: pair.url || ''
+      };
+    }
+  } catch(e) { console.error('DexScreener error for', contract, e); }
+  return null;
+}
+
+async function fetchPnL() {
+  await fetchSolPrice();
+  if (!solPriceUsd) return;
+
+  const tbody = document.getElementById('pos-body');
+  let totalInvested = 0;
+  let totalCurrentSol = 0;
+  let rows = [];
+
+  for (const pos of POSITIONS) {
+    totalInvested += pos.investedSol;
+    const investedUsd = pos.investedSol * solPriceUsd;
+    let currentSol = 0;
+    let currentUsd = 0;
+    let entryPriceStr = '';
+    let currentPriceStr = '';
+    let pnlSol = 0;
+    let pnlPct = 0;
+    let icon = pos.emoji;
+    let dexUrl = '';
+
+    if (pos.type === 'stable') {
+      // USDC is ~1:1 USD, current value = initial USD value
+      const usdcAmount = pos.investedSol * solPriceUsd; // approximate at current SOL price... but entry was different
+      // Entry was ~$84.50/SOL (20 SOL → ~$1690)
+      const entryUsdcValue = 1690;
+      currentSol = entryUsdcValue / solPriceUsd;
+      currentUsd = entryUsdcValue; // USDC stays at ~$1690
+      entryPriceStr = '$1.00';
+      currentPriceStr = '$1.00';
+      pnlSol = currentSol - pos.investedSol;
+      pnlPct = ((currentSol - pos.investedSol) / pos.investedSol) * 100;
+    } else {
+      const data = await fetchDexData(pos.contract);
+      if (data) {
+        icon = data.icon ? `<img src="${data.icon}" alt="${pos.symbol}">` : pos.emoji;
+        dexUrl = data.dexUrl || `https://dexscreener.com/solana/${pos.contract}`;
+        // entry price per token: we know total SOL invested, need token amount
+        // We use priceNative (price in SOL) to compute current value
+        // Since we don't know exact token count, compute from: invested_sol / entry_price_sol = tokens
+        // Current approach: fetch current price, compute value ratio
+        // entry_price_native was: investedSol worth at buy time / tokens bought
+        // We'll use current price and show relative to invested
+        const priceUsd = data.priceUsd;
+        const priceInSol = data.priceNative; // price of 1 token in SOL
+
+        // To compute actual holdings we'd need token balance on-chain
+        // For now use the known invested SOL and current market cap movement
+        // Better: get the actual token balance from RPC and multiply
+        currentPriceStr = priceUsd < 0.01 ? '$' + priceUsd.toExponential(2) : '$' + priceUsd.toFixed(6);
+        
+        // We'll fetch actual token balance for this mint
+        let tokenBalance = 0;
+        try {
+          const result = await rpc('getTokenAccountsByOwner', [
+            WALLET,
+            { mint: pos.contract },
+            { encoding: 'jsonParsed' }
+          ]);
+          if (result && result.value && result.value.length > 0) {
+            tokenBalance = parseFloat(result.value[0].account.data.parsed.info.tokenAmount.uiAmountString || '0');
+          }
+        } catch(e) {}
+
+        if (tokenBalance > 0) {
+          currentUsd = tokenBalance * priceUsd;
+          currentSol = currentUsd / solPriceUsd;
+          const entryPricePerToken = (pos.investedSol * solPriceUsd) / tokenBalance;
+          entryPriceStr = entryPricePerToken < 0.01 ? '$' + entryPricePerToken.toExponential(2) : '$' + entryPricePerToken.toFixed(6);
+        } else {
+          // No on-chain balance found — might have been sold or in another account
+          // Show as invested with unknown current value
+          currentSol = 0;
+          currentUsd = 0;
+          entryPriceStr = '—';
+        }
+        pnlSol = currentSol - pos.investedSol;
+        pnlPct = pos.investedSol > 0 ? ((currentSol - pos.investedSol) / pos.investedSol) * 100 : 0;
+      } else {
+        entryPriceStr = '—';
+        currentPriceStr = 'API ERROR';
+        pnlSol = 0;
+        pnlPct = 0;
+      }
+    }
+
+    totalCurrentSol += currentSol;
+    const pnlUsd = pnlSol * solPriceUsd;
+    const barWidth = Math.min(Math.abs(pnlPct), 100);
+    const barClass = pnlPct >= 0 ? 'profit-bar' : 'loss-bar';
+    const shortCA = pos.contract.slice(0,4) + '...' + pos.contract.slice(-4);
+
+    rows.push(`<tr>
+      <td>
+        <div class="pos-token">
+          <div class="pos-icon">${icon}</div>
+          <div>
+            <div class="pos-symbol">${pos.symbol}</div>
+            <div class="pos-ca"><a class="link" href="https://dexscreener.com/solana/${pos.contract}" target="_blank">${shortCA}</a></div>
+            ${pos.note ? `<div class="pos-ca">${pos.note}</div>` : ''}
+          </div>
+        </div>
+      </td>
+      <td>${pos.investedSol} SOL<br><span style="color:var(--dim);font-size:11px">${fmtUsd(pos.investedSol * solPriceUsd)}</span></td>
+      <td>${entryPriceStr}</td>
+      <td>${currentPriceStr}</td>
+      <td>${currentSol > 0 ? fmt(currentSol,4) + ' SOL' : '—'}<br><span style="color:var(--dim);font-size:11px">${currentUsd > 0 ? fmtUsd(currentUsd) : '—'}</span></td>
+      <td class="${pnlClass(pnlSol)}">${pnlSign(pnlSol)}${fmt(pnlSol,4)} SOL<br><span style="font-size:11px">${pnlSign(pnlUsd)}${fmtUsd(pnlUsd)}</span>
+        <div class="pos-pnl-bar"><div class="pos-pnl-fill ${barClass}" style="width:${barWidth}%"></div></div>
+      </td>
+      <td class="${pnlClass(pnlPct)}" style="font-size:16px;font-weight:bold">${pnlSign(pnlPct)}${pnlPct.toFixed(2)}%</td>
+    </tr>`);
+  }
+
+  tbody.innerHTML = rows.join('');
+
+  // Update summary cards
+  const totalPnlSol = totalCurrentSol - totalInvested;
+  const totalPnlPct = totalInvested > 0 ? ((totalCurrentSol - totalInvested) / totalInvested) * 100 : 0;
+  const totalPnlUsd = totalPnlSol * solPriceUsd;
+
+  document.getElementById('pnl-invested').textContent = totalInvested + ' SOL';
+  document.getElementById('pnl-invested').className = 'pnl-card-value';
+
+  const curEl = document.getElementById('pnl-current');
+  curEl.textContent = fmt(totalCurrentSol, 4) + ' SOL';
+  curEl.className = 'pnl-card-value';
+
+  const totEl = document.getElementById('pnl-total');
+  totEl.textContent = `${pnlSign(totalPnlSol)}${fmt(totalPnlSol,4)} SOL`;
+  totEl.className = `pnl-card-value ${pnlClass(totalPnlSol)}`;
+
+  const pctEl = document.getElementById('pnl-total-pct');
+  pctEl.textContent = `${pnlSign(totalPnlPct)}${totalPnlPct.toFixed(2)}% (${pnlSign(totalPnlUsd)}${fmtUsd(totalPnlUsd)})`;
+  pctEl.className = `pnl-card-sub ${pnlClass(totalPnlSol)}`;
+}
+
 async function fetchBalance() {
   try {
     const result = await rpc('getBalance', [WALLET]);
@@ -181,12 +510,9 @@ async function fetchBalance() {
     document.getElementById('sol-balance').textContent = sol.toFixed(6) + ' SOL';
     const tier = getTier(sol);
     document.getElementById('tier-badge').innerHTML = `<span class="tier tier-${tier}">⬤ ${tier}</span>`;
-    // rough SOL price estimate via coingecko-free or just show SOL
-    try {
-      const p = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');
-      const d = await p.json();
-      if (d.solana) document.getElementById('sol-usd').textContent = '≈ $' + (sol * d.solana.usd).toFixed(2) + ' USD';
-    } catch(e) {}
+    if (solPriceUsd) {
+      document.getElementById('sol-usd').textContent = '≈ ' + fmtUsd(sol * solPriceUsd) + ' USD';
+    }
   } catch(e) {
     document.getElementById('sol-balance').textContent = 'RPC ERROR';
   }
@@ -205,14 +531,16 @@ async function fetchTokens() {
       return;
     }
     let html = '';
+    const knownMints = {};
+    POSITIONS.forEach(p => { knownMints[p.contract] = p.symbol; });
     for (const acc of result.value) {
       const info = acc.account.data.parsed.info;
       const amount = info.tokenAmount.uiAmountString || '0';
       const mint = info.mint;
       if (parseFloat(amount) === 0) continue;
-      const shortMint = mint.slice(0,4) + '...' + mint.slice(-4);
+      const label = knownMints[mint] || (mint.slice(0,4) + '...' + mint.slice(-4));
       html += `<div class="token-row">
-        <span class="token-name"><a class="link" href="https://solscan.io/token/${mint}" target="_blank">${shortMint}</a></span>
+        <span class="token-name"><a class="link" href="https://solscan.io/token/${mint}" target="_blank">${label}</a></span>
         <span class="token-amount">${amount}</span>
       </div>`;
     }
@@ -273,6 +601,7 @@ async function fetchTrades() {
   }
 }
 
+// Refresh bar
 let refreshTimer = 0;
 function startRefreshBar() {
   const bar = document.getElementById('refresh-bar');
@@ -288,18 +617,28 @@ function startRefreshBar() {
   return setInterval(tick, 1000);
 }
 
-async function refresh() {
+async function refreshAll() {
   document.getElementById('last-refresh').textContent = new Date().toLocaleTimeString();
-  await Promise.all([fetchBalance(), fetchTokens(), fetchTransactions(), fetchTrades()]);
+  await Promise.all([fetchBalance(), fetchTokens(), fetchTransactions(), fetchTrades(), fetchPnL()]);
 }
 
-refresh();
+async function refreshPnL() {
+  await fetchPnL();
+}
+
+// Init
+refreshAll();
 let barInterval = startRefreshBar();
+
+// Full refresh every 30s
 setInterval(() => {
   clearInterval(barInterval);
   barInterval = startRefreshBar();
-  refresh();
+  refreshAll();
 }, REFRESH_INTERVAL);
+
+// P&L refresh every 15s
+setInterval(refreshPnL, PNL_REFRESH_INTERVAL);
 </script>
 </body>
 </html>
