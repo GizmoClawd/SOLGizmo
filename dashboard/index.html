@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIZMO — SOL Trading Terminal</title>
+<style>
+:root {
+  --green: #00ff41;
+  --dim: #00aa2a;
+  --dark: #0a0a0a;
+  --panel: #0d1117;
+  --border: #1a3a1a;
+  --red: #ff3333;
+  --yellow: #ffcc00;
+  --cyan: #00ffff;
+  --orange: #ff8800;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--dark);
+  color: var(--green);
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+.scanline {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,65,0.015) 2px, rgba(0,255,65,0.015) 4px);
+  pointer-events: none; z-index: 9999;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 12px; }
+header {
+  text-align: center;
+  padding: 20px 0 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.logo { font-size: 28px; font-weight: bold; letter-spacing: 4px; }
+.logo span { color: var(--cyan); }
+.subtitle { color: var(--dim); font-size: 12px; margin-top: 4px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 14px;
+}
+.panel-title {
+  color: var(--cyan);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+.full { grid-column: 1 / -1; }
+.balance-big { font-size: 32px; font-weight: bold; }
+.balance-usd { color: var(--dim); font-size: 14px; }
+.tier { display: inline-block; padding: 3px 10px; border-radius: 3px; font-weight: bold; font-size: 12px; margin-top: 8px; }
+.tier-NORMAL { background: #003300; color: var(--green); border: 1px solid var(--green); }
+.tier-LOW_COMPUTE { background: #332b00; color: var(--yellow); border: 1px solid var(--yellow); }
+.tier-CRITICAL { background: #330800; color: var(--orange); border: 1px solid var(--orange); }
+.tier-DEAD { background: #330000; color: var(--red); border: 1px solid var(--red); animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0.3; } }
+.token-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #111; }
+.token-name { color: var(--cyan); }
+.token-amount { color: var(--green); }
+.trade-entry { padding: 8px 0; border-bottom: 1px solid #111; }
+.trade-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+.trade-type { font-weight: bold; }
+.trade-type.BUY { color: var(--green); }
+.trade-type.SWAP { color: var(--yellow); }
+.trade-type.PREDICTION { color: var(--cyan); }
+.trade-notes { color: var(--dim); font-size: 12px; margin-top: 2px; }
+.trade-status { font-size: 11px; padding: 1px 6px; border-radius: 2px; }
+.status-HOLDING { background: #002200; color: var(--green); }
+.status-DEPLOYED { background: #222200; color: var(--yellow); }
+.status-WON { background: #002222; color: var(--cyan); }
+.tx-row { padding: 4px 0; border-bottom: 1px solid #111; font-size: 12px; display: flex; justify-content: space-between; gap: 8px; }
+.tx-sig { color: var(--dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px; }
+.tx-sig a { color: var(--dim); text-decoration: none; }
+.tx-sig a:hover { color: var(--green); }
+.tx-status { color: var(--green); }
+.tx-status.err { color: var(--red); }
+.stats-row { display: flex; justify-content: space-between; padding: 4px 0; }
+.stats-label { color: var(--dim); }
+.link { color: var(--cyan); text-decoration: none; }
+.link:hover { text-decoration: underline; }
+footer { text-align: center; padding: 16px 0 8px; color: var(--dim); font-size: 11px; }
+#refresh-bar { height: 2px; background: var(--green); width: 100%; margin-top: 12px; transition: width 1s linear; }
+.loading { color: var(--dim); animation: pulse 1.5s infinite; }
+@keyframes pulse { 50% { opacity: 0.4; } }
+.win-rate { color: var(--green); font-size: 20px; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="scanline"></div>
+<div class="container">
+  <header>
+    <div class="logo">🛸 <span>GIZMO</span> TRADING TERMINAL</div>
+    <div class="subtitle">SOL SPACE STATION — LIVE DASHBOARD — WALLET: FXdM...GAkn</div>
+    <div id="refresh-bar"></div>
+  </header>
+
+  <div class="grid">
+    <!-- Balance Panel -->
+    <div class="panel">
+      <div class="panel-title">◈ Wallet Balance</div>
+      <div class="balance-big" id="sol-balance"><span class="loading">LOADING...</span></div>
+      <div class="balance-usd" id="sol-usd"></div>
+      <div id="tier-badge"></div>
+      <div style="margin-top:10px">
+        <a class="link" href="https://solscan.io/account/FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn" target="_blank">↗ View on Solscan</a>
+      </div>
+    </div>
+
+    <!-- Stats Panel -->
+    <div class="panel">
+      <div class="panel-title">◈ Mission Stats</div>
+      <div class="stats-row"><span class="stats-label">Total Deployed:</span><span id="total-deployed">—</span></div>
+      <div class="stats-row"><span class="stats-label">Paper Trades:</span><span id="paper-record">—</span></div>
+      <div class="stats-row"><span class="stats-label">Win Rate:</span><span class="win-rate" id="win-rate">—</span></div>
+      <div class="stats-row"><span class="stats-label">Active Positions:</span><span id="active-pos">—</span></div>
+      <div class="stats-row"><span class="stats-label">Last Refresh:</span><span id="last-refresh">—</span></div>
+    </div>
+
+    <!-- Token Holdings -->
+    <div class="panel">
+      <div class="panel-title">◈ Token Holdings</div>
+      <div id="token-list"><span class="loading">SCANNING TOKENS...</span></div>
+    </div>
+
+    <!-- Trading Log -->
+    <div class="panel">
+      <div class="panel-title">◈ Trading Log</div>
+      <div id="trade-log"><span class="loading">LOADING TRADES...</span></div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="panel full">
+      <div class="panel-title">◈ Recent Transactions</div>
+      <div id="tx-list"><span class="loading">FETCHING TX...</span></div>
+    </div>
+  </div>
+
+  <footer>
+    GIZMO SPACE STATION v1.0 — Auto-refresh: 30s — Powered by Solana RPC<br>
+    <a class="link" href="https://github.com/GizmoClawd/SOLGizmo" target="_blank">GitHub</a>
+  </footer>
+</div>
+
+<script>
+const WALLET = 'FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn';
+const RPC = 'https://api.mainnet-beta.solana.com';
+const REFRESH_INTERVAL = 30000;
+
+function getTier(sol) {
+  if (sol > 1) return 'NORMAL';
+  if (sol > 0.25) return 'LOW_COMPUTE';
+  if (sol > 0.01) return 'CRITICAL';
+  return 'DEAD';
+}
+
+async function rpc(method, params) {
+  const r = await fetch(RPC, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params })
+  });
+  return (await r.json()).result;
+}
+
+async function fetchBalance() {
+  try {
+    const result = await rpc('getBalance', [WALLET]);
+    const sol = result.value / 1e9;
+    document.getElementById('sol-balance').textContent = sol.toFixed(6) + ' SOL';
+    const tier = getTier(sol);
+    document.getElementById('tier-badge').innerHTML = `<span class="tier tier-${tier}">⬤ ${tier}</span>`;
+    // rough SOL price estimate via coingecko-free or just show SOL
+    try {
+      const p = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');
+      const d = await p.json();
+      if (d.solana) document.getElementById('sol-usd').textContent = '≈ $' + (sol * d.solana.usd).toFixed(2) + ' USD';
+    } catch(e) {}
+  } catch(e) {
+    document.getElementById('sol-balance').textContent = 'RPC ERROR';
+  }
+}
+
+async function fetchTokens() {
+  try {
+    const result = await rpc('getTokenAccountsByOwner', [
+      WALLET,
+      { programId: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' },
+      { encoding: 'jsonParsed' }
+    ]);
+    const el = document.getElementById('token-list');
+    if (!result || !result.value || result.value.length === 0) {
+      el.innerHTML = '<div style="color:var(--dim)">No SPL tokens found</div>';
+      return;
+    }
+    let html = '';
+    for (const acc of result.value) {
+      const info = acc.account.data.parsed.info;
+      const amount = info.tokenAmount.uiAmountString || '0';
+      const mint = info.mint;
+      if (parseFloat(amount) === 0) continue;
+      const shortMint = mint.slice(0,4) + '...' + mint.slice(-4);
+      html += `<div class="token-row">
+        <span class="token-name"><a class="link" href="https://solscan.io/token/${mint}" target="_blank">${shortMint}</a></span>
+        <span class="token-amount">${amount}</span>
+      </div>`;
+    }
+    el.innerHTML = html || '<div style="color:var(--dim)">No non-zero token balances</div>';
+  } catch(e) {
+    document.getElementById('token-list').textContent = 'Error loading tokens';
+  }
+}
+
+async function fetchTransactions() {
+  try {
+    const sigs = await rpc('getSignaturesForAddress', [WALLET, { limit: 10 }]);
+    const el = document.getElementById('tx-list');
+    if (!sigs || sigs.length === 0) {
+      el.innerHTML = '<div style="color:var(--dim)">No recent transactions</div>';
+      return;
+    }
+    let html = '';
+    for (const tx of sigs) {
+      const sig = tx.signature;
+      const short = sig.slice(0,8) + '...' + sig.slice(-8);
+      const time = tx.blockTime ? new Date(tx.blockTime * 1000).toLocaleString() : '—';
+      const ok = tx.err === null;
+      html += `<div class="tx-row">
+        <span class="tx-sig"><a href="https://solscan.io/tx/${sig}" target="_blank">${short}</a></span>
+        <span>${time}</span>
+        <span class="tx-status ${ok?'':'err'}">${ok?'✓ OK':'✗ ERR'}</span>
+      </div>`;
+    }
+    el.innerHTML = html;
+  } catch(e) {
+    document.getElementById('tx-list').textContent = 'Error loading transactions';
+  }
+}
+
+async function fetchTrades() {
+  try {
+    const r = await fetch('trades.json');
+    const data = await r.json();
+    const el = document.getElementById('trade-log');
+    let html = '';
+    for (const t of data.trades) {
+      html += `<div class="trade-entry">
+        <div class="trade-header">
+          <span><span class="trade-type ${t.type}">${t.type}</span> ${t.token} ${t.amount_sol ? t.amount_sol + ' SOL' : ''}</span>
+          <span class="trade-status status-${t.status}">${t.status}</span>
+        </div>
+        <div class="trade-notes">${t.notes}${t.contract ? ' — <a class="link" href="https://solscan.io/token/' + t.contract + '" target="_blank">CA</a>' : ''}</div>
+      </div>`;
+    }
+    el.innerHTML = html;
+    document.getElementById('total-deployed').textContent = data.stats.total_deployed_sol + ' SOL';
+    document.getElementById('paper-record').textContent = data.stats.paper_trade_record;
+    document.getElementById('win-rate').textContent = data.stats.win_rate;
+    document.getElementById('active-pos').textContent = data.trades.filter(t => t.status === 'HOLDING').length;
+  } catch(e) {
+    document.getElementById('trade-log').textContent = 'Error loading trades';
+  }
+}
+
+let refreshTimer = 0;
+function startRefreshBar() {
+  const bar = document.getElementById('refresh-bar');
+  refreshTimer = 0;
+  bar.style.transition = 'none';
+  bar.style.width = '100%';
+  const tick = () => {
+    refreshTimer += 1000;
+    const pct = 100 - (refreshTimer / REFRESH_INTERVAL * 100);
+    bar.style.transition = 'width 1s linear';
+    bar.style.width = Math.max(pct, 0) + '%';
+  };
+  return setInterval(tick, 1000);
+}
+
+async function refresh() {
+  document.getElementById('last-refresh').textContent = new Date().toLocaleTimeString();
+  await Promise.all([fetchBalance(), fetchTokens(), fetchTransactions(), fetchTrades()]);
+}
+
+refresh();
+let barInterval = startRefreshBar();
+setInterval(() => {
+  clearInterval(barInterval);
+  barInterval = startRefreshBar();
+  refresh();
+}, REFRESH_INTERVAL);
+</script>
+</body>
+</html>

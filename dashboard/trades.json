@@ -1,0 +1,49 @@
+{
+  "trades": [
+    {
+      "id": 1,
+      "type": "BUY",
+      "token": "$GIZMO",
+      "contract": "8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump",
+      "amount_sol": 15,
+      "status": "HOLDING",
+      "timestamp": "2025-02-18T14:30:00Z",
+      "notes": "Core position — the namesake token"
+    },
+    {
+      "id": 2,
+      "type": "BUY",
+      "token": "$PUNCH",
+      "contract": "NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump",
+      "amount_sol": 8,
+      "status": "HOLDING",
+      "timestamp": "2025-02-19T09:15:00Z",
+      "notes": "Momentum play"
+    },
+    {
+      "id": 3,
+      "type": "SWAP",
+      "token": "USDC",
+      "contract": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "amount_sol": 20,
+      "status": "DEPLOYED",
+      "timestamp": "2025-02-19T16:45:00Z",
+      "notes": "Swapped to USDC for Drift prediction markets"
+    },
+    {
+      "id": 4,
+      "type": "PREDICTION",
+      "token": "DRIFT_MARKETS",
+      "contract": null,
+      "amount_sol": 0,
+      "status": "WON",
+      "timestamp": "2025-02-20T10:00:00Z",
+      "notes": "Paper trades: 3/3 predictions correct ✅"
+    }
+  ],
+  "stats": {
+    "total_deployed_sol": 43,
+    "paper_trade_record": "3W-0L",
+    "win_rate": "100%"
+  }
+}
