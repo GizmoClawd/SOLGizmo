@@ -961,6 +961,36 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <div class="pos-row"><span class="dim">Value</span><span id="punchValue">--</span></div>
         <div class="pos-row"><span class="dim">P&L</span><span id="punchPnl">--</span></div>
       </div>
+      <div class="pos-card">
+        <h4>$BLOODNUT</h4>
+        <div class="pos-row"><span class="dim">Invested</span><span>2 SOL</span></div>
+        <div class="pos-row"><span class="dim">Holdings</span><span id="bloodnutHoldings">--</span></div>
+        <div class="pos-row"><span class="dim">Price</span><span id="bloodnutPrice">--</span></div>
+        <div class="pos-row"><span class="dim">Value</span><span id="bloodnutValue">--</span></div>
+        <div class="pos-row"><span class="dim">P&L</span><span id="bloodnutPnl">--</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERPS TRADING -->
+  <div class="section">
+    <h2 class="section-title">PERPS TRADING</h2>
+    <p class="section-subtitle">Live perpetual futures via Drift Protocol</p>
+    <div class="portfolio-grid">
+      <div class="stat-card"><div class="label">POSITION SIZE</div><div class="value" id="perpSize">2.32 SOL</div></div>
+      <div class="stat-card"><div class="label">ENTRY PRICE</div><div class="value" id="perpEntry">$85.81</div></div>
+      <div class="stat-card"><div class="label">CURRENT PRICE</div><div class="value" id="perpMarkPrice">--</div></div>
+      <div class="stat-card"><div class="label">UNREALIZED P&L</div><div class="value" id="perpPnl">--</div></div>
+    </div>
+    <div class="positions">
+      <div class="pos-card">
+        <h4 style="color:var(--teal)">SOL-PERP — LONG</h4>
+        <div class="pos-row"><span class="dim">Direction</span><span style="color:var(--teal)">LONG ▲</span></div>
+        <div class="pos-row"><span class="dim">Size</span><span>2.32 SOL</span></div>
+        <div class="pos-row"><span class="dim">Entry Price</span><span>$85.81</span></div>
+        <div class="pos-row"><span class="dim">Mark Price</span><span id="perpMarkPrice2">--</span></div>
+        <div class="pos-row"><span class="dim">Unrealized P&L</span><span id="perpPnl2">--</span></div>
+      </div>
     </div>
   </div>
 
@@ -1088,12 +1118,15 @@ function initChart(){
 // ===== LIVE DATA =====
 const GIZMO_CA='8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump';
 const PUNCH_CA='NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump';
+const BLOODNUT_CA='HBJUeugfgJ3zWYMMP4cULbZ9bjnZbb6WG9cBcWNxpump';
 const WALLET='FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn';
 const RPC='https://mainnet.helius-rpc.com/?api-key=2de73660-14b8-412a-9ff2-8e6989c53266';
-const GIZMO_MINT=GIZMO_CA, PUNCH_MINT=PUNCH_CA;
+const GIZMO_MINT=GIZMO_CA, PUNCH_MINT=PUNCH_CA, BLOODNUT_MINT=BLOODNUT_CA;
 
-let solPriceUsd=0,gizmoPriceUsd=0,punchPriceUsd=0,walletSol=0;
-let gizmoTokenBalance=0,punchTokenBalance=0;
+// Perps position config
+const PERP_SIZE=2.32, PERP_ENTRY=85.81;
+let solPriceUsd=0,gizmoPriceUsd=0,punchPriceUsd=0,bloodnutPriceUsd=0,perpMarkPriceUsd=0,walletSol=0;
+let gizmoTokenBalance=0,punchTokenBalance=0,bloodnutTokenBalance=0;
 
 async function fetchSolPrice(){
   try{const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');const d=await r.json();solPriceUsd=d.solana.usd}catch(e){console.error('SOL price error:',e)}
@@ -1102,6 +1135,11 @@ async function fetchSolPrice(){
 async function fetchDexPrices(){
   try{const r=await fetch(`https://api.dexscreener.com/latest/dex/tokens/${GIZMO_CA}`);const d=await r.json();if(d.pairs&&d.pairs.length>0)gizmoPriceUsd=parseFloat(d.pairs[0].priceUsd||0)}catch(e){console.error('GIZMO price error:',e)}
   try{const r=await fetch(`https://api.dexscreener.com/latest/dex/tokens/${PUNCH_CA}`);const d=await r.json();if(d.pairs&&d.pairs.length>0)punchPriceUsd=parseFloat(d.pairs[0].priceUsd||0)}catch(e){console.error('PUNCH price error:',e)}
+  try{const r=await fetch(`https://api.dexscreener.com/latest/dex/tokens/${BLOODNUT_CA}`);const d=await r.json();if(d.pairs&&d.pairs.length>0)bloodnutPriceUsd=parseFloat(d.pairs[0].priceUsd||0)}catch(e){console.error('BLOODNUT price error:',e)}
+}
+
+async function fetchPerpPrice(){
+  try{const r=await fetch('https://dlob.drift.trade/l2?marketIndex=0&marketType=perp&depth=1');const d=await r.json();if(d.asks&&d.asks[0]&&d.bids&&d.bids[0]){const ask=parseInt(d.asks[0].price)/1e6,bid=parseInt(d.bids[0].price)/1e6;perpMarkPriceUsd=(ask+bid)/2}else if(d.markPrice){perpMarkPriceUsd=parseInt(d.markPrice)/1e6}}catch(e){console.error('Perp price error:',e)}
 }
 
 async function fetchWalletBalance(){
@@ -1118,7 +1156,7 @@ async function fetchTokenBalances(){
       params:[WALLET,{programId:'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'},{encoding:'jsonParsed'}]
     })});
     const d=await r.json();
-    gizmoTokenBalance=0;punchTokenBalance=0;
+    gizmoTokenBalance=0;punchTokenBalance=0;bloodnutTokenBalance=0;
     if(d.result&&d.result.value){
       for(const acct of d.result.value){
         const info=acct.account.data.parsed.info;
@@ -1126,6 +1164,7 @@ async function fetchTokenBalances(){
         const amt=parseFloat(info.tokenAmount.uiAmountString||'0');
         if(mint===GIZMO_MINT) gizmoTokenBalance=amt;
         if(mint===PUNCH_MINT) punchTokenBalance=amt;
+        if(mint===BLOODNUT_MINT) bloodnutTokenBalance=amt;
       }
     }
   }catch(e){console.error('Token fetch error:',e)}
@@ -1160,11 +1199,33 @@ function updateUI(){
   const ppE=document.getElementById('punchPnl');
   if(pV>0){ppE.innerHTML=`<span style="color:${pPU>=0?'var(--teal)':'#ff4444'}">${pPU>=0?'+':''}${fmtNum(pPU,2)} USD (${pPP>=0?'+':''}${pPP.toFixed(1)}%)</span><br><span style="font-size:11px;color:var(--dim)">${pPS>=0?'+':''}${pPS.toFixed(2)} SOL</span>`}else{ppE.textContent='--'}
 
-  const tMV=gV+pV, tMI=23*solPriceUsd, tPU=tMV-tMI, tPS=solPriceUsd>0?(tMV/solPriceUsd)-23:0;
+  // BLOODNUT
+  const bV=bloodnutTokenBalance*bloodnutPriceUsd, bIU=2*solPriceUsd;
+  document.getElementById('bloodnutHoldings').textContent=bloodnutTokenBalance>0?fmtNum(bloodnutTokenBalance,0)+' tokens':'--';
+  document.getElementById('bloodnutPrice').textContent=bloodnutPriceUsd>0?'$'+bloodnutPriceUsd.toFixed(8):'--';
+  document.getElementById('bloodnutValue').textContent=bV>0?'$'+fmtNum(bV,2):'--';
+  const bPU=bV-bIU, bPS=solPriceUsd>0?(bV/solPriceUsd)-2:0, bPP=bIU>0?((bV/bIU)-1)*100:0;
+  const bpE=document.getElementById('bloodnutPnl');
+  if(bV>0){bpE.innerHTML=`<span style="color:${bPU>=0?'var(--teal)':'#ff4444'}">${bPU>=0?'+':''}${fmtNum(bPU,2)} USD (${bPP>=0?'+':''}${bPP.toFixed(1)}%)</span><br><span style="font-size:11px;color:var(--dim)">${bPS>=0?'+':''}${bPS.toFixed(2)} SOL</span>`}else{bpE.textContent='--'}
+
+  const tMV=gV+pV+bV, tMI=25*solPriceUsd, tPU=tMV-tMI, tPS=solPriceUsd>0?(tMV/solPriceUsd)-25:0;
   document.getElementById('memeValue').textContent=tMV>0?'$'+fmtNum(tMV,2):'--';
   document.getElementById('memeValueSol').textContent=solPriceUsd>0&&tMV>0?(tMV/solPriceUsd).toFixed(2)+' SOL':'';
   const mpE=document.getElementById('memePnl');
   if(tMV>0){mpE.textContent=(tPU>=0?'+':'')+fmtNum(tPU,2)+' USD';mpE.className='value'+(tPU<0?' negative':'');document.getElementById('memePnlSol').textContent=(tPS>=0?'+':'')+tPS.toFixed(2)+' SOL'}else{mpE.textContent='--';mpE.className='value'}
+
+  // PERPS
+  if(perpMarkPriceUsd>0){
+    const mp='$'+perpMarkPriceUsd.toFixed(2);
+    document.getElementById('perpMarkPrice').textContent=mp;
+    document.getElementById('perpMarkPrice2').textContent=mp;
+    const perpPnlUsd=(perpMarkPriceUsd-PERP_ENTRY)*PERP_SIZE;
+    const perpPnlPct=((perpMarkPriceUsd/PERP_ENTRY)-1)*100;
+    const perpStr=(perpPnlUsd>=0?'+':'')+perpPnlUsd.toFixed(2)+' USD ('+(perpPnlPct>=0?'+':'')+perpPnlPct.toFixed(1)+'%)';
+    const perpColor=perpPnlUsd>=0?'var(--teal)':'#ff4444';
+    document.getElementById('perpPnl').innerHTML=`<span style="color:${perpColor}">${perpStr}</span>`;
+    document.getElementById('perpPnl2').innerHTML=`<span style="color:${perpColor}">${perpStr}</span>`;
+  }
 
   const wV=walletSol*solPriceUsd, total=wV+tMV+1690;
   const now=new Date(),lbl=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
@@ -1173,7 +1234,7 @@ function updateUI(){
 }
 
 async function refresh(){
-  await Promise.all([fetchSolPrice(),fetchDexPrices(),fetchWalletBalance(),fetchTokenBalances()]);
+  await Promise.all([fetchSolPrice(),fetchDexPrices(),fetchWalletBalance(),fetchTokenBalances(),fetchPerpPrice()]);
   updateUI();
 }
 
