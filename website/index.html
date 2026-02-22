@@ -69,6 +69,9 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .live-dot{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%;background:#14F195;box-shadow:0 0 6px #14F195,0 0 12px #14F195,0 0 24px rgba(20,241,149,.4);animation:livePulse 2s ease-in-out infinite}
 @keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 6px #14F195,0 0 12px #14F195}50%{opacity:.6;box-shadow:0 0 3px #14F195,0 0 6px #14F195}}
 
+/* ===== SPEECH BUBBLES ===== */
+@keyframes bubblePop{0%{opacity:0;transform:translateX(-50%) translateY(5px) scale(.5)}10%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}80%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(-10px) scale(.8)}}
+
 /* ===== MAIN ===== */
 .main-content{opacity:0;transition:opacity .8s}.main-content.show{opacity:1}
 
@@ -1252,9 +1255,58 @@ document.getElementById('intro-gate').addEventListener('click',()=>{
   for(let i=0;i<8;i++){const f=document.createElement('div');f.className='fragment go';const a=Math.random()*Math.PI*2,d=200+Math.random()*400,r=(Math.random()-.5)*720;f.style.cssText=`--tx:${Math.cos(a)*d}px;--ty:${Math.sin(a)*d}px;--rot:${r}deg;animation-delay:${Math.random()*.15}s`;f.textContent=frags[~~(Math.random()*frags.length)];fc.appendChild(f)}
   },1900);
   setTimeout(()=>{document.getElementById('laser').style.display='none';document.getElementById('shipScene').classList.add('fly');document.getElementById('introTitle').classList.add('show')},2500);
-  setTimeout(()=>{document.getElementById('intro').classList.add('fade');document.getElementById('main').classList.add('show')},5000);
+  setTimeout(()=>{document.getElementById('intro').classList.add('fade');document.getElementById('main').classList.add('show');startBGM()},5000);
   setTimeout(()=>{document.getElementById('intro').style.display='none'},6000);
 },{once:true});
+
+// ===== BACKGROUND MUSIC (loop after intro) =====
+let bgmAudio;
+function startBGM(){
+  bgmAudio=new Audio('bgm.mp3');
+  bgmAudio.loop=true;
+  bgmAudio.volume=0.3;
+  bgmAudio.play().catch(()=>{});
+}
+
+// ===== SPONTANEOUS MOGWAI BEHAVIORS =====
+const speechBubbles=[
+  '🚀 WAGMI','📈 Pump it!','💎 Diamond hands','🦞 Iced out!','GM!','📊 Checking charts...',
+  'LFG!','🔥 Bullish','👀 Found alpha','🧠 Calculating...','💰 Making moves',
+  'gm ser','🌙 To the moon','HODL!','👑 $GIZMO','🎯 Target locked'
+];
+function showSpeechBubble(el){
+  const existing=el.querySelector('.speech-bubble');
+  if(existing)existing.remove();
+  const b=document.createElement('div');
+  b.className='speech-bubble';
+  b.textContent=speechBubbles[~~(Math.random()*speechBubbles.length)];
+  b.style.cssText='position:absolute;top:-30px;left:50%;transform:translateX(-50%);background:rgba(20,241,149,.9);color:#000;font-size:8px;font-family:"Press Start 2P",monospace;padding:4px 8px;border-radius:8px;white-space:nowrap;z-index:50;animation:bubblePop 3s forwards;pointer-events:none';
+  el.appendChild(b);
+  setTimeout(()=>b.remove(),3000);
+}
+
+function randomJump(el){
+  el.style.transition='transform .3s ease-out';
+  el.style.transform='translateY(-15px)';
+  setTimeout(()=>{el.style.transform='translateY(0)';el.style.transition=''},300);
+}
+
+function randomSpin(el){
+  el.style.transition='transform .6s ease-in-out';
+  el.style.transform='scaleX(-1)';
+  setTimeout(()=>{el.style.transform='scaleX(1)';el.style.transition=''},1200);
+}
+
+// Run random behaviors every 3-8 seconds
+setInterval(()=>{
+  const chars=[document.getElementById('gizmo-char'),document.getElementById('mini1'),document.getElementById('mini2'),document.getElementById('mini3')].filter(Boolean);
+  const target=chars[~~(Math.random()*chars.length)];
+  const action=Math.random();
+  if(action<0.35)showSpeechBubble(target);
+  else if(action<0.55)randomJump(target.querySelector('.gizmo-side,.mini-side')||target);
+  else if(action<0.7)randomSpin(target.querySelector('.gizmo-side,.mini-side')||target);
+  else showSpeechBubble(target); // bias towards speech
+},4000+Math.random()*4000);
 
 // TV channel cycle
 const tvCh=['GIZMO TV','SOL: $$$','PUMP','LIVE','HODL!','GM'];let tvI=0;
