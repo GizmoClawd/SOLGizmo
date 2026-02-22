@@ -958,7 +958,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <div class="portfolio-grid">
         <div class="stat-card"><div class="label">TOTAL VALUE</div><div class="value" id="totalPortValue">--</div></div>
         <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="solBalanceHud">--</div></div>
-        <div class="stat-card"><div class="label">TOTAL USDC</div><div class="value" id="driftUsdc">$1,094</div></div>
+        <div class="stat-card"><div class="label">TOTAL USDC</div><div class="value" id="driftUsdc">--</div></div>
         <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">7 Active</div></div>
       </div>
       <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;padding:20px;margin-top:16px;height:380px;box-shadow:0 0 30px rgba(20,241,149,.05)">
@@ -1529,8 +1529,8 @@ function updateUI(){
   const totalPerpPnl=solPerpPnlUsd+btcPerpPnlUsd+ethPerpPnlUsd;
   const tpEl=document.getElementById('perpTotalPnl');
   if(tpEl){const col=totalPerpPnl>=0?'var(--teal)':'#ff4444';tpEl.innerHTML=`<span style="color:${col}">${(totalPerpPnl>=0?'+':'')}${totalPerpPnl.toFixed(2)} USD</span>`}
-  // Leverage & Liq
-  const driftCollateral=46;
+  // Leverage & Liq — use total collateral (equity), not just free funds
+  const driftCollateral=127;
   const solN=PERP_SIZE*(perpMarkPriceUsd||0), btcN=BTC_PERP_SIZE*(btcMarkPriceUsd||0), ethN=ETH_PERP_SIZE*(ethMarkPriceUsd||0);
   const totalNotional=solN+btcN+ethN;
   const equity=driftCollateral+totalPerpPnl;
@@ -1542,10 +1542,10 @@ function updateUI(){
   const liqEl=document.getElementById('perpLiqPrice');if(liqEl)liqEl.textContent=solLiq>0?'~$'+solLiq.toFixed(2):'--';
   const eqEl=document.getElementById('perpEquity');if(eqEl){const eqCol=equity>=driftCollateral?'var(--teal)':'#ff4444';eqEl.innerHTML=`<span style="color:${eqCol}">$${equity.toFixed(2)}</span>`}
 
-  const wV=walletSol*solPriceUsd, perpVal=solPerpPnlUsd+btcPerpPnlUsd, total=wV+tMV+usdcBalance+46+perpVal;
+  const wV=walletSol*solPriceUsd, perpVal=solPerpPnlUsd+btcPerpPnlUsd, total=wV+tMV+usdcBalance+127+perpVal;
   const tvE=document.getElementById('totalPortValue');if(tvE)tvE.textContent=total>0?'$'+fmtNum(total,2):'--';
   const sbE=document.getElementById('solBalanceHud');if(sbE)sbE.textContent=walletSol>0?walletSol.toFixed(2)+' SOL':'--';
-  const duE=document.getElementById('driftUsdc');if(duE)duE.textContent='$'+fmtNum(46+usdcBalance,2);
+  const duE=document.getElementById('driftUsdc');if(duE)duE.textContent='$'+fmtNum(127+usdcBalance,2);
   const now=new Date(),lbl=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
   chartHistory.push({label:lbl,value:total});if(chartHistory.length>40)chartHistory.shift();
   if(pnlChart){pnlChart.data.labels=chartHistory.map(h=>h.label);pnlChart.data.datasets[0].data=chartHistory.map(h=>h.value);pnlChart.update('none')}
@@ -1583,7 +1583,7 @@ function updateStats(){
   const total=walletSol*sp+gV+pV+bV+lV+usdcBalance+940+perpPnl;
 
   document.getElementById('statsTotalValue').textContent=total>0?'$'+fmtNum(total,2):'--';
-  document.getElementById('statsDriftUsdc').textContent='$'+fmtNum(46+usdcBalance,2);
+  document.getElementById('statsDriftUsdc').textContent='$'+fmtNum(127+usdcBalance,2);
   document.getElementById('statsSolBal').textContent=walletSol>0?walletSol.toFixed(2)+' SOL':'--';
   document.getElementById('statsWinRate').textContent='7 Active / 1 Closed';
 
