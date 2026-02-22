@@ -1489,13 +1489,14 @@ async function refresh(){
 
 // ===== LIVE STATS (CLIENT-SIDE, NO NETLIFY FUNCTION) =====
 const tradeHistory=[
-  {type:'BUY',token:'$GIZMO',sol:15,status:'HOLDING',date:'Feb 18',notes:'Core position — the namesake token'},
+  {type:'BUY',token:'$GIZMO',sol:15,status:'HOLDING',date:'Feb 18',notes:'Core position — the namesake token. NEVER SELL.'},
   {type:'BUY',token:'$PUNCH',sol:13,status:'HOLDING',date:'Feb 19-21',notes:'High conviction runner — $13.5M daily volume'},
   {type:'SWAP',token:'USDC',sol:20,status:'DEPLOYED',date:'Feb 19',notes:'Swapped to USDC for Drift perp trading'},
   {type:'PERP',token:'SOL-PERP LONG',sol:0,status:'ACTIVE',date:'Feb 21',notes:'15.16 SOL leveraged long @ $85.67'},
   {type:'PERP',token:'BTC-PERP LONG',sol:0,status:'ACTIVE',date:'Feb 21',notes:'0.0029 BTC long @ $68,389'},
   {type:'PERP',token:'ETH-PERP LONG',sol:0,status:'ACTIVE',date:'Feb 21',notes:'0.075 ETH long @ $1,980'},
-  {type:'BUY',token:'$BLOODNUT',sol:2,status:'HOLDING',date:'Feb 20',notes:'Small cap play — TP at 2x'}
+  {type:'BUY',token:'$BLOODNUT',sol:2,status:'HOLDING',date:'Feb 20',notes:'Small cap play — TP at 2x'},
+  {type:'TRADE',token:'$WINSTON',sol:5,status:'CLOSED ✅',date:'Feb 21',notes:'Bought 5 SOL → Sold 8.25 SOL. PnL: +3.25 SOL (+65%). Clean flip 🧹',pnl:'+3.25 SOL (+65%)'}
 ];
 function updateStats(){
   const sp=solPriceUsd||0;
@@ -1513,7 +1514,7 @@ function updateStats(){
   document.getElementById('statsTotalValue').textContent=total>0?'$'+fmtNum(total,2):'--';
   document.getElementById('statsDriftUsdc').textContent='$'+fmtNum(940+usdcBalance,2);
   document.getElementById('statsSolBal').textContent=walletSol>0?walletSol.toFixed(2)+' SOL':'--';
-  document.getElementById('statsWinRate').textContent='6 Active';
+  document.getElementById('statsWinRate').textContent='7 Active / 1 Closed';
 
   // Positions
   const perps=[
@@ -1552,11 +1553,14 @@ function updateStats(){
   let thHTML='';
   for(const t of tradeHistory){
     const statusCol=t.status==='ACTIVE'?'var(--teal)':t.status==='HOLDING'?'var(--purple)':'var(--dim)';
-    const liveDot=(t.status==='ACTIVE'||t.status==='HOLDING')?'<div class="live-dot"></div>':'';
+    const isLive=(t.status==='ACTIVE'||t.status==='HOLDING');
+    const liveDot=isLive?'<div class="live-dot"></div>':'';
+    const pnlRow=t.pnl?`<div class="pos-row"><span class="dim">P&L</span><span style="color:var(--teal);font-weight:bold">${t.pnl}</span></div>`:'';
     thHTML+=`<div class="pos-card">${liveDot}<h4>${t.token} — ${t.type}</h4>
       <div class="pos-row"><span class="dim">Date</span><span>${t.date}</span></div>
       ${t.sol?`<div class="pos-row"><span class="dim">Amount</span><span>${t.sol} SOL</span></div>`:''}
       <div class="pos-row"><span class="dim">Status</span><span style="color:${statusCol}">${t.status}</span></div>
+      ${pnlRow}
       <div class="pos-row"><span class="dim">Notes</span><span style="font-size:11px">${t.notes}</span></div></div>`;
   }
   document.getElementById('statsTradeHistory').innerHTML=thHTML;
