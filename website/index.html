@@ -1532,16 +1532,18 @@ function updateStats(){
 
   // Positions
   const perps=[
-    {sym:'SOL',mark:perpMarkPriceUsd,entry:PERP_ENTRY,size:PERP_SIZE},
-    {sym:'BTC',mark:btcMarkPriceUsd,entry:BTC_PERP_ENTRY,size:BTC_PERP_SIZE},
-    {sym:'ETH',mark:ethMarkPriceUsd,entry:ETH_PERP_ENTRY,size:ETH_PERP_SIZE}
+    {sym:'SOL',mark:perpMarkPriceUsd,entry:PERP_ENTRY,size:PERP_SIZE,dir:'LONG'},
+    {sym:'BTC',mark:btcMarkPriceUsd,entry:BTC_PERP_ENTRY,size:BTC_PERP_SIZE,dir:'LONG'},
+    {sym:'ETH',mark:ethMarkPriceUsd,entry:ETH_PERP_ENTRY,size:ETH_PERP_SIZE,dir:'LONG'}
   ];
   let posHTML='';
   for(const p of perps){
     if(!p.mark||p.mark<=0)continue;
     const pnl=(p.mark-p.entry)*p.size;const pct=((p.mark/p.entry)-1)*100;
     const col=pnl>=0?'var(--teal)':'#ff4444';
-    posHTML+=`<div class="pos-card"><div class="live-dot"></div><h4 style="color:${col}">${p.sym}-PERP — LONG ▲</h4>
+    const dirCol=p.dir==='LONG'?'var(--teal)':'#ff4444';
+    const dirArrow=p.dir==='LONG'?'▲':'▼';
+    posHTML+=`<div class="pos-card"><div class="live-dot"></div><h4 style="color:${dirCol}">${p.sym}-PERP — ${p.dir} ${dirArrow}</h4>
       <div class="pos-row"><span class="dim">Size</span><span>${p.size} ${p.sym}</span></div>
       <div class="pos-row"><span class="dim">Entry</span><span>$${fmtNum(p.entry,2)}</span></div>
       <div class="pos-row"><span class="dim">Mark</span><span>$${fmtNum(p.mark,2)}</span></div>
