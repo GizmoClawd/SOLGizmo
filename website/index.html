@@ -1104,15 +1104,139 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
 </div>
 
 <script>
+// ===== AUDIO ENGINE =====
+const AudioCtx=window.AudioContext||window.webkitAudioContext;
+let audioCtx;
+function ensureAudio(){if(!audioCtx)audioCtx=new AudioCtx();return audioCtx}
+
+function playLaser(){
+  const ctx=ensureAudio();
+  const osc=ctx.createOscillator();
+  const gain=ctx.createGain();
+  osc.type='sawtooth';
+  osc.frequency.setValueAtTime(2000,ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(200,ctx.currentTime+0.4);
+  gain.gain.setValueAtTime(0.3,ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.5);
+  osc.connect(gain);gain.connect(ctx.destination);
+  osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.5);
+  // Add a white noise layer for texture
+  const buf=ctx.createBuffer(1,ctx.sampleRate*0.4,ctx.sampleRate);
+  const data=buf.getChannelData(0);
+  for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*0.15));
+  const noise=ctx.createBufferSource();noise.buffer=buf;
+  const ng=ctx.createGain();ng.gain.setValueAtTime(0.15,ctx.currentTime);
+  noise.connect(ng);ng.connect(ctx.destination);noise.start(ctx.currentTime);
+}
+
+function playExplosion(){
+  const ctx=ensureAudio();
+  // Low boom
+  const osc=ctx.createOscillator();const gain=ctx.createGain();
+  osc.type='sine';osc.frequency.setValueAtTime(150,ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(30,ctx.currentTime+0.5);
+  gain.gain.setValueAtTime(0.5,ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.6);
+  osc.connect(gain);gain.connect(ctx.destination);
+  osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.6);
+  // Noise burst
+  const buf=ctx.createBuffer(1,ctx.sampleRate*0.6,ctx.sampleRate);
+  const data=buf.getChannelData(0);
+  for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*0.12));
+  const noise=ctx.createBufferSource();noise.buffer=buf;
+  const ng=ctx.createGain();ng.gain.setValueAtTime(0.4,ctx.currentTime);
+  ng.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.5);
+  noise.connect(ng);ng.connect(ctx.destination);noise.start(ctx.currentTime);
+  // Impact crack
+  const osc2=ctx.createOscillator();const g2=ctx.createGain();
+  osc2.type='square';osc2.frequency.setValueAtTime(800,ctx.currentTime);
+  osc2.frequency.exponentialRampToValueAtTime(50,ctx.currentTime+0.15);
+  g2.gain.setValueAtTime(0.3,ctx.currentTime);
+  g2.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.2);
+  osc2.connect(g2);g2.connect(ctx.destination);
+  osc2.start(ctx.currentTime);osc2.stop(ctx.currentTime+0.2);
+}
+
+function playGremlinTheme(){
+  const ctx=ensureAudio();
+  // Playful, slightly spooky synth melody (Gremlins-inspired, not the actual track)
+  const notes=[
+    // Playful descending motif
+    {f:523,d:0.2,t:0},    // C5
+    {f:494,d:0.2,t:0.25}, // B4
+    {f:440,d:0.2,t:0.5},  // A4
+    {f:392,d:0.3,t:0.75}, // G4
+    {f:330,d:0.15,t:1.1},  // E4
+    {f:392,d:0.15,t:1.3},  // G4
+    {f:440,d:0.3,t:1.5},  // A4
+    // Repeat higher
+    {f:659,d:0.2,t:2.0},  // E5
+    {f:587,d:0.2,t:2.25}, // D5
+    {f:523,d:0.2,t:2.5},  // C5
+    {f:494,d:0.3,t:2.75}, // B4
+    {f:440,d:0.15,t:3.1},  // A4
+    {f:523,d:0.15,t:3.3},  // C5
+    {f:587,d:0.4,t:3.5},  // D5
+    // Resolve
+    {f:523,d:0.5,t:4.0},  // C5
+  ];
+  const masterGain=ctx.createGain();
+  masterGain.gain.setValueAtTime(0.12,ctx.currentTime);
+  masterGain.gain.linearRampToValueAtTime(0.08,ctx.currentTime+4);
+  masterGain.gain.linearRampToValueAtTime(0,ctx.currentTime+5);
+  masterGain.connect(ctx.destination);
+  
+  notes.forEach(n=>{
+    const osc=ctx.createOscillator();
+    const g=ctx.createGain();
+    osc.type='triangle';
+    osc.frequency.setValueAtTime(n.f,ctx.currentTime+n.t);
+    // Add slight vibrato
+    const vib=ctx.createOscillator();const vibG=ctx.createGain();
+    vib.frequency.value=5;vibG.gain.value=3;
+    vib.connect(vibG);vibG.connect(osc.frequency);vib.start(ctx.currentTime+n.t);
+    vib.stop(ctx.currentTime+n.t+n.d+0.1);
+    
+    g.gain.setValueAtTime(0,ctx.currentTime+n.t);
+    g.gain.linearRampToValueAtTime(0.6,ctx.currentTime+n.t+0.03);
+    g.gain.linearRampToValueAtTime(0.4,ctx.currentTime+n.t+n.d*0.5);
+    g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+n.t+n.d);
+    osc.connect(g);g.connect(masterGain);
+    osc.start(ctx.currentTime+n.t);osc.stop(ctx.currentTime+n.t+n.d+0.05);
+  });
+}
+
+// Click anywhere to unlock audio (browser autoplay policy)
+let audioUnlocked=false;
+document.addEventListener('click',()=>{
+  if(!audioUnlocked){
+    audioUnlocked=true;
+    ensureAudio();
+    // Replay intro sounds if user clicked during intro
+    if(!document.getElementById('intro').classList.contains('fade')){
+      playGremlinTheme();
+      setTimeout(playLaser,500);
+      setTimeout(playExplosion,1400);
+    }
+  }
+},{once:false});
+
+// Auto-attempt audio on load (works if user has interacted with site before)
+try{ensureAudio();audioUnlocked=true}catch(e){}
+
 // ===== INTRO SEQUENCE =====
 const sf=document.getElementById('starfield');
 for(let i=0;i<150;i++){const s=document.createElement('div');s.className='star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;animation-delay:${Math.random()*2}s;animation-duration:${.5+Math.random()*1.5}s`;sf.appendChild(s)}
 
-setTimeout(()=>{document.getElementById('laser').classList.add('fire')},1000);
+// Start Gremlins theme immediately
+setTimeout(()=>{if(audioUnlocked)playGremlinTheme()},200);
+// Laser fires with sound
+setTimeout(()=>{document.getElementById('laser').classList.add('fire');if(audioUnlocked)playLaser()},1000);
 setTimeout(()=>{
   document.getElementById('lobster').classList.add('hit');
   document.getElementById('flash').classList.add('flash');
   document.getElementById('burst').classList.add('go');
+  if(audioUnlocked)playExplosion();
   const pc=document.getElementById('particles');
   const cols=['#ff4400','#ff8800','#ffcc00','#ff0000','#ff6600','#9945FF','#14F195'];
   for(let i=0;i<35;i++){const p=document.createElement('div');p.className='particle go';const a=Math.random()*Math.PI*2,d=150+Math.random()*300;p.style.cssText=`--tx:${Math.cos(a)*d}px;--ty:${Math.sin(a)*d}px;width:${4+Math.random()*8}px;height:${4+Math.random()*8}px;background:${cols[~~(Math.random()*cols.length)]};animation-delay:${Math.random()*.2}s`;pc.appendChild(p)}
