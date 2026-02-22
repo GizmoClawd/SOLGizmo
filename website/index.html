@@ -1540,7 +1540,7 @@ function updateUI(){
   const solLiq=perpMarkPriceUsd>0?perpMarkPriceUsd-liqDrop:0;
   const levEl=document.getElementById('perpLeverage');if(levEl)levEl.textContent=leverage>0?leverage.toFixed(2)+'x':'--';
   const liqEl=document.getElementById('perpLiqPrice');if(liqEl)liqEl.textContent=solLiq>0?'~$'+solLiq.toFixed(2):'--';
-  const eqEl=document.getElementById('perpEquity');if(eqEl){const eqCol=equity>=driftCollateral?'var(--teal)':'#ff4444';eqEl.innerHTML=`<span style="color:${eqCol}">$${equity.toFixed(2)}</span>`}
+  const eqEl=document.getElementById('perpEquity');if(eqEl){eqEl.innerHTML=`<span style="color:var(--teal)">$${equity.toFixed(2)}</span>`}
 
   const wV=walletSol*solPriceUsd, perpVal=solPerpPnlUsd+btcPerpPnlUsd, total=wV+tMV+usdcBalance+127+perpVal;
   const tvE=document.getElementById('totalPortValue');if(tvE)tvE.textContent=total>0?'$'+fmtNum(total,2):'--';
