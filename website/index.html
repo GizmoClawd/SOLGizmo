@@ -1891,7 +1891,10 @@ function renderTradePage(page){
     const borderCol=t.color==='teal'?'var(--teal)':t.color==='red'?'#ff4444':'var(--dim)';
     const pnlCol=t.color==='teal'?'var(--teal)':t.color==='red'?'#ff4444':'var(--dim)';
     const caLine=t.ca?`<div class="pos-row"><span class="dim">CA</span><span style="font-size:10px;word-break:break-all"><a href="https://solscan.io/token/${t.ca}" target="_blank" style="color:var(--purple)">${t.ca.slice(0,12)}...${t.ca.slice(-6)}</a></span></div>`:'';
-    html+=`<div class="pos-card" style="border-left:3px solid ${borderCol};${t.color==='dim'?'opacity:0.6':''}">
+    const specialStyle = t.special ? 'border:4px solid #fbbf24!important;box-shadow:0 0 20px rgba(251,191,36,.5)!important;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(20,241,149,.1))!important;' : '';
+    const specialBadge = t.special ? '<div style="position:absolute;top:-5px;left:-5px;background:#fbbf24;color:#000;padding:2px 6px;border-radius:3px;font-size:8px;font-family:\'Press Start 2P\';animation:pulse 2s infinite">👑 PERFECT</div>' : '';
+    html+=`<div class="pos-card" style="border-left:3px solid ${borderCol};${t.color==='dim'?'opacity:0.6':''};${specialStyle}position:relative;">
+      ${specialBadge}
       <div style="position:absolute;top:8px;right:12px;font-family:'Press Start 2P',monospace;font-size:10px;color:var(--purple)">#${t.n}</div>
       <h4 style="color:${pnlCol}">${t.token} — ${t.action}</h4>
       <div class="pos-row"><span class="dim">Date</span><span>${t.date}, 2026</span></div>
