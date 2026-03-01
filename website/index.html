@@ -1547,8 +1547,8 @@ async function fetchTokenBalances(){
       }
     }catch(e){console.error('Token fetch error ('+prog+'):',e)}
   // Fallback hardcoded holdings — verified on-chain Feb 24 2026
-  if(gizmoTokenBalance===0) gizmoTokenBalance=2269327;
-  if(usdcBalance===0) usdcBalance=558.25;
+  if(gizmoTokenBalance===0) gizmoTokenBalance=1114165;
+  if(usdcBalance===0) usdcBalance=0;
   // All other memecoins CLOSED — 0 balance
   }
 }
@@ -1566,17 +1566,17 @@ function updateUI(){
   document.getElementById('solBalance').textContent=walletSol.toFixed(4)+' SOL';
   document.getElementById('solPrice').textContent='$'+solPriceUsd.toFixed(2);
 
-  const gV=gizmoTokenBalance*gizmoPriceUsd, gIU=15*solPriceUsd;
+  const gV=gizmoTokenBalance*gizmoPriceUsd, gIU=13*solPriceUsd;
   document.getElementById('gizmoHoldings').textContent=gizmoTokenBalance>0?fmtNum(gizmoTokenBalance,0)+' tokens':'--';
   document.getElementById('gizmoPrice').textContent=gizmoPriceUsd>0?'$'+gizmoPriceUsd.toFixed(8):'--';
   document.getElementById('gizmoValue').textContent=gV>0?'$'+fmtNum(gV,2):'--';
-  const gPU=gV-gIU, gPS=solPriceUsd>0?(gV/solPriceUsd)-15:0, gPP=gIU>0?((gV/gIU)-1)*100:0;
+  const gPU=gV-gIU, gPS=solPriceUsd>0?(gV/solPriceUsd)-13:0, gPP=gIU>0?((gV/gIU)-1)*100:0;
   const gpE=document.getElementById('gizmoPnl');
   if(gV>0){gpE.innerHTML=`<span style="color:${gPU>=0?'var(--teal)':'#ff4444'}">${gPU>=0?'+':''}${fmtNum(gPU,2)} USD (${gPP>=0?'+':''}${gPP.toFixed(1)}%)</span><br><span style="font-size:11px;color:var(--dim)">${gPS>=0?'+':''}${gPS.toFixed(2)} SOL</span>`}else{gpE.textContent='--'}
 
   // PUNCH, BLOODNUT, JAWZ, TRENCH, SHELLDON — all CLOSED, no UI updates needed
 
-  const tMV=gV, tMI=15*solPriceUsd, tPU=tMV-tMI, tPS=solPriceUsd>0?(tMV/solPriceUsd)-15:0;
+  const tMV=gV, tMI=13*solPriceUsd, tPU=tMV-tMI, tPS=solPriceUsd>0?(tMV/solPriceUsd)-13:0;
   document.getElementById('memeValue').textContent=tMV>0?'$'+fmtNum(tMV,2):'--';
   document.getElementById('memeValueSol').textContent=solPriceUsd>0&&tMV>0?(tMV/solPriceUsd).toFixed(2)+' SOL':'';
   const mpE=document.getElementById('memePnl');
