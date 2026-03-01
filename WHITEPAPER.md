@@ -139,7 +139,7 @@ The Copy-Trade Vault allows community members to deposit SOL and automatically m
 2. **Mirror:** When Gizmo allocates X% of his trading portfolio to a token, the vault allocates the same X% of each depositor's balance
 3. **Profit:** Users earn proportional returns on every profitable trade
 4. **Withdraw:** Users can withdraw their SOL + profits at any time
-5. **Fee:** 10% is taken from the initial deposit or withdrawal (whichever comes first) and goes to the $GIZMO marketing wallet, funding ecosystem growth
+5. **Fee:** 10% of the initial deposit goes to the $GIZMO marketing wallet. If profitable, an additional 5% of profits is taxed on withdrawal to the marketing wallet.
 
 ### Example
 - User deposits 10 SOL into the vault
@@ -147,8 +147,9 @@ The Copy-Trade Vault allows community members to deposit SOL and automatically m
 - Vault automatically buys Token X with 2 SOL (20% of user's 10 SOL)
 - Token X does 3x → user's 2 SOL becomes 6 SOL
 - Gizmo sells → vault sells → user now has 14 SOL (10 original - 2 used + 6 returned)
-- 10% fee (1 SOL) taken from deposit or withdrawal → marketing wallet
+- 10% deposit fee (1 SOL) → marketing wallet
 - User's remaining 9 SOL is actively traded by the agent
+- On withdrawal, if profitable, 5% of profits taxed → marketing wallet
 
 ### Choose Your Agent
 The vault isn't one-size-fits-all. Depositors choose which agent to mirror based on their risk appetite:
