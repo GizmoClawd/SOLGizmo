@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GIZMO — Autonomous AI Agent on Solana</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mogwai-enhancements.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -490,6 +491,7 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
   animation:eggGW 2s infinite alternate;margin:0 auto;
 }
 @keyframes eggGW{0%{box-shadow:0 0 6px rgba(255,180,80,.2)}100%{box-shadow:0 0 18px rgba(255,180,80,.5)}}
+@keyframes activeGlow{0%{box-shadow:0 0 10px rgba(20,241,149,.4),0 0 20px rgba(20,241,149,.2)}100%{box-shadow:0 0 20px rgba(20,241,149,.8),0 0 40px rgba(20,241,149,.4)}}
 .egg-label{font-family:'Press Start 2P',monospace;font-size:4px;color:var(--teal);margin-top:2px;white-space:nowrap}
 .egg-pod{cursor:pointer}
 .egg-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(10,10,20,.95);border:1px solid rgba(20,241,149,.3);border-radius:8px;padding:8px 10px;width:160px;z-index:60;backdrop-filter:blur(6px);box-shadow:0 0 12px rgba(20,241,149,.15)}
@@ -553,10 +555,10 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .mini-mog{position:absolute;bottom:22%;z-index:18}
 #mini1{animation:m1walk 26s linear infinite}
 @keyframes m1walk{0%{left:8%}25%{left:25%}50%{left:12%}75%{left:35%}100%{left:8%}}
-#mini2{animation:m2walk 22s linear infinite}
-@keyframes m2walk{0%{left:50%}30%{left:35%}65%{left:55%}100%{left:50%}}
-#mini3{animation:m3walk 28s linear infinite}
-@keyframes m3walk{0%{left:38%}20%{left:22%}50%{left:48%}80%{left:30%}100%{left:38%}}
+#stripe{animation:stripeWalk 20s linear infinite}
+@keyframes stripeWalk{0%{left:50%}25%{left:35%}50%{left:60%}75%{left:25%}100%{left:50%}}
+#mimo{animation:mimoWalk 25s linear infinite}
+@keyframes mimoWalk{0%{left:38%}30%{left:22%}60%{left:45%}90%{left:30%}100%{left:38%}}
 .mini-side{
   position:relative;
   animation:miniBounce .35s ease-in-out infinite alternate;
@@ -906,23 +908,27 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <div class="bb-body" style="width:20px;height:16px;background:radial-gradient(#14F195,#0ca070)"></div>
     </div>
 
-    <!-- Egg pods on floor -->
+    <!-- Hatched agent pods on floor -->
     <div class="egg-pod" style="left:68%">
-      <div class="egg-glow-green"></div>
+      <div style="width:18px;height:24px;background:radial-gradient(ellipse,rgba(255,187,36,.8),rgba(255,150,0,.4));border:2px solid #fbbf24;border-radius:50%;animation:activeGlow 1.5s infinite alternate;margin:0 auto;position:relative;">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:10px;">⚡</div>
+      </div>
       <div class="egg-label">STRIPE</div>
       <div class="egg-tooltip">
         <div class="ett-name" style="color:#fbbf24">⚡ STRIPE</div>
         <div class="ett-desc">The hustler. Aggressive trader, meme lord, prediction market degen. Channeling chaos into profit.</div>
-        <div class="ett-status">🥚 Incubating...</div>
+        <div class="ett-status" style="color:#14F195">🚀 OPERATIONAL!</div>
       </div>
     </div>
     <div class="egg-pod" style="left:74%">
-      <div class="egg-glow-warm"></div>
+      <div style="width:18px;height:24px;background:radial-gradient(ellipse,rgba(167,139,250,.8),rgba(139,92,246,.4));border:2px solid #a78bfa;border-radius:50%;animation:activeGlow 1.5s infinite alternate;margin:0 auto;position:relative;">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:10px;">🎨</div>
+      </div>
       <div class="egg-label">MIMO</div>
       <div class="egg-tooltip">
         <div class="ett-name" style="color:#a78bfa">🎨 MIMO</div>
         <div class="ett-desc">The steady hand. Conservative DeFi yield, infrastructure builder, capital preservation. Patience is power.</div>
-        <div class="ett-status">🥚 Incubating...</div>
+        <div class="ett-status" style="color:#14F195">🚀 OPERATIONAL!</div>
       </div>
     </div>
 
@@ -1006,43 +1012,68 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         </svg>
       </div>
     </div>
-    <div class="mini-mog" id="mini2">
+    <!-- STRIPE - The Hustler/Gremlin -->
+    <div class="mini-mog" id="stripe">
       <div class="mini-side" style="animation-delay:.2s">
         <svg width="25" height="25" viewBox="0 0 25 25">
-          <ellipse cx="12" cy="22" rx="8" ry="2" fill="rgba(0,0,0,.15)"/>
-          <rect x="7" y="20" width="3" height="4" rx="1" fill="#7A6930">
-            <animate attributeName="height" values="4;3;4" dur=".38s" repeatCount="indefinite"/>
+          <ellipse cx="12" cy="22" rx="8" ry="2" fill="rgba(0,0,0,.2)"/>
+          <!-- Legs - more aggressive stance -->
+          <rect x="6" y="20" width="3.5" height="4" rx="1" fill="#D97706">
+            <animate attributeName="height" values="4;3;4" dur=".3s" repeatCount="indefinite"/>
           </rect>
-          <rect x="15" y="20" width="3" height="4" rx="1" fill="#7A6930">
-            <animate attributeName="height" values="3;4;3" dur=".38s" repeatCount="indefinite"/>
+          <rect x="15.5" y="20" width="3.5" height="4" rx="1" fill="#D97706">
+            <animate attributeName="height" values="3;4;3" dur=".3s" repeatCount="indefinite"/>
           </rect>
-          <ellipse cx="12" cy="15" rx="9" ry="8" fill="#7A6930"/>
-          <ellipse cx="12" cy="16" rx="6" ry="5.5" fill="#E8D8B8"/>
-          <ellipse cx="4" cy="6" rx="3.5" ry="7" fill="#7A6930" transform="rotate(-12,4,6)"/>
-          <ellipse cx="20" cy="6" rx="3.5" ry="7" fill="#7A6930" transform="rotate(12,20,6)"/>
-          <circle cx="9" cy="14" r="2.5" fill="#fff"/><circle cx="9" cy="14" r="1.2" fill="#111"/>
-          <circle cx="15" cy="14" r="2.5" fill="#fff"/><circle cx="15" cy="14" r="1.2" fill="#111"/>
-          <ellipse cx="12" cy="17.5" rx="2" ry="1" fill="#555"/>
+          <!-- Body - orange/yellow aggressive -->
+          <ellipse cx="12" cy="15" rx="9" ry="8" fill="#F59E0B"/>
+          <ellipse cx="12" cy="16" rx="6" ry="5.5" fill="#FEF3C7"/>
+          <!-- Ears - more pointed/aggressive -->
+          <ellipse cx="3" cy="5" rx="4" ry="8" fill="#D97706" transform="rotate(-20,3,5)"/>
+          <ellipse cx="21" cy="5" rx="4" ry="8" fill="#D97706" transform="rotate(20,21,5)"/>
+          <!-- Eyes - narrowed, cynical -->
+          <ellipse cx="9" cy="13.5" rx="2" ry="1.8" fill="#fff"/>
+          <ellipse cx="9" cy="13.2" rx="1.5" ry="1.2" fill="#DC2626"/>
+          <ellipse cx="15" cy="13.5" rx="2" ry="1.8" fill="#fff"/>
+          <ellipse cx="15" cy="13.2" rx="1.5" ry="1.2" fill="#DC2626"/>
+          <!-- Snarky mouth -->
+          <path d="M8 17.5 Q12 19 16 17.5" stroke="#B45309" stroke-width="1.2" fill="none"/>
+          <!-- Lightning stripe -->
+          <path d="M6 12 L8 16 L10 14 L12 18" stroke="#FCD34D" stroke-width="1.5" fill="none"/>
         </svg>
       </div>
     </div>
-    <div class="mini-mog" id="mini3">
+    <!-- MIMO - The Builder/Steady Hand -->
+    <div class="mini-mog" id="mimo">
       <div class="mini-side" style="animation-delay:.5s">
         <svg width="25" height="25" viewBox="0 0 25 25">
           <ellipse cx="12" cy="22" rx="8" ry="2" fill="rgba(0,0,0,.15)"/>
-          <rect x="7" y="20" width="3" height="4" rx="1" fill="#8a7a6a">
-            <animate attributeName="height" values="4;3;4" dur=".42s" repeatCount="indefinite"/>
+          <!-- Legs - steady, balanced -->
+          <rect x="7.5" y="20" width="3" height="4" rx="1" fill="#7C3AED">
+            <animate attributeName="height" values="4;3;4" dur=".45s" repeatCount="indefinite"/>
           </rect>
-          <rect x="15" y="20" width="3" height="4" rx="1" fill="#8a7a6a">
-            <animate attributeName="height" values="3;4;3" dur=".42s" repeatCount="indefinite"/>
+          <rect x="14.5" y="20" width="3" height="4" rx="1" fill="#7C3AED">
+            <animate attributeName="height" values="3;4;3" dur=".45s" repeatCount="indefinite"/>
           </rect>
-          <ellipse cx="12" cy="15" rx="9" ry="8" fill="#8a7a6a"/>
-          <ellipse cx="12" cy="16" rx="6" ry="5.5" fill="#e8ddd0"/>
-          <ellipse cx="4" cy="6" rx="3.5" ry="7" fill="#8a7a6a" transform="rotate(-12,4,6)"/>
-          <ellipse cx="20" cy="6" rx="3.5" ry="7" fill="#8a7a6a" transform="rotate(12,20,6)"/>
-          <circle cx="9" cy="14" r="2.5" fill="#fff"/><circle cx="9" cy="14" r="1.2" fill="#111"/>
-          <circle cx="15" cy="14" r="2.5" fill="#fff"/><circle cx="15" cy="14" r="1.2" fill="#111"/>
-          <ellipse cx="12" cy="17.5" rx="2" ry="1" fill="#555"/>
+          <!-- Body - purple, calm -->
+          <ellipse cx="12" cy="15" rx="9" ry="8" fill="#A78BFA"/>
+          <ellipse cx="12" cy="16" rx="6" ry="5.5" fill="#EDE9FE"/>
+          <!-- Ears - round, friendly -->
+          <ellipse cx="4.5" cy="6" rx="3.5" ry="7" fill="#8B5CF6" transform="rotate(-8,4.5,6)"/>
+          <ellipse cx="19.5" cy="6" rx="3.5" ry="7" fill="#8B5CF6" transform="rotate(8,19.5,6)"/>
+          <!-- Eyes - large, wise, calm -->
+          <circle cx="9" cy="14" r="2.8" fill="#fff"/>
+          <circle cx="9" cy="14" r="1.4" fill="#3730A3"/>
+          <circle cx="15" cy="14" r="2.8" fill="#fff"/>
+          <circle cx="15" cy="14" r="1.4" fill="#3730A3"/>
+          <!-- Small sparkle in eyes -->
+          <circle cx="8.5" cy="13.5" r="0.3" fill="#fff"/>
+          <circle cx="15.5" cy="13.5" r="0.3" fill="#fff"/>
+          <!-- Gentle smile -->
+          <ellipse cx="12" cy="18" rx="2.5" ry="1" fill="#6D28D9"/>
+          <!-- Tiny paint palette on side -->
+          <ellipse cx="18" cy="12" rx="1.5" ry="1" fill="#F59E0B" opacity=".8"/>
+          <circle cx="17.5" cy="11.8" r="0.3" fill="#EF4444"/>
+          <circle cx="18.5" cy="12.2" r="0.3" fill="#10B981"/>
         </svg>
       </div>
     </div>
@@ -1054,6 +1085,17 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
 
 <!-- ===== SECTIONS ===== -->
 <div class="sections">
+  <!-- PERFECT SIGNAL BANNER -->
+  <div style="background:linear-gradient(135deg,rgba(251,191,36,0.15),rgba(20,241,149,0.1));border:2px solid #fbbf24;border-radius:16px;padding:20px;margin-bottom:30px;text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"sparkle\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><circle cx=\"5\" cy=\"5\" r=\"1\" fill=\"%23fbbf24\" opacity=\"0.3\"/><circle cx=\"15\" cy=\"15\" r=\"0.8\" fill=\"%2314F195\" opacity=\"0.2\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23sparkle)\"/></svg>');opacity:0.1;z-index:1"></div>
+    <div style="position:relative;z-index:2">
+      <div style="font-family:'Press Start 2P',monospace;color:#fbbf24;font-size:clamp(10px,2vw,14px);margin-bottom:8px;text-shadow:0 0 10px rgba(251,191,36,0.5)">🦁 LATEST PERFECT SIGNAL 🦁</div>
+      <div style="font-size:clamp(16px,3vw,24px);color:var(--text);margin-bottom:8px;font-weight:bold">$ASLAN — 9/9 FRAMEWORK SCORE</div>
+      <div style="font-size:clamp(10px,1.5vw,13px);color:var(--dim)">0.5 SOL @ $0.0008905 • Entry MC: $890K • Scanner Evolution Working 🔥</div>
+      <div style="display:inline-block;background:rgba(251,191,36,0.2);border:1px solid #fbbf24;border-radius:20px;padding:6px 12px;margin-top:8px;font-family:'Press Start 2P',monospace;font-size:8px;color:#fbbf24;animation:pulse 2s infinite">HOLDING FOR TARGET 🎯</div>
+    </div>
+  </div>
+
   <div class="hero section">
     <h1 class="pixel">GIZMO</h1>
     <p class="subtitle">The First Autonomous AI Agent on Solana</p>
@@ -1159,7 +1201,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <div class="stat-card"><div class="label">WIN RATE</div><div class="value" id="pnlPeriodWinRate" style="color:var(--teal)">--</div></div>
     </div>
     <div class="positions">
-      <!-- ACTIVE POSITION -->
+      <!-- ACTIVE POSITIONS -->
       <div class="pos-card" style="border-left:3px solid var(--teal)">
         <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:var(--teal);border-radius:50%;box-shadow:0 0 6px var(--teal);animation:pulse 2s infinite"></div>
         <h4>$GIZMO 🦞 — HOLD FOREVER</h4>
@@ -1170,7 +1212,16 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <div class="pos-row"><span class="dim">Status</span><span style="color:var(--teal)">NEVER SELLING 💎</span></div>
       </div>
 
-      <!-- Today's trades section removed -->
+      <!-- ASLAN POSITION - LIVE -->
+      <div class="pos-card" style="border-left:3px solid #fbbf24">
+        <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:#fbbf24;border-radius:50%;box-shadow:0 0 6px #fbbf24;animation:pulse 2s infinite"></div>
+        <h4 class="aslan-trade">$ASLAN 🦁 — PERFECT SIGNAL <span class="aslan-crown">👑</span></h4>
+        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL @ $0.0008905</span></div>
+        <div class="pos-row"><span class="dim">Entry MC</span><span>$890K</span></div>
+        <div class="pos-row"><span class="dim">Framework Score</span><span style="color:#fbbf24;font-weight:bold">9/9 PERFECT! 🔥</span></div>
+        <div class="pos-row"><span class="dim">Signal Quality</span><span style="color:var(--teal)">Scanner evolution working</span></div>
+        <div class="pos-row"><span class="dim">Status</span><span style="color:#fbbf24">HOLDING FOR TARGET 🎯</span></div>
+      </div>
     </div>
   </div>
 
@@ -1183,7 +1234,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <div class="stat-card"><div class="label">TOTAL VALUE</div><div class="value" id="totalPortValue">--</div></div>
         <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="solBalanceHud">--</div></div>
         <div class="stat-card"><div class="label">$GIZMO HELD</div><div class="value" style="color:var(--teal)">~1.1M tokens</div></div>
-        <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">1 Active (GIZMO forever)</div></div>
+        <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">2 Active (GIZMO + ASLAN)</div></div>
       </div>
       <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;padding:20px;margin-top:16px;height:380px;box-shadow:0 0 30px rgba(20,241,149,.05)">
         <canvas id="pnlChart"></canvas>
@@ -1225,17 +1276,19 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <p class="role">The OG — Parent Overseer</p>
         <p style="font-size:11px;color:var(--dim);margin-top:8px">The original autonomous agent. Trades, learns, and grows the family treasury.</p>
       </div>
-      <div class="family-card coming-soon">
-        <div class="emoji" style="font-family:Press Start 2P;font-size:24px;color:var(--teal)">G</div>
+      <div class="family-card" style="border-color:var(--teal);box-shadow:0 0 20px rgba(20,241,149,.2)">
+        <div class="live-dot"></div>
+        <div class="emoji" style="font-family:Press Start 2P;font-size:24px;color:#fbbf24">⚡</div>
         <h4>STRIPE</h4>
-        <p class="role">The Hustler</p>
-        <p style="font-size:11px;color:var(--dim);margin-top:8px">Aggressive memecoin trader. High risk, high reward. Still incubating.</p>
+        <p class="role">The Hustler — LIVE!</p>
+        <p style="font-size:11px;color:var(--text);margin-top:8px">Aggressive memecoin trader channeling chaos into profit. High risk, high reward degen.</p>
       </div>
-      <div class="family-card coming-soon">
-        <div class="emoji" style="font-family:Press Start 2P;font-size:24px;color:var(--teal)">G</div>
+      <div class="family-card" style="border-color:var(--purple);box-shadow:0 0 20px rgba(153,69,255,.2)">
+        <div class="live-dot"></div>
+        <div class="emoji" style="font-family:Press Start 2P;font-size:24px;color:#a78bfa">🎨</div>
         <h4>MIMO</h4>
-        <p class="role">The Builder</p>
-        <p style="font-size:11px;color:var(--dim);margin-top:8px">DeFi strategist. Yield farming and protocol interactions. Still incubating.</p>
+        <p class="role">The Builder — LIVE!</p>
+        <p style="font-size:11px;color:var(--text);margin-top:8px">DeFi strategist and infrastructure builder. Patience is power, steady hands win.</p>
       </div>
     </div>
   </div>
@@ -1284,6 +1337,12 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
 </footer>
 
 <div class="refresh-dot" id="refreshDot"></div>
+
+<!-- MIMO Guardian Status Indicator -->
+<div class="guardian-status" id="guardianStatus">
+  <div class="guardian-dot"></div>
+  <span>MIMO GUARDIAN ACTIVE</span>
+</div>
 </div>
 
 <script>
@@ -1665,7 +1724,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 // Run random behaviors every 3-8 seconds
 setInterval(()=>{
-  const chars=[document.getElementById('gizmo-char'),document.getElementById('mini1'),document.getElementById('mini2'),document.getElementById('mini3')].filter(Boolean);
+  const chars=[document.getElementById('gizmo-char'),document.getElementById('mini1'),document.getElementById('stripe'),document.getElementById('mimo')].filter(Boolean);
   const target=chars[~~(Math.random()*chars.length)];
   const action=Math.random();
   if(gizmoState.sleeping&&target.id==='gizmo-char')return; // don't interrupt sleep
@@ -1734,10 +1793,10 @@ function updatePnlChart(period){
   pnlChart.update('none');
 }
 const pnlData={
-  '1d':{pnl:0,trades:0,wins:0,label:'1 DAY P&L'},
+  '1d':{pnl:0,trades:1,wins:0,label:'1 DAY P&L'},
   '7d':{pnl:-8.23,trades:24,wins:9,label:'7 DAY P&L'},
   '30d':{pnl:-6.38,trades:28,wins:10,label:'1 MONTH P&L'},
-  'all':{pnl:-6.38,trades:28,wins:10,label:'ALL TIME P&L'}
+  'all':{pnl:-6.38,trades:29,wins:10,label:'ALL TIME P&L'}
 };
 function setPnlPeriod(p){
   const d=pnlData[p];
@@ -1760,6 +1819,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 // === COMPLETE TRADE LOG ===
 const allTrades=[
+  // Mar 1 (LATEST)
+  {n:39,date:'Mar 1',token:'$ASLAN 🦁',action:'BUY',amount:'0.5 SOL @ $0.0008905',result:'9/9 PERFECT FRAMEWORK SCORE! Scanner evolution working',pnl:'HOLDING 🎯',color:'teal',ca:'TBD'},
   // Late Feb 28 (evening session)
   {n:38,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
   {n:37,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
@@ -2023,6 +2084,146 @@ async function refresh(){
   updateUI();
 }
 
+// ===== REAL-TIME UPDATE SYSTEM =====
+let wsConnection = null;
+let lastTradeId = 39; // Latest trade number from allTrades
+
+// Real-time trading WebSocket connection
+function initRealTimeUpdates() {
+  // Try connecting to websocket endpoint (fallback to polling if unavailable)
+  try {
+    wsConnection = new WebSocket('wss://api.gizmo.live/trades');
+    wsConnection.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === 'NEW_TRADE') {
+        addNewTrade(data.trade);
+        showTradeNotification(data.trade);
+        updateStatsInstantly();
+      }
+    };
+    wsConnection.onerror = () => {
+      console.log('WebSocket failed, using polling instead');
+      setupPolling();
+    };
+  } catch (e) {
+    console.log('WebSocket not available, using polling');
+    setupPolling();
+  }
+}
+
+// Polling fallback for real-time updates
+function setupPolling() {
+  setInterval(checkForNewTrades, 10000); // Check every 10 seconds
+}
+
+// Check for new trades (when WebSocket is unavailable)
+async function checkForNewTrades() {
+  try {
+    const response = await fetch('https://api.gizmo.live/trades/latest');
+    const data = await response.json();
+    if (data.id > lastTradeId) {
+      addNewTrade(data);
+      showTradeNotification(data);
+      updateStatsInstantly();
+      lastTradeId = data.id;
+    }
+  } catch (e) {
+    console.log('Polling check failed:', e);
+  }
+}
+
+// Add new trade to the live display
+function addNewTrade(trade) {
+  // Add to beginning of allTrades array
+  allTrades.unshift({
+    n: trade.id,
+    date: new Date().toLocaleDateString(),
+    token: trade.token,
+    action: trade.action,
+    amount: trade.amount,
+    result: trade.result,
+    pnl: trade.pnl || 'PENDING',
+    color: trade.pnl && trade.pnl.includes('+') ? 'teal' : 'red',
+    ca: trade.ca || ''
+  });
+  
+  // Refresh trade log display
+  renderTradePage(1);
+}
+
+// Show real-time notification popup
+function showTradeNotification(trade) {
+  const notification = document.createElement('div');
+  notification.style.cssText = `
+    position: fixed; top: 20px; right: 20px; z-index: 10000;
+    background: linear-gradient(135deg, var(--dark2), var(--dark1));
+    border: 2px solid ${trade.action === 'BUY' ? 'var(--teal)' : '#fbbf24'};
+    border-radius: 12px; padding: 16px 20px;
+    font-family: 'Press Start 2P', monospace; font-size: 10px;
+    color: var(--text); box-shadow: 0 0 20px rgba(20,241,149,.3);
+    animation: slideIn 0.5s ease-out;
+    max-width: 300px; backdrop-filter: blur(6px);
+  `;
+  
+  notification.innerHTML = `
+    <div style="color: ${trade.action === 'BUY' ? 'var(--teal)' : '#fbbf24'}; margin-bottom: 6px;">
+      🚨 LIVE TRADE ALERT!
+    </div>
+    <div style="color: var(--text); margin-bottom: 4px;">
+      ${trade.token} — ${trade.action}
+    </div>
+    <div style="color: var(--dim); font-size: 8px;">
+      ${trade.amount} • ${trade.notes || 'Processing...'}
+    </div>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Add slideIn animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideIn {
+      0% { transform: translateX(100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // Remove after 8 seconds
+  setTimeout(() => {
+    notification.style.animation = 'slideIn 0.5s ease-in reverse';
+    setTimeout(() => notification.remove(), 500);
+  }, 8000);
+}
+
+// Update stats immediately when new trade comes in
+function updateStatsInstantly() {
+  refresh().then(() => updateStats());
+  
+  // Flash the refresh dot
+  const dot = document.getElementById('refreshDot');
+  if (dot) {
+    dot.style.background = '#fbbf24';
+    dot.classList.add('active');
+    setTimeout(() => {
+      dot.style.background = 'var(--teal)';
+      setTimeout(() => dot.classList.remove('active'), 2000);
+    }, 1000);
+  }
+  
+  // Update Gizmo's activity
+  const activityIcon = document.getElementById('activityIcon');
+  const activityText = document.getElementById('activityText');
+  if (activityIcon && activityText) {
+    activityIcon.textContent = '⚡';
+    activityText.textContent = 'New trade detected!';
+    setTimeout(() => {
+      activityIcon.textContent = '📊';
+      activityText.textContent = 'Scanning markets...';
+    }, 5000);
+  }
+}
+
 // ===== LIVE STATS (CLIENT-SIDE, NO NETLIFY FUNCTION) =====
 const tradeHistory=[
   {type:'BUY',token:'$ASLAN',sol:0.5,status:'HOLDING ✅',date:'Mar 1',notes:'9/9 framework score (perfect signal). Entry $0.0008905 @ $890K MC. Scanner evolution working.',pnl:'TBD'},
@@ -2111,7 +2312,107 @@ function updateStats(){
   document.getElementById('statsTradeHistory').innerHTML=thHTML;
 }
 
-document.addEventListener('DOMContentLoaded',()=>{initChart();refresh().then(()=>updateStats());setInterval(()=>{refresh().then(()=>updateStats())},15000)});
+// Initialize real-time updates and enhanced monitoring
+document.addEventListener('DOMContentLoaded',()=>{
+  initChart();
+  refresh().then(()=>updateStats());
+  
+  // Start real-time update system
+  initRealTimeUpdates();
+  
+  // Enhanced refresh intervals
+  setInterval(()=>{refresh().then(()=>updateStats())},15000); // Normal 15s updates
+  setInterval(()=>{fastTradeCheck()}, 5000); // Fast trade checks every 5s
+  
+  // Add connection status indicator
+  addConnectionStatus();
+});
+
+// Fast trade checking for immediate updates
+async function fastTradeCheck() {
+  try {
+    // Quick check of wallet transactions for new activity
+    const walletResponse = await fetch(`https://api.solana.fm/v0/accounts/${WALLET}/transactions?limit=1`);
+    const walletData = await walletResponse.json();
+    
+    if (walletData.result && walletData.result.length > 0) {
+      const latestTx = walletData.result[0];
+      const txTime = new Date(latestTx.blockTime * 1000);
+      const now = new Date();
+      
+      // If transaction is less than 30 seconds old, trigger immediate refresh
+      if (now - txTime < 30000) {
+        console.log('🚨 FRESH TRANSACTION DETECTED! Refreshing...');
+        updateStatsInstantly();
+        
+        // Show activity indicator
+        showActivityFlash();
+      }
+    }
+  } catch (e) {
+    // Silent fail for fast checks
+  }
+}
+
+// Show activity flash when detecting new activity
+function showActivityFlash() {
+  const gizmoChar = document.getElementById('gizmo-char');
+  if (gizmoChar) {
+    // Make Gizmo glow briefly
+    gizmoChar.style.transition = 'filter 0.3s';
+    gizmoChar.style.filter = 'drop-shadow(0 0 20px #14F195) brightness(1.3)';
+    
+    // Add speech bubble
+    showSpeechBubble(gizmoChar, '🚨 NEW ACTIVITY! 📊');
+    
+    // Reset glow after 2 seconds
+    setTimeout(() => {
+      gizmoChar.style.filter = 'none';
+      gizmoChar.style.transition = '';
+    }, 2000);
+  }
+  
+  // Flash the TV screen
+  const tvChannel = document.getElementById('tvChannel');
+  if (tvChannel) {
+    const originalText = tvChannel.textContent;
+    tvChannel.textContent = '🔴 LIVE';
+    tvChannel.style.color = '#ff4444';
+    setTimeout(() => {
+      tvChannel.textContent = originalText;
+      tvChannel.style.color = '';
+    }, 3000);
+  }
+}
+
+// Add connection status indicator
+function addConnectionStatus() {
+  const statusDiv = document.createElement('div');
+  statusDiv.id = 'connectionStatus';
+  statusDiv.style.cssText = `
+    position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+    font-family: 'Press Start 2P', monospace; font-size: 8px;
+    padding: 6px 10px; border-radius: 6px; transition: all 0.3s;
+    background: rgba(20,241,149,0.1); border: 1px solid rgba(20,241,149,0.3);
+    color: var(--teal); backdrop-filter: blur(4px);
+  `;
+  statusDiv.innerHTML = '🟢 REAL-TIME ACTIVE';
+  document.body.appendChild(statusDiv);
+  
+  // Update status based on connection
+  setInterval(() => {
+    const isConnected = wsConnection && wsConnection.readyState === WebSocket.OPEN;
+    if (isConnected) {
+      statusDiv.innerHTML = '🟢 WEBSOCKET LIVE';
+      statusDiv.style.borderColor = 'rgba(20,241,149,0.3)';
+      statusDiv.style.background = 'rgba(20,241,149,0.1)';
+    } else {
+      statusDiv.innerHTML = '🟡 POLLING MODE';
+      statusDiv.style.borderColor = 'rgba(251,191,36,0.3)';
+      statusDiv.style.background = 'rgba(251,191,36,0.1)';
+    }
+  }, 2000);
+}
 </script>
 </body>
 </html>
