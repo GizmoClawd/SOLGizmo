@@ -1,52 +1,56 @@
 
 🚨 MIMO GUARDIAN HOURLY REPORT 🚨
 ================================================
-Time: 3/1/2026, 3:04:55 AM
+Time: 3/1/2026, 3:09:04 AM
 Station: /tmp/solgizmo-fresh/website/
 Guardian: MIMO - Permanent Website Defense System
 
 📊 SYSTEM HEALTH SUMMARY
 ================================================
-Health Score: 80% (4/5 checks passing)
-Status: 🟡 GOOD
-Last Check: 3/1/2026, 3:04:44 AM
+Health Score: 60% (3/5 checks passing)
+Status: 🔴 NEEDS ATTENTION
+Last Check: 3/1/2026, 3:09:01 AM
 
 💰 MARKET DATA
 ================================================
-SOL Price: $86.34
+SOL Price: $86.41
 GIZMO Price: $0.00013110
-GIZMO 24h Volume: $83,499.93
+GIZMO 24h Volume: $83,475.39
 
 📄 WEBSITE STATUS
 ================================================
-index.html: ✅ (140.7KB)
+index.html: ✅ (141.4KB)
 whitepaper.html: ✅ (26.5KB)
 bgm.mp3: ✅ (2213.9KB)
 
 👥 FAMILY STATUS
 ================================================
-⚡ STRIPE (Hustler): 🟢 OPERATIONAL
-🎨 MIMO (Builder): 🟢 OPERATIONAL
-🦁 ASLAN Trade: ✅ VERIFIED (8 references)
+⚡ STRIPE (Hustler): 🔴 OFFLINE
+🎨 MIMO (Builder): 🔴 OFFLINE
+🦁 ASLAN Trade: ✅ VERIFIED (7 references)
+
+🚨 ACTIVE ALERTS
+================================================
+1. Family members not properly activated
 
 📋 RECENT ACTIVITY (Last Hour)
 ================================================
-[2026-03-01T08:04:44.010Z] 
-[2026-03-01T08:04:44.156Z] 💰 SOL Price: $86.34
-[2026-03-01T08:04:44.303Z] 🦞 GIZMO Price: $0.00013110 | 24h Vol: $83,499.93
-[2026-03-01T08:04:44.304Z] 📄 index.html: OK (140.7KB)
-[2026-03-01T08:04:44.304Z] 📄 whitepaper.html: OK (26.5KB)
-[2026-03-01T08:04:44.305Z] 📄 bgm.mp3: OK (2213.9KB)
-[2026-03-01T08:04:44.306Z] 🦁 ASLAN trade: VERIFIED (8 references)
-[2026-03-01T08:04:44.307Z] ⚡🎨 Family Status: STRIPE & MIMO OPERATIONAL
-[2026-03-01T08:04:44.307Z] 📊 Health Score: 4/5 (80.0%)
-[2026-03-01T08:04:44.307Z] ✅ HEALTH CHECK COMPLETE
+[2026-03-01T08:09:01.415Z] 📄 whitepaper.html: OK (26.5KB)
+[2026-03-01T08:09:01.415Z] 📄 bgm.mp3: OK (2213.9KB)
+[2026-03-01T08:09:01.416Z] 🦁 ASLAN trade: VERIFIED (7 references)
+[2026-03-01T08:09:01.416Z] ❌ Family Status: Stripe=false, Mimo=false
+[2026-03-01T08:09:01.416Z] 📊 Health Score: 3/5 (60.0%)
+[2026-03-01T08:09:01.416Z] 🚨 ALERTS:
+[2026-03-01T08:09:01.416Z]   - Family members not properly activated
+[2026-03-01T08:09:01.417Z] ✅ HEALTH CHECK COMPLETE
+[2026-03-01T08:09:01.417Z] 🔧 ATTEMPTING AUTO-REPAIR...
+[2026-03-01T08:09:01.417Z] 🔧 Auto-repair complete (placeholder)
 
 🎯 RECOMMENDATIONS
 ================================================
-⚠️  Minor issues detected - investigate soon
-⚠️  Check failed components for updates needed
-✅ Core functionality still operational
+🚨 CRITICAL: Multiple systems failing
+🚨 Immediate intervention required
+🚨 Website integrity at risk
 
 END REPORT
 ================================================

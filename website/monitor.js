@@ -140,12 +140,18 @@ class WebsiteGuardian {
   async checkFamilyStatus() {
     const indexContent = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
     
-    // Check if Stripe and Mimo are marked as LIVE
-    const stripeLive = indexContent.includes('STRIPE</h4>') && indexContent.includes('The Hustler — LIVE!');
-    const mimoLive = indexContent.includes('MIMO</h4>') && indexContent.includes('The Builder — LIVE!');
+    // Check if Stripe and Mimo are marked as FULLY OPERATIONAL
+    const stripeLive = indexContent.includes('STRIPE</h4>') && (
+      indexContent.includes('FULLY OPERATIONAL') || 
+      indexContent.includes('The Hustler — LIVE!')
+    );
+    const mimoLive = indexContent.includes('MIMO</h4>') && (
+      indexContent.includes('FULLY OPERATIONAL') || 
+      indexContent.includes('The Builder — LIVE!')
+    );
     
     if (stripeLive && mimoLive) {
-      this.log('⚡🎨 Family Status: STRIPE & MIMO OPERATIONAL');
+      this.log('⚡🎨 Family Status: STRIPE & MIMO FULLY OPERATIONAL');
       return { success: true, stripe: true, mimo: true };
     } else {
       this.log(`❌ Family Status: Stripe=${stripeLive}, Mimo=${mimoLive}`);
