@@ -416,5 +416,15 @@ footer a{color:var(--teal);margin:0 10px}
 <p style="margin-top:15px">© 2026 GIZMO — Humanity's Best Friend</p>
 </footer>
 
+<script>
+let bgmAudio;
+document.addEventListener('click',function startMusic(){
+  if(bgmAudio)return;
+  bgmAudio=new Audio('bgm.mp3');
+  bgmAudio.loop=true;
+  bgmAudio.volume=0.3;
+  bgmAudio.play().catch(()=>{});
+},{once:false});
+</script>
 </body>
 </html>
