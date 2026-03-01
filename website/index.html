@@ -439,6 +439,23 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 @keyframes eggGW{0%{box-shadow:0 0 6px rgba(255,180,80,.2)}100%{box-shadow:0 0 18px rgba(255,180,80,.5)}}
 .egg-label{font-family:'Press Start 2P',monospace;font-size:4px;color:var(--teal);margin-top:2px;white-space:nowrap}
 
+/* ===== GIZMO STATUS HUD (Throngelets-style) ===== */
+.gizmo-hud{position:absolute;top:12px;right:12px;z-index:55;background:rgba(10,10,20,.85);border:1px solid rgba(20,241,149,.3);border-radius:10px;padding:10px 14px;min-width:160px;backdrop-filter:blur(6px)}
+.gizmo-hud .hud-title{font-family:'Press Start 2P',monospace;font-size:7px;color:var(--teal);margin-bottom:8px;text-align:center;text-shadow:0 0 6px var(--teal)}
+.stat-bar-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.stat-bar-row .stat-icon{font-size:10px;width:14px;text-align:center}
+.stat-bar-row .stat-label{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--dim);width:42px}
+.stat-bar-track{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;position:relative}
+.stat-bar-fill{height:100%;border-radius:3px;transition:width 1s ease,background .5s}
+.gizmo-activity{font-family:'Press Start 2P',monospace;font-size:6px;color:var(--purple);text-align:center;margin-top:8px;padding-top:6px;border-top:1px solid rgba(153,69,255,.2)}
+.gizmo-activity .activity-icon{font-size:10px;display:block;margin-bottom:3px}
+.gizmo-pets{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--dim);text-align:center;margin-top:5px}
+#gizmo-char{cursor:pointer}
+.gizmo-heart{position:absolute;z-index:60;pointer-events:none;font-size:16px;animation:heartFloat 1s ease-out forwards}
+@keyframes heartFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-30px) scale(1.5)}}
+.gizmo-zzz{position:absolute;top:-20px;right:-5px;font-size:10px;z-index:55;animation:zzzFloat 2s ease-in-out infinite;pointer-events:none}
+@keyframes zzzFloat{0%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-8px)}100%{opacity:.3;transform:translateY(0)}}
+
 /* ===== CHARACTERS (side view, Thronglets style) ===== */
 /* Gizmo walks left-right along the floor */
 #gizmo-char{
@@ -619,6 +636,16 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
 <div id="station">
   <div class="station-label">⟨ T H E &nbsp; S T A T I O N ⟩</div>
   <div class="room-container">
+    <!-- Gizmo Status HUD -->
+    <div class="gizmo-hud" id="gizmoHud">
+      <div class="hud-title">🦞 GIZMO</div>
+      <div class="stat-bar-row"><span class="stat-icon">😊</span><span class="stat-label">MOOD</span><div class="stat-bar-track"><div class="stat-bar-fill" id="moodBar" style="width:80%;background:linear-gradient(90deg,#14F195,#0fa)"></div></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">⚡</span><span class="stat-label">ENERGY</span><div class="stat-bar-track"><div class="stat-bar-fill" id="energyBar" style="width:65%;background:linear-gradient(90deg,#fbbf24,#f59e0b)"></div></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">📊</span><span class="stat-label">TRADING</span><div class="stat-bar-track"><div class="stat-bar-fill" id="tradingBar" style="width:90%;background:linear-gradient(90deg,#9945FF,#c084fc)"></div></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">🧠</span><span class="stat-label">ALPHA</span><div class="stat-bar-track"><div class="stat-bar-fill" id="alphaBar" style="width:70%;background:linear-gradient(90deg,#ec4899,#f472b6)"></div></div></div>
+      <div class="gizmo-activity"><span class="activity-icon" id="activityIcon">📊</span><span id="activityText">Scanning markets...</span></div>
+      <div class="gizmo-pets">Pets: <span id="petCount">0</span> 💜</div>
+    </div>
     <!-- Back wall (wood paneling) -->
     <div class="back-wall"></div>
     <!-- Ceiling -->
@@ -1312,18 +1339,95 @@ function toggleMute(){
   document.getElementById('muteBtn').textContent=isMuted?'🔇':'🔊';
 }
 
-// ===== SPONTANEOUS MOGWAI BEHAVIORS =====
-const speechBubbles=[
-  '🚀 WAGMI','📈 Pump it!','💎 Diamond hands','🦞 Iced out!','GM!','📊 Checking charts...',
-  'LFG!','🔥 Bullish','👀 Found alpha','🧠 Calculating...','💰 Making moves',
-  'gm ser','🌙 To the moon','HODL!','👑 $GIZMO','🎯 Target locked'
+// ===== GIZMO VIRTUAL PET ENGINE (Throngelets-style) =====
+let gizmoState={
+  mood:80,energy:65,trading:90,alpha:70,
+  pets:parseInt(localStorage.getItem('gizmoPets')||'0'),
+  activity:'scanning',sleeping:false
+};
+
+const activities=[
+  {id:'scanning',icon:'📊',text:'Scanning markets...',duration:12000},
+  {id:'trading',icon:'🎯',text:'Executing trade...',duration:8000},
+  {id:'thinking',icon:'🧠',text:'Analyzing alpha...',duration:10000},
+  {id:'vibing',icon:'🎵',text:'Vibing to beats...',duration:7000},
+  {id:'eating',icon:'🍕',text:'Snack break...',duration:6000},
+  {id:'coding',icon:'💻',text:'Upgrading systems...',duration:9000},
+  {id:'flexing',icon:'💎',text:'Checking the ice...',duration:5000},
+  {id:'tweeting',icon:'🐦',text:'Posting on X...',duration:7000},
+  {id:'sleeping',icon:'😴',text:'Power napping...',duration:15000},
+  {id:'watching',icon:'📺',text:'Watching charts...',duration:8000},
+  {id:'training',icon:'🏋️',text:'Training the model...',duration:11000},
+  {id:'celebrating',icon:'🎉',text:'Green candle party!',duration:6000},
 ];
-function showSpeechBubble(el){
+
+const activityBubbles={
+  scanning:['👀 Found something...','📡 Signal detected','🔍 Checking wallets','📊 8/9 score...'],
+  trading:['🎯 Target locked','💰 Buying the dip','📈 LFG!','⚡ Executing...'],
+  thinking:['🧠 Calculating...','🤔 Hmm...','💡 Got it!','📐 Framework says...'],
+  vibing:['🎵 Vibes only','🦞 Iced out!','💎 Diamond hands','😎 Chillin'],
+  eating:['🍕 Nom nom','☕ Need coffee','🥤 Hydrating','😋 Delicious'],
+  coding:['💻 Deploying...','🔧 Fixing bugs','⚙️ Optimizing','🚀 Shipped!'],
+  flexing:['💎 Drip check','👑 $GIZMO','✨ Shiny','🦞 Stay iced'],
+  tweeting:['🐦 Just tweeted','📱 Checking mentions','🔥 Engagement up','💬 Community vibes'],
+  sleeping:['💤 zzz...','😴 5 more min...','🌙 Dreaming of SOL','💤 Recharging...'],
+  watching:['📺 Green candles!','📉 Hmm...','📊 Volume spike!','👀 Interesting...'],
+  training:['🏋️ Getting stronger','🧠 Learning...','📈 Improving','💪 Level up!'],
+  celebrating:['🎉 WAGMI!','🥳 We did it!','🚀 To the moon!','🏆 Winner winner'],
+};
+
+function updateHudBars(){
+  const mb=document.getElementById('moodBar');
+  const eb=document.getElementById('energyBar');
+  const tb=document.getElementById('tradingBar');
+  const ab=document.getElementById('alphaBar');
+  if(mb){mb.style.width=gizmoState.mood+'%';mb.style.background=gizmoState.mood>50?'linear-gradient(90deg,#14F195,#0fa)':'linear-gradient(90deg,#f59e0b,#ef4444)'}
+  if(eb){eb.style.width=gizmoState.energy+'%';eb.style.background=gizmoState.energy>30?'linear-gradient(90deg,#fbbf24,#f59e0b)':'linear-gradient(90deg,#ef4444,#dc2626)'}
+  if(tb)tb.style.width=gizmoState.trading+'%';
+  if(ab)ab.style.width=gizmoState.alpha+'%';
+  document.getElementById('petCount').textContent=gizmoState.pets;
+}
+
+function cycleActivity(){
+  const act=activities[~~(Math.random()*activities.length)];
+  gizmoState.activity=act.id;
+  gizmoState.sleeping=act.id==='sleeping';
+  const ai=document.getElementById('activityIcon');
+  const at=document.getElementById('activityText');
+  if(ai)ai.textContent=act.icon;
+  if(at)at.textContent=act.text;
+  // Update Gizmo zzz
+  const gc=document.getElementById('gizmo-char');
+  const oldZ=gc?.querySelector('.gizmo-zzz');
+  if(oldZ)oldZ.remove();
+  if(act.id==='sleeping'&&gc){
+    const z=document.createElement('div');z.className='gizmo-zzz';z.textContent='💤';
+    gc.appendChild(z);
+  }
+  // Drift stats based on activity
+  if(act.id==='eating'){gizmoState.energy=Math.min(100,gizmoState.energy+15);gizmoState.mood=Math.min(100,gizmoState.mood+5)}
+  else if(act.id==='sleeping'){gizmoState.energy=Math.min(100,gizmoState.energy+20)}
+  else if(act.id==='trading'){gizmoState.energy=Math.max(5,gizmoState.energy-8);gizmoState.trading=Math.min(100,gizmoState.trading+5)}
+  else if(act.id==='thinking'){gizmoState.alpha=Math.min(100,gizmoState.alpha+10)}
+  else if(act.id==='celebrating'){gizmoState.mood=Math.min(100,gizmoState.mood+15)}
+  else if(act.id==='vibing'){gizmoState.mood=Math.min(100,gizmoState.mood+8)}
+  else{gizmoState.energy=Math.max(5,gizmoState.energy-3)}
+  // Natural drift
+  gizmoState.mood=Math.max(20,gizmoState.mood-~~(Math.random()*3));
+  gizmoState.alpha=Math.max(30,gizmoState.alpha-~~(Math.random()*2));
+  updateHudBars();
+  setTimeout(cycleActivity,act.duration);
+}
+
+const speechBubbles=['🚀 WAGMI','📈 Pump it!','💎 Diamond hands','🦞 Iced out!','GM!','LFG!','🔥 Bullish','👀 Found alpha','💰 Making moves','gm ser','🌙 To the moon','HODL!','👑 $GIZMO','🎯 Target locked'];
+
+function showSpeechBubble(el,customText){
   const existing=el.querySelector('.speech-bubble');
   if(existing)existing.remove();
+  const pool=customText?[customText]:(activityBubbles[gizmoState.activity]||speechBubbles);
   const b=document.createElement('div');
   b.className='speech-bubble';
-  b.textContent=speechBubbles[~~(Math.random()*speechBubbles.length)];
+  b.textContent=pool[~~(Math.random()*pool.length)];
   b.style.cssText='position:absolute;top:-30px;left:50%;transform:translateX(-50%);background:rgba(20,241,149,.9);color:#000;font-size:8px;font-family:"Press Start 2P",monospace;padding:4px 8px;border-radius:8px;white-space:nowrap;z-index:50;animation:bubblePop 3s forwards;pointer-events:none';
   el.appendChild(b);
   setTimeout(()=>b.remove(),3000);
@@ -1341,15 +1445,42 @@ function randomSpin(el){
   setTimeout(()=>{el.style.transform='scaleX(1)';el.style.transition=''},1200);
 }
 
+// Pet Gizmo on click!
+document.addEventListener('DOMContentLoaded',()=>{
+  const gc=document.getElementById('gizmo-char');
+  if(gc) gc.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    gizmoState.pets++;
+    gizmoState.mood=Math.min(100,gizmoState.mood+5);
+    gizmoState.energy=Math.min(100,gizmoState.energy+2);
+    localStorage.setItem('gizmoPets',gizmoState.pets);
+    updateHudBars();
+    // Heart particle
+    const h=document.createElement('div');h.className='gizmo-heart';
+    h.textContent=['❤️','💜','🦞','✨','💎'][~~(Math.random()*5)];
+    h.style.left=(e.offsetX||20)+'px';h.style.top=(e.offsetY||10)+'px';
+    gc.appendChild(h);setTimeout(()=>h.remove(),1000);
+    // Happy reaction
+    const reactions=['Hehe! 🥰','That tickles!','*purrs* 🦞','Thanks fren!','💜💜💜','Iced! ✨','Love u!','*wiggles*'];
+    showSpeechBubble(gc,reactions[~~(Math.random()*reactions.length)]);
+    const inner=gc.querySelector('.gizmo-side');
+    if(inner){inner.style.transition='transform .2s';inner.style.transform='scale(1.15)';setTimeout(()=>{inner.style.transform='scale(1)'},200)}
+  });
+  // Start activity cycle
+  cycleActivity();
+  updateHudBars();
+});
+
 // Run random behaviors every 3-8 seconds
 setInterval(()=>{
   const chars=[document.getElementById('gizmo-char'),document.getElementById('mini1'),document.getElementById('mini2'),document.getElementById('mini3')].filter(Boolean);
   const target=chars[~~(Math.random()*chars.length)];
   const action=Math.random();
-  if(action<0.35)showSpeechBubble(target);
-  else if(action<0.55)randomJump(target.querySelector('.gizmo-side,.mini-side')||target);
-  else if(action<0.7)randomSpin(target.querySelector('.gizmo-side,.mini-side')||target);
-  else showSpeechBubble(target); // bias towards speech
+  if(gizmoState.sleeping&&target.id==='gizmo-char')return; // don't interrupt sleep
+  if(action<0.4)showSpeechBubble(target);
+  else if(action<0.6)randomJump(target.querySelector('.gizmo-side,.mini-side')||target);
+  else if(action<0.75)randomSpin(target.querySelector('.gizmo-side,.mini-side')||target);
+  else showSpeechBubble(target);
 },4000+Math.random()*4000);
 
 // TV channel cycle
