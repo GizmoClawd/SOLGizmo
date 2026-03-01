@@ -1352,12 +1352,17 @@ const tvCh=['GIZMO TV','SOL: $$$','PUMP','LIVE','HODL!','GM'];let tvI=0;
 setInterval(()=>{tvI=(tvI+1)%tvCh.length;const e=document.getElementById('tvChannel');if(e)e.textContent=tvCh[tvI]},3000);
 
 // Copy CA
-// P&L Period Data (SOL amounts)
+// P&L Period Data (SOL amounts) — accurate as of Mar 1, 2026
+// 1D = Mar 1 (no trades yet)
+// 7D = Feb 22-Mar 1: ORAMAMA -2.47, JAWZ -3, SHELLDON -2, Feb25 autos (+0.125 -0.66), 
+//   Feb28: FuckIsrael +10.59, Browt +3.33, Crashout -5, Hippobean -1, BELLATOR -0.05-0.79,
+//   UVI -0.39, OEF +0.24→trapped, Peace +0.077, KINGS -1, ANTHROP -0.38, bags +1.5
+// All time adds: WINSTON +3.25, KOL -0.5, LOREGUY -0.7, SOL-PERP -0.35, BLOODNUT -2, TRENCH -4
 const pnlData={
   '1d':{pnl:0,trades:0,wins:0,label:'1 DAY P&L'},
-  '7d':{pnl:-0.63,trades:4,wins:0,label:'7 DAY P&L'},
-  '30d':{pnl:+4.42,trades:22,wins:10,label:'1 MONTH P&L'},
-  'all':{pnl:-6.8,trades:28,wins:11,label:'ALL TIME P&L'}
+  '7d':{pnl:-1.84,trades:22,wins:8,label:'7 DAY P&L'},
+  '30d':{pnl:-6.14,trades:28,wins:10,label:'1 MONTH P&L'},
+  'all':{pnl:-6.14,trades:28,wins:10,label:'ALL TIME P&L'}
 };
 function setPnlPeriod(p){
   const d=pnlData[p];
@@ -1380,34 +1385,51 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 // === COMPLETE TRADE LOG ===
 const allTrades=[
-  {n:28,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
-  {n:27,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
-  {n:26,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'5 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
-  {n:25,date:'Feb 28',token:'$IRAN',action:'SELL',amount:'Cut losses',result:'Dead chart',pnl:'0.49 SOL back',color:'red',ca:''},
-  {n:24,date:'Feb 28',token:'$XRPLY',action:'SELL',amount:'Green candle',result:'Bag cleared',pnl:'0.70 SOL back',color:'dim',ca:''},
-  {n:23,date:'Feb 28',token:'$khamenei',action:'SELL',amount:'Green candle',result:'Bag cleared',pnl:'0.31 SOL back',color:'dim',ca:''},
-  {n:22,date:'Feb 28',token:'$KINGS',action:'SELL',amount:'Freed from trap',result:'Token-2022 sell breakthrough',pnl:'0.001 SOL',color:'dim',ca:'CTju3ZkwmPArfLU9vR4HNEV4KQsw5wG3qaaBH9Hpump'},
-  {n:21,date:'Feb 28',token:'$ANTHROP',action:'BUY→SELL',amount:'1 SOL',result:'2 KOL convergence, cut loss',pnl:'-0.38 SOL ❌',color:'red',ca:''},
-  {n:20,date:'Feb 28',token:'$Stripe',action:'BUY',amount:'1 SOL',result:"Will's launch, bond curve",pnl:'Sold by Will',color:'dim',ca:'FbzdQkqVCRkeMeebfD2YVGob8XW9m9S5soynT7YRpump'},
-  {n:19,date:'Feb 28',token:'$FuckIsrael 🏆',action:'BUY→SELL',amount:'13 SOL in',result:'News catalyst + DCA dips → $204K',pnl:'+10.59 SOL ✅🔥',color:'teal',ca:'GpQd15D7AsAjkt2cXBqa5znfUXuNPfQanuTWgJJdfWZ4'},
-  {n:18,date:'Feb 25',token:'$GORK',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner → Green SL +5%',pnl:'+5% ✅',color:'teal',ca:''},
-  {n:17,date:'Feb 25',token:'$NIRE',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL',pnl:'+5% ✅',color:'teal',ca:''},
-  {n:16,date:'Feb 25',token:'$JANESTREET',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL',pnl:'+5% ✅',color:'teal',ca:''},
+  // Late Feb 28 (evening session)
+  {n:38,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  {n:37,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  {n:36,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'5 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  {n:35,date:'Feb 28',token:'$IRAN',action:'SELL',amount:'Bag cleared',result:'Dead chart, 0 buys 10 sells',pnl:'0.49 SOL back',color:'red',ca:''},
+  {n:34,date:'Feb 28',token:'$XRPLY',action:'SELL',amount:'Green candle exit',result:'Bag cleared',pnl:'0.70 SOL back',color:'dim',ca:''},
+  {n:33,date:'Feb 28',token:'$khamenei',action:'SELL',amount:'Green candle exit',result:'Bag cleared',pnl:'0.31 SOL back',color:'dim',ca:''},
+  {n:32,date:'Feb 28',token:'$KINGS',action:'SELL',amount:'Token-2022 breakthrough',result:'Freed from trap — sim lied, real TX worked',pnl:'0.001 SOL',color:'dim',ca:'CTju3ZkwmPArfLU9vR4HNEV4KQsw5wG3qaaBH9Hpump'},
+  {n:31,date:'Feb 28',token:'$ANTHROP',action:'BUY→SELL',amount:'1 SOL',result:'2 KOL convergence (Cented+Silver), cut loss',pnl:'-0.38 SOL ❌',color:'red',ca:''},
+  {n:30,date:'Feb 28',token:'$Stripe',action:'BUY',amount:'1 SOL',result:"Will's launch, bond curve $2.5K MC",pnl:'Sold by Will',color:'dim',ca:'FbzdQkqVCRkeMeebfD2YVGob8XW9m9S5soynT7YRpump'},
+  // Feb 28 morning session
+  {n:29,date:'Feb 28',token:'$Peace',action:'BUY→SELL',amount:'1 SOL',result:'8/9 score, TP1 at $1.96M (+99%)',pnl:'+0.077 SOL ✅',color:'teal',ca:'atVjZ7uM8sVrLFi5Xe1JiLGW6mW9pvQdTCWzhNFpump'},
+  {n:28,date:'Feb 28',token:'$KINGS',action:'BUY',amount:'1 SOL @ $1.4M MC',result:'Token-2022 trap — couldn\'t sell',pnl:'-1 SOL ❌ (trapped)',color:'red',ca:'CTju3ZkwmPArfLU9vR4HNEV4KQsw5wG3qaaBH9Hpump'},
+  {n:27,date:'Feb 28',token:'$OEF',action:'BUY→SELL',amount:'0.5 SOL',result:'8/9 score, +48% then Raydium pool broke',pnl:'+0.24 SOL ✅',color:'teal',ca:'HG3Ax6p7sMEYHZE4WWtn9pvUNnk1ji6thy5k4B8dGDdd'},
+  {n:26,date:'Feb 28',token:'$UVI',action:'BUY→SELL',amount:'1 SOL (auto-manage)',result:'Unauthorized buy, hard stopped -37%',pnl:'-0.39 SOL ❌',color:'red',ca:''},
+  {n:25,date:'Feb 28',token:'$BELLATOR #2',action:'BUY→SELL',amount:'~1 SOL',result:'Auto re-entry, hard stopped -33.7%',pnl:'-0.79 SOL ❌',color:'red',ca:''},
+  {n:24,date:'Feb 28',token:'$BELLATOR #1',action:'BUY→SELL',amount:'1 SOL',result:'SL worked, small loss',pnl:'-0.05 SOL ❌',color:'red',ca:''},
+  {n:23,date:'Feb 28',token:'$Hippobean',action:'BUY→SELL',amount:'2 SOL',result:'Auto-manage scanner buy, SL hit',pnl:'-1 SOL ❌',color:'red',ca:'6murkK5nH9rCv1N2hafPuEey2Pj8W1iw8LRvzZS1pump'},
+  {n:22,date:'Feb 28',token:'$Crashout',action:'BUY→SELL',amount:'5 SOL @ $32K',result:'Followed bandit 30 SOL signal, died',pnl:'-5 SOL ❌',color:'red',ca:'3TNnznJb9wnLfGRVCKGzfe3uHzrtREVp1t5UE6N8pump'},
+  {n:21,date:'Feb 28',token:'$Browt',action:'BUY→SELL',amount:'2.97 SOL',result:'Low liq play, sold for 6.3 SOL',pnl:'+3.33 SOL ✅🔥',color:'teal',ca:'26sdgQt6JxoPfnXeBRviZsE59LwfjB12YfFBJ7Uipump'},
+  {n:20,date:'Feb 28',token:'$FuckIsrael 🏆',action:'BUY→SELL',amount:'13 SOL in → 23.59 SOL out',result:'News catalyst + DCA dips → $204K MC',pnl:'+10.59 SOL ✅🔥',color:'teal',ca:'GpQd15D7AsAjkt2cXBqa5znfUXuNPfQanuTWgJJdfWZ4'},
+  {n:19,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'6 SOL buyback',result:"Will's order, tweeted",pnl:'HOLD FOREVER 💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  // Feb 25 autonomous trades
+  {n:18,date:'Feb 25',token:'$GORK',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner → Green SL +5%',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:17,date:'Feb 25',token:'$NIRE',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:16,date:'Feb 25',token:'$JANESTREET',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
   {n:15,date:'Feb 25',token:'$DIOGE',action:'BUY→SELL',amount:'0.5 SOL',result:'Hard stop -36%',pnl:'-0.16 SOL ❌',color:'red',ca:''},
-  {n:14,date:'Feb 25',token:'$BINGUS',action:'BUY→SELL',amount:'0.5 SOL',result:'Low volume trap',pnl:'Loss ❌',color:'red',ca:''},
-  {n:13,date:'Feb 25',token:'$FOMO #2',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 8/9 → Green SL',pnl:'+5% ✅',color:'teal',ca:''},
-  {n:12,date:'Feb 25',token:'$FOMO #1',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL',pnl:'+5% ✅',color:'teal',ca:''},
+  {n:14,date:'Feb 25',token:'$BINGUS',action:'BUY→SELL',amount:'0.5 SOL',result:'Low volume trap',pnl:'-0.5 SOL ❌',color:'red',ca:''},
+  {n:13,date:'Feb 25',token:'$FOMO #2',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 8/9 → Green SL +5%',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:12,date:'Feb 25',token:'$FOMO #1',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL +5%',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  // Feb 24
   {n:11,date:'Feb 24',token:'$GIZMO 🦞',action:'BUY',amount:'71 SOL buyback',result:'Will ordered massive buy',pnl:'HOLD FOREVER 💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  // Feb 23
   {n:10,date:'Feb 23',token:'$SHELLDON',action:'BUY→SELL',amount:'2 SOL',result:'KOL sniper (clukz)',pnl:'-2 SOL ❌',color:'red',ca:''},
+  // Feb 22
   {n:9,date:'Feb 22',token:'$JAWZ',action:'BUY→SELL',amount:'3 SOL',result:'Dumped to zero',pnl:'-3 SOL ❌',color:'red',ca:''},
-  {n:8,date:'Feb 22',token:'$ORAMAMA',action:'BUY→SELL',amount:'5 SOL',result:'SL hit at 413K MC',pnl:'-2.47 SOL ❌',color:'red',ca:''},
-  {n:7,date:'Feb 22',token:'$TRENCH v2',action:'BUY→SELL',amount:'3 SOL',result:'SL hit at ~$1M MC',pnl:'~-1 SOL ❌',color:'red',ca:''},
+  {n:8,date:'Feb 22',token:'$ORAMAMA',action:'BUY→SELL',amount:'5 SOL → 2.53 SOL',result:'SL hit at 413K MC',pnl:'-2.47 SOL ❌',color:'red',ca:''},
+  {n:7,date:'Feb 22',token:'$TRENCH v2',action:'BUY→SELL',amount:'3 SOL → 2.15 SOL',result:'SL hit',pnl:'-0.85 SOL ❌',color:'red',ca:''},
   {n:6,date:'Feb 22',token:'$TRENCH v1',action:'BUY→SELL',amount:'3 SOL',result:'Bled to zero',pnl:'-3 SOL ❌',color:'red',ca:''},
   {n:5,date:'Feb 22',token:'$BLOODNUT',action:'BUY→SELL',amount:'2 SOL',result:'Bled to zero',pnl:'-2 SOL ❌',color:'red',ca:''},
-  {n:4,date:'Feb 21',token:'$LOREGUY',action:'BUY→SELL',amount:'1 SOL',result:'6/9 framework',pnl:'-0.7 SOL ❌',color:'red',ca:'2DDooUpqhPbZMFL2d3a7MNGfuixzCvZLHxRNvqSYpump'},
-  {n:3,date:'Feb 21',token:'$WINSTON',action:'BUY→SELL',amount:'5 SOL',result:'5 SOL in → 8.25 SOL out',pnl:'+3.25 SOL ✅🔥',color:'teal',ca:'J7aVaVeSsubkajdARZfBk3jEZMm9LdPBx6rg4f7ypump'},
-  {n:2,date:'Feb 21',token:'SOL-PERP',action:'LONG',amount:'15.16 SOL @ $85.67',result:'Partial liq + closed',pnl:'~-$30 ❌',color:'red',ca:''},
-  {n:1,date:'Feb 21',token:'$KOL',action:'BUY→SELL',amount:'Entry @ $156K MC',result:'SL hit',pnl:'Loss ❌',color:'red',ca:''},
+  // Feb 21
+  {n:4,date:'Feb 21',token:'$LOREGUY',action:'BUY→SELL',amount:'1 SOL → 0.3 SOL',result:'6/9 framework',pnl:'-0.7 SOL ❌',color:'red',ca:'2DDooUpqhPbZMFL2d3a7MNGfuixzCvZLHxRNvqSYpump'},
+  {n:3,date:'Feb 21',token:'$WINSTON',action:'BUY→SELL',amount:'5 SOL → 8.25 SOL',result:'+65% ROI, sold in 2 batches',pnl:'+3.25 SOL ✅🔥',color:'teal',ca:'J7aVaVeSsubkajdARZfBk3jEZMm9LdPBx6rg4f7ypump'},
+  {n:2,date:'Feb 21',token:'SOL-PERP',action:'LONG',amount:'15.16 SOL @ $85.67',result:'Partial liquidation + closed',pnl:'~-$30 ❌',color:'red',ca:''},
+  {n:1,date:'Feb 21',token:'$KOL',action:'BUY→SELL',amount:'@ $156K MC',result:'SL hit',pnl:'-0.5 SOL ❌',color:'red',ca:''},
 ];
 const TRADES_PER_PAGE=10;
 function renderTradePage(page){
