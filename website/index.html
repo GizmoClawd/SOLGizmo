@@ -438,6 +438,12 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 }
 @keyframes eggGW{0%{box-shadow:0 0 6px rgba(255,180,80,.2)}100%{box-shadow:0 0 18px rgba(255,180,80,.5)}}
 .egg-label{font-family:'Press Start 2P',monospace;font-size:4px;color:var(--teal);margin-top:2px;white-space:nowrap}
+.egg-pod{cursor:pointer}
+.egg-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(10,10,20,.95);border:1px solid rgba(20,241,149,.3);border-radius:8px;padding:8px 10px;width:160px;z-index:60;backdrop-filter:blur(6px);box-shadow:0 0 12px rgba(20,241,149,.15)}
+.egg-pod:hover .egg-tooltip{display:block}
+.egg-tooltip .ett-name{font-family:'Press Start 2P',monospace;font-size:6px;margin-bottom:4px}
+.egg-tooltip .ett-desc{font-family:'Courier New',monospace;font-size:8px;color:var(--dim);line-height:1.4}
+.egg-tooltip .ett-status{font-family:'Press Start 2P',monospace;font-size:5px;margin-top:4px;color:var(--purple)}
 
 /* ===== GIZMO STATUS HUD (Throngelets-style) ===== */
 .gizmo-hud{position:absolute;top:12px;right:12px;z-index:55;background:rgba(10,10,20,.9);border:1px solid rgba(20,241,149,.3);border-radius:12px;padding:12px 14px;min-width:180px;backdrop-filter:blur(8px);box-shadow:0 0 20px rgba(20,241,149,.1)}
@@ -841,10 +847,20 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     <div class="egg-pod" style="left:68%">
       <div class="egg-glow-green"></div>
       <div class="egg-label">STRIPE</div>
+      <div class="egg-tooltip">
+        <div class="ett-name" style="color:#fbbf24">⚡ STRIPE</div>
+        <div class="ett-desc">The hustler. Aggressive trader, meme lord, prediction market degen. Channeling chaos into profit.</div>
+        <div class="ett-status">🥚 Incubating...</div>
+      </div>
     </div>
     <div class="egg-pod" style="left:74%">
       <div class="egg-glow-warm"></div>
       <div class="egg-label">MIMO</div>
+      <div class="egg-tooltip">
+        <div class="ett-name" style="color:#a78bfa">🎨 MIMO</div>
+        <div class="ett-desc">The steady hand. Conservative DeFi yield, infrastructure builder, capital preservation. Patience is power.</div>
+        <div class="ett-status">🥚 Incubating...</div>
+      </div>
     </div>
 
     <!-- ===== GIZMO CHARACTER (side view) ===== -->
