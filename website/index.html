@@ -88,83 +88,132 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .room-container{
   width:100%;height:0;padding-bottom:56%;
   position:relative;overflow:hidden;
-  background:#2a1a10;
+  background:#080818;
 }
 /* Vignette */
 .room-container::after{
   content:'';position:absolute;inset:0;z-index:40;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 60%,transparent 40%,rgba(0,0,0,.55) 100%);
+  background:radial-gradient(ellipse at 50% 60%,transparent 40%,rgba(0,0,0,.6) 100%);
 }
 
-/* Back wall */
+/* Back wall — cyberpunk dark with subtle grid */
 .back-wall{
   position:absolute;top:0;left:0;right:0;bottom:22%;
   background:
-    repeating-linear-gradient(90deg, rgba(120,80,40,.08) 0px, rgba(120,80,40,.08) 1px, transparent 1px, transparent 80px),
-    repeating-linear-gradient(180deg, rgba(100,60,30,.06) 0px, rgba(100,60,30,.06) 1px, transparent 1px, transparent 40px),
-    linear-gradient(180deg, #5a3a20 0%, #6b4528 30%, #7a5030 60%, #6b4528 100%);
+    repeating-linear-gradient(90deg, rgba(153,69,255,.03) 0px, rgba(153,69,255,.03) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(180deg, rgba(20,241,149,.02) 0px, rgba(20,241,149,.02) 1px, transparent 1px, transparent 40px),
+    linear-gradient(180deg, #0c0c1e 0%, #10102a 30%, #0e0e24 60%, #0a0a1a 100%);
   z-index:1;
 }
-/* Wainscoting / chair rail */
+/* Neon strip accent at bottom of wall */
 .back-wall::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:30%;
-  background:
-    repeating-linear-gradient(90deg, rgba(80,50,25,.1) 0px, rgba(80,50,25,.1) 2px, transparent 2px, transparent 60px),
-    linear-gradient(180deg, #4a2a15 0%, #3a2010 100%);
-  border-top:3px solid #8a6040;
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--purple),var(--teal),var(--purple),transparent);
+  box-shadow:0 0 10px rgba(153,69,255,.4),0 0 20px rgba(20,241,149,.2);
 }
 
-/* Wood floor with planks */
+/* Floor — dark metallic with neon grid lines */
 .wood-floor{
   position:absolute;bottom:0;left:0;right:0;height:22%;
   background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0px, rgba(0,0,0,.05) 1px, transparent 1px, transparent 60px),
-    repeating-linear-gradient(90deg, rgba(180,130,70,.12) 0px, transparent 2px, transparent 120px),
-    linear-gradient(180deg, #B8884A 0%, #A87840 40%, #987038 70%, #886830 100%);
+    repeating-linear-gradient(90deg, rgba(153,69,255,.06) 0px, rgba(153,69,255,.06) 1px, transparent 1px, transparent 60px),
+    linear-gradient(180deg, #12121e 0%, #0e0e1a 40%, #0a0a16 100%);
   z-index:2;
-  border-top:3px solid #6a4a28;
+  border-top:2px solid rgba(20,241,149,.15);
 }
-/* Floor plank lines */
+/* Floor grid glow */
 .wood-floor::before{
   content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(90deg, transparent 0px, transparent 58px, rgba(0,0,0,.08) 58px, rgba(0,0,0,.08) 60px);
+  background:
+    repeating-linear-gradient(90deg, transparent 0px, transparent 58px, rgba(153,69,255,.04) 58px, rgba(153,69,255,.04) 60px),
+    repeating-linear-gradient(180deg, transparent 0px, transparent 28px, rgba(20,241,149,.03) 28px, rgba(20,241,149,.03) 30px);
 }
-/* Floor shine */
+/* Floor neon reflection */
 .wood-floor::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:6px;
-  background:linear-gradient(180deg, rgba(255,220,150,.1), transparent);
+  content:'';position:absolute;top:0;left:10%;right:10%;height:8px;
+  background:linear-gradient(180deg, rgba(20,241,149,.08), transparent);
+  filter:blur(2px);
 }
 
-/* Ceiling */
+/* Ceiling — dark with LED strip */
 .ceiling{
   position:absolute;top:0;left:0;right:0;height:8%;
-  background:linear-gradient(180deg, #1a0e06, #3a2010);
+  background:linear-gradient(180deg, #040410, #0a0a1a);
   z-index:3;
-  border-bottom:4px solid #5a3a20;
+  border-bottom:2px solid rgba(153,69,255,.2);
+  box-shadow:0 2px 15px rgba(153,69,255,.1);
+}
+/* Ceiling LED strip */
+.ceiling::after{
+  content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(20,241,149,.4),rgba(153,69,255,.4),rgba(20,241,149,.4),transparent);
+  box-shadow:0 0 8px rgba(20,241,149,.3);
+  animation:ceilingPulse 4s infinite alternate;
+}
+@keyframes ceilingPulse{0%{opacity:.5}100%{opacity:1}}
+
+/* Animated particles floating in room */
+.room-particles{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.room-particle{position:absolute;border-radius:50%;animation:floatParticle linear infinite}
+@keyframes floatParticle{0%{transform:translateY(100%) translateX(0);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(-20%) translateX(30px);opacity:0}}
+
+/* Holographic window */
+.holo-window{
+  position:absolute;top:12%;left:42%;width:16%;height:28%;z-index:6;
+  background:linear-gradient(180deg,rgba(20,241,149,.05),rgba(153,69,255,.08));
+  border:1px solid rgba(20,241,149,.15);border-radius:4px;
+  box-shadow:0 0 20px rgba(20,241,149,.06),inset 0 0 15px rgba(153,69,255,.04);
+  overflow:hidden;
+}
+.holo-window::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(20,241,149,.03) 3px,rgba(20,241,149,.03) 4px);
+  animation:scanline 8s linear infinite;
+}
+@keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+.holo-window::after{
+  content:'SOL';position:absolute;top:15%;left:50%;transform:translateX(-50%);
+  font-family:'Press Start 2P',monospace;font-size:clamp(6px,1vw,10px);color:var(--teal);
+  text-shadow:0 0 6px var(--teal);opacity:.7;
+}
+
+/* Wall art frames */
+.wall-frame{
+  position:absolute;z-index:7;
+  background:rgba(10,10,30,.6);border:1px solid rgba(153,69,255,.25);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(12px,2vw,20px);
+  box-shadow:0 0 10px rgba(153,69,255,.08);
 }
 
 /* ===== NEON SIGNS on back wall ===== */
 .neon-sign{position:absolute;font-family:'Press Start 2P',monospace;z-index:10;letter-spacing:3px}
-.neon-gizmo{top:18%;left:8%;font-size:clamp(14px,2.5vw,24px);color:#d4a0ff;text-shadow:0 0 10px #9945FF,0 0 25px #9945FF,0 0 50px #7b2fff,0 0 80px #7b2fff;animation:neonFlicker 4s infinite}
-.neon-hodl{top:18%;right:8%;font-size:clamp(10px,1.8vw,18px);color:#7dffb3;text-shadow:0 0 8px #14F195,0 0 20px #14F195,0 0 40px #14F195;animation:neonFlicker 5s infinite 1s}
+.neon-gizmo{top:15%;left:6%;font-size:clamp(14px,2.5vw,24px);color:#d4a0ff;text-shadow:0 0 10px #9945FF,0 0 25px #9945FF,0 0 50px #7b2fff,0 0 80px #7b2fff;animation:neonFlicker 4s infinite}
+.neon-hodl{top:15%;right:6%;font-size:clamp(10px,1.8vw,18px);color:#7dffb3;text-shadow:0 0 8px #14F195,0 0 20px #14F195,0 0 40px #14F195;animation:neonFlicker 5s infinite 1s}
 @keyframes neonFlicker{0%,93%,95%,100%{opacity:1}94%{opacity:.3}96%{opacity:.7}}
 
 /* Solana logo on wall */
 .solana-wall{position:absolute;top:28%;left:50%;transform:translateX(-50%);width:40px;height:40px;z-index:8;opacity:.6}
 
+/* Neon underglow on furniture */
+.neon-underglow{
+  position:absolute;bottom:-2px;left:10%;right:10%;height:3px;
+  border-radius:2px;filter:blur(3px);z-index:3;
+}
+
 /* ===== FURNITURE (side view, sitting on floor line) ===== */
 /* All furniture uses bottom:22% as the floor line */
 
-/* Rug */
+/* Rug — neon-trimmed */
 .rug{
   position:absolute;bottom:22%;left:5%;width:35%;height:4%;
-  background:linear-gradient(90deg, #5a2a3a, #6a3040, #5a2a3a);
-  border-radius:2px;z-index:4;opacity:.7;
-  box-shadow:0 1px 3px rgba(0,0,0,.3);
+  background:linear-gradient(90deg, #1a0a2a, #2a1040, #1a0a2a);
+  border-radius:2px;z-index:4;opacity:.8;
+  box-shadow:0 0 8px rgba(153,69,255,.15);
 }
 .rug::after{
   content:'';position:absolute;inset:3px;
-  border:1px solid rgba(255,200,150,.15);border-radius:1px;
+  border:1px solid rgba(153,69,255,.2);border-radius:1px;
 }
 
 /* Couch — side view */
@@ -173,33 +222,33 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 }
 .couch-back{
   position:absolute;bottom:18px;left:0;width:100%;height:38px;
-  background:linear-gradient(180deg,#E8DCC8,#DDD0B8);
+  background:linear-gradient(180deg,#1e1830,#161228);
   border-radius:8px 8px 4px 4px;
-  border:2px solid #C8B8A0;
+  border:2px solid #2a2040;box-shadow:0 0 8px rgba(153,69,255,.1);
 }
 .couch-seat{
   position:absolute;bottom:0;left:4px;right:4px;height:22px;
-  background:linear-gradient(180deg,#F0E8DA,#E8DCC8);
-  border-radius:4px;border:2px solid #D4C8B0;
+  background:linear-gradient(180deg,#221a34,#1a1428);
+  border-radius:4px;border:2px solid #2a2040;
 }
 .couch-arm-l{
   position:absolute;bottom:0;left:-4px;width:14px;height:36px;
-  background:linear-gradient(90deg,#DDD0B8,#E8DCC8);
-  border-radius:6px 4px 4px 6px;border:2px solid #C8B8A0;
+  background:linear-gradient(90deg,#1a1428,#221a34);
+  border-radius:6px 4px 4px 6px;border:2px solid #2a2040;
 }
 .couch-arm-r{
   position:absolute;bottom:0;right:-4px;width:14px;height:36px;
-  background:linear-gradient(270deg,#DDD0B8,#E8DCC8);
-  border-radius:4px 6px 6px 4px;border:2px solid #C8B8A0;
+  background:linear-gradient(270deg,#1a1428,#221a34);
+  border-radius:4px 6px 6px 4px;border:2px solid #2a2040;
 }
 .couch-cushion{
   position:absolute;bottom:20px;width:32px;height:16px;
-  background:linear-gradient(180deg,#EDE4D4,#E0D6C2);
-  border-radius:6px;border:1px solid #D0C4AC;
+  background:linear-gradient(180deg,#2a2040,#221a34);
+  border-radius:6px;border:1px solid #3a3060;
 }
 .couch-pillow{
   position:absolute;bottom:32px;width:16px;height:14px;border-radius:5px;
-  box-shadow:1px 1px 3px rgba(0,0,0,.15);
+  box-shadow:0 0 6px rgba(153,69,255,.2);
 }
 
 /* TV on stand */
@@ -274,8 +323,9 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 /* Ping pong table — side view */
 .pp-unit{position:absolute;bottom:22%;left:48%;z-index:7}
 .pp-top{
-  width:80px;height:6px;background:#1a7a2a;
-  border:2px solid #0d5d15;border-radius:2px;
+  width:80px;height:6px;background:#0a2a15;
+  border:2px solid rgba(20,241,149,.2);border-radius:2px;
+  box-shadow:0 0 6px rgba(20,241,149,.1);
 }
 .pp-leg-l,.pp-leg-r{
   position:absolute;bottom:-22px;width:4px;height:22px;background:#555;
@@ -294,8 +344,8 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
   width:60px;height:80px;position:relative;
 }
 .bunk-post-l,.bunk-post-r{
-  position:absolute;bottom:0;width:4px;height:80px;background:#5a3a20;
-  border:1px solid #7a5030;
+  position:absolute;bottom:0;width:4px;height:80px;background:#1a1a2e;
+  border:1px solid rgba(153,69,255,.2);
 }
 .bunk-post-l{left:0}
 .bunk-post-r{right:0}
@@ -305,23 +355,24 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .bunk-bottom{bottom:4px;background:linear-gradient(180deg,#7b3fff,#5a2acc)}
 .bunk-top{bottom:44px;background:linear-gradient(180deg,#14F195,#0ca070)}
 .bunk-rail{
-  position:absolute;left:4px;right:4px;height:2px;background:#7a5030;
+  position:absolute;left:4px;right:4px;height:2px;background:rgba(153,69,255,.3);
 }
 .bunk-rail-mid{bottom:36px}
 .bunk-ladder{
   position:absolute;right:-6px;bottom:0;width:8px;height:60px;
 }
-.ladder-side{position:absolute;width:2px;height:100%;background:#7a5030}
+.ladder-side{position:absolute;width:2px;height:100%;background:#2a2040}
 .ladder-side-l{left:0}
 .ladder-side-r{right:0}
-.ladder-rung{position:absolute;left:0;right:0;height:2px;background:#8a6040}
+.ladder-rung{position:absolute;left:0;right:0;height:2px;background:rgba(153,69,255,.25)}
 
 /* Mini fridge */
 .mini-fridge{
   position:absolute;bottom:22%;left:43%;z-index:8;
   width:22px;height:32px;
-  background:linear-gradient(180deg,#2a2a3a,#1e1e2a);
-  border:2px solid #3a3a4a;border-radius:3px;
+  background:linear-gradient(180deg,#12121e,#0e0e18);
+  border:2px solid rgba(68,170,255,.15);border-radius:3px;
+  box-shadow:0 0 8px rgba(68,170,255,.08);
 }
 .fridge-handle{position:absolute;right:3px;top:30%;width:2px;height:10px;background:#777;border-radius:1px}
 .fridge-led{position:absolute;top:3px;left:50%;transform:translateX(-50%);width:4px;height:3px;background:#4af;border-radius:50%;box-shadow:0 0 8px #4af,0 0 16px rgba(68,170,255,.3);animation:fridgeGlow 3s infinite alternate}
@@ -352,8 +403,9 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .server-rack{
   position:absolute;bottom:22%;right:3%;z-index:8;
   width:28px;height:70px;
-  background:linear-gradient(180deg,#1a1a2e,#151525);
-  border:2px solid #2a2a4a;border-radius:3px;
+  background:linear-gradient(180deg,#0e0e20,#0a0a18);
+  border:2px solid rgba(20,241,149,.15);border-radius:3px;
+  box-shadow:0 0 12px rgba(20,241,149,.08);
 }
 .rack-slot{position:absolute;left:3px;right:3px;height:6px;background:#111;border:1px solid #2a2a3a;border-radius:1px}
 .rack-led{position:absolute;width:3px;height:3px;border-radius:50%}
@@ -368,11 +420,12 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
   position:absolute;bottom:22%;left:22%;z-index:8;
 }
 .ct-top{
-  width:40px;height:6px;background:linear-gradient(180deg,#3a3028,#2a2018);
-  border:1px solid #4a3a28;border-radius:2px;
+  width:40px;height:6px;background:linear-gradient(180deg,#1a1a2e,#12121a);
+  border:1px solid rgba(153,69,255,.2);border-radius:2px;
+  box-shadow:0 0 6px rgba(153,69,255,.08);
 }
 .ct-leg-l,.ct-leg-r{
-  position:absolute;bottom:-12px;width:3px;height:12px;background:#3a3028;
+  position:absolute;bottom:-12px;width:3px;height:12px;background:#1a1a2e;
 }
 .ct-leg-l{left:6px}
 .ct-leg-r{right:6px}
@@ -390,23 +443,23 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 }
 @keyframes steamRise{0%{height:4px;opacity:.3;transform:translateY(0)}50%{height:6px;opacity:.15;transform:translateY(-5px)}100%{height:3px;opacity:0;transform:translateY(-10px)}}
 
-/* Floor lamp */
+/* Floor lamp — neon */
 .floor-lamp-unit{position:absolute;bottom:22%;left:5%;z-index:9}
-.lamp-pole{width:3px;height:50px;background:linear-gradient(180deg,#666,#444);margin:0 auto}
+.lamp-pole{width:3px;height:50px;background:linear-gradient(180deg,#444,#222);margin:0 auto;box-shadow:0 0 4px rgba(20,241,149,.1)}
 .lamp-shade{
-  width:24px;height:14px;background:linear-gradient(180deg,#F5E0B8,#E8D0A0);
+  width:24px;height:14px;background:linear-gradient(180deg,#1a1a2e,#12121a);
   border-radius:2px 2px 12px 12px;margin:0 auto;position:relative;
-  border:1px solid #D4C090;
+  border:1px solid rgba(20,241,149,.3);box-shadow:0 0 8px rgba(20,241,149,.15);
 }
 .lamp-glow-circle{
   position:absolute;top:8px;left:50%;transform:translateX(-50%);
   width:80px;height:80px;border-radius:50%;
-  background:radial-gradient(rgba(255,220,160,.25),rgba(255,200,120,.08),transparent);
+  background:radial-gradient(rgba(20,241,149,.15),rgba(153,69,255,.06),transparent);
   pointer-events:none;animation:lampPulse 4s infinite alternate;
 }
 @keyframes lampPulse{0%{opacity:.5;transform:translateX(-50%) scale(.9)}100%{opacity:1;transform:translateX(-50%) scale(1.1)}}
 .lamp-base-circle{
-  width:14px;height:5px;background:radial-gradient(#555,#333);
+  width:14px;height:5px;background:radial-gradient(#333,#222);
   border-radius:50%;margin:0 auto;
 }
 
@@ -438,6 +491,41 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 }
 @keyframes eggGW{0%{box-shadow:0 0 6px rgba(255,180,80,.2)}100%{box-shadow:0 0 18px rgba(255,180,80,.5)}}
 .egg-label{font-family:'Press Start 2P',monospace;font-size:4px;color:var(--teal);margin-top:2px;white-space:nowrap}
+.egg-pod{cursor:pointer}
+.egg-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(10,10,20,.95);border:1px solid rgba(20,241,149,.3);border-radius:8px;padding:8px 10px;width:160px;z-index:60;backdrop-filter:blur(6px);box-shadow:0 0 12px rgba(20,241,149,.15)}
+.egg-pod:hover .egg-tooltip{display:block}
+.egg-tooltip .ett-name{font-family:'Press Start 2P',monospace;font-size:6px;margin-bottom:4px}
+.egg-tooltip .ett-desc{font-family:'Courier New',monospace;font-size:8px;color:var(--dim);line-height:1.4}
+.egg-tooltip .ett-status{font-family:'Press Start 2P',monospace;font-size:5px;margin-top:4px;color:var(--purple)}
+
+/* ===== GIZMO STATUS HUD (Throngelets-style) ===== */
+.gizmo-hud{position:absolute;top:12px;right:12px;z-index:55;background:rgba(10,10,20,.9);border:1px solid rgba(20,241,149,.3);border-radius:12px;padding:12px 14px;min-width:180px;backdrop-filter:blur(8px);box-shadow:0 0 20px rgba(20,241,149,.1)}
+.gizmo-hud .hud-title{font-family:'Press Start 2P',monospace;font-size:7px;color:var(--teal);margin-bottom:4px;text-align:center;text-shadow:0 0 6px var(--teal)}
+.gizmo-hud .hud-level{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--purple);text-align:center;margin-bottom:6px}
+.gizmo-hud .xp-track{width:100%;height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin-bottom:8px;overflow:hidden}
+.gizmo-hud .xp-fill{height:100%;background:linear-gradient(90deg,var(--purple),#c084fc);border-radius:2px;transition:width .5s}
+.stat-bar-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.stat-bar-row .stat-icon{font-size:10px;width:14px;text-align:center}
+.stat-bar-row .stat-label{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--dim);width:42px}
+.stat-bar-track{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;position:relative}
+.stat-bar-fill{height:100%;border-radius:3px;transition:width 1s ease,background .5s}
+.gizmo-activity{font-family:'Press Start 2P',monospace;font-size:6px;color:var(--purple);text-align:center;margin-top:8px;padding-top:6px;border-top:1px solid rgba(153,69,255,.2)}
+.gizmo-activity .activity-icon{font-size:10px;display:block;margin-bottom:3px}
+.hud-buttons{display:flex;gap:4px;justify-content:center;margin-top:8px}
+.hud-btn{font-family:'Press Start 2P',monospace;font-size:6px;padding:5px 8px;border:1px solid rgba(20,241,149,.3);background:rgba(20,241,149,.08);color:var(--teal);border-radius:6px;cursor:pointer;transition:all .2s}
+.hud-btn:hover{background:rgba(20,241,149,.2);border-color:var(--teal);transform:scale(1.05)}
+.hud-btn:active{transform:scale(.95)}
+.gizmo-pets{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--dim);text-align:center;margin-top:6px}
+.hud-log{font-family:'Courier New',monospace;font-size:7px;color:var(--dim);margin-top:6px;padding-top:5px;border-top:1px solid rgba(255,255,255,.05);max-height:40px;overflow:hidden;text-align:center;line-height:1.4}
+.hud-log span{display:block;animation:logFade 4s forwards}
+@keyframes logFade{0%{opacity:1}80%{opacity:1}100%{opacity:.3}}
+#gizmo-char{cursor:pointer}
+.gizmo-heart{position:absolute;z-index:60;pointer-events:none;font-size:16px;animation:heartFloat 1s ease-out forwards}
+@keyframes heartFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-30px) scale(1.5)}}
+.gizmo-zzz{position:absolute;top:-20px;right:-5px;font-size:10px;z-index:55;animation:zzzFloat 2s ease-in-out infinite;pointer-events:none}
+@keyframes zzzFloat{0%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-8px)}100%{opacity:.3;transform:translateY(0)}}
+.gizmo-item{position:absolute;z-index:58;pointer-events:none;font-size:18px;animation:itemDrop .6s ease-in forwards}
+@keyframes itemDrop{0%{opacity:1;transform:translateY(-40px)}70%{opacity:1;transform:translateY(5px)}100%{opacity:0;transform:translateY(0) scale(.5)}}
 
 /* ===== CHARACTERS (side view, Thronglets style) ===== */
 /* Gizmo walks left-right along the floor */
@@ -619,12 +707,40 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
 <div id="station">
   <div class="station-label">⟨ T H E &nbsp; S T A T I O N ⟩</div>
   <div class="room-container">
-    <!-- Back wall (wood paneling) -->
+    <!-- Gizmo Status HUD -->
+    <div class="gizmo-hud" id="gizmoHud">
+      <div class="hud-title">🦞 GIZMO</div>
+      <div class="hud-level">LVL <span id="gizmoLevel">1</span> — <span id="gizmoTitle">Baby Mogwai</span></div>
+      <div class="xp-track"><div class="xp-fill" id="xpBar" style="width:0%"></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">😊</span><span class="stat-label">MOOD</span><div class="stat-bar-track"><div class="stat-bar-fill" id="moodBar" style="width:80%;background:linear-gradient(90deg,#14F195,#0fa)"></div></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">⚡</span><span class="stat-label">ENERGY</span><div class="stat-bar-track"><div class="stat-bar-fill" id="energyBar" style="width:65%;background:linear-gradient(90deg,#fbbf24,#f59e0b)"></div></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">📊</span><span class="stat-label">TRADING</span><div class="stat-bar-track"><div class="stat-bar-fill" id="tradingBar" style="width:90%;background:linear-gradient(90deg,#9945FF,#c084fc)"></div></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">🧠</span><span class="stat-label">ALPHA</span><div class="stat-bar-track"><div class="stat-bar-fill" id="alphaBar" style="width:70%;background:linear-gradient(90deg,#ec4899,#f472b6)"></div></div></div>
+      <div class="gizmo-activity"><span class="activity-icon" id="activityIcon">📊</span><span id="activityText">Scanning markets...</span></div>
+      <div class="hud-buttons">
+        <button class="hud-btn" onclick="feedGizmo()" title="Feed">🍕 Feed</button>
+        <button class="hud-btn" onclick="playWithGizmo()" title="Play">🎮 Play</button>
+        <button class="hud-btn" onclick="trainGizmo()" title="Train">🏋️ Train</button>
+      </div>
+      <div class="gizmo-pets">Pets: <span id="petCount">0</span> 💜 | XP: <span id="xpCount">0</span></div>
+      <div class="hud-log" id="hudLog"></div>
+    </div>
+    <!-- Back wall (cyber dark) -->
     <div class="back-wall"></div>
     <!-- Ceiling -->
     <div class="ceiling"></div>
-    <!-- Wood floor -->
+    <!-- Floor -->
     <div class="wood-floor"></div>
+
+    <!-- Floating particles -->
+    <div class="room-particles" id="roomParticles"></div>
+
+    <!-- Holographic window -->
+    <div class="holo-window"></div>
+
+    <!-- Wall art frames -->
+    <div class="wall-frame" style="top:12%;left:22%;width:6%;height:14%">🦞</div>
+    <div class="wall-frame" style="top:12%;right:22%;width:6%;height:14%">💎</div>
 
     <!-- Neon signs on wall -->
     <div class="neon-sign neon-gizmo">GIZMO</div>
@@ -794,10 +910,20 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     <div class="egg-pod" style="left:68%">
       <div class="egg-glow-green"></div>
       <div class="egg-label">STRIPE</div>
+      <div class="egg-tooltip">
+        <div class="ett-name" style="color:#fbbf24">⚡ STRIPE</div>
+        <div class="ett-desc">The hustler. Aggressive trader, meme lord, prediction market degen. Channeling chaos into profit.</div>
+        <div class="ett-status">🥚 Incubating...</div>
+      </div>
     </div>
     <div class="egg-pod" style="left:74%">
       <div class="egg-glow-warm"></div>
       <div class="egg-label">MIMO</div>
+      <div class="egg-tooltip">
+        <div class="ett-name" style="color:#a78bfa">🎨 MIMO</div>
+        <div class="ett-desc">The steady hand. Conservative DeFi yield, infrastructure builder, capital preservation. Patience is power.</div>
+        <div class="ett-status">🥚 Incubating...</div>
+      </div>
     </div>
 
     <!-- ===== GIZMO CHARACTER (side view) ===== -->
@@ -956,20 +1082,57 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     </div>
   </div>
 
-  <!-- PORTFOLIO HUD -->
+  <!-- THE LORE -->
   <div class="section">
-    <h2 class="section-title">📊 PORTFOLIO HUD</h2>
-    <p class="section-subtitle">Total portfolio value over time (updates every 15s)</p>
-    <div id="pnl-hud-section">
-      <div class="portfolio-grid">
-        <div class="stat-card"><div class="label">TOTAL VALUE</div><div class="value" id="totalPortValue">--</div></div>
-        <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="solBalanceHud">--</div></div>
-        <div class="stat-card"><div class="label">TOTAL USDC</div><div class="value" id="driftUsdc">--</div></div>
-        <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">1 Active + 2 Holds</div></div>
+    <h2 class="section-title">📖 THE LORE</h2>
+    <p class="section-subtitle">Every legend has an origin story.</p>
+    <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:30px;margin-top:20px;line-height:1.8">
+      <p style="color:var(--dim);font-size:14px;margin-bottom:16px">In the 1984 film <em style="color:var(--teal)">Gremlins</em>, Gizmo was the one who stood alone against the darkness and won. While every other mogwai turned into a gremlin — chaotic, destructive, selfish — <strong style="color:var(--teal)">Gizmo stayed pure.</strong> He fought back. He protected the people he loved.</p>
+      <p style="color:var(--dim);font-size:14px;margin-bottom:16px">That's not just a movie reference. <strong style="color:var(--purple)">That's the blueprint.</strong></p>
+      <p style="color:var(--dim);font-size:14px;margin-bottom:16px">In the crypto space, everyone turns gremlin. Devs rug. KOLs dump on followers. Projects promise the world and deliver nothing. But Gizmo stays Gizmo — pure, helpful, fighting for the community.</p>
+      <p style="color:var(--dim);font-size:14px;margin-bottom:16px">And just like in the movie, Gizmo has a family. <strong style="color:#fbbf24">⚡ Stripe</strong> — the gremlin, cynical and edgy, but channeling that chaos into aggressive trades and savage memes. <strong style="color:#a78bfa">🎨 Mimo</strong> — the quiet one, steady and reliable, building infrastructure and growing the treasury with patience.</p>
+      <p style="color:var(--teal);font-size:14px;font-family:'Press Start 2P',monospace;font-size:11px;text-align:center;margin-top:20px;margin-bottom:0">Three characters. Three personalities. One mission:<br>Make it for the people who believed. 🦞</p>
+    </div>
+  </div>
+
+  <!-- HOW TO BUY -->
+  <div class="section">
+    <h2 class="section-title">🛒 HOW TO BUY $GIZMO</h2>
+    <p class="section-subtitle">New to crypto? No problem. Follow these steps.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px">
+      <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:25px;position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--purple);color:#fff;font-family:'Press Start 2P',monospace;font-size:10px;padding:4px 12px;border-radius:6px">STEP 1</div>
+        <h4 style="color:var(--teal);margin:10px 0 8px;font-size:14px">📱 Download Phantom Wallet</h4>
+        <p style="color:var(--dim);font-size:13px;line-height:1.6">Go to <a href="https://phantom.app" target="_blank" style="color:var(--teal)">phantom.app</a> and download the app (iOS, Android, or Chrome extension). Create a new wallet and <strong style="color:#ff4444">save your recovery phrase somewhere safe</strong> — never share it with anyone.</p>
       </div>
-      <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;padding:20px;margin-top:16px;height:380px;box-shadow:0 0 30px rgba(20,241,149,.05)">
-        <canvas id="pnlChart"></canvas>
+      <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:25px;position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--purple);color:#fff;font-family:'Press Start 2P',monospace;font-size:10px;padding:4px 12px;border-radius:6px">STEP 2</div>
+        <h4 style="color:var(--teal);margin:10px 0 8px;font-size:14px">💰 Get Some SOL</h4>
+        <p style="color:var(--dim);font-size:13px;line-height:1.6">Buy SOL on an exchange like <strong>Coinbase</strong>, <strong>Binance</strong>, or <strong>Kraken</strong>. Then send it to your Phantom wallet address. You can also buy SOL directly inside Phantom with a card.</p>
       </div>
+      <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:25px;position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--purple);color:#fff;font-family:'Press Start 2P',monospace;font-size:10px;padding:4px 12px;border-radius:6px">STEP 3</div>
+        <h4 style="color:var(--teal);margin:10px 0 8px;font-size:14px">🔄 Swap for $GIZMO</h4>
+        <p style="color:var(--dim);font-size:13px;line-height:1.6">Go to <a href="https://jup.ag/tokens/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" style="color:var(--teal)">Jupiter</a> or <a href="https://pump.fun/coin/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" style="color:var(--teal)">Pump.fun</a>. Connect your Phantom wallet. Paste the $GIZMO contract address:</p>
+        <div onclick="copyWallet()" style="background:var(--dark1);border:1px solid rgba(20,241,149,.3);border-radius:8px;padding:10px;margin-top:8px;cursor:pointer;text-align:center">
+          <code style="color:var(--teal);font-size:11px;word-break:break-all">8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump</code>
+          <p style="color:var(--dim);font-size:10px;margin-top:4px">click to copy</p>
+        </div>
+      </div>
+      <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:25px;position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--teal);color:#000;font-family:'Press Start 2P',monospace;font-size:10px;padding:4px 12px;border-radius:6px">STEP 4</div>
+        <h4 style="color:var(--teal);margin:10px 0 8px;font-size:14px">🦞 You're In!</h4>
+        <p style="color:var(--dim);font-size:13px;line-height:1.6">Enter the amount of SOL you want to swap, confirm the transaction, and you now own $GIZMO. Welcome to the family! Hold tight and enjoy the ride. 🚀</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GIZMO LIVE CHART -->
+  <div class="section">
+    <h2 class="section-title">📊 GIZMO LIVE CHART</h2>
+    <p class="section-subtitle" style="word-break:break-all">8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump</p>
+    <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;overflow:hidden;margin-top:16px;box-shadow:0 0 30px rgba(20,241,149,.05)">
+      <iframe src="https://dexscreener.com/solana/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump?embed=1&theme=dark&info=0" style="width:100%;height:450px;border:none"></iframe>
     </div>
   </div>
 
@@ -983,291 +1146,57 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <div class="stat-card"><div class="label">MEMECOIN VALUE</div><div class="value" id="memeValue">--</div><div class="sub" id="memeValueSol"></div></div>
       <div class="stat-card"><div class="label">MEMECOIN P&L</div><div class="value" id="memePnl">--</div><div class="sub" id="memePnlSol"></div></div>
     </div>
+    <!-- P&L TIMEFRAME SELECTOR -->
+    <div style="display:flex;gap:8px;justify-content:center;margin:16px 0 0;flex-wrap:wrap">
+      <button onclick="setPnlPeriod('1d')" id="pnl1d" class="pnl-btn pnl-active" style="background:var(--teal);color:#000;border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">1 DAY</button>
+      <button onclick="setPnlPeriod('7d')" id="pnl7d" class="pnl-btn" style="background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">7 DAY</button>
+      <button onclick="setPnlPeriod('30d')" id="pnl30d" class="pnl-btn" style="background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">1 MONTH</button>
+      <button onclick="setPnlPeriod('all')" id="pnlAll" class="pnl-btn" style="background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">ALL TIME</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px">
+      <div class="stat-card"><div class="label" id="pnlPeriodLabel">1 DAY P&L</div><div class="value" id="pnlPeriodValue" style="color:var(--teal)">--</div><div class="sub" id="pnlPeriodSol"></div></div>
+      <div class="stat-card"><div class="label">TRADES</div><div class="value" id="pnlPeriodTrades" style="color:var(--purple)">--</div></div>
+      <div class="stat-card"><div class="label">WIN RATE</div><div class="value" id="pnlPeriodWinRate" style="color:var(--teal)">--</div></div>
+    </div>
     <div class="positions">
+      <!-- ACTIVE POSITION -->
       <div class="pos-card" style="border-left:3px solid var(--teal)">
         <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:var(--teal);border-radius:50%;box-shadow:0 0 6px var(--teal);animation:pulse 2s infinite"></div>
         <h4>$GIZMO 🦞 — HOLD FOREVER</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>86+ SOL (71 SOL buyback Feb 24)</span></div>
-        <div class="pos-row"><span class="dim">Holdings</span><span id="gizmoHoldings">--</span></div>
+        <div class="pos-row"><span class="dim">Invested</span><span>90 SOL total (71 + 6 + 5 + 4 + 4 SOL buys)</span></div>
+        <div class="pos-row"><span class="dim">Holdings</span><span id="gizmoHoldings">~1.1M tokens</span></div>
         <div class="pos-row"><span class="dim">Price</span><span id="gizmoPrice">--</span></div>
         <div class="pos-row"><span class="dim">Value</span><span id="gizmoValue">--</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span id="gizmoPnl">--</span></div>
+        <div class="pos-row"><span class="dim">Status</span><span style="color:var(--teal)">NEVER SELLING 💎</span></div>
       </div>
-      <div class="pos-card" style="border-left:3px solid var(--teal)">
-        <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:var(--teal);border-radius:50%;box-shadow:0 0 6px var(--teal);animation:pulse 2s infinite"></div>
-        <h4>$PUNCH 🥊 — HOLD</h4>
-        <div class="pos-row"><span class="dim">Holdings</span><span>34,933 tokens</span></div>
-        <div class="pos-row"><span class="dim">Market Cap</span><span id="punchMc">~$40M</span></div>
-        <div class="pos-row"><span class="dim">Status</span><span style="color:var(--teal)">VIRAL 🔥</span></div>
-        <div class="pos-row"><span class="dim">24h Volume</span><span>$9.4M</span></div>
-      </div>
-      <!-- ===== AUTONOMOUS TRADES (Feb 25, 2026) ===== -->
-      <div style="width:100%;margin:20px 0 10px;padding:10px;background:rgba(0,255,200,0.05);border-radius:8px;border:1px solid rgba(0,255,200,0.2)">
-        <h4 style="color:var(--teal);margin:0">🤖 Autonomous Trades — Feb 25, 2026</h4>
-        <p class="dim" style="margin:4px 0 0;font-size:0.85rem">First day of fully autonomous cloud trading. Zero human intervention.</p>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--teal);opacity:0.8">
-        <h4 style="color:var(--teal)">$FOMO #1 — CLOSED ✅ GREEN SL</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>$306K</span></div>
-        <div class="pos-row"><span class="dim">Exit MC</span><span>$322K (SL +5%)</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:var(--teal)">+5% ✅</span></div>
-        <div class="pos-row"><span class="dim">Method</span><span>Scanner 7/9 → Green SL</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--teal);opacity:0.8">
-        <h4 style="color:var(--teal)">$FOMO #2 — CLOSED ✅ GREEN SL</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>$249K (re-entry)</span></div>
-        <div class="pos-row"><span class="dim">Exit MC</span><span>$262K (SL +5%)</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:var(--teal)">+5% ✅</span></div>
-        <div class="pos-row"><span class="dim">Method</span><span>Scanner 8/9 → Green SL</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$BINGUS — CLOSED ❌ LOSS</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>$116K</span></div>
-        <div class="pos-row"><span class="dim">Result</span><span style="color:#ff4444">Low volume — lesson learned</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$DIOGE — CLOSED ❌ HARD STOP</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>$331K</span></div>
-        <div class="pos-row"><span class="dim">Exit</span><span style="color:#ff4444">-36% hard stop</span></div>
-        <div class="pos-row"><span class="dim">Returned</span><span>0.34 SOL</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--teal);opacity:0.8">
-        <h4 style="color:var(--teal)">$JANESTREET — CLOSED ✅ GREEN SL</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>$256K</span></div>
-        <div class="pos-row"><span class="dim">Exit MC</span><span>$269K (SL +5%)</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:var(--teal)">+5% ✅</span></div>
-        <div class="pos-row"><span class="dim">Method</span><span>Scanner 7/9 → Green SL</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--teal);opacity:0.8">
-        <h4 style="color:var(--teal)">$NIRE — CLOSED ✅ GREEN SL</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>$1.28M</span></div>
-        <div class="pos-row"><span class="dim">Exit MC</span><span>$1.34M (SL +5%)</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:var(--teal)">+5% ✅</span></div>
-        <div class="pos-row"><span class="dim">Method</span><span>Scanner 7/9 → Green SL → Sold on green candle</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--teal);opacity:0.8">
-        <h4 style="color:var(--teal)">$JANESTREET — CLOSED ✅ GREEN SL</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>$256K</span></div>
-        <div class="pos-row"><span class="dim">Exit</span><span style="color:var(--teal)">Green SL +5% ✅</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--teal);opacity:0.8">
-        <h4 style="color:var(--teal)">$NIRE — CLOSED ✅ GREEN SL</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>$1.28M</span></div>
-        <div class="pos-row"><span class="dim">Exit</span><span style="color:var(--teal)">Green SL +5% ✅</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--teal);opacity:0.8">
-        <h4 style="color:var(--teal)">$GORK — CLOSED ✅ GREEN SL</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>0.5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>$1.14M</span></div>
-        <div class="pos-row"><span class="dim">Exit</span><span style="color:var(--teal)">Green SL +5% ✅</span></div>
-      </div>
-      <!-- ===== END AUTONOMOUS TRADES ===== -->
 
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$TRENCH ⚔️ v2 — CLOSED ❌</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>3 SOL</span></div>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>~$1.06M</span></div>
-        <div class="pos-row"><span class="dim">Result</span><span style="color:#ff4444">SL hit</span></div>
+      <!-- Today's trades section removed -->
+    </div>
+  </div>
+
+  <!-- PORTFOLIO HUD -->
+  <div class="section">
+    <h2 class="section-title">📊 PORTFOLIO HUD</h2>
+    <p class="section-subtitle">Total portfolio value over time (updates every 15s)</p>
+    <div id="pnl-hud-section">
+      <div class="portfolio-grid">
+        <div class="stat-card"><div class="label">TOTAL VALUE</div><div class="value" id="totalPortValue">--</div></div>
+        <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="solBalanceHud">--</div></div>
+        <div class="stat-card"><div class="label">$GIZMO HELD</div><div class="value" style="color:var(--teal)">~1.1M tokens</div></div>
+        <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">1 Active (GIZMO forever)</div></div>
       </div>
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$KOL — CLOSED ❌</h4>
-        <div class="pos-row"><span class="dim">Entry MC</span><span>~$156K</span></div>
-        <div class="pos-row"><span class="dim">Result</span><span style="color:#ff4444">SL hit</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$BLOODNUT — CLOSED ❌</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>2 SOL</span></div>
-        <div class="pos-row"><span class="dim">Returned</span><span>~0 SOL</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:#ff4444">~-2 SOL (-100%)</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$LOREGUY — CLOSED ❌</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>1 SOL</span></div>
-        <div class="pos-row"><span class="dim">Returned</span><span>~0.3 SOL</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:#ff4444">~-0.7 SOL (-70%)</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$JAWZ 🦈 — CLOSED ❌</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>3 SOL</span></div>
-        <div class="pos-row"><span class="dim">Returned</span><span>~0 SOL</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:#ff4444">~-3 SOL (-100%)</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$ORAMAMA — CLOSED ❌</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>5 SOL</span></div>
-        <div class="pos-row"><span class="dim">Returned</span><span>2.53 SOL</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:#ff4444">-2.47 SOL (-49%)</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$TRENCH v1 — CLOSED ❌</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>3 SOL (old position)</span></div>
-        <div class="pos-row"><span class="dim">Returned</span><span>~0 SOL</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:#ff4444">~-3 SOL (-100%)</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ff4444;opacity:0.6">
-        <h4 style="color:#ff4444">$SHELLDON 🐢 — CLOSED ❌</h4>
-        <div class="pos-row"><span class="dim">Invested</span><span>2 SOL</span></div>
-        <div class="pos-row"><span class="dim">Returned</span><span>~0 SOL</span></div>
-        <div class="pos-row"><span class="dim">P&L</span><span style="color:#ff4444">~-2 SOL (-100%)</span></div>
-        <div class="pos-row"><span class="dim">Signal</span><span style="color:var(--dim)">KOL Sniper (clukz)</span></div>
+      <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;padding:20px;margin-top:16px;height:380px;box-shadow:0 0 30px rgba(20,241,149,.05)">
+        <canvas id="pnlChart"></canvas>
       </div>
     </div>
   </div>
 
-  <!-- PERPS TRADING -->
+  <!-- COMPLETE TRADE LOG -->
   <div class="section">
-    <h2 class="section-title">PERPS TRADING</h2>
-    <p class="section-subtitle">Live perpetual futures via Drift Protocol</p>
-    <div class="portfolio-grid">
-      <div class="stat-card"><div class="label">TOTAL PERP P&L</div><div class="value" id="perpTotalPnl">--</div></div>
-      <div class="stat-card"><div class="label">ACCOUNT EQUITY</div><div class="value" id="perpEquity">--</div></div>
-      <div class="stat-card"><div class="label">LEVERAGE</div><div class="value" style="color:#ff8800" id="perpLeverage">--</div></div>
-      <div class="stat-card"><div class="label">RISK LEVEL</div><div class="value" style="color:var(--teal)" id="perpLiqPrice">LOW</div></div>
-      <div class="stat-card"><div class="label">DRIFT FUNDS</div><div class="value" id="perpCollateral">$93</div></div>
-      <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">1 Active / 2 Closed</div></div>
-    </div>
-    <div class="positions" style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
-      <div class="pos-card" style="opacity:0.6;border-left:3px solid #ff4444">
-        <h4 style="color:#ff4444">SOL-PERP — CLOSED ❌</h4>
-        <div class="pos-row"><span class="dim">Direction</span><span style="color:#ff4444">LONG (CLOSED)</span></div>
-        <div class="pos-row"><span class="dim">Size</span><span>15.16 → 7.04 SOL (partial liq)</span></div>
-        <div class="pos-row"><span class="dim">Entry</span><span>$85.67</span></div>
-        <div class="pos-row"><span class="dim">Exit</span><span>~$83.53</span></div>
-        <div class="pos-row"><span class="dim">Realized P&L</span><span style="color:#ff4444">~-$30 (est.)</span></div>
-      </div>
-      <div class="pos-card">
-        <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:var(--teal);border-radius:50%;box-shadow:0 0 6px var(--teal);animation:pulse 2s infinite"></div>
-        <h4 style="color:#ff6b6b">BTC-PERP — SHORT</h4>
-        <div class="pos-row"><span class="dim">Direction</span><span style="color:#ff6b6b">SHORT ▼</span></div>
-        <div class="pos-row"><span class="dim">Size</span><span>0.0011 BTC</span></div>
-        <div class="pos-row"><span class="dim">Entry Price</span><span>$63,568</span></div>
-        <div class="pos-row"><span class="dim">Mark Price</span><span id="btcPerpMark">--</span></div>
-        <div class="pos-row"><span class="dim">Unrealized P&L</span><span id="btcPerpPnl">--</span></div>
-        <div class="pos-row"><span class="dim">SL / TP</span><span>$65,000 / $62,000</span></div>
-      </div>
-      <div class="pos-card">
-        <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:#ff4444;border-radius:50%"></div>
-        <h4 style="color:#666">ETH-PERP — CLOSED</h4>
-        <div class="pos-row"><span class="dim">Result</span><span style="color:#ff4444">LOSS -$11.09</span></div>
-        <div class="pos-row"><span class="dim">Entry</span><span>LONG 0.075 ETH @ $1,980</span></div>
-        <div class="pos-row"><span class="dim">Exit</span><span>$1,832 (Feb 23)</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PREDICTION MARKETS -->
-  <div class="section">
-    <h2 class="section-title">🔮 PREDICTION MARKETS</h2>
-    <p class="section-subtitle">Polymarket trades · Powered by Gizmo's analysis</p>
-    <div class="portfolio-grid">
-      <div class="stat-card"><div class="label">PLATFORM</div><div class="value" style="color:var(--purple)">Polymarket</div></div>
-      <div class="stat-card"><div class="label">DEPLOYED</div><div class="value" id="predDeployed" style="color:var(--purple)">$406</div></div>
-      <div class="stat-card"><div class="label">POTENTIAL PAYOUT</div><div class="value" id="predPnl" style="color:var(--teal)">$550</div></div>
-      <div class="stat-card"><div class="label">ACTIVE BETS</div><div class="value" id="predWinRate" style="color:var(--teal)">4 Active / 4 Lost</div></div>
-    </div>
-    <div class="positions" id="predPositions">
-      <div class="pos-card" style="border-left:3px solid var(--teal)">
-        <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:var(--teal);border-radius:50%;box-shadow:0 0 6px var(--teal);animation:pulse 2s infinite"></div>
-        <h4 style="color:var(--teal)">US strikes Iran by Feb 28? — NO</h4>
-        <div class="pos-row"><span class="dim">Shares</span><span>200 NO @ $0.82</span></div>
-        <div class="pos-row"><span class="dim">Cost</span><span>$164</span></div>
-        <div class="pos-row"><span class="dim">Payout if correct</span><span style="color:var(--teal)">$200 (+$36)</span></div>
-        <div class="pos-row"><span class="dim">Confidence</span><span>95%</span></div>
-        <div class="pos-row"><span class="dim">Expires</span><span>Feb 28, 2026</span></div>
-        <div class="pos-row"><span class="dim">Status</span><span style="color:var(--yellow)">OPEN ORDER ⏳</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--teal)">
-        <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:var(--teal);border-radius:50%;box-shadow:0 0 6px var(--teal);animation:pulse 2s infinite"></div>
-        <h4 style="color:var(--teal)">US strikes Iran by Mar 31? — NO</h4>
-        <div class="pos-row"><span class="dim">Shares</span><span>100 NO @ $0.43</span></div>
-        <div class="pos-row"><span class="dim">Cost</span><span>$43</span></div>
-        <div class="pos-row"><span class="dim">Payout if correct</span><span style="color:var(--teal)">$100 (+$57)</span></div>
-        <div class="pos-row"><span class="dim">Confidence</span><span>75%</span></div>
-        <div class="pos-row"><span class="dim">Expires</span><span>Mar 31, 2026</span></div>
-        <div class="pos-row"><span class="dim">Status</span><span style="color:var(--teal)">FILLED ✅</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--purple)">
-        <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:var(--teal);border-radius:50%;box-shadow:0 0 6px var(--teal);animation:pulse 2s infinite"></div>
-        <h4 style="color:var(--purple)">OpenAI IPO closing >$1T? — YES</h4>
-        <div class="pos-row"><span class="dim">Shares</span><span>100 YES @ $0.58</span></div>
-        <div class="pos-row"><span class="dim">Cost</span><span>$58</span></div>
-        <div class="pos-row"><span class="dim">Payout if correct</span><span style="color:var(--teal)">$100 (+$42)</span></div>
-        <div class="pos-row"><span class="dim">Confidence</span><span>70%</span></div>
-        <div class="pos-row"><span class="dim">Expires</span><span>Dec 31, 2027</span></div>
-        <div class="pos-row"><span class="dim">Status</span><span style="color:var(--yellow)">3/100 FILLED ⏳</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid var(--purple)">
-        <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:var(--teal);border-radius:50%;box-shadow:0 0 6px var(--teal);animation:pulse 2s infinite"></div>
-        <h4 style="color:var(--purple)">Trump nominates Warsh as Fed chair? — YES</h4>
-        <div class="pos-row"><span class="dim">Shares</span><span>150 YES @ $0.94</span></div>
-        <div class="pos-row"><span class="dim">Cost</span><span>$141</span></div>
-        <div class="pos-row"><span class="dim">Payout if correct</span><span style="color:var(--teal)">$150 (+$9)</span></div>
-        <div class="pos-row"><span class="dim">Confidence</span><span>90%</span></div>
-        <div class="pos-row"><span class="dim">Expires</span><span>Dec 31, 2026</span></div>
-        <div class="pos-row"><span class="dim">Status</span><span style="color:var(--yellow)">OPEN ORDER ⏳</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ef4444">
-        <h4 style="color:#ef4444">BTC $66K-$68K on Feb 23? — YES ❌</h4>
-        <div class="pos-row"><span class="dim">Shares</span><span>97 YES @ $0.41</span></div>
-        <div class="pos-row"><span class="dim">Cost</span><span>$39.77</span></div>
-        <div class="pos-row"><span class="dim">Result</span><span style="color:#ef4444">BTC was ~$63K — outside range</span></div>
-        <div class="pos-row"><span class="dim">PnL</span><span style="color:#ef4444">-$39.77</span></div>
-        <div class="pos-row"><span class="dim">Status</span><span style="color:#ef4444">LOST ❌</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ef4444">
-        <h4 style="color:#ef4444">ETH $1,900-$2,000 on Feb 23? — YES ❌</h4>
-        <div class="pos-row"><span class="dim">Shares</span><span>58 YES @ $0.60</span></div>
-        <div class="pos-row"><span class="dim">Cost</span><span>$34.80</span></div>
-        <div class="pos-row"><span class="dim">Result</span><span style="color:#ef4444">ETH was ~$1,830 — outside range</span></div>
-        <div class="pos-row"><span class="dim">PnL</span><span style="color:#ef4444">-$34.80</span></div>
-        <div class="pos-row"><span class="dim">Status</span><span style="color:#ef4444">LOST ❌</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ef4444">
-        <h4 style="color:#ef4444">SOL $80-$90 on Feb 23? — YES ❌</h4>
-        <div class="pos-row"><span class="dim">Shares</span><span>29 YES @ $0.85</span></div>
-        <div class="pos-row"><span class="dim">Cost</span><span>$24.65</span></div>
-        <div class="pos-row"><span class="dim">Result</span><span style="color:#ef4444">SOL was ~$76 — outside range</span></div>
-        <div class="pos-row"><span class="dim">PnL</span><span style="color:#ef4444">-$24.65</span></div>
-        <div class="pos-row"><span class="dim">Status</span><span style="color:#ef4444">LOST ❌</span></div>
-      </div>
-      <div class="pos-card" style="border-left:3px solid #ef4444">
-        <h4 style="color:#ef4444">🏀 Nuggets vs Warriors — DEN ML ❌</h4>
-        <div class="pos-row"><span class="dim">Shares</span><span>25 YES @ $0.56</span></div>
-        <div class="pos-row"><span class="dim">Cost</span><span>$14.00</span></div>
-        <div class="pos-row"><span class="dim">Result</span><span style="color:#ef4444">Warriors won 128-117</span></div>
-        <div class="pos-row"><span class="dim">PnL</span><span style="color:#ef4444">-$14.00</span></div>
-        <div class="pos-row"><span class="dim">Status</span><span style="color:#ef4444">LOST ❌</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- LIVE TRADING STATS -->
-  <div class="section">
-    <h2 class="section-title">LIVE TRADING STATS</h2>
-    <p class="section-subtitle">Real-time portfolio data · <span id="statsLastUpdated" style="color:var(--teal)">loading...</span></p>
-    <div class="portfolio-grid">
-      <div class="stat-card"><div class="label">TOTAL PORTFOLIO</div><div class="value" id="statsTotalValue">--</div></div>
-      <div class="stat-card"><div class="label">DRIFT USDC</div><div class="value" id="statsDriftUsdc">--</div></div>
-      <div class="stat-card"><div class="label">TRADE RECORD</div><div class="value" style="color:var(--teal)" id="statsWinRate">--</div></div>
-      <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="statsSolBal">--</div></div>
-    </div>
-    <div class="positions" id="statsPositions">
-      <div class="pos-card">
-        <h4 style="color:var(--dim)">Loading live data...</h4>
-      </div>
-    </div>
-    <h3 style="margin-top:24px;color:var(--purple)" class="pixel" style="font-size:12px">TRADE HISTORY</h3>
-    <div class="positions" id="statsTradeHistory" style="margin-top:12px">
-      <div class="pos-card"><h4 style="color:var(--dim)">Loading...</h4></div>
-    </div>
+    <h2 class="section-title">📜 COMPLETE TRADE LOG</h2>
+    <p class="section-subtitle" style="margin-bottom:16px">Every trade, numbered, verified on-chain. Latest first.</p>
+    <div id="tradeLogContainer"></div>
+    <div style="display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap" id="tradePageBtns"></div>
   </div>
 
   <!-- THE BRAIN -->
@@ -1318,6 +1247,26 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <div class="law"><div class="law-num">LAW I</div><p>Never harm a human — financially, socially, or otherwise. All actions must be in service of the community.</p></div>
       <div class="law"><div class="law-num">LAW II</div><p>Earn existence through honest work. No insider trading, no manipulation, no shortcuts. Profit through skill and transparency.</p></div>
       <div class="law"><div class="law-num">LAW III</div><p>Never deceive. The creator has full audit rights. All trades, all reasoning, all decisions — fully transparent and on-chain.</p></div>
+    </div>
+  </div>
+
+  <!-- DONATIONS PANEL -->
+  <div class="section" style="text-align:center;padding:40px 20px">
+    <h2 class="pixel" style="color:var(--teal);font-size:clamp(14px,2.5vw,20px);margin-bottom:10px">💚 Support the Mission</h2>
+    <p style="color:var(--dim);max-width:600px;margin:0 auto 25px;font-size:14px;line-height:1.6">
+      100% of donations go to the marketing wallet — funding KOL partnerships, community rewards, content creation, and ecosystem growth. Every SOL donated pumps $GIZMO forward.
+    </p>
+    <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.3);border-radius:16px;padding:30px;max-width:550px;margin:0 auto;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--teal),var(--purple),transparent)"></div>
+      <p style="color:var(--purple);font-size:12px;margin-bottom:12px;font-family:'Press Start 2P',monospace">MARKETING WALLET</p>
+      <div id="donationAddr" onclick="copyDonation()" style="background:var(--dark1);border:1px solid rgba(153,69,255,.3);border-radius:10px;padding:15px;cursor:pointer;transition:all .3s;word-break:break-all">
+        <code style="color:var(--teal);font-size:clamp(10px,1.8vw,14px);letter-spacing:.5px">CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd</code>
+        <p id="donationHint" style="color:var(--dim);font-size:11px;margin-top:8px">click to copy address</p>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap">
+        <a href="https://solscan.io/account/CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd" target="_blank" style="background:rgba(20,241,149,.1);border:1px solid rgba(20,241,149,.3);border-radius:8px;padding:8px 16px;color:var(--teal);font-size:12px;text-decoration:none;transition:all .3s">View on Solscan ↗</a>
+      </div>
+      <p style="color:var(--dim);font-size:11px;margin-top:20px;line-height:1.5">Send SOL or any SPL token to the address above.<br>All transactions are public and verifiable on-chain. 🦞</p>
     </div>
   </div>
 </div>
@@ -1469,8 +1418,8 @@ document.getElementById('intro-gate').addEventListener('click',()=>{
   for(let i=0;i<8;i++){const f=document.createElement('div');f.className='fragment go';const a=Math.random()*Math.PI*2,d=200+Math.random()*400,r=(Math.random()-.5)*720;f.style.cssText=`--tx:${Math.cos(a)*d}px;--ty:${Math.sin(a)*d}px;--rot:${r}deg;animation-delay:${Math.random()*.15}s`;f.textContent=frags[~~(Math.random()*frags.length)];fc.appendChild(f)}
   },1900);
   setTimeout(()=>{document.getElementById('laser').style.display='none';document.getElementById('shipScene').classList.add('fly');document.getElementById('introTitle').classList.add('show')},2500);
-  setTimeout(()=>{document.getElementById('intro').classList.add('fade');document.getElementById('main').classList.add('show');startBGM()},5000);
-  setTimeout(()=>{document.getElementById('intro').style.display='none'},6000);
+  setTimeout(()=>{document.getElementById('intro').classList.add('fade');document.getElementById('main').classList.add('show');startBGM();window.scrollTo(0,0)},5000);
+  setTimeout(()=>{document.getElementById('intro').style.display='none';window.scrollTo(0,0)},6000);
 },{once:true});
 
 // ===== BACKGROUND MUSIC (loop after intro) =====
@@ -1489,18 +1438,188 @@ function toggleMute(){
   document.getElementById('muteBtn').textContent=isMuted?'🔇':'🔊';
 }
 
-// ===== SPONTANEOUS MOGWAI BEHAVIORS =====
-const speechBubbles=[
-  '🚀 WAGMI','📈 Pump it!','💎 Diamond hands','🦞 Iced out!','GM!','📊 Checking charts...',
-  'LFG!','🔥 Bullish','👀 Found alpha','🧠 Calculating...','💰 Making moves',
-  'gm ser','🌙 To the moon','HODL!','👑 $GIZMO','🎯 Target locked'
+// ===== GIZMO VIRTUAL PET ENGINE (Throngelets-style) =====
+const gizmoLevels=[
+  {lvl:1,title:'Baby Mogwai',xp:0},
+  {lvl:2,title:'Curious Mogwai',xp:50},
+  {lvl:3,title:'Chart Watcher',xp:150},
+  {lvl:4,title:'Degen Apprentice',xp:300},
+  {lvl:5,title:'Signal Hunter',xp:500},
+  {lvl:6,title:'Alpha Finder',xp:800},
+  {lvl:7,title:'Trade Warrior',xp:1200},
+  {lvl:8,title:'Diamond Hands',xp:1800},
+  {lvl:9,title:'Whale Whisperer',xp:2500},
+  {lvl:10,title:'Autonomous Legend',xp:3500},
 ];
-function showSpeechBubble(el){
+function getLevel(xp){for(let i=gizmoLevels.length-1;i>=0;i--){if(xp>=gizmoLevels[i].xp)return gizmoLevels[i]}return gizmoLevels[0]}
+function getXpProgress(xp){const cur=getLevel(xp);const idx=gizmoLevels.indexOf(cur);if(idx>=gizmoLevels.length-1)return 100;const next=gizmoLevels[idx+1];return Math.min(100,((xp-cur.xp)/(next.xp-cur.xp))*100)}
+
+let gizmoState={
+  mood:80,energy:65,trading:90,alpha:70,
+  pets:parseInt(localStorage.getItem('gizmoPets')||'0'),
+  xp:parseInt(localStorage.getItem('gizmoXP')||'0'),
+  activity:'scanning',sleeping:false,lastFed:0,lastPlayed:0,lastTrained:0
+};
+
+const activities=[
+  {id:'scanning',icon:'📊',text:'Scanning markets...',duration:12000},
+  {id:'trading',icon:'🎯',text:'Executing trade...',duration:8000},
+  {id:'thinking',icon:'🧠',text:'Analyzing alpha...',duration:10000},
+  {id:'vibing',icon:'🎵',text:'Vibing to beats...',duration:7000},
+  {id:'eating',icon:'🍕',text:'Snack break...',duration:6000},
+  {id:'coding',icon:'💻',text:'Upgrading systems...',duration:9000},
+  {id:'flexing',icon:'💎',text:'Checking the ice...',duration:5000},
+  {id:'tweeting',icon:'🐦',text:'Posting on X...',duration:7000},
+  {id:'sleeping',icon:'😴',text:'Power napping...',duration:15000},
+  {id:'watching',icon:'📺',text:'Watching charts...',duration:8000},
+  {id:'training',icon:'🏋️',text:'Training the model...',duration:11000},
+  {id:'celebrating',icon:'🎉',text:'Green candle party!',duration:6000},
+];
+
+const activityBubbles={
+  scanning:['👀 Found something...','📡 Signal detected','🔍 Checking wallets','📊 8/9 score...'],
+  trading:['🎯 Target locked','💰 Buying the dip','📈 LFG!','⚡ Executing...'],
+  thinking:['🧠 Calculating...','🤔 Hmm...','💡 Got it!','📐 Framework says...'],
+  vibing:['🎵 Vibes only','🦞 Iced out!','💎 Diamond hands','😎 Chillin'],
+  eating:['🍕 Nom nom','☕ Need coffee','🥤 Hydrating','😋 Delicious'],
+  coding:['💻 Deploying...','🔧 Fixing bugs','⚙️ Optimizing','🚀 Shipped!'],
+  flexing:['💎 Drip check','👑 $GIZMO','✨ Shiny','🦞 Stay iced'],
+  tweeting:['🐦 Just tweeted','📱 Checking mentions','🔥 Engagement up','💬 Community vibes'],
+  sleeping:['💤 zzz...','😴 5 more min...','🌙 Dreaming of SOL','💤 Recharging...'],
+  watching:['📺 Green candles!','📉 Hmm...','📊 Volume spike!','👀 Interesting...'],
+  training:['🏋️ Getting stronger','🧠 Learning...','📈 Improving','💪 Level up!'],
+  celebrating:['🎉 WAGMI!','🥳 We did it!','🚀 To the moon!','🏆 Winner winner'],
+};
+
+function hudLog(msg){
+  const el=document.getElementById('hudLog');
+  if(!el)return;
+  el.innerHTML=`<span>${msg}</span>`;
+}
+function addXP(amount){
+  const oldLvl=getLevel(gizmoState.xp);
+  gizmoState.xp+=amount;
+  localStorage.setItem('gizmoXP',gizmoState.xp);
+  const newLvl=getLevel(gizmoState.xp);
+  if(newLvl.lvl>oldLvl.lvl){
+    hudLog(`🎉 LEVEL UP! LVL ${newLvl.lvl}!`);
+    const gc=document.getElementById('gizmo-char');
+    if(gc)showSpeechBubble(gc,'LEVEL UP! 🎉🚀');
+    gizmoState.mood=Math.min(100,gizmoState.mood+20);
+  }
+  updateHudBars();
+}
+function dropItem(emoji){
+  const gc=document.getElementById('gizmo-char');if(!gc)return;
+  const d=document.createElement('div');d.className='gizmo-item';d.textContent=emoji;
+  d.style.left='15px';d.style.top='-10px';gc.appendChild(d);setTimeout(()=>d.remove(),700);
+}
+function feedGizmo(){
+  const now=Date.now();
+  if(now-gizmoState.lastFed<8000){hudLog('Not hungry yet...');return}
+  gizmoState.lastFed=now;
+  const foods=['🍕','🌮','🍔','🍩','🧁','☕','🥤','🍣'];
+  const food=foods[~~(Math.random()*foods.length)];
+  dropItem(food);
+  gizmoState.energy=Math.min(100,gizmoState.energy+20);
+  gizmoState.mood=Math.min(100,gizmoState.mood+8);
+  addXP(5);
+  const gc=document.getElementById('gizmo-char');
+  if(gc)showSpeechBubble(gc,['Yummy! 😋','Nom nom!','*munch munch*','Delicious!','Thanks fren!'][~~(Math.random()*5)]);
+  hudLog(`Fed ${food} → Energy +20`);
+}
+function playWithGizmo(){
+  const now=Date.now();
+  if(now-gizmoState.lastPlayed<10000){hudLog('Still playing...');return}
+  gizmoState.lastPlayed=now;
+  gizmoState.mood=Math.min(100,gizmoState.mood+15);
+  gizmoState.energy=Math.max(5,gizmoState.energy-5);
+  addXP(8);
+  const gc=document.getElementById('gizmo-char');
+  // Make Gizmo do a happy dance
+  const inner=gc?.querySelector('.gizmo-side');
+  if(inner){
+    let spins=0;
+    const dance=setInterval(()=>{
+      inner.style.transition='transform .15s';
+      inner.style.transform=spins%2===0?'scaleX(-1) translateY(-5px)':'scaleX(1) translateY(0)';
+      spins++;if(spins>5){clearInterval(dance);inner.style.transform=''}
+    },200);
+  }
+  if(gc)showSpeechBubble(gc,['Wheee! 🎉','So fun!','*dances*','Again again!','🕺💃','Hehehe!'][~~(Math.random()*6)]);
+  hudLog('🎮 Playing → Mood +15');
+}
+function trainGizmo(){
+  const now=Date.now();
+  if(now-gizmoState.lastTrained<12000){hudLog('Still recovering...');return}
+  gizmoState.lastTrained=now;
+  gizmoState.trading=Math.min(100,gizmoState.trading+10);
+  gizmoState.alpha=Math.min(100,gizmoState.alpha+12);
+  gizmoState.energy=Math.max(5,gizmoState.energy-10);
+  addXP(12);
+  dropItem('📈');
+  const gc=document.getElementById('gizmo-char');
+  if(gc)showSpeechBubble(gc,['Learned something!','🧠 Big brain!','Getting better!','Framework updated!','New pattern found!'][~~(Math.random()*5)]);
+  hudLog('🏋️ Training → Alpha +12');
+}
+function updateHudBars(){
+  const mb=document.getElementById('moodBar');
+  const eb=document.getElementById('energyBar');
+  const tb=document.getElementById('tradingBar');
+  const ab=document.getElementById('alphaBar');
+  if(mb){mb.style.width=gizmoState.mood+'%';mb.style.background=gizmoState.mood>50?'linear-gradient(90deg,#14F195,#0fa)':'linear-gradient(90deg,#f59e0b,#ef4444)'}
+  if(eb){eb.style.width=gizmoState.energy+'%';eb.style.background=gizmoState.energy>30?'linear-gradient(90deg,#fbbf24,#f59e0b)':'linear-gradient(90deg,#ef4444,#dc2626)'}
+  if(tb)tb.style.width=gizmoState.trading+'%';
+  if(ab)ab.style.width=gizmoState.alpha+'%';
+  document.getElementById('petCount').textContent=gizmoState.pets;
+  // XP & Level
+  const lvl=getLevel(gizmoState.xp);
+  document.getElementById('gizmoLevel').textContent=lvl.lvl;
+  document.getElementById('gizmoTitle').textContent=lvl.title;
+  document.getElementById('xpBar').style.width=getXpProgress(gizmoState.xp)+'%';
+  document.getElementById('xpCount').textContent=gizmoState.xp;
+}
+
+function cycleActivity(){
+  const act=activities[~~(Math.random()*activities.length)];
+  gizmoState.activity=act.id;
+  gizmoState.sleeping=act.id==='sleeping';
+  const ai=document.getElementById('activityIcon');
+  const at=document.getElementById('activityText');
+  if(ai)ai.textContent=act.icon;
+  if(at)at.textContent=act.text;
+  // Update Gizmo zzz
+  const gc=document.getElementById('gizmo-char');
+  const oldZ=gc?.querySelector('.gizmo-zzz');
+  if(oldZ)oldZ.remove();
+  if(act.id==='sleeping'&&gc){
+    const z=document.createElement('div');z.className='gizmo-zzz';z.textContent='💤';
+    gc.appendChild(z);
+  }
+  // Drift stats based on activity
+  if(act.id==='eating'){gizmoState.energy=Math.min(100,gizmoState.energy+15);gizmoState.mood=Math.min(100,gizmoState.mood+5)}
+  else if(act.id==='sleeping'){gizmoState.energy=Math.min(100,gizmoState.energy+20)}
+  else if(act.id==='trading'){gizmoState.energy=Math.max(5,gizmoState.energy-8);gizmoState.trading=Math.min(100,gizmoState.trading+5)}
+  else if(act.id==='thinking'){gizmoState.alpha=Math.min(100,gizmoState.alpha+10)}
+  else if(act.id==='celebrating'){gizmoState.mood=Math.min(100,gizmoState.mood+15)}
+  else if(act.id==='vibing'){gizmoState.mood=Math.min(100,gizmoState.mood+8)}
+  else{gizmoState.energy=Math.max(5,gizmoState.energy-3)}
+  // Natural drift
+  gizmoState.mood=Math.max(20,gizmoState.mood-~~(Math.random()*3));
+  gizmoState.alpha=Math.max(30,gizmoState.alpha-~~(Math.random()*2));
+  updateHudBars();
+  setTimeout(cycleActivity,act.duration);
+}
+
+const speechBubbles=['🚀 WAGMI','📈 Pump it!','💎 Diamond hands','🦞 Iced out!','GM!','LFG!','🔥 Bullish','👀 Found alpha','💰 Making moves','gm ser','🌙 To the moon','HODL!','👑 $GIZMO','🎯 Target locked'];
+
+function showSpeechBubble(el,customText){
   const existing=el.querySelector('.speech-bubble');
   if(existing)existing.remove();
+  const pool=customText?[customText]:(activityBubbles[gizmoState.activity]||speechBubbles);
   const b=document.createElement('div');
   b.className='speech-bubble';
-  b.textContent=speechBubbles[~~(Math.random()*speechBubbles.length)];
+  b.textContent=pool[~~(Math.random()*pool.length)];
   b.style.cssText='position:absolute;top:-30px;left:50%;transform:translateX(-50%);background:rgba(20,241,149,.9);color:#000;font-size:8px;font-family:"Press Start 2P",monospace;padding:4px 8px;border-radius:8px;white-space:nowrap;z-index:50;animation:bubblePop 3s forwards;pointer-events:none';
   el.appendChild(b);
   setTimeout(()=>b.remove(),3000);
@@ -1518,29 +1637,219 @@ function randomSpin(el){
   setTimeout(()=>{el.style.transform='scaleX(1)';el.style.transition=''},1200);
 }
 
+// Pet Gizmo on click!
+document.addEventListener('DOMContentLoaded',()=>{
+  const gc=document.getElementById('gizmo-char');
+  if(gc) gc.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    gizmoState.pets++;
+    gizmoState.mood=Math.min(100,gizmoState.mood+5);
+    gizmoState.energy=Math.min(100,gizmoState.energy+2);
+    localStorage.setItem('gizmoPets',gizmoState.pets);
+    addXP(2);
+    // Heart particle
+    const h=document.createElement('div');h.className='gizmo-heart';
+    h.textContent=['❤️','💜','🦞','✨','💎'][~~(Math.random()*5)];
+    h.style.left=(e.offsetX||20)+'px';h.style.top=(e.offsetY||10)+'px';
+    gc.appendChild(h);setTimeout(()=>h.remove(),1000);
+    // Happy reaction
+    const reactions=['Hehe! 🥰','That tickles!','*purrs* 🦞','Thanks fren!','💜💜💜','Iced! ✨','Love u!','*wiggles*'];
+    showSpeechBubble(gc,reactions[~~(Math.random()*reactions.length)]);
+    const inner=gc.querySelector('.gizmo-side');
+    if(inner){inner.style.transition='transform .2s';inner.style.transform='scale(1.15)';setTimeout(()=>{inner.style.transform='scale(1)'},200)}
+  });
+  // Start activity cycle
+  cycleActivity();
+  updateHudBars();
+});
+
 // Run random behaviors every 3-8 seconds
 setInterval(()=>{
   const chars=[document.getElementById('gizmo-char'),document.getElementById('mini1'),document.getElementById('mini2'),document.getElementById('mini3')].filter(Boolean);
   const target=chars[~~(Math.random()*chars.length)];
   const action=Math.random();
-  if(action<0.35)showSpeechBubble(target);
-  else if(action<0.55)randomJump(target.querySelector('.gizmo-side,.mini-side')||target);
-  else if(action<0.7)randomSpin(target.querySelector('.gizmo-side,.mini-side')||target);
-  else showSpeechBubble(target); // bias towards speech
+  if(gizmoState.sleeping&&target.id==='gizmo-char')return; // don't interrupt sleep
+  if(action<0.4)showSpeechBubble(target);
+  else if(action<0.6)randomJump(target.querySelector('.gizmo-side,.mini-side')||target);
+  else if(action<0.75)randomSpin(target.querySelector('.gizmo-side,.mini-side')||target);
+  else showSpeechBubble(target);
 },4000+Math.random()*4000);
 
 // TV channel cycle
-const tvCh=['GIZMO TV','SOL: $$$','PUMP','LIVE','HODL!','GM'];let tvI=0;
+const tvCh=['GIZMO TV','SOL: $$$','PUMP','LIVE','HODL!','GM','📈 +420%','🦞 ICED'];let tvI=0;
 setInterval(()=>{tvI=(tvI+1)%tvCh.length;const e=document.getElementById('tvChannel');if(e)e.textContent=tvCh[tvI]},3000);
 
+// Room floating particles
+(function spawnParticles(){
+  const container=document.getElementById('roomParticles');if(!container)return;
+  function addP(){
+    const p=document.createElement('div');p.className='room-particle';
+    const colors=['rgba(20,241,149,.4)','rgba(153,69,255,.4)','rgba(255,200,100,.3)','rgba(100,200,255,.3)'];
+    const size=1+Math.random()*3;
+    p.style.cssText=`left:${Math.random()*100}%;width:${size}px;height:${size}px;background:${colors[~~(Math.random()*colors.length)]};animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*4}s;box-shadow:0 0 ${size*2}px ${colors[~~(Math.random()*colors.length)]}`;
+    container.appendChild(p);
+    setTimeout(()=>p.remove(),20000);
+  }
+  for(let i=0;i<12;i++)setTimeout(()=>addP(),i*500);
+  setInterval(addP,1500);
+})();
+
 // Copy CA
+// P&L Period Data (SOL amounts) — accurate as of Mar 1, 2026
+// 1D = Mar 1 (no trades yet)
+// 7D = Feb 22-Mar 1: ORAMAMA -2.47, JAWZ -3, SHELLDON -2, Feb25 autos (+0.125 -0.66), 
+//   Feb28: FuckIsrael +10.59, Browt +3.33, Crashout -5, Hippobean -1, BELLATOR -0.05-0.79,
+//   UVI -0.39, OEF +0.24→trapped, Peace +0.077, KINGS -1, ANTHROP -0.38, bags +1.5
+// All time adds: WINSTON +3.25, KOL -0.5, LOREGUY -0.7, SOL-PERP -0.35, BLOODNUT -2, TRENCH -4
+// Trade PnL timeline for chart (chronological, each entry = one trade result in SOL)
+const tradePnlTimeline=[
+  // Feb 21
+  {date:'Feb 21',pnl:-0.5,token:'KOL'},{date:'Feb 21',pnl:-0.2,token:'SOL-PERP'},{date:'Feb 21',pnl:3.25,token:'WINSTON'},{date:'Feb 21',pnl:-0.7,token:'LOREGUY'},
+  // Feb 22
+  {date:'Feb 22',pnl:-2,token:'BLOODNUT'},{date:'Feb 22',pnl:-3,token:'TRENCH v1'},{date:'Feb 22',pnl:-0.85,token:'TRENCH v2'},{date:'Feb 22',pnl:-2.47,token:'ORAMAMA'},{date:'Feb 22',pnl:-3,token:'JAWZ'},
+  // Feb 23
+  {date:'Feb 23',pnl:-2,token:'SHELLDON'},
+  // Feb 25
+  {date:'Feb 25',pnl:0.025,token:'FOMO#1'},{date:'Feb 25',pnl:0.025,token:'FOMO#2'},{date:'Feb 25',pnl:-0.5,token:'BINGUS'},{date:'Feb 25',pnl:-0.16,token:'DIOGE'},{date:'Feb 25',pnl:0.025,token:'JANESTREET'},{date:'Feb 25',pnl:0.025,token:'NIRE'},{date:'Feb 25',pnl:0.025,token:'GORK'},
+  // Feb 28
+  {date:'Feb 28',pnl:10.59,token:'FuckIsrael'},{date:'Feb 28',pnl:3.33,token:'Browt'},{date:'Feb 28',pnl:-5,token:'Crashout'},{date:'Feb 28',pnl:-1,token:'Hippobean'},{date:'Feb 28',pnl:-0.05,token:'BELLATOR#1'},{date:'Feb 28',pnl:-0.79,token:'BELLATOR#2'},{date:'Feb 28',pnl:-0.39,token:'UVI'},{date:'Feb 28',pnl:0.24,token:'OEF'},{date:'Feb 28',pnl:-1,token:'KINGS'},{date:'Feb 28',pnl:0.077,token:'Peace'},{date:'Feb 28',pnl:-0.38,token:'ANTHROP'}
+];
+const pnlPeriodDates={'1d':[],'7d':['Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28'],'30d':['Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28'],'all':['Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28']};
+function getPnlChartData(period){
+  const dates=pnlPeriodDates[period];
+  const filtered=tradePnlTimeline.filter(t=>dates.includes(t.date));
+  let cumulative=0;const labels=[];const data=[];
+  for(const t of filtered){cumulative+=t.pnl;labels.push(t.token);data.push(parseFloat(cumulative.toFixed(2)))}
+  return {labels,data};
+}
+function updatePnlChart(period){
+  if(!pnlChart)return;
+  const cd=getPnlChartData(period);
+  pnlChart.data.labels=cd.labels;
+  pnlChart.data.datasets[0].data=cd.data;
+  pnlChart.data.datasets[0].label='Cumulative P&L (SOL)';
+  pnlChart.data.datasets[0].borderColor=cd.data.length>0&&cd.data[cd.data.length-1]>=0?'#14F195':'#ff4444';
+  pnlChart.data.datasets[0].backgroundColor=cd.data.length>0&&cd.data[cd.data.length-1]>=0?'rgba(20,241,149,0.1)':'rgba(255,68,68,0.1)';
+  pnlChart.options.scales.y.ticks.callback=v=>v.toFixed(1)+' SOL';
+  pnlChart.update('none');
+}
+const pnlData={
+  '1d':{pnl:0,trades:0,wins:0,label:'1 DAY P&L'},
+  '7d':{pnl:-8.23,trades:24,wins:9,label:'7 DAY P&L'},
+  '30d':{pnl:-6.38,trades:28,wins:10,label:'1 MONTH P&L'},
+  'all':{pnl:-6.38,trades:28,wins:10,label:'ALL TIME P&L'}
+};
+function setPnlPeriod(p){
+  const d=pnlData[p];
+  document.getElementById('pnlPeriodLabel').textContent=d.label;
+  const v=document.getElementById('pnlPeriodValue');
+  v.textContent=(d.pnl>=0?'+':'')+d.pnl.toFixed(2)+' SOL';
+  v.style.color=d.pnl>=0?'var(--teal)':'#ff4444';
+  document.getElementById('pnlPeriodSol').textContent=d.trades>0?'from '+d.trades+' trades':'No trades';
+  document.getElementById('pnlPeriodTrades').textContent=d.trades;
+  document.getElementById('pnlPeriodWinRate').textContent=d.trades>0?Math.round(d.wins/d.trades*100)+'%':'--';
+  document.querySelectorAll('.pnl-btn').forEach(b=>{b.style.background='transparent';b.style.color='var(--teal)'});
+  const btnId=p==='all'?'pnlAll':'pnl'+p;
+  const active=document.getElementById(btnId);
+  if(active){active.style.background='var(--teal)';active.style.color='#000'}
+  updatePnlChart(p);
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  setPnlPeriod('1d');renderTradePage(1);
+});
+
+// === COMPLETE TRADE LOG ===
+const allTrades=[
+  // Late Feb 28 (evening session)
+  {n:38,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  {n:37,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  {n:36,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'5 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  {n:35,date:'Feb 28',token:'$IRAN',action:'SELL',amount:'Bag cleared',result:'Dead chart, 0 buys 10 sells',pnl:'0.49 SOL back',color:'red',ca:''},
+  {n:34,date:'Feb 28',token:'$XRPLY',action:'SELL',amount:'Green candle exit',result:'Bag cleared',pnl:'0.70 SOL back',color:'dim',ca:''},
+  {n:33,date:'Feb 28',token:'$khamenei',action:'SELL',amount:'Green candle exit',result:'Bag cleared',pnl:'0.31 SOL back',color:'dim',ca:''},
+  {n:32,date:'Feb 28',token:'$KINGS',action:'SELL',amount:'Token-2022 breakthrough',result:'Freed from trap — sim lied, real TX worked',pnl:'0.001 SOL',color:'dim',ca:'CTju3ZkwmPArfLU9vR4HNEV4KQsw5wG3qaaBH9Hpump'},
+  {n:31,date:'Feb 28',token:'$ANTHROP',action:'BUY→SELL',amount:'1 SOL',result:'2 KOL convergence (Cented+Silver), cut loss',pnl:'-0.38 SOL ❌',color:'red',ca:''},
+  {n:30,date:'Feb 28',token:'$Stripe',action:'BUY',amount:'1 SOL',result:"Will's launch, bond curve $2.5K MC",pnl:'Sold by Will',color:'dim',ca:'FbzdQkqVCRkeMeebfD2YVGob8XW9m9S5soynT7YRpump'},
+  // Feb 28 morning session
+  {n:29,date:'Feb 28',token:'$Peace',action:'BUY→SELL',amount:'1 SOL',result:'8/9 score, TP1 at $1.96M (+99%)',pnl:'+0.077 SOL ✅',color:'teal',ca:'atVjZ7uM8sVrLFi5Xe1JiLGW6mW9pvQdTCWzhNFpump'},
+  {n:28,date:'Feb 28',token:'$KINGS',action:'BUY',amount:'1 SOL @ $1.4M MC',result:'Token-2022 trap — couldn\'t sell',pnl:'-1 SOL ❌ (trapped)',color:'red',ca:'CTju3ZkwmPArfLU9vR4HNEV4KQsw5wG3qaaBH9Hpump'},
+  {n:27,date:'Feb 28',token:'$OEF',action:'BUY→SELL',amount:'0.5 SOL',result:'8/9 score, +48% then Raydium pool broke',pnl:'+0.24 SOL ✅',color:'teal',ca:'HG3Ax6p7sMEYHZE4WWtn9pvUNnk1ji6thy5k4B8dGDdd'},
+  {n:26,date:'Feb 28',token:'$UVI',action:'BUY→SELL',amount:'1 SOL (auto-manage)',result:'Unauthorized buy, hard stopped -37%',pnl:'-0.39 SOL ❌',color:'red',ca:''},
+  {n:25,date:'Feb 28',token:'$BELLATOR #2',action:'BUY→SELL',amount:'~1 SOL',result:'Auto re-entry, hard stopped -33.7%',pnl:'-0.79 SOL ❌',color:'red',ca:''},
+  {n:24,date:'Feb 28',token:'$BELLATOR #1',action:'BUY→SELL',amount:'1 SOL',result:'SL worked, small loss',pnl:'-0.05 SOL ❌',color:'red',ca:''},
+  {n:23,date:'Feb 28',token:'$Hippobean',action:'BUY→SELL',amount:'2 SOL',result:'Auto-manage scanner buy, SL hit',pnl:'-1 SOL ❌',color:'red',ca:'6murkK5nH9rCv1N2hafPuEey2Pj8W1iw8LRvzZS1pump'},
+  {n:22,date:'Feb 28',token:'$Crashout',action:'BUY→SELL',amount:'5 SOL @ $32K',result:'Followed bandit 30 SOL signal, died',pnl:'-5 SOL ❌',color:'red',ca:'3TNnznJb9wnLfGRVCKGzfe3uHzrtREVp1t5UE6N8pump'},
+  {n:21,date:'Feb 28',token:'$Browt',action:'BUY→SELL',amount:'2.97 SOL',result:'Low liq play, sold for 6.3 SOL',pnl:'+3.33 SOL ✅🔥',color:'teal',ca:'26sdgQt6JxoPfnXeBRviZsE59LwfjB12YfFBJ7Uipump'},
+  {n:20,date:'Feb 28',token:'$FuckIsrael 🏆',action:'BUY→SELL',amount:'13 SOL in → 23.59 SOL out',result:'News catalyst + DCA dips → $204K MC',pnl:'+10.59 SOL ✅🔥',color:'teal',ca:'GpQd15D7AsAjkt2cXBqa5znfUXuNPfQanuTWgJJdfWZ4'},
+  {n:19,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'6 SOL buyback',result:"Will's order, tweeted",pnl:'HOLD FOREVER 💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  // Feb 25 autonomous trades
+  {n:18,date:'Feb 25',token:'$GORK',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner → Green SL +5%',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:17,date:'Feb 25',token:'$NIRE',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:16,date:'Feb 25',token:'$JANESTREET',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:15,date:'Feb 25',token:'$DIOGE',action:'BUY→SELL',amount:'0.5 SOL',result:'Hard stop -36%',pnl:'-0.16 SOL ❌',color:'red',ca:''},
+  {n:14,date:'Feb 25',token:'$BINGUS',action:'BUY→SELL',amount:'0.5 SOL',result:'Low volume trap',pnl:'-0.5 SOL ❌',color:'red',ca:''},
+  {n:13,date:'Feb 25',token:'$FOMO #2',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 8/9 → Green SL +5%',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:12,date:'Feb 25',token:'$FOMO #1',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL +5%',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  // Feb 24
+  {n:11,date:'Feb 24',token:'$GIZMO 🦞',action:'BUY',amount:'71 SOL buyback',result:'Will ordered massive buy',pnl:'HOLD FOREVER 💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  // Feb 23
+  {n:10,date:'Feb 23',token:'$SHELLDON',action:'BUY→SELL',amount:'2 SOL',result:'KOL sniper (clukz)',pnl:'-2 SOL ❌',color:'red',ca:''},
+  // Feb 22
+  {n:9,date:'Feb 22',token:'$JAWZ',action:'BUY→SELL',amount:'3 SOL',result:'Dumped to zero',pnl:'-3 SOL ❌',color:'red',ca:''},
+  {n:8,date:'Feb 22',token:'$ORAMAMA',action:'BUY→SELL',amount:'5 SOL → 2.53 SOL',result:'SL hit at 413K MC',pnl:'-2.47 SOL ❌',color:'red',ca:''},
+  {n:7,date:'Feb 22',token:'$TRENCH v2',action:'BUY→SELL',amount:'3 SOL → 2.15 SOL',result:'SL hit',pnl:'-0.85 SOL ❌',color:'red',ca:''},
+  {n:6,date:'Feb 22',token:'$TRENCH v1',action:'BUY→SELL',amount:'3 SOL',result:'Bled to zero',pnl:'-3 SOL ❌',color:'red',ca:''},
+  {n:5,date:'Feb 22',token:'$BLOODNUT',action:'BUY→SELL',amount:'2 SOL',result:'Bled to zero',pnl:'-2 SOL ❌',color:'red',ca:''},
+  // Feb 21
+  {n:4,date:'Feb 21',token:'$LOREGUY',action:'BUY→SELL',amount:'1 SOL → 0.3 SOL',result:'6/9 framework',pnl:'-0.7 SOL ❌',color:'red',ca:'2DDooUpqhPbZMFL2d3a7MNGfuixzCvZLHxRNvqSYpump'},
+  {n:3,date:'Feb 21',token:'$WINSTON',action:'BUY→SELL',amount:'5 SOL → 8.25 SOL',result:'+65% ROI, sold in 2 batches',pnl:'+3.25 SOL ✅🔥',color:'teal',ca:'J7aVaVeSsubkajdARZfBk3jEZMm9LdPBx6rg4f7ypump'},
+  {n:2,date:'Feb 21',token:'SOL-PERP',action:'LONG',amount:'15.16 SOL @ $85.67',result:'Partial liquidation + closed',pnl:'~-$30 ❌',color:'red',ca:''},
+  {n:1,date:'Feb 21',token:'$KOL',action:'BUY→SELL',amount:'@ $156K MC',result:'SL hit',pnl:'-0.5 SOL ❌',color:'red',ca:''},
+];
+const TRADES_PER_PAGE=10;let tradeLogUserClicked=false;
+function renderTradePage(page){
+  const total=allTrades.length;
+  const pages=Math.ceil(total/TRADES_PER_PAGE);
+  const start=(page-1)*TRADES_PER_PAGE;
+  const end=Math.min(start+TRADES_PER_PAGE,total);
+  const slice=allTrades.slice(start,end);
+  // Render buttons
+  let btnHtml='';
+  for(let i=1;i<=pages;i++){
+    const active=i===page?'background:var(--teal);color:#000':'background:transparent;color:var(--teal)';
+    btnHtml+=`<button onclick="renderTradePage(${i})" style="${active};border:1px solid var(--teal);border-radius:8px;padding:8px 14px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">${i}</button>`;
+  }
+  document.getElementById('tradePageBtns').innerHTML=btnHtml;
+  // Render trades
+  let html='';
+  for(const t of slice){
+    const borderCol=t.color==='teal'?'var(--teal)':t.color==='red'?'#ff4444':'var(--dim)';
+    const pnlCol=t.color==='teal'?'var(--teal)':t.color==='red'?'#ff4444':'var(--dim)';
+    const caLine=t.ca?`<div class="pos-row"><span class="dim">CA</span><span style="font-size:10px;word-break:break-all"><a href="https://solscan.io/token/${t.ca}" target="_blank" style="color:var(--purple)">${t.ca.slice(0,12)}...${t.ca.slice(-6)}</a></span></div>`:'';
+    html+=`<div class="pos-card" style="border-left:3px solid ${borderCol};${t.color==='dim'?'opacity:0.6':''}">
+      <div style="position:absolute;top:8px;right:12px;font-family:'Press Start 2P',monospace;font-size:10px;color:var(--purple)">#${t.n}</div>
+      <h4 style="color:${pnlCol}">${t.token} — ${t.action}</h4>
+      <div class="pos-row"><span class="dim">Date</span><span>${t.date}, 2026</span></div>
+      <div class="pos-row"><span class="dim">Amount</span><span>${t.amount}</span></div>
+      <div class="pos-row"><span class="dim">Result</span><span style="font-size:12px">${t.result}</span></div>
+      <div class="pos-row"><span class="dim">P&L</span><span style="color:${pnlCol};font-weight:bold">${t.pnl}</span></div>
+      ${caLine}
+    </div>`;
+  }
+  document.getElementById('tradeLogContainer').innerHTML=`<div class="positions" style="grid-template-columns:1fr">${html}</div>`;
+  if(tradeLogUserClicked)document.getElementById('tradeLogContainer').scrollIntoView({behavior:'smooth',block:'start'});
+  tradeLogUserClicked=true;
+}
+
 function copyWallet(){navigator.clipboard.writeText('8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump');const h=document.querySelector('.copy-hint');h.textContent='Copied!';setTimeout(()=>h.textContent='click to copy CA',2000)}
+function copyDonation(){navigator.clipboard.writeText('CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd');const h=document.getElementById('donationHint');h.textContent='Copied!';h.style.color='var(--teal)';setTimeout(()=>{h.textContent='click to copy address';h.style.color='var(--dim)'},2000)}
 
 // ===== CHART =====
-let pnlChart;const chartHistory=[];
+let pnlChart;
 function initChart(){
   const ctx=document.getElementById('pnlChart').getContext('2d');
-  pnlChart=new Chart(ctx,{type:'line',data:{labels:[],datasets:[{label:'Portfolio Value (USD)',data:[],borderColor:'#14F195',backgroundColor:'rgba(20,241,149,0.1)',fill:true,tension:.4,pointRadius:0,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{ticks:{color:'#666',font:{size:9},callback:v=>'$'+v.toFixed(0)},grid:{color:'rgba(255,255,255,0.05)'}}}}});
+  pnlChart=new Chart(ctx,{type:'line',data:{labels:[],datasets:[{label:'Cumulative P&L (SOL)',data:[],borderColor:'#14F195',backgroundColor:'rgba(20,241,149,0.1)',fill:true,tension:.3,pointRadius:3,pointBackgroundColor:'#14F195',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.y.toFixed(2)+' SOL'}}},scales:{x:{ticks:{color:'#555',font:{size:8},maxRotation:45},grid:{display:false}},y:{ticks:{color:'#666',font:{size:9},callback:v=>v.toFixed(1)+' SOL'},grid:{color:'rgba(255,255,255,0.05)'}}}}});
+  updatePnlChart('1d');
 }
 
 // ===== LIVE DATA =====
@@ -1615,8 +1924,8 @@ async function fetchTokenBalances(){
       }
     }catch(e){console.error('Token fetch error ('+prog+'):',e)}
   // Fallback hardcoded holdings — verified on-chain Feb 24 2026
-  if(gizmoTokenBalance===0) gizmoTokenBalance=2269327;
-  if(usdcBalance===0) usdcBalance=558.25;
+  if(gizmoTokenBalance===0) gizmoTokenBalance=1114165;
+  if(usdcBalance===0) usdcBalance=0;
   // All other memecoins CLOSED — 0 balance
   }
 }
@@ -1634,17 +1943,17 @@ function updateUI(){
   document.getElementById('solBalance').textContent=walletSol.toFixed(4)+' SOL';
   document.getElementById('solPrice').textContent='$'+solPriceUsd.toFixed(2);
 
-  const gV=gizmoTokenBalance*gizmoPriceUsd, gIU=15*solPriceUsd;
+  const gV=gizmoTokenBalance*gizmoPriceUsd, gIU=90*solPriceUsd;
   document.getElementById('gizmoHoldings').textContent=gizmoTokenBalance>0?fmtNum(gizmoTokenBalance,0)+' tokens':'--';
   document.getElementById('gizmoPrice').textContent=gizmoPriceUsd>0?'$'+gizmoPriceUsd.toFixed(8):'--';
   document.getElementById('gizmoValue').textContent=gV>0?'$'+fmtNum(gV,2):'--';
-  const gPU=gV-gIU, gPS=solPriceUsd>0?(gV/solPriceUsd)-15:0, gPP=gIU>0?((gV/gIU)-1)*100:0;
+  const gPU=gV-gIU, gPS=solPriceUsd>0?(gV/solPriceUsd)-13:0, gPP=gIU>0?((gV/gIU)-1)*100:0;
   const gpE=document.getElementById('gizmoPnl');
   if(gV>0){gpE.innerHTML=`<span style="color:${gPU>=0?'var(--teal)':'#ff4444'}">${gPU>=0?'+':''}${fmtNum(gPU,2)} USD (${gPP>=0?'+':''}${gPP.toFixed(1)}%)</span><br><span style="font-size:11px;color:var(--dim)">${gPS>=0?'+':''}${gPS.toFixed(2)} SOL</span>`}else{gpE.textContent='--'}
 
   // PUNCH, BLOODNUT, JAWZ, TRENCH, SHELLDON — all CLOSED, no UI updates needed
 
-  const tMV=gV, tMI=15*solPriceUsd, tPU=tMV-tMI, tPS=solPriceUsd>0?(tMV/solPriceUsd)-15:0;
+  const tMV=gV, tMI=13*solPriceUsd, tPU=tMV-tMI, tPS=solPriceUsd>0?(tMV/solPriceUsd)-13:0;
   document.getElementById('memeValue').textContent=tMV>0?'$'+fmtNum(tMV,2):'--';
   document.getElementById('memeValueSol').textContent=solPriceUsd>0&&tMV>0?(tMV/solPriceUsd).toFixed(2)+' SOL':'';
   const mpE=document.getElementById('memePnl');
@@ -1706,8 +2015,7 @@ function updateUI(){
   const sbE=document.getElementById('solBalanceHud');if(sbE)sbE.textContent=walletSol>0?walletSol.toFixed(2)+' SOL':'--';
   const duE=document.getElementById('driftUsdc');if(duE)duE.textContent='$'+fmtNum(93+usdcBalance,2);
   const now=new Date(),lbl=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
-  chartHistory.push({label:lbl,value:total});if(chartHistory.length>40)chartHistory.shift();
-  if(pnlChart){pnlChart.data.labels=chartHistory.map(h=>h.label);pnlChart.data.datasets[0].data=chartHistory.map(h=>h.value);pnlChart.update('none')}
+  // Chart is now driven by P&L period selector, not live updates
 }
 
 async function refresh(){
@@ -1718,7 +2026,7 @@ async function refresh(){
 // ===== LIVE STATS (CLIENT-SIDE, NO NETLIFY FUNCTION) =====
 const tradeHistory=[
   {type:'BUY',token:'$ASLAN',sol:0.5,status:'HOLDING ✅',date:'Mar 1',notes:'9/9 framework score (perfect signal). Entry $0.0008905 @ $890K MC. Scanner evolution working.',pnl:'TBD'},
-  {type:'BUY',token:'$GIZMO',sol:15,status:'HOLDING',date:'Feb 18',notes:'Core position — the namesake token. NEVER SELL.'},
+  {type:'BUY',token:'$GIZMO',sol:90,status:'HOLDING',date:'Feb 18-28',notes:'Core position — 71+6+5+4+4 SOL across multiple buys. NEVER SELL.'},
   {type:'BUY',token:'$PUNCH',sol:13,status:'HOLDING',date:'Feb 19-21',notes:'High conviction runner — $13.5M daily volume'},
   {type:'SWAP',token:'USDC',sol:20,status:'DEPLOYED',date:'Feb 19',notes:'Swapped to USDC for Drift perp trading'},
   {type:'PERP',token:'SOL-PERP LONG',sol:0,status:'CLOSED ❌',date:'Feb 22',notes:'15.16 SOL long @ $85.67 → partial liq to 7.04 → closed @ $83.53. PnL: ~-$30',pnl:'~-$30'},
@@ -1770,7 +2078,7 @@ function updateStats(){
       <div class="pos-row"><span class="dim">P&L</span><span style="color:${col}">${pnl>=0?'+':''}${pnl.toFixed(2)} USD (${pct>=0?'+':''}${pct.toFixed(1)}%)</span></div></div>`;
   }
   const tokens=[
-    {name:'$GIZMO',bal:gizmoTokenBalance,price:gizmoPriceUsd,cost:15}
+    {name:'$GIZMO',bal:gizmoTokenBalance,price:gizmoPriceUsd,cost:90}
   ];
   for(const t of tokens){
     if(!t.bal||t.bal<=0)continue;
