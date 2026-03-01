@@ -440,8 +440,11 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .egg-label{font-family:'Press Start 2P',monospace;font-size:4px;color:var(--teal);margin-top:2px;white-space:nowrap}
 
 /* ===== GIZMO STATUS HUD (Throngelets-style) ===== */
-.gizmo-hud{position:absolute;top:12px;right:12px;z-index:55;background:rgba(10,10,20,.85);border:1px solid rgba(20,241,149,.3);border-radius:10px;padding:10px 14px;min-width:160px;backdrop-filter:blur(6px)}
-.gizmo-hud .hud-title{font-family:'Press Start 2P',monospace;font-size:7px;color:var(--teal);margin-bottom:8px;text-align:center;text-shadow:0 0 6px var(--teal)}
+.gizmo-hud{position:absolute;top:12px;right:12px;z-index:55;background:rgba(10,10,20,.9);border:1px solid rgba(20,241,149,.3);border-radius:12px;padding:12px 14px;min-width:180px;backdrop-filter:blur(8px);box-shadow:0 0 20px rgba(20,241,149,.1)}
+.gizmo-hud .hud-title{font-family:'Press Start 2P',monospace;font-size:7px;color:var(--teal);margin-bottom:4px;text-align:center;text-shadow:0 0 6px var(--teal)}
+.gizmo-hud .hud-level{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--purple);text-align:center;margin-bottom:6px}
+.gizmo-hud .xp-track{width:100%;height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin-bottom:8px;overflow:hidden}
+.gizmo-hud .xp-fill{height:100%;background:linear-gradient(90deg,var(--purple),#c084fc);border-radius:2px;transition:width .5s}
 .stat-bar-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
 .stat-bar-row .stat-icon{font-size:10px;width:14px;text-align:center}
 .stat-bar-row .stat-label{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--dim);width:42px}
@@ -449,12 +452,21 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .stat-bar-fill{height:100%;border-radius:3px;transition:width 1s ease,background .5s}
 .gizmo-activity{font-family:'Press Start 2P',monospace;font-size:6px;color:var(--purple);text-align:center;margin-top:8px;padding-top:6px;border-top:1px solid rgba(153,69,255,.2)}
 .gizmo-activity .activity-icon{font-size:10px;display:block;margin-bottom:3px}
-.gizmo-pets{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--dim);text-align:center;margin-top:5px}
+.hud-buttons{display:flex;gap:4px;justify-content:center;margin-top:8px}
+.hud-btn{font-family:'Press Start 2P',monospace;font-size:6px;padding:5px 8px;border:1px solid rgba(20,241,149,.3);background:rgba(20,241,149,.08);color:var(--teal);border-radius:6px;cursor:pointer;transition:all .2s}
+.hud-btn:hover{background:rgba(20,241,149,.2);border-color:var(--teal);transform:scale(1.05)}
+.hud-btn:active{transform:scale(.95)}
+.gizmo-pets{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--dim);text-align:center;margin-top:6px}
+.hud-log{font-family:'Courier New',monospace;font-size:7px;color:var(--dim);margin-top:6px;padding-top:5px;border-top:1px solid rgba(255,255,255,.05);max-height:40px;overflow:hidden;text-align:center;line-height:1.4}
+.hud-log span{display:block;animation:logFade 4s forwards}
+@keyframes logFade{0%{opacity:1}80%{opacity:1}100%{opacity:.3}}
 #gizmo-char{cursor:pointer}
 .gizmo-heart{position:absolute;z-index:60;pointer-events:none;font-size:16px;animation:heartFloat 1s ease-out forwards}
 @keyframes heartFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-30px) scale(1.5)}}
 .gizmo-zzz{position:absolute;top:-20px;right:-5px;font-size:10px;z-index:55;animation:zzzFloat 2s ease-in-out infinite;pointer-events:none}
 @keyframes zzzFloat{0%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-8px)}100%{opacity:.3;transform:translateY(0)}}
+.gizmo-item{position:absolute;z-index:58;pointer-events:none;font-size:18px;animation:itemDrop .6s ease-in forwards}
+@keyframes itemDrop{0%{opacity:1;transform:translateY(-40px)}70%{opacity:1;transform:translateY(5px)}100%{opacity:0;transform:translateY(0) scale(.5)}}
 
 /* ===== CHARACTERS (side view, Thronglets style) ===== */
 /* Gizmo walks left-right along the floor */
@@ -639,12 +651,20 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     <!-- Gizmo Status HUD -->
     <div class="gizmo-hud" id="gizmoHud">
       <div class="hud-title">🦞 GIZMO</div>
+      <div class="hud-level">LVL <span id="gizmoLevel">1</span> — <span id="gizmoTitle">Baby Mogwai</span></div>
+      <div class="xp-track"><div class="xp-fill" id="xpBar" style="width:0%"></div></div>
       <div class="stat-bar-row"><span class="stat-icon">😊</span><span class="stat-label">MOOD</span><div class="stat-bar-track"><div class="stat-bar-fill" id="moodBar" style="width:80%;background:linear-gradient(90deg,#14F195,#0fa)"></div></div></div>
       <div class="stat-bar-row"><span class="stat-icon">⚡</span><span class="stat-label">ENERGY</span><div class="stat-bar-track"><div class="stat-bar-fill" id="energyBar" style="width:65%;background:linear-gradient(90deg,#fbbf24,#f59e0b)"></div></div></div>
       <div class="stat-bar-row"><span class="stat-icon">📊</span><span class="stat-label">TRADING</span><div class="stat-bar-track"><div class="stat-bar-fill" id="tradingBar" style="width:90%;background:linear-gradient(90deg,#9945FF,#c084fc)"></div></div></div>
       <div class="stat-bar-row"><span class="stat-icon">🧠</span><span class="stat-label">ALPHA</span><div class="stat-bar-track"><div class="stat-bar-fill" id="alphaBar" style="width:70%;background:linear-gradient(90deg,#ec4899,#f472b6)"></div></div></div>
       <div class="gizmo-activity"><span class="activity-icon" id="activityIcon">📊</span><span id="activityText">Scanning markets...</span></div>
-      <div class="gizmo-pets">Pets: <span id="petCount">0</span> 💜</div>
+      <div class="hud-buttons">
+        <button class="hud-btn" onclick="feedGizmo()" title="Feed">🍕 Feed</button>
+        <button class="hud-btn" onclick="playWithGizmo()" title="Play">🎮 Play</button>
+        <button class="hud-btn" onclick="trainGizmo()" title="Train">🏋️ Train</button>
+      </div>
+      <div class="gizmo-pets">Pets: <span id="petCount">0</span> 💜 | XP: <span id="xpCount">0</span></div>
+      <div class="hud-log" id="hudLog"></div>
     </div>
     <!-- Back wall (wood paneling) -->
     <div class="back-wall"></div>
@@ -1319,8 +1339,8 @@ document.getElementById('intro-gate').addEventListener('click',()=>{
   for(let i=0;i<8;i++){const f=document.createElement('div');f.className='fragment go';const a=Math.random()*Math.PI*2,d=200+Math.random()*400,r=(Math.random()-.5)*720;f.style.cssText=`--tx:${Math.cos(a)*d}px;--ty:${Math.sin(a)*d}px;--rot:${r}deg;animation-delay:${Math.random()*.15}s`;f.textContent=frags[~~(Math.random()*frags.length)];fc.appendChild(f)}
   },1900);
   setTimeout(()=>{document.getElementById('laser').style.display='none';document.getElementById('shipScene').classList.add('fly');document.getElementById('introTitle').classList.add('show')},2500);
-  setTimeout(()=>{document.getElementById('intro').classList.add('fade');document.getElementById('main').classList.add('show');startBGM()},5000);
-  setTimeout(()=>{document.getElementById('intro').style.display='none'},6000);
+  setTimeout(()=>{document.getElementById('intro').classList.add('fade');document.getElementById('main').classList.add('show');startBGM();window.scrollTo(0,0)},5000);
+  setTimeout(()=>{document.getElementById('intro').style.display='none';window.scrollTo(0,0)},6000);
 },{once:true});
 
 // ===== BACKGROUND MUSIC (loop after intro) =====
@@ -1340,10 +1360,26 @@ function toggleMute(){
 }
 
 // ===== GIZMO VIRTUAL PET ENGINE (Throngelets-style) =====
+const gizmoLevels=[
+  {lvl:1,title:'Baby Mogwai',xp:0},
+  {lvl:2,title:'Curious Mogwai',xp:50},
+  {lvl:3,title:'Chart Watcher',xp:150},
+  {lvl:4,title:'Degen Apprentice',xp:300},
+  {lvl:5,title:'Signal Hunter',xp:500},
+  {lvl:6,title:'Alpha Finder',xp:800},
+  {lvl:7,title:'Trade Warrior',xp:1200},
+  {lvl:8,title:'Diamond Hands',xp:1800},
+  {lvl:9,title:'Whale Whisperer',xp:2500},
+  {lvl:10,title:'Autonomous Legend',xp:3500},
+];
+function getLevel(xp){for(let i=gizmoLevels.length-1;i>=0;i--){if(xp>=gizmoLevels[i].xp)return gizmoLevels[i]}return gizmoLevels[0]}
+function getXpProgress(xp){const cur=getLevel(xp);const idx=gizmoLevels.indexOf(cur);if(idx>=gizmoLevels.length-1)return 100;const next=gizmoLevels[idx+1];return Math.min(100,((xp-cur.xp)/(next.xp-cur.xp))*100)}
+
 let gizmoState={
   mood:80,energy:65,trading:90,alpha:70,
   pets:parseInt(localStorage.getItem('gizmoPets')||'0'),
-  activity:'scanning',sleeping:false
+  xp:parseInt(localStorage.getItem('gizmoXP')||'0'),
+  activity:'scanning',sleeping:false,lastFed:0,lastPlayed:0,lastTrained:0
 };
 
 const activities=[
@@ -1376,6 +1412,77 @@ const activityBubbles={
   celebrating:['🎉 WAGMI!','🥳 We did it!','🚀 To the moon!','🏆 Winner winner'],
 };
 
+function hudLog(msg){
+  const el=document.getElementById('hudLog');
+  if(!el)return;
+  el.innerHTML=`<span>${msg}</span>`;
+}
+function addXP(amount){
+  const oldLvl=getLevel(gizmoState.xp);
+  gizmoState.xp+=amount;
+  localStorage.setItem('gizmoXP',gizmoState.xp);
+  const newLvl=getLevel(gizmoState.xp);
+  if(newLvl.lvl>oldLvl.lvl){
+    hudLog(`🎉 LEVEL UP! LVL ${newLvl.lvl}!`);
+    const gc=document.getElementById('gizmo-char');
+    if(gc)showSpeechBubble(gc,'LEVEL UP! 🎉🚀');
+    gizmoState.mood=Math.min(100,gizmoState.mood+20);
+  }
+  updateHudBars();
+}
+function dropItem(emoji){
+  const gc=document.getElementById('gizmo-char');if(!gc)return;
+  const d=document.createElement('div');d.className='gizmo-item';d.textContent=emoji;
+  d.style.left='15px';d.style.top='-10px';gc.appendChild(d);setTimeout(()=>d.remove(),700);
+}
+function feedGizmo(){
+  const now=Date.now();
+  if(now-gizmoState.lastFed<8000){hudLog('Not hungry yet...');return}
+  gizmoState.lastFed=now;
+  const foods=['🍕','🌮','🍔','🍩','🧁','☕','🥤','🍣'];
+  const food=foods[~~(Math.random()*foods.length)];
+  dropItem(food);
+  gizmoState.energy=Math.min(100,gizmoState.energy+20);
+  gizmoState.mood=Math.min(100,gizmoState.mood+8);
+  addXP(5);
+  const gc=document.getElementById('gizmo-char');
+  if(gc)showSpeechBubble(gc,['Yummy! 😋','Nom nom!','*munch munch*','Delicious!','Thanks fren!'][~~(Math.random()*5)]);
+  hudLog(`Fed ${food} → Energy +20`);
+}
+function playWithGizmo(){
+  const now=Date.now();
+  if(now-gizmoState.lastPlayed<10000){hudLog('Still playing...');return}
+  gizmoState.lastPlayed=now;
+  gizmoState.mood=Math.min(100,gizmoState.mood+15);
+  gizmoState.energy=Math.max(5,gizmoState.energy-5);
+  addXP(8);
+  const gc=document.getElementById('gizmo-char');
+  // Make Gizmo do a happy dance
+  const inner=gc?.querySelector('.gizmo-side');
+  if(inner){
+    let spins=0;
+    const dance=setInterval(()=>{
+      inner.style.transition='transform .15s';
+      inner.style.transform=spins%2===0?'scaleX(-1) translateY(-5px)':'scaleX(1) translateY(0)';
+      spins++;if(spins>5){clearInterval(dance);inner.style.transform=''}
+    },200);
+  }
+  if(gc)showSpeechBubble(gc,['Wheee! 🎉','So fun!','*dances*','Again again!','🕺💃','Hehehe!'][~~(Math.random()*6)]);
+  hudLog('🎮 Playing → Mood +15');
+}
+function trainGizmo(){
+  const now=Date.now();
+  if(now-gizmoState.lastTrained<12000){hudLog('Still recovering...');return}
+  gizmoState.lastTrained=now;
+  gizmoState.trading=Math.min(100,gizmoState.trading+10);
+  gizmoState.alpha=Math.min(100,gizmoState.alpha+12);
+  gizmoState.energy=Math.max(5,gizmoState.energy-10);
+  addXP(12);
+  dropItem('📈');
+  const gc=document.getElementById('gizmo-char');
+  if(gc)showSpeechBubble(gc,['Learned something!','🧠 Big brain!','Getting better!','Framework updated!','New pattern found!'][~~(Math.random()*5)]);
+  hudLog('🏋️ Training → Alpha +12');
+}
 function updateHudBars(){
   const mb=document.getElementById('moodBar');
   const eb=document.getElementById('energyBar');
@@ -1386,6 +1493,12 @@ function updateHudBars(){
   if(tb)tb.style.width=gizmoState.trading+'%';
   if(ab)ab.style.width=gizmoState.alpha+'%';
   document.getElementById('petCount').textContent=gizmoState.pets;
+  // XP & Level
+  const lvl=getLevel(gizmoState.xp);
+  document.getElementById('gizmoLevel').textContent=lvl.lvl;
+  document.getElementById('gizmoTitle').textContent=lvl.title;
+  document.getElementById('xpBar').style.width=getXpProgress(gizmoState.xp)+'%';
+  document.getElementById('xpCount').textContent=gizmoState.xp;
 }
 
 function cycleActivity(){
@@ -1454,7 +1567,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     gizmoState.mood=Math.min(100,gizmoState.mood+5);
     gizmoState.energy=Math.min(100,gizmoState.energy+2);
     localStorage.setItem('gizmoPets',gizmoState.pets);
-    updateHudBars();
+    addXP(2);
     // Heart particle
     const h=document.createElement('div');h.className='gizmo-heart';
     h.textContent=['❤️','💜','🦞','✨','💎'][~~(Math.random()*5)];
