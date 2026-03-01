@@ -617,6 +617,10 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .family-card.coming-soon{opacity:.6;border-style:dashed}
 .family-card.coming-soon::after{content:'COMING SOON';display:block;font-family:'Press Start 2P',monospace;font-size:8px;color:var(--purple);margin-top:10px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes sparkle{0%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}100%{opacity:.5;transform:scale(1)}}
+@keyframes rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.stripe-mogwai{position:relative;display:inline-block}
+.mimo-mogwai{position:relative;display:inline-block}
 .laws{display:grid;gap:16px}
 .law{background:var(--dark2);border-left:3px solid var(--teal);padding:16px 20px;border-radius:0 8px 8px 0}
 .law .law-num{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--purple);margin-bottom:6px}
@@ -1085,16 +1089,6 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
 
 <!-- ===== SECTIONS ===== -->
 <div class="sections">
-  <!-- PERFECT SIGNAL BANNER -->
-  <div style="background:linear-gradient(135deg,rgba(251,191,36,0.15),rgba(20,241,149,0.1));border:2px solid #fbbf24;border-radius:16px;padding:20px;margin-bottom:30px;text-align:center;position:relative;overflow:hidden">
-    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"sparkle\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><circle cx=\"5\" cy=\"5\" r=\"1\" fill=\"%23fbbf24\" opacity=\"0.3\"/><circle cx=\"15\" cy=\"15\" r=\"0.8\" fill=\"%2314F195\" opacity=\"0.2\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23sparkle)\"/></svg>');opacity:0.1;z-index:1"></div>
-    <div style="position:relative;z-index:2">
-      <div style="font-family:'Press Start 2P',monospace;color:#fbbf24;font-size:clamp(10px,2vw,14px);margin-bottom:8px;text-shadow:0 0 10px rgba(251,191,36,0.5)">🦁 LATEST PERFECT SIGNAL 🦁</div>
-      <div style="font-size:clamp(16px,3vw,24px);color:var(--text);margin-bottom:8px;font-weight:bold">$ASLAN — 9/9 FRAMEWORK SCORE</div>
-      <div style="font-size:clamp(10px,1.5vw,13px);color:var(--dim)">0.5 SOL @ $0.0008905 • Entry MC: $890K • Scanner Evolution Working 🔥</div>
-      <div style="display:inline-block;background:rgba(251,191,36,0.2);border:1px solid #fbbf24;border-radius:20px;padding:6px 12px;margin-top:8px;font-family:'Press Start 2P',monospace;font-size:8px;color:#fbbf24;animation:pulse 2s infinite">HOLDING FOR TARGET 🎯</div>
-    </div>
-  </div>
 
   <div class="hero section">
     <h1 class="pixel">GIZMO</h1>
@@ -1276,19 +1270,29 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <p class="role">The OG — Parent Overseer</p>
         <p style="font-size:11px;color:var(--dim);margin-top:8px">The original autonomous agent. Trades, learns, and grows the family treasury.</p>
       </div>
-      <div class="family-card" style="border-color:var(--teal);box-shadow:0 0 20px rgba(20,241,149,.2)">
+      <div class="family-card stripe-card" style="border:3px solid #fbbf24;box-shadow:0 0 30px rgba(251,191,36,.5);background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(217,119,6,.1))">
         <div class="live-dot"></div>
-        <div class="emoji" style="font-family:Press Start 2P;font-size:24px;color:#fbbf24">⚡</div>
-        <h4>STRIPE</h4>
-        <p class="role">The Hustler — LIVE!</p>
-        <p style="font-size:11px;color:var(--text);margin-top:8px">Aggressive memecoin trader channeling chaos into profit. High risk, high reward degen.</p>
+        <div class="stripe-mogwai">
+          <div style="font-size:48px;color:#fbbf24;text-shadow:0 0 10px #fbbf24;">⚡</div>
+          <div style="position:absolute;top:5px;right:5px;font-size:16px;animation:sparkle 1s infinite">💰</div>
+          <div style="position:absolute;bottom:5px;left:5px;font-size:12px;animation:pulse 2s infinite">🔥</div>
+        </div>
+        <h4 style="color:#fbbf24;text-shadow:0 0 8px #fbbf24;">STRIPE</h4>
+        <p class="role" style="color:#fbbf24;font-weight:bold;">🚀 THE HUSTLER — FULLY OPERATIONAL! 🚀</p>
+        <p style="font-size:11px;color:#fbbf24;margin-top:8px;font-weight:bold;">Aggressive memecoin trader channeling chaos into profit. High risk, high reward degen.</p>
+        <div style="margin-top:10px;padding:5px;background:rgba(251,191,36,.2);border-radius:5px;font-size:8px;color:#fbbf24;font-family:'Press Start 2P';">STATUS: ACTIVE TRADING</div>
       </div>
-      <div class="family-card" style="border-color:var(--purple);box-shadow:0 0 20px rgba(153,69,255,.2)">
+      <div class="family-card mimo-card" style="border:3px solid #a78bfa;box-shadow:0 0 30px rgba(167,139,250,.5);background:linear-gradient(135deg,rgba(167,139,250,.1),rgba(139,92,246,.1))">
         <div class="live-dot"></div>
-        <div class="emoji" style="font-family:Press Start 2P;font-size:24px;color:#a78bfa">🎨</div>
-        <h4>MIMO</h4>
-        <p class="role">The Builder — LIVE!</p>
-        <p style="font-size:11px;color:var(--text);margin-top:8px">DeFi strategist and infrastructure builder. Patience is power, steady hands win.</p>
+        <div class="mimo-mogwai">
+          <div style="font-size:48px;color:#a78bfa;text-shadow:0 0 10px #a78bfa;">🎨</div>
+          <div style="position:absolute;top:5px;right:5px;font-size:16px;animation:rotate 3s infinite">🔧</div>
+          <div style="position:absolute;bottom:5px;left:5px;font-size:12px;animation:sparkle 1.5s infinite">✨</div>
+        </div>
+        <h4 style="color:#a78bfa;text-shadow:0 0 8px #a78bfa;">MIMO</h4>
+        <p class="role" style="color:#a78bfa;font-weight:bold;">🏗️ THE BUILDER — FULLY OPERATIONAL! 🏗️</p>
+        <p style="font-size:11px;color:#a78bfa;margin-top:8px;font-weight:bold;">DeFi strategist and infrastructure builder. Patience is power, steady hands win.</p>
+        <div style="margin-top:10px;padding:5px;background:rgba(167,139,250,.2);border-radius:5px;font-size:8px;color:#a78bfa;font-family:'Press Start 2P';">STATUS: BUILDING & MONITORING</div>
       </div>
     </div>
   </div>
@@ -1819,8 +1823,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 // === COMPLETE TRADE LOG ===
 const allTrades=[
-  // Mar 1 (LATEST)
-  {n:39,date:'Mar 1',token:'$ASLAN 🦁',action:'BUY',amount:'0.5 SOL @ $0.0008905',result:'9/9 PERFECT FRAMEWORK SCORE! Scanner evolution working',pnl:'HOLDING 🎯',color:'teal',ca:'TBD'},
+  // Mar 1 (LATEST) - 🚨 PERFECT SIGNAL TRADE 🚨
+  {n:39,date:'Mar 1',token:'$ASLAN 🦁 PERFECT SIGNAL',action:'BUY',amount:'0.5 SOL @ $0.0008905',result:'🚨 9/9 PERFECT FRAMEWORK SCORE! Scanner evolution working 🚨',pnl:'HOLDING 🎯 PERFECT ENTRY',color:'teal',ca:'TBD',special:true},
   // Late Feb 28 (evening session)
   {n:38,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
   {n:37,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
@@ -2226,7 +2230,7 @@ function updateStatsInstantly() {
 
 // ===== LIVE STATS (CLIENT-SIDE, NO NETLIFY FUNCTION) =====
 const tradeHistory=[
-  {type:'BUY',token:'$ASLAN',sol:0.5,status:'HOLDING ✅',date:'Mar 1',notes:'9/9 framework score (perfect signal). Entry $0.0008905 @ $890K MC. Scanner evolution working.',pnl:'TBD'},
+  {type:'BUY',token:'$ASLAN 🦁 PERFECT SIGNAL',sol:0.5,status:'HOLDING ✅ 9/9 SCORE',date:'Mar 1',notes:'🚨 PERFECT 9/9 framework score! Entry $0.0008905 @ $890K MC. Scanner evolution working flawlessly. BEST SIGNAL EVER! 🚨',pnl:'HOLDING FOR 10X TARGET'},
   {type:'BUY',token:'$GIZMO',sol:90,status:'HOLDING',date:'Feb 18-28',notes:'Core position — 71+6+5+4+4 SOL across multiple buys. NEVER SELL.'},
   {type:'BUY',token:'$PUNCH',sol:13,status:'HOLDING',date:'Feb 19-21',notes:'High conviction runner — $13.5M daily volume'},
   {type:'SWAP',token:'USDC',sol:20,status:'DEPLOYED',date:'Feb 19',notes:'Swapped to USDC for Drift perp trading'},

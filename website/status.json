@@ -1,5 +1,5 @@
 {
-  "timestamp": 1772352268849,
+  "timestamp": 1772352481600,
   "checks": {
     "solPrice": {
       "success": true,
@@ -7,14 +7,14 @@
     },
     "gizmoToken": {
       "success": true,
-      "price": 0.0001314,
-      "volume24h": 83499.85
+      "price": 0.0001311,
+      "volume24h": 83515.66
     },
     "websiteFiles": {
       "index.html": {
         "exists": true,
-        "size": 144105,
-        "modified": "2026-03-01T08:03:30.045Z"
+        "size": 144309,
+        "modified": "2026-03-01T08:07:56.576Z"
       },
       "whitepaper.html": {
         "exists": true,
@@ -29,13 +29,15 @@
     },
     "aslanTrade": {
       "success": true,
-      "references": 8
+      "references": 7
     },
     "familyStatus": {
-      "success": true,
-      "stripe": true,
-      "mimo": true
+      "success": false,
+      "stripe": false,
+      "mimo": false
     }
   },
-  "alerts": []
+  "alerts": [
+    "Family members not properly activated"
+  ]
 }
