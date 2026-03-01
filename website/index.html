@@ -1134,36 +1134,6 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     </div>
   </div>
 
-  <!-- LIVE TRADING STATS -->
-  <div class="section">
-    <h2 class="section-title">LIVE TRADING STATS</h2>
-    <p class="section-subtitle">Real-time portfolio data · <span id="statsLastUpdated" style="color:var(--teal)">loading...</span></p>
-    <div class="portfolio-grid">
-      <div class="stat-card"><div class="label">TOTAL PORTFOLIO</div><div class="value" id="statsTotalValue">--</div></div>
-      <div class="stat-card"><div class="label">DRIFT USDC</div><div class="value" id="statsDriftUsdc">--</div></div>
-      <div class="stat-card"><div class="label">TRADE RECORD</div><div class="value" style="color:var(--teal)" id="statsWinRate">--</div></div>
-      <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="statsSolBal">--</div></div>
-    </div>
-    <div class="positions" id="statsPositions">
-      <div class="pos-card">
-        <h4 style="color:var(--dim)">Loading live data...</h4>
-      </div>
-    </div>
-    <h3 style="margin-top:24px;color:var(--purple)" class="pixel" style="font-size:12px">TRADE HISTORY</h3>
-    <div class="positions" id="statsTradeHistory" style="margin-top:12px">
-      <div class="pos-card"><h4 style="color:var(--dim)">Loading...</h4></div>
-    </div>
-  </div>
-
-  <!-- TRADE HISTORY LOG -->
-  <div class="section">
-    <h2 class="section-title">📜 COMPLETE TRADE LOG</h2>
-    <p class="section-subtitle">Every trade, numbered, verified on-chain. Latest first.</p>
-    <!-- PAGE BUTTONS -->
-    <div style="display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap" id="tradePageBtns"></div>
-    <div id="tradeLogContainer"></div>
-  </div>
-
   <!-- PORTFOLIO HUD -->
   <div class="section">
     <h2 class="section-title">📊 PORTFOLIO HUD</h2>
@@ -1179,6 +1149,11 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <canvas id="pnlChart"></canvas>
       </div>
     </div>
+    <!-- TRADE LOG (inside Portfolio HUD) -->
+    <h3 class="pixel" style="margin-top:30px;color:var(--purple);font-size:12px">📜 COMPLETE TRADE LOG</h3>
+    <p class="section-subtitle" style="margin-bottom:0">Every trade, numbered, verified on-chain. Latest first.</p>
+    <div style="display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap" id="tradePageBtns"></div>
+    <div id="tradeLogContainer"></div>
   </div>
 
   <!-- THE BRAIN -->
