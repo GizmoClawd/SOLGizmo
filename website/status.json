@@ -1,0 +1,41 @@
+{
+  "timestamp": 1772352268849,
+  "checks": {
+    "solPrice": {
+      "success": true,
+      "price": 86.49
+    },
+    "gizmoToken": {
+      "success": true,
+      "price": 0.0001314,
+      "volume24h": 83499.85
+    },
+    "websiteFiles": {
+      "index.html": {
+        "exists": true,
+        "size": 144105,
+        "modified": "2026-03-01T08:03:30.045Z"
+      },
+      "whitepaper.html": {
+        "exists": true,
+        "size": 27138,
+        "modified": "2026-03-01T07:51:50.746Z"
+      },
+      "bgm.mp3": {
+        "exists": true,
+        "size": 2267010,
+        "modified": "2026-03-01T05:50:40.717Z"
+      }
+    },
+    "aslanTrade": {
+      "success": true,
+      "references": 8
+    },
+    "familyStatus": {
+      "success": true,
+      "stripe": true,
+      "mimo": true
+    }
+  },
+  "alerts": []
+}

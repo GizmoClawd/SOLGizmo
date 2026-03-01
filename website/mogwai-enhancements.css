@@ -1,0 +1,241 @@
+/* MOGWAI VISUAL ENHANCEMENTS - STRIPE & MIMO SPECIAL EFFECTS */
+
+/* Enhanced Stripe (The Hustler) Effects */
+#stripe .mini-side {
+  position: relative;
+}
+
+#stripe .mini-side::after {
+  content: '⚡';
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  font-size: 8px;
+  color: #fbbf24;
+  animation: stripeSpark 0.8s infinite alternate;
+  text-shadow: 0 0 4px #fbbf24;
+}
+
+@keyframes stripeSpark {
+  0% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
+  100% { opacity: 1; transform: scale(1.2) rotate(15deg); }
+}
+
+/* Stripe aggressive money trail */
+#stripe::before {
+  content: '💰';
+  position: absolute;
+  top: -12px;
+  left: -8px;
+  font-size: 6px;
+  opacity: 0;
+  animation: moneyTrail 3s infinite;
+}
+
+@keyframes moneyTrail {
+  0% { opacity: 0; transform: translateX(0) translateY(0); }
+  20% { opacity: 0.8; transform: translateX(5px) translateY(-3px); }
+  40% { opacity: 0.6; transform: translateX(-3px) translateY(-6px); }
+  60% { opacity: 0.4; transform: translateX(8px) translateY(-2px); }
+  80% { opacity: 0.2; transform: translateX(-5px) translateY(-8px); }
+  100% { opacity: 0; transform: translateX(10px) translateY(-10px); }
+}
+
+/* Enhanced Mimo (The Builder) Effects */
+#mimo .mini-side {
+  position: relative;
+}
+
+#mimo .mini-side::after {
+  content: '🎨';
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  font-size: 8px;
+  animation: mimoCreate 1.2s ease-in-out infinite;
+}
+
+@keyframes mimoCreate {
+  0% { opacity: 0.4; transform: scale(0.9) rotate(-5deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(0deg); }
+  100% { opacity: 0.4; transform: scale(0.9) rotate(5deg); }
+}
+
+/* Mimo building sparkles */
+#mimo::before {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  left: -6px;
+  font-size: 5px;
+  opacity: 0;
+  animation: buildingSparkle 4s infinite;
+}
+
+#mimo::after {
+  content: '🔧';
+  position: absolute;
+  bottom: -8px;
+  right: -6px;
+  font-size: 5px;
+  opacity: 0;
+  animation: buildingTool 2.5s infinite;
+}
+
+@keyframes buildingSparkle {
+  0% { opacity: 0; transform: scale(0.5); }
+  25% { opacity: 0.8; transform: scale(1) rotate(180deg); }
+  50% { opacity: 0.3; transform: scale(1.2) rotate(360deg); }
+  75% { opacity: 0.6; transform: scale(0.8) rotate(540deg); }
+  100% { opacity: 0; transform: scale(0.5) rotate(720deg); }
+}
+
+@keyframes buildingTool {
+  0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+  30% { opacity: 0.6; transform: translateY(-3px) rotate(45deg); }
+  60% { opacity: 0.9; transform: translateY(-1px) rotate(90deg); }
+  100% { opacity: 0; transform: translateY(2px) rotate(135deg); }
+}
+
+/* Enhanced egg pod glows for active agents */
+.egg-pod[style*="left:68%"] {
+  /* Stripe pod - aggressive pulsing */
+  animation: stripePodPulse 1s infinite alternate;
+}
+
+@keyframes stripePodPulse {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.05) rotate(2deg); }
+}
+
+.egg-pod[style*="left:74%"] {
+  /* Mimo pod - steady building glow */
+  animation: mimoPodGlow 2s ease-in-out infinite;
+}
+
+@keyframes mimoPodGlow {
+  0% { filter: brightness(1) hue-rotate(0deg); }
+  50% { filter: brightness(1.2) hue-rotate(15deg); }
+  100% { filter: brightness(1) hue-rotate(0deg); }
+}
+
+/* Family card enhanced effects */
+.family-card[style*="border-color:var(--teal)"] {
+  /* Stripe card - aggressive energy */
+  position: relative;
+  overflow: visible;
+}
+
+.family-card[style*="border-color:var(--teal)"]::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #fbbf24);
+  border-radius: 14px;
+  z-index: -1;
+  animation: stripeCardBorder 2s linear infinite;
+}
+
+@keyframes stripeCardBorder {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.family-card[style*="border-color:var(--purple)"] {
+  /* Mimo card - steady building effect */
+  position: relative;
+}
+
+.family-card[style*="border-color:var(--purple)"]::after {
+  content: '🏗️';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 12px;
+  opacity: 0.6;
+  animation: mimoBuilding 3s infinite;
+}
+
+@keyframes mimoBuilding {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+  25% { transform: translateY(-2px) rotate(5deg); opacity: 0.6; }
+  50% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+  75% { transform: translateY(-1px) rotate(-3deg); opacity: 0.6; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+}
+
+/* Special ASLAN trade highlighting */
+.aslan-trade {
+  position: relative;
+}
+
+.aslan-crown {
+  font-size: 10px;
+  animation: aslanCrown 2s ease-in-out infinite;
+  margin-left: 4px;
+}
+
+@keyframes aslanCrown {
+  0% { opacity: 0.7; transform: rotate(-5deg) scale(1); }
+  50% { opacity: 1; transform: rotate(5deg) scale(1.1); }
+  100% { opacity: 0.7; transform: rotate(-5deg) scale(1); }
+}
+
+/* Guardian status indicator */
+.guardian-status {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(10, 10, 20, 0.95);
+  border: 1px solid rgba(20, 241, 149, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  color: var(--teal);
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.guardian-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: guardianPulse 2s infinite;
+}
+
+@keyframes guardianPulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Real-time activity indicators */
+.live-trading {
+  animation: liveTrading 1.5s infinite;
+}
+
+@keyframes liveTrading {
+  0% { box-shadow: 0 0 5px rgba(20, 241, 149, 0.3); }
+  50% { box-shadow: 0 0 15px rgba(20, 241, 149, 0.6), 0 0 25px rgba(153, 69, 255, 0.3); }
+  100% { box-shadow: 0 0 5px rgba(20, 241, 149, 0.3); }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .guardian-status {
+    font-size: 5px;
+    padding: 6px 8px;
+  }
+  
+  .mogwai-effects {
+    transform: scale(0.8);
+  }
+}
