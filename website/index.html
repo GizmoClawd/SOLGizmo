@@ -1461,7 +1461,7 @@ function renderTradePage(page){
       ${caLine}
     </div>`;
   }
-  document.getElementById('tradeLogContainer').innerHTML=`<div class="positions">${html}</div>`;
+  document.getElementById('tradeLogContainer').innerHTML=`<div class="positions" style="grid-template-columns:1fr">${html}</div>`;
   document.getElementById('tradeLogContainer').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
