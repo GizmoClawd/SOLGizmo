@@ -1007,6 +1007,18 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <div class="stat-card"><div class="label">MEMECOIN VALUE</div><div class="value" id="memeValue">--</div><div class="sub" id="memeValueSol"></div></div>
       <div class="stat-card"><div class="label">MEMECOIN P&L</div><div class="value" id="memePnl">--</div><div class="sub" id="memePnlSol"></div></div>
     </div>
+    <!-- P&L TIMEFRAME SELECTOR -->
+    <div style="display:flex;gap:8px;justify-content:center;margin:16px 0 0;flex-wrap:wrap">
+      <button onclick="setPnlPeriod('1d')" id="pnl1d" class="pnl-btn pnl-active" style="background:var(--teal);color:#000;border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">1 DAY</button>
+      <button onclick="setPnlPeriod('7d')" id="pnl7d" class="pnl-btn" style="background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">7 DAY</button>
+      <button onclick="setPnlPeriod('30d')" id="pnl30d" class="pnl-btn" style="background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">1 MONTH</button>
+      <button onclick="setPnlPeriod('all')" id="pnlAll" class="pnl-btn" style="background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">ALL TIME</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px">
+      <div class="stat-card"><div class="label" id="pnlPeriodLabel">1 DAY P&L</div><div class="value" id="pnlPeriodValue" style="color:var(--teal)">--</div><div class="sub" id="pnlPeriodSol"></div></div>
+      <div class="stat-card"><div class="label">TRADES</div><div class="value" id="pnlPeriodTrades" style="color:var(--purple)">--</div></div>
+      <div class="stat-card"><div class="label">WIN RATE</div><div class="value" id="pnlPeriodWinRate" style="color:var(--teal)">--</div></div>
+    </div>
     <div class="positions">
       <!-- ACTIVE POSITION -->
       <div class="pos-card" style="border-left:3px solid var(--teal)">
@@ -1444,6 +1456,29 @@ const tvCh=['GIZMO TV','SOL: $$$','PUMP','LIVE','HODL!','GM'];let tvI=0;
 setInterval(()=>{tvI=(tvI+1)%tvCh.length;const e=document.getElementById('tvChannel');if(e)e.textContent=tvCh[tvI]},3000);
 
 // Copy CA
+// P&L Period Data (SOL amounts)
+const pnlData={
+  '1d':{pnl:0,trades:0,wins:0,label:'1 DAY P&L'},
+  '7d':{pnl:-0.63,trades:4,wins:0,label:'7 DAY P&L'},
+  '30d':{pnl:+4.42,trades:22,wins:10,label:'1 MONTH P&L'},
+  'all':{pnl:-6.8,trades:28,wins:11,label:'ALL TIME P&L'}
+};
+function setPnlPeriod(p){
+  const d=pnlData[p];
+  document.getElementById('pnlPeriodLabel').textContent=d.label;
+  const v=document.getElementById('pnlPeriodValue');
+  v.textContent=(d.pnl>=0?'+':'')+d.pnl.toFixed(2)+' SOL';
+  v.style.color=d.pnl>=0?'var(--teal)':'#ff4444';
+  document.getElementById('pnlPeriodSol').textContent=d.trades>0?'from '+d.trades+' trades':'No trades';
+  document.getElementById('pnlPeriodTrades').textContent=d.trades;
+  document.getElementById('pnlPeriodWinRate').textContent=d.trades>0?Math.round(d.wins/d.trades*100)+'%':'--';
+  document.querySelectorAll('.pnl-btn').forEach(b=>{b.style.background='transparent';b.style.color='var(--teal)'});
+  const btnId=p==='all'?'pnlAll':'pnl'+p;
+  const active=document.getElementById(btnId);
+  if(active){active.style.background='var(--teal)';active.style.color='#000'}
+}
+document.addEventListener('DOMContentLoaded',()=>setPnlPeriod('1d'));
+
 function copyWallet(){navigator.clipboard.writeText('8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump');const h=document.querySelector('.copy-hint');h.textContent='Copied!';setTimeout(()=>h.textContent='click to copy CA',2000)}
 function copyDonation(){navigator.clipboard.writeText('CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd');const h=document.getElementById('donationHint');h.textContent='Copied!';h.style.color='var(--teal)';setTimeout(()=>{h.textContent='click to copy address';h.style.color='var(--dim)'},2000)}
 
