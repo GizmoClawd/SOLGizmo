@@ -417,14 +417,20 @@ footer a{color:var(--teal);margin:0 10px}
 </footer>
 
 <script>
-let bgmAudio;
-document.addEventListener('click',function startMusic(){
-  if(bgmAudio)return;
-  bgmAudio=new Audio('bgm.mp3');
-  bgmAudio.loop=true;
-  bgmAudio.volume=0.3;
-  bgmAudio.play().catch(()=>{});
-},{once:false});
+let bgmStarted=false;
+function startBGM(){
+  if(bgmStarted)return;
+  bgmStarted=true;
+  const a=new Audio('bgm.mp3');
+  a.loop=true;a.volume=0.3;
+  a.play().catch(()=>{bgmStarted=false;});
+}
+// Try autoplay immediately
+startBGM();
+// Fallback: play on any user interaction
+document.addEventListener('click',startBGM);
+document.addEventListener('scroll',startBGM);
+document.addEventListener('keydown',startBGM);
 </script>
 </body>
 </html>
