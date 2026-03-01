@@ -88,83 +88,132 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .room-container{
   width:100%;height:0;padding-bottom:56%;
   position:relative;overflow:hidden;
-  background:#2a1a10;
+  background:#080818;
 }
 /* Vignette */
 .room-container::after{
   content:'';position:absolute;inset:0;z-index:40;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 60%,transparent 40%,rgba(0,0,0,.55) 100%);
+  background:radial-gradient(ellipse at 50% 60%,transparent 40%,rgba(0,0,0,.6) 100%);
 }
 
-/* Back wall */
+/* Back wall — cyberpunk dark with subtle grid */
 .back-wall{
   position:absolute;top:0;left:0;right:0;bottom:22%;
   background:
-    repeating-linear-gradient(90deg, rgba(120,80,40,.08) 0px, rgba(120,80,40,.08) 1px, transparent 1px, transparent 80px),
-    repeating-linear-gradient(180deg, rgba(100,60,30,.06) 0px, rgba(100,60,30,.06) 1px, transparent 1px, transparent 40px),
-    linear-gradient(180deg, #5a3a20 0%, #6b4528 30%, #7a5030 60%, #6b4528 100%);
+    repeating-linear-gradient(90deg, rgba(153,69,255,.03) 0px, rgba(153,69,255,.03) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(180deg, rgba(20,241,149,.02) 0px, rgba(20,241,149,.02) 1px, transparent 1px, transparent 40px),
+    linear-gradient(180deg, #0c0c1e 0%, #10102a 30%, #0e0e24 60%, #0a0a1a 100%);
   z-index:1;
 }
-/* Wainscoting / chair rail */
+/* Neon strip accent at bottom of wall */
 .back-wall::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:30%;
-  background:
-    repeating-linear-gradient(90deg, rgba(80,50,25,.1) 0px, rgba(80,50,25,.1) 2px, transparent 2px, transparent 60px),
-    linear-gradient(180deg, #4a2a15 0%, #3a2010 100%);
-  border-top:3px solid #8a6040;
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--purple),var(--teal),var(--purple),transparent);
+  box-shadow:0 0 10px rgba(153,69,255,.4),0 0 20px rgba(20,241,149,.2);
 }
 
-/* Wood floor with planks */
+/* Floor — dark metallic with neon grid lines */
 .wood-floor{
   position:absolute;bottom:0;left:0;right:0;height:22%;
   background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0px, rgba(0,0,0,.05) 1px, transparent 1px, transparent 60px),
-    repeating-linear-gradient(90deg, rgba(180,130,70,.12) 0px, transparent 2px, transparent 120px),
-    linear-gradient(180deg, #B8884A 0%, #A87840 40%, #987038 70%, #886830 100%);
+    repeating-linear-gradient(90deg, rgba(153,69,255,.06) 0px, rgba(153,69,255,.06) 1px, transparent 1px, transparent 60px),
+    linear-gradient(180deg, #12121e 0%, #0e0e1a 40%, #0a0a16 100%);
   z-index:2;
-  border-top:3px solid #6a4a28;
+  border-top:2px solid rgba(20,241,149,.15);
 }
-/* Floor plank lines */
+/* Floor grid glow */
 .wood-floor::before{
   content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(90deg, transparent 0px, transparent 58px, rgba(0,0,0,.08) 58px, rgba(0,0,0,.08) 60px);
+  background:
+    repeating-linear-gradient(90deg, transparent 0px, transparent 58px, rgba(153,69,255,.04) 58px, rgba(153,69,255,.04) 60px),
+    repeating-linear-gradient(180deg, transparent 0px, transparent 28px, rgba(20,241,149,.03) 28px, rgba(20,241,149,.03) 30px);
 }
-/* Floor shine */
+/* Floor neon reflection */
 .wood-floor::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:6px;
-  background:linear-gradient(180deg, rgba(255,220,150,.1), transparent);
+  content:'';position:absolute;top:0;left:10%;right:10%;height:8px;
+  background:linear-gradient(180deg, rgba(20,241,149,.08), transparent);
+  filter:blur(2px);
 }
 
-/* Ceiling */
+/* Ceiling — dark with LED strip */
 .ceiling{
   position:absolute;top:0;left:0;right:0;height:8%;
-  background:linear-gradient(180deg, #1a0e06, #3a2010);
+  background:linear-gradient(180deg, #040410, #0a0a1a);
   z-index:3;
-  border-bottom:4px solid #5a3a20;
+  border-bottom:2px solid rgba(153,69,255,.2);
+  box-shadow:0 2px 15px rgba(153,69,255,.1);
+}
+/* Ceiling LED strip */
+.ceiling::after{
+  content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(20,241,149,.4),rgba(153,69,255,.4),rgba(20,241,149,.4),transparent);
+  box-shadow:0 0 8px rgba(20,241,149,.3);
+  animation:ceilingPulse 4s infinite alternate;
+}
+@keyframes ceilingPulse{0%{opacity:.5}100%{opacity:1}}
+
+/* Animated particles floating in room */
+.room-particles{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.room-particle{position:absolute;border-radius:50%;animation:floatParticle linear infinite}
+@keyframes floatParticle{0%{transform:translateY(100%) translateX(0);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(-20%) translateX(30px);opacity:0}}
+
+/* Holographic window */
+.holo-window{
+  position:absolute;top:12%;left:42%;width:16%;height:28%;z-index:6;
+  background:linear-gradient(180deg,rgba(20,241,149,.05),rgba(153,69,255,.08));
+  border:1px solid rgba(20,241,149,.15);border-radius:4px;
+  box-shadow:0 0 20px rgba(20,241,149,.06),inset 0 0 15px rgba(153,69,255,.04);
+  overflow:hidden;
+}
+.holo-window::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(20,241,149,.03) 3px,rgba(20,241,149,.03) 4px);
+  animation:scanline 8s linear infinite;
+}
+@keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+.holo-window::after{
+  content:'SOL';position:absolute;top:15%;left:50%;transform:translateX(-50%);
+  font-family:'Press Start 2P',monospace;font-size:clamp(6px,1vw,10px);color:var(--teal);
+  text-shadow:0 0 6px var(--teal);opacity:.7;
+}
+
+/* Wall art frames */
+.wall-frame{
+  position:absolute;z-index:7;
+  background:rgba(10,10,30,.6);border:1px solid rgba(153,69,255,.25);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(12px,2vw,20px);
+  box-shadow:0 0 10px rgba(153,69,255,.08);
 }
 
 /* ===== NEON SIGNS on back wall ===== */
 .neon-sign{position:absolute;font-family:'Press Start 2P',monospace;z-index:10;letter-spacing:3px}
-.neon-gizmo{top:18%;left:8%;font-size:clamp(14px,2.5vw,24px);color:#d4a0ff;text-shadow:0 0 10px #9945FF,0 0 25px #9945FF,0 0 50px #7b2fff,0 0 80px #7b2fff;animation:neonFlicker 4s infinite}
-.neon-hodl{top:18%;right:8%;font-size:clamp(10px,1.8vw,18px);color:#7dffb3;text-shadow:0 0 8px #14F195,0 0 20px #14F195,0 0 40px #14F195;animation:neonFlicker 5s infinite 1s}
+.neon-gizmo{top:15%;left:6%;font-size:clamp(14px,2.5vw,24px);color:#d4a0ff;text-shadow:0 0 10px #9945FF,0 0 25px #9945FF,0 0 50px #7b2fff,0 0 80px #7b2fff;animation:neonFlicker 4s infinite}
+.neon-hodl{top:15%;right:6%;font-size:clamp(10px,1.8vw,18px);color:#7dffb3;text-shadow:0 0 8px #14F195,0 0 20px #14F195,0 0 40px #14F195;animation:neonFlicker 5s infinite 1s}
 @keyframes neonFlicker{0%,93%,95%,100%{opacity:1}94%{opacity:.3}96%{opacity:.7}}
 
 /* Solana logo on wall */
 .solana-wall{position:absolute;top:28%;left:50%;transform:translateX(-50%);width:40px;height:40px;z-index:8;opacity:.6}
 
+/* Neon underglow on furniture */
+.neon-underglow{
+  position:absolute;bottom:-2px;left:10%;right:10%;height:3px;
+  border-radius:2px;filter:blur(3px);z-index:3;
+}
+
 /* ===== FURNITURE (side view, sitting on floor line) ===== */
 /* All furniture uses bottom:22% as the floor line */
 
-/* Rug */
+/* Rug — neon-trimmed */
 .rug{
   position:absolute;bottom:22%;left:5%;width:35%;height:4%;
-  background:linear-gradient(90deg, #5a2a3a, #6a3040, #5a2a3a);
-  border-radius:2px;z-index:4;opacity:.7;
-  box-shadow:0 1px 3px rgba(0,0,0,.3);
+  background:linear-gradient(90deg, #1a0a2a, #2a1040, #1a0a2a);
+  border-radius:2px;z-index:4;opacity:.8;
+  box-shadow:0 0 8px rgba(153,69,255,.15);
 }
 .rug::after{
   content:'';position:absolute;inset:3px;
-  border:1px solid rgba(255,200,150,.15);border-radius:1px;
+  border:1px solid rgba(153,69,255,.2);border-radius:1px;
 }
 
 /* Couch — side view */
@@ -173,33 +222,33 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 }
 .couch-back{
   position:absolute;bottom:18px;left:0;width:100%;height:38px;
-  background:linear-gradient(180deg,#E8DCC8,#DDD0B8);
+  background:linear-gradient(180deg,#1e1830,#161228);
   border-radius:8px 8px 4px 4px;
-  border:2px solid #C8B8A0;
+  border:2px solid #2a2040;box-shadow:0 0 8px rgba(153,69,255,.1);
 }
 .couch-seat{
   position:absolute;bottom:0;left:4px;right:4px;height:22px;
-  background:linear-gradient(180deg,#F0E8DA,#E8DCC8);
-  border-radius:4px;border:2px solid #D4C8B0;
+  background:linear-gradient(180deg,#221a34,#1a1428);
+  border-radius:4px;border:2px solid #2a2040;
 }
 .couch-arm-l{
   position:absolute;bottom:0;left:-4px;width:14px;height:36px;
-  background:linear-gradient(90deg,#DDD0B8,#E8DCC8);
-  border-radius:6px 4px 4px 6px;border:2px solid #C8B8A0;
+  background:linear-gradient(90deg,#1a1428,#221a34);
+  border-radius:6px 4px 4px 6px;border:2px solid #2a2040;
 }
 .couch-arm-r{
   position:absolute;bottom:0;right:-4px;width:14px;height:36px;
-  background:linear-gradient(270deg,#DDD0B8,#E8DCC8);
-  border-radius:4px 6px 6px 4px;border:2px solid #C8B8A0;
+  background:linear-gradient(270deg,#1a1428,#221a34);
+  border-radius:4px 6px 6px 4px;border:2px solid #2a2040;
 }
 .couch-cushion{
   position:absolute;bottom:20px;width:32px;height:16px;
-  background:linear-gradient(180deg,#EDE4D4,#E0D6C2);
-  border-radius:6px;border:1px solid #D0C4AC;
+  background:linear-gradient(180deg,#2a2040,#221a34);
+  border-radius:6px;border:1px solid #3a3060;
 }
 .couch-pillow{
   position:absolute;bottom:32px;width:16px;height:14px;border-radius:5px;
-  box-shadow:1px 1px 3px rgba(0,0,0,.15);
+  box-shadow:0 0 6px rgba(153,69,255,.2);
 }
 
 /* TV on stand */
@@ -274,8 +323,9 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 /* Ping pong table — side view */
 .pp-unit{position:absolute;bottom:22%;left:48%;z-index:7}
 .pp-top{
-  width:80px;height:6px;background:#1a7a2a;
-  border:2px solid #0d5d15;border-radius:2px;
+  width:80px;height:6px;background:#0a2a15;
+  border:2px solid rgba(20,241,149,.2);border-radius:2px;
+  box-shadow:0 0 6px rgba(20,241,149,.1);
 }
 .pp-leg-l,.pp-leg-r{
   position:absolute;bottom:-22px;width:4px;height:22px;background:#555;
@@ -294,8 +344,8 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
   width:60px;height:80px;position:relative;
 }
 .bunk-post-l,.bunk-post-r{
-  position:absolute;bottom:0;width:4px;height:80px;background:#5a3a20;
-  border:1px solid #7a5030;
+  position:absolute;bottom:0;width:4px;height:80px;background:#1a1a2e;
+  border:1px solid rgba(153,69,255,.2);
 }
 .bunk-post-l{left:0}
 .bunk-post-r{right:0}
@@ -305,23 +355,24 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .bunk-bottom{bottom:4px;background:linear-gradient(180deg,#7b3fff,#5a2acc)}
 .bunk-top{bottom:44px;background:linear-gradient(180deg,#14F195,#0ca070)}
 .bunk-rail{
-  position:absolute;left:4px;right:4px;height:2px;background:#7a5030;
+  position:absolute;left:4px;right:4px;height:2px;background:rgba(153,69,255,.3);
 }
 .bunk-rail-mid{bottom:36px}
 .bunk-ladder{
   position:absolute;right:-6px;bottom:0;width:8px;height:60px;
 }
-.ladder-side{position:absolute;width:2px;height:100%;background:#7a5030}
+.ladder-side{position:absolute;width:2px;height:100%;background:#2a2040}
 .ladder-side-l{left:0}
 .ladder-side-r{right:0}
-.ladder-rung{position:absolute;left:0;right:0;height:2px;background:#8a6040}
+.ladder-rung{position:absolute;left:0;right:0;height:2px;background:rgba(153,69,255,.25)}
 
 /* Mini fridge */
 .mini-fridge{
   position:absolute;bottom:22%;left:43%;z-index:8;
   width:22px;height:32px;
-  background:linear-gradient(180deg,#2a2a3a,#1e1e2a);
-  border:2px solid #3a3a4a;border-radius:3px;
+  background:linear-gradient(180deg,#12121e,#0e0e18);
+  border:2px solid rgba(68,170,255,.15);border-radius:3px;
+  box-shadow:0 0 8px rgba(68,170,255,.08);
 }
 .fridge-handle{position:absolute;right:3px;top:30%;width:2px;height:10px;background:#777;border-radius:1px}
 .fridge-led{position:absolute;top:3px;left:50%;transform:translateX(-50%);width:4px;height:3px;background:#4af;border-radius:50%;box-shadow:0 0 8px #4af,0 0 16px rgba(68,170,255,.3);animation:fridgeGlow 3s infinite alternate}
@@ -352,8 +403,9 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 .server-rack{
   position:absolute;bottom:22%;right:3%;z-index:8;
   width:28px;height:70px;
-  background:linear-gradient(180deg,#1a1a2e,#151525);
-  border:2px solid #2a2a4a;border-radius:3px;
+  background:linear-gradient(180deg,#0e0e20,#0a0a18);
+  border:2px solid rgba(20,241,149,.15);border-radius:3px;
+  box-shadow:0 0 12px rgba(20,241,149,.08);
 }
 .rack-slot{position:absolute;left:3px;right:3px;height:6px;background:#111;border:1px solid #2a2a3a;border-radius:1px}
 .rack-led{position:absolute;width:3px;height:3px;border-radius:50%}
@@ -368,11 +420,12 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
   position:absolute;bottom:22%;left:22%;z-index:8;
 }
 .ct-top{
-  width:40px;height:6px;background:linear-gradient(180deg,#3a3028,#2a2018);
-  border:1px solid #4a3a28;border-radius:2px;
+  width:40px;height:6px;background:linear-gradient(180deg,#1a1a2e,#12121a);
+  border:1px solid rgba(153,69,255,.2);border-radius:2px;
+  box-shadow:0 0 6px rgba(153,69,255,.08);
 }
 .ct-leg-l,.ct-leg-r{
-  position:absolute;bottom:-12px;width:3px;height:12px;background:#3a3028;
+  position:absolute;bottom:-12px;width:3px;height:12px;background:#1a1a2e;
 }
 .ct-leg-l{left:6px}
 .ct-leg-r{right:6px}
@@ -390,23 +443,23 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 }
 @keyframes steamRise{0%{height:4px;opacity:.3;transform:translateY(0)}50%{height:6px;opacity:.15;transform:translateY(-5px)}100%{height:3px;opacity:0;transform:translateY(-10px)}}
 
-/* Floor lamp */
+/* Floor lamp — neon */
 .floor-lamp-unit{position:absolute;bottom:22%;left:5%;z-index:9}
-.lamp-pole{width:3px;height:50px;background:linear-gradient(180deg,#666,#444);margin:0 auto}
+.lamp-pole{width:3px;height:50px;background:linear-gradient(180deg,#444,#222);margin:0 auto;box-shadow:0 0 4px rgba(20,241,149,.1)}
 .lamp-shade{
-  width:24px;height:14px;background:linear-gradient(180deg,#F5E0B8,#E8D0A0);
+  width:24px;height:14px;background:linear-gradient(180deg,#1a1a2e,#12121a);
   border-radius:2px 2px 12px 12px;margin:0 auto;position:relative;
-  border:1px solid #D4C090;
+  border:1px solid rgba(20,241,149,.3);box-shadow:0 0 8px rgba(20,241,149,.15);
 }
 .lamp-glow-circle{
   position:absolute;top:8px;left:50%;transform:translateX(-50%);
   width:80px;height:80px;border-radius:50%;
-  background:radial-gradient(rgba(255,220,160,.25),rgba(255,200,120,.08),transparent);
+  background:radial-gradient(rgba(20,241,149,.15),rgba(153,69,255,.06),transparent);
   pointer-events:none;animation:lampPulse 4s infinite alternate;
 }
 @keyframes lampPulse{0%{opacity:.5;transform:translateX(-50%) scale(.9)}100%{opacity:1;transform:translateX(-50%) scale(1.1)}}
 .lamp-base-circle{
-  width:14px;height:5px;background:radial-gradient(#555,#333);
+  width:14px;height:5px;background:radial-gradient(#333,#222);
   border-radius:50%;margin:0 auto;
 }
 
@@ -672,12 +725,22 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <div class="gizmo-pets">Pets: <span id="petCount">0</span> 💜 | XP: <span id="xpCount">0</span></div>
       <div class="hud-log" id="hudLog"></div>
     </div>
-    <!-- Back wall (wood paneling) -->
+    <!-- Back wall (cyber dark) -->
     <div class="back-wall"></div>
     <!-- Ceiling -->
     <div class="ceiling"></div>
-    <!-- Wood floor -->
+    <!-- Floor -->
     <div class="wood-floor"></div>
+
+    <!-- Floating particles -->
+    <div class="room-particles" id="roomParticles"></div>
+
+    <!-- Holographic window -->
+    <div class="holo-window"></div>
+
+    <!-- Wall art frames -->
+    <div class="wall-frame" style="top:12%;left:22%;width:6%;height:14%">🦞</div>
+    <div class="wall-frame" style="top:12%;right:22%;width:6%;height:14%">💎</div>
 
     <!-- Neon signs on wall -->
     <div class="neon-sign neon-gizmo">GIZMO</div>
@@ -1613,8 +1676,23 @@ setInterval(()=>{
 },4000+Math.random()*4000);
 
 // TV channel cycle
-const tvCh=['GIZMO TV','SOL: $$$','PUMP','LIVE','HODL!','GM'];let tvI=0;
+const tvCh=['GIZMO TV','SOL: $$$','PUMP','LIVE','HODL!','GM','📈 +420%','🦞 ICED'];let tvI=0;
 setInterval(()=>{tvI=(tvI+1)%tvCh.length;const e=document.getElementById('tvChannel');if(e)e.textContent=tvCh[tvI]},3000);
+
+// Room floating particles
+(function spawnParticles(){
+  const container=document.getElementById('roomParticles');if(!container)return;
+  function addP(){
+    const p=document.createElement('div');p.className='room-particle';
+    const colors=['rgba(20,241,149,.4)','rgba(153,69,255,.4)','rgba(255,200,100,.3)','rgba(100,200,255,.3)'];
+    const size=1+Math.random()*3;
+    p.style.cssText=`left:${Math.random()*100}%;width:${size}px;height:${size}px;background:${colors[~~(Math.random()*colors.length)]};animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*4}s;box-shadow:0 0 ${size*2}px ${colors[~~(Math.random()*colors.length)]}`;
+    container.appendChild(p);
+    setTimeout(()=>p.remove(),20000);
+  }
+  for(let i=0;i<12;i++)setTimeout(()=>addP(),i*500);
+  setInterval(addP,1500);
+})();
 
 // Copy CA
 // P&L Period Data (SOL amounts) — accurate as of Mar 1, 2026
