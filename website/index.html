@@ -1474,24 +1474,54 @@ document.getElementById('intro-gate').addEventListener('click',()=>{
   for(let i=0;i<8;i++){const f=document.createElement('div');f.className='fragment go';const a=Math.random()*Math.PI*2,d=200+Math.random()*400,r=(Math.random()-.5)*720;f.style.cssText=`--tx:${Math.cos(a)*d}px;--ty:${Math.sin(a)*d}px;--rot:${r}deg;animation-delay:${Math.random()*.15}s`;f.textContent=frags[~~(Math.random()*frags.length)];fc.appendChild(f)}
   },1900);
   setTimeout(()=>{document.getElementById('laser').style.display='none';document.getElementById('shipScene').classList.add('fly');document.getElementById('introTitle').classList.add('show')},2500);
-  setTimeout(()=>{document.getElementById('intro').classList.add('fade');document.getElementById('main').classList.add('show');startBGM();window.scrollTo(0,0)},5000);
-  setTimeout(()=>{document.getElementById('intro').style.display='none';window.scrollTo(0,0)},6000);
+  setTimeout(()=>{document.getElementById('intro').classList.add('fade');document.getElementById('main').classList.add('show');window.scrollTo(0,0)},5000);
+  setTimeout(()=>{document.getElementById('intro').style.display='none';startBGM();window.scrollTo(0,0)},6000);
 },{once:true});
 
 // ===== BACKGROUND MUSIC (loop after intro) =====
 let bgmAudio;
 let isMuted=false;
+let bgmPlaying=false;
 function startBGM(){
+  if(bgmAudio)return;
   bgmAudio=new Audio('bgm.mp3');
   bgmAudio.loop=true;
   bgmAudio.volume=0.3;
-  bgmAudio.play().catch(()=>{});
-  document.getElementById('muteBtn').classList.add('visible');
+  bgmAudio.preload='auto';
+  
+  // Force loop on ended event (backup)
+  bgmAudio.addEventListener('ended', function() {
+    if (!isMuted) {
+      bgmAudio.currentTime = 0;
+      bgmAudio.play().catch(()=>{});
+    }
+  });
+  
+  bgmAudio.play().then(()=>{
+    bgmPlaying=true;
+    document.getElementById('muteBtn').classList.add('visible');
+  }).catch(()=>{
+    // Auto-retry on user interaction
+    document.addEventListener('click',startBGM,{once:true});
+    document.addEventListener('scroll',startBGM,{once:true});
+  });
 }
+
+// BGM starts after intro sequence completes (6 seconds after gate click)
 function toggleMute(){
-  isMuted=!isMuted;
-  if(bgmAudio) bgmAudio.muted=isMuted;
-  document.getElementById('muteBtn').textContent=isMuted?'🔇':'🔊';
+  if(!bgmAudio){startBGM();return;}
+  if(bgmPlaying){
+    bgmAudio.pause();
+    bgmPlaying=false;
+    isMuted=true;
+    document.getElementById('muteBtn').textContent='🔇';
+  }else{
+    bgmAudio.play().then(()=>{
+      bgmPlaying=true;
+      isMuted=false;
+      document.getElementById('muteBtn').textContent='🔊';
+    });
+  }
 }
 
 // ===== GIZMO VIRTUAL PET ENGINE (Throngelets-style) =====
