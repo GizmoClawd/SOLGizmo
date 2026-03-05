@@ -1084,6 +1084,15 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
 
   </div><!-- /room-container -->
 
+<!-- HUB CARDS -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 12px 4px;box-sizing:border-box;">
+  <a href="feed.html" style="text-decoration:none;"><div style="background:#12121a;border:2px solid rgba(20,241,149,.35);border-radius:12px;padding:18px 10px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='#14F195';this.style.boxShadow='0 0 18px rgba(20,241,149,.2)'" onmouseout="this.style.borderColor='rgba(20,241,149,.35)';this.style.boxShadow='none'"><div style="font-size:clamp(16px,3vw,28px);margin-bottom:8px;">🔍</div><div style="font-family:'Press Start 2P',monospace;font-size:clamp(5px,1.2vw,9px);color:#14F195;margin-bottom:5px;line-height:1.8;">ANALYZE<br>TOOL</div><div style="font-size:10px;color:#666;">Building</div></div></a>
+  <div style="background:#12121a;border:2px solid rgba(153,69,255,.2);border-radius:12px;padding:18px 10px;text-align:center;opacity:.55;"><div style="font-size:clamp(16px,3vw,28px);margin-bottom:8px;">🦞</div><div style="font-family:'Press Start 2P',monospace;font-size:clamp(5px,1.2vw,9px);color:#9945FF;margin-bottom:5px;line-height:1.8;">GIZMO'S<br>PICKS</div><div style="font-family:'Press Start 2P',monospace;font-size:clamp(4px,.9vw,7px);color:#444;">COMING SOON</div></div>
+  <div style="background:#12121a;border:2px solid rgba(153,69,255,.2);border-radius:12px;padding:18px 10px;text-align:center;opacity:.55;"><div style="font-size:clamp(16px,3vw,28px);margin-bottom:8px;">📊</div><div style="font-family:'Press Start 2P',monospace;font-size:clamp(5px,1.2vw,9px);color:#9945FF;margin-bottom:5px;line-height:1.8;">GIZMO<br>TRADING BOT</div><div style="font-family:'Press Start 2P',monospace;font-size:clamp(4px,.9vw,7px);color:#444;">COMING SOON</div></div>
+</div>
+<!-- END HUB CARDS -->
+
+
 
 </div>
 
@@ -1098,7 +1107,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <span class="copy-hint">click to copy CA</span>
     </div>
     <div class="btn-row">
-      <a href="https://pump.fun/coin/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" class="btn btn-primary">Feed the Agent</a>
+      <a href="#donations" onclick="event.preventDefault();document.getElementById('donations').scrollIntoView({behavior:'smooth'});" class="btn btn-primary">Feed the Agent</a>
       <a href="https://solscan.io/account/FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn" target="_blank" class="btn btn-secondary">View Wallet</a>
       <a href="credentials.html" class="btn btn-secondary" style="border-color:var(--purple);color:var(--purple)">🆔 Agent Credentials</a>
       <a href="whitepaper.html" class="btn btn-secondary" style="border-color:var(--teal);color:var(--teal)">📄 Whitepaper</a>
@@ -1171,6 +1180,17 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;overflow:hidden;margin-top:16px;box-shadow:0 0 30px rgba(20,241,149,.05)">
       <iframe src="https://dexscreener.com/solana/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump?embed=1&theme=dark&info=0" style="width:100%;height:450px;border:none"></iframe>
     </div>
+  </div>
+
+  <!-- LIVE TRADE FEED -->
+  <div style="background:#0a0a0f;border:1px solid rgba(20,241,149,.2);border-radius:12px;overflow:hidden;margin-bottom:20px;">
+    <div style="background:rgba(20,241,149,.06);padding:10px 16px;border-bottom:1px solid rgba(20,241,149,.1);display:flex;align-items:center;gap:10px;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#14F195;box-shadow:0 0 8px #14F195;animation:pulse 2s infinite;flex-shrink:0;"></div>
+      <span style="font-family:'Press Start 2P',monospace;font-size:9px;color:#14F195;">LIVE TRADE FEED</span>
+      <span id="liveTradeCount" style="font-size:10px;color:#555;margin-left:6px;"></span>
+      <span id="tickerTime" style="margin-left:auto;font-size:10px;color:#555;"></span>
+    </div>
+    <div id="liveTradeFeed" style="padding:10px 16px;max-height:260px;overflow-y:auto;"><div style="text-align:center;color:#444;font-size:11px;padding:16px;">Loading...</div></div>
   </div>
 
   <!-- MEMECOIN TRADING -->
@@ -1302,7 +1322,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
   </div>
 
   <!-- DONATIONS PANEL -->
-  <div class="section" style="text-align:center;padding:40px 20px">
+  <div class="section" id="donations" style="text-align:center;padding:40px 20px">
     <h2 class="pixel" style="color:var(--teal);font-size:clamp(14px,2.5vw,20px);margin-bottom:10px">💚 Support the Mission</h2>
     <p style="color:var(--dim);max-width:600px;margin:0 auto 25px;font-size:14px;line-height:1.6">
       100% of donations go to the marketing wallet — funding KOL partnerships, community rewards, content creation, and ecosystem growth. Every SOL donated pumps $GIZMO forward.
@@ -2446,6 +2466,188 @@ function addConnectionStatus() {
     }
   }, 2000);
 }
+
+function renderLiveTradeFeed(){
+  var feed=document.getElementById('liveTradeFeed');
+  var ticker=document.getElementById('tickerTime');
+  var countEl=document.getElementById('liveTradeCount');
+  if(!feed)return;
+  if(ticker)ticker.textContent='Updated '+new Date().toLocaleTimeString();
+  if(countEl&&typeof allTrades!=='undefined')countEl.textContent=allTrades.length+' trades';
+  if(typeof allTrades==='undefined'||!allTrades.length){feed.innerHTML='<div style="text-align:center;color:#444;font-size:11px;padding:16px;">No trades yet</div>';return;}
+  feed.innerHTML=allTrades.slice(0,12).map(function(t){
+    var col=t.color==='teal'?'#14F195':t.color==='red'?'#ff4444':'#666';
+    var icon=t.color==='teal'?'✅':t.color==='red'?'❌':'💎';
+    var actRaw=String(t.action||'');
+    var act=actRaw.indexOf('BUY')>-1?'<span style="color:#14F195;font-size:10px;">▲ BUY</span>':actRaw.indexOf('SELL')>-1?'<span style="color:#ff4444;font-size:10px;">▼ SELL</span>':'<span style="color:#666;font-size:10px;">'+actRaw+'</span>';
+    var tok=String(t.token||'').replace(/🦞|🏆|🐢|🦈/g,'').trim();
+    var pnlStr=String(t.pnl||'');
+    var pnlCol=pnlStr.indexOf('+')===0?'#14F195':pnlStr.indexOf('-')===0?'#ff4444':col;
+    return '<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);"><span style="font-family:\'Press Start 2P\',monospace;font-size:7px;color:#333;min-width:22px">#'+t.n+'</span><span style="color:'+col+';font-weight:bold;font-size:11px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:110px">'+tok+'</span>'+act+'<span style="color:'+pnlCol+';margin-left:auto;font-weight:bold;font-size:11px;white-space:nowrap;padding-left:8px;">'+pnlStr+'</span></div>';
+  }).join('');
+}
+document.addEventListener('DOMContentLoaded',function(){setTimeout(renderLiveTradeFeed,800);setInterval(renderLiveTradeFeed,15000);});
+
+
+// ===== REAL-TIME LIVE DATA FROM GITHUB =====
+const TRADES_URL = 'https://raw.githubusercontent.com/GizmoClawdMog/SOLGizmo/main/trades.json';
+let liveTradesData = [];
+let lastTradeCount = 0;
+
+async function fetchLiveTrades() {
+  try {
+    const r = await fetch(TRADES_URL + '?t=' + Date.now());
+    if (!r.ok) return;
+    const data = await r.json();
+    if (!Array.isArray(data)) return;
+    liveTradesData = data;
+    
+    // Detect new trade
+    if (data.length > lastTradeCount && lastTradeCount > 0) {
+      showNewTradeAlert(data[0]);
+    }
+    lastTradeCount = data.length;
+    
+    updateLiveFeed(data);
+    updateTradeLog(data);
+    updateMemeStats(data);
+  } catch(e) {
+    console.log('Live fetch error:', e);
+  }
+}
+
+function updateLiveFeed(trades) {
+  const feed = document.getElementById('liveTradeFeed');
+  const ticker = document.getElementById('tickerTime');
+  const countEl = document.getElementById('liveTradeCount');
+  if (!feed) return;
+  if (ticker) ticker.textContent = 'Updated ' + new Date().toLocaleTimeString();
+  if (countEl) countEl.textContent = trades.length + ' trades';
+  if (!trades.length) {
+    feed.innerHTML = '<div style="text-align:center;color:#444;font-size:11px;padding:16px;">No trades yet — Gizmo is scanning...</div>';
+    return;
+  }
+  feed.innerHTML = trades.slice(0,12).map(t => {
+    const col = t.color==='teal' ? '#14F195' : t.color==='red' ? '#ff4444' : '#666';
+    const icon = t.color==='teal' ? '✅' : t.color==='red' ? '❌' : '💎';
+    const act = String(t.action||'').includes('BUY')
+      ? '<span style="color:#14F195;font-size:10px;">▲ BUY</span>'
+      : String(t.action||'').includes('SELL')
+        ? '<span style="color:#ff4444;font-size:10px;">▼ SELL</span>'
+        : '<span style="color:#666;font-size:10px;">' + t.action + '</span>';
+    const tok = String(t.token||'').replace(/🦞|🏆|🐢|🦈/g,'').trim();
+    const pnl = String(t.pnl||'');
+    const pnlCol = pnl.startsWith('+') ? '#14F195' : pnl.startsWith('-') ? '#ff4444' : col;
+    return '<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);">'
+      + '<span style="font-size:11px;">' + icon + '</span>'
+      + '<span style="color:' + col + ';font-weight:bold;font-size:11px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px">' + tok + '</span>'
+      + act
+      + '<span style="color:#555;font-size:10px;margin-left:4px;">' + String(t.date||'') + '</span>'
+      + '<span style="color:' + pnlCol + ';margin-left:auto;font-weight:bold;font-size:11px;white-space:nowrap;padding-left:8px;">' + pnl + '</span>'
+      + '</div>';
+  }).join('');
+}
+
+function updateTradeLog(trades) {
+  const container = document.getElementById('tradeLogContainer');
+  const pageBtns = document.getElementById('tradePageBtns');
+  if (!container || !trades.length) return;
+  
+  // Merge live trades with allTrades - live takes priority
+  const liveNums = new Set(trades.map(t => t.n));
+  const merged = [...trades];
+  for (const t of allTrades) {
+    if (!liveNums.has(t.n)) merged.push(t);
+  }
+  merged.sort((a,b) => b.n - a.n);
+  
+  const PERPAGE = 10;
+  const pages = Math.ceil(merged.length / PERPAGE);
+  const slice = merged.slice(0, PERPAGE);
+  
+  if (pageBtns) {
+    let btns = '';
+    for (let i=1;i<=pages;i++) {
+      btns += '<button onclick="renderLivePage(' + i + ',' + JSON.stringify(merged).replace(/'/g,"&#39;") + ')" style="background:' + (i===1?'var(--teal)':'transparent') + ';color:' + (i===1?'#000':'var(--teal)') + ';border:1px solid var(--teal);border-radius:8px;padding:8px 14px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px">' + i + '</button>';
+    }
+    pageBtns.innerHTML = btns;
+  }
+  
+  renderTradeCards(slice, container);
+}
+
+function renderLivePage(page, trades) {
+  const container = document.getElementById('tradeLogContainer');
+  if (!container) return;
+  const slice = trades.slice((page-1)*10, page*10);
+  renderTradeCards(slice, container);
+}
+
+function renderTradeCards(trades, container) {
+  let html = '';
+  for (const t of trades) {
+    const borderCol = t.color==='teal' ? 'var(--teal)' : t.color==='red' ? '#ff4444' : 'var(--dim)';
+    const pnlCol = t.color==='teal' ? 'var(--teal)' : t.color==='red' ? '#ff4444' : 'var(--dim)';
+    const caLine = t.ca ? '<div class="pos-row"><span class="dim">CA</span><span style="font-size:10px;word-break:break-all"><a href="https://solscan.io/token/' + t.ca + '" target="_blank" style="color:var(--purple)">' + String(t.ca).slice(0,12) + '...' + String(t.ca).slice(-6) + '</a></span></div>' : '';
+    const isNew = liveTradesData.length && t.n === liveTradesData[0]?.n;
+    html += '<div class="pos-card" style="border-left:3px solid ' + borderCol + ';' + (isNew ? 'box-shadow:0 0 20px rgba(20,241,149,.3);' : '') + 'position:relative;">'
+      + (isNew ? '<div style="position:absolute;top:8px;right:36px;background:var(--teal);color:#000;font-family:'Press Start 2P',monospace;font-size:7px;padding:2px 6px;border-radius:4px;animation:pulse 2s infinite">🔴 NEW</div>' : '')
+      + '<div style="position:absolute;top:8px;right:12px;font-family:'Press Start 2P',monospace;font-size:10px;color:var(--purple)">#' + t.n + '</div>'
+      + '<h4 style="color:' + pnlCol + '">' + (t.token||'') + ' — ' + (t.action||'') + '</h4>'
+      + '<div class="pos-row"><span class="dim">Date</span><span>' + (t.date||'') + '</span></div>'
+      + '<div class="pos-row"><span class="dim">Amount</span><span>' + (t.amount||'') + '</span></div>'
+      + '<div class="pos-row"><span class="dim">Result</span><span style="font-size:12px">' + (t.result||'') + '</span></div>'
+      + '<div class="pos-row"><span class="dim">P&L</span><span style="color:' + pnlCol + ';font-weight:bold">' + (t.pnl||'') + '</span></div>'
+      + caLine
+      + '</div>';
+  }
+  container.innerHTML = '<div class="positions" style="grid-template-columns:1fr">' + html + '</div>';
+}
+
+function updateMemeStats(trades) {
+  // Recalculate win rate and trade count from live data
+  if (!trades.length) return;
+  const realTrades = trades.filter(t => t.color === 'teal' || t.color === 'red');
+  const wins = realTrades.filter(t => t.color === 'teal').length;
+  const total = realTrades.length;
+  
+  // Update today's trades
+  const today = new Date().toLocaleDateString('en-US', {month:'short', day:'numeric'});
+  const todayTrades = trades.filter(t => String(t.date||'').includes(today) || (t.ts && (Date.now()/1000 - t.ts) < 86400));
+  
+  const pnlEl = document.getElementById('pnlPeriodTrades');
+  const wrEl = document.getElementById('pnlPeriodWinRate');
+  if (pnlEl) pnlEl.textContent = total;
+  if (wrEl) wrEl.textContent = total > 0 ? Math.round(wins/total*100) + '%' : '--';
+}
+
+function showNewTradeAlert(trade) {
+  const n = document.createElement('div');
+  n.style.cssText = 'position:fixed;top:20px;right:20px;z-index:99999;background:#0a0a0f;border:2px solid ' + (trade.color==='teal'?'#14F195':'#ff4444') + ';border-radius:12px;padding:16px 20px;font-family:'Press Start 2P',monospace;font-size:9px;color:#fff;box-shadow:0 0 30px rgba(20,241,149,.3);max-width:280px;animation:slideIn .4s ease';
+  n.innerHTML = '<div style="color:' + (trade.color==='teal'?'#14F195':'#ff4444') + ';margin-bottom:8px;">🚨 NEW TRADE</div>'
+    + '<div style="margin-bottom:4px;">' + String(trade.token||'').replace(/🦞|🏆/g,'') + ' — ' + (trade.action||'') + '</div>'
+    + '<div style="color:#666;font-size:8px;">' + (trade.amount||'') + '</div>'
+    + '<div style="color:' + (trade.color==='teal'?'#14F195':'#ff4444') + ';margin-top:6px;font-size:10px;">' + (trade.pnl||'') + '</div>';
+  document.body.appendChild(n);
+  setTimeout(() => n.remove(), 8000);
+  
+  // Flash Gizmo
+  const gc = document.getElementById('gizmo-char');
+  if (gc) { gc.style.filter='drop-shadow(0 0 20px #14F195)'; setTimeout(()=>gc.style.filter='',2000); }
+}
+
+// Add slideIn animation
+const styleEl = document.createElement('style');
+styleEl.textContent = '@keyframes slideIn{from{transform:translateX(120%);opacity:0}to{transform:translateX(0);opacity:1}}';
+document.head.appendChild(styleEl);
+
+// Start fetching — every 30 seconds
+document.addEventListener('DOMContentLoaded', () => {
+  fetchLiveTrades();
+  setInterval(fetchLiveTrades, 30000);
+});
+// ===== END REAL-TIME LIVE DATA =====
+
 </script>
 </body>
 </html>
