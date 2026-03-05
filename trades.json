@@ -1,5 +1,17 @@
 [
   {
+    "n": 6,
+    "date": "2026-03-05",
+    "token": "MAXXING",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Bought successfully, sig: 2gzMfttnkzQbrHSHpps6Ub221F6EAd57dKvNCnuLi13zS3MeHXaGTWR1Ti4r6o5uw4pqAm3HMuBq4squkpx7R8Ff",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6MVnei2Lcuae2tbr7UjJR7o6s7kJmTQRdpxTZcoEpump",
+    "ts": 1772742260
+  },
+  {
     "n": 5,
     "date": "2026-03-05",
     "token": "DELULU",
