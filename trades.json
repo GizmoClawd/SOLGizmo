@@ -1,5 +1,17 @@
 [
   {
+    "n": 11,
+    "date": "2026-03-05",
+    "token": "Cope",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Bought successfully, sig: J7M6hHqeFVr7rRJybuswbRuZzaMc8ndc62199BPzVnUXtNM4U4twwXUKVbLDUCxmr8tvsuLtvoQ1hzwrCCrYgoH",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HPqSCX5eCEKhwCFvTkvXaZ4ENA3BzJHCgX8uhb8dpump",
+    "ts": 1772755077
+  },
+  {
     "n": 10,
     "date": "2026-03-05",
     "token": "PIGEON",
