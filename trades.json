@@ -2,14 +2,14 @@
   {
     "n": 5,
     "date": "2026-03-05",
-    "token": "memecoin",
-    "action": "SELL",
-    "amount": "0.0708 SOL",
-    "result": "Red bag purge, sig: 3Aed1obTtw8FJvDHXaSELxhoNFGAyXqxMJsdKj7oGNrwvY7jFt46iHqZrvDnvghDj3nZy92okLQQkB7mGqYgbAUA",
-    "pnl": "-0.2292 SOL",
-    "color": "red",
-    "ca": "DoFwCnrfaa97mdRSibH72oA9DBizoxSgtJ7WNCRJpump",
-    "ts": 1772736000
+    "token": "DELULU",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Bought successfully, sig: 2SCdsZpYVGonranr8ySKVb2khiceDEs5uLu6TQ4TXX8YyAJdit8ZLgSijLCXT6Z5n3MwMWxomsmyqUm8sUhGqDYW",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6RxB1KdzVMXrrYn7nQWvaGgh5e2EpbA1FcEFtq74pump",
+    "ts": 1772742160
   },
   {
     "n": 4,
