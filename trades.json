@@ -1,5 +1,17 @@
 [
   {
+    "n": 8,
+    "date": "2026-03-05",
+    "token": "timeline",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Bought successfully, sig: 39ysmMzzU7X2SGoyfQuTTBRtdj4KpQYEWY9cfTqArvtbXbbEtMu5a3ME3faCePpgyNAYStSrHCk91mvFKdo52dbM",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AfUtNhWnc8k41SsbZKPwS8iPCPE3vAjiGV2483Etpump",
+    "ts": 1772753424
+  },
+  {
     "n": 7,
     "date": "2026-03-05",
     "token": "$WALL",
