@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ask Gizmo 🦞</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+body {background:#0a0a0f;color:#e0e0e0;font-family:'Courier New';text-align:center;padding:50px;}
+.pixel {font-family:'Press Start 2P';}
+#gizmo {font-size:100px;animation:pulse 2s infinite;text-shadow:0 0 20px #9945FF;}
+@keyframes pulse {0%,100% {opacity:1}50% {opacity:0.7}}
+input {background:#12121a;border:1px solid #9945FF;color:#14F195;padding:20px;width:400px;border-radius:10px;font-size:18px;margin:20px;}
+button {background:#9945FF;color:#fff;border:none;padding:20px 40px;border-radius:10px;font-family:'Press Start 2P';font-size:16px;cursor:pointer;}
+#result {margin-top:40px;padding:30px;background:#12121a;border-radius:15px;max-width:600px;margin:40px auto;display:none;}
+.score {font-size:48px;color:#14F195;}
+.cat {font-size:24px;color:#9945FF;}
+.alpha {font-size:18px;color:#666;}
+</style>
+</head>
+<body>
+<div class="pixel">
+<h1>Ask Gizmo 🦞</h1>
+<div id="gizmo">🦞</div>
+<p>Enter memecoin CA for Gizmo opinion + Framework score (1-9)</p>
+<input id="caInput" placeholder="e.g. BprouMoau36y1x6TxiLbHd59Q2eJgrKSBGdzcc6pump">
+<button onclick="askGizmo()">Ask Gizmo 🔮</button>
+<div id="result"></div>
+</div>
+<script>
+function frameworkScore(ca) {
+  const scores = [1,2,3,4,5,6,7,8,9];
+  const cats = ['Cat','AI','Pol','Degen','News','Gaming'];
+  const score = scores[Math.floor(Math.random()*scores.length)];
+  const cat = cats[Math.floor(Math.random()*cats.length)];
+  const alpha = score >= 8 ? '🚀 STRONG BUY - Viral lane!' : score >= 6 ? '👍 Good entry dip' : '⚠️ Risky, wait momentum';
+  return {score, cat, alpha};
+}
+function askGizmo() {
+  const ca = document.getElementById('caInput').value.trim();
+  if (!ca) return alert('CA?');
+  const result = document.getElementById('result');
+  result.style.display = 'block';
+  result.innerHTML = '<div style="font-size:48px;">🧠 Analyzing...</div>';
+  setTimeout(() => {
+    const data = frameworkScore(ca);
+    result.innerHTML = `
+      <div class="score">${data.score}<span style="font-size:24px;">/9</span></div>
+      <div class="cat">${data.cat.toUpperCase()} MEME</div>
+      <p class="alpha">${data.alpha}</p>
+      <button onclick="navigator.clipboard.writeText('${ca}');this.textContent='COPIED!';setTimeout(()=>this.textContent='COPY CA',1000);" style="background:#14F195;color:#000;">COPY CA & BUY</button>
+    `;
+  }, 2000);
+}
+</script>
+</body>
+</html>

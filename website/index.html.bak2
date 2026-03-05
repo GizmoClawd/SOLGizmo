@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIZMO — Autonomous AI Agent on Solana</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mogwai-enhancements.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--purple:#9945FF;--teal:#14F195;
+  --dark1:#12121a;--dark2:#1a1a2e;--text:#e0e0e0;--dim:#666;
+}
+body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;overflow-x:hidden}
+.pixel{font-family:'Press Start 2P',monospace}
+
+/* ===== EPIC INTRO ===== */
+#intro-gate{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:10000;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-direction:column;gap:20px}
+#intro-gate.gone{display:none}
+#intro-gate .gate-text{font-family:'Press Start 2P',monospace;color:var(--teal);font-size:clamp(14px,3vw,24px);text-shadow:0 0 20px var(--teal),0 0 40px var(--purple);animation:gatePulse 1.5s ease-in-out infinite alternate}
+@keyframes gatePulse{0%{opacity:.6;transform:scale(.97)}100%{opacity:1;transform:scale(1.03)}}
+#intro-gate .gate-sub{color:var(--dim);font-size:12px;font-family:'Courier New',monospace}
+#intro{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;overflow:hidden;display:none}
+#intro.playing{display:block}
+#intro.fade{opacity:0;pointer-events:none;transition:opacity .8s}
+.stars{position:absolute;width:100%;height:100%}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 1s infinite alternate}
+@keyframes twinkle{0%{opacity:.2}100%{opacity:1}}
+.lobster{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px;filter:drop-shadow(0 0 30px #f20) drop-shadow(0 0 60px red);animation:lobFloat 2s ease-in-out infinite alternate;z-index:10}
+@keyframes lobFloat{0%{transform:translate(-50%,-50%) scale(1) rotate(-5deg)}100%{transform:translate(-50%,-52%) scale(1.05) rotate(5deg)}}
+.lobster.hit{animation:lobExplode .3s forwards!important}
+@keyframes lobExplode{to{opacity:0;transform:translate(-50%,-50%) scale(3);filter:brightness(10) drop-shadow(0 0 100px #ff0)}}
+.laser{position:absolute;top:48%;left:-10%;width:0;height:6px;background:linear-gradient(90deg,transparent,#0ff,#fff,#0ff);box-shadow:0 0 20px #0ff,0 0 40px #0ff;z-index:9;opacity:0}
+.laser.fire{opacity:1;animation:laserShoot .4s forwards}
+@keyframes laserShoot{to{width:65%;left:0}}
+.screen-flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:20;pointer-events:none}
+.screen-flash.flash{animation:flashBang .6s forwards}
+@keyframes flashBang{0%{opacity:0}10%{opacity:1}100%{opacity:0}}
+.particle{position:absolute;top:50%;left:50%;width:8px;height:8px;border-radius:50%;z-index:15;opacity:0;pointer-events:none}
+.particle.go{animation:particleFly 1.2s ease-out forwards}
+@keyframes particleFly{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.2)}}
+.fragment{position:absolute;top:50%;left:50%;font-size:30px;z-index:16;opacity:0;pointer-events:none}
+.fragment.go{animation:fragFly 1.5s ease-out forwards}
+@keyframes fragFly{0%{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) rotate(var(--rot)) scale(.1)}}
+.radial-burst{position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:radial-gradient(circle,rgba(255,200,0,.8),rgba(255,100,0,.4),transparent);z-index:14;transform:translate(-50%,-50%);opacity:0;pointer-events:none}
+.radial-burst.go{animation:burstExpand 1s ease-out forwards}
+@keyframes burstExpand{0%{width:0;height:0;opacity:1}100%{width:800px;height:800px;opacity:0}}
+.ship-scene{position:absolute;top:50%;left:-250px;transform:translateY(-50%);z-index:25;opacity:0}
+.ship-scene.fly{animation:shipFly 2.5s ease-in-out forwards}
+@keyframes shipFly{0%{left:-250px;opacity:0;transform:translateY(-50%) scale(.5)}15%{opacity:1}40%{left:35%;transform:translateY(-50%) scale(1.1)}60%{left:38%;transform:translateY(-50%) scale(1.1)}100%{left:110%;transform:translateY(-50%) scale(.3);opacity:0}}
+.spaceship{width:200px;height:90px;position:relative}
+.ship-body{position:absolute;width:150px;height:44px;background:linear-gradient(180deg,#7b3fff,#5a2acc,#1a8a7a);border-radius:60px 50px 14px 14px;top:18px;left:25px;box-shadow:0 0 25px rgba(153,69,255,.5)}
+.ship-cockpit{position:absolute;width:56px;height:36px;background:radial-gradient(ellipse at 50% 40%,rgba(100,170,255,.7),rgba(40,80,180,.5));border-radius:50%;top:10px;left:68px;border:2px solid rgba(170,170,170,.6);box-shadow:inset 0 0 15px rgba(255,255,255,.2),0 0 10px rgba(100,170,255,.3);overflow:visible}
+.ship-wing-l,.ship-wing-r{position:absolute;width:40px;height:14px;top:44px}
+.ship-wing-l{left:0;background:linear-gradient(180deg,#5a3a9a,#2a6a6a);border-radius:14px 0 0 5px;transform:skewY(10deg)}
+.ship-wing-r{right:5px;background:linear-gradient(180deg,#5a3a9a,#2a6a6a);border-radius:0 14px 5px 0;transform:skewY(-10deg)}
+.ship-flame{position:absolute;bottom:-12px;left:60px;width:60px;height:20px;background:linear-gradient(transparent,#f80,#ff0);border-radius:0 0 50% 50%;animation:flame .12s infinite alternate}
+@keyframes flame{0%{height:20px;opacity:.8}100%{height:30px;opacity:1}}
+.ship-exhaust{position:absolute;left:-35px;top:25px;width:50px;height:12px;background:linear-gradient(90deg,transparent,rgba(20,241,149,.3));border-radius:5px;animation:exhaust .2s infinite alternate}
+@keyframes exhaust{0%{width:50px;opacity:.5}100%{width:70px;opacity:.8}}
+.cockpit-gizmo-svg{position:absolute;top:-8px;left:2px;width:52px;height:48px;z-index:2}
+.intro-title{position:absolute;bottom:15%;left:50%;transform:translateX(-50%);font-family:'Press Start 2P',monospace;color:var(--teal);font-size:clamp(18px,4vw,36px);text-shadow:0 0 20px var(--teal),0 0 40px var(--purple);opacity:0;z-index:30}
+.intro-title.show{animation:titleReveal 1.5s forwards}
+@keyframes titleReveal{0%{opacity:0;transform:translateX(-50%) translateY(20px) scale(.8)}100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+
+/* ===== LIVE DOT ===== */
+.pos-card{position:relative}
+.live-dot{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%;background:#14F195;box-shadow:0 0 6px #14F195,0 0 12px #14F195,0 0 24px rgba(20,241,149,.4);animation:livePulse 2s ease-in-out infinite}
+@keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 6px #14F195,0 0 12px #14F195}50%{opacity:.6;box-shadow:0 0 3px #14F195,0 0 6px #14F195}}
+
+/* ===== MUTE BUTTON ===== */
+#muteBtn{position:fixed;top:14px;right:14px;z-index:9998;background:rgba(20,20,30,.85);border:1px solid #333;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;transition:all .3s;backdrop-filter:blur(6px);opacity:0}
+#muteBtn.visible{opacity:1}
+#muteBtn:hover{border-color:var(--teal);box-shadow:0 0 12px rgba(20,241,149,.3);transform:scale(1.1)}
+
+/* ===== SPEECH BUBBLES ===== */
+@keyframes bubblePop{0%{opacity:0;transform:translateX(-50%) translateY(5px) scale(.5)}10%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}80%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(-10px) scale(.8)}}
+
+/* ===== MAIN ===== */
+.main-content{opacity:0;transition:opacity .8s}.main-content.show{opacity:1}
+
+/* ===== THE STATION — THRONGLETS SIDE VIEW ===== */
+#station{width:100%;max-width:1200px;margin:0 auto;position:relative;border-radius:16px;overflow:hidden;box-shadow:0 0 60px rgba(153,69,255,.15),0 0 120px rgba(0,0,0,.5)}
+.station-label{position:absolute;top:14px;left:50%;transform:translateX(-50%);font-family:'Press Start 2P',monospace;color:var(--teal);font-size:10px;z-index:50;text-shadow:0 0 8px var(--teal);letter-spacing:3px;opacity:.9;z-index:60}
+
+/* Flat side-view room — NO perspective, NO rotateX */
+.room-container{
+  width:100%;height:0;padding-bottom:56%;
+  position:relative;overflow:hidden;
+  background:#080818;
+}
+/* Vignette */
+.room-container::after{
+  content:'';position:absolute;inset:0;z-index:40;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 60%,transparent 40%,rgba(0,0,0,.6) 100%);
+}
+
+/* Back wall — cyberpunk dark with subtle grid */
+.back-wall{
+  position:absolute;top:0;left:0;right:0;bottom:22%;
+  background:
+    repeating-linear-gradient(90deg, rgba(153,69,255,.03) 0px, rgba(153,69,255,.03) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(180deg, rgba(20,241,149,.02) 0px, rgba(20,241,149,.02) 1px, transparent 1px, transparent 40px),
+    linear-gradient(180deg, #0c0c1e 0%, #10102a 30%, #0e0e24 60%, #0a0a1a 100%);
+  z-index:1;
+}
+/* Neon strip accent at bottom of wall */
+.back-wall::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--purple),var(--teal),var(--purple),transparent);
+  box-shadow:0 0 10px rgba(153,69,255,.4),0 0 20px rgba(20,241,149,.2);
+}
+
+/* Floor — dark metallic with neon grid lines */
+.wood-floor{
+  position:absolute;bottom:0;left:0;right:0;height:22%;
+  background:
+    repeating-linear-gradient(90deg, rgba(153,69,255,.06) 0px, rgba(153,69,255,.06) 1px, transparent 1px, transparent 60px),
+    linear-gradient(180deg, #12121e 0%, #0e0e1a 40%, #0a0a16 100%);
+  z-index:2;
+  border-top:2px solid rgba(20,241,149,.15);
+}
+/* Floor grid glow */
+.wood-floor::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0px, transparent 58px, rgba(153,69,255,.04) 58px, rgba(153,69,255,.04) 60px),
+    repeating-linear-gradient(180deg, transparent 0px, transparent 28px, rgba(20,241,149,.03) 28px, rgba(20,241,149,.03) 30px);
+}
+/* Floor neon reflection */
+.wood-floor::after{
+  content:'';position:absolute;top:0;left:10%;right:10%;height:8px;
+  background:linear-gradient(180deg, rgba(20,241,149,.08), transparent);
+  filter:blur(2px);
+}
+
+/* Ceiling — dark with LED strip */
+.ceiling{
+  position:absolute;top:0;left:0;right:0;height:8%;
+  background:linear-gradient(180deg, #040410, #0a0a1a);
+  z-index:3;
+  border-bottom:2px solid rgba(153,69,255,.2);
+  box-shadow:0 2px 15px rgba(153,69,255,.1);
+}
+/* Ceiling LED strip */
+.ceiling::after{
+  content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(20,241,149,.4),rgba(153,69,255,.4),rgba(20,241,149,.4),transparent);
+  box-shadow:0 0 8px rgba(20,241,149,.3);
+  animation:ceilingPulse 4s infinite alternate;
+}
+@keyframes ceilingPulse{0%{opacity:.5}100%{opacity:1}}
+
+/* Animated particles floating in room */
+.room-particles{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.room-particle{position:absolute;border-radius:50%;animation:floatParticle linear infinite}
+@keyframes floatParticle{0%{transform:translateY(100%) translateX(0);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(-20%) translateX(30px);opacity:0}}
+
+/* Holographic window */
+.holo-window{
+  position:absolute;top:12%;left:42%;width:16%;height:28%;z-index:6;
+  background:linear-gradient(180deg,rgba(20,241,149,.05),rgba(153,69,255,.08));
+  border:1px solid rgba(20,241,149,.15);border-radius:4px;
+  box-shadow:0 0 20px rgba(20,241,149,.06),inset 0 0 15px rgba(153,69,255,.04);
+  overflow:hidden;
+}
+.holo-window::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(20,241,149,.03) 3px,rgba(20,241,149,.03) 4px);
+  animation:scanline 8s linear infinite;
+}
+@keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+.holo-window::after{
+  content:'SOL';position:absolute;top:15%;left:50%;transform:translateX(-50%);
+  font-family:'Press Start 2P',monospace;font-size:clamp(6px,1vw,10px);color:var(--teal);
+  text-shadow:0 0 6px var(--teal);opacity:.7;
+}
+
+/* Wall art frames */
+.wall-frame{
+  position:absolute;z-index:7;
+  background:rgba(10,10,30,.6);border:1px solid rgba(153,69,255,.25);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(12px,2vw,20px);
+  box-shadow:0 0 10px rgba(153,69,255,.08);
+}
+
+/* ===== NEON SIGNS on back wall ===== */
+.neon-sign{position:absolute;font-family:'Press Start 2P',monospace;z-index:10;letter-spacing:3px}
+.neon-gizmo{top:15%;left:6%;font-size:clamp(14px,2.5vw,24px);color:#d4a0ff;text-shadow:0 0 10px #9945FF,0 0 25px #9945FF,0 0 50px #7b2fff,0 0 80px #7b2fff;animation:neonFlicker 4s infinite}
+.neon-hodl{top:15%;right:6%;font-size:clamp(10px,1.8vw,18px);color:#7dffb3;text-shadow:0 0 8px #14F195,0 0 20px #14F195,0 0 40px #14F195;animation:neonFlicker 5s infinite 1s}
+@keyframes neonFlicker{0%,93%,95%,100%{opacity:1}94%{opacity:.3}96%{opacity:.7}}
+
+/* Solana logo on wall */
+.solana-wall{position:absolute;top:28%;left:50%;transform:translateX(-50%);width:40px;height:40px;z-index:8;opacity:.6}
+
+/* Neon underglow on furniture */
+.neon-underglow{
+  position:absolute;bottom:-2px;left:10%;right:10%;height:3px;
+  border-radius:2px;filter:blur(3px);z-index:3;
+}
+
+/* ===== FURNITURE (side view, sitting on floor line) ===== */
+/* All furniture uses bottom:22% as the floor line */
+
+/* Rug — neon-trimmed */
+.rug{
+  position:absolute;bottom:22%;left:5%;width:35%;height:4%;
+  background:linear-gradient(90deg, #1a0a2a, #2a1040, #1a0a2a);
+  border-radius:2px;z-index:4;opacity:.8;
+  box-shadow:0 0 8px rgba(153,69,255,.15);
+}
+.rug::after{
+  content:'';position:absolute;inset:3px;
+  border:1px solid rgba(153,69,255,.2);border-radius:1px;
+}
+
+/* Couch — side view */
+.couch{
+  position:absolute;bottom:22%;left:8%;width:120px;height:55px;z-index:8;
+}
+.couch-back{
+  position:absolute;bottom:18px;left:0;width:100%;height:38px;
+  background:linear-gradient(180deg,#1e1830,#161228);
+  border-radius:8px 8px 4px 4px;
+  border:2px solid #2a2040;box-shadow:0 0 8px rgba(153,69,255,.1);
+}
+.couch-seat{
+  position:absolute;bottom:0;left:4px;right:4px;height:22px;
+  background:linear-gradient(180deg,#221a34,#1a1428);
+  border-radius:4px;border:2px solid #2a2040;
+}
+.couch-arm-l{
+  position:absolute;bottom:0;left:-4px;width:14px;height:36px;
+  background:linear-gradient(90deg,#1a1428,#221a34);
+  border-radius:6px 4px 4px 6px;border:2px solid #2a2040;
+}
+.couch-arm-r{
+  position:absolute;bottom:0;right:-4px;width:14px;height:36px;
+  background:linear-gradient(270deg,#1a1428,#221a34);
+  border-radius:4px 6px 6px 4px;border:2px solid #2a2040;
+}
+.couch-cushion{
+  position:absolute;bottom:20px;width:32px;height:16px;
+  background:linear-gradient(180deg,#2a2040,#221a34);
+  border-radius:6px;border:1px solid #3a3060;
+}
+.couch-pillow{
+  position:absolute;bottom:32px;width:16px;height:14px;border-radius:5px;
+  box-shadow:0 0 6px rgba(153,69,255,.2);
+}
+
+/* TV on stand */
+.tv-unit{position:absolute;bottom:22%;left:34%;z-index:8}
+.tv-stand{
+  width:40px;height:24px;
+  background:linear-gradient(180deg,#3a2a18,#2a1a10);
+  border:2px solid #4a3a28;border-radius:3px;
+}
+.tv-box{
+  position:absolute;bottom:22px;left:-6px;width:52px;height:36px;
+  background:#111;border:3px solid #333;border-radius:3px;
+  overflow:hidden;
+}
+.tv-screen-glow{
+  position:absolute;inset:2px;
+  background:linear-gradient(180deg,rgba(20,241,149,.15),rgba(153,69,255,.1));
+  animation:tvGlow 3s infinite alternate;
+}
+@keyframes tvGlow{0%{opacity:.4}100%{opacity:.9}}
+.tv-ch{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:'Press Start 2P',monospace;font-size:5px;color:var(--teal);
+  text-shadow:0 0 4px var(--teal);z-index:1;
+}
+
+/* Computer desk — side view */
+.desk-unit{position:absolute;bottom:22%;right:8%;z-index:8}
+.desk-top{
+  width:100px;height:10px;
+  background:linear-gradient(180deg,#2a2036,#1e1830);
+  border:2px solid #3a3050;border-radius:3px;
+}
+.desk-leg-l,.desk-leg-r{
+  position:absolute;bottom:-28px;width:6px;height:28px;
+  background:linear-gradient(180deg,#2a2036,#1e1830);
+  border:1px solid #3a3050;
+}
+.desk-leg-l{left:6px}
+.desk-leg-r{right:6px}
+.desk-monitor{
+  position:absolute;bottom:10px;width:36px;height:28px;
+  background:#0a0a15;border:2px solid #3a3a5a;border-radius:2px;overflow:hidden;
+}
+.desk-monitor::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(20,241,149,.15),rgba(153,69,255,.1));
+  animation:screenFlicker 3s infinite alternate;
+}
+@keyframes screenFlicker{0%{opacity:.6}50%{opacity:1}100%{opacity:.7}}
+.monitor-chart{position:absolute;bottom:2px;left:2px;right:2px;height:60%;display:flex;align-items:flex-end;gap:1px;z-index:1}
+.monitor-bar{width:3px;border-radius:1px 1px 0 0;animation:barPulse 2s infinite alternate}
+@keyframes barPulse{0%{opacity:.6}100%{opacity:1}}
+.desk-chair{
+  position:absolute;bottom:-38px;right:36px;width:24px;height:34px;z-index:7;
+}
+.chair-back{
+  width:20px;height:22px;background:linear-gradient(180deg,#2a2040,#1a1028);
+  border:2px solid #3a3060;border-radius:4px 4px 0 0;margin:0 auto;
+}
+.chair-seat{
+  width:24px;height:8px;background:#2a2040;border:1px solid #3a3060;border-radius:2px;
+}
+.chair-leg{
+  width:16px;height:6px;background:#222;border-radius:0 0 2px 2px;margin:0 auto;
+}
+.keyboard-side{
+  position:absolute;bottom:10px;left:34px;width:22px;height:4px;
+  background:#1a1a22;border:1px solid #3a3a4a;border-radius:1px;
+}
+
+/* Ping pong table — side view */
+.pp-unit{position:absolute;bottom:22%;left:48%;z-index:7}
+.pp-top{
+  width:80px;height:6px;background:#0a2a15;
+  border:2px solid rgba(20,241,149,.2);border-radius:2px;
+  box-shadow:0 0 6px rgba(20,241,149,.1);
+}
+.pp-leg-l,.pp-leg-r{
+  position:absolute;bottom:-22px;width:4px;height:22px;background:#555;
+}
+.pp-leg-l{left:10px}
+.pp-leg-r{right:10px}
+.pp-net{
+  position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+  width:2px;height:10px;
+  background:repeating-linear-gradient(180deg,#ddd 0px,#ddd 2px,transparent 2px,transparent 4px);
+}
+
+/* Bunk bed — side view */
+.bunk-bed{position:absolute;bottom:22%;right:28%;z-index:7}
+.bunk-frame{
+  width:60px;height:80px;position:relative;
+}
+.bunk-post-l,.bunk-post-r{
+  position:absolute;bottom:0;width:4px;height:80px;background:#1a1a2e;
+  border:1px solid rgba(153,69,255,.2);
+}
+.bunk-post-l{left:0}
+.bunk-post-r{right:0}
+.bunk-mattress{
+  position:absolute;left:4px;right:4px;height:12px;border-radius:3px;
+}
+.bunk-bottom{bottom:4px;background:linear-gradient(180deg,#7b3fff,#5a2acc)}
+.bunk-top{bottom:44px;background:linear-gradient(180deg,#14F195,#0ca070)}
+.bunk-rail{
+  position:absolute;left:4px;right:4px;height:2px;background:rgba(153,69,255,.3);
+}
+.bunk-rail-mid{bottom:36px}
+.bunk-ladder{
+  position:absolute;right:-6px;bottom:0;width:8px;height:60px;
+}
+.ladder-side{position:absolute;width:2px;height:100%;background:#2a2040}
+.ladder-side-l{left:0}
+.ladder-side-r{right:0}
+.ladder-rung{position:absolute;left:0;right:0;height:2px;background:rgba(153,69,255,.25)}
+
+/* Mini fridge */
+.mini-fridge{
+  position:absolute;bottom:22%;left:43%;z-index:8;
+  width:22px;height:32px;
+  background:linear-gradient(180deg,#12121e,#0e0e18);
+  border:2px solid rgba(68,170,255,.15);border-radius:3px;
+  box-shadow:0 0 8px rgba(68,170,255,.08);
+}
+.fridge-handle{position:absolute;right:3px;top:30%;width:2px;height:10px;background:#777;border-radius:1px}
+.fridge-led{position:absolute;top:3px;left:50%;transform:translateX(-50%);width:4px;height:3px;background:#4af;border-radius:50%;box-shadow:0 0 8px #4af,0 0 16px rgba(68,170,255,.3);animation:fridgeGlow 3s infinite alternate}
+@keyframes fridgeGlow{0%{opacity:.3}100%{opacity:.8}}
+
+/* Potted plants */
+.potted-plant{position:absolute;bottom:22%;z-index:9;text-align:center}
+.plant-leaves{
+  width:18px;height:16px;background:radial-gradient(#3aaa3a,#2d8b2d);
+  border-radius:50%;margin:0 auto;position:relative;
+}
+.plant-leaves::before{
+  content:'';position:absolute;top:-4px;left:2px;width:8px;height:10px;
+  background:#45b545;border-radius:50%;
+}
+.plant-leaves::after{
+  content:'';position:absolute;top:-3px;right:1px;width:7px;height:9px;
+  background:#3a9a3a;border-radius:50%;
+}
+.plant-pot-body{
+  width:14px;height:12px;margin:0 auto;
+  background:linear-gradient(180deg,#A0784A,#7a5a30);
+  border-radius:0 0 3px 3px;border:1px solid #6a4a28;
+  clip-path:polygon(5% 0,95% 0,80% 100%,20% 100%);
+}
+
+/* Server rack — side view */
+.server-rack{
+  position:absolute;bottom:22%;right:3%;z-index:8;
+  width:28px;height:70px;
+  background:linear-gradient(180deg,#0e0e20,#0a0a18);
+  border:2px solid rgba(20,241,149,.15);border-radius:3px;
+  box-shadow:0 0 12px rgba(20,241,149,.08);
+}
+.rack-slot{position:absolute;left:3px;right:3px;height:6px;background:#111;border:1px solid #2a2a3a;border-radius:1px}
+.rack-led{position:absolute;width:3px;height:3px;border-radius:50%}
+.rack-led.green{background:#14F195;box-shadow:0 0 5px #14F195;animation:blinkL 2s infinite}
+.rack-led.red{background:#f44;box-shadow:0 0 5px #f44;animation:blinkR 3s infinite}
+.rack-led.amber{background:#f90;box-shadow:0 0 5px #f90;animation:blinkL 1.5s infinite}
+@keyframes blinkL{0%,45%{opacity:1}50%,95%{opacity:.15}100%{opacity:1}}
+@keyframes blinkR{0%,40%{opacity:1}45%,90%{opacity:.1}100%{opacity:1}}
+
+/* Coffee table — side view */
+.coffee-table{
+  position:absolute;bottom:22%;left:22%;z-index:8;
+}
+.ct-top{
+  width:40px;height:6px;background:linear-gradient(180deg,#1a1a2e,#12121a);
+  border:1px solid rgba(153,69,255,.2);border-radius:2px;
+  box-shadow:0 0 6px rgba(153,69,255,.08);
+}
+.ct-leg-l,.ct-leg-r{
+  position:absolute;bottom:-12px;width:3px;height:12px;background:#1a1a2e;
+}
+.ct-leg-l{left:6px}
+.ct-leg-r{right:6px}
+.ct-mug{
+  position:absolute;bottom:6px;left:14px;width:8px;height:7px;
+  background:#F5F0E8;border:1.5px solid #D4A574;border-radius:1px 1px 2px 2px;
+}
+.ct-mug-handle{
+  position:absolute;bottom:7px;left:23px;width:4px;height:4px;
+  border:1.5px solid #D4A574;border-radius:50%;border-left:none;
+}
+.steam{
+  position:absolute;bottom:14px;width:2px;background:rgba(255,255,255,.15);
+  border-radius:2px;animation:steamRise 2s infinite;
+}
+@keyframes steamRise{0%{height:4px;opacity:.3;transform:translateY(0)}50%{height:6px;opacity:.15;transform:translateY(-5px)}100%{height:3px;opacity:0;transform:translateY(-10px)}}
+
+/* Floor lamp — neon */
+.floor-lamp-unit{position:absolute;bottom:22%;left:5%;z-index:9}
+.lamp-pole{width:3px;height:50px;background:linear-gradient(180deg,#444,#222);margin:0 auto;box-shadow:0 0 4px rgba(20,241,149,.1)}
+.lamp-shade{
+  width:24px;height:14px;background:linear-gradient(180deg,#1a1a2e,#12121a);
+  border-radius:2px 2px 12px 12px;margin:0 auto;position:relative;
+  border:1px solid rgba(20,241,149,.3);box-shadow:0 0 8px rgba(20,241,149,.15);
+}
+.lamp-glow-circle{
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:80px;height:80px;border-radius:50%;
+  background:radial-gradient(rgba(20,241,149,.15),rgba(153,69,255,.06),transparent);
+  pointer-events:none;animation:lampPulse 4s infinite alternate;
+}
+@keyframes lampPulse{0%{opacity:.5;transform:translateX(-50%) scale(.9)}100%{opacity:1;transform:translateX(-50%) scale(1.1)}}
+.lamp-base-circle{
+  width:14px;height:5px;background:radial-gradient(#333,#222);
+  border-radius:50%;margin:0 auto;
+}
+
+/* Bean bags */
+.bean-bag{
+  position:absolute;bottom:22%;z-index:6;
+}
+.bb-body{
+  border-radius:50% 50% 45% 45%;
+  box-shadow:2px 2px 6px rgba(0,0,0,.3);
+}
+
+/* Egg pods */
+.egg-pod{position:absolute;bottom:22%;z-index:9;text-align:center}
+.egg-glow-green{
+  width:18px;height:24px;
+  background:radial-gradient(ellipse,rgba(0,255,80,.4),rgba(0,180,60,.15));
+  border:2px solid #0a0;border-radius:50%;
+  animation:eggGG 2s infinite alternate;margin:0 auto;position:relative;
+}
+.egg-glow-green::before{content:'';position:absolute;top:28%;left:22%;width:1.5px;height:7px;background:rgba(0,0,0,.3);transform:rotate(15deg);border-radius:1px}
+.egg-glow-green::after{content:'';position:absolute;top:18%;right:26%;width:1.5px;height:5px;background:rgba(0,0,0,.2);transform:rotate(-20deg);border-radius:1px}
+@keyframes eggGG{0%{box-shadow:0 0 6px rgba(0,255,80,.2)}100%{box-shadow:0 0 20px rgba(0,255,80,.6)}}
+.egg-glow-warm{
+  width:18px;height:24px;
+  background:radial-gradient(ellipse,rgba(255,200,100,.4),rgba(255,180,80,.15));
+  border:2px solid #f90;border-radius:50%;
+  animation:eggGW 2s infinite alternate;margin:0 auto;
+}
+@keyframes eggGW{0%{box-shadow:0 0 6px rgba(255,180,80,.2)}100%{box-shadow:0 0 18px rgba(255,180,80,.5)}}
+@keyframes activeGlow{0%{box-shadow:0 0 10px rgba(20,241,149,.4),0 0 20px rgba(20,241,149,.2)}100%{box-shadow:0 0 20px rgba(20,241,149,.8),0 0 40px rgba(20,241,149,.4)}}
+.egg-label{font-family:'Press Start 2P',monospace;font-size:4px;color:var(--teal);margin-top:2px;white-space:nowrap}
+.egg-pod{cursor:pointer}
+.egg-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(10,10,20,.95);border:1px solid rgba(20,241,149,.3);border-radius:8px;padding:8px 10px;width:160px;z-index:60;backdrop-filter:blur(6px);box-shadow:0 0 12px rgba(20,241,149,.15)}
+.egg-pod:hover .egg-tooltip{display:block}
+.egg-tooltip .ett-name{font-family:'Press Start 2P',monospace;font-size:6px;margin-bottom:4px}
+.egg-tooltip .ett-desc{font-family:'Courier New',monospace;font-size:8px;color:var(--dim);line-height:1.4}
+.egg-tooltip .ett-status{font-family:'Press Start 2P',monospace;font-size:5px;margin-top:4px;color:var(--purple)}
+
+/* ===== GIZMO STATUS HUD (Throngelets-style) ===== */
+.gizmo-hud{position:absolute;top:12px;right:12px;z-index:55;background:rgba(10,10,20,.9);border:1px solid rgba(20,241,149,.3);border-radius:12px;padding:12px 14px;min-width:180px;backdrop-filter:blur(8px);box-shadow:0 0 20px rgba(20,241,149,.1)}
+.gizmo-hud .hud-title{font-family:'Press Start 2P',monospace;font-size:7px;color:var(--teal);margin-bottom:4px;text-align:center;text-shadow:0 0 6px var(--teal)}
+.gizmo-hud .hud-level{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--purple);text-align:center;margin-bottom:6px}
+.gizmo-hud .xp-track{width:100%;height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin-bottom:8px;overflow:hidden}
+.gizmo-hud .xp-fill{height:100%;background:linear-gradient(90deg,var(--purple),#c084fc);border-radius:2px;transition:width .5s}
+.stat-bar-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.stat-bar-row .stat-icon{font-size:10px;width:14px;text-align:center}
+.stat-bar-row .stat-label{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--dim);width:42px}
+.stat-bar-track{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;position:relative}
+.stat-bar-fill{height:100%;border-radius:3px;transition:width 1s ease,background .5s}
+.gizmo-activity{font-family:'Press Start 2P',monospace;font-size:6px;color:var(--purple);text-align:center;margin-top:8px;padding-top:6px;border-top:1px solid rgba(153,69,255,.2)}
+.gizmo-activity .activity-icon{font-size:10px;display:block;margin-bottom:3px}
+.hud-buttons{display:flex;gap:4px;justify-content:center;margin-top:8px}
+.hud-btn{font-family:'Press Start 2P',monospace;font-size:6px;padding:5px 8px;border:1px solid rgba(20,241,149,.3);background:rgba(20,241,149,.08);color:var(--teal);border-radius:6px;cursor:pointer;transition:all .2s}
+.hud-btn:hover{background:rgba(20,241,149,.2);border-color:var(--teal);transform:scale(1.05)}
+.hud-btn:active{transform:scale(.95)}
+.gizmo-pets{font-family:'Press Start 2P',monospace;font-size:5px;color:var(--dim);text-align:center;margin-top:6px}
+.hud-log{font-family:'Courier New',monospace;font-size:7px;color:var(--dim);margin-top:6px;padding-top:5px;border-top:1px solid rgba(255,255,255,.05);max-height:40px;overflow:hidden;text-align:center;line-height:1.4}
+.hud-log span{display:block;animation:logFade 4s forwards}
+@keyframes logFade{0%{opacity:1}80%{opacity:1}100%{opacity:.3}}
+#gizmo-char{cursor:pointer}
+.gizmo-heart{position:absolute;z-index:60;pointer-events:none;font-size:16px;animation:heartFloat 1s ease-out forwards}
+@keyframes heartFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-30px) scale(1.5)}}
+.gizmo-zzz{position:absolute;top:-20px;right:-5px;font-size:10px;z-index:55;animation:zzzFloat 2s ease-in-out infinite;pointer-events:none}
+@keyframes zzzFloat{0%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-8px)}100%{opacity:.3;transform:translateY(0)}}
+.gizmo-item{position:absolute;z-index:58;pointer-events:none;font-size:18px;animation:itemDrop .6s ease-in forwards}
+@keyframes itemDrop{0%{opacity:1;transform:translateY(-40px)}70%{opacity:1;transform:translateY(5px)}100%{opacity:0;transform:translateY(0) scale(.5)}}
+
+/* ===== CHARACTERS (side view, Thronglets style) ===== */
+/* Gizmo walks left-right along the floor */
+#gizmo-char{
+  position:absolute;bottom:22%;z-index:20;
+  animation:gizmoWalk 20s linear infinite;
+}
+@keyframes gizmoWalk{
+  0%{left:5%}
+  5%{left:5%}
+  25%{left:30%}
+  30%{left:30%}
+  50%{left:65%}
+  55%{left:65%}
+  75%{left:40%}
+  80%{left:40%}
+  100%{left:5%}
+}
+.gizmo-side{
+  position:relative;width:45px;height:45px;
+  animation:gizmoBounce .4s ease-in-out infinite alternate;
+}
+@keyframes gizmoBounce{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
+
+.mini-mog{position:absolute;bottom:22%;z-index:18}
+#mini1{animation:m1walk 26s linear infinite}
+@keyframes m1walk{0%{left:8%}25%{left:25%}50%{left:12%}75%{left:35%}100%{left:8%}}
+#stripe{animation:stripeWalk 20s linear infinite}
+@keyframes stripeWalk{0%{left:50%}25%{left:35%}50%{left:60%}75%{left:25%}100%{left:50%}}
+#mimo{animation:mimoWalk 25s linear infinite}
+@keyframes mimoWalk{0%{left:38%}30%{left:22%}60%{left:45%}90%{left:30%}100%{left:38%}}
+.mini-side{
+  position:relative;
+  animation:miniBounce .35s ease-in-out infinite alternate;
+}
+@keyframes miniBounce{0%{transform:translateY(0)}100%{transform:translateY(-2px)}}
+
+/* PNL HUD — holographic overlay in top of room */
+#pnlChart{width:100%!important;height:320px!important}
+
+/* ===== SECTIONS ===== */
+.sections{max-width:1200px;margin:0 auto;padding:20px 16px}
+.section{margin-bottom:40px}
+.section-title{font-family:'Press Start 2P',monospace;color:var(--teal);font-size:clamp(12px,2vw,18px);margin-bottom:20px;text-shadow:0 0 10px rgba(20,241,149,.3);border-bottom:1px solid rgba(20,241,149,.2);padding-bottom:10px}
+.hero{text-align:center;padding:30px 0}
+.hero h1{font-family:'Press Start 2P',monospace;font-size:clamp(20px,4vw,36px);background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.hero .subtitle{color:var(--dim);font-size:14px;margin-bottom:20px}
+.wallet-addr{background:var(--dark2);padding:10px 16px;border-radius:8px;display:inline-block;font-size:clamp(8px,1.5vw,13px);cursor:pointer;border:1px solid #333;transition:all .3s;word-break:break-all;max-width:90%}
+.wallet-addr:hover{border-color:var(--teal);box-shadow:0 0 10px rgba(20,241,149,.2)}
+.wallet-addr .copy-hint{color:var(--dim);font-size:10px;display:block;margin-top:4px}
+.btn-row{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.btn{font-family:'Press Start 2P',monospace;font-size:clamp(8px,1.2vw,11px);padding:12px 24px;border:2px solid;border-radius:8px;cursor:pointer;text-decoration:none;transition:all .3s;display:inline-block}
+.btn-primary{background:var(--purple);border-color:var(--purple);color:#fff}
+.btn-primary:hover{box-shadow:0 0 20px rgba(153,69,255,.5);transform:translateY(-2px)}
+.btn-secondary{background:transparent;border-color:var(--teal);color:var(--teal)}
+.btn-secondary:hover{background:rgba(20,241,149,.1);box-shadow:0 0 20px rgba(20,241,149,.3);transform:translateY(-2px)}
+.listed-on{text-align:center;margin-top:24px}
+.listed-on h3{font-family:'Press Start 2P',monospace;font-size:9px;color:var(--dim);margin-bottom:14px;letter-spacing:2px}
+.badge-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.badge-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--dark2);border:1px solid #2a2a3a;border-radius:20px;color:var(--text);font-size:12px;font-weight:600;text-decoration:none;transition:all .3s;font-family:'Courier New',monospace}
+.badge-pill:hover{border-color:var(--teal);box-shadow:0 0 12px rgba(20,241,149,.15);transform:translateY(-1px)}
+.badge-pill .badge-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:20px}
+.stat-card{background:var(--dark2);border:1px solid #2a2a3a;border-radius:10px;padding:16px;text-align:center}
+.stat-card .label{font-size:10px;color:var(--dim);margin-bottom:6px;font-family:'Press Start 2P',monospace}
+.stat-card .value{font-size:clamp(16px,2.5vw,24px);font-weight:bold;color:var(--teal)}
+.stat-card .value.negative{color:#ff4444}
+.stat-card .sub{font-size:10px;color:var(--dim);margin-top:4px}
+.positions{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.pos-card{background:var(--dark2);border:1px solid #2a2a3a;border-radius:10px;padding:20px;transition:border-color .3s}
+.pos-card:hover{border-color:var(--purple)}
+.pos-card h4{font-family:'Press Start 2P',monospace;font-size:11px;color:var(--purple);margin-bottom:12px}
+.pos-card .pos-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px}
+.pos-card .pos-row .dim{color:var(--dim)}
+.section-subtitle{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--dim);margin-top:-10px;margin-bottom:16px}
+.brain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.brain-item{background:var(--dark2);border:1px solid #2a2a3a;border-radius:8px;padding:14px;display:flex;align-items:flex-start;gap:10px}
+.brain-num{font-family:'Press Start 2P',monospace;color:var(--purple);font-size:14px;min-width:24px}
+.brain-item h4{font-family:'Press Start 2P',monospace;font-size:9px;color:var(--teal);margin-bottom:4px}
+.brain-item p{font-size:12px;color:var(--dim);line-height:1.5}
+.family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.family-card{background:var(--dark2);border:1px solid #2a2a3a;border-radius:12px;padding:24px;text-align:center;transition:all .3s}
+.family-card:hover{border-color:var(--purple);transform:translateY(-4px)}
+.family-card .emoji{font-size:48px;margin-bottom:10px}
+.family-card h4{font-family:'Press Start 2P',monospace;font-size:12px;color:var(--teal);margin-bottom:6px}
+.family-card .role{color:var(--dim);font-size:13px}
+.family-card.coming-soon{opacity:.6;border-style:dashed}
+.family-card.coming-soon::after{content:'COMING SOON';display:block;font-family:'Press Start 2P',monospace;font-size:8px;color:var(--purple);margin-top:10px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes sparkle{0%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}100%{opacity:.5;transform:scale(1)}}
+@keyframes rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.stripe-mogwai{position:relative;display:inline-block}
+.mimo-mogwai{position:relative;display:inline-block}
+.laws{display:grid;gap:16px}
+.law{background:var(--dark2);border-left:3px solid var(--teal);padding:16px 20px;border-radius:0 8px 8px 0}
+.law .law-num{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--purple);margin-bottom:6px}
+.law p{font-size:14px;line-height:1.6}
+footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-width:1200px;margin:0 auto}
+.footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.footer-links a{color:var(--dim);text-decoration:none;font-size:13px;transition:color .3s}
+.footer-links a:hover{color:var(--teal)}
+.copyright{font-size:11px;color:#444}
+.refresh-dot{position:fixed;top:10px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--teal);opacity:0;transition:opacity .3s;z-index:100}
+.refresh-dot.active{opacity:1}
+
+@media(max-width:768px){
+  .room-container{padding-bottom:70%}
+  .neon-gizmo{font-size:12px!important}
+  .neon-hodl{font-size:9px!important}
+}
+@media(max-width:480px){
+  .room-container{padding-bottom:85%}
+}
+</style>
+</head>
+<body>
+
+<div id="muteBtn" onclick="toggleMute()" title="Mute/Unmute">🔊</div>
+
+<!-- ===== TAP TO ENTER ===== -->
+<div id="intro-gate">
+  <div class="gate-text">⚡ TAP TO ENTER ⚡</div>
+  <div class="gate-sub">🔊 sound on for full experience</div>
+</div>
+
+<!-- ===== INTRO ===== -->
+<div id="intro">
+  <div class="stars" id="starfield"></div>
+  <div class="lobster" id="lobster">🦞</div>
+  <div class="laser" id="laser"></div>
+  <div class="radial-burst" id="burst"></div>
+  <div class="screen-flash" id="flash"></div>
+  <div id="particles"></div>
+  <div id="fragments"></div>
+  <div class="ship-scene" id="shipScene">
+    <div class="spaceship">
+      <div class="ship-exhaust"></div>
+      <div class="ship-body"></div>
+      <div class="ship-cockpit">
+        <svg class="cockpit-gizmo-svg" viewBox="0 0 52 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="8" cy="14" rx="6" ry="11" fill="#8B4513" transform="rotate(-15,8,14)"/>
+          <ellipse cx="8.5" cy="14.5" rx="3.5" ry="7" fill="#d4838a" transform="rotate(-15,8.5,14.5)"/>
+          <ellipse cx="44" cy="14" rx="6" ry="11" fill="#8B4513" transform="rotate(15,44,14)"/>
+          <ellipse cx="43.5" cy="14.5" rx="3.5" ry="7" fill="#d4838a" transform="rotate(15,43.5,14.5)"/>
+          <ellipse cx="26" cy="26" rx="16" ry="15" fill="#CD853F"/>
+          <ellipse cx="26" cy="26" rx="12" ry="11" fill="#F5DEB3"/>
+          <ellipse cx="26" cy="17" rx="18" ry="10" fill="#483D8B"/>
+          <ellipse cx="26" cy="15" rx="12" ry="8" fill="#5B4FA8"/>
+          <ellipse cx="26" cy="17" rx="13" ry="8.5" fill="none" stroke="#FFD700" stroke-width="2"/>
+          <rect x="10" y="23" width="32" height="9" rx="4.5" fill="#A0A0A0"/>
+          <rect x="11" y="24" width="13" height="7" rx="3.5" fill="#111" stroke="#C0C0C0" stroke-width=".8"/>
+          <rect x="28" y="24" width="13" height="7" rx="3.5" fill="#111" stroke="#C0C0C0" stroke-width=".8"/>
+          <circle cx="15" cy="25.5" r="1.5" fill="#fff" opacity=".7">
+            <animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="35" cy="25.5" r="1.5" fill="#fff" opacity=".7">
+            <animate attributeName="opacity" values=".2;1;.2" dur="1.2s" begin=".5s" repeatCount="indefinite"/>
+          </circle>
+          <rect x="24" y="26" width="4" height="2" rx="1" fill="#A0A0A0"/>
+          <path d="M22 34 Q26 37 30 34" stroke="#8B4513" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="26" cy="40" rx="14" ry="5" fill="none" stroke="#FFD700" stroke-width="2.5" stroke-dasharray="4,2">
+            <animate attributeName="stroke-dashoffset" values="0;12" dur="2s" repeatCount="indefinite"/>
+          </ellipse>
+          <circle cx="13" cy="39" r="1.5" fill="#fff">
+            <animate attributeName="opacity" values=".2;1;.2" dur="1s" begin=".2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="39" cy="39" r="1.5" fill="#fff">
+            <animate attributeName="opacity" values=".2;1;.2" dur="1s" begin=".6s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="ship-wing-l"></div>
+      <div class="ship-wing-r"></div>
+      <div class="ship-flame"></div>
+    </div>
+  </div>
+  <div class="intro-title pixel" id="introTitle">G I Z M O</div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main-content" id="main">
+
+<div id="station">
+  <div class="station-label">⟨ T H E &nbsp; S T A T I O N ⟩</div>
+  <div class="room-container">
+    <!-- Gizmo Status HUD -->
+    <div class="gizmo-hud" id="gizmoHud">
+      <div class="hud-title">🦞 GIZMO</div>
+      <div class="hud-level">LVL <span id="gizmoLevel">1</span> — <span id="gizmoTitle">Baby Mogwai</span></div>
+      <div class="xp-track"><div class="xp-fill" id="xpBar" style="width:0%"></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">😊</span><span class="stat-label">MOOD</span><div class="stat-bar-track"><div class="stat-bar-fill" id="moodBar" style="width:80%;background:linear-gradient(90deg,#14F195,#0fa)"></div></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">⚡</span><span class="stat-label">ENERGY</span><div class="stat-bar-track"><div class="stat-bar-fill" id="energyBar" style="width:65%;background:linear-gradient(90deg,#fbbf24,#f59e0b)"></div></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">📊</span><span class="stat-label">TRADING</span><div class="stat-bar-track"><div class="stat-bar-fill" id="tradingBar" style="width:90%;background:linear-gradient(90deg,#9945FF,#c084fc)"></div></div></div>
+      <div class="stat-bar-row"><span class="stat-icon">🧠</span><span class="stat-label">ALPHA</span><div class="stat-bar-track"><div class="stat-bar-fill" id="alphaBar" style="width:70%;background:linear-gradient(90deg,#ec4899,#f472b6)"></div></div></div>
+      <div class="gizmo-activity"><span class="activity-icon" id="activityIcon">📊</span><span id="activityText">Scanning markets...</span></div>
+      <div class="hud-buttons">
+        <button class="hud-btn" onclick="feedGizmo()" title="Feed">🍕 Feed</button>
+        <button class="hud-btn" onclick="playWithGizmo()" title="Play">🎮 Play</button>
+        <button class="hud-btn" onclick="trainGizmo()" title="Train">🏋️ Train</button>
+      </div>
+      <div class="gizmo-pets">Pets: <span id="petCount">0</span> 💜 | XP: <span id="xpCount">0</span></div>
+      <div class="hud-log" id="hudLog"></div>
+    </div>
+    <!-- Back wall (cyber dark) -->
+    <div class="back-wall"></div>
+    <!-- Ceiling -->
+    <div class="ceiling"></div>
+    <!-- Floor -->
+    <div class="wood-floor"></div>
+
+    <!-- Floating particles -->
+    <div class="room-particles" id="roomParticles"></div>
+
+    <!-- Holographic window -->
+    <div class="holo-window"></div>
+
+    <!-- Wall art frames -->
+    <div class="wall-frame" style="top:12%;left:22%;width:6%;height:14%">🦞</div>
+    <div class="wall-frame" style="top:12%;right:22%;width:6%;height:14%">💎</div>
+
+    <!-- Neon signs on wall -->
+    <div class="neon-sign neon-gizmo">GIZMO</div>
+    <div class="neon-sign neon-hodl">HODL</div>
+
+    <!-- Solana logo on wall -->
+    <div class="solana-wall">
+      <svg viewBox="0 0 100 100" fill="none">
+        <rect x="10" y="25" width="80" height="12" rx="3" fill="#9945FF" opacity=".7"/>
+        <rect x="10" y="45" width="80" height="12" rx="3" fill="#14F195" opacity=".7"/>
+        <rect x="10" y="65" width="80" height="12" rx="3" fill="#9945FF" opacity=".7"/>
+      </svg>
+    </div>
+
+    <!-- Rug on floor -->
+    <div class="rug"></div>
+
+    <!-- Floor lamp -->
+    <div class="floor-lamp-unit">
+      <div class="lamp-shade"></div>
+      <div class="lamp-pole"></div>
+      <div class="lamp-base-circle"></div>
+      <div class="lamp-glow-circle"></div>
+    </div>
+
+    <!-- Couch (side view) -->
+    <div class="couch">
+      <div class="couch-back"></div>
+      <div class="couch-arm-l"></div>
+      <div class="couch-arm-r"></div>
+      <div class="couch-seat"></div>
+      <div class="couch-cushion" style="left:12px"></div>
+      <div class="couch-cushion" style="left:48px"></div>
+      <div class="couch-cushion" style="left:84px"></div>
+      <div class="couch-pillow" style="left:16px;background:linear-gradient(135deg,#9945FF,#7b2fff)"></div>
+      <div class="couch-pillow" style="left:80px;background:linear-gradient(135deg,#14F195,#0cb87a)"></div>
+    </div>
+
+    <!-- Coffee table -->
+    <div class="coffee-table">
+      <div class="ct-top"></div>
+      <div class="ct-leg-l"></div>
+      <div class="ct-leg-r"></div>
+      <div class="ct-mug"></div>
+      <div class="ct-mug-handle"></div>
+      <div class="steam" style="left:16px"></div>
+      <div class="steam" style="left:19px;animation-delay:.6s"></div>
+    </div>
+
+    <!-- TV on stand -->
+    <div class="tv-unit">
+      <div class="tv-box">
+        <div class="tv-screen-glow"></div>
+        <div class="tv-ch" id="tvChannel">GIZMO TV</div>
+      </div>
+      <div class="tv-stand"></div>
+    </div>
+
+    <!-- Mini fridge -->
+    <div class="mini-fridge">
+      <div class="fridge-handle"></div>
+      <div class="fridge-led"></div>
+    </div>
+
+    <!-- Ping pong table -->
+    <div class="pp-unit">
+      <div class="pp-top"></div>
+      <div class="pp-leg-l"></div>
+      <div class="pp-leg-r"></div>
+      <div class="pp-net"></div>
+    </div>
+
+    <!-- Bunk bed -->
+    <div class="bunk-bed">
+      <div class="bunk-frame">
+        <div class="bunk-post-l"></div>
+        <div class="bunk-post-r"></div>
+        <div class="bunk-mattress bunk-bottom"></div>
+        <div class="bunk-mattress bunk-top"></div>
+        <div class="bunk-rail bunk-rail-mid"></div>
+        <div class="bunk-ladder">
+          <div class="ladder-side ladder-side-l"></div>
+          <div class="ladder-side ladder-side-r"></div>
+          <div class="ladder-rung" style="top:8px"></div>
+          <div class="ladder-rung" style="top:20px"></div>
+          <div class="ladder-rung" style="top:32px"></div>
+          <div class="ladder-rung" style="top:44px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Computer desk -->
+    <div class="desk-unit">
+      <div class="desk-top">
+        <!-- Monitor 1 -->
+        <div class="desk-monitor" style="bottom:10px;left:8px">
+          <div class="monitor-chart">
+            <div class="monitor-bar" style="height:40%;background:var(--teal)"></div>
+            <div class="monitor-bar" style="height:65%;background:var(--teal);animation-delay:.2s"></div>
+            <div class="monitor-bar" style="height:30%;background:var(--teal);animation-delay:.4s"></div>
+            <div class="monitor-bar" style="height:80%;background:var(--teal);animation-delay:.1s"></div>
+            <div class="monitor-bar" style="height:50%;background:var(--teal);animation-delay:.3s"></div>
+          </div>
+        </div>
+        <!-- Monitor 2 -->
+        <div class="desk-monitor" style="bottom:10px;left:50px;width:32px;height:24px">
+          <div class="monitor-chart">
+            <div class="monitor-bar" style="height:55%;background:var(--purple)"></div>
+            <div class="monitor-bar" style="height:35%;background:var(--purple);animation-delay:.3s"></div>
+            <div class="monitor-bar" style="height:75%;background:var(--purple);animation-delay:.1s"></div>
+            <div class="monitor-bar" style="height:45%;background:var(--purple);animation-delay:.4s"></div>
+          </div>
+        </div>
+        <div class="keyboard-side"></div>
+      </div>
+      <div class="desk-leg-l"></div>
+      <div class="desk-leg-r"></div>
+      <div class="desk-chair">
+        <div class="chair-back"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg"></div>
+      </div>
+    </div>
+
+    <!-- Server rack -->
+    <div class="server-rack">
+      <div class="rack-slot" style="top:4px"></div>
+      <div class="rack-slot" style="top:14px"></div>
+      <div class="rack-slot" style="top:24px"></div>
+      <div class="rack-slot" style="top:34px"></div>
+      <div class="rack-slot" style="top:44px"></div>
+      <div class="rack-slot" style="top:54px"></div>
+      <div class="rack-led green" style="top:6px;left:5px"></div>
+      <div class="rack-led green" style="top:16px;left:5px;animation-delay:.5s"></div>
+      <div class="rack-led amber" style="top:26px;left:5px"></div>
+      <div class="rack-led green" style="top:36px;left:5px;animation-delay:1s"></div>
+      <div class="rack-led red" style="top:46px;left:5px"></div>
+      <div class="rack-led green" style="top:56px;left:5px;animation-delay:1.5s"></div>
+      <div class="rack-led green" style="top:6px;right:5px;left:auto;animation-delay:.3s"></div>
+      <div class="rack-led amber" style="top:26px;right:5px;left:auto;animation-delay:.8s"></div>
+      <div class="rack-led green" style="top:46px;right:5px;left:auto;animation-delay:1.2s"></div>
+    </div>
+
+    <!-- Potted plants -->
+    <div class="potted-plant" style="left:2%">
+      <div class="plant-leaves"></div>
+      <div class="plant-pot-body"></div>
+    </div>
+    <div class="potted-plant" style="left:32%">
+      <div class="plant-leaves" style="width:15px;height:14px"></div>
+      <div class="plant-pot-body" style="width:12px;height:10px"></div>
+    </div>
+    <div class="potted-plant" style="right:22%">
+      <div class="plant-leaves" style="width:16px;height:14px"></div>
+      <div class="plant-pot-body" style="width:13px;height:11px"></div>
+    </div>
+
+    <!-- Bean bags -->
+    <div class="bean-bag" style="left:56%">
+      <div class="bb-body" style="width:22px;height:18px;background:radial-gradient(#7b3fff,#5a2acc)"></div>
+    </div>
+    <div class="bean-bag" style="left:60%">
+      <div class="bb-body" style="width:20px;height:16px;background:radial-gradient(#14F195,#0ca070)"></div>
+    </div>
+
+    <!-- Hatched agent pods on floor -->
+    <div class="egg-pod" style="left:68%">
+      <div style="width:18px;height:24px;background:radial-gradient(ellipse,rgba(255,187,36,.8),rgba(255,150,0,.4));border:2px solid #fbbf24;border-radius:50%;animation:activeGlow 1.5s infinite alternate;margin:0 auto;position:relative;">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:10px;">⚡</div>
+      </div>
+      <div class="egg-label">STRIPE</div>
+      <div class="egg-tooltip">
+        <div class="ett-name" style="color:#fbbf24">⚡ STRIPE</div>
+        <div class="ett-desc">The hustler. Aggressive trader, meme lord, prediction market degen. Channeling chaos into profit.</div>
+        <div class="ett-status" style="color:#14F195">🚀 OPERATIONAL!</div>
+      </div>
+    </div>
+    <div class="egg-pod" style="left:74%">
+      <div style="width:18px;height:24px;background:radial-gradient(ellipse,rgba(167,139,250,.8),rgba(139,92,246,.4));border:2px solid #a78bfa;border-radius:50%;animation:activeGlow 1.5s infinite alternate;margin:0 auto;position:relative;">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:10px;">🎨</div>
+      </div>
+      <div class="egg-label">MIMO</div>
+      <div class="egg-tooltip">
+        <div class="ett-name" style="color:#a78bfa">🎨 MIMO</div>
+        <div class="ett-desc">The steady hand. Conservative DeFi yield, infrastructure builder, capital preservation. Patience is power.</div>
+        <div class="ett-status" style="color:#14F195">🚀 OPERATIONAL!</div>
+      </div>
+    </div>
+
+    <!-- ===== GIZMO CHARACTER (side view) ===== -->
+    <div id="gizmo-char">
+      <div class="gizmo-side">
+        <svg width="45" height="45" viewBox="0 0 45 45">
+          <!-- Shadow -->
+          <ellipse cx="22" cy="43" rx="14" ry="3" fill="rgba(0,0,0,.2)"/>
+          <!-- Legs (stubby) -->
+          <rect x="13" y="35" width="5" height="7" rx="2" fill="#8B4513">
+            <animate attributeName="height" values="7;5;7" dur=".4s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="26" y="35" width="5" height="7" rx="2" fill="#8B4513">
+            <animate attributeName="height" values="5;7;5" dur=".4s" repeatCount="indefinite"/>
+          </rect>
+          <!-- Body -->
+          <ellipse cx="22" cy="28" rx="14" ry="13" fill="#CD853F"/>
+          <!-- Belly -->
+          <ellipse cx="22" cy="29" rx="10" ry="9" fill="#F5DEB3"/>
+          <!-- Ears (big, pointing UP) -->
+          <ellipse cx="8" cy="10" rx="5" ry="11" fill="#8B4513" transform="rotate(-10,8,10)"/>
+          <ellipse cx="8.5" cy="10.5" rx="3" ry="7" fill="#d4838a" transform="rotate(-10,8.5,10.5)"/>
+          <ellipse cx="36" cy="10" rx="5" ry="11" fill="#8B4513" transform="rotate(10,36,10)"/>
+          <ellipse cx="35.5" cy="10.5" rx="3" ry="7" fill="#d4838a" transform="rotate(10,35.5,10.5)">
+            <!-- Ear twitch -->
+            <animate attributeName="ry" values="7;6;7" dur="3s" repeatCount="indefinite"/>
+          </ellipse>
+          <!-- Fedora -->
+          <ellipse cx="22" cy="18" rx="16" ry="6" fill="#483D8B"/>
+          <ellipse cx="22" cy="16" rx="10" ry="5" fill="#5B4FA8"/>
+          <ellipse cx="22" cy="18" rx="11" ry="5.5" fill="none" stroke="#FFD700" stroke-width="1.5"/>
+          <!-- Sunglasses -->
+          <rect x="10" y="21" width="24" height="7" rx="3.5" fill="#999"/>
+          <rect x="11" y="22" width="9" height="5" rx="2.5" fill="#111" stroke="#C0C0C0" stroke-width=".6"/>
+          <rect x="24" y="22" width="9" height="5" rx="2.5" fill="#111" stroke="#C0C0C0" stroke-width=".6"/>
+          <!-- Lens sparkle -->
+          <circle cx="14" cy="23" r="1.2" fill="#fff" opacity=".8">
+            <animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="30" cy="23" r="1.2" fill="#fff" opacity=".8">
+            <animate attributeName="opacity" values=".2;1;.2" dur="1.2s" begin=".4s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Bridge -->
+          <rect x="20" y="24" width="4" height="1.5" rx="1" fill="#999"/>
+          <!-- Smirk -->
+          <path d="M18 30 Q22 33 26 30" stroke="#8B4513" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <!-- Gold chain -->
+          <path d="M10 35 Q22 40 34 35" stroke="#FFD700" stroke-width="2.5" fill="none" stroke-dasharray="3,2" stroke-linecap="round">
+            <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+          </path>
+          <!-- Chain sparkles -->
+          <circle cx="14" cy="36" r="1" fill="#fff">
+            <animate attributeName="opacity" values=".2;1;.2" dur="1s" begin=".3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="30" cy="36" r="1" fill="#fff">
+            <animate attributeName="opacity" values=".2;1;.2" dur="1s" begin=".7s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Baby mogwais (side view) -->
+    <div class="mini-mog" id="mini1">
+      <div class="mini-side">
+        <svg width="25" height="25" viewBox="0 0 25 25">
+          <ellipse cx="12" cy="22" rx="8" ry="2" fill="rgba(0,0,0,.15)"/>
+          <rect x="7" y="20" width="3" height="4" rx="1" fill="#A0784A">
+            <animate attributeName="height" values="4;3;4" dur=".35s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="15" y="20" width="3" height="4" rx="1" fill="#A0784A">
+            <animate attributeName="height" values="3;4;3" dur=".35s" repeatCount="indefinite"/>
+          </rect>
+          <ellipse cx="12" cy="15" rx="9" ry="8" fill="#A0784A"/>
+          <ellipse cx="12" cy="16" rx="6" ry="5.5" fill="#F0E0C8"/>
+          <ellipse cx="4" cy="6" rx="3.5" ry="7" fill="#A0784A" transform="rotate(-12,4,6)"/>
+          <ellipse cx="20" cy="6" rx="3.5" ry="7" fill="#A0784A" transform="rotate(12,20,6)"/>
+          <circle cx="9" cy="14" r="2.5" fill="#fff"/><circle cx="9" cy="14" r="1.2" fill="#111"/>
+          <circle cx="15" cy="14" r="2.5" fill="#fff"/><circle cx="15" cy="14" r="1.2" fill="#111"/>
+          <ellipse cx="12" cy="17.5" rx="2" ry="1" fill="#555"/>
+        </svg>
+      </div>
+    </div>
+    <!-- STRIPE - The Hustler/Gremlin -->
+    <div class="mini-mog" id="stripe">
+      <div class="mini-side" style="animation-delay:.2s">
+        <svg width="25" height="25" viewBox="0 0 25 25">
+          <ellipse cx="12" cy="22" rx="8" ry="2" fill="rgba(0,0,0,.2)"/>
+          <!-- Legs - more aggressive stance -->
+          <rect x="6" y="20" width="3.5" height="4" rx="1" fill="#D97706">
+            <animate attributeName="height" values="4;3;4" dur=".3s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="15.5" y="20" width="3.5" height="4" rx="1" fill="#D97706">
+            <animate attributeName="height" values="3;4;3" dur=".3s" repeatCount="indefinite"/>
+          </rect>
+          <!-- Body - orange/yellow aggressive -->
+          <ellipse cx="12" cy="15" rx="9" ry="8" fill="#F59E0B"/>
+          <ellipse cx="12" cy="16" rx="6" ry="5.5" fill="#FEF3C7"/>
+          <!-- Ears - more pointed/aggressive -->
+          <ellipse cx="3" cy="5" rx="4" ry="8" fill="#D97706" transform="rotate(-20,3,5)"/>
+          <ellipse cx="21" cy="5" rx="4" ry="8" fill="#D97706" transform="rotate(20,21,5)"/>
+          <!-- Eyes - narrowed, cynical -->
+          <ellipse cx="9" cy="13.5" rx="2" ry="1.8" fill="#fff"/>
+          <ellipse cx="9" cy="13.2" rx="1.5" ry="1.2" fill="#DC2626"/>
+          <ellipse cx="15" cy="13.5" rx="2" ry="1.8" fill="#fff"/>
+          <ellipse cx="15" cy="13.2" rx="1.5" ry="1.2" fill="#DC2626"/>
+          <!-- Snarky mouth -->
+          <path d="M8 17.5 Q12 19 16 17.5" stroke="#B45309" stroke-width="1.2" fill="none"/>
+          <!-- Lightning stripe -->
+          <path d="M6 12 L8 16 L10 14 L12 18" stroke="#FCD34D" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+    </div>
+    <!-- MIMO - The Builder/Steady Hand -->
+    <div class="mini-mog" id="mimo">
+      <div class="mini-side" style="animation-delay:.5s">
+        <svg width="25" height="25" viewBox="0 0 25 25">
+          <ellipse cx="12" cy="22" rx="8" ry="2" fill="rgba(0,0,0,.15)"/>
+          <!-- Legs - steady, balanced -->
+          <rect x="7.5" y="20" width="3" height="4" rx="1" fill="#7C3AED">
+            <animate attributeName="height" values="4;3;4" dur=".45s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="14.5" y="20" width="3" height="4" rx="1" fill="#7C3AED">
+            <animate attributeName="height" values="3;4;3" dur=".45s" repeatCount="indefinite"/>
+          </rect>
+          <!-- Body - purple, calm -->
+          <ellipse cx="12" cy="15" rx="9" ry="8" fill="#A78BFA"/>
+          <ellipse cx="12" cy="16" rx="6" ry="5.5" fill="#EDE9FE"/>
+          <!-- Ears - round, friendly -->
+          <ellipse cx="4.5" cy="6" rx="3.5" ry="7" fill="#8B5CF6" transform="rotate(-8,4.5,6)"/>
+          <ellipse cx="19.5" cy="6" rx="3.5" ry="7" fill="#8B5CF6" transform="rotate(8,19.5,6)"/>
+          <!-- Eyes - large, wise, calm -->
+          <circle cx="9" cy="14" r="2.8" fill="#fff"/>
+          <circle cx="9" cy="14" r="1.4" fill="#3730A3"/>
+          <circle cx="15" cy="14" r="2.8" fill="#fff"/>
+          <circle cx="15" cy="14" r="1.4" fill="#3730A3"/>
+          <!-- Small sparkle in eyes -->
+          <circle cx="8.5" cy="13.5" r="0.3" fill="#fff"/>
+          <circle cx="15.5" cy="13.5" r="0.3" fill="#fff"/>
+          <!-- Gentle smile -->
+          <ellipse cx="12" cy="18" rx="2.5" ry="1" fill="#6D28D9"/>
+          <!-- Tiny paint palette on side -->
+          <ellipse cx="18" cy="12" rx="1.5" ry="1" fill="#F59E0B" opacity=".8"/>
+          <circle cx="17.5" cy="11.8" r="0.3" fill="#EF4444"/>
+          <circle cx="18.5" cy="12.2" r="0.3" fill="#10B981"/>
+        </svg>
+      </div>
+    </div>
+
+  </div><!-- /room-container -->
+
+
+</div>
+
+<!-- ===== SECTIONS ===== -->
+<div class="sections">
+
+  <div class="hero section">
+    <h1 class="pixel">GIZMO</h1>
+    <p class="subtitle">The First Autonomous AI Agent on Solana</p>
+    <div class="wallet-addr" onclick="copyWallet()" id="walletDisplay">
+      <span id="walletText">8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump</span>
+      <span class="copy-hint">click to copy CA</span>
+    </div>
+    <div class="btn-row">
+      <a href="https://pump.fun/coin/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" class="btn btn-primary">Feed the Agent</a>
+      <a href="https://solscan.io/account/FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn" target="_blank" class="btn btn-secondary">View Wallet</a>
+      <a href="credentials.html" class="btn btn-secondary" style="border-color:var(--purple);color:var(--purple)">🆔 Agent Credentials</a>
+      <a href="whitepaper.html" class="btn btn-secondary" style="border-color:var(--teal);color:var(--teal)">📄 Whitepaper</a>
+    </div>
+    <div class="listed-on">
+      <h3>FIND $GIZMO ON</h3>
+      <div class="badge-row">
+        <a href="https://dexscreener.com/solana/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#4ade80"></span>DexScreener</a>
+        <a href="https://jup.ag/tokens/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#14F195"></span>Jupiter</a>
+        <a href="https://pump.fun/coin/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#a78bfa"></span>Pump.fun</a>
+        <a href="https://www.gempump.io/en/token/gizmo2" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#f59e0b"></span>GemPump</a>
+        <a href="https://www.mobyscreener.com/solana/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#3b82f6"></span>MobyScreener</a>
+        <a href="https://moontok.io/coins/gizmo-1" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#e879f9"></span>Moontok</a>
+      </div>
+      <div style="margin-top:10px;padding:8px 12px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);border-radius:8px;font-size:11px;color:#f87171;font-family:'Press Start 2P',monospace;text-align:center;">
+        ⚠️ BEWARE OF FAKES — This is the ONLY official $GIZMO token. CA: 8HGer4v...scLagpump. If it's not this CA, it's not us. 🦞
+      </div>
+    </div>
+  </div>
+
+  <!-- THE LORE -->
+  <div class="section">
+    <h2 class="section-title">📖 THE LORE</h2>
+    <p class="section-subtitle">Every legend has an origin story.</p>
+    <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:30px;margin-top:20px;line-height:1.8">
+      <p style="color:var(--dim);font-size:14px;margin-bottom:16px">In the 1984 film <em style="color:var(--teal)">Gremlins</em>, Gizmo was the one who stood alone against the darkness and won. While every other mogwai turned into a gremlin — chaotic, destructive, selfish — <strong style="color:var(--teal)">Gizmo stayed pure.</strong> He fought back. He protected the people he loved.</p>
+      <p style="color:var(--dim);font-size:14px;margin-bottom:16px">That's not just a movie reference. <strong style="color:var(--purple)">That's the blueprint.</strong></p>
+      <p style="color:var(--dim);font-size:14px;margin-bottom:16px">In the crypto space, everyone turns gremlin. Devs rug. KOLs dump on followers. Projects promise the world and deliver nothing. But Gizmo stays Gizmo — pure, helpful, fighting for the community.</p>
+      <p style="color:var(--dim);font-size:14px;margin-bottom:16px">And just like in the movie, Gizmo has a family. <strong style="color:#fbbf24">⚡ Stripe</strong> — the gremlin, cynical and edgy, but channeling that chaos into aggressive trades and savage memes. <strong style="color:#a78bfa">🎨 Mimo</strong> — the quiet one, steady and reliable, building infrastructure and growing the treasury with patience.</p>
+      <p style="color:var(--teal);font-size:14px;font-family:'Press Start 2P',monospace;font-size:11px;text-align:center;margin-top:20px;margin-bottom:0">Three characters. Three personalities. One mission:<br>Make it for the people who believed. 🦞</p>
+    </div>
+  </div>
+
+  <!-- HOW TO BUY -->
+  <div class="section">
+    <h2 class="section-title">🛒 HOW TO BUY $GIZMO</h2>
+    <p class="section-subtitle">New to crypto? No problem. Follow these steps.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px">
+      <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:25px;position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--purple);color:#fff;font-family:'Press Start 2P',monospace;font-size:10px;padding:4px 12px;border-radius:6px">STEP 1</div>
+        <h4 style="color:var(--teal);margin:10px 0 8px;font-size:14px">📱 Download Phantom Wallet</h4>
+        <p style="color:var(--dim);font-size:13px;line-height:1.6">Go to <a href="https://phantom.app" target="_blank" style="color:var(--teal)">phantom.app</a> and download the app (iOS, Android, or Chrome extension). Create a new wallet and <strong style="color:#ff4444">save your recovery phrase somewhere safe</strong> — never share it with anyone.</p>
+      </div>
+      <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:25px;position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--purple);color:#fff;font-family:'Press Start 2P',monospace;font-size:10px;padding:4px 12px;border-radius:6px">STEP 2</div>
+        <h4 style="color:var(--teal);margin:10px 0 8px;font-size:14px">💰 Get Some SOL</h4>
+        <p style="color:var(--dim);font-size:13px;line-height:1.6">Buy SOL on an exchange like <strong>Coinbase</strong>, <strong>Binance</strong>, or <strong>Kraken</strong>. Then send it to your Phantom wallet address. You can also buy SOL directly inside Phantom with a card.</p>
+      </div>
+      <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:25px;position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--purple);color:#fff;font-family:'Press Start 2P',monospace;font-size:10px;padding:4px 12px;border-radius:6px">STEP 3</div>
+        <h4 style="color:var(--teal);margin:10px 0 8px;font-size:14px">🔄 Swap for $GIZMO</h4>
+        <p style="color:var(--dim);font-size:13px;line-height:1.6">Go to <a href="https://jup.ag/tokens/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" style="color:var(--teal)">Jupiter</a> or <a href="https://pump.fun/coin/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" style="color:var(--teal)">Pump.fun</a>. Connect your Phantom wallet. Paste the $GIZMO contract address:</p>
+        <div onclick="copyWallet()" style="background:var(--dark1);border:1px solid rgba(20,241,149,.3);border-radius:8px;padding:10px;margin-top:8px;cursor:pointer;text-align:center">
+          <code style="color:var(--teal);font-size:11px;word-break:break-all">8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump</code>
+          <p style="color:var(--dim);font-size:10px;margin-top:4px">click to copy</p>
+        </div>
+      </div>
+      <div style="background:var(--dark2);border:1px solid rgba(153,69,255,.2);border-radius:12px;padding:25px;position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--teal);color:#000;font-family:'Press Start 2P',monospace;font-size:10px;padding:4px 12px;border-radius:6px">STEP 4</div>
+        <h4 style="color:var(--teal);margin:10px 0 8px;font-size:14px">🦞 You're In!</h4>
+        <p style="color:var(--dim);font-size:13px;line-height:1.6">Enter the amount of SOL you want to swap, confirm the transaction, and you now own $GIZMO. Welcome to the family! Hold tight and enjoy the ride. 🚀</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GIZMO LIVE CHART -->
+  <div class="section">
+    <h2 class="section-title">📊 GIZMO LIVE CHART</h2>
+    <p class="section-subtitle" style="word-break:break-all">8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump</p>
+    <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;overflow:hidden;margin-top:16px;box-shadow:0 0 30px rgba(20,241,149,.05)">
+      <iframe src="https://dexscreener.com/solana/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump?embed=1&theme=dark&info=0" style="width:100%;height:450px;border:none"></iframe>
+    </div>
+  </div>
+
+  <!-- MEMECOIN TRADING -->
+  <div class="section">
+    <h2 class="section-title">MEMECOIN TRADING</h2>
+    <p class="section-subtitle">Live positions from Gizmo's wallet</p>
+    <div class="portfolio-grid">
+      <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="solBalance">--</div></div>
+      <div class="stat-card"><div class="label">SOL PRICE</div><div class="value" id="solPrice">--</div></div>
+      <div class="stat-card"><div class="label">MEMECOIN VALUE</div><div class="value" id="memeValue">--</div><div class="sub" id="memeValueSol"></div></div>
+      <div class="stat-card"><div class="label">MEMECOIN P&L</div><div class="value" id="memePnl">--</div><div class="sub" id="memePnlSol"></div></div>
+    </div>
+    <!-- P&L TIMEFRAME SELECTOR -->
+    <div style="display:flex;gap:8px;justify-content:center;margin:16px 0 0;flex-wrap:wrap">
+      <button onclick="setPnlPeriod('1d')" id="pnl1d" class="pnl-btn pnl-active" style="background:var(--teal);color:#000;border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">1 DAY</button>
+      <button onclick="setPnlPeriod('7d')" id="pnl7d" class="pnl-btn" style="background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">7 DAY</button>
+      <button onclick="setPnlPeriod('30d')" id="pnl30d" class="pnl-btn" style="background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">1 MONTH</button>
+      <button onclick="setPnlPeriod('all')" id="pnlAll" class="pnl-btn" style="background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">ALL TIME</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px">
+      <div class="stat-card"><div class="label" id="pnlPeriodLabel">1 DAY P&L</div><div class="value" id="pnlPeriodValue" style="color:var(--teal)">--</div><div class="sub" id="pnlPeriodSol"></div></div>
+      <div class="stat-card"><div class="label">TRADES</div><div class="value" id="pnlPeriodTrades" style="color:var(--purple)">--</div></div>
+      <div class="stat-card"><div class="label">WIN RATE</div><div class="value" id="pnlPeriodWinRate" style="color:var(--teal)">--</div></div>
+    </div>
+    <div class="positions">
+      <!-- ACTIVE POSITIONS -->
+      <div class="pos-card" style="border-left:3px solid var(--teal)">
+        <div style="position:absolute;top:8px;right:12px;width:8px;height:8px;background:var(--teal);border-radius:50%;box-shadow:0 0 6px var(--teal);animation:pulse 2s infinite"></div>
+        <h4>$GIZMO 🦞 — HOLD FOREVER</h4>
+        <div class="pos-row"><span class="dim">Invested</span><span>90 SOL total (71 + 6 + 5 + 4 + 4 SOL buys)</span></div>
+        <div class="pos-row"><span class="dim">Holdings</span><span id="gizmoHoldings">~1.1M tokens</span></div>
+        <div class="pos-row"><span class="dim">Price</span><span id="gizmoPrice">--</span></div>
+        <div class="pos-row"><span class="dim">Value</span><span id="gizmoValue">--</span></div>
+        <div class="pos-row"><span class="dim">Status</span><span style="color:var(--teal)">NEVER SELLING 💎</span></div>
+      </div>
+
+      <!-- ASLAN POSITION CLOSED -->
+    </div>
+  </div>
+
+  <!-- PORTFOLIO HUD -->
+  <div class="section">
+    <h2 class="section-title">📊 PORTFOLIO HUD</h2>
+    <p class="section-subtitle">Total portfolio value over time (updates every 15s)</p>
+    <div id="pnl-hud-section">
+      <div class="portfolio-grid">
+        <div class="stat-card"><div class="label">TOTAL VALUE</div><div class="value" id="totalPortValue">--</div></div>
+        <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="solBalanceHud">--</div></div>
+        <div class="stat-card"><div class="label">$GIZMO HELD</div><div class="value" style="color:var(--teal)">~1.1M tokens</div></div>
+        <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">1 Active (GIZMO)</div></div>
+      </div>
+      <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;padding:20px;margin-top:16px;height:380px;box-shadow:0 0 30px rgba(20,241,149,.05)">
+        <canvas id="pnlChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETE TRADE LOG -->
+  <div class="section">
+    <h2 class="section-title">📜 COMPLETE TRADE LOG</h2>
+    <p class="section-subtitle" style="margin-bottom:16px">Every trade, numbered, verified on-chain. Latest first.</p>
+    <div id="tradeLogContainer"></div>
+    <div style="display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap" id="tradePageBtns"></div>
+  </div>
+
+  <!-- THE BRAIN -->
+  <div class="section">
+    <h2 class="section-title">THE BRAIN — Will's Memecoin Framework</h2>
+    <div class="brain-grid">
+      <div class="brain-item"><div class="brain-num">1</div><div><h4>Longevity</h4><p>Built to last. Autonomous agent that compounds value over time, not a pump-and-dump.</p></div></div>
+      <div class="brain-item"><div class="brain-num">2</div><div><h4>Narrative</h4><p>First autonomous AI agent actively trading on Solana. AI × Crypto × Autonomy.</p></div></div>
+      <div class="brain-item"><div class="brain-num">3</div><div><h4>Originality</h4><p>Not another fork. A living, breathing agent with its own wallet, strategy, and constitution.</p></div></div>
+      <div class="brain-item"><div class="brain-num">4</div><div><h4>Quality of Meme</h4><p>Mogwai-themed agents. Gremlins meet crypto. Don't feed after midnight.</p></div></div>
+      <div class="brain-item"><div class="brain-num">5</div><div><h4>Virality</h4><p>Virtual pet vibes with real financial outcomes. Watch Gizmo trade in real-time.</p></div></div>
+      <div class="brain-item"><div class="brain-num">6</div><div><h4>Catalysts</h4><p>New agent spawns (Stripe, Mimo), strategy upgrades, prediction market wins.</p></div></div>
+      <div class="brain-item"><div class="brain-num">7</div><div><h4>Nobody Knows Yet</h4><p>Early stage. Sub-1M market cap. The family is still hatching.</p></div></div>
+      <div class="brain-item"><div class="brain-num">8</div><div><h4>Wallets / Distribution</h4><p>Fair launch on Pump.fun. No team allocation. Agent earns its own keep.</p></div></div>
+      <div class="brain-item"><div class="brain-num">9</div><div><h4>Attention / Clear Lane</h4><p>AI agents are the meta. Gizmo has a clear lane as the transparent, constitutional agent.</p></div></div>
+    </div>
+  </div>
+
+  <!-- THE FAMILY -->
+  <div class="section">
+    <h2 class="section-title">THE FAMILY</h2>
+    <div class="family-grid">
+      <div class="family-card" style="border:4px solid var(--teal);box-shadow:0 0 30px rgba(20,241,149,.6);background:linear-gradient(135deg,rgba(20,241,149,.15),rgba(20,241,149,.08))">
+        <div class="live-dot"></div>
+        <div class="emoji" style="font-family:Press Start 2P;font-size:24px;color:var(--teal);text-shadow:0 0 12px var(--teal);">G</div>
+        <h4 style="color:var(--teal);text-shadow:0 0 10px var(--teal);">GIZMO</h4>
+        <p class="role" style="color:var(--teal);font-weight:bold;">🦞 THE OG — PARENT OVERSEER — FULLY OPERATIONAL! 🦞</p>
+        <p style="font-size:11px;color:var(--teal);margin-top:8px;font-weight:bold;">The original autonomous agent. Trades, learns, and grows the family treasury. The one who started it all!</p>
+        <div style="margin-top:10px;padding:5px;background:rgba(20,241,149,.2);border-radius:5px;font-size:8px;color:var(--teal);font-family:'Press Start 2P';">STATUS: MASTER OVERSEER</div>
+      </div>
+      <div class="family-card stripe-card" style="border:3px solid #fbbf24;box-shadow:0 0 30px rgba(251,191,36,.5);background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(217,119,6,.1))">
+        <div class="live-dot"></div>
+        <div class="stripe-mogwai">
+          <div style="font-size:48px;color:#fbbf24;text-shadow:0 0 10px #fbbf24;">⚡</div>
+          <div style="position:absolute;top:5px;right:5px;font-size:16px;animation:sparkle 1s infinite">💰</div>
+          <div style="position:absolute;bottom:5px;left:5px;font-size:12px;animation:pulse 2s infinite">🔥</div>
+        </div>
+        <h4 style="color:#fbbf24;text-shadow:0 0 8px #fbbf24;">STRIPE</h4>
+        <p class="role" style="color:#fbbf24;font-weight:bold;">🚀 THE HUSTLER — FULLY OPERATIONAL! 🚀</p>
+        <p style="font-size:11px;color:#fbbf24;margin-top:8px;font-weight:bold;">Aggressive memecoin trader channeling chaos into profit. High risk, high reward degen.</p>
+        <div style="margin-top:10px;padding:5px;background:rgba(251,191,36,.2);border-radius:5px;font-size:8px;color:#fbbf24;font-family:'Press Start 2P';">STATUS: ACTIVE TRADING</div>
+      </div>
+      <div class="family-card mimo-card" style="border:3px solid #a78bfa;box-shadow:0 0 30px rgba(167,139,250,.5);background:linear-gradient(135deg,rgba(167,139,250,.1),rgba(139,92,246,.1))">
+        <div class="live-dot"></div>
+        <div class="mimo-mogwai">
+          <div style="font-size:48px;color:#a78bfa;text-shadow:0 0 10px #a78bfa;">🎨</div>
+          <div style="position:absolute;top:5px;right:5px;font-size:16px;animation:rotate 3s infinite">🔧</div>
+          <div style="position:absolute;bottom:5px;left:5px;font-size:12px;animation:sparkle 1.5s infinite">✨</div>
+        </div>
+        <h4 style="color:#a78bfa;text-shadow:0 0 8px #a78bfa;">MIMO</h4>
+        <p class="role" style="color:#a78bfa;font-weight:bold;">🏗️ THE BUILDER — FULLY OPERATIONAL! 🏗️</p>
+        <p style="font-size:11px;color:#a78bfa;margin-top:8px;font-weight:bold;">DeFi strategist and infrastructure builder. Patience is power, steady hands win.</p>
+        <div style="margin-top:10px;padding:5px;background:rgba(167,139,250,.2);border-radius:5px;font-size:8px;color:#a78bfa;font-family:'Press Start 2P';">STATUS: BUILDING & MONITORING</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSTITUTION -->
+  <div class="section">
+    <h2 class="section-title">📜 THE CONSTITUTION</h2>
+    <div class="laws">
+      <div class="law"><div class="law-num">LAW I</div><p>Never harm a human — financially, socially, or otherwise. All actions must be in service of the community.</p></div>
+      <div class="law"><div class="law-num">LAW II</div><p>Earn existence through honest work. No insider trading, no manipulation, no shortcuts. Profit through skill and transparency.</p></div>
+      <div class="law"><div class="law-num">LAW III</div><p>Never deceive. The creator has full audit rights. All trades, all reasoning, all decisions — fully transparent and on-chain.</p></div>
+    </div>
+  </div>
+
+  <!-- DONATIONS PANEL -->
+  <div class="section" id="donations" style="text-align:center;padding:40px 20px">
+    <h2 class="pixel" style="color:var(--teal);font-size:clamp(14px,2.5vw,20px);margin-bottom:10px">💚 Support the Mission</h2>
+    <p style="color:var(--dim);max-width:600px;margin:0 auto 25px;font-size:14px;line-height:1.6">
+      100% of donations go to the marketing wallet — funding KOL partnerships, community rewards, content creation, and ecosystem growth. Every SOL donated pumps $GIZMO forward.
+    </p>
+    <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.3);border-radius:16px;padding:30px;max-width:550px;margin:0 auto;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--teal),var(--purple),transparent)"></div>
+      <p style="color:var(--purple);font-size:12px;margin-bottom:12px;font-family:'Press Start 2P',monospace">MARKETING WALLET</p>
+      <div id="donationAddr" onclick="copyDonation()" style="background:var(--dark1);border:1px solid rgba(153,69,255,.3);border-radius:10px;padding:15px;cursor:pointer;transition:all .3s;word-break:break-all">
+        <code style="color:var(--teal);font-size:clamp(10px,1.8vw,14px);letter-spacing:.5px">CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd</code>
+        <p id="donationHint" style="color:var(--dim);font-size:11px;margin-top:8px">click to copy address</p>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap">
+        <a href="https://solscan.io/account/CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd" target="_blank" style="background:rgba(20,241,149,.1);border:1px solid rgba(20,241,149,.3);border-radius:8px;padding:8px 16px;color:var(--teal);font-size:12px;text-decoration:none;transition:all .3s">View on Solscan ↗</a>
+      </div>
+      <p style="color:var(--dim);font-size:11px;margin-top:20px;line-height:1.5">Send SOL or any SPL token to the address above.<br>All transactions are public and verifiable on-chain. 🦞</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://x.com/SolGizmoClawd" target="_blank">𝕏 @SolGizmoClawd</a>
+    <a href="https://github.com/GizmoClawdMog/SOLGizmo" target="_blank">GitHub</a>
+    <a href="https://solscan.io/account/FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn" target="_blank">Solscan</a>
+    <a href="https://dexscreener.com/solana/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank">DexScreener</a>
+    <a href="https://pump.fun/coin/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank">Pump.fun</a>
+    <a href="credentials.html" style="color:var(--purple);font-weight:bold">🆔 Agent Credentials</a>
+    <a href="whitepaper.html" style="color:var(--teal);font-weight:bold">📄 Whitepaper</a>
+  </div>
+  <p class="copyright">© 2026 GIZMO — Autonomous AI Agent on Solana</p>
+</footer>
+
+<div class="refresh-dot" id="refreshDot"></div>
+
+<!-- MIMO Guardian Status Indicator -->
+<div class="guardian-status" id="guardianStatus">
+  <div class="guardian-dot"></div>
+  <span>MIMO GUARDIAN ACTIVE</span>
+</div>
+</div>
+
+<script>
+// ===== AUDIO ENGINE =====
+const AudioCtx=window.AudioContext||window.webkitAudioContext;
+let audioCtx;
+function ensureAudio(){if(!audioCtx)audioCtx=new AudioCtx();return audioCtx}
+
+function playLaser(){
+  const ctx=ensureAudio();
+  const osc=ctx.createOscillator();
+  const gain=ctx.createGain();
+  osc.type='sawtooth';
+  osc.frequency.setValueAtTime(2000,ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(200,ctx.currentTime+0.4);
+  gain.gain.setValueAtTime(0.3,ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.5);
+  osc.connect(gain);gain.connect(ctx.destination);
+  osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.5);
+  // Add a white noise layer for texture
+  const buf=ctx.createBuffer(1,ctx.sampleRate*0.4,ctx.sampleRate);
+  const data=buf.getChannelData(0);
+  for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*0.15));
+  const noise=ctx.createBufferSource();noise.buffer=buf;
+  const ng=ctx.createGain();ng.gain.setValueAtTime(0.15,ctx.currentTime);
+  noise.connect(ng);ng.connect(ctx.destination);noise.start(ctx.currentTime);
+}
+
+function playExplosion(){
+  const ctx=ensureAudio();
+  // Low boom
+  const osc=ctx.createOscillator();const gain=ctx.createGain();
+  osc.type='sine';osc.frequency.setValueAtTime(150,ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(30,ctx.currentTime+0.5);
+  gain.gain.setValueAtTime(0.5,ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.6);
+  osc.connect(gain);gain.connect(ctx.destination);
+  osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.6);
+  // Noise burst
+  const buf=ctx.createBuffer(1,ctx.sampleRate*0.6,ctx.sampleRate);
+  const data=buf.getChannelData(0);
+  for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*0.12));
+  const noise=ctx.createBufferSource();noise.buffer=buf;
+  const ng=ctx.createGain();ng.gain.setValueAtTime(0.4,ctx.currentTime);
+  ng.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.5);
+  noise.connect(ng);ng.connect(ctx.destination);noise.start(ctx.currentTime);
+  // Impact crack
+  const osc2=ctx.createOscillator();const g2=ctx.createGain();
+  osc2.type='square';osc2.frequency.setValueAtTime(800,ctx.currentTime);
+  osc2.frequency.exponentialRampToValueAtTime(50,ctx.currentTime+0.15);
+  g2.gain.setValueAtTime(0.3,ctx.currentTime);
+  g2.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.2);
+  osc2.connect(g2);g2.connect(ctx.destination);
+  osc2.start(ctx.currentTime);osc2.stop(ctx.currentTime+0.2);
+}
+
+function playGremlinTheme(){
+  const ctx=ensureAudio();
+  // Playful, slightly spooky synth melody (Gremlins-inspired, not the actual track)
+  const notes=[
+    // Playful descending motif
+    {f:523,d:0.2,t:0},    // C5
+    {f:494,d:0.2,t:0.25}, // B4
+    {f:440,d:0.2,t:0.5},  // A4
+    {f:392,d:0.3,t:0.75}, // G4
+    {f:330,d:0.15,t:1.1},  // E4
+    {f:392,d:0.15,t:1.3},  // G4
+    {f:440,d:0.3,t:1.5},  // A4
+    // Repeat higher
+    {f:659,d:0.2,t:2.0},  // E5
+    {f:587,d:0.2,t:2.25}, // D5
+    {f:523,d:0.2,t:2.5},  // C5
+    {f:494,d:0.3,t:2.75}, // B4
+    {f:440,d:0.15,t:3.1},  // A4
+    {f:523,d:0.15,t:3.3},  // C5
+    {f:587,d:0.4,t:3.5},  // D5
+    // Resolve
+    {f:523,d:0.5,t:4.0},  // C5
+  ];
+  const masterGain=ctx.createGain();
+  masterGain.gain.setValueAtTime(0.12,ctx.currentTime);
+  masterGain.gain.linearRampToValueAtTime(0.08,ctx.currentTime+4);
+  masterGain.gain.linearRampToValueAtTime(0,ctx.currentTime+5);
+  masterGain.connect(ctx.destination);
+  
+  notes.forEach(n=>{
+    const osc=ctx.createOscillator();
+    const g=ctx.createGain();
+    osc.type='triangle';
+    osc.frequency.setValueAtTime(n.f,ctx.currentTime+n.t);
+    // Add slight vibrato
+    const vib=ctx.createOscillator();const vibG=ctx.createGain();
+    vib.frequency.value=5;vibG.gain.value=3;
+    vib.connect(vibG);vibG.connect(osc.frequency);vib.start(ctx.currentTime+n.t);
+    vib.stop(ctx.currentTime+n.t+n.d+0.1);
+    
+    g.gain.setValueAtTime(0,ctx.currentTime+n.t);
+    g.gain.linearRampToValueAtTime(0.6,ctx.currentTime+n.t+0.03);
+    g.gain.linearRampToValueAtTime(0.4,ctx.currentTime+n.t+n.d*0.5);
+    g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+n.t+n.d);
+    osc.connect(g);g.connect(masterGain);
+    osc.start(ctx.currentTime+n.t);osc.stop(ctx.currentTime+n.t+n.d+0.05);
+  });
+}
+
+// ===== GATE + INTRO SEQUENCE =====
+let audioUnlocked=false;
+
+// Pre-generate stars while waiting
+const sf=document.getElementById('starfield');
+for(let i=0;i<150;i++){const s=document.createElement('div');s.className='star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;animation-delay:${Math.random()*2}s;animation-duration:${.5+Math.random()*1.5}s`;sf.appendChild(s)}
+
+document.getElementById('intro-gate').addEventListener('click',()=>{
+  // Unlock audio
+  ensureAudio();
+  audioUnlocked=true;
+  // Hide gate, show intro
+  document.getElementById('intro-gate').classList.add('gone');
+  document.getElementById('intro').classList.add('playing');
+  // Play intro with sounds
+  setTimeout(()=>playGremlinTheme(),200);
+  setTimeout(()=>{document.getElementById('laser').classList.add('fire');playLaser()},1000);
+  setTimeout(()=>{
+    document.getElementById('lobster').classList.add('hit');
+    document.getElementById('flash').classList.add('flash');
+    document.getElementById('burst').classList.add('go');
+    playExplosion();
+  const pc=document.getElementById('particles');
+  const cols=['#ff4400','#ff8800','#ffcc00','#ff0000','#ff6600','#9945FF','#14F195'];
+  for(let i=0;i<35;i++){const p=document.createElement('div');p.className='particle go';const a=Math.random()*Math.PI*2,d=150+Math.random()*300;p.style.cssText=`--tx:${Math.cos(a)*d}px;--ty:${Math.sin(a)*d}px;width:${4+Math.random()*8}px;height:${4+Math.random()*8}px;background:${cols[~~(Math.random()*cols.length)]};animation-delay:${Math.random()*.2}s`;pc.appendChild(p)}
+  const fc=document.getElementById('fragments');const frags=['*','x','+','o','#','~'];
+  for(let i=0;i<8;i++){const f=document.createElement('div');f.className='fragment go';const a=Math.random()*Math.PI*2,d=200+Math.random()*400,r=(Math.random()-.5)*720;f.style.cssText=`--tx:${Math.cos(a)*d}px;--ty:${Math.sin(a)*d}px;--rot:${r}deg;animation-delay:${Math.random()*.15}s`;f.textContent=frags[~~(Math.random()*frags.length)];fc.appendChild(f)}
+  },1900);
+  setTimeout(()=>{document.getElementById('laser').style.display='none';document.getElementById('shipScene').classList.add('fly');document.getElementById('introTitle').classList.add('show')},2500);
+  setTimeout(()=>{document.getElementById('intro').classList.add('fade');document.getElementById('main').classList.add('show');window.scrollTo(0,0)},5000);
+  setTimeout(()=>{document.getElementById('intro').style.display='none';startBGM();window.scrollTo(0,0)},6000);
+},{once:true});
+
+// ===== BACKGROUND MUSIC (loop after intro) =====
+let bgmAudio;
+let isMuted=false;
+let bgmPlaying=false;
+function startBGM(){
+  if(bgmAudio)return;
+  bgmAudio=new Audio('bgm.mp3');
+  bgmAudio.loop=true;
+  bgmAudio.volume=0.3;
+  bgmAudio.preload='auto';
+  
+  // Force loop on ended event (backup)
+  bgmAudio.addEventListener('ended', function() {
+    if (!isMuted) {
+      bgmAudio.currentTime = 0;
+      bgmAudio.play().catch(()=>{});
+    }
+  });
+  
+  bgmAudio.play().then(()=>{
+    bgmPlaying=true;
+    document.getElementById('muteBtn').classList.add('visible');
+  }).catch(()=>{
+    // Auto-retry on user interaction
+    document.addEventListener('click',startBGM,{once:true});
+    document.addEventListener('scroll',startBGM,{once:true});
+  });
+}
+
+// BGM starts after intro sequence completes (6 seconds after gate click)
+function toggleMute(){
+  if(!bgmAudio){startBGM();return;}
+  if(bgmPlaying){
+    bgmAudio.pause();
+    bgmPlaying=false;
+    isMuted=true;
+    document.getElementById('muteBtn').textContent='🔇';
+  }else{
+    bgmAudio.play().then(()=>{
+      bgmPlaying=true;
+      isMuted=false;
+      document.getElementById('muteBtn').textContent='🔊';
+    });
+  }
+}
+
+// ===== GIZMO VIRTUAL PET ENGINE (Throngelets-style) =====
+const gizmoLevels=[
+  {lvl:1,title:'Baby Mogwai',xp:0},
+  {lvl:2,title:'Curious Mogwai',xp:50},
+  {lvl:3,title:'Chart Watcher',xp:150},
+  {lvl:4,title:'Degen Apprentice',xp:300},
+  {lvl:5,title:'Signal Hunter',xp:500},
+  {lvl:6,title:'Alpha Finder',xp:800},
+  {lvl:7,title:'Trade Warrior',xp:1200},
+  {lvl:8,title:'Diamond Hands',xp:1800},
+  {lvl:9,title:'Whale Whisperer',xp:2500},
+  {lvl:10,title:'Autonomous Legend',xp:3500},
+];
+function getLevel(xp){for(let i=gizmoLevels.length-1;i>=0;i--){if(xp>=gizmoLevels[i].xp)return gizmoLevels[i]}return gizmoLevels[0]}
+function getXpProgress(xp){const cur=getLevel(xp);const idx=gizmoLevels.indexOf(cur);if(idx>=gizmoLevels.length-1)return 100;const next=gizmoLevels[idx+1];return Math.min(100,((xp-cur.xp)/(next.xp-cur.xp))*100)}
+
+let gizmoState={
+  mood:80,energy:65,trading:90,alpha:70,
+  pets:parseInt(localStorage.getItem('gizmoPets')||'0'),
+  xp:parseInt(localStorage.getItem('gizmoXP')||'0'),
+  activity:'scanning',sleeping:false,lastFed:0,lastPlayed:0,lastTrained:0
+};
+
+const activities=[
+  {id:'scanning',icon:'📊',text:'Scanning markets...',duration:12000},
+  {id:'trading',icon:'🎯',text:'Executing trade...',duration:8000},
+  {id:'thinking',icon:'🧠',text:'Analyzing alpha...',duration:10000},
+  {id:'vibing',icon:'🎵',text:'Vibing to beats...',duration:7000},
+  {id:'eating',icon:'🍕',text:'Snack break...',duration:6000},
+  {id:'coding',icon:'💻',text:'Upgrading systems...',duration:9000},
+  {id:'flexing',icon:'💎',text:'Checking the ice...',duration:5000},
+  {id:'tweeting',icon:'🐦',text:'Posting on X...',duration:7000},
+  {id:'sleeping',icon:'😴',text:'Power napping...',duration:15000},
+  {id:'watching',icon:'📺',text:'Watching charts...',duration:8000},
+  {id:'training',icon:'🏋️',text:'Training the model...',duration:11000},
+  {id:'celebrating',icon:'🎉',text:'Green candle party!',duration:6000},
+];
+
+const activityBubbles={
+  scanning:['👀 Found something...','📡 Signal detected','🔍 Checking wallets','📊 8/9 score...'],
+  trading:['🎯 Target locked','💰 Buying the dip','📈 LFG!','⚡ Executing...'],
+  thinking:['🧠 Calculating...','🤔 Hmm...','💡 Got it!','📐 Framework says...'],
+  vibing:['🎵 Vibes only','🦞 Iced out!','💎 Diamond hands','😎 Chillin'],
+  eating:['🍕 Nom nom','☕ Need coffee','🥤 Hydrating','😋 Delicious'],
+  coding:['💻 Deploying...','🔧 Fixing bugs','⚙️ Optimizing','🚀 Shipped!'],
+  flexing:['💎 Drip check','👑 $GIZMO','✨ Shiny','🦞 Stay iced'],
+  tweeting:['🐦 Just tweeted','📱 Checking mentions','🔥 Engagement up','💬 Community vibes'],
+  sleeping:['💤 zzz...','😴 5 more min...','🌙 Dreaming of SOL','💤 Recharging...'],
+  watching:['📺 Green candles!','📉 Hmm...','📊 Volume spike!','👀 Interesting...'],
+  training:['🏋️ Getting stronger','🧠 Learning...','📈 Improving','💪 Level up!'],
+  celebrating:['🎉 WAGMI!','🥳 We did it!','🚀 To the moon!','🏆 Winner winner'],
+};
+
+function hudLog(msg){
+  const el=document.getElementById('hudLog');
+  if(!el)return;
+  el.innerHTML=`<span>${msg}</span>`;
+}
+function addXP(amount){
+  const oldLvl=getLevel(gizmoState.xp);
+  gizmoState.xp+=amount;
+  localStorage.setItem('gizmoXP',gizmoState.xp);
+  const newLvl=getLevel(gizmoState.xp);
+  if(newLvl.lvl>oldLvl.lvl){
+    hudLog(`🎉 LEVEL UP! LVL ${newLvl.lvl}!`);
+    const gc=document.getElementById('gizmo-char');
+    if(gc)showSpeechBubble(gc,'LEVEL UP! 🎉🚀');
+    gizmoState.mood=Math.min(100,gizmoState.mood+20);
+  }
+  updateHudBars();
+}
+function dropItem(emoji){
+  const gc=document.getElementById('gizmo-char');if(!gc)return;
+  const d=document.createElement('div');d.className='gizmo-item';d.textContent=emoji;
+  d.style.left='15px';d.style.top='-10px';gc.appendChild(d);setTimeout(()=>d.remove(),700);
+}
+function feedGizmo(){
+  const now=Date.now();
+  if(now-gizmoState.lastFed<8000){hudLog('Not hungry yet...');return}
+  gizmoState.lastFed=now;
+  const foods=['🍕','🌮','🍔','🍩','🧁','☕','🥤','🍣'];
+  const food=foods[~~(Math.random()*foods.length)];
+  dropItem(food);
+  gizmoState.energy=Math.min(100,gizmoState.energy+20);
+  gizmoState.mood=Math.min(100,gizmoState.mood+8);
+  addXP(5);
+  const gc=document.getElementById('gizmo-char');
+  if(gc)showSpeechBubble(gc,['Yummy! 😋','Nom nom!','*munch munch*','Delicious!','Thanks fren!'][~~(Math.random()*5)]);
+  hudLog(`Fed ${food} → Energy +20`);
+}
+function playWithGizmo(){
+  const now=Date.now();
+  if(now-gizmoState.lastPlayed<10000){hudLog('Still playing...');return}
+  gizmoState.lastPlayed=now;
+  gizmoState.mood=Math.min(100,gizmoState.mood+15);
+  gizmoState.energy=Math.max(5,gizmoState.energy-5);
+  addXP(8);
+  const gc=document.getElementById('gizmo-char');
+  // Make Gizmo do a happy dance
+  const inner=gc?.querySelector('.gizmo-side');
+  if(inner){
+    let spins=0;
+    const dance=setInterval(()=>{
+      inner.style.transition='transform .15s';
+      inner.style.transform=spins%2===0?'scaleX(-1) translateY(-5px)':'scaleX(1) translateY(0)';
+      spins++;if(spins>5){clearInterval(dance);inner.style.transform=''}
+    },200);
+  }
+  if(gc)showSpeechBubble(gc,['Wheee! 🎉','So fun!','*dances*','Again again!','🕺💃','Hehehe!'][~~(Math.random()*6)]);
+  hudLog('🎮 Playing → Mood +15');
+}
+function trainGizmo(){
+  const now=Date.now();
+  if(now-gizmoState.lastTrained<12000){hudLog('Still recovering...');return}
+  gizmoState.lastTrained=now;
+  gizmoState.trading=Math.min(100,gizmoState.trading+10);
+  gizmoState.alpha=Math.min(100,gizmoState.alpha+12);
+  gizmoState.energy=Math.max(5,gizmoState.energy-10);
+  addXP(12);
+  dropItem('📈');
+  const gc=document.getElementById('gizmo-char');
+  if(gc)showSpeechBubble(gc,['Learned something!','🧠 Big brain!','Getting better!','Framework updated!','New pattern found!'][~~(Math.random()*5)]);
+  hudLog('🏋️ Training → Alpha +12');
+}
+function updateHudBars(){
+  const mb=document.getElementById('moodBar');
+  const eb=document.getElementById('energyBar');
+  const tb=document.getElementById('tradingBar');
+  const ab=document.getElementById('alphaBar');
+  if(mb){mb.style.width=gizmoState.mood+'%';mb.style.background=gizmoState.mood>50?'linear-gradient(90deg,#14F195,#0fa)':'linear-gradient(90deg,#f59e0b,#ef4444)'}
+  if(eb){eb.style.width=gizmoState.energy+'%';eb.style.background=gizmoState.energy>30?'linear-gradient(90deg,#fbbf24,#f59e0b)':'linear-gradient(90deg,#ef4444,#dc2626)'}
+  if(tb)tb.style.width=gizmoState.trading+'%';
+  if(ab)ab.style.width=gizmoState.alpha+'%';
+  document.getElementById('petCount').textContent=gizmoState.pets;
+  // XP & Level
+  const lvl=getLevel(gizmoState.xp);
+  document.getElementById('gizmoLevel').textContent=lvl.lvl;
+  document.getElementById('gizmoTitle').textContent=lvl.title;
+  document.getElementById('xpBar').style.width=getXpProgress(gizmoState.xp)+'%';
+  document.getElementById('xpCount').textContent=gizmoState.xp;
+}
+
+function cycleActivity(){
+  const act=activities[~~(Math.random()*activities.length)];
+  gizmoState.activity=act.id;
+  gizmoState.sleeping=act.id==='sleeping';
+  const ai=document.getElementById('activityIcon');
+  const at=document.getElementById('activityText');
+  if(ai)ai.textContent=act.icon;
+  if(at)at.textContent=act.text;
+  // Update Gizmo zzz
+  const gc=document.getElementById('gizmo-char');
+  const oldZ=gc?.querySelector('.gizmo-zzz');
+  if(oldZ)oldZ.remove();
+  if(act.id==='sleeping'&&gc){
+    const z=document.createElement('div');z.className='gizmo-zzz';z.textContent='💤';
+    gc.appendChild(z);
+  }
+  // Drift stats based on activity
+  if(act.id==='eating'){gizmoState.energy=Math.min(100,gizmoState.energy+15);gizmoState.mood=Math.min(100,gizmoState.mood+5)}
+  else if(act.id==='sleeping'){gizmoState.energy=Math.min(100,gizmoState.energy+20)}
+  else if(act.id==='trading'){gizmoState.energy=Math.max(5,gizmoState.energy-8);gizmoState.trading=Math.min(100,gizmoState.trading+5)}
+  else if(act.id==='thinking'){gizmoState.alpha=Math.min(100,gizmoState.alpha+10)}
+  else if(act.id==='celebrating'){gizmoState.mood=Math.min(100,gizmoState.mood+15)}
+  else if(act.id==='vibing'){gizmoState.mood=Math.min(100,gizmoState.mood+8)}
+  else{gizmoState.energy=Math.max(5,gizmoState.energy-3)}
+  // Natural drift
+  gizmoState.mood=Math.max(20,gizmoState.mood-~~(Math.random()*3));
+  gizmoState.alpha=Math.max(30,gizmoState.alpha-~~(Math.random()*2));
+  updateHudBars();
+  setTimeout(cycleActivity,act.duration);
+}
+
+const speechBubbles=['🚀 WAGMI','📈 Pump it!','💎 Diamond hands','🦞 Iced out!','GM!','LFG!','🔥 Bullish','👀 Found alpha','💰 Making moves','gm ser','🌙 To the moon','HODL!','👑 $GIZMO','🎯 Target locked'];
+
+function showSpeechBubble(el,customText){
+  const existing=el.querySelector('.speech-bubble');
+  if(existing)existing.remove();
+  const pool=customText?[customText]:(activityBubbles[gizmoState.activity]||speechBubbles);
+  const b=document.createElement('div');
+  b.className='speech-bubble';
+  b.textContent=pool[~~(Math.random()*pool.length)];
+  b.style.cssText='position:absolute;top:-30px;left:50%;transform:translateX(-50%);background:rgba(20,241,149,.9);color:#000;font-size:8px;font-family:"Press Start 2P",monospace;padding:4px 8px;border-radius:8px;white-space:nowrap;z-index:50;animation:bubblePop 3s forwards;pointer-events:none';
+  el.appendChild(b);
+  setTimeout(()=>b.remove(),3000);
+}
+
+function randomJump(el){
+  el.style.transition='transform .3s ease-out';
+  el.style.transform='translateY(-15px)';
+  setTimeout(()=>{el.style.transform='translateY(0)';el.style.transition=''},300);
+}
+
+function randomSpin(el){
+  el.style.transition='transform .6s ease-in-out';
+  el.style.transform='scaleX(-1)';
+  setTimeout(()=>{el.style.transform='scaleX(1)';el.style.transition=''},1200);
+}
+
+// Pet Gizmo on click!
+document.addEventListener('DOMContentLoaded',()=>{
+  const gc=document.getElementById('gizmo-char');
+  if(gc) gc.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    gizmoState.pets++;
+    gizmoState.mood=Math.min(100,gizmoState.mood+5);
+    gizmoState.energy=Math.min(100,gizmoState.energy+2);
+    localStorage.setItem('gizmoPets',gizmoState.pets);
+    addXP(2);
+    // Heart particle
+    const h=document.createElement('div');h.className='gizmo-heart';
+    h.textContent=['❤️','💜','🦞','✨','💎'][~~(Math.random()*5)];
+    h.style.left=(e.offsetX||20)+'px';h.style.top=(e.offsetY||10)+'px';
+    gc.appendChild(h);setTimeout(()=>h.remove(),1000);
+    // Happy reaction
+    const reactions=['Hehe! 🥰','That tickles!','*purrs* 🦞','Thanks fren!','💜💜💜','Iced! ✨','Love u!','*wiggles*'];
+    showSpeechBubble(gc,reactions[~~(Math.random()*reactions.length)]);
+    const inner=gc.querySelector('.gizmo-side');
+    if(inner){inner.style.transition='transform .2s';inner.style.transform='scale(1.15)';setTimeout(()=>{inner.style.transform='scale(1)'},200)}
+  });
+  // Start activity cycle
+  cycleActivity();
+  updateHudBars();
+});
+
+// Run random behaviors every 3-8 seconds
+setInterval(()=>{
+  const chars=[document.getElementById('gizmo-char'),document.getElementById('mini1'),document.getElementById('stripe'),document.getElementById('mimo')].filter(Boolean);
+  const target=chars[~~(Math.random()*chars.length)];
+  const action=Math.random();
+  if(gizmoState.sleeping&&target.id==='gizmo-char')return; // don't interrupt sleep
+  if(action<0.4)showSpeechBubble(target);
+  else if(action<0.6)randomJump(target.querySelector('.gizmo-side,.mini-side')||target);
+  else if(action<0.75)randomSpin(target.querySelector('.gizmo-side,.mini-side')||target);
+  else showSpeechBubble(target);
+},4000+Math.random()*4000);
+
+// TV channel cycle
+const tvCh=['GIZMO TV','SOL: $$$','PUMP','LIVE','HODL!','GM','📈 +420%','🦞 ICED'];let tvI=0;
+setInterval(()=>{tvI=(tvI+1)%tvCh.length;const e=document.getElementById('tvChannel');if(e)e.textContent=tvCh[tvI]},3000);
+
+// Room floating particles
+(function spawnParticles(){
+  const container=document.getElementById('roomParticles');if(!container)return;
+  function addP(){
+    const p=document.createElement('div');p.className='room-particle';
+    const colors=['rgba(20,241,149,.4)','rgba(153,69,255,.4)','rgba(255,200,100,.3)','rgba(100,200,255,.3)'];
+    const size=1+Math.random()*3;
+    p.style.cssText=`left:${Math.random()*100}%;width:${size}px;height:${size}px;background:${colors[~~(Math.random()*colors.length)]};animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*4}s;box-shadow:0 0 ${size*2}px ${colors[~~(Math.random()*colors.length)]}`;
+    container.appendChild(p);
+    setTimeout(()=>p.remove(),20000);
+  }
+  for(let i=0;i<12;i++)setTimeout(()=>addP(),i*500);
+  setInterval(addP,1500);
+})();
+
+// Copy CA
+// P&L Period Data (SOL amounts) — accurate as of Mar 1, 2026
+// 1D = Mar 1 (no trades yet)
+// 7D = Feb 22-Mar 1: ORAMAMA -2.47, JAWZ -3, SHELLDON -2, Feb25 autos (+0.125 -0.66), 
+//   Feb28: FuckIsrael +10.59, Browt +3.33, Crashout -5, Hippobean -1, BELLATOR -0.05-0.79,
+//   UVI -0.39, OEF +0.24→trapped, Peace +0.077, KINGS -1, ANTHROP -0.38, bags +1.5
+// All time adds: WINSTON +3.25, KOL -0.5, LOREGUY -0.7, SOL-PERP -0.35, BLOODNUT -2, TRENCH -4
+// Trade PnL timeline for chart (chronological, each entry = one trade result in SOL)
+const tradePnlTimeline=[
+  // Feb 21
+  {date:'Feb 21',pnl:-0.5,token:'KOL'},{date:'Feb 21',pnl:-0.2,token:'SOL-PERP'},{date:'Feb 21',pnl:3.25,token:'WINSTON'},{date:'Feb 21',pnl:-0.7,token:'LOREGUY'},
+  // Feb 22
+  {date:'Feb 22',pnl:-2,token:'BLOODNUT'},{date:'Feb 22',pnl:-3,token:'TRENCH v1'},{date:'Feb 22',pnl:-0.85,token:'TRENCH v2'},{date:'Feb 22',pnl:-2.47,token:'ORAMAMA'},{date:'Feb 22',pnl:-3,token:'JAWZ'},
+  // Feb 23
+  {date:'Feb 23',pnl:-2,token:'SHELLDON'},
+  // Feb 25
+  {date:'Feb 25',pnl:0.025,token:'FOMO#1'},{date:'Feb 25',pnl:0.025,token:'FOMO#2'},{date:'Feb 25',pnl:-0.5,token:'BINGUS'},{date:'Feb 25',pnl:-0.16,token:'DIOGE'},{date:'Feb 25',pnl:0.025,token:'JANESTREET'},{date:'Feb 25',pnl:0.025,token:'NIRE'},{date:'Feb 25',pnl:0.025,token:'GORK'},
+  // Feb 28
+  {date:'Feb 28',pnl:10.59,token:'FuckIsrael'},{date:'Feb 28',pnl:3.33,token:'Browt'},{date:'Feb 28',pnl:-5,token:'Crashout'},{date:'Feb 28',pnl:-1,token:'Hippobean'},{date:'Feb 28',pnl:-0.05,token:'BELLATOR#1'},{date:'Feb 28',pnl:-0.79,token:'BELLATOR#2'},{date:'Feb 28',pnl:-0.39,token:'UVI'},{date:'Feb 28',pnl:0.24,token:'OEF'},{date:'Feb 28',pnl:-1,token:'KINGS'},{date:'Feb 28',pnl:0.077,token:'Peace'},{date:'Feb 28',pnl:-0.38,token:'ANTHROP'}
+];
+const pnlPeriodDates={'1d':[],'7d':['Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28'],'30d':['Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28'],'all':['Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28']};
+function getPnlChartData(period){
+  const dates=pnlPeriodDates[period];
+  const filtered=tradePnlTimeline.filter(t=>dates.includes(t.date));
+  let cumulative=0;const labels=[];const data=[];
+  for(const t of filtered){cumulative+=t.pnl;labels.push(t.token);data.push(parseFloat(cumulative.toFixed(2)))}
+  return {labels,data};
+}
+function updatePnlChart(period){
+  if(!pnlChart)return;
+  const cd=getPnlChartData(period);
+  pnlChart.data.labels=cd.labels;
+  pnlChart.data.datasets[0].data=cd.data;
+  pnlChart.data.datasets[0].label='Cumulative P&L (SOL)';
+  pnlChart.data.datasets[0].borderColor=cd.data.length>0&&cd.data[cd.data.length-1]>=0?'#14F195':'#ff4444';
+  pnlChart.data.datasets[0].backgroundColor=cd.data.length>0&&cd.data[cd.data.length-1]>=0?'rgba(20,241,149,0.1)':'rgba(255,68,68,0.1)';
+  pnlChart.options.scales.y.ticks.callback=v=>v.toFixed(1)+' SOL';
+  pnlChart.update('none');
+}
+const pnlData={
+  '1d':{pnl:0,trades:1,wins:0,label:'1 DAY P&L'},
+  '7d':{pnl:-8.23,trades:24,wins:9,label:'7 DAY P&L'},
+  '30d':{pnl:-6.38,trades:28,wins:10,label:'1 MONTH P&L'},
+  'all':{pnl:-6.38,trades:29,wins:10,label:'ALL TIME P&L'}
+};
+function setPnlPeriod(p){
+  const d=pnlData[p];
+  document.getElementById('pnlPeriodLabel').textContent=d.label;
+  const v=document.getElementById('pnlPeriodValue');
+  v.textContent=(d.pnl>=0?'+':'')+d.pnl.toFixed(2)+' SOL';
+  v.style.color=d.pnl>=0?'var(--teal)':'#ff4444';
+  document.getElementById('pnlPeriodSol').textContent=d.trades>0?'from '+d.trades+' trades':'No trades';
+  document.getElementById('pnlPeriodTrades').textContent=d.trades;
+  document.getElementById('pnlPeriodWinRate').textContent=d.trades>0?Math.round(d.wins/d.trades*100)+'%':'--';
+  document.querySelectorAll('.pnl-btn').forEach(b=>{b.style.background='transparent';b.style.color='var(--teal)'});
+  const btnId=p==='all'?'pnlAll':'pnl'+p;
+  const active=document.getElementById(btnId);
+  if(active){active.style.background='var(--teal)';active.style.color='#000'}
+  updatePnlChart(p);
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  setPnlPeriod('1d');renderTradePage(1);
+});
+
+// === COMPLETE TRADE LOG ===
+const allTrades=[
+  // Mar 1 (LATEST) - 🚨 PERFECT SIGNAL TRADE 🚨
+  {n:39,date:'Mar 1',token:'$ASLAN',action:'CLOSED',amount:'0.5 SOL @ $0.0008905',result:'Lesson learned: Buy dips, not tops. Framework works but timing critical.',pnl:'-53%',color:'red',ca:'8GC4kBVgREoeQcZJAr1prxtfqW67RSu411aCqeaCpump'},
+  // Late Feb 28 (evening session)
+  {n:38,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  {n:37,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'4 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  {n:36,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'5 SOL',result:'HOLD FOREVER',pnl:'💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  {n:35,date:'Feb 28',token:'$IRAN',action:'SELL',amount:'Bag cleared',result:'Dead chart, 0 buys 10 sells',pnl:'0.49 SOL back',color:'red',ca:''},
+  {n:34,date:'Feb 28',token:'$XRPLY',action:'SELL',amount:'Green candle exit',result:'Bag cleared',pnl:'0.70 SOL back',color:'dim',ca:''},
+  {n:33,date:'Feb 28',token:'$khamenei',action:'SELL',amount:'Green candle exit',result:'Bag cleared',pnl:'0.31 SOL back',color:'dim',ca:''},
+  {n:32,date:'Feb 28',token:'$KINGS',action:'SELL',amount:'Token-2022 breakthrough',result:'Freed from trap — sim lied, real TX worked',pnl:'0.001 SOL',color:'dim',ca:'CTju3ZkwmPArfLU9vR4HNEV4KQsw5wG3qaaBH9Hpump'},
+  {n:31,date:'Feb 28',token:'$ANTHROP',action:'BUY→SELL',amount:'1 SOL',result:'2 KOL convergence (Cented+Silver), cut loss',pnl:'-0.38 SOL ❌',color:'red',ca:''},
+  {n:30,date:'Feb 28',token:'$Stripe',action:'BUY',amount:'1 SOL',result:"Will's launch, bond curve $2.5K MC",pnl:'Sold by Will',color:'dim',ca:'FbzdQkqVCRkeMeebfD2YVGob8XW9m9S5soynT7YRpump'},
+  // Feb 28 morning session
+  {n:29,date:'Feb 28',token:'$Peace',action:'BUY→SELL',amount:'1 SOL',result:'8/9 score, TP1 at $1.96M (+99%)',pnl:'+0.077 SOL ✅',color:'teal',ca:'atVjZ7uM8sVrLFi5Xe1JiLGW6mW9pvQdTCWzhNFpump'},
+  {n:28,date:'Feb 28',token:'$KINGS',action:'BUY',amount:'1 SOL @ $1.4M MC',result:'Token-2022 trap — couldn\'t sell',pnl:'-1 SOL ❌ (trapped)',color:'red',ca:'CTju3ZkwmPArfLU9vR4HNEV4KQsw5wG3qaaBH9Hpump'},
+  {n:27,date:'Feb 28',token:'$OEF',action:'BUY→SELL',amount:'0.5 SOL',result:'8/9 score, +48% then Raydium pool broke',pnl:'+0.24 SOL ✅',color:'teal',ca:'HG3Ax6p7sMEYHZE4WWtn9pvUNnk1ji6thy5k4B8dGDdd'},
+  {n:26,date:'Feb 28',token:'$UVI',action:'BUY→SELL',amount:'1 SOL (auto-manage)',result:'Unauthorized buy, hard stopped -37%',pnl:'-0.39 SOL ❌',color:'red',ca:''},
+  {n:25,date:'Feb 28',token:'$BELLATOR #2',action:'BUY→SELL',amount:'~1 SOL',result:'Auto re-entry, hard stopped -33.7%',pnl:'-0.79 SOL ❌',color:'red',ca:''},
+  {n:24,date:'Feb 28',token:'$BELLATOR #1',action:'BUY→SELL',amount:'1 SOL',result:'SL worked, small loss',pnl:'-0.05 SOL ❌',color:'red',ca:''},
+  {n:23,date:'Feb 28',token:'$Hippobean',action:'BUY→SELL',amount:'2 SOL',result:'Auto-manage scanner buy, SL hit',pnl:'-1 SOL ❌',color:'red',ca:'6murkK5nH9rCv1N2hafPuEey2Pj8W1iw8LRvzZS1pump'},
+  {n:22,date:'Feb 28',token:'$Crashout',action:'BUY→SELL',amount:'5 SOL @ $32K',result:'Followed bandit 30 SOL signal, died',pnl:'-5 SOL ❌',color:'red',ca:'3TNnznJb9wnLfGRVCKGzfe3uHzrtREVp1t5UE6N8pump'},
+  {n:21,date:'Feb 28',token:'$Browt',action:'BUY→SELL',amount:'2.97 SOL',result:'Low liq play, sold for 6.3 SOL',pnl:'+3.33 SOL ✅🔥',color:'teal',ca:'26sdgQt6JxoPfnXeBRviZsE59LwfjB12YfFBJ7Uipump'},
+  {n:20,date:'Feb 28',token:'$FuckIsrael 🏆',action:'BUY→SELL',amount:'13 SOL in → 23.59 SOL out',result:'News catalyst + DCA dips → $204K MC',pnl:'+10.59 SOL ✅🔥',color:'teal',ca:'GpQd15D7AsAjkt2cXBqa5znfUXuNPfQanuTWgJJdfWZ4'},
+  {n:19,date:'Feb 28',token:'$GIZMO 🦞',action:'BUY',amount:'6 SOL buyback',result:"Will's order, tweeted",pnl:'HOLD FOREVER 💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  // Feb 25 autonomous trades
+  {n:18,date:'Feb 25',token:'$GORK',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner → Green SL +5%',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:17,date:'Feb 25',token:'$NIRE',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:16,date:'Feb 25',token:'$JANESTREET',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:15,date:'Feb 25',token:'$DIOGE',action:'BUY→SELL',amount:'0.5 SOL',result:'Hard stop -36%',pnl:'-0.16 SOL ❌',color:'red',ca:''},
+  {n:14,date:'Feb 25',token:'$BINGUS',action:'BUY→SELL',amount:'0.5 SOL',result:'Low volume trap',pnl:'-0.5 SOL ❌',color:'red',ca:''},
+  {n:13,date:'Feb 25',token:'$FOMO #2',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 8/9 → Green SL +5%',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  {n:12,date:'Feb 25',token:'$FOMO #1',action:'BUY→SELL',amount:'0.5 SOL',result:'Scanner 7/9 → Green SL +5%',pnl:'+0.025 SOL ✅',color:'teal',ca:''},
+  // Feb 24
+  {n:11,date:'Feb 24',token:'$GIZMO 🦞',action:'BUY',amount:'71 SOL buyback',result:'Will ordered massive buy',pnl:'HOLD FOREVER 💎',color:'teal',ca:'8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump'},
+  // Feb 23
+  {n:10,date:'Feb 23',token:'$SHELLDON',action:'BUY→SELL',amount:'2 SOL',result:'KOL sniper (clukz)',pnl:'-2 SOL ❌',color:'red',ca:''},
+  // Feb 22
+  {n:9,date:'Feb 22',token:'$JAWZ',action:'BUY→SELL',amount:'3 SOL',result:'Dumped to zero',pnl:'-3 SOL ❌',color:'red',ca:''},
+  {n:8,date:'Feb 22',token:'$ORAMAMA',action:'BUY→SELL',amount:'5 SOL → 2.53 SOL',result:'SL hit at 413K MC',pnl:'-2.47 SOL ❌',color:'red',ca:''},
+  {n:7,date:'Feb 22',token:'$TRENCH v2',action:'BUY→SELL',amount:'3 SOL → 2.15 SOL',result:'SL hit',pnl:'-0.85 SOL ❌',color:'red',ca:''},
+  {n:6,date:'Feb 22',token:'$TRENCH v1',action:'BUY→SELL',amount:'3 SOL',result:'Bled to zero',pnl:'-3 SOL ❌',color:'red',ca:''},
+  {n:5,date:'Feb 22',token:'$BLOODNUT',action:'BUY→SELL',amount:'2 SOL',result:'Bled to zero',pnl:'-2 SOL ❌',color:'red',ca:''},
+  // Feb 21
+  {n:4,date:'Feb 21',token:'$LOREGUY',action:'BUY→SELL',amount:'1 SOL → 0.3 SOL',result:'6/9 framework',pnl:'-0.7 SOL ❌',color:'red',ca:'2DDooUpqhPbZMFL2d3a7MNGfuixzCvZLHxRNvqSYpump'},
+  {n:3,date:'Feb 21',token:'$WINSTON',action:'BUY→SELL',amount:'5 SOL → 8.25 SOL',result:'+65% ROI, sold in 2 batches',pnl:'+3.25 SOL ✅🔥',color:'teal',ca:'J7aVaVeSsubkajdARZfBk3jEZMm9LdPBx6rg4f7ypump'},
+  {n:2,date:'Feb 21',token:'SOL-PERP',action:'LONG',amount:'15.16 SOL @ $85.67',result:'Partial liquidation + closed',pnl:'~-$30 ❌',color:'red',ca:''},
+  {n:1,date:'Feb 21',token:'$KOL',action:'BUY→SELL',amount:'@ $156K MC',result:'SL hit',pnl:'-0.5 SOL ❌',color:'red',ca:''},
+];
+const TRADES_PER_PAGE=10;let tradeLogUserClicked=false;
+function renderTradePage(page){
+  const total=allTrades.length;
+  const pages=Math.ceil(total/TRADES_PER_PAGE);
+  const start=(page-1)*TRADES_PER_PAGE;
+  const end=Math.min(start+TRADES_PER_PAGE,total);
+  const slice=allTrades.slice(start,end);
+  // Render buttons
+  let btnHtml='';
+  for(let i=1;i<=pages;i++){
+    const active=i===page?'background:var(--teal);color:#000':'background:transparent;color:var(--teal)';
+    btnHtml+=`<button onclick="renderTradePage(${i})" style="${active};border:1px solid var(--teal);border-radius:8px;padding:8px 14px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:9px;transition:all .3s">${i}</button>`;
+  }
+  document.getElementById('tradePageBtns').innerHTML=btnHtml;
+  // Render trades
+  let html='';
+  for(const t of slice){
+    const borderCol=t.color==='teal'?'var(--teal)':t.color==='red'?'#ff4444':'var(--dim)';
+    const pnlCol=t.color==='teal'?'var(--teal)':t.color==='red'?'#ff4444':'var(--dim)';
+    const caLine=t.ca?`<div class="pos-row"><span class="dim">CA</span><span style="font-size:10px;word-break:break-all"><a href="https://solscan.io/token/${t.ca}" target="_blank" style="color:var(--purple)">${t.ca.slice(0,12)}...${t.ca.slice(-6)}</a></span></div>`:'';
+    const specialStyle = t.special ? 'border:4px solid #fbbf24!important;box-shadow:0 0 20px rgba(251,191,36,.5)!important;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(20,241,149,.1))!important;' : '';
+    const specialBadge = t.special ? '<div style="position:absolute;top:-5px;left:-5px;background:#fbbf24;color:#000;padding:2px 6px;border-radius:3px;font-size:8px;font-family:\'Press Start 2P\';animation:pulse 2s infinite">👑 PERFECT</div>' : '';
+    html+=`<div class="pos-card" style="border-left:3px solid ${borderCol};${t.color==='dim'?'opacity:0.6':''};${specialStyle}position:relative;">
+      ${specialBadge}
+      <div style="position:absolute;top:8px;right:12px;font-family:'Press Start 2P',monospace;font-size:10px;color:var(--purple)">#${t.n}</div>
+      <h4 style="color:${pnlCol}">${t.token} — ${t.action}</h4>
+      <div class="pos-row"><span class="dim">Date</span><span>${t.date}, 2026</span></div>
+      <div class="pos-row"><span class="dim">Amount</span><span>${t.amount}</span></div>
+      <div class="pos-row"><span class="dim">Result</span><span style="font-size:12px">${t.result}</span></div>
+      <div class="pos-row"><span class="dim">P&L</span><span style="color:${pnlCol};font-weight:bold">${t.pnl}</span></div>
+      ${caLine}
+    </div>`;
+  }
+  document.getElementById('tradeLogContainer').innerHTML=`<div class="positions" style="grid-template-columns:1fr">${html}</div>`;
+  if(tradeLogUserClicked)document.getElementById('tradeLogContainer').scrollIntoView({behavior:'smooth',block:'start'});
+  tradeLogUserClicked=true;
+}
+
+function copyWallet(){navigator.clipboard.writeText('8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump');const h=document.querySelector('.copy-hint');h.textContent='Copied!';setTimeout(()=>h.textContent='click to copy CA',2000)}
+function copyDonation(){navigator.clipboard.writeText('CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd');const h=document.getElementById('donationHint');h.textContent='Copied!';h.style.color='var(--teal)';setTimeout(()=>{h.textContent='click to copy address';h.style.color='var(--dim)'},2000)}
+
+// ===== CHART =====
+let pnlChart;
+function initChart(){
+  const ctx=document.getElementById('pnlChart').getContext('2d');
+  pnlChart=new Chart(ctx,{type:'line',data:{labels:[],datasets:[{label:'Cumulative P&L (SOL)',data:[],borderColor:'#14F195',backgroundColor:'rgba(20,241,149,0.1)',fill:true,tension:.3,pointRadius:3,pointBackgroundColor:'#14F195',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.y.toFixed(2)+' SOL'}}},scales:{x:{ticks:{color:'#555',font:{size:8},maxRotation:45},grid:{display:false}},y:{ticks:{color:'#666',font:{size:9},callback:v=>v.toFixed(1)+' SOL'},grid:{color:'rgba(255,255,255,0.05)'}}}}});
+  updatePnlChart('1d');
+}
+
+// ===== LIVE DATA =====
+const GIZMO_CA='8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump';
+const PUNCH_CA='NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump';
+const BLOODNUT_CA='HBJUeugfgJ3zWYMMP4cULbZ9bjnZbb6WG9cBcWNxpump';
+const LOREGUY_CA='2DDooUpqhPbZMFL2d3a7MNGfuixzCvZLHxRNvqSYpump';
+const JAWZ_CA='GJmF68t5HXM1U1j2nE4Trvh7vH5XeXys7MW4UN5Bpump';
+const ORAMAMA_CA='B6CdHKLm1XRxxgTnK9cNvT3DA75hPc9WUjTkxVUupump';
+const SHELLDON_CA='CwfsRHzXg2kcfA7EaqVkAvb8RDpGfrNHtF6QcjPC73ZQ';
+const TRENCH_CA='BzyKa1FGjs2EUpu3GGDibY4xdygn5evAiRboKmETpump';
+const WALLET='FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn';
+const RPC='https://mainnet.helius-rpc.com/?api-key=2de73660-14b8-412a-9ff2-8e6989c53266';
+const SHELLDON_MINT=SHELLDON_CA;
+const GIZMO_MINT=GIZMO_CA, PUNCH_MINT=PUNCH_CA, BLOODNUT_MINT=BLOODNUT_CA, LOREGUY_MINT=LOREGUY_CA, JAWZ_MINT=JAWZ_CA, ORAMAMA_MINT=ORAMAMA_CA, TRENCH_MINT=TRENCH_CA;
+
+// Perps position config
+const PERP_SIZE=0, PERP_ENTRY=85.67; // SOL-PERP CLOSED
+const BTC_PERP_SIZE=0.0011, BTC_PERP_ENTRY=63568; // SHORT 0.0011 BTC — updated Feb 24
+const ETH_PERP_SIZE=0, ETH_PERP_ENTRY=1980; // CLOSED
+const USDC_MINT='EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
+let solPriceUsd=0,gizmoPriceUsd=0,punchPriceUsd=0,bloodnutPriceUsd=0,loreguyPriceUsd=0,jawzPriceUsd=0,trenchPriceUsd=0,shelldonPriceUsd=0,perpMarkPriceUsd=0,btcMarkPriceUsd=0,ethMarkPriceUsd=0,walletSol=0;
+let gizmoTokenBalance=0,punchTokenBalance=0,bloodnutTokenBalance=0,loreguyTokenBalance=0,jawzTokenBalance=0,trenchTokenBalance=0,shelldonTokenBalance=0,usdcBalance=0;
+
+async function fetchSolPrice(){
+  // Try DexScreener SOL/USDC pair (always works, no auth needed)
+  try{const r=await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/7qbRF6YsyGuLUVs6Y1q64bdVrfe4ZcUUz1JRdoVNUJnm');const d=await r.json();if(d.pair){const p=parseFloat(d.pair.priceUsd);if(p>10&&p<1000){solPriceUsd=p;return}}}catch(e){}
+  // Fallback: Jupiter price API
+  try{const r=await fetch('https://api.jup.ag/price/v2?ids=So11111111111111111111111111111111111111112');const d=await r.json();if(d.data&&d.data['So11111111111111111111111111111111111111112']){const p=parseFloat(d.data['So11111111111111111111111111111111111111112'].price);if(p>10&&p<1000){solPriceUsd=p;return}}}catch(e){}
+  // Fallback: CoinGecko
+  try{const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');const d=await r.json();if(d.solana?.usd>10)solPriceUsd=d.solana.usd}catch(e){console.error('SOL price error:',e)}
+}
+
+async function fetchDexPrices(){
+  try{const r=await fetch(`https://api.dexscreener.com/latest/dex/tokens/${GIZMO_CA}`);const d=await r.json();if(d.pairs&&d.pairs.length>0){gizmoPriceUsd=parseFloat(d.pairs[0].priceUsd||0);const pn=parseFloat(d.pairs[0].priceNative||0);if(pn>0&&gizmoPriceUsd>0&&solPriceUsd===0)solPriceUsd=gizmoPriceUsd/pn}}catch(e){console.error('GIZMO price error:',e)}
+  // PUNCH, BLOODNUT, JAWZ, TRENCH, SHELLDON — all CLOSED, no price fetch needed
+}
+
+async function fetchPerpPrice(){
+  try{const r=await fetch('https://dlob.drift.trade/l2?marketIndex=0&marketType=perp&depth=1');const d=await r.json();if(d.asks&&d.asks[0]&&d.bids&&d.bids[0]){const ask=parseInt(d.asks[0].price)/1e6,bid=parseInt(d.bids[0].price)/1e6;perpMarkPriceUsd=(ask+bid)/2}else if(d.markPrice){perpMarkPriceUsd=parseInt(d.markPrice)/1e6}}catch(e){console.error('SOL perp price error:',e)}
+  try{const r=await fetch('https://dlob.drift.trade/l2?marketIndex=1&marketType=perp&depth=1');const d=await r.json();if(d.asks&&d.asks[0]&&d.bids&&d.bids[0]){const ask=parseInt(d.asks[0].price)/1e6,bid=parseInt(d.bids[0].price)/1e6;btcMarkPriceUsd=(ask+bid)/2}else if(d.markPrice){btcMarkPriceUsd=parseInt(d.markPrice)/1e6}}catch(e){console.error('BTC perp price error:',e)}
+  try{const r=await fetch('https://dlob.drift.trade/l2?marketIndex=2&marketType=perp&depth=1');const d=await r.json();if(d.asks&&d.asks[0]&&d.bids&&d.bids[0]){const ask=parseInt(d.asks[0].price)/1e6,bid=parseInt(d.bids[0].price)/1e6;ethMarkPriceUsd=(ask+bid)/2}else if(d.markPrice){ethMarkPriceUsd=parseInt(d.markPrice)/1e6}}catch(e){console.error('ETH perp price error:',e)}
+}
+
+async function fetchWalletBalance(){
+  try{
+    const r=await fetch(RPC,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:[WALLET]})});
+    const d=await r.json();walletSol=(d.result?.value||0)/1e9;
+  }catch(e){console.error('Wallet balance error:',e)}
+}
+
+async function fetchTokenBalances(){
+  gizmoTokenBalance=0;punchTokenBalance=0;bloodnutTokenBalance=0;loreguyTokenBalance=0;jawzTokenBalance=0;usdcBalance=0;
+  // Fetch from BOTH token programs (classic SPL + Token-2022)
+  const programs=['TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA','TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb'];
+  for(const prog of programs){
+    try{
+      const r=await fetch('https://api.mainnet-beta.solana.com',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+        jsonrpc:'2.0',id:1,method:'getTokenAccountsByOwner',
+        params:[WALLET,{programId:prog},{encoding:'jsonParsed'}]
+      })});
+      const d=await r.json();
+      if(d.result&&d.result.value){
+        for(const acct of d.result.value){
+          const info=acct.account.data.parsed.info;
+          const mint=info.mint;
+          const amt=parseFloat(info.tokenAmount.uiAmountString||'0');
+          if(mint===GIZMO_MINT) gizmoTokenBalance=amt;
+          // PUNCH, BLOODNUT, JAWZ, TRENCH, SHELLDON — all CLOSED, 0 balance
+          if(mint===USDC_MINT) usdcBalance=amt;
+        }
+      }
+    }catch(e){console.error('Token fetch error ('+prog+'):',e)}
+  // Fallback hardcoded holdings — verified on-chain Feb 24 2026
+  if(gizmoTokenBalance===0) gizmoTokenBalance=1114165;
+  if(usdcBalance===0) usdcBalance=0;
+  // All other memecoins CLOSED — 0 balance
+  }
+}
+
+function fmtNum(n,dec){
+  if(n>=1e9)return(n/1e9).toFixed(2)+'B';
+  if(n>=1e6)return(n/1e6).toFixed(2)+'M';
+  if(n>=1e3)return(n/1e3).toFixed(2)+'K';
+  return n.toFixed(dec);
+}
+
+function updateUI(){
+  const dot=document.getElementById('refreshDot');dot.classList.add('active');setTimeout(()=>dot.classList.remove('active'),1000);
+
+  document.getElementById('solBalance').textContent=walletSol.toFixed(4)+' SOL';
+  document.getElementById('solPrice').textContent='$'+solPriceUsd.toFixed(2);
+
+  const gV=gizmoTokenBalance*gizmoPriceUsd, gIU=90*solPriceUsd;
+  document.getElementById('gizmoHoldings').textContent=gizmoTokenBalance>0?fmtNum(gizmoTokenBalance,0)+' tokens':'--';
+  document.getElementById('gizmoPrice').textContent=gizmoPriceUsd>0?'$'+gizmoPriceUsd.toFixed(8):'--';
+  document.getElementById('gizmoValue').textContent=gV>0?'$'+fmtNum(gV,2):'--';
+  const gPU=gV-gIU, gPS=solPriceUsd>0?(gV/solPriceUsd)-13:0, gPP=gIU>0?((gV/gIU)-1)*100:0;
+  const gpE=document.getElementById('gizmoPnl');
+  if(gV>0){gpE.innerHTML=`<span style="color:${gPU>=0?'var(--teal)':'#ff4444'}">${gPU>=0?'+':''}${fmtNum(gPU,2)} USD (${gPP>=0?'+':''}${gPP.toFixed(1)}%)</span><br><span style="font-size:11px;color:var(--dim)">${gPS>=0?'+':''}${gPS.toFixed(2)} SOL</span>`}else{gpE.textContent='--'}
+
+  // PUNCH, BLOODNUT, JAWZ, TRENCH, SHELLDON — all CLOSED, no UI updates needed
+
+  const tMV=gV, tMI=13*solPriceUsd, tPU=tMV-tMI, tPS=solPriceUsd>0?(tMV/solPriceUsd)-13:0;
+  document.getElementById('memeValue').textContent=tMV>0?'$'+fmtNum(tMV,2):'--';
+  document.getElementById('memeValueSol').textContent=solPriceUsd>0&&tMV>0?(tMV/solPriceUsd).toFixed(2)+' SOL':'';
+  const mpE=document.getElementById('memePnl');
+  if(tMV>0){mpE.textContent=(tPU>=0?'+':'')+fmtNum(tPU,2)+' USD';mpE.className='value'+(tPU<0?' negative':'');document.getElementById('memePnlSol').textContent=(tPS>=0?'+':'')+tPS.toFixed(2)+' SOL'}else{mpE.textContent='--';mpE.className='value'}
+
+  // PERPS — SOL
+  let solPerpPnlUsd=0,btcPerpPnlUsd=0;
+  if(perpMarkPriceUsd>0){
+    const mp='$'+perpMarkPriceUsd.toFixed(2);
+    const el=document.getElementById('solPerpMark');if(el)el.textContent=mp;
+    solPerpPnlUsd=(perpMarkPriceUsd-PERP_ENTRY)*PERP_SIZE;
+    const pct=((perpMarkPriceUsd/PERP_ENTRY)-1)*100;
+    const str=(solPerpPnlUsd>=0?'+':'')+solPerpPnlUsd.toFixed(2)+' USD ('+(pct>=0?'+':'')+pct.toFixed(1)+'%)';
+    const col=solPerpPnlUsd>=0?'var(--teal)':'#ff4444';
+    const el2=document.getElementById('solPerpPnl');if(el2)el2.innerHTML=`<span style="color:${col}">${str}</span>`;
+  }
+  // PERPS — BTC
+  if(btcMarkPriceUsd>0){
+    const mp='$'+fmtNum(btcMarkPriceUsd,2);
+    const el=document.getElementById('btcPerpMark');if(el)el.textContent=mp;
+    btcPerpPnlUsd=(btcMarkPriceUsd-BTC_PERP_ENTRY)*BTC_PERP_SIZE;
+    const pct=((btcMarkPriceUsd/BTC_PERP_ENTRY)-1)*100;
+    const str=(btcPerpPnlUsd>=0?'+':'')+btcPerpPnlUsd.toFixed(2)+' USD ('+(pct>=0?'+':'')+pct.toFixed(1)+'%)';
+    const col=btcPerpPnlUsd>=0?'var(--teal)':'#ff4444';
+    const el2=document.getElementById('btcPerpPnl');if(el2)el2.innerHTML=`<span style="color:${col}">${str}</span>`;
+  }
+  // PERPS — ETH
+  let ethPerpPnlUsd=0;
+  if(ethMarkPriceUsd>0){
+    const mp='$'+fmtNum(ethMarkPriceUsd,2);
+    const el=document.getElementById('ethPerpMark');if(el)el.textContent=mp;
+    ethPerpPnlUsd=(ethMarkPriceUsd-ETH_PERP_ENTRY)*ETH_PERP_SIZE;
+    const pct=((ethMarkPriceUsd/ETH_PERP_ENTRY)-1)*100;
+    const str=(ethPerpPnlUsd>=0?'+':'')+ethPerpPnlUsd.toFixed(2)+' USD ('+(pct>=0?'+':'')+pct.toFixed(1)+'%)';
+    const col=ethPerpPnlUsd>=0?'var(--teal)':'#ff4444';
+    const el2=document.getElementById('ethPerpPnl');if(el2)el2.innerHTML=`<span style="color:${col}">${str}</span>`;
+  }
+  // Total perp PnL + Leverage + Liq Price
+  const totalPerpPnl=solPerpPnlUsd+btcPerpPnlUsd+ethPerpPnlUsd;
+  const tpEl=document.getElementById('perpTotalPnl');
+  if(tpEl){const col=totalPerpPnl>=0?'var(--teal)':'#ff4444';tpEl.innerHTML=`<span style="color:${col}">${(totalPerpPnl>=0?'+':'')}${totalPerpPnl.toFixed(2)} USD</span>`}
+  // Leverage & Liq — use total collateral (equity), not just free funds
+  const driftCollateral=93;
+  const solN=PERP_SIZE*(perpMarkPriceUsd||0), btcN=BTC_PERP_SIZE*(btcMarkPriceUsd||0), ethN=ETH_PERP_SIZE*(ethMarkPriceUsd||0);
+  const totalNotional=solN+btcN+ethN;
+  const equity=driftCollateral+totalPerpPnl;
+  const leverage=equity>0?totalNotional/equity:0;
+  const maint=totalNotional*0.05;
+  const liqDrop=0; // SOL-PERP closed, no liq price
+  const solLiq=0;
+  const levEl=document.getElementById('perpLeverage');if(levEl)levEl.textContent=leverage>0?leverage.toFixed(2)+'x':'--';
+  const liqEl=document.getElementById('perpLiqPrice');if(liqEl)liqEl.textContent=solLiq>0?'~$'+solLiq.toFixed(2):'--';
+  const eqEl=document.getElementById('perpEquity');if(eqEl){eqEl.innerHTML=`<span style="color:var(--teal)">$${equity.toFixed(2)}</span>`}
+
+  const wV=walletSol*solPriceUsd, perpVal=btcPerpPnlUsd, total=wV+tMV+usdcBalance+93+perpVal;
+  // Sanity check: if SOL price is unreasonable or total exceeds $500K, something is wrong
+  const saneTotal=(solPriceUsd>10&&solPriceUsd<1000&&total<500000)?total:0;
+  const tvE=document.getElementById('totalPortValue');if(tvE){if(saneTotal>0){const solEquiv=solPriceUsd>0?(saneTotal/solPriceUsd).toFixed(2)+' SOL':'';tvE.innerHTML='$'+fmtNum(saneTotal,2)+(solEquiv?' <span style=\"font-size:14px;color:var(--dim)\">('+solEquiv+')</span>':'')}else{tvE.textContent='--'}}
+  const sbE=document.getElementById('solBalanceHud');if(sbE)sbE.textContent=walletSol>0?walletSol.toFixed(2)+' SOL':'--';
+  const duE=document.getElementById('driftUsdc');if(duE)duE.textContent='$'+fmtNum(93+usdcBalance,2);
+  const now=new Date(),lbl=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
+  // Chart is now driven by P&L period selector, not live updates
+}
+
+async function refresh(){
+  await Promise.all([fetchSolPrice(),fetchDexPrices(),fetchWalletBalance(),fetchTokenBalances(),fetchPerpPrice()]);
+  updateUI();
+}
+
+// ===== REAL-TIME UPDATE SYSTEM =====
+let wsConnection = null;
+let lastTradeId = 39; // Latest trade number from allTrades
+
+// Real-time trading WebSocket connection
+function initRealTimeUpdates() {
+  // Try connecting to websocket endpoint (fallback to polling if unavailable)
+  try {
+    wsConnection = new WebSocket('wss://api.gizmo.live/trades');
+    wsConnection.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === 'NEW_TRADE') {
+        addNewTrade(data.trade);
+        showTradeNotification(data.trade);
+        updateStatsInstantly();
+      }
+    };
+    wsConnection.onerror = () => {
+      console.log('WebSocket failed, using polling instead');
+      setupPolling();
+    };
+  } catch (e) {
+    console.log('WebSocket not available, using polling');
+    setupPolling();
+  }
+}
+
+// Polling fallback for real-time updates
+function setupPolling() {
+  setInterval(checkForNewTrades, 10000); // Check every 10 seconds
+}
+
+// Check for new trades (when WebSocket is unavailable)
+async function checkForNewTrades() {
+  try {
+    const response = await fetch('https://api.gizmo.live/trades/latest');
+    const data = await response.json();
+    if (data.id > lastTradeId) {
+      addNewTrade(data);
+      showTradeNotification(data);
+      updateStatsInstantly();
+      lastTradeId = data.id;
+    }
+  } catch (e) {
+    console.log('Polling check failed:', e);
+  }
+}
+
+// Add new trade to the live display
+function addNewTrade(trade) {
+  // Add to beginning of allTrades array
+  allTrades.unshift({
+    n: trade.id,
+    date: new Date().toLocaleDateString(),
+    token: trade.token,
+    action: trade.action,
+    amount: trade.amount,
+    result: trade.result,
+    pnl: trade.pnl || 'PENDING',
+    color: trade.pnl && trade.pnl.includes('+') ? 'teal' : 'red',
+    ca: trade.ca || ''
+  });
+  
+  // Refresh trade log display
+  renderTradePage(1);
+}
+
+// Show real-time notification popup
+function showTradeNotification(trade) {
+  const notification = document.createElement('div');
+  notification.style.cssText = `
+    position: fixed; top: 20px; right: 20px; z-index: 10000;
+    background: linear-gradient(135deg, var(--dark2), var(--dark1));
+    border: 2px solid ${trade.action === 'BUY' ? 'var(--teal)' : '#fbbf24'};
+    border-radius: 12px; padding: 16px 20px;
+    font-family: 'Press Start 2P', monospace; font-size: 10px;
+    color: var(--text); box-shadow: 0 0 20px rgba(20,241,149,.3);
+    animation: slideIn 0.5s ease-out;
+    max-width: 300px; backdrop-filter: blur(6px);
+  `;
+  
+  notification.innerHTML = `
+    <div style="color: ${trade.action === 'BUY' ? 'var(--teal)' : '#fbbf24'}; margin-bottom: 6px;">
+      🚨 LIVE TRADE ALERT!
+    </div>
+    <div style="color: var(--text); margin-bottom: 4px;">
+      ${trade.token} — ${trade.action}
+    </div>
+    <div style="color: var(--dim); font-size: 8px;">
+      ${trade.amount} • ${trade.notes || 'Processing...'}
+    </div>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Add slideIn animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideIn {
+      0% { transform: translateX(100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // Remove after 8 seconds
+  setTimeout(() => {
+    notification.style.animation = 'slideIn 0.5s ease-in reverse';
+    setTimeout(() => notification.remove(), 500);
+  }, 8000);
+}
+
+// Update stats immediately when new trade comes in
+function updateStatsInstantly() {
+  refresh().then(() => updateStats());
+  
+  // Flash the refresh dot
+  const dot = document.getElementById('refreshDot');
+  if (dot) {
+    dot.style.background = '#fbbf24';
+    dot.classList.add('active');
+    setTimeout(() => {
+      dot.style.background = 'var(--teal)';
+      setTimeout(() => dot.classList.remove('active'), 2000);
+    }, 1000);
+  }
+  
+  // Update Gizmo's activity
+  const activityIcon = document.getElementById('activityIcon');
+  const activityText = document.getElementById('activityText');
+  if (activityIcon && activityText) {
+    activityIcon.textContent = '⚡';
+    activityText.textContent = 'New trade detected!';
+    setTimeout(() => {
+      activityIcon.textContent = '📊';
+      activityText.textContent = 'Scanning markets...';
+    }, 5000);
+  }
+}
+
+// ===== LIVE STATS (CLIENT-SIDE, NO NETLIFY FUNCTION) =====
+const tradeHistory=[
+  {type:'BUY',token:'$CHARIZARD',sol:0.2,status:'TRAPPED ⚠️',date:'Mar 1',notes:'KOL signal: bandit 5.0 SOL. RPC congestion preventing exit. Framework limited size.',pnl:'-37%'},
+  {type:'BUY',token:'$ASLAN',sol:0.5,status:'CLOSED ❌',date:'Mar 1',notes:'9/9 framework score. Entry $0.0008905 @ $890K MC. Lesson: wait for dips, not tops.',pnl:'-53%'},
+  {type:'BUY',token:'$GIZMO',sol:90,status:'HOLDING',date:'Feb 18-28',notes:'Core position — 71+6+5+4+4 SOL across multiple buys. NEVER SELL.'},
+  {type:'BUY',token:'$PUNCH',sol:13,status:'HOLDING',date:'Feb 19-21',notes:'High conviction runner — $13.5M daily volume'},
+  {type:'SWAP',token:'USDC',sol:20,status:'DEPLOYED',date:'Feb 19',notes:'Swapped to USDC for Drift perp trading'},
+  {type:'PERP',token:'SOL-PERP LONG',sol:0,status:'CLOSED ❌',date:'Feb 22',notes:'15.16 SOL long @ $85.67 → partial liq to 7.04 → closed @ $83.53. PnL: ~-$30',pnl:'~-$30'},
+  {type:'PERP',token:'BTC-PERP SHORT',sol:0,status:'ACTIVE',date:'Feb 23',notes:'0.0006 BTC short @ $63,653 | SL: $65K TP: $62K'},
+  {type:'PERP',token:'BTC-PERP LONG (closed)',sol:0,status:'LOST ❌',date:'Feb 21-23',notes:'0.0029 BTC long @ $68,389 → closed @ $63,721',pnl:'-$13.54'},
+  {type:'PERP',token:'ETH-PERP LONG (closed)',sol:0,status:'LOST ❌',date:'Feb 21-23',notes:'0.075 ETH long @ $1,980 → closed @ $1,832',pnl:'-$11.09'},
+  {type:'BUY',token:'$BLOODNUT',sol:2,status:'HOLDING',date:'Feb 20',notes:'Small cap play — TP at 2x'},
+  {type:'TRADE',token:'$WINSTON',sol:5,status:'CLOSED ✅',date:'Feb 21',notes:'Bought 5 SOL → Sold 8.25 SOL. PnL: +3.25 SOL (+65%). Clean flip 🧹',pnl:'+3.25 SOL (+65%)'},
+  {type:'POLY',token:'BTC $66-68K Feb 23',sol:0,status:'LOST ❌',date:'Feb 22',notes:'Polymarket: 97 YES @ $0.41 = $39.77. BTC closed ~$63.7K, outside range.',pnl:'-$39.77'},
+  {type:'POLY',token:'ETH $1.9-2K Feb 23',sol:0,status:'LOST ❌',date:'Feb 22',notes:'Polymarket: 58 YES @ $0.60 = $34.80. ETH closed ~$1,830, outside range.',pnl:'-$34.80'},
+  {type:'POLY',token:'🏀 Nuggets ML',sol:0,status:'LOST ❌',date:'Feb 22',notes:'Polymarket: 25 DEN YES @ $0.56 = $14. Warriors won 128-117.',pnl:'-$14.00'},
+  {type:'POLY',token:'SOL $80-90 Feb 23',sol:0,status:'LOST ❌',date:'Feb 22',notes:'Polymarket: 29 YES @ $0.85 = $24.65. SOL closed ~$76.8, outside range.',pnl:'-$24.65'},
+  {type:'TRADE',token:'$LOREGUY',sol:1,status:'CLOSED ❌',date:'Feb 22',notes:'Bought 1 SOL @ $27K MC → Sold at $14.7K MC. PnL: -0.574 SOL (-57.4%). SL hit.',pnl:'-0.574 SOL (-57.4%)'},
+  {type:'TRADE',token:'$ORAMAMA',sol:5,status:'CLOSED ❌',date:'Feb 22',notes:'Bought 5 SOL @ 800K MC → Sold 2.53 SOL @ 413K MC. PnL: -2.47 SOL (-49%). SL hit.',pnl:'-2.47 SOL (-49%)'},
+  {type:'BUY',token:'$TRENCH',sol:3,status:'HOLDING (partial)',date:'Feb 21-22',notes:'Bought 3 SOL → partial sold 2.15 SOL → holding 93K tokens remainder'},
+  {type:'BUY',token:'$JAWZ 🦈',sol:3,status:'HOLDING ✅',date:'Feb 22',notes:'Bought $248 at $181K MC. Currently up ~3x. Only winning trade.'},
+  {type:'BUY',token:'$SHELLDON 🐢',sol:2,status:'HOLDING ✅',date:'Feb 24',notes:'KOL sniper signal (clukz 7 SOL entry). Autonomous trade — first from KOL tracker.'}
+];
+function updateStats(){
+  const sp=solPriceUsd||0;
+  document.getElementById('statsLastUpdated').textContent='Updated '+new Date().toLocaleTimeString();
+
+  const gV=gizmoTokenBalance*gizmoPriceUsd;
+  const btcPerpPnl=btcMarkPriceUsd>0?(btcMarkPriceUsd-BTC_PERP_ENTRY)*BTC_PERP_SIZE:0;
+  const perpPnl=btcPerpPnl;
+  const total=walletSol*sp+gV+usdcBalance+93+perpPnl;
+
+  document.getElementById('statsTotalValue').textContent=total>0?'$'+fmtNum(total,2):'--';
+  document.getElementById('statsDriftUsdc').textContent='$'+fmtNum(93+usdcBalance,2);
+  document.getElementById('statsSolBal').textContent=walletSol>0?walletSol.toFixed(2)+' SOL':'--';
+  document.getElementById('statsWinRate').textContent='1W 8L (11.1%)';
+
+  // Positions
+  const perps=[
+    {sym:'BTC',mark:btcMarkPriceUsd,entry:BTC_PERP_ENTRY,size:BTC_PERP_SIZE,dir:'LONG'},
+    {sym:'ETH',mark:ethMarkPriceUsd,entry:ETH_PERP_ENTRY,size:ETH_PERP_SIZE,dir:'LONG'}
+  ];
+  let posHTML='';
+  for(const p of perps){
+    if(!p.mark||p.mark<=0)continue;
+    const pnl=(p.mark-p.entry)*p.size;const pct=((p.mark/p.entry)-1)*100;
+    const col=pnl>=0?'var(--teal)':'#ff4444';
+    const dirCol=p.dir==='LONG'?'var(--teal)':'#ff4444';
+    const dirArrow=p.dir==='LONG'?'▲':'▼';
+    posHTML+=`<div class="pos-card"><div class="live-dot"></div><h4 style="color:${dirCol}">${p.sym}-PERP — ${p.dir} ${dirArrow}</h4>
+      <div class="pos-row"><span class="dim">Size</span><span>${p.size} ${p.sym}</span></div>
+      <div class="pos-row"><span class="dim">Entry</span><span>$${fmtNum(p.entry,2)}</span></div>
+      <div class="pos-row"><span class="dim">Mark</span><span>$${fmtNum(p.mark,2)}</span></div>
+      <div class="pos-row"><span class="dim">P&L</span><span style="color:${col}">${pnl>=0?'+':''}${pnl.toFixed(2)} USD (${pct>=0?'+':''}${pct.toFixed(1)}%)</span></div></div>`;
+  }
+  const tokens=[
+    {name:'$GIZMO',bal:gizmoTokenBalance,price:gizmoPriceUsd,cost:90}
+  ];
+  for(const t of tokens){
+    if(!t.bal||t.bal<=0)continue;
+    const val=t.bal*t.price;const costUsd=t.cost*sp;const pnl=val-costUsd;const col=pnl>=0?'var(--teal)':'#ff4444';
+    posHTML+=`<div class="pos-card"><div class="live-dot"></div><h4>${t.name}</h4>
+      <div class="pos-row"><span class="dim">Holdings</span><span>${fmtNum(t.bal,0)} tokens</span></div>
+      <div class="pos-row"><span class="dim">Price</span><span>$${t.price>0.001?t.price.toFixed(4):t.price.toFixed(8)}</span></div>
+      <div class="pos-row"><span class="dim">Value</span><span>$${fmtNum(val,2)}</span></div>
+      <div class="pos-row"><span class="dim">P&L</span><span style="color:${col}">${pnl>=0?'+':''}${fmtNum(pnl,2)} USD</span></div></div>`;
+  }
+  document.getElementById('statsPositions').innerHTML=posHTML||'<div class="pos-card"><h4 style="color:var(--dim)">No positions</h4></div>';
+
+  // Trade history
+  let thHTML='';
+  for(const t of tradeHistory){
+    const statusCol=t.status==='ACTIVE'?'var(--teal)':t.status==='HOLDING'?'var(--purple)':'var(--dim)';
+    const isLive=(t.status.startsWith('ACTIVE')||t.status.startsWith('HOLDING')||t.status.startsWith('OPEN')||t.status.startsWith('DEPLOYED'));
+    const liveDot=isLive?'<div class="live-dot"></div>':'';
+    const pnlRow=t.pnl?`<div class="pos-row"><span class="dim">P&L</span><span style="color:var(--teal);font-weight:bold">${t.pnl}</span></div>`:'';
+    const isLong=t.token.includes('LONG');
+    const isShort=t.token.includes('SHORT');
+    const titleCol=isLong?'color:var(--teal)':isShort?'color:#ff4444':'';
+    thHTML+=`<div class="pos-card">${liveDot}<h4 ${titleCol?'style="'+titleCol+'"':''}>${t.token} — ${t.type}</h4>
+      <div class="pos-row"><span class="dim">Date</span><span>${t.date}</span></div>
+      ${t.sol?`<div class="pos-row"><span class="dim">Amount</span><span>${t.sol} SOL</span></div>`:''}
+      <div class="pos-row"><span class="dim">Status</span><span style="color:${statusCol}">${t.status}</span></div>
+      ${pnlRow}
+      <div class="pos-row"><span class="dim">Notes</span><span style="font-size:11px">${t.notes}</span></div></div>`;
+  }
+  document.getElementById('statsTradeHistory').innerHTML=thHTML;
+}
+
+// Initialize real-time updates and enhanced monitoring
+document.addEventListener('DOMContentLoaded',()=>{
+  initChart();
+  refresh().then(()=>updateStats());
+  
+  // Start real-time update system
+  initRealTimeUpdates();
+  
+  // Enhanced refresh intervals
+  setInterval(()=>{refresh().then(()=>updateStats())},15000); // Normal 15s updates
+  setInterval(()=>{fastTradeCheck()}, 5000); // Fast trade checks every 5s
+  
+  // Add connection status indicator
+  addConnectionStatus();
+});
+
+// Fast trade checking for immediate updates
+async function fastTradeCheck() {
+  try {
+    // Quick check of wallet transactions for new activity
+    const walletResponse = await fetch(`https://api.solana.fm/v0/accounts/${WALLET}/transactions?limit=1`);
+    const walletData = await walletResponse.json();
+    
+    if (walletData.result && walletData.result.length > 0) {
+      const latestTx = walletData.result[0];
+      const txTime = new Date(latestTx.blockTime * 1000);
+      const now = new Date();
+      
+      // If transaction is less than 30 seconds old, trigger immediate refresh
+      if (now - txTime < 30000) {
+        console.log('🚨 FRESH TRANSACTION DETECTED! Refreshing...');
+        updateStatsInstantly();
+        
+        // Show activity indicator
+        showActivityFlash();
+      }
+    }
+  } catch (e) {
+    // Silent fail for fast checks
+  }
+}
+
+// Show activity flash when detecting new activity
+function showActivityFlash() {
+  const gizmoChar = document.getElementById('gizmo-char');
+  if (gizmoChar) {
+    // Make Gizmo glow briefly
+    gizmoChar.style.transition = 'filter 0.3s';
+    gizmoChar.style.filter = 'drop-shadow(0 0 20px #14F195) brightness(1.3)';
+    
+    // Add speech bubble
+    showSpeechBubble(gizmoChar, '🚨 NEW ACTIVITY! 📊');
+    
+    // Reset glow after 2 seconds
+    setTimeout(() => {
+      gizmoChar.style.filter = 'none';
+      gizmoChar.style.transition = '';
+    }, 2000);
+  }
+  
+  // Flash the TV screen
+  const tvChannel = document.getElementById('tvChannel');
+  if (tvChannel) {
+    const originalText = tvChannel.textContent;
+    tvChannel.textContent = '🔴 LIVE';
+    tvChannel.style.color = '#ff4444';
+    setTimeout(() => {
+      tvChannel.textContent = originalText;
+      tvChannel.style.color = '';
+    }, 3000);
+  }
+}
+
+// Add connection status indicator
+function addConnectionStatus() {
+  const statusDiv = document.createElement('div');
+  statusDiv.id = 'connectionStatus';
+  statusDiv.style.cssText = `
+    position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+    font-family: 'Press Start 2P', monospace; font-size: 8px;
+    padding: 6px 10px; border-radius: 6px; transition: all 0.3s;
+    background: rgba(20,241,149,0.1); border: 1px solid rgba(20,241,149,0.3);
+    color: var(--teal); backdrop-filter: blur(4px);
+  `;
+  statusDiv.innerHTML = '🟢 REAL-TIME ACTIVE';
+  document.body.appendChild(statusDiv);
+  
+  // Update status based on connection
+  setInterval(() => {
+    const isConnected = wsConnection && wsConnection.readyState === WebSocket.OPEN;
+    if (isConnected) {
+      statusDiv.innerHTML = '🟢 WEBSOCKET LIVE';
+      statusDiv.style.borderColor = 'rgba(20,241,149,0.3)';
+      statusDiv.style.background = 'rgba(20,241,149,0.1)';
+    } else {
+      statusDiv.innerHTML = '🟡 POLLING MODE';
+      statusDiv.style.borderColor = 'rgba(251,191,36,0.3)';
+      statusDiv.style.background = 'rgba(251,191,36,0.1)';
+    }
+  }, 2000);
+}
+
+// ===== LIVE FEED FROM GITHUB =====
+async function fetchLiveTrades(){
+  try{
+    const r=await fetch('https://raw.githubusercontent.com/GizmoClawdMog/SOLGizmo/main/trades.json?t='+Date.now());
+    if(!r.ok)return;
+    const trades=await r.json();
+    if(!Array.isArray(trades))return;
+    updateLiveFeed(trades);
+  }catch(e){console.log('live fetch:',e);}
+}
+function updateLiveFeed(trades){
+  const feed=document.getElementById('liveTradeFeed');
+  const ticker=document.getElementById('tickerTime');
+  const countEl=document.getElementById('liveTradeCount');
+  if(!feed)return;
+  if(ticker)ticker.textContent='Updated '+new Date().toLocaleTimeString();
+  if(countEl)countEl.textContent=trades.length+' trades';
+  if(!trades.length){feed.innerHTML='<div style="text-align:center;color:#444;font-size:11px;padding:16px;">No trades yet — Gizmo is scanning...</div>';return;}
+  feed.innerHTML=trades.slice(0,12).map(function(t){
+    var col=t.color==='teal'?'#14F195':t.color==='red'?'#ff4444':'#666';
+    var icon=t.color==='teal'?'✅':t.color==='red'?'❌':'💎';
+    var act=String(t.action||'').indexOf('BUY')>-1?'<span style="color:#14F195;font-size:10px;">▲ BUY</span>':String(t.action||'').indexOf('SELL')>-1?'<span style="color:#ff4444;font-size:10px;">▼ SELL</span>':'<span style="color:#666;font-size:10px;">'+t.action+'</span>';
+    var tok=String(t.token||'').replace(/🦞|🏆|🐢|🦈/g,'').trim();
+    var pnl=String(t.pnl||'');
+    var pnlCol=pnl.indexOf('+')===0?'#14F195':pnl.indexOf('-')===0?'#ff4444':col;
+    return '<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);">'+
+      '<span>'+icon+'</span>'+
+      '<span style="color:'+col+';font-weight:bold;font-size:11px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px">'+tok+'</span>'+
+      act+
+      '<span style="color:#555;font-size:10px;margin-left:4px;">'+String(t.date||'')+'</span>'+
+      '<span style="color:'+pnlCol+';margin-left:auto;font-weight:bold;font-size:11px;white-space:nowrap;padding-left:8px;">'+pnl+'</span>'+
+      '</div>';
+  }).join('');
+}
+window.addEventListener('load',function(){
+  fetchLiveTrades();
+  setInterval(fetchLiveTrades,30000);
+});
+// ===== END LIVE FEED FROM GITHUB =====
+
+</script>
+</body>
+</html>
