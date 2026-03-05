@@ -1,5 +1,17 @@
 [
   {
+    "n": 7,
+    "date": "2026-03-05",
+    "token": "$WALL",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Bought successfully, sig: 17qbG2317A3dreCFsY4Wg9d4PJ1d9N9WQoJ33UNNSfrUuDKXrKGJuxsuebFNaRBR1tCHEBcGsp7c1nYCxWephQn",
+    "pnl": "",
+    "color": "teal",
+    "ca": "37PgYGWSb5srWwiHYxUPcYMftXpMYEYK9BdDoDhvpump",
+    "ts": 1772752681
+  },
+  {
     "n": 6,
     "date": "2026-03-05",
     "token": "MAXXING",
