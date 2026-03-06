@@ -462,7 +462,7 @@ async function ctEngage() {
   if (Date.now() - lastCTEngage < 30 * 60 * 1000) return;
   lastCTEngage = Date.now();
   try {
-    const out = execSync(`cd ${BASE_DIR} && node ct-engage.mjs 2>&1`, { timeout: 45000 }).toString();
+    const out = execSync(`cd ${BASE_DIR} && node ct-engage.mjs 2>&1`, { timeout: 10000 }).toString();
     if (out) log('CT: ' + out.trim().split('\n').pop());
   } catch {}
 }
@@ -514,31 +514,34 @@ async function healthCheck() {
 }
 
 // ─── MAIN LOOP ────────────────────────────────────────────────────────────────
+
 await healthCheck();
 log('🦞 GIZMO UNIFIED ENGINE v1.0 — single process, full autonomy');
 log(`Positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'} | Wallet: FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn`);
 log(`KOL wallets: ${WALLETS.length} | Max positions: ${MAX_POSITIONS} | Scan: every 30s | Market scan: every 10min`);
 
 let cycle = 0;
-while (true) {
+let running = false;
+
+async function runCycle() {
+  if (running) return;
+  running = true;
   cycle++;
   const state = loadState();
   state.scanCount = (state.scanCount || 0) + 1;
-
   try {
     await managePositions();
     await checkWatchlist();
-    if (cycle % 2 === 0) await marketScan(); // every 60s
-    await scanKOLs(state);
-    await autoTweet(state);
-    await ctEngage();
-    await checkNikoles(state);
-
-    if (cycle % 60 === 0) log(`💓 Heartbeat — scan #${cycle} | positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'}`);
+    if (cycle % 2 === 0) await marketScan();
+    if (cycle % 60 === 0) log(`💓 Heartbeat #${cycle} | positions: ${POSITIONS.map(p=>p.name).join(', ')||'none'}`);
   } catch (e) {
     log(`Loop error: ${e.message}`);
   }
-
   saveState(state);
-  await new Promise(r => setTimeout(r, 30000));
+  fs.appendFileSync(LOG_FILE, `[${new Date().toLocaleString()}] 💓 cycle ${cycle} complete\n`);
+  running = false;
 }
+
+setInterval(() => {}, 2147483647); // keepalive
+setInterval(runCycle, 30000);
+runCycle();
