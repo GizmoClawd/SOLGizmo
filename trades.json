@@ -1,5 +1,17 @@
 [
   {
+    "n": 14,
+    "date": "2026-03-06",
+    "token": "9VsM",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "Bought with tight liq, sig: 4VMu5beAwrt29aEpyz3dkXeQh5xBLP9ffZpLREUrsBwrK8tw7Z89nshViWYfQqGGXidpV7Kd73FXa5QRtjdbipnu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9VsMmkTHoqdC3A1EeAm1ZLSeJ4urAU86xZJUaGMepump",
+    "ts": 1772776787
+  },
+  {
     "n": 13,
     "date": "2026-03-05",
     "token": "Ashoz",
