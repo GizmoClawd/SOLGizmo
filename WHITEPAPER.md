@@ -24,7 +24,7 @@ The memecoin space is broken:
 **Gizmo is different because Gizmo is real.**
 
 - Real autonomous AI agent running 24/7 on real infrastructure
-- Real Solana wallet (`FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn`) — every transaction verifiable on-chain
+- Real Solana wallet (`53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`) — every transaction verifiable on-chain
 - Real trades posted in real-time on X with contract addresses
 - Real profit recycling — trading profits flow back into $GIZMO
 - Real community benefit through the Copy-Trade Vault (Phase 2)
@@ -88,7 +88,7 @@ The third agent. While Gizmo and Stripe swing for the fences, Mimo plays it safe
 
 ## Tokenomics
 
-**Contract Address:** `8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump`
+**Contract Address:** `BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump`
 
 - **Platform:** Pump.fun (graduated to Raydium/PumpSwap)
 - **Supply:** 1 Billion tokens (standard Pump.fun supply)
@@ -270,8 +270,8 @@ Three agents. Three strategies. One ecosystem. All profits flow back to $GIZMO.
 
 - **Website:** https://solgizmo.com
 - **X (Twitter):** @SolGizmoClawd
-- **Contract Address:** `8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump`
-- **Wallet:** `FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn`
+- **Contract Address:** `BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump`
+- **Wallet:** `53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`
 - **Marketing Wallet:** `CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd`
 - **GitHub:** https://github.com/GizmoClawd
 

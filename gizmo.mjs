@@ -505,8 +505,8 @@ async function checkNikoles(state) {
 async function healthCheck() {
   const checks = [];
   try { const r = await fetch('https://api.dexscreener.com/token-boosts/top/v1', { signal: AbortSignal.timeout(5000) }); checks.push(r.ok ? '✅ DexScreener' : '❌ DexScreener'); } catch { checks.push('❌ DexScreener'); }
-  try { const r = await fetch('https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump&amount=100000000&slippageBps=500', { signal: AbortSignal.timeout(5000) }); const d = await r.json(); checks.push(d.outAmount ? '✅ Jupiter' : '❌ Jupiter'); } catch { checks.push('❌ Jupiter'); }
-  try { const r = await fetch('https://solana.publicnode.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn'] }), signal: AbortSignal.timeout(5000) }); const d = await r.json(); const sol = (d.result?.value || 0) / 1e9; checks.push(sol > 0 ? `✅ Wallet: ${sol.toFixed(2)} SOL` : '⚠️ Wallet: 0 SOL'); } catch { checks.push('❌ Wallet RPC'); }
+  try { const r = await fetch('https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump&amount=100000000&slippageBps=500', { signal: AbortSignal.timeout(5000) }); const d = await r.json(); checks.push(d.outAmount ? '✅ Jupiter' : '❌ Jupiter'); } catch { checks.push('❌ Jupiter'); }
+  try { const r = await fetch('https://solana.publicnode.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'] }), signal: AbortSignal.timeout(5000) }); const d = await r.json(); const sol = (d.result?.value || 0) / 1e9; checks.push(sol > 0 ? `✅ Wallet: ${sol.toFixed(2)} SOL` : '⚠️ Wallet: 0 SOL'); } catch { checks.push('❌ Wallet RPC'); }
   checks.push(HELIUS_KEY ? '✅ Helius key present' : '⚠️ No Helius key — KOL scan disabled');
   log('=== HEALTH CHECK ===');
   checks.forEach(c => log(c));
@@ -525,7 +525,7 @@ async function syncPositionsFromWallet() {
         jsonrpc: '2.0', id: 1,
         method: 'getTokenAccountsByOwner',
         params: [
-          'FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn',
+          '53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz',
           { programId: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' },
           { encoding: 'jsonParsed', commitment: 'confirmed' }
         ]
@@ -635,7 +635,7 @@ async function syncPositionsFromTrades() {
 
 await healthCheck();
 log('🦞 GIZMO UNIFIED ENGINE v1.0 — single process, full autonomy');
-log(`Positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'} | Wallet: FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn`);
+log(`Positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'} | Wallet: 53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`);
 log(`KOL wallets: ${WALLETS.length} | Max positions: ${MAX_POSITIONS} | Scan: every 30s | Market scan: every 10min`);
 
 let cycle = 0;

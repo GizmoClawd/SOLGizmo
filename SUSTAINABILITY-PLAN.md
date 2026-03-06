@@ -62,7 +62,7 @@ solana-validator --ledger /path/to/ledger --rpc-port 8899
 
 ### FOR CURRENT MINDLESS POSITION:
 1. **Open Phantom link above** in browser
-2. **Connect wallet:** FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn
+2. **Connect wallet:** 53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz
 3. **Execute sell:** 46,092.967734 tokens → SOL
 4. **Capture profits:** Currently +83.98% green
 
