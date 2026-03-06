@@ -1,0 +1,22 @@
+[
+  {
+    "name": "GIZMO",
+    "ca": "8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump",
+    "entryMC": 39000,
+    "highMC": 39756,
+    "sl": null,
+    "tp1": 58500,
+    "tp2": 117000,
+    "tp1Hit": false
+  },
+  {
+    "name": "ASLAN",
+    "ca": "8GC4kBVgREoeQcZJAr1prxtfqW67RSu411aCqeaCpump",
+    "entryMC": 22000,
+    "highMC": 22000,
+    "sl": null,
+    "tp1": 33000,
+    "tp2": 66000,
+    "tp1Hit": false
+  }
+]
