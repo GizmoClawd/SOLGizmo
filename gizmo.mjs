@@ -513,6 +513,124 @@ async function healthCheck() {
   log(checks.some(c => c.startsWith('❌')) ? '⚠️ Some failures — check above' : '🟢 ALL SYSTEMS GO');
 }
 
+
+// ─── WALLET SYNC ──────────────────────────────────────────────────────────────
+async function syncPositionsFromWallet() {
+  try {
+    // Get all token accounts from wallet
+    const res = await fetch('https://solana.publicnode.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0', id: 1,
+        method: 'getTokenAccountsByOwner',
+        params: [
+          'FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn',
+          { programId: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' },
+          { encoding: 'jsonParsed', commitment: 'confirmed' }
+        ]
+      }),
+      signal: AbortSignal.timeout(10000)
+    });
+    const data = await res.json();
+    const accounts = data.result?.value || [];
+
+    // Filter tokens with actual balance
+    const held = accounts
+      .map(a => ({ mint: a.account.data.parsed.info.mint, amount: a.account.data.parsed.info.tokenAmount.uiAmount }))
+      .filter(a => a.amount > 0);
+
+    if (!held.length) { log('💼 Wallet sync: no tokens held'); return; }
+
+    // Fetch prices from DexScreener in batches
+    const mints = held.map(h => h.mint).join(',');
+    const r = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mints}`, { signal: AbortSignal.timeout(8000) });
+    const dex = await r.json();
+    const pairs = dex.pairs || [];
+
+    // Build map of mint -> best pair
+    const pairMap = {};
+    for (const p of pairs) {
+      const mint = p.baseToken?.address;
+      if (!mint) continue;
+      if (!pairMap[mint] || p.liquidity?.usd > (pairMap[mint].liquidity?.usd || 0)) {
+        pairMap[mint] = p;
+      }
+    }
+
+    let added = 0;
+    for (const token of held) {
+      const pair = pairMap[token.mint];
+      if (!pair) continue; // no dexscreener data = dust
+      const mc = pair.fdv || pair.marketCap || 0;
+      const symbol = pair.baseToken?.symbol || token.mint.slice(0, 8);
+      const liq = pair.liquidity?.usd || 0;
+
+      if (mc < 1000 || liq < 500) continue; // skip dust
+
+      // Check if already tracked
+      const existing = POSITIONS.find(p => p.ca === token.mint);
+      if (existing) {
+        // Update MC if stale
+        if (mc > existing.highMC) { existing.highMC = mc; }
+        continue;
+      }
+
+      // Add new position
+      POSITIONS.push({
+        name: symbol,
+        ca: token.mint,
+        entryMC: mc, // best guess — current MC as entry
+        highMC: mc,
+        sl: null,
+        tp1: mc * 1.5,
+        tp2: mc * 3,
+        tp1Hit: false
+      });
+      log(`📥 Auto-added position: ${symbol} @ $${Math.round(mc).toLocaleString()} MC`);
+      added++;
+    }
+
+    if (added > 0) savePositions();
+    log(`💼 Wallet sync: ${held.length} tokens held, ${POSITIONS.length} positions tracked`);
+  } catch (e) {
+    log(`⚠️ Wallet sync failed: ${e.message}`);
+  }
+}
+
+// ─── SYNC POSITIONS FROM TRADES ──────────────────────────────────────────────
+async function syncPositionsFromTrades() {
+  try {
+    if (!fs.existsSync(TRADES_FILE)) return;
+    const trades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
+    const buys = {};
+    const sold = new Set();
+    for (const t of trades) {
+      if (!t.ca) continue;
+      if (t.action === 'SELL') sold.add(t.ca);
+    }
+    for (const t of trades) {
+      if (!t.ca || t.action !== 'BUY') continue;
+      if (sold.has(t.ca)) continue;
+      const age = Date.now()/1000 - (t.ts||0);
+      if (age > 86400) continue; // only last 24hr
+      buys[t.ca] = t;
+    }
+    let added = 0;
+    for (const [ca, buy] of Object.entries(buys)) {
+      if (POSITIONS.find(p => p.ca === ca)) continue;
+      const p = await checkPrice(ca);
+      if (!p) continue;
+      const mc = p.fdv || p.marketCap || 0;
+      if (mc < 1000) continue;
+      POSITIONS.push({ name: buy.token || ca.slice(0,8), ca, entryMC: mc, highMC: mc, sl: null, tp1: mc*1.5, tp2: mc*3, tp1Hit: false });
+      log(`📥 Restored: ${buy.token} from trade history`);
+      added++;
+    }
+    if (added > 0) savePositions();
+  } catch (e) { log(`⚠️ Trade sync failed: ${e.message}`); }
+}
+
 // ─── MAIN LOOP ────────────────────────────────────────────────────────────────
 
 await healthCheck();
@@ -530,6 +648,7 @@ async function runCycle() {
   const state = loadState();
   state.scanCount = (state.scanCount || 0) + 1;
   try {
+    // syncPositionsFromTrades disabled until trades.json is clean
     await managePositions();
     await checkWatchlist();
     if (cycle % 2 === 0) await marketScan();
