@@ -81,7 +81,7 @@ class WebsiteGuardian {
   async checkGizmoToken() {
     try {
       // Check GIZMO token price
-      const data = await this.makeRequest('https://api.dexscreener.com/latest/dex/tokens/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump');
+      const data = await this.makeRequest('https://api.dexscreener.com/latest/dex/tokens/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump');
       
       if (data.pairs && data.pairs.length > 0) {
         const price = parseFloat(data.pairs[0].priceUsd || 0);
