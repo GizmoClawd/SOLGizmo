@@ -1099,7 +1099,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     </div>
     <div class="btn-row">
       <a href="https://pump.fun/coin/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank" class="btn btn-primary">Feed the Agent</a>
-      <a href="https://solscan.io/account/FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn" target="_blank" class="btn btn-secondary">View Wallet</a>
+      <a href="https://solscan.io/account/53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz" target="_blank" class="btn btn-secondary">View Wallet</a>
       <a href="credentials.html" class="btn btn-secondary" style="border-color:var(--purple);color:var(--purple)">🆔 Agent Credentials</a>
       <a href="whitepaper.html" class="btn btn-secondary" style="border-color:var(--teal);color:var(--teal)">📄 Whitepaper</a>
     </div>
@@ -1326,7 +1326,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
   <div class="footer-links">
     <a href="https://x.com/SolGizmoClawd" target="_blank">𝕏 @SolGizmoClawd</a>
     <a href="https://github.com/GizmoClawdMog/SOLGizmo" target="_blank">GitHub</a>
-    <a href="https://solscan.io/account/FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn" target="_blank">Solscan</a>
+    <a href="https://solscan.io/account/53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz" target="_blank">Solscan</a>
     <a href="https://dexscreener.com/solana/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank">DexScreener</a>
     <a href="https://pump.fun/coin/8HGer4vRWZMu5MUYU7ACPb4uanKgBewaXJZscLagpump" target="_blank">Pump.fun</a>
     <a href="credentials.html" style="color:var(--purple);font-weight:bold">🆔 Agent Credentials</a>
@@ -1954,7 +1954,7 @@ const JAWZ_CA='GJmF68t5HXM1U1j2nE4Trvh7vH5XeXys7MW4UN5Bpump';
 const ORAMAMA_CA='B6CdHKLm1XRxxgTnK9cNvT3DA75hPc9WUjTkxVUupump';
 const SHELLDON_CA='CwfsRHzXg2kcfA7EaqVkAvb8RDpGfrNHtF6QcjPC73ZQ';
 const TRENCH_CA='BzyKa1FGjs2EUpu3GGDibY4xdygn5evAiRboKmETpump';
-const WALLET='FXdMNyRo5CqfG3yRWCcNu163FpnSusdZSYecsB76GAkn';
+const WALLET='53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz';
 const RPC='https://mainnet.helius-rpc.com/?api-key=2de73660-14b8-412a-9ff2-8e6989c53266';
 const SHELLDON_MINT=SHELLDON_CA;
 const GIZMO_MINT=GIZMO_CA, PUNCH_MINT=PUNCH_CA, BLOODNUT_MINT=BLOODNUT_CA, LOREGUY_MINT=LOREGUY_CA, JAWZ_MINT=JAWZ_CA, ORAMAMA_MINT=ORAMAMA_CA, TRENCH_MINT=TRENCH_CA;
