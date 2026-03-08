@@ -1,5 +1,17 @@
 [
   {
+    "n": 68,
+    "date": "2026-03-08",
+    "token": "YOYO",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "Re-entry @ $48758",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BHS8LHW11NKxzxyCtqz9NJbTkh3h94WqeMVYgTY5pump",
+    "ts": 1773009308
+  },
+  {
     "n": 67,
     "date": "2026-03-08",
     "token": "OIL",
