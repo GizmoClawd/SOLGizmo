@@ -1,5 +1,17 @@
 [
   {
+    "n": 21,
+    "date": "2026-03-08",
+    "token": "Risk",
+    "action": "SELL",
+    "amount": "1.3491 SOL",
+    "result": "Sold 100% | PnL: -14.9%",
+    "pnl": "+1.3491 SOL",
+    "color": "teal",
+    "ca": "2mcBQDV7vtAUPFo6ZPbbwVd164Gj3qRhmvuZR4hypump",
+    "ts": 1773000595
+  },
+  {
     "n": 20,
     "date": "2026-03-08",
     "token": "Risk",
