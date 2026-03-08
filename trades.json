@@ -1,5 +1,17 @@
 [
   {
+    "n": 28,
+    "date": "2026-03-08",
+    "token": "LIQUITITTY",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2G1dcbGWb2YwhRpMCtvGt1jARFwFnU24k6ZEE2AqMhF2",
+    "ts": 1773003863
+  },
+  {
     "n": 27,
     "date": "2026-03-08",
     "token": "Crypto",
