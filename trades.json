@@ -1,5 +1,17 @@
 [
   {
+    "n": 65,
+    "date": "2026-03-08",
+    "token": "SHITCOIN",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: Cented, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "C7G8zmAwhpuUDxTE4dPpkDqzRmpq4KVSjZ8cDYFTpump",
+    "ts": 1773008612
+  },
+  {
     "n": 64,
     "date": "2026-03-08",
     "token": "YOYO",
