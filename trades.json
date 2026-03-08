@@ -1,5 +1,17 @@
 [
   {
+    "n": 90,
+    "date": "2026-03-08",
+    "token": "BIRDCLAW",
+    "action": "SELL",
+    "amount": "0.4908 SOL",
+    "result": "Sold 100% | PnL: -72.1%",
+    "pnl": "+0.4908 SOL",
+    "color": "teal",
+    "ca": "DP89kZThALSL1bpr8e52euT71FmskBh7jrZU1ZwUpump",
+    "ts": 1773011707
+  },
+  {
     "n": 89,
     "date": "2026-03-08",
     "token": "BIRDCLAW",
