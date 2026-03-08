@@ -1,5 +1,17 @@
 [
   {
+    "n": 76,
+    "date": "2026-03-08",
+    "token": "GASINU",
+    "action": "SELL",
+    "amount": "0.3729 SOL",
+    "result": "Sold 100% | PnL: -1.5%",
+    "pnl": "+0.3729 SOL",
+    "color": "teal",
+    "ca": "CqjEptXnbCcUYC3Tu9KLf1WsEQ5Ja37YVxHnqrfJpump",
+    "ts": 1773010088
+  },
+  {
     "n": 75,
     "date": "2026-03-08",
     "token": "GASINU",
