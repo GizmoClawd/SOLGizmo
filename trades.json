@@ -1,5 +1,17 @@
 [
   {
+    "n": 82,
+    "date": "2026-03-08",
+    "token": "oliveoil",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: theo, Dali",
+    "pnl": "",
+    "color": "teal",
+    "ca": "23CREC6aVdn6we6N4f9At9TWdGVq5MC3pAJtaEbEpump",
+    "ts": 1773010954
+  },
+  {
     "n": 81,
     "date": "2026-03-08",
     "token": "SPARK",
