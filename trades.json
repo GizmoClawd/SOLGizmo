@@ -1,5 +1,17 @@
 [
   {
+    "n": 97,
+    "date": "2026-03-08",
+    "token": "NanoFlowcell",
+    "action": "SELL",
+    "amount": "0.2091 SOL",
+    "result": "Sold 100% | PnL: -59.3%",
+    "pnl": "+0.2091 SOL",
+    "color": "teal",
+    "ca": "3UqSXgv8UY2UqzvrPqEdKDQrdTYrTDKYn6NSRLjbpump",
+    "ts": 1773012187
+  },
+  {
     "n": 96,
     "date": "2026-03-08",
     "token": "WATER",
