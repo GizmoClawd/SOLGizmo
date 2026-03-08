@@ -1,5 +1,17 @@
 [
   {
+    "n": 118,
+    "date": "2026-03-08",
+    "token": "Commodities",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: theo, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GRJwUZENdJSjvcAk7WAYvDZnzLmRKiZh7B9hufvdpump",
+    "ts": 1773014374
+  },
+  {
     "n": 117,
     "date": "2026-03-08",
     "token": "Gireumee",
