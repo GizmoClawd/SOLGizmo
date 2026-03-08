@@ -1,5 +1,17 @@
 [
   {
+    "n": 43,
+    "date": "2026-03-08",
+    "token": "kalinowski",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: Cented, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CHYL71GXicFNNLkv3oeYUSE2B7Mbk7g2bDJn3Xazpump",
+    "ts": 1773006591
+  },
+  {
     "n": 42,
     "date": "2026-03-08",
     "token": "Topsy",
