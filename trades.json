@@ -1,5 +1,17 @@
 [
   {
+    "n": 72,
+    "date": "2026-03-08",
+    "token": "菲比啾比",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: decu, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FJqzb8hqkrkAK2Mkk4bYuRBF52FLBDmViw2vcF9Bpump",
+    "ts": 1773009751
+  },
+  {
     "n": 71,
     "date": "2026-03-08",
     "token": "YOYO",
