@@ -1,5 +1,17 @@
 [
   {
+    "n": 62,
+    "date": "2026-03-08",
+    "token": "OILINU",
+    "action": "SELL",
+    "amount": "0.683 SOL",
+    "result": "Sold 100% | PnL: -31.9%",
+    "pnl": "+0.6830 SOL",
+    "color": "teal",
+    "ca": "GYk55mQLzhMpo4D2faG3eaPCQBMc6AbWFpmB5XB6fUuv",
+    "ts": 1773008467
+  },
+  {
     "n": 61,
     "date": "2026-03-08",
     "token": "OILINU",
