@@ -1,5 +1,17 @@
 [
   {
+    "n": 95,
+    "date": "2026-03-08",
+    "token": "NanoFlowcell",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: theo, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3UqSXgv8UY2UqzvrPqEdKDQrdTYrTDKYn6NSRLjbpump",
+    "ts": 1773012034
+  },
+  {
     "n": 94,
     "date": "2026-03-08",
     "token": "OilSwan",
