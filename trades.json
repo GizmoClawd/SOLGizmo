@@ -1,5 +1,17 @@
 [
   {
+    "n": 64,
+    "date": "2026-03-08",
+    "token": "YOYO",
+    "action": "SELL",
+    "amount": "0.6487 SOL",
+    "result": "Sold 100% | PnL: +8.8%",
+    "pnl": "+0.6487 SOL",
+    "color": "teal",
+    "ca": "BHS8LHW11NKxzxyCtqz9NJbTkh3h94WqeMVYgTY5pump",
+    "ts": 1773008527
+  },
+  {
     "n": 63,
     "date": "2026-03-08",
     "token": "trillioniare",
