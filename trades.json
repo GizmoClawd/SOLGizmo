@@ -1,5 +1,17 @@
 [
   {
+    "n": 89,
+    "date": "2026-03-08",
+    "token": "BIRDCLAW",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "3 KOL convergence: bandit, Coasty, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DP89kZThALSL1bpr8e52euT71FmskBh7jrZU1ZwUpump",
+    "ts": 1773011672
+  },
+  {
     "n": 88,
     "date": "2026-03-08",
     "token": "BLACKSWAN",
