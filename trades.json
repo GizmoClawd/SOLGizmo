@@ -1,5 +1,17 @@
 [
   {
+    "n": 73,
+    "date": "2026-03-08",
+    "token": "Chevron",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: decu, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EXQoAabGwagT7fsqeyVwdKu76hkvovDNxA4ZmUAdpump",
+    "ts": 1773009813
+  },
+  {
     "n": 72,
     "date": "2026-03-08",
     "token": "菲比啾比",
