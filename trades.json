@@ -1,5 +1,17 @@
 [
   {
+    "n": 99,
+    "date": "2026-03-08",
+    "token": "WATERINU",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dov7, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5fPNhqVVpspqZfKWELScQJah6hEE2VBkcAGvnpbpump",
+    "ts": 1773012332
+  },
+  {
     "n": 98,
     "date": "2026-03-08",
     "token": "Tapis",
