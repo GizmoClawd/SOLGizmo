@@ -1,5 +1,17 @@
 [
   {
+    "n": 29,
+    "date": "2026-03-08",
+    "token": "LIQUITITTY",
+    "action": "SELL",
+    "amount": "0.302 SOL",
+    "result": "Sold 100% | PnL: -66.5%",
+    "pnl": "+0.3020 SOL",
+    "color": "teal",
+    "ca": "2G1dcbGWb2YwhRpMCtvGt1jARFwFnU24k6ZEE2AqMhF2",
+    "ts": 1773004183
+  },
+  {
     "n": 28,
     "date": "2026-03-08",
     "token": "LIQUITITTY",
