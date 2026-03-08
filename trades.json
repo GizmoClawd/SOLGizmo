@@ -1,5 +1,17 @@
 [
   {
+    "n": 51,
+    "date": "2026-03-08",
+    "token": "Stimulants",
+    "action": "SELL",
+    "amount": "0.37 SOL",
+    "result": "Sold 100% | PnL: -41.1%",
+    "pnl": "+0.3700 SOL",
+    "color": "teal",
+    "ca": "H9bJ5m9m3h99WoeKWrS7FCf5Fvxf1titsYL5XWfApump",
+    "ts": 1773007627
+  },
+  {
     "n": 50,
     "date": "2026-03-08",
     "token": "Stimulants",
