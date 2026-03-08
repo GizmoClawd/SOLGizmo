@@ -1,5 +1,17 @@
 [
   {
+    "n": 42,
+    "date": "2026-03-08",
+    "token": "Topsy",
+    "action": "SELL",
+    "amount": "0.3256 SOL",
+    "result": "Sold 50% | PnL: +94.4%",
+    "pnl": "+0.3256 SOL",
+    "color": "teal",
+    "ca": "4W2nK5rueCpM7tesxb9KeLzF72yH35wwpBom92uRpump",
+    "ts": 1773006507
+  },
+  {
     "n": 41,
     "date": "2026-03-08",
     "token": "Topsy",
