@@ -1238,7 +1238,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
       <div class="portfolio-grid">
         <div class="stat-card"><div class="label">TOTAL VALUE</div><div class="value" id="totalPortValue">--</div></div>
         <div class="stat-card"><div class="label">SOL BALANCE</div><div class="value" id="solBalanceHud">--</div></div>
-        <div class="stat-card"><div class="label">$GIZMO HELD</div><div class="value" style="color:var(--teal)">~1.1M tokens</div></div>
+        <div class="stat-card"><div class="label">$GIZMO HELD</div><div class="value" style="color:var(--teal)" id="hudGizmoHeld">--</div></div>
         <div class="stat-card"><div class="label">POSITIONS</div><div class="value" style="color:var(--teal)">1 Active (GIZMO)</div></div>
       </div>
       <div style="background:var(--dark2);border:1px solid rgba(20,241,149,.2);border-radius:12px;padding:20px;margin-top:16px;height:380px;box-shadow:0 0 30px rgba(20,241,149,.05)">
@@ -2040,7 +2040,7 @@ async function fetchTokenBalances(){
       }
     }catch(e){console.error('Token fetch error ('+prog+'):',e)}
   // Fallback hardcoded holdings — verified on-chain Feb 24 2026
-  if(gizmoTokenBalance===0) gizmoTokenBalance=1114165;
+  
   if(usdcBalance===0) usdcBalance=0;
   // All other memecoins CLOSED — 0 balance
   }
@@ -2060,7 +2060,7 @@ function updateUI(){
   document.getElementById('solPrice').textContent='$'+solPriceUsd.toFixed(2);
 
   const gV=gizmoTokenBalance*gizmoPriceUsd, gIU=90*solPriceUsd;
-  document.getElementById('gizmoHoldings').textContent=gizmoTokenBalance>0?fmtNum(gizmoTokenBalance,0)+' tokens':'--';
+  document.getElementById('gizmoHoldings').textContent=gizmoTokenBalance>0?fmtNum(gizmoTokenBalance,0)+' tokens':'--';var gh=document.getElementById('hudGizmoHeld');if(gh)gh.textContent=gizmoTokenBalance>0?fmtNum(gizmoTokenBalance,0)+' tokens':'--';
   document.getElementById('gizmoPrice').textContent=gizmoPriceUsd>0?'$'+gizmoPriceUsd.toFixed(8):'--';
   document.getElementById('gizmoValue').textContent=gV>0?'$'+fmtNum(gV,2):'--';
   const gPU=gV-gIU, gPS=solPriceUsd>0?(gV/solPriceUsd)-13:0, gPP=gIU>0?((gV/gIU)-1)*100:0;
