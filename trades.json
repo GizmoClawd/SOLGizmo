@@ -1,5 +1,17 @@
 [
   {
+    "n": 32,
+    "date": "2026-03-08",
+    "token": "Mojtaba ",
+    "action": "SELL",
+    "amount": "0.0731 SOL",
+    "result": "Sold 100% | PnL: -3.2%",
+    "pnl": "+0.0731 SOL",
+    "color": "teal",
+    "ca": "2jSttCaVYmaZTKxHNcK2DGFddJHJ1vAmhPhoj8iHpump",
+    "ts": 1773004363
+  },
+  {
     "n": 31,
     "date": "2026-03-08",
     "token": "Mojtaba ",
