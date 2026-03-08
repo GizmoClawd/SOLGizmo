@@ -1,5 +1,17 @@
 [
   {
+    "n": 78,
+    "date": "2026-03-08",
+    "token": "X-013",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "3 KOL convergence: Cupsey, theo, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CmT1gx3HV6x5sto197nJ6Hqx1rdh7d62nqX5AsAXpump",
+    "ts": 1773010358
+  },
+  {
     "n": 77,
     "date": "2026-03-08",
     "token": "菲比啾比",
