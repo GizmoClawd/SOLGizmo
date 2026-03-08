@@ -1,5 +1,17 @@
 [
   {
+    "n": 27,
+    "date": "2026-03-08",
+    "token": "Crypto",
+    "action": "SELL",
+    "amount": "3.0468 SOL",
+    "result": "Sold 100% | PnL: -25.6%",
+    "pnl": "+3.0468 SOL",
+    "color": "teal",
+    "ca": "CJRqdzXMz4BG3hs3pEB9qfYFLDjrhp5dPNEDP3a2pump",
+    "ts": 1773003576
+  },
+  {
     "n": 26,
     "date": "2026-03-08",
     "token": "Crypto",
