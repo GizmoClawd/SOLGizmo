@@ -1,5 +1,17 @@
 [
   {
+    "n": 34,
+    "date": "2026-03-08",
+    "token": "HERMES",
+    "action": "SELL",
+    "amount": "0.2674 SOL",
+    "result": "Sold 100% | PnL: -50.4%",
+    "pnl": "+0.2674 SOL",
+    "color": "teal",
+    "ca": "Gd5eYKL9KWWhvd6Ehk4zPVEjka67Y7L88QedUcLqpump",
+    "ts": 1773004544
+  },
+  {
     "n": 33,
     "date": "2026-03-08",
     "token": "HERMES",
