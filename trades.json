@@ -1,5 +1,17 @@
 [
   {
+    "n": 93,
+    "date": "2026-03-08",
+    "token": "OilSwan",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: Cupsey, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HeZgLh7uo2hMXz1XMmXxFL3W3GSyDKDhAZkNHZuypump",
+    "ts": 1773011856
+  },
+  {
     "n": 92,
     "date": "2026-03-08",
     "token": "BIRDCLAW",
