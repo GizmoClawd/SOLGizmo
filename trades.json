@@ -1,5 +1,17 @@
 [
   {
+    "n": 56,
+    "date": "2026-03-08",
+    "token": "LQTY",
+    "action": "SELL",
+    "amount": "0.3883 SOL",
+    "result": "Sold 100% | PnL: -46.6%",
+    "pnl": "+0.3883 SOL",
+    "color": "teal",
+    "ca": "8qMbymk7W9vSFoJCDp5tXSf2o8UjGSV7DFWxuRVrpump",
+    "ts": 1773007927
+  },
+  {
     "n": 55,
     "date": "2026-03-08",
     "token": "YOYO",
