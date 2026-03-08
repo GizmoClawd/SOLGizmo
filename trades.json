@@ -1,5 +1,17 @@
 [
   {
+    "n": 61,
+    "date": "2026-03-08",
+    "token": "OILINU",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: Cented, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GYk55mQLzhMpo4D2faG3eaPCQBMc6AbWFpmB5XB6fUuv",
+    "ts": 1773008380
+  },
+  {
     "n": 60,
     "date": "2026-03-08",
     "token": "YOYO",
