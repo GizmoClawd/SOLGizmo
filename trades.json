@@ -1,5 +1,17 @@
 [
   {
+    "n": 96,
+    "date": "2026-03-08",
+    "token": "WATER",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "3 KOL convergence: Cented, radiance, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ATetjHq3bictJKm5Lfn1cfVmpcjvijgxnQRSUAb9efdG",
+    "ts": 1773012152
+  },
+  {
     "n": 95,
     "date": "2026-03-08",
     "token": "NanoFlowcell",
