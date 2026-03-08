@@ -1,5 +1,17 @@
 [
   {
+    "n": 105,
+    "date": "2026-03-08",
+    "token": "OilSwan",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "Re-entry @ $9208",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HeZgLh7uo2hMXz1XMmXxFL3W3GSyDKDhAZkNHZuypump",
+    "ts": 1773012731
+  },
+  {
     "n": 104,
     "date": "2026-03-08",
     "token": "Research",
