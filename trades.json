@@ -1,5 +1,17 @@
 [
   {
+    "n": 46,
+    "date": "2026-03-08",
+    "token": "Trilly",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "2 KOL convergence: bandit, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FuENt1BBMX9vQrDE9fx2Lqy2mNCBv86zTMyrPTbkpump",
+    "ts": 1773006718
+  },
+  {
     "n": 45,
     "date": "2026-03-08",
     "token": "Topsy",
