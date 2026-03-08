@@ -1,5 +1,17 @@
 [
   {
+    "n": 54,
+    "date": "2026-03-08",
+    "token": "LQTY",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: decu, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8qMbymk7W9vSFoJCDp5tXSf2o8UjGSV7DFWxuRVrpump",
+    "ts": 1773007836
+  },
+  {
     "n": 53,
     "date": "2026-03-08",
     "token": "trillioniare",
