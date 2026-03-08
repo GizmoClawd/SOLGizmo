@@ -1,5 +1,17 @@
 [
   {
+    "n": 85,
+    "date": "2026-03-08",
+    "token": "oliveoil",
+    "action": "SELL",
+    "amount": "0.4439 SOL",
+    "result": "Sold 100% | PnL: -37.0%",
+    "pnl": "+0.4439 SOL",
+    "color": "teal",
+    "ca": "23CREC6aVdn6we6N4f9At9TWdGVq5MC3pAJtaEbEpump",
+    "ts": 1773011348
+  },
+  {
     "n": 84,
     "date": "2026-03-08",
     "token": "HLabs",
