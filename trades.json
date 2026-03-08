@@ -1,5 +1,17 @@
 [
   {
+    "n": 110,
+    "date": "2026-03-08",
+    "token": "RuView",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BU3zU9BofsvTmvUdpPzKccRHhBoVk1odeavxx7fqpump",
+    "ts": 1773012998
+  },
+  {
     "n": 109,
     "date": "2026-03-08",
     "token": "OilSwan",
