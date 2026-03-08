@@ -1,5 +1,17 @@
 [
   {
+    "n": 49,
+    "date": "2026-03-08",
+    "token": "Trilly",
+    "action": "SELL",
+    "amount": "0.8682 SOL",
+    "result": "Sold 100% | PnL: +4.9%",
+    "pnl": "+0.8682 SOL",
+    "color": "teal",
+    "ca": "FuENt1BBMX9vQrDE9fx2Lqy2mNCBv86zTMyrPTbkpump",
+    "ts": 1773007416
+  },
+  {
     "n": 48,
     "date": "2026-03-08",
     "token": "Trilly",
