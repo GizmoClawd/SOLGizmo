@@ -1,5 +1,17 @@
 [
   {
+    "n": 22,
+    "date": "2026-03-08",
+    "token": "Research",
+    "action": "BUY",
+    "amount": "1.262982007 SOL",
+    "result": "3 KOL convergence: Cented, decu, theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6JhpWAPCa4DXA67mfWznfqQFq1SpMwes65kH6Xmupump",
+    "ts": 1773001922
+  },
+  {
     "n": 21,
     "date": "2026-03-08",
     "token": "Risk",
