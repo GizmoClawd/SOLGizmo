@@ -1929,11 +1929,12 @@ const allTrades=[
 ];
 const TRADES_PER_PAGE=10;let tradeLogUserClicked=false;
 function renderTradePage(page){
-  const total=allTrades.length;
+  const source=window.liveTradeLog&&window.liveTradeLog.length?window.liveTradeLog:allTrades;
+  const total=source.length;
   const pages=Math.ceil(total/TRADES_PER_PAGE);
   const start=(page-1)*TRADES_PER_PAGE;
   const end=Math.min(start+TRADES_PER_PAGE,total);
-  const slice=allTrades.slice(start,end);
+  const slice=source.slice(start,end);
   // Render buttons
   let btnHtml='';
   for(let i=1;i<=pages;i++){
@@ -1946,7 +1947,7 @@ function renderTradePage(page){
   for(const t of slice){
     const borderCol=t.color==='teal'?'var(--teal)':t.color==='red'?'#ff4444':'var(--dim)';
     const pnlCol=t.color==='teal'?'var(--teal)':t.color==='red'?'#ff4444':'var(--dim)';
-    const caLine=t.ca?`<div class="pos-row"><span class="dim">CA</span><span style="font-size:10px;word-break:break-all"><a href="https://solscan.io/token/${t.ca}" target="_blank" style="color:var(--purple)">${t.ca.slice(0,12)}...${t.ca.slice(-6)}</a></span></div>`:'';
+    const caLine=t.ca?`<div class="pos-row"><span class="dim">CA</span><span style="font-size:10px;word-break:break-all"><a href="https://solscan.io/token/${t.ca}" target="_blank" style="color:var(--purple)">${t.ca.slice(0,12)}...${t.ca.slice(-6)}</a></span></div>`:'';const txLine=t.tx?`<div class="pos-row"><span class="dim">TX</span><span style="font-size:10px;word-break:break-all"><a href="https://solscan.io/tx/${t.tx}" target="_blank" style="color:#888">${t.tx.slice(0,12)}...${t.tx.slice(-6)}</a></span></div>`:'';;
     const specialStyle = t.special ? 'border:4px solid #fbbf24!important;box-shadow:0 0 20px rgba(251,191,36,.5)!important;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(20,241,149,.1))!important;' : '';
     const specialBadge = t.special ? '<div style="position:absolute;top:-5px;left:-5px;background:#fbbf24;color:#000;padding:2px 6px;border-radius:3px;font-size:8px;font-family:\'Press Start 2P\';animation:pulse 2s infinite">👑 PERFECT</div>' : '';
     html+=`<div class="pos-card" style="border-left:3px solid ${borderCol};${t.color==='dim'?'opacity:0.6':''};${specialStyle}position:relative;">
@@ -1957,7 +1958,7 @@ function renderTradePage(page){
       <div class="pos-row"><span class="dim">Amount</span><span>${t.amount}</span></div>
       <div class="pos-row"><span class="dim">Result</span><span style="font-size:12px">${t.result}</span></div>
       <div class="pos-row"><span class="dim">P&L</span><span style="color:${pnlCol};font-weight:bold">${t.pnl}</span></div>
-      ${caLine}
+      ${caLine}${txLine}
     </div>`;
   }
   document.getElementById('tradeLogContainer').innerHTML=`<div class="positions" style="grid-template-columns:1fr">${html}</div>`;
@@ -2487,7 +2488,28 @@ async function fetchLiveTrades(){
     updateLiveFeed(trades);
   }catch(e){console.log('live fetch:',e);}
 }
-function updateLiveFeed(trades){recalcPnlFromTrades(trades);
+function updateLiveFeed(trades){
+  recalcPnlFromTrades(trades);
+  // Merge live trades.json with hardcoded history, live trades take priority
+  var liveNums=trades.map(function(t){return t.n;});
+  var merged=trades.map(function(t){
+    var d=new Date(t.ts?t.ts*1000:t.date);
+    var mon=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var dateStr=t.date||'';
+    if(t.ts){var dd=new Date(t.ts*1000);dateStr=mon[dd.getMonth()]+' '+dd.getDate();}
+    return {n:t.n,date:dateStr,token:'$'+(t.token||'').toUpperCase(),action:t.action,amount:t.amount||'',result:t.result||'',pnl:t.pnl||'',color:t.color||'dim',ca:t.ca||'',tx:t.tx||''};
+  }).concat(allTrades.filter(function(t){return liveNums.indexOf(t.n)<0;}));
+  merged.sort(function(a,b){return b.n-a.n;});
+  window.liveTradeLog=merged;
+  renderTradePage(1);
+  // Update chart with live P&L
+  var sells=trades.filter(function(t){return t.pnl&&t.action!=='BUY';});
+  if(sells.length){
+    sells.sort(function(a,b){return (a.ts||0)-(b.ts||0);});
+    var cum=0,labels=[],data=[];
+    sells.forEach(function(t){cum+=parseFloat(String(t.pnl).replace(' SOL',''))||0;labels.push(t.token);data.push(parseFloat(cum.toFixed(4)));});
+    if(pnlChart){pnlChart.data.labels=labels;pnlChart.data.datasets[0].data=data;pnlChart.data.datasets[0].borderColor=cum>=0?'#14F195':'#ff4444';pnlChart.data.datasets[0].backgroundColor=cum>=0?'rgba(20,241,149,0.1)':'rgba(255,68,68,0.1)';pnlChart.update('none');}
+  }
   const feed=document.getElementById('liveTradeFeed');
   const ticker=document.getElementById('tickerTime');
   const countEl=document.getElementById('liveTradeCount');
