@@ -1,5 +1,17 @@
 [
   {
+    "n": 101,
+    "date": "2026-03-08",
+    "token": "WATER",
+    "action": "SELL",
+    "amount": "0.4707 SOL",
+    "result": "Sold 100% | PnL: -7.3%",
+    "pnl": "+0.4707 SOL",
+    "color": "teal",
+    "ca": "ATetjHq3bictJKm5Lfn1cfVmpcjvijgxnQRSUAb9efdG",
+    "ts": 1773012431
+  },
+  {
     "n": 100,
     "date": "2026-03-08",
     "token": "WATERINU",
