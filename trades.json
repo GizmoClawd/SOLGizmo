@@ -1,5 +1,17 @@
 [
   {
+    "n": 88,
+    "date": "2026-03-08",
+    "token": "BLACKSWAN",
+    "action": "SELL",
+    "amount": "2.0291 SOL",
+    "result": "Sold 100% | PnL: -32.6%",
+    "pnl": "+2.0291 SOL",
+    "color": "teal",
+    "ca": "2YDUmE6P4py6gftiQnZvn5r1UAUvFvBuYrqrKGMqpump",
+    "ts": 1773011527
+  },
+  {
     "n": 87,
     "date": "2026-03-08",
     "token": "BLACKSWAN",
