@@ -1,5 +1,17 @@
 [
   {
+    "n": 83,
+    "date": "2026-03-08",
+    "token": "HLabs",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: Coasty, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CYUj3cJD9ZUQt2bZHfmUhNQyXYBDFbj9X6cHBczQpump",
+    "ts": 1773011133
+  },
+  {
     "n": 82,
     "date": "2026-03-08",
     "token": "oliveoil",
