@@ -1,5 +1,17 @@
 [
   {
+    "n": 77,
+    "date": "2026-03-08",
+    "token": "菲比啾比",
+    "action": "SELL",
+    "amount": "0.4306 SOL",
+    "result": "Sold 100% | PnL: -30.0%",
+    "pnl": "+0.4306 SOL",
+    "color": "teal",
+    "ca": "FJqzb8hqkrkAK2Mkk4bYuRBF52FLBDmViw2vcF9Bpump",
+    "ts": 1773010328
+  },
+  {
     "n": 76,
     "date": "2026-03-08",
     "token": "GASINU",
