@@ -1,5 +1,17 @@
 [
   {
+    "n": 41,
+    "date": "2026-03-08",
+    "token": "Topsy",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dv, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4W2nK5rueCpM7tesxb9KeLzF72yH35wwpBom92uRpump",
+    "ts": 1773006412
+  },
+  {
     "n": 40,
     "date": "2026-03-08",
     "token": "VOID",
