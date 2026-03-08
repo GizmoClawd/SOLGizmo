@@ -1,5 +1,17 @@
 [
   {
+    "n": 20,
+    "date": "2026-03-08",
+    "token": "Risk",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "2 KOL convergence: Cented, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2mcBQDV7vtAUPFo6ZPbbwVd164Gj3qRhmvuZR4hypump",
+    "ts": 1773000505
+  },
+  {
     "n": 19,
     "date": "2026-03-08",
     "token": "memeless",
