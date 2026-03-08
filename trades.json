@@ -1,5 +1,17 @@
 [
   {
+    "n": 70,
+    "date": "2026-03-08",
+    "token": "OIL",
+    "action": "SELL",
+    "amount": "0.4245 SOL",
+    "result": "Sold 100% | PnL: +200.8%",
+    "pnl": "+0.4245 SOL",
+    "color": "teal",
+    "ca": "9mUqZetJAjoP9Ei89PhNFSTnx9YwK2j6j89KGrmHpump",
+    "ts": 1773009427
+  },
+  {
     "n": 69,
     "date": "2026-03-08",
     "token": "OIL",
