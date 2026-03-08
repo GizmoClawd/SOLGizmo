@@ -1,5 +1,17 @@
 [
   {
+    "n": 33,
+    "date": "2026-03-08",
+    "token": "HERMES",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Gd5eYKL9KWWhvd6Ehk4zPVEjka67Y7L88QedUcLqpump",
+    "ts": 1773004419
+  },
+  {
     "n": 32,
     "date": "2026-03-08",
     "token": "Mojtaba ",
