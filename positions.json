@@ -8,15 +8,5 @@
     "tp1": 58500,
     "tp2": 117000,
     "tp1Hit": false
-  },
-  {
-    "name": "memeless",
-    "ca": "8PfLjXu3ETFARUiCsjfwNgj77GUehXZ5co19ZbsEpump",
-    "entryMC": 100900,
-    "highMC": 100900,
-    "sl": null,
-    "tp1": 151350,
-    "tp2": 302700,
-    "tp1Hit": false
   }
 ]
