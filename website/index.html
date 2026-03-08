@@ -1118,9 +1118,9 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <a href="https://dexscreener.com/solana/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#4ade80"></span>DexScreener</a>
         <a href="https://jup.ag/tokens/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#14F195"></span>Jupiter</a>
         <a href="https://pump.fun/coin/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#a78bfa"></span>Pump.fun</a>
-        <a href="https://www.gempump.io/en/token/gizmo2" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#f59e0b"></span>GemPump</a>
+        <a href="https://gempump.io/en/token/gizmo3" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#f59e0b"></span>GemPump</a>
         <a href="https://www.mobyscreener.com/solana/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#3b82f6"></span>MobyScreener</a>
-        <a href="https://moontok.io/coins/gizmo-1" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#e879f9"></span>Moontok</a>
+        <a href="https://moontok.io/coins/gizmo-2" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#e879f9"></span>Moontok</a>
       </div>
       <div style="margin-top:10px;padding:8px 12px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);border-radius:8px;font-size:11px;color:#f87171;font-family:'Press Start 2P',monospace;text-align:center;">
         ⚠️ BEWARE OF FAKES — This is the ONLY official $GIZMO token. CA: BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump. If it's not this CA, it's not us. 🦞
@@ -1866,7 +1866,7 @@ function setPnlPeriod(p){
   updatePnlChart(p);
 }
 document.addEventListener('DOMContentLoaded',()=>{
-  setPnlPeriod('1d');renderTradePage(1);
+  setPnlPeriod('1d');renderTradePage(1,true);
 });
 
 // === COMPLETE TRADE LOG ===
@@ -1919,7 +1919,7 @@ const allTrades=[
   {n:1,date:'Feb 21',token:'$KOL',action:'BUY→SELL',amount:'@ $156K MC',result:'SL hit',pnl:'-0.5 SOL ❌',color:'red',ca:''},
 ];
 const TRADES_PER_PAGE=10;let tradeLogUserClicked=false;
-function renderTradePage(page){
+function renderTradePage(page,silent){
   var src=window.liveTradeLog&&window.liveTradeLog.length?window.liveTradeLog:[];
   const total=src.length;
   const pages=Math.ceil(total/TRADES_PER_PAGE)||1;
@@ -1953,8 +1953,8 @@ function renderTradePage(page){
     </div>`;
   }
   document.getElementById('tradeLogContainer').innerHTML=`<div class="positions" style="grid-template-columns:1fr">${html}</div>`;
-  if(tradeLogUserClicked)document.getElementById('tradeLogContainer').scrollIntoView({behavior:'smooth',block:'start'});
-  tradeLogUserClicked=true;
+  
+  if(!silent)tradeLogUserClicked=true;
 }
 
 function copyWallet(){navigator.clipboard.writeText('BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump');const h=document.querySelector('.copy-hint');h.textContent='Copied!';setTimeout(()=>h.textContent='click to copy CA',2000)}
@@ -2203,7 +2203,7 @@ function addNewTrade(trade) {
   });
   
   // Refresh trade log display
-  renderTradePage(1);
+  renderTradePage(1,true);
 }
 
 // Show real-time notification popup
@@ -2498,7 +2498,7 @@ function updateLiveFeed(trades){
     var ds=t.date||'';if(t.ts){var dd=new Date(t.ts*1000);ds=mon[dd.getMonth()]+' '+dd.getDate()+', 2026';}
     return {n:t.n,date:ds,token:'$'+(t.token||'').toUpperCase(),action:t.action,amount:t.amount||'',result:t.result||'',pnl:t.pnl||'',color:t.color||'dim',ca:t.ca||'',tx:t.tx||''};
   }).sort(function(a,b){return b.n-a.n;});
-  renderTradePage(1);
+  renderTradePage(1,true);
   var feed=document.getElementById('liveTradeFeed');
   var ticker=document.getElementById('tickerTime');
   var countEl=document.getElementById('liveTradeCount');
