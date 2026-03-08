@@ -1,5 +1,17 @@
 [
   {
+    "n": 53,
+    "date": "2026-03-08",
+    "token": "trillioniare",
+    "action": "SELL",
+    "amount": "1.263 SOL",
+    "result": "Sold 50% | PnL: +37.9%",
+    "pnl": "+1.2630 SOL",
+    "color": "teal",
+    "ca": "6Cv8fsfJdQaWaVCJ9SbjnRCWJEDpYsvfwqDG3qWppump",
+    "ts": 1773007808
+  },
+  {
     "n": 52,
     "date": "2026-03-08",
     "token": "trillioniare",
