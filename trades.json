@@ -1,5 +1,17 @@
 [
   {
+    "n": 50,
+    "date": "2026-03-08",
+    "token": "Stimulants",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: Cented, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "H9bJ5m9m3h99WoeKWrS7FCf5Fvxf1titsYL5XWfApump",
+    "ts": 1773007533
+  },
+  {
     "n": 49,
     "date": "2026-03-08",
     "token": "Trilly",
