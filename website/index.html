@@ -1823,6 +1823,22 @@ const tradePnlTimeline=[
 ];
 const pnlPeriodDates={'1d':[],'7d':['Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28'],'30d':['Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28'],'all':['Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28']};
 function getPnlChartData(period){
+  // Use live trades if available
+  if(window.liveSellTrades&&window.liveSellTrades.length){
+    var now=Date.now()/1000,day=86400,week=604800,month=2592000;
+    var filtered=window.liveSellTrades.filter(function(t){
+      var age=now-(t.ts||0);
+      if(period==='1d')return age<=day;
+      if(period==='7d')return age<=week;
+      if(period==='30d')return age<=month;
+      return true;
+    });
+    filtered.sort(function(a,b){return (a.ts||0)-(b.ts||0);});
+    var cum=0,labels=[],data=[];
+    filtered.forEach(function(t){cum+=parseFloat(String(t.pnl).replace(' SOL',''))||0;labels.push(t.token);data.push(parseFloat(cum.toFixed(4)));});
+    return {labels,data};
+  }
+  // Fallback to hardcoded
   const dates=pnlPeriodDates[period];
   const filtered=tradePnlTimeline.filter(t=>dates.includes(t.date));
   let cumulative=0;const labels=[];const data=[];
@@ -2048,10 +2064,8 @@ async function fetchTokenBalances(){
         }
       }
     }catch(e){console.error('Token fetch error ('+prog+'):',e)}
-  // Fallback hardcoded holdings — verified on-chain Feb 24 2026
-  if(gizmoTokenBalance===0) gizmoTokenBalance=1114165;
-  if(usdcBalance===0) usdcBalance=0;
-  // All other memecoins CLOSED — 0 balance
+  // No fallback — show real on-chain balance only
+  // if(gizmoTokenBalance===0) gizmoTokenBalance=1114165;
   }
 }
 
@@ -2503,7 +2517,8 @@ function updateLiveFeed(trades){
   window.liveTradeLog=merged;
   renderTradePage(1);
   // Update chart with live P&L
-  var sells=trades.filter(function(t){return t.pnl&&t.action!=='BUY';});
+  window.liveSellTrades=trades.filter(function(t){return t.pnl&&String(t.action||'').indexOf('BUY')<0&&parseFloat(String(t.pnl).replace(' SOL',''));});
+  var sells=window.liveSellTrades;
   if(sells.length){
     sells.sort(function(a,b){return (a.ts||0)-(b.ts||0);});
     var cum=0,labels=[],data=[];
