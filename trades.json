@@ -1,5 +1,17 @@
 [
   {
+    "n": 75,
+    "date": "2026-03-08",
+    "token": "GASINU",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dov7, theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CqjEptXnbCcUYC3Tu9KLf1WsEQ5Ja37YVxHnqrfJpump",
+    "ts": 1773009936
+  },
+  {
     "n": 74,
     "date": "2026-03-08",
     "token": "Chevron",
