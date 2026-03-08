@@ -1,5 +1,17 @@
 [
   {
+    "n": 52,
+    "date": "2026-03-08",
+    "token": "trillioniare",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "2 KOL convergence: theo, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6Cv8fsfJdQaWaVCJ9SbjnRCWJEDpYsvfwqDG3qWppump",
+    "ts": 1773007710
+  },
+  {
     "n": 51,
     "date": "2026-03-08",
     "token": "Stimulants",
