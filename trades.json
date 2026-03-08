@@ -1,5 +1,17 @@
 [
   {
+    "n": 25,
+    "date": "2026-03-08",
+    "token": "Crypto",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "2 KOL convergence: theo, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CJRqdzXMz4BG3hs3pEB9qfYFLDjrhp5dPNEDP3a2pump",
+    "ts": 1773003409
+  },
+  {
     "n": 24,
     "date": "2026-03-08",
     "token": "Research",
