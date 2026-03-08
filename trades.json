@@ -1,5 +1,17 @@
 [
   {
+    "n": 107,
+    "date": "2026-03-08",
+    "token": "H2O",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "3 KOL convergence: bandit, dov7, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "38n11pyACUQkqVZ8AT4NTvAvZucHBmxG3BLQyX4ipump",
+    "ts": 1773012816
+  },
+  {
     "n": 106,
     "date": "2026-03-08",
     "token": "OilCoin",
