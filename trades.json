@@ -1,5 +1,17 @@
 [
   {
+    "n": 57,
+    "date": "2026-03-08",
+    "token": "Oil",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DzLGBs9padssKDSLJ1BGdr948LmPj5kn3gqfK8pwpump",
+    "ts": 1773008074
+  },
+  {
     "n": 56,
     "date": "2026-03-08",
     "token": "LQTY",
