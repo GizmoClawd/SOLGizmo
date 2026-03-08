@@ -2543,14 +2543,14 @@ function updateLiveFeed(trades){
     var icon=t.color==='teal'?'✅':t.color==='red'?'❌':'💎';
     var act=String(t.action||'').indexOf('BUY')>-1?'<span style="color:#14F195;font-size:10px;">▲ BUY</span>':String(t.action||'').indexOf('SELL')>-1?'<span style="color:#ff4444;font-size:10px;">▼ SELL</span>':'<span style="color:#666;font-size:10px;">'+t.action+'</span>';
     var tok=String(t.token||'').replace(/🦞|🏆|🐢|🦈/g,'').trim();
-    var pnl=String(t.pnl||'');
-    var pnlCol=pnl.indexOf('+')===0?'#14F195':pnl.indexOf('-')===0?'#ff4444':col;
+    var pnl=String(t.pnl||"");
+    var amt=String(t.amount||"");var isBuy=String(t.action||"").indexOf("BUY")>-1;var rightVal=isBuy?amt:pnl;var pnlCol=isBuy?"#14F195":pnl.indexOf("+")===0?"#14F195":pnl.indexOf("-")===0?"#ff4444":col;
     return '<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);">'+
       '<span>'+icon+'</span>'+
       '<span style="color:'+col+';font-weight:bold;font-size:11px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px">'+tok+'</span>'+
       act+
       '<span style="color:#555;font-size:10px;margin-left:4px;">'+String(t.date||'')+'</span>'+
-      '<span style="color:'+pnlCol+';margin-left:auto;font-weight:bold;font-size:11px;white-space:nowrap;padding-left:8px;">'+pnl+'</span>'+
+      '<span style="color:'+pnlCol+';margin-left:auto;font-weight:bold;font-size:11px;white-space:nowrap;padding-left:8px;">'+rightVal+'</span>'+
       '</div>';
   }).join('');
 }
