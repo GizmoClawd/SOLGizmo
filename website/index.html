@@ -2519,7 +2519,6 @@ function updateLiveFeed(trades){
     return p&&String(t.action||'').indexOf('BUY')<0&&parseFloat(p.replace(' SOL',''));
   });
   // Merge live trades with hardcoded history for trade log
-  var liveNums=trades.map(function(t){return t.n;});
   var mon=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var merged=trades.map(function(t){
     var dateStr=t.date||'';
@@ -2527,7 +2526,6 @@ function updateLiveFeed(trades){
     return {n:t.n,date:dateStr,token:'$'+(t.token||'').toUpperCase(),action:t.action,
       amount:t.amount||'',result:t.result||t.action||'',pnl:t.pnl||'',
       color:t.color||'dim',ca:t.ca||'',tx:t.tx||''};
-  }).concat(allTrades.filter(function(t){return liveNums.indexOf(t.n)<0;}));
   merged.sort(function(a,b){return b.n-a.n;});
   window.liveTradeLog=merged;
   renderTradePage(1);
