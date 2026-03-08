@@ -1,5 +1,17 @@
 [
   {
+    "n": 79,
+    "date": "2026-03-08",
+    "token": "X-013",
+    "action": "SELL",
+    "amount": "0.492 SOL",
+    "result": "Sold 100% | PnL: -30.3%",
+    "pnl": "+0.4920 SOL",
+    "color": "teal",
+    "ca": "CmT1gx3HV6x5sto197nJ6Hqx1rdh7d62nqX5AsAXpump",
+    "ts": 1773010388
+  },
+  {
     "n": 78,
     "date": "2026-03-08",
     "token": "X-013",
