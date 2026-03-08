@@ -1,5 +1,17 @@
 [
   {
+    "n": 35,
+    "date": "2026-03-08",
+    "token": "asscoin",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Fs12WjP7vYnsy2WrZeppibH3SHuFGHEGBfAivW7Lpump",
+    "ts": 1773005271
+  },
+  {
     "n": 34,
     "date": "2026-03-08",
     "token": "HERMES",
