@@ -1823,11 +1823,15 @@ const tradePnlTimeline=[
 ];
 const pnlPeriodDates={'1d':[],'7d':['Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28'],'30d':['Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28'],'all':['Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28']};
 function getPnlChartData(period){
-  const dates=pnlPeriodDates[period];
-  const filtered=tradePnlTimeline.filter(t=>dates.includes(t.date));
-  let cumulative=0;const labels=[];const data=[];
-  for(const t of filtered){cumulative+=t.pnl;labels.push(t.token);data.push(parseFloat(cumulative.toFixed(2)))}
-  return {labels,data};
+  if(window.liveSellTrades&&window.liveSellTrades.length){
+    var now=Date.now()/1000,day=86400,week=604800,month=2592000;
+    var src=window.liveSellTrades.filter(function(t){var age=now-(t.ts||0);if(period==='1d')return age<=day;if(period==='7d')return age<=week;if(period==='30d')return age<=month;return true;});
+    src.sort(function(a,b){return(a.ts||0)-(b.ts||0);});
+    var cum=0,labels=[],data=[];
+    src.forEach(function(t){cum+=parseFloat(String(t.pnl||'').replace(' SOL',''))||0;labels.push(t.token);data.push(parseFloat(cum.toFixed(4)));});
+    return {labels:labels,data:data};
+  }
+  return {labels:[],data:[]};
 }
 function updatePnlChart(period){
   if(!pnlChart)return;
@@ -1841,10 +1845,10 @@ function updatePnlChart(period){
   pnlChart.update('none');
 }
 const pnlData={
-  '1d':{pnl:0,trades:1,wins:0,label:'1 DAY P&L'},
-  '7d':{pnl:-8.23,trades:24,wins:9,label:'7 DAY P&L'},
-  '30d':{pnl:-6.38,trades:28,wins:10,label:'1 MONTH P&L'},
-  'all':{pnl:-6.38,trades:29,wins:10,label:'ALL TIME P&L'}
+  '1d':{pnl:0,trades:0,wins:0,label:'1 DAY P&L'},
+  '7d':{pnl:0,trades:0,wins:0,label:'7 DAY P&L'},
+  '30d':{pnl:0,trades:0,wins:0,label:'1 MONTH P&L'},
+  'all':{pnl:0,trades:0,wins:0,label:'ALL TIME P&L'}
 };
 function setPnlPeriod(p){
   const d=pnlData[p];
@@ -1916,11 +1920,12 @@ const allTrades=[
 ];
 const TRADES_PER_PAGE=10;let tradeLogUserClicked=false;
 function renderTradePage(page){
-  const total=allTrades.length;
-  const pages=Math.ceil(total/TRADES_PER_PAGE);
+  var src=window.liveTradeLog&&window.liveTradeLog.length?window.liveTradeLog:[];
+  const total=src.length;
+  const pages=Math.ceil(total/TRADES_PER_PAGE)||1;
   const start=(page-1)*TRADES_PER_PAGE;
   const end=Math.min(start+TRADES_PER_PAGE,total);
-  const slice=allTrades.slice(start,end);
+  const slice=src.slice(start,end);
   // Render buttons
   let btnHtml='';
   for(let i=1;i<=pages;i++){
@@ -2475,26 +2480,45 @@ async function fetchLiveTrades(){
   }catch(e){console.log('live fetch:',e);}
 }
 function updateLiveFeed(trades){
-  const feed=document.getElementById('liveTradeFeed');
-  const ticker=document.getElementById('tickerTime');
-  const countEl=document.getElementById('liveTradeCount');
+  var now=Date.now()/1000,day=86400,week=604800,month=2592000;
+  window.liveSellTrades=trades.filter(function(t){var p=String(t.pnl||'');return p&&String(t.action||'').indexOf('BUY')<0&&!isNaN(parseFloat(p.replace(' SOL','')));});
+  var b={'1d':{pnl:0,trades:0,wins:0},'7d':{pnl:0,trades:0,wins:0},'30d':{pnl:0,trades:0,wins:0},'all':{pnl:0,trades:0,wins:0}};
+  window.liveSellTrades.forEach(function(t){
+    var val=parseFloat(String(t.pnl||'').replace(' SOL',''));if(isNaN(val))return;
+    var age=now-(t.ts||0),win=val>0;
+    if(age<=day){b['1d'].pnl+=val;b['1d'].trades++;if(win)b['1d'].wins++;}
+    if(age<=week){b['7d'].pnl+=val;b['7d'].trades++;if(win)b['7d'].wins++;}
+    if(age<=month){b['30d'].pnl+=val;b['30d'].trades++;if(win)b['30d'].wins++;}
+    b['all'].pnl+=val;b['all'].trades++;if(win)b['all'].wins++;
+  });
+  ['1d','7d','30d','all'].forEach(function(k){pnlData[k].pnl=Math.round(b[k].pnl*10000)/10000;pnlData[k].trades=b[k].trades;pnlData[k].wins=b[k].wins;});
+  setPnlPeriod('1d');
+  var mon=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  window.liveTradeLog=trades.map(function(t){
+    var ds=t.date||'';if(t.ts){var dd=new Date(t.ts*1000);ds=mon[dd.getMonth()]+' '+dd.getDate()+', 2026';}
+    return {n:t.n,date:ds,token:'$'+(t.token||'').toUpperCase(),action:t.action,amount:t.amount||'',result:t.result||'',pnl:t.pnl||'',color:t.color||'dim',ca:t.ca||'',tx:t.tx||''};
+  }).sort(function(a,b){return b.n-a.n;});
+  renderTradePage(1);
+  var feed=document.getElementById('liveTradeFeed');
+  var ticker=document.getElementById('tickerTime');
+  var countEl=document.getElementById('liveTradeCount');
   if(!feed)return;
   if(ticker)ticker.textContent='Updated '+new Date().toLocaleTimeString();
   if(countEl)countEl.textContent=trades.length+' trades';
   if(!trades.length){feed.innerHTML='<div style="text-align:center;color:#444;font-size:11px;padding:16px;">No trades yet — Gizmo is scanning...</div>';return;}
   feed.innerHTML=trades.slice(0,12).map(function(t){
     var col=t.color==='teal'?'#14F195':t.color==='red'?'#ff4444':'#666';
-    var icon=t.color==='teal'?'✅':t.color==='red'?'❌':'💎';
-    var act=String(t.action||'').indexOf('BUY')>-1?'<span style="color:#14F195;font-size:10px;">▲ BUY</span>':String(t.action||'').indexOf('SELL')>-1?'<span style="color:#ff4444;font-size:10px;">▼ SELL</span>':'<span style="color:#666;font-size:10px;">'+t.action+'</span>';
-    var tok=String(t.token||'').replace(/🦞|🏆|🐢|🦈/g,'').trim();
-    var pnl=String(t.pnl||'');
-    var pnlCol=pnl.indexOf('+')===0?'#14F195':pnl.indexOf('-')===0?'#ff4444':col;
+    var icon=t.color==='teal'?'\u2705':t.color==='red'?'\u274C':'\uD83D\uDC8E';
+    var act=String(t.action||'').indexOf('BUY')>-1?'<span style="color:#14F195;font-size:10px;">\u25B2 BUY</span>':String(t.action||'').indexOf('SELL')>-1?'<span style="color:#ff4444;font-size:10px;">\u25BC SELL</span>':'<span style="color:#666;font-size:10px;">'+t.action+'</span>';
+    var tok=String(t.token||'').replace(/[^\x00-\x7F\u0080-\uFFFF]/g,'').trim();
+    var pnl=String(t.pnl||'');var amt=String(t.amount||'');var isBuy=String(t.action||'').indexOf('BUY')>-1;var rightVal=isBuy?amt:pnl;
+    var pnlCol=isBuy?'#14F195':pnl.indexOf('+')===0?'#14F195':pnl.indexOf('-')===0?'#ff4444':col;
     return '<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);">'+
       '<span>'+icon+'</span>'+
       '<span style="color:'+col+';font-weight:bold;font-size:11px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px">'+tok+'</span>'+
       act+
       '<span style="color:#555;font-size:10px;margin-left:4px;">'+String(t.date||'')+'</span>'+
-      '<span style="color:'+pnlCol+';margin-left:auto;font-weight:bold;font-size:11px;white-space:nowrap;padding-left:8px;">'+pnl+'</span>'+
+      '<span style="color:'+pnlCol+';margin-left:auto;font-weight:bold;font-size:11px;white-space:nowrap;padding-left:8px;">'+rightVal+'</span>'+
       '</div>';
   }).join('');
 }
@@ -2505,42 +2529,7 @@ window.addEventListener('load',function(){
 // ===== END LIVE FEED FROM GITHUB =====
 
 
-// ===== LIVE FEED FROM GITHUB =====
-async function fetchLiveTrades(){
-  try{
-    const r=await fetch('https://raw.githubusercontent.com/GizmoClawdMog/SOLGizmo/main/trades.json?t='+Date.now());
-    if(!r.ok)return;
-    const trades=await r.json();
-    if(!Array.isArray(trades))return;
-    const feed=document.getElementById('liveTradeFeed');
-    const ticker=document.getElementById('tickerTime');
-    const countEl=document.getElementById('liveTradeCount');
-    if(ticker)ticker.textContent='Updated '+new Date().toLocaleTimeString();
-    if(countEl)countEl.textContent=trades.length+' trades';
-    if(!feed)return;
-    if(!trades.length){feed.innerHTML='<div style="text-align:center;color:#444;font-size:11px;padding:16px;">No trades yet — Gizmo is scanning...</div>';return;}
-    feed.innerHTML=trades.slice(0,12).map(function(t){
-      var col=t.color==='teal'?'#14F195':t.color==='red'?'#ff4444':'#666';
-      var icon=t.color==='teal'?'✅':t.color==='red'?'❌':'💎';
-      var act=String(t.action||'').indexOf('BUY')>-1?'<span style="color:#14F195;font-size:10px;">▲ BUY</span>':String(t.action||'').indexOf('SELL')>-1?'<span style="color:#ff4444;font-size:10px;">▼ SELL</span>':'<span style="color:#666;font-size:10px;">'+String(t.action||'')+'</span>';
-      var tok=String(t.token||'').replace(/🦞|🏆|🐢|🦈/g,'').trim();
-      var pnl=String(t.pnl||'');
-      var pnlCol=pnl.indexOf('+')===0?'#14F195':pnl.indexOf('-')===0?'#ff4444':col;
-      return '<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);">'+
-        '<span>'+icon+'</span>'+
-        '<span style="color:'+col+';font-weight:bold;font-size:11px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px">'+tok+'</span>'+
-        act+
-        '<span style="color:#555;font-size:10px;margin-left:4px;">'+String(t.date||'')+'</span>'+
-        '<span style="color:'+pnlCol+';margin-left:auto;font-weight:bold;font-size:11px;white-space:nowrap;padding-left:8px;">'+pnl+'</span>'+
-        '</div>';
-    }).join('');
-  }catch(e){console.log('live fetch:',e);}
-}
-window.addEventListener('load',function(){
-  fetchLiveTrades();
-  setInterval(fetchLiveTrades,30000);
-});
-// ===== END LIVE FEED =====
+
 
 </script>
 </body>
