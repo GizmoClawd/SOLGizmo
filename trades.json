@@ -1,5 +1,17 @@
 [
   {
+    "n": 87,
+    "date": "2026-03-08",
+    "token": "BLACKSWAN",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "2 KOL convergence: bandit, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2YDUmE6P4py6gftiQnZvn5r1UAUvFvBuYrqrKGMqpump",
+    "ts": 1773011494
+  },
+  {
     "n": 86,
     "date": "2026-03-08",
     "token": "Tapis",
