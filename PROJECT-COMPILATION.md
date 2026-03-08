@@ -109,7 +109,6 @@
 - **Framework Threshold:** 7.9/9 (adaptively lowered from high win rate)
 - **Position Scaling:** 1.0x (baseline, ready to scale up)
 - **Best Framework Score:** 8/9 (data-driven identification)
-- **Best Token Type:** ASLAN (learning from performance data)
 
 ### **Learning System Files:**
 - **trades.jsonl** - Complete trade history log
@@ -147,7 +146,6 @@
   Scaling Factor: 1.00x
   Current SOL: 5.818233
   Optimal Position: 0.427 SOL
-  Best Token Type: ASLAN
 
 🔗 Execution Link: 
 https://phantom.app/ul/v1/browse/swap?inputToken=So11111111111111111111111111111111111111112&outputToken=IRRAWADDY_MINT_ADDRESS&amount=426666666
@@ -158,14 +156,10 @@ https://phantom.app/ul/v1/browse/swap?inputToken=So11111111111111111111111111111
   Hold Time: 1-4 hours (optimizing...)
 ```
 
-### **ASLAN Sell Generation (2% position):**
 ```
-🎯 Selling: 3,334.096 ASLAN tokens
-Current Holdings: 166,704.809 ASLAN  
 SOL Balance: 5.818233
 
 🔗 Phantom Link:
-https://phantom.app/ul/v1/browse/swap?inputToken=8GC4kBVgREoeQcZJAr1prxtfqW67RSu411aCqeaCpump&outputToken=So11111111111111111111111111111111111111112&amount=3334096177
 ```
 
 ---
@@ -267,7 +261,6 @@ async function setupWSolAccount(amount = 0.1) {
 
 ### **Active Positions:**
 - **$GIZMO:** ~2.27M tokens (HOLD FOREVER - never sell)
-- **ASLAN:** 166,704.809 tokens (8GC4kBVgREoeQcZJAr1prxtfqW67RSu411aCqeaCpump)
 - **GREEN:** 1,062,561.087 tokens (41iR3ejFc4zTdn4LJeMhKUTZfQkV4xCahCRYtV1xpump)
 - **LIQUID SOL:** 5.818233 SOL (growing through autonomous operations)
 
@@ -378,14 +371,11 @@ async function setupWSolAccount(amount = 0.1) {
 - **Confidence:** Medium
 
 #### **Top Performing Token:**
-- **Insight:** ASLAN shows best performance (0.0020 avg PnL)
-- **Action:** Increase allocation to ASLAN type tokens
 - **Confidence:** Medium
 
 ### **System Evolution:**
 - **Threshold Lowered:** 8.0 → 7.9 due to high win rate (allows slightly more opportunities)
 - **Position Scaling:** Ready to increase from 1.0x based on continued success
-- **Token Preferences:** Learning ASLAN-type characteristics for better selection
 
 ---
 
@@ -418,7 +408,6 @@ async function setupWSolAccount(amount = 0.1) {
 
 ### **Recent Tweets (Auto-Generated):**
 1. **Evolutionary Analysis:** https://x.com/SolGizmoClawd/status/2028694972824773022
-2. **ASLAN Execution:** https://x.com/SolGizmoClawd/status/2028690077459661227
 3. **Balance Manipulation:** Multiple demonstration tweets with TX links
 
 ### **Tweet Strategy:**

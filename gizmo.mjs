@@ -314,6 +314,7 @@ async function managePositions() {
     const sells = p.txns?.m5?.sells || 0;
 
     // Update high water mark + trail SL
+    if (mc > (pos.sl || 0)) { pos.slBreachCount = 0; }
     if (mc > pos.highMC) {
       pos.highMC = mc;
       if (mc > pos.entryMC * 1.10 && !pos.sl) {
@@ -375,8 +376,8 @@ async function managePositions() {
     }
 
     // SL HIT
-    if (pos.sl && mc <= pos.sl) {
-      if (m5 > 0 || mc < pos.sl * 0.95) {
+    if (pos.sl && mc <= pos.sl) { pos.slBreachCount = (pos.slBreachCount || 0) + 1;
+      if (pos.slBreachCount >= 2 && (m5 > 0 || mc < pos.sl * 0.95)) {
         log(`🛑 SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
         if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
           await postTrade('SELL', pos.name, pos.ca, mc, `SL hit ${pnl}%`, null, parseFloat(pnl));
@@ -696,6 +697,10 @@ async function syncPositionsFromWallet() {
         if (mc > existing.highMC) { existing.highMC = mc; }
         continue;
       }
+
+      // Skip if already sold
+      const alreadySold = trades.some(t => t.ca === token.mint && t.action === "SELL");
+      if (alreadySold) continue;
 
       // Add new position
       POSITIONS.push({

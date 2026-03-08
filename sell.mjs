@@ -7,6 +7,7 @@ const keypair = Keypair.fromSecretKey(bs58.decode(walletData.secretKey));
 // Fallback RPC chain: env override → Helius → PublicNode
 const RPC_CHAIN = [
   process.env.RPC_URL,
+  process.env.HELIUS_API_KEY ? `https://mainnet.helius-rpc.com/?api-key=${process.env.HELIUS_API_KEY}` : null,
   'https://api.mainnet-beta.solana.com',
   'https://rpc.ankr.com/solana',
   'https://solana.publicnode.com'

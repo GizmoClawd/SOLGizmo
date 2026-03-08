@@ -122,18 +122,9 @@ class WebsiteGuardian {
     return results;
   }
 
-  async checkAslanTrade() {
-    // Verify ASLAN trade is properly documented
     const indexContent = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
-    const aslanMatches = indexContent.match(/ASLAN/gi) || [];
     
-    if (aslanMatches.length >= 5) {
-      this.log(`🦁 ASLAN trade: VERIFIED (${aslanMatches.length} references)`);
-      return { success: true, references: aslanMatches.length };
     } else {
-      this.log(`❌ ASLAN trade: INCOMPLETE (only ${aslanMatches.length} references)`);
-      this.alerts.push('ASLAN trade not properly documented');
-      return { success: false, references: aslanMatches.length };
     }
   }
 
@@ -170,7 +161,6 @@ class WebsiteGuardian {
         solPrice: await this.checkSolanaPrice(),
         gizmoToken: await this.checkGizmoToken(),
         websiteFiles: await this.checkWebsiteFiles(),
-        aslanTrade: await this.checkAslanTrade(),
         familyStatus: await this.checkFamilyStatus()
       },
       alerts: this.alerts.slice()

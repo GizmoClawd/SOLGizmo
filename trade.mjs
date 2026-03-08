@@ -28,7 +28,7 @@ const AMOUNT = Math.floor(AMOUNT_SOL * LAMPORTS_PER_SOL);
 
 async function main() {
   console.log(`Swapping ${AMOUNT_SOL} SOL → ${TOKEN}...`);
-  const quoteResp = await fetch(`https://lite-api.jup.ag/swap/v1/quote?inputMint=${SOL_MINT}&outputMint=${TOKEN}&amount=${AMOUNT}&slippageBps=500`);
+  const quoteResp = await fetch(`https://lite-api.jup.ag/swap/v1/quote?inputMint=${SOL_MINT}&outputMint=${TOKEN}&amount=${AMOUNT}&slippageBps=3000`);
   const quote = await quoteResp.json();
   if (quote.error) throw new Error(quote.error);
   console.log(`Output: ${quote.outAmount} tokens | Impact: ${quote.priceImpactPct || '0'}%`);
@@ -41,7 +41,7 @@ async function main() {
       userPublicKey: keypair.publicKey.toBase58(),
       wrapAndUnwrapSol: true,
       dynamicComputeUnitLimit: true,
-      prioritizationFeeLamports: { autoMultiplier: 3 }
+      prioritizationFeeLamports: 10000
     })
   });
   if (!swapResp.ok) throw new Error('Swap failed: ' + await swapResp.text());

@@ -2,32 +2,6 @@
   "totalTrades": 1,
   "winRate": 100,
   "totalPnL": 0.002,
-  "bestTrade": {
-    "timestamp": "2026-03-03T04:51:18.940Z",
-    "token": "ASLAN",
-    "action": "sell",
-    "amount": 3334.096,
-    "pnl": 0.002,
-    "frameworkScore": 8,
-    "entryPrice": 0.000001,
-    "exitPrice": 0.0000012,
-    "holdTime": 3600,
-    "method": "phantom_link",
-    "success": true
-  },
-  "worstTrade": {
-    "timestamp": "2026-03-03T04:51:18.940Z",
-    "token": "ASLAN",
-    "action": "sell",
-    "amount": 3334.096,
-    "pnl": 0.002,
-    "frameworkScore": 8,
-    "entryPrice": 0.000001,
-    "exitPrice": 0.0000012,
-    "holdTime": 3600,
-    "method": "phantom_link",
-    "success": true
-  },
   "avgHoldTime": 0,
   "frameworkAccuracy": {
     "8": {
@@ -39,15 +13,7 @@
   "learnings": [],
   "lastUpdated": "2026-03-03T04:52:26.794Z",
   "avgPnL": 0.002,
-  "tokenPerformance": {
-    "ASLAN": {
-      "count": 1,
-      "avgPnL": 0.002,
-      "totalPnL": 0.002,
-      "winRate": 0
-    }
-  },
   "improvements": [
-    "✅ Framework 8/9 performs best (0.0020 avg PnL)"
+    "\u2705 Framework 8/9 performs best (0.0020 avg PnL)"
   ]
 }

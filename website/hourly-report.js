@@ -118,9 +118,7 @@ ${filename}: ${status} ${size}`;
 🎨 MIMO (Builder): ${family.mimo ? '🟢 OPERATIONAL' : '🔴 OFFLINE'}`;
       }
 
-      if (status.checks.aslanTrade) {
         report += `
-🦁 ASLAN Trade: ${status.checks.aslanTrade.success ? '✅ VERIFIED' : '❌ INCOMPLETE'} (${status.checks.aslanTrade.references || 0} references)`;
       }
 
       if (status.alerts && status.alerts.length > 0) {

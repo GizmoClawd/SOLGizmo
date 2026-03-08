@@ -230,8 +230,6 @@
                 <span id="mimoStatus" class="status-ok">Loading...</span>
             </div>
             <div class="status-item">
-                <span>ASLAN Trade:</span>
-                <span id="aslanStatus" class="status-ok">Loading...</span>
             </div>
         </div>
 
@@ -359,11 +357,6 @@
                     document.getElementById('mimoStatus').className = family.mimo ? 'status-ok' : 'status-error';
                 }
                 
-                // ASLAN trade
-                if (status.checks.aslanTrade) {
-                    document.getElementById('aslanStatus').textContent = status.checks.aslanTrade.success ? 
-                        `VERIFIED (${status.checks.aslanTrade.references} refs)` : 'INCOMPLETE';
-                    document.getElementById('aslanStatus').className = status.checks.aslanTrade.success ? 'status-ok' : 'status-error';
                 }
                 
                 // System metrics

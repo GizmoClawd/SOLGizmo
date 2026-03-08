@@ -1,0 +1,1 @@
+# SESSION-STATE.md\n\nTier: 1 (Comback Mode - per HEARTBEAT)\nLiquid SOL: [RPC - Helius low, manual check]\nOpen Positions: GIZMO (BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump - HOLD FOREVER)\nRecent PnL: FINDER +0.42 SOL, memeless -0.117 SOL\nStatus: Scanning pre-rip 8+, green sells locked\nUpdated: 2026-03-08

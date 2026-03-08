@@ -17,12 +17,5 @@
     "targetAvgPnL": 0.01,
     "adaptivePositioning": true
   },
-  "learnings": {
-    "lastLearningCycle": "2026-03-03T04:52:26.795Z",
-    "totalTrades": 1,
-    "bestFrameworkScore": 8,
-    "bestTokenType": "ASLAN",
-    "confidence": "medium"
-  },
   "lastUpdated": "2026-03-03T04:52:26.795Z"
 }
