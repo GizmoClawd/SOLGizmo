@@ -1,5 +1,17 @@
 [
   {
+    "n": 60,
+    "date": "2026-03-08",
+    "token": "YOYO",
+    "action": "SELL",
+    "amount": "1.0786 SOL",
+    "result": "Sold 50% | PnL: +57.9%",
+    "pnl": "+1.0786 SOL",
+    "color": "teal",
+    "ca": "BHS8LHW11NKxzxyCtqz9NJbTkh3h94WqeMVYgTY5pump",
+    "ts": 1773008351
+  },
+  {
     "n": 59,
     "date": "2026-03-08",
     "token": "Oil",
