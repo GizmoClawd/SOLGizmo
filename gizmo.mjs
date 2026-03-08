@@ -26,6 +26,124 @@ const MAX_POSITIONS = 3;
 const SIGNAL_WINDOW_MS = 10 * 60 * 1000;
 const HELIUS_KEY = process.env.HELIUS_API_KEY || '';
 
+// ─── ADAPTIVE PARAMS (learning system) ───────────────────────────────────────
+let SCORE_THRESHOLD = 5;
+let MIN_LIQ = 8000;
+let MIN_KOLS = 2;
+let POSITION_SIZE_MULT = 1.0;
+
+const LEARN_FILE = BASE_DIR + '/learn-state.json';
+
+function loadLearnState() {
+  try {
+    if (fs.existsSync(LEARN_FILE)) {
+      const s = JSON.parse(fs.readFileSync(LEARN_FILE, 'utf8'));
+      SCORE_THRESHOLD = s.scoreThreshold ?? 5;
+      MIN_LIQ = s.minLiq ?? 8000;
+      MIN_KOLS = s.minKols ?? 2;
+      POSITION_SIZE_MULT = s.positionSizeMult ?? 1.0;
+      log(`🧠 Loaded adaptive params: score≥${SCORE_THRESHOLD} liq≥$${MIN_LIQ} kols≥${MIN_KOLS} sizeMult=${POSITION_SIZE_MULT}`);
+    }
+  } catch {}
+}
+
+function saveLearnState() {
+  try {
+    fs.writeFileSync(LEARN_FILE, JSON.stringify({
+      scoreThreshold: SCORE_THRESHOLD, minLiq: MIN_LIQ,
+      minKols: MIN_KOLS, positionSizeMult: POSITION_SIZE_MULT,
+      updatedAt: new Date().toISOString()
+    }, null, 2));
+  } catch {}
+}
+
+async function learnFromTrades() {
+  try {
+    if (!fs.existsSync(TRADES_FILE)) return;
+    const trades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
+
+    // Pair buys with their sells
+    const pairs = [];
+    const sells = trades.filter(t => t.action === 'SELL' && t.ca);
+    const buys = trades.filter(t => t.action === 'BUY' && t.ca);
+
+    for (const s of sells) {
+      const b = buys.find(b => b.ca === s.ca && b.ts < s.ts);
+      if (!b) continue;
+      const pnlPct = parseFloat((s.pnl || '0').replace('%','').replace('+',''));
+      const win = pnlPct > 0;
+      const signalType = (b.result || '').includes('KOL') ? 'kol' : 'market';
+      const kolCount = signalType === 'kol' ? parseInt((b.result || '').match(/(\d+) KOL/)?.[1] || 2) : 0;
+      const score = parseInt((b.result || '').match(/score (\d+)/)?.[1] || 0);
+      pairs.push({ win, pnlPct, signalType, kolCount, score, ts: s.ts });
+    }
+
+    if (pairs.length < 3) { log(`🧠 Not enough closed trades to learn yet (${pairs.length}/3 needed)`); return; }
+
+    const recent = pairs.slice(0, 20); // last 20 closed trades
+    const wins = recent.filter(p => p.win).length;
+    const winRate = wins / recent.length;
+    const avgPnl = recent.reduce((s, p) => s + p.pnlPct, 0) / recent.length;
+
+    const kolTrades = recent.filter(p => p.signalType === 'kol');
+    const marketTrades = recent.filter(p => p.signalType === 'market');
+    const kolWinRate = kolTrades.length ? kolTrades.filter(p => p.win).length / kolTrades.length : null;
+    const marketWinRate = marketTrades.length ? marketTrades.filter(p => p.win).length / marketTrades.length : null;
+
+    log(`🧠 LEARNING — ${recent.length} trades | WR: ${(winRate*100).toFixed(0)}% | AvgPnL: ${avgPnl.toFixed(1)}% | KOL WR: ${kolWinRate !== null ? (kolWinRate*100).toFixed(0)+'%' : 'n/a'} | Market WR: ${marketWinRate !== null ? (marketWinRate*100).toFixed(0)+'%' : 'n/a'}`);
+
+    let changed = false;
+
+    // Adjust score threshold based on market scan win rate
+    if (marketTrades.length >= 3) {
+      if (marketWinRate < 0.35 && SCORE_THRESHOLD < 7) {
+        SCORE_THRESHOLD = Math.min(7, SCORE_THRESHOLD + 1);
+        log(`🧠 Market WR low (${(marketWinRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
+        changed = true;
+      } else if (marketWinRate > 0.60 && SCORE_THRESHOLD > 4) {
+        SCORE_THRESHOLD = Math.max(4, SCORE_THRESHOLD - 1);
+        log(`🧠 Market WR strong (${(marketWinRate*100).toFixed(0)}%) — lowering score threshold to ${SCORE_THRESHOLD}`);
+        changed = true;
+      }
+    }
+
+    // Adjust KOL min threshold
+    if (kolTrades.length >= 3) {
+      if (kolWinRate < 0.35 && MIN_KOLS < 3) {
+        MIN_KOLS = 3;
+        log(`🧠 KOL WR low (${(kolWinRate*100).toFixed(0)}%) — requiring 3+ KOLs`);
+        changed = true;
+      } else if (kolWinRate > 0.60 && MIN_KOLS > 2) {
+        MIN_KOLS = 2;
+        log(`🧠 KOL WR strong — back to 2+ KOLs`);
+        changed = true;
+      }
+    }
+
+    // Adjust position size multiplier based on overall performance
+    if (recent.length >= 5) {
+      if (winRate < 0.30 && POSITION_SIZE_MULT > 0.5) {
+        POSITION_SIZE_MULT = Math.max(0.5, POSITION_SIZE_MULT - 0.25);
+        log(`🧠 WR poor (${(winRate*100).toFixed(0)}%) — reducing position size to ${POSITION_SIZE_MULT}x`);
+        changed = true;
+      } else if (winRate > 0.60 && avgPnl > 10 && POSITION_SIZE_MULT < 1.5) {
+        POSITION_SIZE_MULT = Math.min(1.5, POSITION_SIZE_MULT + 0.25);
+        log(`🧠 WR strong + profitable — increasing position size to ${POSITION_SIZE_MULT}x`);
+        changed = true;
+      }
+    }
+
+    if (changed) {
+      saveLearnState();
+      // Notify via Telegram
+      try {
+        execSync(`openclaw system event --text "🧠 Gizmo adapted: score≥${SCORE_THRESHOLD} kols≥${MIN_KOLS} size=${POSITION_SIZE_MULT}x | WR:${(winRate*100).toFixed(0)}% avgPnL:${avgPnl.toFixed(1)}%" --mode now`, { timeout: 5000 });
+      } catch {}
+    }
+  } catch (e) { log(`🧠 Learn error: ${e.message}`); }
+}
+
+
 // ─── LOGGING ─────────────────────────────────────────────────────────────────
 function log(msg) {
   const line = `[${new Date().toLocaleString()}] ${msg}`;
@@ -132,7 +250,7 @@ async function checkPrice(ca) {
 async function getTokenInfo(mint) {
   const p = await checkPrice(mint);
   if (!p) return null;
-  return { symbol: p.baseToken?.symbol || '???', mcap: p.marketCap || p.fdv || 0, price: parseFloat(p.priceUsd) || 0, liq: p.liquidity?.usd || 0 };
+  return { symbol: p.baseToken?.symbol || '???', mcap: p.marketCap || p.fdv || 0, price: parseFloat(p.priceUsd) || 0, liq: p.liquidity?.usd ?? null };
 }
 
 // ─── SELL ─────────────────────────────────────────────────────────────────────
@@ -340,11 +458,11 @@ async function scanKOLs(state) {
   for (const [mint, buys] of Object.entries(byMint)) {
     const uniqueKols = [...new Set(buys.map(b => b.kol))];
     const nonScalper = uniqueKols.filter(k => !WALLETS.find(w => w.name === k)?.scalper);
-    if (uniqueKols.length < 2 || nonScalper.length < 1 || ALERTED.has(mint)) continue;
+    if (uniqueKols.length < MIN_KOLS || nonScalper.length < 1 || ALERTED.has(mint)) continue;
 
     const info = await getTokenInfo(mint);
     ALERTED.add(mint);
-    if (!info || info.mcap < 30000) continue;
+    if (!info || info.mcap < 5000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low ($${Math.round(info?.mcap||0)})`); continue; }
 
     const totalSol = buys.reduce((s, b) => s + b.solSpent, 0);
     log(`🔥 CONVERGENCE: ${info.symbol} | MC: $${Math.round(info.mcap)} | KOLs: ${uniqueKols.join(', ')} | ${totalSol.toFixed(1)} SOL`);
@@ -352,10 +470,13 @@ async function scanKOLs(state) {
     // Direct buy on convergence — no intermediate signal file needed
     if (POSITIONS.length < MAX_POSITIONS && !RECENTLY_BOUGHT.has(mint)) {
       const name = (info.symbol || '').toLowerCase();
-      if (TOXIC_WORDS.some(w => name.includes(w))) continue;
-      if (info.liq < 20000) continue;
-      const size = Math.min(uniqueKols.length >= 3 ? 3 : 2, Math.floor(info.liq * 0.05 / 82));
-      if (size < 1) continue;
+      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${info.symbol}: toxic name`); continue; }
+      if (info.liq !== null && info.liq > 0 && info.liq < MIN_LIQ) { log(`⛔ ${info.symbol}: liq too low $${Math.round(info.liq)} (min $${MIN_LIQ})`); continue; }
+      if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
+      const walletSol = await (async()=>{ try { const r = await fetch('https://solana.publicnode.com',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz']}),signal:AbortSignal.timeout(3000)}); const d=await r.json(); return (d.result?.value||0)/1e9; } catch { return 1; } })();
+    const maxBuy = Math.max(0, walletSol - 0.1);
+    const size = (!info.liq) ? Math.min(maxBuy, 0.5) : Math.min(maxBuy, Math.max(0.5, Math.min(uniqueKols.length >= 3 ? 3 : 2, Math.floor(info.liq * 0.05 / 82)) * POSITION_SIZE_MULT));
+      if (size < 0.5) { log(`⛔ ${info.symbol}: size too small`); continue; }
       log(`🎯 CONVERGENCE BUY: ${info.symbol} ${uniqueKols.length} KOLs — buying ${size} SOL`);
       if (await buy(mint, size)) {
         const p = await checkPrice(mint);
@@ -389,7 +510,7 @@ async function marketScan() {
       if (p.fdv < 69000 || p.fdv > 5000000) continue;
 
       const name = (p.baseToken?.name || '').toLowerCase() + ' ' + (p.baseToken?.symbol || '').toLowerCase();
-      if (TOXIC_WORDS.some(w => name.includes(w))) continue;
+      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${info.symbol}: toxic name`); continue; }
 
       const m5 = p.priceChange?.m5 || 0, h1 = p.priceChange?.h1 || 0, h6 = p.priceChange?.h6 || 0;
       const liq = p.liquidity?.usd || 0;
@@ -409,7 +530,7 @@ async function marketScan() {
       if ((p.txns.h1?.buys || 0) > 200) score++;
       if (h6 < 0 && m5 > 5) score++;
 
-      if (score < 7) continue;
+      if (score < SCORE_THRESHOLD) continue;
       const maxSize = Math.min(Math.floor(liq * 0.05 / 82), 5);
       const size = Math.max(0.5, score >= 9 ? Math.min(3, maxSize) : score >= 8 ? Math.min(2, maxSize) : Math.min(1, maxSize));
 
@@ -634,6 +755,7 @@ async function syncPositionsFromTrades() {
 // ─── MAIN LOOP ────────────────────────────────────────────────────────────────
 
 await healthCheck();
+loadLearnState();
 log('🦞 GIZMO UNIFIED ENGINE v1.0 — single process, full autonomy');
 log(`Positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'} | Wallet: 53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`);
 log(`KOL wallets: ${WALLETS.length} | Max positions: ${MAX_POSITIONS} | Scan: every 30s | Market scan: every 10min`);
@@ -651,7 +773,9 @@ async function runCycle() {
     // syncPositionsFromTrades disabled until trades.json is clean
     await managePositions();
     await checkWatchlist();
+    await scanKOLs(state);
     if (cycle % 2 === 0) await marketScan();
+    if (cycle % 5 === 0) await learnFromTrades();
     if (cycle % 60 === 0) log(`💓 Heartbeat #${cycle} | positions: ${POSITIONS.map(p=>p.name).join(', ')||'none'}`);
   } catch (e) {
     log(`Loop error: ${e.message}`);
@@ -662,5 +786,5 @@ async function runCycle() {
 }
 
 setInterval(() => {}, 2147483647); // keepalive
-setInterval(runCycle, 30000);
+setInterval(runCycle, 60000);
 runCycle();
