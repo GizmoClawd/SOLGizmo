@@ -1,5 +1,17 @@
 [
   {
+    "n": 39,
+    "date": "2026-03-08",
+    "token": "asscoin",
+    "action": "SELL",
+    "amount": "0.1494 SOL",
+    "result": "Sold 100% | PnL: -63.4%",
+    "pnl": "+0.1494 SOL",
+    "color": "teal",
+    "ca": "Fs12WjP7vYnsy2WrZeppibH3SHuFGHEGBfAivW7Lpump",
+    "ts": 1773006069
+  },
+  {
     "n": 38,
     "date": "2026-03-08",
     "token": "asscoin",
