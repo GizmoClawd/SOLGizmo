@@ -1,5 +1,17 @@
 [
   {
+    "n": 102,
+    "date": "2026-03-08",
+    "token": "Research",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6c9nC9NZogX7FN5ziTmb4kCQK1xH1dGekKYDbsLSpump",
+    "ts": 1773012514
+  },
+  {
     "n": 101,
     "date": "2026-03-08",
     "token": "WATER",
