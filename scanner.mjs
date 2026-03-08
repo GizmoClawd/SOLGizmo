@@ -3,6 +3,7 @@
  * Sources: DexScreener boosts/profiles + Pump.fun live tokens
  * Usage: node scanner.mjs
  */
+import { execSync } from "child_process";
 
 const PF_HEADERS = {
   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
@@ -18,6 +19,7 @@ async function getDexInfo(ca) {
 }
 
 async function scan() {
+  execSync("touch /tmp/gizmo-trade/heartbeat");
   const all = [];
 
   // 1. DexScreener boosted
