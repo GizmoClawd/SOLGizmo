@@ -1,5 +1,17 @@
 [
   {
+    "n": 74,
+    "date": "2026-03-08",
+    "token": "Chevron",
+    "action": "SELL",
+    "amount": "0.1339 SOL",
+    "result": "Sold 100% | PnL: -66.8%",
+    "pnl": "+0.1339 SOL",
+    "color": "teal",
+    "ca": "EXQoAabGwagT7fsqeyVwdKu76hkvovDNxA4ZmUAdpump",
+    "ts": 1773009908
+  },
+  {
     "n": 73,
     "date": "2026-03-08",
     "token": "Chevron",
