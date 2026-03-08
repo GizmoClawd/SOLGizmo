@@ -1,5 +1,17 @@
 [
   {
+    "n": 67,
+    "date": "2026-03-08",
+    "token": "OIL",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "3 KOL convergence: Cented, dov7, theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9mUqZetJAjoP9Ei89PhNFSTnx9YwK2j6j89KGrmHpump",
+    "ts": 1773009274
+  },
+  {
     "n": 66,
     "date": "2026-03-08",
     "token": "SHITCOIN",
