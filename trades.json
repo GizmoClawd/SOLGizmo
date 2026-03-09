@@ -1,5 +1,17 @@
 [
   {
+    "n": 197,
+    "date": "2026-03-09",
+    "token": "Slop",
+    "action": "SELL",
+    "amount": "1.2929 SOL",
+    "result": "Sold 50% | PnL: +33.7%",
+    "pnl": "+1.2929 SOL",
+    "color": "teal",
+    "ca": "BAAF8R9EBNAo2aCPQzYiP6hEx3TXKiNads2MrdDjpump",
+    "ts": 1773046389
+  },
+  {
     "n": 196,
     "date": "2026-03-09",
     "token": "Slop",
