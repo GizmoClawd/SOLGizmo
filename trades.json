@@ -1,5 +1,17 @@
 [
   {
+    "n": 251,
+    "date": "2026-03-09",
+    "token": "Miracil D",
+    "action": "BUY",
+    "amount": "0.11549032305 SOL",
+    "result": "2 KOL convergence: Cented, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8yW8gpJh4BoXMTHPmt2JWT4XEoQqDEvMcea3WurNpump",
+    "ts": 1773094284
+  },
+  {
     "n": 250,
     "date": "2026-03-09",
     "token": "HUNTER",
