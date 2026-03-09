@@ -1,5 +1,17 @@
 [
   {
+    "n": 224,
+    "date": "2026-03-09",
+    "token": "JONATHAN",
+    "action": "BUY",
+    "amount": "0.14440530855 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "D3fMHwqhoV556X8zXqtB5e4DFzFagWbxWbMcRiwspump",
+    "ts": 1773087987
+  },
+  {
     "n": 223,
     "date": "2026-03-09",
     "token": "SIRI",
