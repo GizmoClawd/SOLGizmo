@@ -1,5 +1,17 @@
 [
   {
+    "n": 233,
+    "date": "2026-03-09",
+    "token": "Distorted",
+    "action": "SELL",
+    "amount": "0.0838 SOL",
+    "result": "Sold 100% | PnL: -32.4%",
+    "pnl": "+0.0838 SOL",
+    "color": "teal",
+    "ca": "EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump",
+    "ts": 1773091199
+  },
+  {
     "n": 232,
     "date": "2026-03-09",
     "token": "MYRACYL",
