@@ -1,5 +1,17 @@
 [
   {
+    "n": 255,
+    "date": "2026-03-09",
+    "token": "HUNTER",
+    "action": "SELL",
+    "amount": "0.4445 SOL",
+    "result": "Sold 50% | PnL: +73.8%",
+    "pnl": "+0.4445 SOL",
+    "color": "teal",
+    "ca": "TuNaRNzD6TXWKZvqtiS8ob4uWUehfxjNp6RgNSzpump",
+    "ts": 1773094608
+  },
+  {
     "n": 254,
     "date": "2026-03-09",
     "token": "HUNTER",
