@@ -1,5 +1,17 @@
 [
   {
+    "n": 176,
+    "date": "2026-03-09",
+    "token": "AI",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "Re-entry @ $10648",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6Ax7YCJBLHtKvk1xqhZhMDHMvVMyjHb2kRcF9317pump",
+    "ts": 1773020823
+  },
+  {
     "n": 175,
     "date": "2026-03-09",
     "token": "B6",
