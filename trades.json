@@ -1,5 +1,17 @@
 [
   {
+    "n": 145,
+    "date": "2026-03-09",
+    "token": "KURO",
+    "action": "SELL",
+    "amount": "0.2613 SOL",
+    "result": "Sold 100% | PnL: +126.4%",
+    "pnl": "+0.2613 SOL",
+    "color": "teal",
+    "ca": "4UZkTcRVqsmmxtAPCViRjnB12w1yJCJdGRBLfmCrpump",
+    "ts": 1773016637
+  },
+  {
     "n": 144,
     "date": "2026-03-09",
     "token": "Kaku",
