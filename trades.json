@@ -1,5 +1,17 @@
 [
   {
+    "n": 156,
+    "date": "2026-03-09",
+    "token": "KURO",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "2 KOL convergence: dv, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7c7QTJkWKkgycQnTUuHMuKBZafevsezTv1sE9xZepump",
+    "ts": 1773018207
+  },
+  {
     "n": 155,
     "date": "2026-03-09",
     "token": "EYEBROWS",
