@@ -1,5 +1,17 @@
 [
   {
+    "n": 240,
+    "date": "2026-03-09",
+    "token": "Tyrone",
+    "action": "SELL",
+    "amount": "0.0715 SOL",
+    "result": "Sold 50% | PnL: +49.2%",
+    "pnl": "+0.0715 SOL",
+    "color": "teal",
+    "ca": "BBjCDFDmmtb2CG98UehxQ6qB3dFSYwXrX9uN6gWApump",
+    "ts": 1773092159
+  },
+  {
     "n": 239,
     "date": "2026-03-09",
     "token": "Tyrone",
