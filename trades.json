@@ -1,5 +1,17 @@
 [
   {
+    "n": 166,
+    "date": "2026-03-09",
+    "token": "PumpAgent",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: decu, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8eoFYsprBTUViMSSTXahb3DAkEz2GYSpaoguNaRGpump",
+    "ts": 1773019349
+  },
+  {
     "n": 165,
     "date": "2026-03-09",
     "token": "AI",
