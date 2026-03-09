@@ -1,5 +1,17 @@
 [
   {
+    "n": 195,
+    "date": "2026-03-09",
+    "token": "ARP",
+    "action": "SELL",
+    "amount": "0.4772 SOL",
+    "result": "Sold 100% | PnL: +62.9%",
+    "pnl": "+0.4772 SOL",
+    "color": "teal",
+    "ca": "TntoHenxv98izNUCUabbJuhGe3y9rhwTMDkTg2wpump",
+    "ts": 1773043619
+  },
+  {
     "n": 194,
     "date": "2026-03-09",
     "token": "ORIZAI",
