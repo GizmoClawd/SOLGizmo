@@ -1,5 +1,17 @@
 [
   {
+    "n": 187,
+    "date": "2026-03-09",
+    "token": "SOS",
+    "action": "BUY",
+    "amount": "1 SOL",
+    "result": "Boost scan score 6/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "33dhma9QA7xefhVpA7c5vMrN826xcHanSHruUEKF2LmW",
+    "ts": 1773023056
+  },
+  {
     "n": 186,
     "date": "2026-03-09",
     "token": "B6",
