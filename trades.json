@@ -1,5 +1,17 @@
 [
   {
+    "n": 125,
+    "date": "2026-03-09",
+    "token": "Inufy",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GoesKjhWrovmdTd8mUQp6KqWddTmF7drL43NTJBApump",
+    "ts": 1773015093
+  },
+  {
     "n": 124,
     "date": "2026-03-09",
     "token": "COMMODITYINU",
