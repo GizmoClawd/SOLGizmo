@@ -1,5 +1,17 @@
 [
   {
+    "n": 239,
+    "date": "2026-03-09",
+    "token": "Tyrone",
+    "action": "BUY",
+    "amount": "0.1168036776 SOL",
+    "result": "2 KOL convergence: Silver, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BBjCDFDmmtb2CG98UehxQ6qB3dFSYwXrX9uN6gWApump",
+    "ts": 1773092067
+  },
+  {
     "n": 238,
     "date": "2026-03-09",
     "token": "RCAMA",
