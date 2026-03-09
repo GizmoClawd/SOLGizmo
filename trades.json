@@ -1,5 +1,17 @@
 [
   {
+    "n": 232,
+    "date": "2026-03-09",
+    "token": "MYRACYL",
+    "action": "BUY",
+    "amount": "0.11343726045 SOL",
+    "result": "HW KOL: Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2JAGXuzCkidTByBjJpsEkLi2qSfGc4pKW7FqA4rupump",
+    "ts": 1773091109
+  },
+  {
     "n": 231,
     "date": "2026-03-09",
     "token": "Distorted",
