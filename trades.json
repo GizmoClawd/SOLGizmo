@@ -1,5 +1,17 @@
 [
   {
+    "n": 152,
+    "date": "2026-03-09",
+    "token": "EYEBROWS",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: Cented, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8WMqCNuPDumNA83VhpM1SRKBAJWy1R2S4vkSoaxdERrs",
+    "ts": 1773017428
+  },
+  {
     "n": 151,
     "date": "2026-03-09",
     "token": "KURO",
