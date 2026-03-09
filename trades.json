@@ -1,5 +1,17 @@
 [
   {
+    "n": 205,
+    "date": "2026-03-09",
+    "token": "NEMESIS",
+    "action": "BUY",
+    "amount": "0.11778471239999999 SOL",
+    "result": "2 KOL convergence: dv, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BVcuHLTq8UmSRKE4wiN3TiscmHJp2SpJnJAs6GEmpump",
+    "ts": 1773083597
+  },
+  {
     "n": 204,
     "date": "2026-03-09",
     "token": "NEMESIS",
