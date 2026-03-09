@@ -1,5 +1,17 @@
 [
   {
+    "n": 256,
+    "date": "2026-03-09",
+    "token": "Miracil D",
+    "action": "SELL",
+    "amount": "0.0864 SOL",
+    "result": "Sold 50% | PnL: +91.6%",
+    "pnl": "+0.0864 SOL",
+    "color": "teal",
+    "ca": "8yW8gpJh4BoXMTHPmt2JWT4XEoQqDEvMcea3WurNpump",
+    "ts": 1773094665
+  },
+  {
     "n": 255,
     "date": "2026-03-09",
     "token": "HUNTER",
