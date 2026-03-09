@@ -1,5 +1,17 @@
 [
   {
+    "n": 127,
+    "date": "2026-03-09",
+    "token": "Inufy",
+    "action": "SELL",
+    "amount": "0.3263 SOL",
+    "result": "Sold 100% | PnL: -51.2%",
+    "pnl": "+0.3263 SOL",
+    "color": "teal",
+    "ca": "GoesKjhWrovmdTd8mUQp6KqWddTmF7drL43NTJBApump",
+    "ts": 1773015367
+  },
+  {
     "n": 126,
     "date": "2026-03-09",
     "token": "#",
