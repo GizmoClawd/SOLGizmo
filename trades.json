@@ -1,5 +1,17 @@
 [
   {
+    "n": 128,
+    "date": "2026-03-09",
+    "token": "Gramma",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: radiance, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4dy6oLhWNrN3qTWheHqVsSUbuYLqgWgNVVPvF43Dpump",
+    "ts": 1773015400
+  },
+  {
     "n": 127,
     "date": "2026-03-09",
     "token": "Inufy",
