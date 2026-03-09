@@ -1,5 +1,17 @@
 [
   {
+    "n": 184,
+    "date": "2026-03-09",
+    "token": "B6",
+    "action": "BUY",
+    "amount": "1.5806001379999999 SOL",
+    "result": "2 KOL convergence: clukz, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7PGHEdDZmb5uHoofZcdFrwASsSAbPSdgDBAH8FgDpump",
+    "ts": 1773021628
+  },
+  {
     "n": 183,
     "date": "2026-03-09",
     "token": "B6",
