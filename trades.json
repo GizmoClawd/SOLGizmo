@@ -1,5 +1,17 @@
 [
   {
+    "n": 242,
+    "date": "2026-03-09",
+    "token": "RCAMA",
+    "action": "SELL",
+    "amount": "0.0742 SOL",
+    "result": "Sold 100% | PnL: -31.9%",
+    "pnl": "+0.0742 SOL",
+    "color": "teal",
+    "ca": "AkUcX8BRZoATjPZCdtNWy2Mgyaq8rGLzCB9DFfcapump",
+    "ts": 1773092287
+  },
+  {
     "n": 241,
     "date": "2026-03-09",
     "token": "Tyrone",
