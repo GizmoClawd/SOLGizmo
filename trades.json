@@ -1,5 +1,17 @@
 [
   {
+    "n": 146,
+    "date": "2026-03-09",
+    "token": "KURO",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4UZkTcRVqsmmxtAPCViRjnB12w1yJCJdGRBLfmCrpump",
+    "ts": 1773016828
+  },
+  {
     "n": 145,
     "date": "2026-03-09",
     "token": "KURO",
