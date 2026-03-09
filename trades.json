@@ -1,5 +1,17 @@
 [
   {
+    "n": 130,
+    "date": "2026-03-09",
+    "token": "COMMODITYINU",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: bandit, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2ceg2x96bys1NiadacDZZKVYe2ScK9vyaXASdYPKPxXU",
+    "ts": 1773015644
+  },
+  {
     "n": 129,
     "date": "2026-03-09",
     "token": "Gramma",
