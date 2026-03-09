@@ -1,5 +1,17 @@
 [
   {
+    "n": 179,
+    "date": "2026-03-09",
+    "token": "B6",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "2 KOL convergence: dv, clukz",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7PGHEdDZmb5uHoofZcdFrwASsSAbPSdgDBAH8FgDpump",
+    "ts": 1773021026
+  },
+  {
     "n": 178,
     "date": "2026-03-09",
     "token": "AI",
