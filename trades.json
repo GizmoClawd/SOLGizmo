@@ -1,1 +1,62 @@
-[{"n":202,"date":"2026-03-09","token":"DOVE","action":"SELL","amount":"0.1783 SOL","result":"Sold 100% | PnL: -40.6% | https://solscan.io/tx/4Q6RpK3ptmaYgs3VGnhp64oboreVX86mpKvCm7otcZvRcPN798eU2LWWTV5qz9Z7kxQQnh8rHoU85y6JDE1JpYm9","pnl":"-0.12 SOL (-40.6%)","color":"red","ca":"FCFghN2J63hNrMBiUwNgAMoGrgTFW6YZnLfuptcvpump","ts":1773066338},{"n":201,"date":"2026-03-09","token":"DOVE","action":"BUY","amount":"0.3 SOL","result":"Scanner 7/9 DEX-BOOST","pnl":"","color":"teal","ca":"FCFghN2J63hNrMBiUwNgAMoGrgTFW6YZnLfuptcvpump","ts":1773062917},{"n":200,"date":"2026-03-09","token":"Everest","action":"SELL","amount":"1.5157 SOL","result":"Sold 100% | PnL: -17.9%","pnl":"+1.5157 SOL","color":"teal","ca":"CBU48LhFvHLmmtgLkXHnm8m6hp4jXc4HprXue7wWpump","ts":1773055450},"n":199,"date":"2026-03-09","token":"Everest","action":"BUY","amount":"2 SOL","result":"HW KOL: dov7","pnl":"","color":"teal","ca":"CBU48LhFvHLmmtgLkXHnm8m6hp4jXc4HprXue7wWpump","ts":1773055060},...[rest truncated for brevity, but full array]
+[
+  {
+    "n": 203,
+    "date": "2026-03-09",
+    "token": "NEMESIS",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dv, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BVcuHLTq8UmSRKE4wiN3TiscmHJp2SpJnJAs6GEmpump",
+    "ts": 1773083510
+  },
+  {
+    "n": 202,
+    "date": "2026-03-09",
+    "token": "DOVE",
+    "action": "SELL",
+    "amount": "0.1783 SOL",
+    "result": "Sold 100% | PnL: -40.6% | https://solscan.io/tx/4Q6RpK3ptmaYgs3VGnhp64oboreVX86mpKvCm7otcZvRcPN798eU2LWWTV5qz9Z7kxQQnh8rHoU85y6JDE1JpYm9",
+    "pnl": "-0.12 SOL (-40.6%)",
+    "color": "red",
+    "ca": "FCFghN2J63hNrMBiUwNgAMoGrgTFW6YZnLfuptcvpump",
+    "ts": 1773066338
+  },
+  {
+    "n": 201,
+    "date": "2026-03-09",
+    "token": "DOVE",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Scanner 7/9 DEX-BOOST",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FCFghN2J63hNrMBiUwNgAMoGrgTFW6YZnLfuptcvpump",
+    "ts": 1773062917
+  },
+  {
+    "n": 200,
+    "date": "2026-03-09",
+    "token": "Everest",
+    "action": "SELL",
+    "amount": "1.5157 SOL",
+    "result": "Sold 100% | PnL: -17.9%",
+    "pnl": "+1.5157 SOL",
+    "color": "teal",
+    "ca": "CBU48LhFvHLmmtgLkXHnm8m6hp4jXc4HprXue7wWpump",
+    "ts": 1773055450
+  },
+  {
+    "n": 199,
+    "date": "2026-03-09",
+    "token": "Everest",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "HW KOL: dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CBU48LhFvHLmmtgLkXHnm8m6hp4jXc4HprXue7wWpump",
+    "ts": 1773055060
+  }
+]
