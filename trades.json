@@ -1,5 +1,17 @@
 [
   {
+    "n": 238,
+    "date": "2026-03-09",
+    "token": "RCAMA",
+    "action": "BUY",
+    "amount": "0.1168036776 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AkUcX8BRZoATjPZCdtNWy2Mgyaq8rGLzCB9DFfcapump",
+    "ts": 1773092063
+  },
+  {
     "n": 237,
     "date": "2026-03-09",
     "token": "Ivermectin",
