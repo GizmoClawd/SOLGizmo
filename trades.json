@@ -1,5 +1,17 @@
 [
   {
+    "n": 170,
+    "date": "2026-03-09",
+    "token": "Oil",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "2 KOL convergence: Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BCmpCtjysNHk6NrPywGzgCZVGT3axmUvWgbzrQQzpump",
+    "ts": 1773020189
+  },
+  {
     "n": 169,
     "date": "2026-03-09",
     "token": "AI",
