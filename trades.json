@@ -1,5 +1,17 @@
 [
   {
+    "n": 227,
+    "date": "2026-03-09",
+    "token": "SIRI",
+    "action": "SELL",
+    "amount": "0.1297 SOL",
+    "result": "Sold 100% | PnL: -45.6%",
+    "pnl": "+0.1297 SOL",
+    "color": "teal",
+    "ca": "6GbmkhRqVJMzMnst4wan2iDyZXzSajnMp3aM61jWLvdT",
+    "ts": 1773089039
+  },
+  {
     "n": 226,
     "date": "2026-03-09",
     "token": "SIRI",
