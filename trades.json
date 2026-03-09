@@ -1,5 +1,17 @@
 [
   {
+    "n": 228,
+    "date": "2026-03-09",
+    "token": "parasites",
+    "action": "BUY",
+    "amount": "0.1272241182 SOL",
+    "result": "2 KOL convergence: theo, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "385ZzN5H5Ma427MQqntZH3x79orN6ZxvhpXJaoLSpump",
+    "ts": 1773089608
+  },
+  {
     "n": 227,
     "date": "2026-03-09",
     "token": "SIRI",
