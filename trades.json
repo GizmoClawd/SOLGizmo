@@ -1,5 +1,17 @@
 [
   {
+    "n": 143,
+    "date": "2026-03-09",
+    "token": "Kaku",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "4 KOL convergence: Cented, decu, Cupsey, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7mvcSPee3aU56W9Kzc9GUH4wuBjDFxbyCPK8AWQQpump",
+    "ts": 1773016489
+  },
+  {
     "n": 142,
     "date": "2026-03-09",
     "token": "KURO",
