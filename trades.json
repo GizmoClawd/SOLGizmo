@@ -1,5 +1,17 @@
 [
   {
+    "n": 221,
+    "date": "2026-03-09",
+    "token": "SIRI",
+    "action": "BUY",
+    "amount": "0.1417791618 SOL",
+    "result": "2 KOL convergence: decu, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "d4VnSVqaUBf3dTxUqdeD4L2ix3rvsEcis4kNv3npump",
+    "ts": 1773086909
+  },
+  {
     "n": 220,
     "date": "2026-03-09",
     "token": "KILROY",
