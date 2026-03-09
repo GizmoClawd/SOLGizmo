@@ -1,5 +1,17 @@
 [
   {
+    "n": 247,
+    "date": "2026-03-09",
+    "token": "SHERROD",
+    "action": "SELL",
+    "amount": "0.0676 SOL",
+    "result": "Sold 50% | PnL: +94.2%",
+    "pnl": "+0.0676 SOL",
+    "color": "teal",
+    "ca": "HTi4sCpk8cGE1NquN2nRBpLMWjgqrbphfujFv5qNpump",
+    "ts": 1773093719
+  },
+  {
     "n": 246,
     "date": "2026-03-09",
     "token": "SHERROD",
