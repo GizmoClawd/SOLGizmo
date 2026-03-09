@@ -1,5 +1,17 @@
 [
   {
+    "n": 155,
+    "date": "2026-03-09",
+    "token": "EYEBROWS",
+    "action": "SELL",
+    "amount": "0.5556 SOL",
+    "result": "Sold 100% | PnL: -39.7%",
+    "pnl": "+0.5556 SOL",
+    "color": "teal",
+    "ca": "8WMqCNuPDumNA83VhpM1SRKBAJWy1R2S4vkSoaxdERrs",
+    "ts": 1773017762
+  },
+  {
     "n": 154,
     "date": "2026-03-09",
     "token": "RISK",
