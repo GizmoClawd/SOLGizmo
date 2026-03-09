@@ -1,5 +1,17 @@
 [
   {
+    "n": 206,
+    "date": "2026-03-09",
+    "token": "NEMESIS",
+    "action": "SELL",
+    "amount": "0.5081 SOL",
+    "result": "Sold 100% | PnL: -32.8%",
+    "pnl": "+0.5081 SOL",
+    "color": "teal",
+    "ca": "BVcuHLTq8UmSRKE4wiN3TiscmHJp2SpJnJAs6GEmpump",
+    "ts": 1773083631
+  },
+  {
     "n": 205,
     "date": "2026-03-09",
     "token": "NEMESIS",
