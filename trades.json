@@ -1,5 +1,17 @@
 [
   {
+    "n": 196,
+    "date": "2026-03-09",
+    "token": "Slop",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BAAF8R9EBNAo2aCPQzYiP6hEx3TXKiNads2MrdDjpump",
+    "ts": 1773046178
+  },
+  {
     "n": 195,
     "date": "2026-03-09",
     "token": "ARP",
