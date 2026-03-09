@@ -1,5 +1,17 @@
 [
   {
+    "n": 249,
+    "date": "2026-03-09",
+    "token": "HUNTER",
+    "action": "BUY",
+    "amount": "0.11587554989999999 SOL",
+    "result": "2 KOL convergence: Cented, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "TuNaRNzD6TXWKZvqtiS8ob4uWUehfxjNp6RgNSzpump",
+    "ts": 1773093924
+  },
+  {
     "n": 248,
     "date": "2026-03-09",
     "token": "SHERROD",
