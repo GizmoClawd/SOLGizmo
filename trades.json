@@ -1,5 +1,17 @@
 [
   {
+    "n": 234,
+    "date": "2026-03-09",
+    "token": "Ivermectin",
+    "action": "BUY",
+    "amount": "0.1088927382 SOL",
+    "result": "2 KOL convergence: radiance, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7tnxbRQJcJiukes8FsGT2dUnuQLXWFsHfrREvwSqpump",
+    "ts": 1773091232
+  },
+  {
     "n": 233,
     "date": "2026-03-09",
     "token": "Distorted",
