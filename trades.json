@@ -1,5 +1,17 @@
 [
   {
+    "n": 235,
+    "date": "2026-03-09",
+    "token": "Ivermectin",
+    "action": "SELL",
+    "amount": "0.0386 SOL",
+    "result": "Sold 50% | PnL: +31.4%",
+    "pnl": "+0.0386 SOL",
+    "color": "teal",
+    "ca": "7tnxbRQJcJiukes8FsGT2dUnuQLXWFsHfrREvwSqpump",
+    "ts": 1773091319
+  },
+  {
     "n": 234,
     "date": "2026-03-09",
     "token": "Ivermectin",
