@@ -1,5 +1,17 @@
 [
   {
+    "n": 177,
+    "date": "2026-03-09",
+    "token": "OIL",
+    "action": "BUY",
+    "amount": "1 SOL",
+    "result": "Boost scan score 6/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ELVMu5EpezUEvz6umZbie9CKGMYmH3vpDk8L1fLbpump",
+    "ts": 1773020853
+  },
+  {
     "n": 176,
     "date": "2026-03-09",
     "token": "AI",
