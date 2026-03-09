@@ -1,5 +1,17 @@
 [
   {
+    "n": 122,
+    "date": "2026-03-09",
+    "token": "COMMODITYINU",
+    "action": "SELL",
+    "amount": "0.2675 SOL",
+    "result": "Sold 50% | PnL: +38.7%",
+    "pnl": "+0.2675 SOL",
+    "color": "teal",
+    "ca": "2ceg2x96bys1NiadacDZZKVYe2ScK9vyaXASdYPKPxXU",
+    "ts": 1773014648
+  },
+  {
     "n": 121,
     "date": "2026-03-09",
     "token": "COMMODITYINU",
