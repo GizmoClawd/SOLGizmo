@@ -1,5 +1,17 @@
 [
   {
+    "n": 136,
+    "date": "2026-03-09",
+    "token": "Kaku",
+    "action": "SELL",
+    "amount": "0.3618 SOL",
+    "result": "Sold 50% | PnL: +66.1%",
+    "pnl": "+0.3618 SOL",
+    "color": "teal",
+    "ca": "7mvcSPee3aU56W9Kzc9GUH4wuBjDFxbyCPK8AWQQpump",
+    "ts": 1773016100
+  },
+  {
     "n": 135,
     "date": "2026-03-09",
     "token": "Kaku",
