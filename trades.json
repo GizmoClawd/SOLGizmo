@@ -1,5 +1,17 @@
 [
   {
+    "n": 182,
+    "date": "2026-03-09",
+    "token": "B6",
+    "action": "SELL",
+    "amount": "0.4971 SOL",
+    "result": "Sold 100% | PnL: -1.1%",
+    "pnl": "+0.4971 SOL",
+    "color": "teal",
+    "ca": "7PGHEdDZmb5uHoofZcdFrwASsSAbPSdgDBAH8FgDpump",
+    "ts": 1773021483
+  },
+  {
     "n": 181,
     "date": "2026-03-09",
     "token": "OIL",
