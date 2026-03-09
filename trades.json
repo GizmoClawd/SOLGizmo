@@ -1,5 +1,17 @@
 [
   {
+    "n": 260,
+    "date": "2026-03-09",
+    "token": "Midnight",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "2 KOL convergence: Cented, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CQW7wNUt2HhhUV15RwgJbuoB2DBPVaLsYBUK7Dw8pump",
+    "ts": 1773097652
+  },
+  {
     "n": 259,
     "date": "2026-03-09",
     "token": "Midnight",
