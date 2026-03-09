@@ -1,5 +1,17 @@
 [
   {
+    "n": 230,
+    "date": "2026-03-09",
+    "token": "parasites",
+    "action": "SELL",
+    "amount": "0.0993 SOL",
+    "result": "Sold 100% | PnL: +22.0%",
+    "pnl": "+0.0993 SOL",
+    "color": "teal",
+    "ca": "385ZzN5H5Ma427MQqntZH3x79orN6ZxvhpXJaoLSpump",
+    "ts": 1773089819
+  },
+  {
     "n": 229,
     "date": "2026-03-09",
     "token": "parasites",
