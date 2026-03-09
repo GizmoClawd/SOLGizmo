@@ -1,5 +1,17 @@
 [
   {
+    "n": 225,
+    "date": "2026-03-09",
+    "token": "JONATHAN",
+    "action": "SELL",
+    "amount": "0.0307 SOL",
+    "result": "Sold 100% | PnL: -37.1%",
+    "pnl": "+0.0307 SOL",
+    "color": "teal",
+    "ca": "D3fMHwqhoV556X8zXqtB5e4DFzFagWbxWbMcRiwspump",
+    "ts": 1773088739
+  },
+  {
     "n": 224,
     "date": "2026-03-09",
     "token": "JONATHAN",
