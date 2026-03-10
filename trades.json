@@ -1,5 +1,17 @@
 [
   {
+    "n": 434,
+    "date": "2026-03-10",
+    "token": "MWO",
+    "action": "SELL",
+    "amount": "0.1068 SOL",
+    "result": "Sold 100% | PnL: -37.3%",
+    "pnl": "+0.1068 SOL",
+    "color": "teal",
+    "ca": "5yV9RsQ51BQTyyUYiGccDoKSSCBog79n6eUG4r4pump",
+    "ts": 1773181433
+  },
+  {
     "n": 433,
     "date": "2026-03-10",
     "token": "ClaudePoop",
