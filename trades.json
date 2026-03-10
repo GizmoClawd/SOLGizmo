@@ -1,5 +1,17 @@
 [
   {
+    "n": 334,
+    "date": "2026-03-10",
+    "token": "ClaudeGov",
+    "action": "BUY",
+    "amount": "0.2546617895 SOL",
+    "result": "2 KOL convergence: Cented, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6QU3XDQt4pXSStujRCheGJAxHguhy5bN4cZ5MYXQpump",
+    "ts": 1773118633
+  },
+  {
     "n": 333,
     "date": "2026-03-10",
     "token": "BOYUELI",
