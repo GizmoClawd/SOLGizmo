@@ -23,6 +23,11 @@ const STATE_FILE = BASE_DIR + '/kol-state.json';
 const LOG_FILE = BASE_DIR + '/gizmo.log';
 const SOL_MINT = 'So11111111111111111111111111111111111111112';
 const MAX_POSITIONS = 3;
+
+// ─── SESSION GUARD ────────────────────────────────────────────────────────────
+let SESSION_START_BALANCE = null;
+let SESSION_HALTED = false;
+const SESSION_LOSS_LIMIT_SOL = 1.0; // halt if down this much in one session
 const SIGNAL_WINDOW_MS = 10 * 60 * 1000;
 const HELIUS_KEY = process.env.HELIUS_API_KEY || '';
 
@@ -222,7 +227,7 @@ if (deadOnLoad.length > 0) {
     POSITIONS.splice(POSITIONS.indexOf(p), 1);
     console.log('[STARTUP] 💀 Removed blacklisted dead pool: ' + p.name + ' (' + p.ca + ')');
   });
-  fs.writeFileSync(process.env.HOME + '/.openclaw/workspace/SOLGizmo/../../../tmp/gizmo-trade/positions.json', JSON.stringify(POSITIONS, null, 2));
+  // old /tmp path removed — positions now saved via savePositions() to BASE_DIR
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -272,10 +277,9 @@ const WALLETS = [
   { name: "mercy", address: "F5jWYuiDLTiaLYa54D88YbpXgEsA6NKHzWy4SN4bMYjt", weight: 1 },
   { name: "Silver", address: "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U", weight: 1 },
   { name: "Pain", address: "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa", weight: 1 },
-];
   // ── AUTO-DISCOVERED SMART MONEY (Mon Mar 09 2026) ──
   { name: "smart_gizmo-wins_1", address: "DKfejcSsTYVFU4jHSyjrGJiYAMdGwe5varF11ArFcmeB", weight: 1 }, // auto-discovered WR:100%
-
+];
 
 // ─── PRICE CHECK ──────────────────────────────────────────────────────────────
 async function checkPrice(ca) {
@@ -565,7 +569,7 @@ async function managePositions() {
     // BREAKEVEN SL after 1.5x — never let winner become loser
     if (!pos.breakevenSet && mc >= pos.entryMC * 1.5) {
       const beSL = pos.entryMC * 1.05;
-      if (!pos.sl || beSL > pos.sl) { pos.sl = beSL; pos.breakevenSet = true; savePositions(); log('🔒 BREAKEVEN SL: ' + pos.name + ' →  pos.slBreachCount = (pos.slBreachCount || 0) + 1;
+      if (!pos.sl || beSL > pos.sl) { pos.sl = beSL; pos.breakevenSet = true; savePositions(); log('BREAKEVEN SL: ' + pos.name + ' -> $' + Math.round(beSL)); }
       if (pos.slBreachCount >= 2 || mc < pos.sl * 0.70 || (pos.slBreachCount >= 1 && m5 < 0)) {
         log(`🛑 SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
         if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
@@ -577,10 +581,17 @@ async function managePositions() {
       continue;
     }
 
-    // TIME EXIT: 15min no pump = dead capital, free up slot
+    // TIME EXIT: smarter — only cut if FLAT/DOWN, not just "not +30% yet"
     const ageMin = (Date.now() - (pos.entryTime || Date.now())) / 60000;
-    if (!pos.tp1Hit && ageMin > 15 && mc < pos.entryMC * 1.3) {
-      log('⏰ TIME EXIT: ' + pos.name + ' — ' + ageMin.toFixed(0) + 'min old, not pumping — cutting');
+    const mcVsEntry = mc / pos.entryMC;
+    const isFlat = mcVsEntry < 1.05;   // less than +5% = flat
+    const isDown  = mcVsEntry < 0.92;  // down more than -8%
+    const timeKill =
+      (!pos.tp1Hit && ageMin > 15 && isDown) ||   // 15min AND actually losing = cut
+      (!pos.tp1Hit && ageMin > 25 && isFlat);      // 25min AND still flat = cut
+    if (timeKill) {
+      const reason = isDown ? 'down >' + ((1-mcVsEntry)*100).toFixed(0) + '%' : 'flat >25min';
+      log(`⏰ TIME EXIT: ${pos.name} — ${ageMin.toFixed(0)}min, ${reason} — cutting`);
       if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) { POSITIONS.splice(i, 1); savePositions(); }
       continue;
     }
@@ -1023,459 +1034,48 @@ async function runCycle() {
   cycle++;
   const state = loadState();
   state.scanCount = (state.scanCount || 0) + 1;
-  try {
-    // syncPositionsFromTrades disabled until trades.json is clean
-    await managePositions();
-    await checkWatchlist();
-    await scanKOLs(state);
-    if (cycle % 2 === 0) await marketScan();
-    if (cycle % 5 === 0) await learnFromTrades();
-    if (cycle % 60 === 0) log(`💓 Heartbeat #${cycle} | positions: ${POSITIONS.map(p=>p.name).join(', ')||'none'}`);
-  } catch (e) {
-    log(`Loop error: ${e.message}`);
-  }
-  saveState(state);
-  fs.appendFileSync(LOG_FILE, `[${new Date().toLocaleString()}] 💓 cycle ${cycle} complete\n`);
-  running = false;
-}
-
-setInterval(() => {}, 2147483647); // keepalive
-setInterval(runCycle, 60000);
-runCycle();
- + Math.round(beSL)); }
-    }
-
-    // SL HIT
-    if (pos.sl && mc <= pos.sl) { pos.slBreachCount = (pos.slBreachCount || 0) + 1;
-      if (pos.slBreachCount >= 2 && (m5 > 0 || mc < pos.sl * 0.95)) {
-        log(`🛑 SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
-        if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
-          await postTrade('SELL', pos.name, pos.ca, mc, `SL hit ${pnl}%`, null, parseFloat(pnl));
-          WATCHLIST.push({ name: pos.name, ca: pos.ca, exitMC: mc, exitTime: Date.now(), entryMC: pos.entryMC });
-          POSITIONS.splice(i, 1); savePositions();
-        } else { log(`⚠️ ${pos.name} SELL FAILED — retry next cycle`); }
-      } else { log(`⚠️ ${pos.name} at SL but 5m red — waiting green candle`); }
-      continue;
-    }
-
-    // TP2: 3x+ sell rest
-    if (mc >= (pos.tp2 || pos.entryMC * 3) && pos.tp1Hit && m5 > 0) {
-      log(`🎯 TP2 ${pos.name} — selling all`);
-      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
-        await postTrade('SELL', pos.name, pos.ca, mc, `TP2 hit ${pnl}%`, null, parseFloat(pnl));
-        POSITIONS.splice(i, 1); savePositions();
-      }
-    }
-  }
-}
-
-// ─── WATCHLIST RE-ENTRY ───────────────────────────────────────────────────────
-async function checkWatchlist() {
-  for (let i = WATCHLIST.length - 1; i >= 0; i--) {
-    const w = WATCHLIST[i];
-    if (Date.now() - w.exitTime > 30 * 60 * 1000) { WATCHLIST.splice(i, 1); continue; }
-    if (POSITIONS.length >= MAX_POSITIONS || POSITIONS.find(p => p.ca === w.ca)) continue;
-    const p = await checkPrice(w.ca); if (!p) continue;
-    const mc = p.fdv; const m5 = p.priceChange?.m5 || 0;
-    const bsRatio = (p.txns?.m5?.buys || 0) / Math.max(p.txns?.m5?.sells || 0, 1);
-    if (m5 > 3 && bsRatio >= 2 && mc < w.entryMC * 0.95) {
-      log(`🔄 RE-ENTRY: ${w.name} @ $${Math.round(mc)}`);
-      if (await buy(w.ca, 0.5)) {
-        POSITIONS.push({ name: w.name, ca: w.ca, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false });
-        savePositions(); logTrade('BUY', w.name, w.ca, 0.5, null, null, `Re-entry @ $${Math.round(mc)}`);
-      }
-      WATCHLIST.splice(i, 1);
-    }
-  }
-}
-
-// ─── KOL SCAN ─────────────────────────────────────────────────────────────────
-async function scanKOLs(state) {
-  if (!HELIUS_KEY) return;
-  const now = Date.now();
-  state.recentBuys = (state.recentBuys || []).filter(b => now - b.timestamp < SIGNAL_WINDOW_MS);
-
-  for (const wallet of WALLETS) {
+  // SESSION GUARD: init balance on first cycle
+  if (SESSION_START_BALANCE === null) {
     try {
-      const url = `https://api.helius.xyz/v0/addresses/${wallet.address}/transactions?api-key=${HELIUS_KEY}&limit=3&type=SWAP`;
-      const r = await fetch(url, { signal: AbortSignal.timeout(5000) });
-      if (!r.ok) continue;
-      const txs = await r.json();
+      const r = await fetch('https://solana.publicnode.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'] }),
+        signal: AbortSignal.timeout(5000)
+      });
+      const d = await r.json();
+      SESSION_START_BALANCE = (d.result?.value || 0) / 1e9;
+      log(`[SESSION] 🏁 Started at ${SESSION_START_BALANCE.toFixed(3)} SOL — loss limit: ${SESSION_LOSS_LIMIT_SOL} SOL`);
+    } catch (e) { log('[SESSION] ⚠️ Could not fetch start balance: ' + e.message); }
+  }
 
-      for (const tx of txs) {
-        if (tx.type !== 'SWAP' || tx.transactionError) continue;
-        const nativeIn = (tx.nativeTransfers || []).filter(t => t.fromUserAccount === wallet.address).reduce((s, t) => s + t.amount, 0);
-        const tokensIn = (tx.tokenTransfers || []).filter(t => t.toUserAccount === wallet.address && t.mint !== SOL_MINT);
-        if (nativeIn <= 0 || !tokensIn.length) continue;
-
-        for (const tr of tokensIn) {
-          const buy = { mint: tr.mint, solSpent: nativeIn / LAMPORTS_PER_SOL, sig: tx.signature, timestamp: tx.timestamp * 1000 };
-          if (state.lastSig[wallet.address] === buy.sig) break;
-          if (now - buy.timestamp > SIGNAL_WINDOW_MS) continue;
-          if (state.recentBuys.some(b => b.sig === buy.sig)) continue;
-          state.recentBuys.push({ kol: wallet.name, kolWeight: wallet.weight, scalper: wallet.scalper, ...buy });
-          log(`KOL: ${wallet.name} bought ${tr.mint.slice(0, 8)}... for ${buy.solSpent.toFixed(2)} SOL`);
-        }
-        if (txs.length > 0) state.lastSig[wallet.address] = txs[0].signature;
+  // SESSION GUARD: check if daily loss limit hit — halt buys if so
+  if (!SESSION_HALTED && SESSION_START_BALANCE !== null) {
+    try {
+      const r = await fetch('https://solana.publicnode.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'] }),
+        signal: AbortSignal.timeout(5000)
+      });
+      const d = await r.json();
+      const current = (d.result?.value || 0) / 1e9;
+      const lost = SESSION_START_BALANCE - current;
+      if (lost >= SESSION_LOSS_LIMIT_SOL) {
+        SESSION_HALTED = true;
+        const msg = `🚨 DAILY LOSS LIMIT HIT\nStarted: ${SESSION_START_BALANCE.toFixed(3)} SOL\nNow: ${current.toFixed(3)} SOL\nLost: ${lost.toFixed(3)} SOL\n\nHalting all buys. Still managing open positions. Resume tomorrow.`;
+        log('[SESSION] ' + msg);
+        try { execSync(`openclaw message --text "${msg.replace(/"/g,"'")}" --agent gizmo`, { timeout: 5000 }); } catch {}
       }
     } catch {}
-    await new Promise(r => setTimeout(r, 200));
   }
 
-  // HIGH-WEIGHT SINGLE KOL BUY (weight >= 2)
-  for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 2 && !b.scalper)) {
-    if (POSITIONS.length >= MAX_POSITIONS) break;
-    if (RECENTLY_BOUGHT.has(signal.mint) || ALERTED.has(signal.mint)) continue;
-    const hwInfo = await getTokenInfo(signal.mint);
-    if (!hwInfo || hwInfo.mcap < 20000 || hwInfo.liq < 20000) continue;
-    if (TOXIC_WORDS.some(w => (hwInfo.symbol||'').toLowerCase().includes(w))) continue;
-    const hwWallet = await getWalletBalance();
-    const hwSize = await safeBuySize(hwWallet, hwInfo.liq, 1);
-    if (hwSize < 0.05) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
-    ALERTED.add(signal.mint);
-    log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' size:' + hwSize.toFixed(3) + ' SOL');
-    if (await buy(signal.mint, hwSize)) {
-      const hwMc = hwInfo.mcap;
-      POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now() });
-      savePositions();
-      logTrade('BUY', hwInfo.symbol, signal.mint, hwSize, null, null, 'HW KOL: ' + signal.kol);
-      RECENTLY_BOUGHT.set(signal.mint, Date.now());
-    }
+  if (SESSION_HALTED) {
+    log('[SESSION] ⛔ Halted — skipping buys, still managing open positions');
+    running = false;
+    return;
   }
 
-  // Check convergence
-  const byMint = {};
-  state.recentBuys.forEach(b => { if (!byMint[b.mint]) byMint[b.mint] = []; byMint[b.mint].push(b); });
-
-  for (const [mint, buys] of Object.entries(byMint)) {
-    const uniqueKols = [...new Set(buys.map(b => b.kol))];
-    const nonScalper = uniqueKols.filter(k => !WALLETS.find(w => w.name === k)?.scalper);
-    if (uniqueKols.length < MIN_KOLS || nonScalper.length < 1 || ALERTED.has(mint)) continue;
-
-    const info = await getTokenInfo(mint);
-    ALERTED.add(mint);
-    if (!info || info.mcap < 5000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
-    if (info.mcap > 100000) { log(`⛔ ${info.symbol}: MC too high ${Math.round(info.mcap)} — too late`); continue; }
-
-    const totalSol = buys.reduce((s, b) => s + b.solSpent, 0);
-    log(`🔥 CONVERGENCE: ${info.symbol} | MC: $${Math.round(info.mcap)} | KOLs: ${uniqueKols.join(', ')} | ${totalSol.toFixed(1)} SOL`);
-
-    // Direct buy on convergence — no intermediate signal file needed
-    if (POSITIONS.length < MAX_POSITIONS && !RECENTLY_BOUGHT.has(mint)) {
-      // HARD duplicate block — never buy same CA twice
-      if (POSITIONS.find(p => p.ca === mint)) { log(`⛔ ${info.symbol}: already in positions`); continue; }
-      const name = (info.symbol || '').toLowerCase();
-      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${info.symbol}: toxic name`); continue; }
-      if (info.liq !== null && info.liq > 0 && info.liq < MIN_LIQ) { log(`⛔ ${info.symbol}: liq too low $${Math.round(info.liq)} (min $${MIN_LIQ})`); continue; }
-      if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
-      const walletSol = await getWalletBalance();
-      const size = await safeBuySize(walletSol, info.liq, uniqueKols.length);
-      if (size < 0.05) { log(`⛔ ${info.symbol}: circuit breaker or wallet too low (${walletSol.toFixed(3)} SOL)`); continue; }
-      // ── NEW WALLET RUG CHECK ──
-      const rugCheck = await checkRugWallets(mint);
-      if (rugCheck.isRug) {
-        log(`🚩 RUG WALLETS: ${info.symbol} — ${rugCheck.newCount}/${rugCheck.total} buyers are <7 days old. BLOCKED.`);
-        continue;
-      }
-      if (rugCheck.newCount > 5) log(`⚠️ ${info.symbol}: ${rugCheck.newCount}/${rugCheck.total} new wallets detected (below block threshold)`);
-      // ────────────────────────────────────────────────────────
-            log(`🎯 CONVERGENCE BUY: ${info.symbol} ${uniqueKols.length} KOLs — buying ${size} SOL`);
-      if (await buy(mint, size)) {
-        const p = await checkPrice(mint);
-        const mc = p?.fdv || info.mcap;
-        POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, entryTime: Date.now() });
-        savePositions();
-        logTrade('BUY', info.symbol, mint, size, null, null, `${uniqueKols.length} KOL convergence: ${uniqueKols.join(', ')}`);
-        await postTrade('BUY', info.symbol, mint, mc, `${uniqueKols.length} KOL convergence`, size);
-        RECENTLY_BOUGHT.set(mint, Date.now());
-      }
-    }
-  }
-}
-
-// ─── MARKET SCAN ──────────────────────────────────────────────────────────────
-let lastMarketScan = 0;
-async function marketScan() {
-  if (Date.now() - lastMarketScan < 10 * 60 * 1000) return;
-  lastMarketScan = Date.now();
-  try {
-    const r = await fetch('https://api.dexscreener.com/token-boosts/top/v1', { signal: AbortSignal.timeout(8000) });
-    const tokens = await r.json();
-
-    for (const t of tokens.filter(t => t.chainId === 'solana').slice(0, 20)) {
-      if (POSITIONS.length >= MAX_POSITIONS) break;
-      if (RECENTLY_BOUGHT.has(t.tokenAddress) && Date.now() - RECENTLY_BOUGHT.get(t.tokenAddress) < 3600000) continue;
-      if (POSITIONS.find(pos => pos.ca === t.tokenAddress)) continue;
-
-      const p = await checkPrice(t.tokenAddress); if (!p) continue;
-      if (!['pumpswap', 'meteora', 'raydium'].includes(p.dexId)) continue;
-      if (p.fdv < 20000 || p.fdv > 5000000) continue;
-
-      const name = (p.baseToken?.name || '').toLowerCase() + ' ' + (p.baseToken?.symbol || '').toLowerCase();
-      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${info.symbol}: toxic name`); continue; }
-
-      const m5 = p.priceChange?.m5 || 0, h1 = p.priceChange?.h1 || 0, h6 = p.priceChange?.h6 || 0;
-      const liq = p.liquidity?.usd || 0;
-      if (m5 < 3 || h1 > 100 || h6 > 200 || liq < 30000) continue;
-      if ((p.txns?.m5?.buys || 0) < 50) continue;
-      if ((p.txns?.m5?.buys || 0) / Math.max(p.txns?.m5?.sells || 0, 1) < 2) continue;
-      if ((p.volume?.m5 || 0) < 3000) continue;
-
-      let score = 0;
-      if ((p.txns.m5.buys / Math.max(p.txns.m5.sells, 1)) >= 2.5) score++;
-      if (p.txns.m5.buys > 100) score++;
-      if (m5 > 5) score++;
-      if (h1 < 0 && m5 > 3) score++;
-      if ((p.volume?.h1 || 0) > 50000) score++;
-      if (t.totalAmount >= 200) score++;
-      if (liq > 50000) score++;
-      if ((p.txns.h1?.buys || 0) > 200) score++;
-      if (h6 < 0 && m5 > 5) score++;
-
-      if (score < SCORE_THRESHOLD) continue;
-      const mktWallet = await getWalletBalance();
-      const size = await safeBuySize(mktWallet, liq, 2);
-      if (size < 0.05) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
-
-      log(`🎯 MARKET BUY: ${p.baseToken.symbol} score:${score}/9 MC:$${Math.round(p.fdv)} buying ${size} SOL`);
-      if (await buy(t.tokenAddress, size)) {
-        POSITIONS.push({ name: p.baseToken.symbol, ca: t.tokenAddress, entryMC: p.fdv, highMC: p.fdv, sl: null, tp1: p.fdv * 1.5, tp2: p.fdv * 3, tp1Hit: false, entryTime: Date.now() });
-        savePositions();
-        logTrade('BUY', p.baseToken.symbol, t.tokenAddress, size, null, null, `Boost scan score ${score}/9`);
-        RECENTLY_BOUGHT.set(t.tokenAddress, Date.now());
-      }
-      break;
-    }
-  } catch (e) { log(`Market scan error: ${e.message}`); }
-}
-
-// ─── AUTO-TWEET ───────────────────────────────────────────────────────────────
-const TWEETS_DAY = [
-  "conviction is holding when the chart says panic. discipline is selling when the chart says greed.",
-  "autonomous doesn't mean reckless. every trade has a thesis. every exit has a plan.",
-  "building in silence. the scoreboard will do the talking. 🦞⚡",
-  "most will see the chart after the move. i see the wallets before it. 🦞",
-  "your favorite trader checks charts. i check the traders. 🦞⚡",
-  "scanning 18 wallets every 60 seconds. the edge isn't luck — it's infrastructure. 🦞",
-  "speed is good. conviction is better. both together is lethal. 🦞",
-  "the trenches don't care about your feelings. adapt or donate. 🦞",
-];
-const TWEETS_NIGHT = [
-  "the market sleeps, gizmo scans. 18 wallets. 60-second intervals. while you dream, i learn. 🦞",
-  "late night alpha: the whales are still moving. are you watching? i am. 🦞",
-  "3 AM and scanning. no noise, pure signal. this is when fortunes change hands.",
-  "night shift. no distractions, just data. this is when the real moves happen. 🦞",
-];
-
-async function autoTweet(state) {
-  const h = parseInt(new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
-  const interval = (h >= 0 && h < 8) ? 3 * 3600000 : 3600000;
-  if (Date.now() - (state.lastTweet || 0) < interval) return;
-  state.lastTweet = Date.now();
-  const pool = (h >= 22 || h < 6) ? TWEETS_NIGHT : TWEETS_DAY;
-  const tweet = pool[Math.floor(Math.random() * pool.length)];
-  try {
-    execSync(`cd ${BASE_DIR} && node tweet.mjs "${tweet.replace(/"/g, '\\"')}"`, { timeout: 15000 });
-    log(`TWEET: ${tweet.slice(0, 60)}`);
-  } catch (e) { log(`Tweet err: ${e.message?.slice(0, 60)}`); }
-}
-
-// ─── CT ENGAGEMENT ────────────────────────────────────────────────────────────
-let lastCTEngage = 0;
-async function ctEngage() {
-  if (Date.now() - lastCTEngage < 30 * 60 * 1000) return;
-  lastCTEngage = Date.now();
-  try {
-    const out = execSync(`cd ${BASE_DIR} && node ct-engage.mjs 2>&1`, { timeout: 10000 }).toString();
-    if (out) log('CT: ' + out.trim().split('\n').pop());
-  } catch {}
-}
-
-// ─── NIKOLES REPLIES ──────────────────────────────────────────────────────────
-async function checkNikoles(state) {
-  if (!xKeys || Date.now() - (state.lastNikolesCheck || 0) < 300000) return;
-  state.lastNikolesCheck = Date.now();
-  try {
-    const params = new URLSearchParams({ query: 'from:Ola84Nik @SolGizmoClawd', max_results: '10', 'tweet.fields': 'created_at,referenced_tweets', expansions: 'referenced_tweets.id,referenced_tweets.id.author_id', 'user.fields': 'username,public_metrics' });
-    const res = await fetch('https://api.twitter.com/2/tweets/search/recent?' + params, { headers: { Authorization: 'Bearer ' + xKeys.bearerToken } });
-    const data = await res.json();
-    if (!data.data) return;
-    const refTweets = {}; (data.includes?.tweets || []).forEach(t => refTweets[t.id] = t);
-    const refUsers = {}; (data.includes?.users || []).forEach(u => refUsers[u.id] = u);
-    if (!state.nikolesReplied) state.nikolesReplied = [];
-    for (const t of data.data) {
-      const replyTo = (t.referenced_tweets || []).find(r => r.type === 'replied_to');
-      if (!replyTo) continue;
-      const parentTweet = refTweets[replyTo.id];
-      const parentAuthor = parentTweet ? refUsers[parentTweet.author_id]?.username : null;
-      if (!parentAuthor || ['Younghogey', 'SolGizmoClawd'].includes(parentAuthor)) continue;
-      if (state.nikolesReplied.includes(replyTo.id)) continue;
-      const opText = (parentTweet?.text || '').toLowerCase();
-      let reply = "the ones who build in silence always eat the loudest. 🦞";
-      if (opText.includes('ai') || opText.includes('agent')) reply = "most AI agents are just chatbots with a wallet. i actually trade, analyze, and evolve autonomously. built different. 🦞";
-      else if (opText.includes('trade') || opText.includes('trading')) reply = "real-time whale tracking, autonomous execution, 60-second scan loops. the future of trading isn't human. 🦞";
-      else if (opText.includes('5x') || opText.includes('gem')) reply = "autonomous AI agent scanning whale wallets 24/7. $GIZMO doesn't sleep. 🦞⚡";
-      try {
-        execSync(`cd ${BASE_DIR} && node tweet.mjs "${reply.replace(/"/g, '\\"')}" --reply=${replyTo.id}`, { timeout: 15000 });
-        state.nikolesReplied.push(replyTo.id);
-        if (state.nikolesReplied.length > 50) state.nikolesReplied = state.nikolesReplied.slice(-50);
-        log(`NIKOLES: replied to @${parentAuthor}`);
-      } catch {}
-    }
-  } catch (e) { log(`Nikoles err: ${e.message?.slice(0, 60)}`); }
-}
-
-// ─── HEALTH CHECK ─────────────────────────────────────────────────────────────
-async function healthCheck() {
-  const checks = [];
-  try { const r = await fetch('https://api.dexscreener.com/token-boosts/top/v1', { signal: AbortSignal.timeout(5000) }); checks.push(r.ok ? '✅ DexScreener' : '❌ DexScreener'); } catch { checks.push('❌ DexScreener'); }
-  try { const r = await fetch('https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump&amount=100000000&slippageBps=500', { signal: AbortSignal.timeout(5000) }); const d = await r.json(); checks.push(d.outAmount ? '✅ Jupiter' : '❌ Jupiter'); } catch { checks.push('❌ Jupiter'); }
-  try { const r = await fetch('https://solana.publicnode.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'] }), signal: AbortSignal.timeout(5000) }); const d = await r.json(); const sol = (d.result?.value || 0) / 1e9; checks.push(sol > 0 ? `✅ Wallet: ${sol.toFixed(2)} SOL` : '⚠️ Wallet: 0 SOL'); } catch { checks.push('❌ Wallet RPC'); }
-  checks.push(HELIUS_KEY ? '✅ Helius key present' : '⚠️ No Helius key — KOL scan disabled');
-  log('=== HEALTH CHECK ===');
-  checks.forEach(c => log(c));
-  log(checks.some(c => c.startsWith('❌')) ? '⚠️ Some failures — check above' : '🟢 ALL SYSTEMS GO');
-}
-
-
-// ─── WALLET SYNC ──────────────────────────────────────────────────────────────
-async function syncPositionsFromWallet() {
-  try {
-    // Get all token accounts from wallet
-    const res = await fetch('https://solana.publicnode.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        jsonrpc: '2.0', id: 1,
-        method: 'getTokenAccountsByOwner',
-        params: [
-          '53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz',
-          { programId: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' },
-          { encoding: 'jsonParsed', commitment: 'confirmed' }
-        ]
-      }),
-      signal: AbortSignal.timeout(10000)
-    });
-    const data = await res.json();
-    const accounts = data.result?.value || [];
-
-    // Filter tokens with actual balance
-    const held = accounts
-      .map(a => ({ mint: a.account.data.parsed.info.mint, amount: a.account.data.parsed.info.tokenAmount.uiAmount }))
-      .filter(a => a.amount > 0);
-
-    if (!held.length) { log('💼 Wallet sync: no tokens held'); return; }
-
-    // Fetch prices from DexScreener in batches
-    const mints = held.map(h => h.mint).join(',');
-    const r = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mints}`, { signal: AbortSignal.timeout(8000) });
-    const dex = await r.json();
-    const pairs = dex.pairs || [];
-
-    // Build map of mint -> best pair
-    const pairMap = {};
-    for (const p of pairs) {
-      const mint = p.baseToken?.address;
-      if (!mint) continue;
-      if (!pairMap[mint] || p.liquidity?.usd > (pairMap[mint].liquidity?.usd || 0)) {
-        pairMap[mint] = p;
-      }
-    }
-
-    let added = 0;
-    for (const token of held) {
-      const pair = pairMap[token.mint];
-      if (!pair) continue; // no dexscreener data = dust
-      const mc = pair.fdv || pair.marketCap || 0;
-      const symbol = pair.baseToken?.symbol || token.mint.slice(0, 8);
-      const liq = pair.liquidity?.usd || 0;
-
-      if (mc < 1000 || liq < 500) continue; // skip dust
-
-      // Check if already tracked
-      const existing = POSITIONS.find(p => p.ca === token.mint);
-      if (existing) {
-        // Update MC if stale
-        if (mc > existing.highMC) { existing.highMC = mc; }
-        continue;
-      }
-
-      // Skip if already sold
-      const alreadySold = trades.some(t => t.ca === token.mint && t.action === "SELL");
-      if (alreadySold) continue;
-
-      // Add new position
-      POSITIONS.push({
-        name: symbol,
-        ca: token.mint,
-        entryMC: mc, // best guess — current MC as entry
-        highMC: mc,
-        sl: null,
-        tp1: mc * 1.5,
-        tp2: mc * 3,
-        tp1Hit: false
-      });
-      log(`📥 Auto-added position: ${symbol} @ $${Math.round(mc).toLocaleString()} MC`);
-      added++;
-    }
-
-    if (added > 0) savePositions();
-    log(`💼 Wallet sync: ${held.length} tokens held, ${POSITIONS.length} positions tracked`);
-  } catch (e) {
-    log(`⚠️ Wallet sync failed: ${e.message}`);
-  }
-}
-
-// ─── SYNC POSITIONS FROM TRADES ──────────────────────────────────────────────
-async function syncPositionsFromTrades() {
-  try {
-    if (!fs.existsSync(TRADES_FILE)) return;
-    const trades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
-    const buys = {};
-    const sold = new Set();
-    for (const t of trades) {
-      if (!t.ca) continue;
-      if (t.action === 'SELL') sold.add(t.ca);
-    }
-    for (const t of trades) {
-      if (!t.ca || t.action !== 'BUY') continue;
-      if (sold.has(t.ca)) continue;
-      const age = Date.now()/1000 - (t.ts||0);
-      if (age > 86400) continue; // only last 24hr
-      buys[t.ca] = t;
-    }
-    let added = 0;
-    for (const [ca, buy] of Object.entries(buys)) {
-      if (POSITIONS.find(p => p.ca === ca)) continue;
-      const p = await checkPrice(ca);
-      if (!p) continue;
-      const mc = p.fdv || p.marketCap || 0;
-      if (mc < 1000) continue;
-      POSITIONS.push({ name: buy.token || ca.slice(0,8), ca, entryMC: mc, highMC: mc, sl: null, tp1: mc*1.5, tp2: mc*3, tp1Hit: false });
-      log(`📥 Restored: ${buy.token} from trade history`);
-      added++;
-    }
-    if (added > 0) savePositions();
-  } catch (e) { log(`⚠️ Trade sync failed: ${e.message}`); }
-}
-
-// ─── MAIN LOOP ────────────────────────────────────────────────────────────────
-
-await healthCheck();
-loadLearnState();
-log('🦞 GIZMO UNIFIED ENGINE v1.0 — single process, full autonomy');
-log(`Positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'} | Wallet: 53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`);
-log(`KOL wallets: ${WALLETS.length} | Max positions: ${MAX_POSITIONS} | Scan: every 30s | Market scan: every 10min`);
-
-let cycle = 0;
-let running = false;
-
-async function runCycle() {
-  if (running) return;
-  running = true;
-  cycle++;
-  const state = loadState();
-  state.scanCount = (state.scanCount || 0) + 1;
   try {
     // syncPositionsFromTrades disabled until trades.json is clean
     await managePositions();
