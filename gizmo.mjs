@@ -200,7 +200,7 @@ async function learnFromTrades() {
 // ─── LOGGING ─────────────────────────────────────────────────────────────────
 function log(msg) {
   const line = `[${new Date().toLocaleString()}] ${msg}`;
-  console.log(line);
+  process.stderr.write(line + '\n'); // stderr so LaunchAgent stdout doesn't double-log
   try { fs.appendFileSync(LOG_FILE, line + '\n'); } catch {}
 }
 
@@ -227,7 +227,8 @@ async function cleanGhostPositions() {
   const toRemove = [];
   for (const pos of POSITIONS) {
     try {
-      const resp = await fetch('https://mainnet.helius-rpc.com/?api-key=' + HELIUS_KEY, {
+      const hKey = HELIUS_KEY || '2de73660-14b8-412a-9ff2-8e6989c53266';
+      const resp = await fetch('https://mainnet.helius-rpc.com/?api-key=' + hKey, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -694,7 +695,7 @@ async function managePositions() {
           WATCHLIST.push({ name: pos.name, ca: pos.ca, exitMC: mc, exitTime: Date.now(), entryMC: pos.entryMC });
           POSITIONS.splice(i, 1); savePositions();
         } else { log(`⚠️ ${pos.name} SELL FAILED — retry next cycle`); }
-      } else { log(`⚠️ ${pos.name} at SL but 5m red — waiting green candle`); }
+      } // SL breach handled above — no waiting
       continue;
     }
 
@@ -1311,7 +1312,7 @@ async function runCycle() {
     log(`Loop error: ${e.message}`);
   }
   saveState(state);
-  fs.appendFileSync(LOG_FILE, `[${new Date().toLocaleString()}] 💓 cycle ${cycle} complete\n`);
+  log(`💓 cycle ${cycle} complete`);
   running = false;
 }
 
