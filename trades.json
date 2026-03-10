@@ -1,5 +1,17 @@
 [
   {
+    "n": 458,
+    "date": "2026-03-10",
+    "token": "Tralala",
+    "action": "SELL",
+    "amount": "0.03 SOL",
+    "result": "Sold 50% | PnL: +56.4%",
+    "pnl": "+0.0300 SOL",
+    "color": "teal",
+    "ca": "CGrSSYrzDdxhJGhNyTxedW8dX9zVbJv6Z83d1o9ppump",
+    "ts": 1773184464
+  },
+  {
     "n": 457,
     "date": "2026-03-10",
     "token": "Tralala",
