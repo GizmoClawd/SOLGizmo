@@ -27,7 +27,47 @@ const MAX_POSITIONS = 3;
 // ─── SESSION GUARD ────────────────────────────────────────────────────────────
 let SESSION_START_BALANCE = null;
 let SESSION_HALTED = false;
-const SESSION_LOSS_LIMIT_SOL = 0.3; // halt if down this much in one session
+const SESSION_LOSS_LIMIT_SOL = 0.3;
+
+// ─── PROFIT VAULT ─────────────────────────────────────────────────────────────
+const VAULT_FILE_PATH = process.env.HOME + '/.gizmo/runtime/profit-vault.json';
+
+function loadVault() {
+  try { return JSON.parse(fs.readFileSync(VAULT_FILE_PATH, 'utf8')); }
+  catch { return { locked: 0, allTimeHigh: 0, lastSaved: Date.now() }; }
+}
+
+function saveVault(v) {
+  try { fs.writeFileSync(VAULT_FILE_PATH, JSON.stringify(v, null, 2)); } catch {}
+}
+
+async function runProfitVault(currentBalance) {
+  if (SESSION_START_BALANCE === null) return;
+  const vault = loadVault();
+  const sessionProfit = currentBalance - SESSION_START_BALANCE;
+
+  if (currentBalance > vault.allTimeHigh) vault.allTimeHigh = currentBalance;
+
+  let targetLockPct = 0;
+  if (sessionProfit >= 1.0) targetLockPct = 0.75;
+  else if (sessionProfit >= 0.5) targetLockPct = 0.70;
+  else if (sessionProfit >= 0.2) targetLockPct = 0.60;
+
+  if (targetLockPct > 0) {
+    const targetLocked = vault.locked + (sessionProfit * targetLockPct);
+    if (targetLocked > vault.locked + 0.01) {
+      const newLock = targetLocked - vault.locked;
+      vault.locked = targetLocked;
+      saveVault(vault);
+      const msg = '🔐 PROFIT VAULT: Locked ' + newLock.toFixed(3) + ' SOL | Total locked: ' + vault.locked.toFixed(3) + ' SOL | Tradeable: ' + (currentBalance - vault.locked).toFixed(3) + ' SOL';
+      log(msg);
+      try { execSync('openclaw message --text "' + msg.replace(/"/g,"'") + '" --agent gizmo', { timeout: 5000 }); } catch {}
+    }
+  }
+
+  vault.lastSaved = Date.now();
+  saveVault(vault);
+} // halt if down this much in one session
 const SIGNAL_WINDOW_MS = 10 * 60 * 1000;
 const HELIUS_KEY = process.env.HELIUS_API_KEY || '';
 
@@ -419,6 +459,11 @@ function getDailyPnL() {
 
 // ─── SAFE BUY SIZE ────────────────────────────────────────────────────────────
 async function safeBuySize(walletSol, liqUsd, numKols) {
+  // Subtract locked vault from tradeable balance
+  const vault = loadVault();
+  const tradeableSol = Math.max(walletSol - vault.locked, 0.1);
+  walletSol = tradeableSol; // only trade with what's not locked
+
   // ── BANKROLL PROTECTION ─────────────────────────────────────────────────────
   // FLOOR: always keep 0.1 SOL untouched for gas/fees
   const FLOOR = 0.1;
@@ -1074,6 +1119,20 @@ async function runCycle() {
     log('[SESSION] ⛔ Halted — skipping buys, still managing open positions');
     running = false;
     return;
+  }
+
+  // PROFIT VAULT: check and lock profits every cycle
+  if (SESSION_START_BALANCE !== null && !SESSION_HALTED) {
+    try {
+      const r = await fetch('https://solana.publicnode.com', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'] }),
+        signal: AbortSignal.timeout(5000)
+      });
+      const d = await r.json();
+      const bal = (d.result?.value || 0) / 1e9;
+      await runProfitVault(bal);
+    } catch {}
   }
 
   try {
