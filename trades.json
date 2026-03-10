@@ -1,5 +1,17 @@
 [
   {
+    "n": 481,
+    "date": "2026-03-10",
+    "token": "PenguWorld",
+    "action": "BUY",
+    "amount": "0.0572 SOL",
+    "result": "HW KOL: decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6XT8BeVndV53Sts8Fxk2Zr9WWkMWzuJwVGxYoBmspump",
+    "ts": 1773186640
+  },
+  {
     "n": 480,
     "date": "2026-03-10",
     "token": "ClaudePoop",
