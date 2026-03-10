@@ -1,5 +1,17 @@
 [
   {
+    "n": 402,
+    "date": "2026-03-10",
+    "token": "JohnPorkAI",
+    "action": "SELL",
+    "amount": "0.2446 SOL",
+    "result": "Sold 100% | PnL: -44.7%",
+    "pnl": "+0.2446 SOL",
+    "color": "teal",
+    "ca": "2Hv6UjKJCAbHoGLTjq7PckX9gXkzFZdA87k7uXP2pump",
+    "ts": 1773170616
+  },
+  {
     "n": 401,
     "date": "2026-03-10",
     "token": "OILINU",
