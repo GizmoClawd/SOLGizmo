@@ -1,5 +1,17 @@
 [
   {
+    "n": 276,
+    "date": "2026-03-10",
+    "token": "VAMP",
+    "action": "BUY",
+    "amount": "0.18395319625 SOL",
+    "result": "2 KOL convergence: bandit, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8U66GhympMF7Su6DjjW3wuXTwgnYTxhKJrAcm1Upump",
+    "ts": 1773102105
+  },
+  {
     "n": 275,
     "date": "2026-03-10",
     "token": "DIAMOND",
