@@ -1,5 +1,17 @@
 [
   {
+    "n": 278,
+    "date": "2026-03-10",
+    "token": "chad",
+    "action": "BUY",
+    "amount": "0.0914505785 SOL",
+    "result": "2 KOL convergence: Cented, Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8G3CwG4qr5mZQnDJgfCNqMhq1bpPnt1jDQJcNnPKpump",
+    "ts": 1773102467
+  },
+  {
     "n": 277,
     "date": "2026-03-10",
     "token": "VAMP",
