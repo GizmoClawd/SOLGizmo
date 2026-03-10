@@ -1,5 +1,17 @@
 [
   {
+    "n": 266,
+    "date": "2026-03-10",
+    "token": "NemoClaw",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "HW KOL: clukz",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3guyMhp6p7USQUzwTYgXrKoer98rE398grT5RcPKpump",
+    "ts": 1773101150
+  },
+  {
     "n": 265,
     "date": "2026-03-10",
     "token": "NemoClaw",
