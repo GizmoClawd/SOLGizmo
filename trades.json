@@ -1,5 +1,17 @@
 [
   {
+    "n": 429,
+    "date": "2026-03-10",
+    "token": "SOS",
+    "action": "SELL",
+    "amount": "0.0301 SOL",
+    "result": "Sold 50% | PnL: +33.7%",
+    "pnl": "+0.0301 SOL",
+    "color": "teal",
+    "ca": "33dhma9QA7xefhVpA7c5vMrN826xcHanSHruUEKF2LmW",
+    "ts": 1773181114
+  },
+  {
     "n": 428,
     "date": "2026-03-10",
     "token": "SOS",
