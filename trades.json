@@ -1,5 +1,17 @@
 [
   {
+    "n": 401,
+    "date": "2026-03-10",
+    "token": "OILINU",
+    "action": "BUY",
+    "amount": "0.24722996125 SOL",
+    "result": "HW KOL: clukz",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GJqCjtgEwqdFWVRsDs8JXKFoTeRVZeHs1RL4ccvrpump",
+    "ts": 1773170604
+  },
+  {
     "n": 400,
     "date": "2026-03-10",
     "token": "GameTheory",
