@@ -647,6 +647,30 @@ async function managePositions() {
       continue;
     }
 
+    // DCA: add to position if price dips back to entry zone (not top blasting)
+    if (!pos.dcaAdded && pos.dcaSize > 0.02) {
+      pos.dcaCycles = (pos.dcaCycles || 0) + 1;
+      const dipPct = (mc - pos.entryMC) / pos.entryMC;
+      const goodDip = dipPct >= -0.10 && dipPct <= 0.05; // within 10% below or 5% above entry
+      const momentumOk = buys > sells && m5 > -2;
+      if (goodDip && momentumOk && pos.dcaCycles >= 2) {
+        log(`📉 DCA: ${pos.name} dipped to entry zone (${(dipPct*100).toFixed(1)}%) — adding ${pos.dcaSize.toFixed(3)} SOL`);
+        if (await buy(pos.ca, pos.dcaSize)) {
+          pos.dcaAdded = true;
+          const newEntryMC = (pos.entryMC + mc) / 2; // average down
+          pos.entryMC = newEntryMC;
+          pos.tp1 = newEntryMC * 1.5;
+          pos.tp2 = newEntryMC * 2.0;
+          savePositions();
+          log(`✅ DCA filled — new avg entry: ${Math.round(newEntryMC)}`);
+        }
+      } else if (pos.dcaCycles >= 5 && !pos.dcaAdded) {
+        pos.dcaAdded = true; // timeout — skip DCA, missed the window
+        savePositions();
+        log(`⏭️ DCA timeout: ${pos.name} — no dip after 5 cycles, skipping add`);
+      }
+    }
+
     // HARD STOP: -30% with no SL set
     if (mc <= pos.entryMC * 0.70 && !pos.sl) {
       log(`💀 HARD STOP ${pos.name} at ${pnl}% — cutting`);
@@ -673,20 +697,49 @@ async function managePositions() {
       }
     }
 
-    // TP1: 2x+ — sell half unless still ripping
-    if (!pos.tp1Hit && mc >= pos.entryMC * 2.0) {
-      const bsRatio = buys / Math.max(sells, 1);
+    // TP1: 1.5x — sell 25% (first profit lock)
+    if (!pos.tp1Hit && mc >= pos.entryMC * 1.5) {
       const mult = mc / pos.entryMC;
+      log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — locking 25%`);
+      if (await sell(pos.ca, '25%', pos.name, pos.entryMC, mc)) {
+        pos.tp1Hit = true;
+        pos.sl = Math.max(pos.sl || 0, pos.entryMC * 1.02); // SL to breakeven
+        savePositions();
+        await postTrade('SELL', pos.name, pos.ca, mc, `TP1 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+      }
+      continue;
+    }
+
+    // TP2: 2x — sell another 25% (50% total out, 50% moonbag)
+    if (pos.tp1Hit && !pos.tp2Hit && mc >= pos.entryMC * 2.0) {
+      const mult = mc / pos.entryMC;
+      const bsRatio = buys / Math.max(sells, 1);
       if (m5 > 3 && bsRatio >= 2.0 && mult < 4.0) {
+        // Still ripping — tighten SL and let it run
         const rSL = pos.highMC * 0.90;
         if (rSL > (pos.sl || 0)) { pos.sl = rSL; savePositions(); }
-        log(`🚀 ${pos.name}: ${mult.toFixed(1)}x RIPPING — holding, SL tightened`);
+        log(`🚀 ${pos.name}: ${mult.toFixed(1)}x RIPPING — holding moonbag, SL tightened to ${Math.round(pos.sl)}`);
       } else {
-        log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — selling half`);
-        if (await sell(pos.ca, '50%', pos.name, pos.entryMC, mc)) {
-          pos.tp1Hit = true; pos.sl = Math.max(pos.sl || 0, mc * 0.90); savePositions();
+        log(`🎯 TP2 ${pos.name} ${mult.toFixed(1)}x — selling another 25%, moonbag riding`);
+        if (await sell(pos.ca, '25%', pos.name, pos.entryMC, mc)) {
+          pos.tp2Hit = true;
+          pos.sl = Math.max(pos.sl || 0, mc * 0.88); // tight trail on moonbag
+          savePositions();
+          await postTrade('SELL', pos.name, pos.ca, mc, `TP2 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
         }
       }
+      continue;
+    }
+
+    // MOONBAG TP3: 5x — sell everything
+    if (pos.tp2Hit && mc >= pos.entryMC * 5.0) {
+      const mult = mc / pos.entryMC;
+      log(`🌙 MOONBAG TP3 ${pos.name} ${mult.toFixed(1)}x — selling all`);
+      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+        await postTrade('SELL', pos.name, pos.ca, mc, `Moonbag ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+        POSITIONS.splice(i, 1); savePositions();
+      }
+      continue;
     }
 
     // BREAKEVEN SL after 1.5x — never let winner become loser
@@ -808,7 +861,7 @@ async function scanKOLs(state) {
     log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' size:' + hwSize.toFixed(3) + ' SOL');
     if (await buy(signal.mint, hwSize)) {
       const hwMc = hwInfo.mcap;
-      POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now() });
+      POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, tp2Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now(), dcaAdded: false, dcaSize: hwSize * 0.4, dcaCycles: 0, entrySize: hwSize });
       savePositions();
       logTrade('BUY', hwInfo.symbol, signal.mint, hwSize, null, null, 'HW KOL: ' + signal.kol);
       RECENTLY_BOUGHT.set(signal.mint, Date.now());
@@ -886,7 +939,7 @@ async function scanKOLs(state) {
       if (await buy(mint, size)) {
         const p = await checkPrice(mint);
         const mc = p?.fdv || info.mcap;
-        POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, entryTime: Date.now() });
+        POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, tp2Hit: false, entryTime: Date.now(), dcaAdded: false, dcaSize: size * 0.4, dcaCycles: 0, entrySize: size });
         savePositions();
         logTrade('BUY', info.symbol, mint, size, null, null, `${uniqueKols.length} KOL convergence: ${uniqueKols.join(', ')}`);
         await postTrade('BUY', info.symbol, mint, mc, `${uniqueKols.length} KOL convergence`, size);
