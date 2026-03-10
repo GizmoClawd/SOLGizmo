@@ -1,5 +1,17 @@
 [
   {
+    "n": 414,
+    "date": "2026-03-10",
+    "token": "ترامپ",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "2 KOL convergence: dov7, Pain",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Px84Ffk2Z1MTiHLg9oXF8frHKzoUce3JD8z6VFUpump",
+    "ts": 1773174141
+  },
+  {
     "n": 413,
     "date": "2026-03-10",
     "token": "Herd",
