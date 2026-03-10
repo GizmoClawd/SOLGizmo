@@ -1,5 +1,17 @@
 [
   {
+    "n": 336,
+    "date": "2026-03-10",
+    "token": "ClaudeGov",
+    "action": "SELL",
+    "amount": "0.1783 SOL",
+    "result": "Sold 100% | PnL: +22.8%",
+    "pnl": "+0.1783 SOL",
+    "color": "teal",
+    "ca": "6QU3XDQt4pXSStujRCheGJAxHguhy5bN4cZ5MYXQpump",
+    "ts": 1773118941
+  },
+  {
     "n": 335,
     "date": "2026-03-10",
     "token": "ClaudeGov",
