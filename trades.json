@@ -1,5 +1,17 @@
 [
   {
+    "n": 341,
+    "date": "2026-03-10",
+    "token": "Nasdanq",
+    "action": "SELL",
+    "amount": "0.2543 SOL",
+    "result": "Sold 100% | PnL: +279.2%",
+    "pnl": "+0.2543 SOL",
+    "color": "teal",
+    "ca": "JDb4kdySAUbAsvgTTxsCHK3KR3J4NmfUFu2GFExJpump",
+    "ts": 1773121161
+  },
+  {
     "n": 340,
     "date": "2026-03-10",
     "token": "Nasdanq",
