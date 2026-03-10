@@ -1,5 +1,17 @@
 [
   {
+    "n": 375,
+    "date": "2026-03-10",
+    "token": "Lobfather",
+    "action": "BUY",
+    "amount": "0.249384368 SOL",
+    "result": "2 KOL convergence: Cented, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9UCJCin2Dcv9rC1azXTfVJjz6Fr2PswYcQL4QsSCpump",
+    "ts": 1773162682
+  },
+  {
     "n": 374,
     "date": "2026-03-10",
     "token": "Rosencratz",
