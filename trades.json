@@ -1,5 +1,17 @@
 [
   {
+    "n": 357,
+    "date": "2026-03-10",
+    "token": "LOBSTER",
+    "action": "SELL",
+    "amount": "0.2832 SOL",
+    "result": "Sold 50% | PnL: +96.6%",
+    "pnl": "+0.2832 SOL",
+    "color": "teal",
+    "ca": "5kPosFqLTMLibiiR5Jvch9veDhNhemiC1J3xgXyJpump",
+    "ts": 1773155726
+  },
+  {
     "n": 356,
     "date": "2026-03-10",
     "token": "LOBSTER",
