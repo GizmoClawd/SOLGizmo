@@ -211,9 +211,13 @@ function loadPositions() {
   try {
     if (fs.existsSync(POSITIONS_FILE)) {
       const data = JSON.parse(fs.readFileSync(POSITIONS_FILE, 'utf8'));
-      log(`📂 Loaded ${data.length} positions: ${data.map(p => p.name).join(', ') || 'none'}`);
+      let deadPools = [];
+      try { deadPools = JSON.parse(fs.readFileSync('/Users/younghogey/.gizmo/runtime/dead-pools.json','utf8')); } catch {}
+      const filtered = data.filter(p => !deadPools.includes(p.ca));
+      if (filtered.length < data.length) log(`🚫 Filtered ${data.length - filtered.length} dead pool position(s) on load`);
+      log(`📂 Loaded ${filtered.length} positions: ${filtered.map(p => p.name).join(', ') || 'none'}`);
   // ghost cleanup called from runCycle on first run
-      return data;
+      return filtered;
     }
   } catch (e) { log(`⚠️ Load positions failed: ${e.message}`); }
   return [];
@@ -606,7 +610,7 @@ async function managePositions() {
     const sells = p.txns?.m5?.sells || 0;
 
     // Update high water mark + trail SL
-    if (mc > (pos.sl || 0)) { pos.slBreachCount = 0; }
+    if (mc > (pos.sl || 0)) { pos.slBreachCount = 0; } else if (pos.sl && mc < pos.sl) { pos.slBreachCount = (pos.slBreachCount || 0) + 1; }
     if (mc > pos.highMC) {
       pos.highMC = mc;
       if (mc > pos.entryMC * 1.10 && !pos.sl) {
@@ -696,6 +700,16 @@ async function managePositions() {
           POSITIONS.splice(i, 1); savePositions();
         } else { log(`⚠️ ${pos.name} SELL FAILED — retry next cycle`); }
       } // SL breach handled above — no waiting
+      continue;
+    }
+
+    // TRAILING SL: enforce on all future cycles
+    if (pos.sl && mc < pos.sl && pos.breakevenSet) {
+      log(`🛑 TRAILING SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
+      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+        await postTrade('SELL', pos.name, pos.ca, mc, `Trailing SL ${pnl}%`, null, parseFloat(pnl));
+        POSITIONS.splice(i, 1); savePositions();
+      } else { log(`⚠️ ${pos.name} TRAILING SL SELL FAILED — retry next cycle`); }
       continue;
     }
 
