@@ -1,5 +1,17 @@
 [
   {
+    "n": 386,
+    "date": "2026-03-10",
+    "token": "SolClaw ",
+    "action": "SELL",
+    "amount": "0.1168 SOL",
+    "result": "Sold 100% | PnL: -74.3%",
+    "pnl": "+0.1168 SOL",
+    "color": "teal",
+    "ca": "3KbFJGT7uVU6N2ecYGo7pC2Pkf2XVmAXGAy98kogpump",
+    "ts": 1773166415
+  },
+  {
     "n": 385,
     "date": "2026-03-10",
     "token": "SolClaw ",
