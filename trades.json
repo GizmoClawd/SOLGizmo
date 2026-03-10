@@ -1,5 +1,17 @@
 [
   {
+    "n": 273,
+    "date": "2026-03-10",
+    "token": "DIAMOND",
+    "action": "BUY",
+    "amount": "0.28676458525 SOL",
+    "result": "2 KOL convergence: Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2xv3aF5i2vSjPg4WuwSNXCvhQ1fdproJHgkJzL9Qhard",
+    "ts": 1773101685
+  },
+  {
     "n": 272,
     "date": "2026-03-10",
     "token": "DIAMOND",
