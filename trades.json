@@ -1,5 +1,17 @@
 [
   {
+    "n": 343,
+    "date": "2026-03-10",
+    "token": "USELESS",
+    "action": "SELL",
+    "amount": "0.2401 SOL",
+    "result": "Sold 50% | PnL: +77.0%",
+    "pnl": "+0.2401 SOL",
+    "color": "teal",
+    "ca": "H3CMK8DVH1u3qZNvakJzjrqsX5BnYzw5RpDEPmW7pump",
+    "ts": 1773121881
+  },
+  {
     "n": 342,
     "date": "2026-03-10",
     "token": "USELESS",
