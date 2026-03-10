@@ -1,5 +1,17 @@
 [
   {
+    "n": 307,
+    "date": "2026-03-10",
+    "token": "Gifcoin",
+    "action": "BUY",
+    "amount": "0.27721072625 SOL",
+    "result": "2 KOL convergence: decu, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2pj3QbvDB2vqFLLkcFDF8JKchZBeUFT39j6aCUP4pump",
+    "ts": 1773110350
+  },
+  {
     "n": 306,
     "date": "2026-03-10",
     "token": "Chud",
