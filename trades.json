@@ -1,5 +1,17 @@
 [
   {
+    "n": 339,
+    "date": "2026-03-10",
+    "token": "Nasdanq",
+    "action": "BUY",
+    "amount": "0.25965263375 SOL",
+    "result": "2 KOL convergence: bandit, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "JDb4kdySAUbAsvgTTxsCHK3KR3J4NmfUFu2GFExJpump",
+    "ts": 1773120971
+  },
+  {
     "n": 338,
     "date": "2026-03-10",
     "token": "Tyrone",
