@@ -1,5 +1,17 @@
 [
   {
+    "n": 342,
+    "date": "2026-03-10",
+    "token": "USELESS",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "H3CMK8DVH1u3qZNvakJzjrqsX5BnYzw5RpDEPmW7pump",
+    "ts": 1773121630
+  },
+  {
     "n": 341,
     "date": "2026-03-10",
     "token": "Nasdanq",
