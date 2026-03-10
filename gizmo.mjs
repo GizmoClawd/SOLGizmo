@@ -218,6 +218,47 @@ function loadPositions() {
   return [];
 }
 
+// ─── GHOST POSITION CLEANUP ──────────────────────────────────────────────────
+// Checks actual on-chain token balance for each position on startup.
+// If wallet holds 0 tokens but position is in JSON → ghost. Remove it.
+async function cleanGhostPositions() {
+  if (POSITIONS.length === 0) return;
+  const toRemove = [];
+  for (const pos of POSITIONS) {
+    try {
+      const resp = await fetch('https://mainnet.helius-rpc.com/?api-key=' + HELIUS_KEY, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0', id: 1,
+          method: 'getTokenAccountsByOwner',
+          params: [WALLET, { mint: pos.ca }, { encoding: 'jsonParsed' }]
+        }),
+        signal: AbortSignal.timeout(5000)
+      });
+      const data = await resp.json();
+      const accounts = data?.result?.value || [];
+      const balance = accounts.reduce((sum, a) => sum + (a.account?.data?.parsed?.info?.tokenAmount?.uiAmount || 0), 0);
+      if (balance === 0) {
+        log(`🧹 GHOST POSITION: ${pos.name} has 0 tokens on-chain — removing from positions`);
+        toRemove.push(pos.ca);
+      } else {
+        log(`✅ ${pos.name}: confirmed ${balance.toFixed(2)} tokens on-chain`);
+      }
+    } catch (e) {
+      log(`⚠️ Could not verify ${pos.name} balance — keeping position`);
+    }
+  }
+  if (toRemove.length > 0) {
+    toRemove.forEach(ca => {
+      const idx = POSITIONS.findIndex(p => p.ca === ca);
+      if (idx !== -1) POSITIONS.splice(idx, 1);
+    });
+    savePositions();
+    log(`🧹 Cleaned ${toRemove.length} ghost position(s)`);
+  }
+}
+
 function savePositions() {
   try { fs.writeFileSync(POSITIONS_FILE, JSON.stringify(POSITIONS, null, 2)); } catch (e) { log(`⚠️ Save positions failed: ${e.message}`); }
 }
