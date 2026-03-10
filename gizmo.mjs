@@ -61,7 +61,11 @@ async function runProfitVault(currentBalance) {
       vault.locked = targetLocked;
       saveVault(vault);
       // SAFETY: never lock more than 70% of actual current balance
-      vault.locked = Math.min(vault.locked, currentBalance * 0.70);
+      // Scale vault lock by wallet size — never lock so much trading stops
+      const vaultCap = currentBalance >= 5 ? 0.65   // 5+ SOL: lock up to 65%
+                     : currentBalance >= 2 ? 0.55   // 2-5 SOL: lock up to 55%
+                     : 0.45;                         // <2 SOL: lock up to 45%
+      vault.locked = Math.min(vault.locked, currentBalance * vaultCap);
       const tradeable = currentBalance - vault.locked;
       const msg = '🔐 PROFIT VAULT: Locked ' + vault.locked.toFixed(3) + ' SOL | Tradeable: ' + tradeable.toFixed(3) + ' SOL';
       log(msg);
@@ -474,11 +478,15 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
   // ── BANKROLL PROTECTION ─────────────────────────────────────────────────────
   // FLOOR: always keep 0.1 SOL untouched for gas/fees
   const FLOOR = 0.1;
-  // RESERVE: keep 30% of wallet as safe reserve, never trade it
-  const RESERVE = walletSol * 0.30;
+  // RESERVE: keep 15% of wallet as safe reserve, never trade it
+  const RESERVE = walletSol * 0.15;
   // TRADEABLE: only risk from the tradeable portion
   const tradeable = walletSol - FLOOR - RESERVE;
-  if (tradeable <= 0) { log(`🛑 BANKROLL: wallet too low (${walletSol.toFixed(3)} SOL) — protecting floor`); return 0; }
+  if (tradeable <= 0) { 
+    const locked = loadVault().locked;
+    log(`🛑 BANKROLL: tradeable too low — wallet:${walletSol.toFixed(3)} vault:${locked.toFixed(3)} floor:0.1 reserve:15% = nothing left`); 
+    return 0; 
+  }
 
   // Circuit breaker: stop if lost 1.5 SOL today
   const dailyPnL = getDailyPnL();
@@ -732,11 +740,12 @@ async function scanKOLs(state) {
     if (POSITIONS.length >= MAX_POSITIONS) break;
     if (RECENTLY_BOUGHT.has(signal.mint) || ALERTED.has(signal.mint)) continue;
     const hwInfo = await getTokenInfo(signal.mint);
-    if (!hwInfo || hwInfo.mcap < 20000 || hwInfo.liq < 20000) continue;
+    if (!hwInfo || hwInfo.mcap < 5000) continue;
+    if (hwInfo.liq !== null && hwInfo.liq > 0 && hwInfo.liq < 8000) continue;
     if (TOXIC_WORDS.some(w => (hwInfo.symbol||'').toLowerCase().includes(w))) continue;
     const hwWallet = await getWalletBalance();
     const hwSize = await safeBuySize(hwWallet, hwInfo.liq, 1);
-    if (hwSize < 0.05) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
+    if (hwSize < 0.03) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
     ALERTED.add(signal.mint);
     log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' size:' + hwSize.toFixed(3) + ' SOL');
     if (await buy(signal.mint, hwSize)) {
@@ -795,7 +804,7 @@ async function scanKOLs(state) {
       if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
       const walletSol = await getWalletBalance();
       const size = await safeBuySize(walletSol, info.liq, uniqueKols.length);
-      if (size < 0.05) { log(`⛔ ${info.symbol}: circuit breaker or wallet too low (${walletSol.toFixed(3)} SOL)`); continue; }
+      if (size < 0.03) { log(`⛔ ${info.symbol}: circuit breaker or wallet too low (${walletSol.toFixed(3)} SOL)`); continue; }
       // ── 9-SIGNAL SCORE CHECK ──
       const pairForScore = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mint}`,
         { signal: AbortSignal.timeout(5000) })
@@ -940,7 +949,7 @@ async function marketScan() {
       if (score < SCORE_THRESHOLD) continue;
       const mktWallet = await getWalletBalance();
       const size = await safeBuySize(mktWallet, liq, 2);
-      if (size < 0.05) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
+      if (size < 0.03) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
 
       log(`🎯 MARKET BUY: ${p.baseToken.symbol} score:${score}/9 MC:$${Math.round(p.fdv)} buying ${size} SOL`);
       if (await buy(t.tokenAddress, size)) {
