@@ -1,5 +1,17 @@
 [
   {
+    "n": 347,
+    "date": "2026-03-10",
+    "token": "Elpsy",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "3 KOL convergence: bandit, theo, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ExzciaxfaAte2ZnQ9qCfRbAhcRBQfCDSrDUXuqMWpump",
+    "ts": 1773122598
+  },
+  {
     "n": 346,
     "date": "2026-03-10",
     "token": "ROBOT",
