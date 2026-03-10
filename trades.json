@@ -1,5 +1,17 @@
 [
   {
+    "n": 313,
+    "date": "2026-03-10",
+    "token": "OG",
+    "action": "BUY",
+    "amount": "0.19775383475 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Cjo41WXA9DgRbvqQcyM9EYKe4QyXLWLQxFu1VGnFpump",
+    "ts": 1773111551
+  },
+  {
     "n": 312,
     "date": "2026-03-10",
     "token": "memories",
