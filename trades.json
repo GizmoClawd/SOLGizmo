@@ -1,5 +1,17 @@
 [
   {
+    "n": 463,
+    "date": "2026-03-10",
+    "token": "Grace",
+    "action": "SELL",
+    "amount": "0.0877 SOL",
+    "result": "Sold 50% | PnL: +114.6%",
+    "pnl": "+0.0877 SOL",
+    "color": "teal",
+    "ca": "E9ghxaF7kK1GY8xGbuskbMSLKSPBcdTLKGRXnUtBpump",
+    "ts": 1773185214
+  },
+  {
     "n": 462,
     "date": "2026-03-10",
     "token": "Grace",
