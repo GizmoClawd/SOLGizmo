@@ -1,5 +1,17 @@
 [
   {
+    "n": 453,
+    "date": "2026-03-10",
+    "token": "LOSS",
+    "action": "BUY",
+    "amount": "0.0495 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HdeJrXRHztstCRsgLQtDvYFSy3XVywNQwZokWQw8pump",
+    "ts": 1773183915
+  },
+  {
     "n": 452,
     "date": "2026-03-10",
     "token": "PUMPC",
