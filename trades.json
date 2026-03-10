@@ -1,5 +1,17 @@
 [
   {
+    "n": 309,
+    "date": "2026-03-10",
+    "token": "BTP",
+    "action": "SELL",
+    "amount": "0.152 SOL",
+    "result": "Sold 100% | PnL: -44.1%",
+    "pnl": "+0.1520 SOL",
+    "color": "teal",
+    "ca": "2FomoUseSy22gnRNjBrcALvxZE1xsvrmhTQAZ6j4pump",
+    "ts": 1773110541
+  },
+  {
     "n": 308,
     "date": "2026-03-10",
     "token": "Gifcoin",
