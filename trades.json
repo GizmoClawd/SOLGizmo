@@ -1,5 +1,17 @@
 [
   {
+    "n": 480,
+    "date": "2026-03-10",
+    "token": "ClaudePoop",
+    "action": "BUY",
+    "amount": "0.0572 SOL",
+    "result": "HW KOL: Dali",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2gUNqbEvuimAmLq98er8MG5cnR9YZ3i7CdbMh2rkpump",
+    "ts": 1773186636
+  },
+  {
     "n": 479,
     "date": "2026-03-10",
     "token": "PenguWorld",
