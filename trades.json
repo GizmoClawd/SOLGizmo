@@ -1,5 +1,17 @@
 [
   {
+    "n": 354,
+    "date": "2026-03-10",
+    "token": "GateClaw",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "2 KOL convergence: Cented, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7EcYbSnRys9LHYUW1Fj1kWHyLbYzRigQbbcx11qbpump",
+    "ts": 1773155421
+  },
+  {
     "n": 353,
     "date": "2026-03-10",
     "token": "SHROOM",
