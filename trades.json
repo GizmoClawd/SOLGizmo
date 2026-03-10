@@ -1,5 +1,17 @@
 [
   {
+    "n": 442,
+    "date": "2026-03-10",
+    "token": "Bartholomew",
+    "action": "BUY",
+    "amount": "0.0501 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5z7uZ7excdMwgoXM9XGfDC818ccXNXJpdvxdJPbWpump",
+    "ts": 1773182016
+  },
+  {
     "n": 441,
     "date": "2026-03-10",
     "token": "ClaudePoop",
