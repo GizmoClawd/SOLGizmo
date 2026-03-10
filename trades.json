@@ -1,5 +1,17 @@
 [
   {
+    "n": 316,
+    "date": "2026-03-10",
+    "token": "RomanStorm",
+    "action": "BUY",
+    "amount": "0.216274108 SOL",
+    "result": "3 KOL convergence: decu, bandit, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GUB95atafqNgVif2BZnV6FtGZuezsx67PL136jsapump",
+    "ts": 1773112330
+  },
+  {
     "n": 315,
     "date": "2026-03-10",
     "token": "OG",
