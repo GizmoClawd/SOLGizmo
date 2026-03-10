@@ -633,7 +633,7 @@ async function managePositions() {
     if (!pos.breakevenSet && mc >= pos.entryMC * 1.5) {
       const beSL = pos.entryMC * 1.05;
       if (!pos.sl || beSL > pos.sl) { pos.sl = beSL; pos.breakevenSet = true; savePositions(); log('BREAKEVEN SL: ' + pos.name + ' -> $' + Math.round(beSL)); }
-      if (pos.slBreachCount >= 2 || mc < pos.sl * 0.70 || (pos.slBreachCount >= 1 && m5 < 0)) {
+      if (mc <= pos.sl) {
         log(`🛑 SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
         if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
           await postTrade('SELL', pos.name, pos.ca, mc, `SL hit ${pnl}%`, null, parseFloat(pnl));
