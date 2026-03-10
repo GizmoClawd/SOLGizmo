@@ -1,5 +1,17 @@
 [
   {
+    "n": 349,
+    "date": "2026-03-10",
+    "token": "ABANDON",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "2 KOL convergence: theo, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Bw4KUcgpiqrwBLxNQ8CTUtoeM7zY1EQHosym2E5kSURx",
+    "ts": 1773125118
+  },
+  {
     "n": 348,
     "date": "2026-03-10",
     "token": "Elpsy",
