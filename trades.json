@@ -1,5 +1,17 @@
 [
   {
+    "n": 425,
+    "date": "2026-03-10",
+    "token": "MWO",
+    "action": "SELL",
+    "amount": "0.3593 SOL",
+    "result": "Sold 50% | PnL: +31.6%",
+    "pnl": "+0.3593 SOL",
+    "color": "teal",
+    "ca": "1D2jtKqeNxfQ2bqwyG5UuL2pHNB4gqnz7YMKYQqpump",
+    "ts": 1773179051
+  },
+  {
     "n": 424,
     "date": "2026-03-10",
     "token": "MWO",
