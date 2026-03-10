@@ -1,5 +1,17 @@
 [
   {
+    "n": 382,
+    "date": "2026-03-10",
+    "token": "Emoji",
+    "action": "SELL",
+    "amount": "0.126 SOL",
+    "result": "Sold 100% | PnL: -43.0%",
+    "pnl": "+0.1260 SOL",
+    "color": "teal",
+    "ca": "EhQbu6HPGjLD4sRrMpLr3r8KvWzdayXaq78RinNUGLHY",
+    "ts": 1773164375
+  },
+  {
     "n": 381,
     "date": "2026-03-10",
     "token": "Emoji",
