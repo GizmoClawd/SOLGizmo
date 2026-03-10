@@ -26,3 +26,9 @@
 ## Backups
 - gizmo.mjs.bak-weighted (latest clean backup)
 - sell.mjs (original before dead pool patch)
+
+## Update — Dead Pool Blacklist (March 9 2026)
+- Added `/tmp/gizmo-trade/dead-pools.json` permanent blacklist
+- On every startup, Gizmo strips any blacklisted CA from positions.json
+- Future rugs auto-added to blacklist when dead pool detected
+- POV (GPEP5Z9zfK7AHbFsjrdR48EBvHT1QbZdHpBDjFevpump) manually blacklisted
