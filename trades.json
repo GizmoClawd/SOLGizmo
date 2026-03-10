@@ -1,5 +1,17 @@
 [
   {
+    "n": 325,
+    "date": "2026-03-10",
+    "token": "swag",
+    "action": "SELL",
+    "amount": "0.0575 SOL",
+    "result": "Sold 100% | PnL: -57.4%",
+    "pnl": "+0.0575 SOL",
+    "color": "teal",
+    "ca": "CJZA9txWhV4UJyQEbNz6XKQYwKLsqMbAqi1TDKdypump",
+    "ts": 1773116301
+  },
+  {
     "n": 324,
     "date": "2026-03-10",
     "token": "swag",
