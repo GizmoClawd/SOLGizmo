@@ -1,5 +1,17 @@
 [
   {
+    "n": 381,
+    "date": "2026-03-10",
+    "token": "Emoji",
+    "action": "BUY",
+    "amount": "0.18516956025 SOL",
+    "result": "3 KOL convergence: Jijo, dv, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EhQbu6HPGjLD4sRrMpLr3r8KvWzdayXaq78RinNUGLHY",
+    "ts": 1773164314
+  },
+  {
     "n": 380,
     "date": "2026-03-10",
     "token": "GolemCode",
