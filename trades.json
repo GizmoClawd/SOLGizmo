@@ -1,5 +1,17 @@
 [
   {
+    "n": 455,
+    "date": "2026-03-10",
+    "token": "Hapter",
+    "action": "BUY",
+    "amount": "0.0489 SOL",
+    "result": "HW KOL: decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Bq7oGBLCBxbka9NwWQrEMMPPUU93qhpCtqf58NW4pump",
+    "ts": 1773184218
+  },
+  {
     "n": 454,
     "date": "2026-03-10",
     "token": "LOSS",
