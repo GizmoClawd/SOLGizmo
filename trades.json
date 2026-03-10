@@ -1,5 +1,17 @@
 [
   {
+    "n": 385,
+    "date": "2026-03-10",
+    "token": "SolClaw ",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "4 KOL convergence: Silver, dov7, dv, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3KbFJGT7uVU6N2ecYGo7pC2Pkf2XVmAXGAy98kogpump",
+    "ts": 1773166227
+  },
+  {
     "n": 384,
     "date": "2026-03-10",
     "token": "AgentHub",
