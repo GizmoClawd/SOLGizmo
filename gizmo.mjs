@@ -212,6 +212,7 @@ function loadPositions() {
     if (fs.existsSync(POSITIONS_FILE)) {
       const data = JSON.parse(fs.readFileSync(POSITIONS_FILE, 'utf8'));
       log(`📂 Loaded ${data.length} positions: ${data.map(p => p.name).join(', ') || 'none'}`);
+  await cleanGhostPositions();
       return data;
     }
   } catch (e) { log(`⚠️ Load positions failed: ${e.message}`); }
