@@ -1,5 +1,17 @@
 [
   {
+    "n": 282,
+    "date": "2026-03-10",
+    "token": "POV",
+    "action": "BUY",
+    "amount": "0.13397035775 SOL",
+    "result": "2 KOL convergence: decu, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GPEP5Z9zfK7AHbFsjrdR48EBvHT1QbZdHpBDjFevpump",
+    "ts": 1773102827
+  },
+  {
     "n": 281,
     "date": "2026-03-10",
     "token": "POV",
