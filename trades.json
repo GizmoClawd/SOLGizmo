@@ -1,5 +1,17 @@
 [
   {
+    "n": 477,
+    "date": "2026-03-10",
+    "token": "PenguWorld",
+    "action": "SELL",
+    "amount": "0.0152 SOL",
+    "result": "Sold 25% | PnL: +57.9%",
+    "pnl": "+0.0152 SOL",
+    "color": "teal",
+    "ca": "6XT8BeVndV53Sts8Fxk2Zr9WWkMWzuJwVGxYoBmspump",
+    "ts": 1773186572
+  },
+  {
     "n": 476,
     "date": "2026-03-10",
     "token": "Impossible",
