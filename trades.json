@@ -1,5 +1,17 @@
 [
   {
+    "n": 299,
+    "date": "2026-03-10",
+    "token": "slop",
+    "action": "SELL",
+    "amount": "0.04 SOL",
+    "result": "Sold 100% | PnL: -63.1%",
+    "pnl": "+0.0400 SOL",
+    "color": "teal",
+    "ca": "6n5eX1SJLPzPy3vj8HGxhj8Vs6gReEnt6gCYcNxTpump",
+    "ts": 1773105681
+  },
+  {
     "n": 298,
     "date": "2026-03-10",
     "token": "$michi",
