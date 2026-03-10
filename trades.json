@@ -1,5 +1,17 @@
 [
   {
+    "n": 353,
+    "date": "2026-03-10",
+    "token": "SHROOM",
+    "action": "SELL",
+    "amount": "0.0825 SOL",
+    "result": "Sold 100% | PnL: -38.2%",
+    "pnl": "+0.0825 SOL",
+    "color": "teal",
+    "ca": "xyzR4s6H724bUq6q7MTqWxUnhi8LM5fiKKUq38h8M1P",
+    "ts": 1773153866
+  },
+  {
     "n": 352,
     "date": "2026-03-10",
     "token": "SHROOM",
