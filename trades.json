@@ -1,5 +1,17 @@
 [
   {
+    "n": 395,
+    "date": "2026-03-10",
+    "token": "RAMEN",
+    "action": "BUY",
+    "amount": "0.265464047 SOL",
+    "result": "2 KOL convergence: Dali, Pain",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FgHog7szfbEhGmAHuwAMwvyQfJcHPdLLdLDpXEugTZn4",
+    "ts": 1773169641
+  },
+  {
     "n": 394,
     "date": "2026-03-10",
     "token": "Birdie",
