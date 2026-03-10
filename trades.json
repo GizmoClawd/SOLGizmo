@@ -1,5 +1,17 @@
 [
   {
+    "n": 366,
+    "date": "2026-03-10",
+    "token": "LOBSTER",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DKyWPCh5dTYbti51q1fLcccBsWHxjxqGaRjdevUbpump",
+    "ts": 1773160861
+  },
+  {
     "n": 365,
     "date": "2026-03-10",
     "token": "bullclaw",
