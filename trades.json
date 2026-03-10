@@ -1,5 +1,17 @@
 [
   {
+    "n": 269,
+    "date": "2026-03-10",
+    "token": "Holden",
+    "action": "SELL",
+    "amount": "0.2697 SOL",
+    "result": "Sold 50% | PnL: +30.3%",
+    "pnl": "+0.2697 SOL",
+    "color": "teal",
+    "ca": "5sXPYWc3v2UNhXgcQ3UhA868XREbWXb16WfgUR4npump",
+    "ts": 1773101240
+  },
+  {
     "n": 268,
     "date": "2026-03-10",
     "token": "Holden",
