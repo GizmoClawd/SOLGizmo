@@ -1,5 +1,17 @@
 [
   {
+    "n": 404,
+    "date": "2026-03-10",
+    "token": "Dick",
+    "action": "BUY",
+    "amount": "0.28487722975 SOL",
+    "result": "2 KOL convergence: dv, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BUtbRyaTyYH7sqdBYg4RsXqTz1gD95gZNGMSZUMmpump",
+    "ts": 1773171021
+  },
+  {
     "n": 403,
     "date": "2026-03-10",
     "token": "OILINU",
