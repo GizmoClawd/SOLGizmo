@@ -1,5 +1,17 @@
 [
   {
+    "n": 331,
+    "date": "2026-03-10",
+    "token": "BOYUELI",
+    "action": "BUY",
+    "amount": "0.281970011 SOL",
+    "result": "2 KOL convergence: theo, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8WuhA2CvMtUYJXm3htEndFzrDFgcycxar2a175hnVHMy",
+    "ts": 1773117732
+  },
+  {
     "n": 330,
     "date": "2026-03-10",
     "token": "Dogchain",
