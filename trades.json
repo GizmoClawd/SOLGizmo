@@ -1,5 +1,17 @@
 [
   {
+    "n": 288,
+    "date": "2026-03-10",
+    "token": "VAMP",
+    "action": "BUY",
+    "amount": "0.1054531915 SOL",
+    "result": "2 KOL convergence: bandit, theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AS6znfmF8Ui9P9atS2SAVYku4jXtxfk8mu7NcvD4pump",
+    "ts": 1773103985
+  },
+  {
     "n": 287,
     "date": "2026-03-10",
     "token": "$michi",
