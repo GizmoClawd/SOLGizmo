@@ -27,7 +27,7 @@ const MAX_POSITIONS = 3;
 // ─── SESSION GUARD ────────────────────────────────────────────────────────────
 let SESSION_START_BALANCE = null;
 let SESSION_HALTED = false;
-const SESSION_LOSS_LIMIT_SOL = 0.3;
+const SESSION_LOSS_LIMIT_SOL = 0.5;
 
 // ─── PROFIT VAULT ─────────────────────────────────────────────────────────────
 const VAULT_FILE_PATH = process.env.HOME + '/.gizmo/runtime/profit-vault.json';
