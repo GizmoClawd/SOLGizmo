@@ -1,5 +1,17 @@
 [
   {
+    "n": 441,
+    "date": "2026-03-10",
+    "token": "ClaudePoop",
+    "action": "SELL",
+    "amount": "0.1208 SOL",
+    "result": "Sold 100% | PnL: -30.4%",
+    "pnl": "+0.1208 SOL",
+    "color": "teal",
+    "ca": "72HJTACRvJbbk44z3LdEQMi89SnKk3ToJh5AdD7Apump",
+    "ts": 1773181958
+  },
+  {
     "n": 440,
     "date": "2026-03-10",
     "token": "Bartholomew",
