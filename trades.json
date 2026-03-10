@@ -1,5 +1,17 @@
 [
   {
+    "n": 284,
+    "date": "2026-03-10",
+    "token": "$michi",
+    "action": "BUY",
+    "amount": "0.06645915925 SOL",
+    "result": "2 KOL convergence: Cented, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DNsHD2xo2h7Pv1QtsNfa55KEuWvt2g5HXzLB7wC2pump",
+    "ts": 1773103006
+  },
+  {
     "n": 283,
     "date": "2026-03-10",
     "token": "$michi",
