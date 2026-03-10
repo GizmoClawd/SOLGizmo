@@ -1,5 +1,17 @@
 [
   {
+    "n": 373,
+    "date": "2026-03-10",
+    "token": "Rosencratz",
+    "action": "BUY",
+    "amount": "0.27444311425 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5N8S6xfs7fLPUEf7XXiktomWddcVu8dERXDzM1XLpump",
+    "ts": 1773162083
+  },
+  {
     "n": 372,
     "date": "2026-03-10",
     "token": "Rosencratz",
