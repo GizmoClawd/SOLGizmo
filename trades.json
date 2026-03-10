@@ -1,5 +1,17 @@
 [
   {
+    "n": 399,
+    "date": "2026-03-10",
+    "token": "JohnPorkAI",
+    "action": "BUY",
+    "amount": "0.25125604425 SOL",
+    "result": "2 KOL convergence: Joji, Pain",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2Hv6UjKJCAbHoGLTjq7PckX9gXkzFZdA87k7uXP2pump",
+    "ts": 1773170480
+  },
+  {
     "n": 398,
     "date": "2026-03-10",
     "token": "GameTheory",
