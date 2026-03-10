@@ -1,5 +1,17 @@
 [
   {
+    "n": 470,
+    "date": "2026-03-10",
+    "token": "WORLD",
+    "action": "BUY",
+    "amount": "0.0683 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8JrAHakJnDUQG7QdBwCUVVogn4DBGfhaMwqp34WFpump",
+    "ts": 1773186054
+  },
+  {
     "n": 469,
     "date": "2026-03-10",
     "token": "Tralala",
