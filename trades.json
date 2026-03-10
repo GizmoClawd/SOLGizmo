@@ -1,5 +1,17 @@
 [
   {
+    "n": 323,
+    "date": "2026-03-10",
+    "token": "swag",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "2 KOL convergence: decu, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CJZA9txWhV4UJyQEbNz6XKQYwKLsqMbAqi1TDKdypump",
+    "ts": 1773115875
+  },
+  {
     "n": 322,
     "date": "2026-03-10",
     "token": "LULU",
