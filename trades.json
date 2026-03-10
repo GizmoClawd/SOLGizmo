@@ -1,5 +1,17 @@
 [
   {
+    "n": 301,
+    "date": "2026-03-10",
+    "token": "Dolan",
+    "action": "SELL",
+    "amount": "0.0404 SOL",
+    "result": "Sold 100% | PnL: -38.7%",
+    "pnl": "+0.0404 SOL",
+    "color": "teal",
+    "ca": "Ee9qWAfsgVHxCRiJK2Fcs728Dj6GNr5uCCsBdUwkpump",
+    "ts": 1773106161
+  },
+  {
     "n": 300,
     "date": "2026-03-10",
     "token": "Dolan",
