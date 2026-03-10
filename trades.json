@@ -1,5 +1,17 @@
 [
   {
+    "n": 330,
+    "date": "2026-03-10",
+    "token": "Dogchain",
+    "action": "SELL",
+    "amount": "0.2844 SOL",
+    "result": "Sold 100% | PnL: +27.8%",
+    "pnl": "+0.2844 SOL",
+    "color": "teal",
+    "ca": "G9pRVyvGV1jgWzttqGwW1vrHtBC98UhZNguCb9vRpump",
+    "ts": 1773117141
+  },
+  {
     "n": 329,
     "date": "2026-03-10",
     "token": "Dogchain",
