@@ -72,7 +72,7 @@ const SIGNAL_WINDOW_MS = 10 * 60 * 1000;
 const HELIUS_KEY = process.env.HELIUS_API_KEY || '';
 
 // ─── ADAPTIVE PARAMS (learning system) ───────────────────────────────────────
-let SCORE_THRESHOLD = 5;
+let SCORE_THRESHOLD = 6;
 let MIN_LIQ = 8000;
 let MIN_KOLS = 2;
 let POSITION_SIZE_MULT = 1.0;
@@ -303,20 +303,20 @@ const WALLETS = [
   { name: "bandit", address: "5B79fMkcFeRTiwm7ehsZsFiKsC7m7n1Bgv9yLxPp9q2X", weight: 3 },
   { name: "dov7", address: "8nqtxpFpuXwfXG4pBLsDkkuMMPK9FjSkBMCn542HiM3v", weight: 3 },
   { name: "Jijo", address: "4BdKaxN8G6ka4GYtQQWk4G4dZRUTX2vQH9GcXdBREFUk", weight: 3 },
-  { name: "Kadenox", address: "B32QbbdDAyhvUQzjcaM5j6ZVKwjCxAwGH5Xgvb9SJqnC", weight: 1 },
+  { name: "Kadenox", address: "B32QbbdDAyhvUQzjcaM5j6ZVKwjCxAwGH5Xgvb9SJqnC", weight: 3 },
   { name: "theo", address: "Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt", weight: 3 },
-  { name: "Dali", address: "CvNiezB8hofusHCKqu8irJ6t2FKY7VjzpSckofMzk5mB", weight: 1 },
-  { name: "radiance", address: "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke", weight: 1 },
+  { name: "Dali", address: "CvNiezB8hofusHCKqu8irJ6t2FKY7VjzpSckofMzk5mB", weight: 3 },
+  { name: "radiance", address: "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke", weight: 3 },
   { name: "Coasty", address: "CATk62cYqDFXTh3rsRbS1ibCyzBeovc2KXpXEaxEg3nB", weight: 1 },
-  { name: "clukz", address: "G6fUXjMKPJzCY1rveAE6Qm7wy5U3vZgKDJmN1VPAdiZC", weight: 1 },
+  { name: "clukz", address: "G6fUXjMKPJzCY1rveAE6Qm7wy5U3vZgKDJmN1VPAdiZC", weight: 3 },
   { name: "dv", address: "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd", weight: 3 },
   { name: "cryptovillain", address: "5sNnKuWKUtZkdC1eFNyqz3XHpNoCRQ1D1DfHcNHMV7gn", weight: 1 },
-  { name: "Joji", address: "525LueqAyZJueCoiisfWy6nyh4MTvmF4X9jSqi6efXJT", weight: 1 },
+  { name: "Joji", address: "525LueqAyZJueCoiisfWy6nyh4MTvmF4X9jSqi6efXJT", weight: 3 },
   { name: "decu", address: "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9", weight: 3 },
   { name: "Cupsey", address: "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f", weight: 1, scalper: true },
   { name: "mercy", address: "F5jWYuiDLTiaLYa54D88YbpXgEsA6NKHzWy4SN4bMYjt", weight: 1 },
-  { name: "Silver", address: "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U", weight: 1 },
-  { name: "Pain", address: "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa", weight: 1 },
+  { name: "Silver", address: "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U", weight: 3 },
+  { name: "Pain", address: "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa", weight: 3 },
   // ── AUTO-DISCOVERED SMART MONEY (Mon Mar 09 2026) ──
   { name: "smart_gizmo-wins_1", address: "DKfejcSsTYVFU4jHSyjrGJiYAMdGwe5varF11ArFcmeB", weight: 1 }, // auto-discovered WR:100%
 ];
@@ -341,7 +341,7 @@ async function getTokenInfo(mint) {
 // Fetches recent buyers of a token via Helius, checks how many wallets are <7 days old.
 // If 15+ new wallets are found, it's likely a coordinated rug setup.
 const NEW_WALLET_DAYS = 7;
-const NEW_WALLET_THRESHOLD = 15;
+const NEW_WALLET_THRESHOLD = 36;
 
 async function checkRugWallets(mint) {
   if (!HELIUS_KEY) return { isRug: false, newCount: 0, total: 0 };
@@ -374,7 +374,10 @@ async function checkRugWallets(mint) {
       } catch {}
     }));
 
-    return { isRug: newWalletCount >= NEW_WALLET_THRESHOLD, newCount: newWalletCount, total: wallets.length };
+    // Use ratio-based check: block only if >85% of buyers are new wallets AND at least 10 buyers checked
+    const newWalletRatio = wallets.length > 0 ? newWalletCount / wallets.length : 0;
+    const isRug = wallets.length >= 10 && newWalletRatio > 0.85;
+    return { isRug, newCount: newWalletCount, total: wallets.length, ratio: (newWalletRatio*100).toFixed(0) };
   } catch (e) {
     log(`⚠️ checkRugWallets error: ${e.message?.slice(0, 80)}`);
     return { isRug: false, newCount: 0, total: 0 };
@@ -777,7 +780,7 @@ async function scanKOLs(state) {
       // ── NEW WALLET RUG CHECK ──
       const rugCheck = await checkRugWallets(mint);
       if (rugCheck.isRug) {
-        log(`🚩 RUG WALLETS: ${info.symbol} — ${rugCheck.newCount}/${rugCheck.total} buyers are <7 days old. BLOCKED.`);
+        log(`🚩 RUG WALLETS: ${info.symbol} — ${rugCheck.newCount}/${rugCheck.total} buyers new (${rugCheck.ratio}%). BLOCKED.`);
         continue;
       }
       if (rugCheck.newCount > 5) log(`⚠️ ${info.symbol}: ${rugCheck.newCount}/${rugCheck.total} new wallets detected (below block threshold)`);
