@@ -27,7 +27,7 @@ const MAX_POSITIONS = 3;
 // ─── SESSION GUARD ────────────────────────────────────────────────────────────
 let SESSION_START_BALANCE = null;
 let SESSION_HALTED = false;
-const SESSION_LOSS_LIMIT_SOL = 1.0; // halt if down this much in one session
+const SESSION_LOSS_LIMIT_SOL = 0.3; // halt if down this much in one session
 const SIGNAL_WINDOW_MS = 10 * 60 * 1000;
 const HELIUS_KEY = process.env.HELIUS_API_KEY || '';
 
