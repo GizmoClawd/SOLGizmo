@@ -1,5 +1,17 @@
 [
   {
+    "n": 488,
+    "date": "2026-03-10",
+    "token": "MARTIANS",
+    "action": "SELL",
+    "amount": "0.0224 SOL",
+    "result": "Sold 100% | PnL: -52.4%",
+    "pnl": "+0.0224 SOL",
+    "color": "teal",
+    "ca": "HKNKMoaJaRLb2m4uRPvHb1YcUCaNWPJEbqQJWCwgUQxR",
+    "ts": 1773187175
+  },
+  {
     "n": 487,
     "date": "2026-03-10",
     "token": "MARTIANS",
