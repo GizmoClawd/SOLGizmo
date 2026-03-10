@@ -27,6 +27,7 @@ const MAX_POSITIONS = 3;
 // ─── SESSION GUARD ────────────────────────────────────────────────────────────
 let SESSION_START_BALANCE = null;
 let SESSION_HALTED = false;
+let SESSION_HALT_TIME = null;
 const SESSION_LOSS_LIMIT_SOL = 0.5;
 
 // ─── PROFIT VAULT ─────────────────────────────────────────────────────────────
@@ -59,7 +60,10 @@ async function runProfitVault(currentBalance) {
       const newLock = targetLocked - vault.locked;
       vault.locked = targetLocked;
       saveVault(vault);
-      const msg = '🔐 PROFIT VAULT: Locked ' + newLock.toFixed(3) + ' SOL | Total locked: ' + vault.locked.toFixed(3) + ' SOL | Tradeable: ' + (currentBalance - vault.locked).toFixed(3) + ' SOL';
+      // SAFETY: never lock more than 70% of actual current balance
+      vault.locked = Math.min(vault.locked, currentBalance * 0.70);
+      const tradeable = currentBalance - vault.locked;
+      const msg = '🔐 PROFIT VAULT: Locked ' + vault.locked.toFixed(3) + ' SOL | Tradeable: ' + tradeable.toFixed(3) + ' SOL';
       log(msg);
       try { execSync('openclaw message --text "' + msg.replace(/"/g,"'") + '" --agent gizmo', { timeout: 5000 }); } catch {}
     }
@@ -1124,8 +1128,16 @@ async function runCycle() {
       const d = await r.json();
       const current = (d.result?.value || 0) / 1e9;
       const lost = SESSION_START_BALANCE - current;
+      // Auto-reset session every 30 minutes so halt never stops trading forever
+      const sessionAge = (Date.now() - (SESSION_HALT_TIME || Date.now())) / 60000;
+      if (SESSION_HALTED && sessionAge > 30) {
+        SESSION_HALTED = false;
+        SESSION_START_BALANCE = currentBalance;
+        log('[SESSION] ⏰ Auto-resumed after 30min cooldown — new session started at ' + currentBalance.toFixed(3) + ' SOL');
+      }
       if (lost >= SESSION_LOSS_LIMIT_SOL) {
         SESSION_HALTED = true;
+        SESSION_HALT_TIME = Date.now();
         const msg = `🚨 DAILY LOSS LIMIT HIT\nStarted: ${SESSION_START_BALANCE.toFixed(3)} SOL\nNow: ${current.toFixed(3)} SOL\nLost: ${lost.toFixed(3)} SOL\n\nHalting all buys. Still managing open positions. Resume tomorrow.`;
         log('[SESSION] ' + msg);
         try { execSync(`openclaw message --text "${msg.replace(/"/g,"'")}" --agent gizmo`, { timeout: 5000 }); } catch {}
