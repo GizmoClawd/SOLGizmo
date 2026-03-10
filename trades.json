@@ -1,5 +1,17 @@
 [
   {
+    "n": 391,
+    "date": "2026-03-10",
+    "token": "Thanos",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "2 KOL convergence: dov7, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HsU8pHT6fuUfFA9jcvrJk5NELp6YfviGVsobJBPapump",
+    "ts": 1773167312
+  },
+  {
     "n": 390,
     "date": "2026-03-10",
     "token": "AgentHub",
