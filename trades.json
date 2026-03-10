@@ -1,5 +1,17 @@
 [
   {
+    "n": 482,
+    "date": "2026-03-10",
+    "token": "ClaudePoop",
+    "action": "SELL",
+    "amount": "0.0346 SOL",
+    "result": "Sold 50% | PnL: +56.0%",
+    "pnl": "+0.0346 SOL",
+    "color": "teal",
+    "ca": "2gUNqbEvuimAmLq98er8MG5cnR9YZ3i7CdbMh2rkpump",
+    "ts": 1773186677
+  },
+  {
     "n": 481,
     "date": "2026-03-10",
     "token": "PenguWorld",
