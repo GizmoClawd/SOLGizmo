@@ -1,5 +1,17 @@
 [
   {
+    "n": 346,
+    "date": "2026-03-10",
+    "token": "ROBOT",
+    "action": "SELL",
+    "amount": "0.3549 SOL",
+    "result": "Sold 100% | PnL: -45.7%",
+    "pnl": "+0.3549 SOL",
+    "color": "teal",
+    "ca": "4ofrqsnmrxcwWgUoQ9pdGiW2U2mCAQxU7skMhcitpump",
+    "ts": 1773122425
+  },
+  {
     "n": 345,
     "date": "2026-03-10",
     "token": "ROBOT",
