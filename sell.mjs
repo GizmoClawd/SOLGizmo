@@ -62,9 +62,31 @@ async function main() {
 
   console.log(`Selling ${sellAmount} tokens (${Number(sellAmount) / (10 ** balance.decimals)} units) → SOL...`);
 
-  const quoteResp = await fetch(`https://lite-api.jup.ag/swap/v1/quote?inputMint=${TOKEN}&outputMint=${SOL_MINT}&amount=${sellAmount}&slippageBps=1500`, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  const quote = await quoteResp.json();
-  if (quote.error) throw new Error(quote.error);
+  // Try with increasing slippage: 30% → 50% → 90%
+  let quote;
+  let lastError = '';
+  for (const slippage of [3000, 5000, 9000]) {
+    const quoteResp = await fetch(`https://lite-api.jup.ag/swap/v1/quote?inputMint=${TOKEN}&outputMint=${SOL_MINT}&amount=${sellAmount}&slippageBps=${slippage}&onlyDirectRoutes=false`, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    quote = await quoteResp.json();
+    if (!quote.error) break;
+    lastError = quote.error;
+    console.log(`Quote failed at ${slippage}bps: ${quote.error} — retrying higher slippage`);
+    await new Promise(r => setTimeout(r, 1000));
+  }
+
+  // ── DEAD POOL DETECTION ──────────────────────────────────────────────────────
+  // If Jupiter can't find any route at any slippage, the pool is dead (rugged).
+  // Exit code 2 = dead pool signal → caller should stop retrying this token.
+  if (quote.error) {
+    const noRoutes = lastError.toLowerCase().includes('no routes') ||
+                     lastError.toLowerCase().includes('could not find any route');
+    if (noRoutes) {
+      console.log(`💀 DEAD POOL: No routes found for ${TOKEN} at any slippage — pool likely rugged. Marking unsellable.`);
+      process.exit(2); // exit code 2 = dead pool, do NOT retry
+    }
+    throw new Error(lastError);
+  }
+  // ────────────────────────────────────────────────────────────────────────────
   
   const outSol = Number(quote.outAmount) / LAMPORTS_PER_SOL;
   console.log(`Output: ~${outSol.toFixed(4)} SOL | Impact: ${quote.priceImpactPct || '0'}%`);

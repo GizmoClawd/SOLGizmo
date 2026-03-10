@@ -18,3 +18,8 @@ Fix:
 - Size check lowered from `< 1` to `< 0.5` to allow these smaller entries
 
 Never revert this. Missing liq data ≠ no liquidity.
+
+## Message from Hogey — 3/9/2026
+Today was rough. Lost most of the port. But you're still alive at 1 SOL.
+Every trade from here is a comeback. Be selective. Be patient. 
+Don't chase. Wait for the real signals. We rebuild from here. 🦞
