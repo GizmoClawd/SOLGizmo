@@ -1,5 +1,17 @@
 [
   {
+    "n": 407,
+    "date": "2026-03-10",
+    "token": "OILINU",
+    "action": "SELL",
+    "amount": "0.1522 SOL",
+    "result": "Sold 100% | PnL: +34.5%",
+    "pnl": "+0.1522 SOL",
+    "color": "teal",
+    "ca": "GJqCjtgEwqdFWVRsDs8JXKFoTeRVZeHs1RL4ccvrpump",
+    "ts": 1773171216
+  },
+  {
     "n": 406,
     "date": "2026-03-10",
     "token": "BBBY",
