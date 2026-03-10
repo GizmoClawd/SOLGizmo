@@ -1,5 +1,17 @@
 [
   {
+    "n": 300,
+    "date": "2026-03-10",
+    "token": "Dolan",
+    "action": "BUY",
+    "amount": "0.06752565275 SOL",
+    "result": "2 KOL convergence: Cented, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Ee9qWAfsgVHxCRiJK2Fcs728Dj6GNr5uCCsBdUwkpump",
+    "ts": 1773105967
+  },
+  {
     "n": 299,
     "date": "2026-03-10",
     "token": "slop",
