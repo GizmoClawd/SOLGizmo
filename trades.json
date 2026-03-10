@@ -1,5 +1,17 @@
 [
   {
+    "n": 406,
+    "date": "2026-03-10",
+    "token": "BBBY",
+    "action": "BUY",
+    "amount": "0.2643906125 SOL",
+    "result": "2 KOL convergence: dv, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8GiwJT49kDHmn8GhqvdWomK92FEp4ZyMjjC24dW4pump",
+    "ts": 1773171198
+  },
+  {
     "n": 405,
     "date": "2026-03-10",
     "token": "Dick",
