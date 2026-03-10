@@ -1,5 +1,17 @@
 [
   {
+    "n": 426,
+    "date": "2026-03-10",
+    "token": "JEW",
+    "action": "SELL",
+    "amount": "0.1601 SOL",
+    "result": "Sold 100% | PnL: -8.8%",
+    "pnl": "+0.1601 SOL",
+    "color": "teal",
+    "ca": "4D9jZY6nkXnm3ofmWWJVcJrvtXDMfE5Zwy8rZMy5pump",
+    "ts": 1773179483
+  },
+  {
     "n": 425,
     "date": "2026-03-10",
     "token": "MWO",
