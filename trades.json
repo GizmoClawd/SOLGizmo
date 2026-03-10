@@ -1,5 +1,17 @@
 [
   {
+    "n": 360,
+    "date": "2026-03-10",
+    "token": "twitter-cli",
+    "action": "SELL",
+    "amount": "0.2164 SOL",
+    "result": "Sold 100% | PnL: -42.7%",
+    "pnl": "+0.2164 SOL",
+    "color": "teal",
+    "ca": "9gApQgXh4LxtdKR787A21DE77wcFZRDcTFeEzQ2jpump",
+    "ts": 1773157167
+  },
+  {
     "n": 359,
     "date": "2026-03-10",
     "token": "twitter-cli",
