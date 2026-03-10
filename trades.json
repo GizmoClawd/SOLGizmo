@@ -1,5 +1,17 @@
 [
   {
+    "n": 405,
+    "date": "2026-03-10",
+    "token": "Dick",
+    "action": "SELL",
+    "amount": "0.2036 SOL",
+    "result": "Sold 100% | PnL: -35.8%",
+    "pnl": "+0.2036 SOL",
+    "color": "teal",
+    "ca": "BUtbRyaTyYH7sqdBYg4RsXqTz1gD95gZNGMSZUMmpump",
+    "ts": 1773171096
+  },
+  {
     "n": 404,
     "date": "2026-03-10",
     "token": "Dick",
