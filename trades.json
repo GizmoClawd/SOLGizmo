@@ -1,5 +1,17 @@
 [
   {
+    "n": 361,
+    "date": "2026-03-10",
+    "token": "Distorted",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "HW KOL: dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump",
+    "ts": 1773157519
+  },
+  {
     "n": 360,
     "date": "2026-03-10",
     "token": "twitter-cli",
