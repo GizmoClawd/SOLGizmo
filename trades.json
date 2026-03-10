@@ -1,5 +1,17 @@
 [
   {
+    "n": 317,
+    "date": "2026-03-10",
+    "token": "QuadrupleT",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "Re-entry @ $2655",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HpGYXJvmHGD7jRnYDTnLLjdwGFXg2N6ihnAbVZzspump",
+    "ts": 1773112364
+  },
+  {
     "n": 316,
     "date": "2026-03-10",
     "token": "RomanStorm",
