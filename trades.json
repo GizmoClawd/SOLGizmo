@@ -1,5 +1,17 @@
 [
   {
+    "n": 332,
+    "date": "2026-03-10",
+    "token": "BOYUELI",
+    "action": "SELL",
+    "amount": "0.1473 SOL",
+    "result": "Sold 50% | PnL: +31.3%",
+    "pnl": "+0.1473 SOL",
+    "color": "teal",
+    "ca": "8WuhA2CvMtUYJXm3htEndFzrDFgcycxar2a175hnVHMy",
+    "ts": 1773117981
+  },
+  {
     "n": 331,
     "date": "2026-03-10",
     "token": "BOYUELI",
