@@ -1,5 +1,17 @@
 [
   {
+    "n": 379,
+    "date": "2026-03-10",
+    "token": "GolemCode",
+    "action": "BUY",
+    "amount": "0.2058279305 SOL",
+    "result": "2 KOL convergence: Joji, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2iqdwLDV5TMtNQGQruDTLKuyWaJ6ELoApQMrucKypump",
+    "ts": 1773163695
+  },
+  {
     "n": 378,
     "date": "2026-03-10",
     "token": "Romelius",
