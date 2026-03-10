@@ -1,5 +1,17 @@
 [
   {
+    "n": 378,
+    "date": "2026-03-10",
+    "token": "Romelius",
+    "action": "SELL",
+    "amount": "0.1749 SOL",
+    "result": "Sold 100% | PnL: -1.9%",
+    "pnl": "+0.1749 SOL",
+    "color": "teal",
+    "ca": "22pej7LDRjGyF64GgdcviFf77a6zH748hT3PrNeZpump",
+    "ts": 1773163232
+  },
+  {
     "n": 377,
     "date": "2026-03-10",
     "token": "Romelius",
