@@ -1,5 +1,17 @@
 [
   {
+    "n": 387,
+    "date": "2026-03-10",
+    "token": "AgentHub",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "Re-entry @ $51357",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5qb1ivW87woH3qE1ZVhxL4cEwhEKL4isWWsmEH68pump",
+    "ts": 1773166856
+  },
+  {
     "n": 386,
     "date": "2026-03-10",
     "token": "SolClaw ",
