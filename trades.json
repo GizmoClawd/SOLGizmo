@@ -1,5 +1,17 @@
 [
   {
+    "n": 438,
+    "date": "2026-03-10",
+    "token": "BADGES",
+    "action": "SELL",
+    "amount": "0.0971 SOL",
+    "result": "Sold 100% | PnL: -77.8%",
+    "pnl": "+0.0971 SOL",
+    "color": "teal",
+    "ca": "BQ6YoKAzyNbB1ohzEVcdBo2vVButcZwJJykLb31Gpump",
+    "ts": 1773181657
+  },
+  {
     "n": 437,
     "date": "2026-03-10",
     "token": "BADGES",
