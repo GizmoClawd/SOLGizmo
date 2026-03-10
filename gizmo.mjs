@@ -489,6 +489,7 @@ async function sell(ca, pct, posName, entryMC, currentMC) {
 
 // ─── BUY ──────────────────────────────────────────────────────────────────────
 async function buy(ca, amount) {
+  if (DEAD_POOLS.has(ca)) { log(`🚫 BUY BLOCKED: ${ca} is blacklisted in dead pool`); return false; }
   try {
     const out = execSync(`cd ${WORKSPACE} && node trade.mjs ${ca} ${amount}`, { timeout: 30000 }).toString();
     log(`BUY ${amount} SOL: ${out.trim().split('\n').pop()}`);
