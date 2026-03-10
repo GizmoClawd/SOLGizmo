@@ -1,5 +1,17 @@
 [
   {
+    "n": 454,
+    "date": "2026-03-10",
+    "token": "LOSS",
+    "action": "SELL",
+    "amount": "0.0445 SOL",
+    "result": "Sold 100% | PnL: -45.5%",
+    "pnl": "+0.0445 SOL",
+    "color": "teal",
+    "ca": "HdeJrXRHztstCRsgLQtDvYFSy3XVywNQwZokWQw8pump",
+    "ts": 1773184189
+  },
+  {
     "n": 453,
     "date": "2026-03-10",
     "token": "LOSS",
