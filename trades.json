@@ -1,5 +1,17 @@
 [
   {
+    "n": 393,
+    "date": "2026-03-10",
+    "token": "Birdie",
+    "action": "BUY",
+    "amount": "2 SOL",
+    "result": "2 KOL convergence: dv, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FQVCedk4v5jsi8TFQUPUzWm5uR2UfuazBXrZghwTpump",
+    "ts": 1773167667
+  },
+  {
     "n": 392,
     "date": "2026-03-10",
     "token": "Thanos",
