@@ -1,5 +1,17 @@
 [
   {
+    "n": 320,
+    "date": "2026-03-10",
+    "token": "LULU",
+    "action": "BUY",
+    "amount": "0.06392492375 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9CWKLPEQqxxi34kcZJEMV5oXU3ESNCgdFgW9haMypump",
+    "ts": 1773115451
+  },
+  {
     "n": 319,
     "date": "2026-03-10",
     "token": "Burncoin",
