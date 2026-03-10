@@ -1,5 +1,17 @@
 [
   {
+    "n": 424,
+    "date": "2026-03-10",
+    "token": "MWO",
+    "action": "BUY",
+    "amount": "0.0604 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "1D2jtKqeNxfQ2bqwyG5UuL2pHNB4gqnz7YMKYQqpump",
+    "ts": 1773179016
+  },
+  {
     "n": 423,
     "date": "2026-03-10",
     "token": "MWO",
