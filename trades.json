@@ -1,5 +1,17 @@
 [
   {
+    "n": 400,
+    "date": "2026-03-10",
+    "token": "GameTheory",
+    "action": "SELL",
+    "amount": "0.2373 SOL",
+    "result": "Sold 100% | PnL: -13.7%",
+    "pnl": "+0.2373 SOL",
+    "color": "teal",
+    "ca": "7qN2qQtaarPZVvv51JKTkJgTnHj8u7TDBHUyT8Pspump",
+    "ts": 1773170555
+  },
+  {
     "n": 399,
     "date": "2026-03-10",
     "token": "JohnPorkAI",
