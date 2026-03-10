@@ -1,5 +1,17 @@
 [
   {
+    "n": 295,
+    "date": "2026-03-10",
+    "token": "MEME",
+    "action": "BUY",
+    "amount": "0.26740388525 SOL",
+    "result": "2 KOL convergence: decu, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5MvLSUWAigkD58s8ZtLkAfzPW2qaDUK6MmofkJuZpump",
+    "ts": 1773105377
+  },
+  {
     "n": 294,
     "date": "2026-03-10",
     "token": "Research",
