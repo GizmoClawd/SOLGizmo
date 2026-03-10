@@ -1,5 +1,17 @@
 [
   {
+    "n": 298,
+    "date": "2026-03-10",
+    "token": "$michi",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "Re-entry @ $3523",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DNsHD2xo2h7Pv1QtsNfa55KEuWvt2g5HXzLB7wC2pump",
+    "ts": 1773105584
+  },
+  {
     "n": 297,
     "date": "2026-03-10",
     "token": "slop",
