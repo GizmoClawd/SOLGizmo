@@ -1,5 +1,17 @@
 [
   {
+    "n": 359,
+    "date": "2026-03-10",
+    "token": "twitter-cli",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "2 KOL convergence: decu, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9gApQgXh4LxtdKR787A21DE77wcFZRDcTFeEzQ2jpump",
+    "ts": 1773156979
+  },
+  {
     "n": 358,
     "date": "2026-03-10",
     "token": "LOBSTER",
