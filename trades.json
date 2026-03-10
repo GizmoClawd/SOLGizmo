@@ -1,5 +1,17 @@
 [
   {
+    "n": 345,
+    "date": "2026-03-10",
+    "token": "ROBOT",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4ofrqsnmrxcwWgUoQ9pdGiW2U2mCAQxU7skMhcitpump",
+    "ts": 1773122361
+  },
+  {
     "n": 344,
     "date": "2026-03-10",
     "token": "USELESS",
