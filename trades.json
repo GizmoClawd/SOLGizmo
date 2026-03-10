@@ -1,5 +1,17 @@
 [
   {
+    "n": 308,
+    "date": "2026-03-10",
+    "token": "Gifcoin",
+    "action": "SELL",
+    "amount": "0.1063 SOL",
+    "result": "Sold 100% | PnL: -40.4%",
+    "pnl": "+0.1063 SOL",
+    "color": "teal",
+    "ca": "2pj3QbvDB2vqFLLkcFDF8JKchZBeUFT39j6aCUP4pump",
+    "ts": 1773110481
+  },
+  {
     "n": 307,
     "date": "2026-03-10",
     "token": "Gifcoin",
