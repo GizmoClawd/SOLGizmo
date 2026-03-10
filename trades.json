@@ -1,5 +1,17 @@
 [
   {
+    "n": 396,
+    "date": "2026-03-10",
+    "token": "RAMEN",
+    "action": "SELL",
+    "amount": "0.1741 SOL",
+    "result": "Sold 50% | PnL: +33.1%",
+    "pnl": "+0.1741 SOL",
+    "color": "teal",
+    "ca": "FgHog7szfbEhGmAHuwAMwvyQfJcHPdLLdLDpXEugTZn4",
+    "ts": 1773169776
+  },
+  {
     "n": 395,
     "date": "2026-03-10",
     "token": "RAMEN",
