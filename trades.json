@@ -1,5 +1,17 @@
 [
   {
+    "n": 374,
+    "date": "2026-03-10",
+    "token": "Rosencratz",
+    "action": "SELL",
+    "amount": "0.1514 SOL",
+    "result": "Sold 100% | PnL: -54.8%",
+    "pnl": "+0.1514 SOL",
+    "color": "teal",
+    "ca": "5N8S6xfs7fLPUEf7XXiktomWddcVu8dERXDzM1XLpump",
+    "ts": 1773162332
+  },
+  {
     "n": 373,
     "date": "2026-03-10",
     "token": "Rosencratz",
