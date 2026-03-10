@@ -32,3 +32,8 @@
 - On every startup, Gizmo strips any blacklisted CA from positions.json
 - Future rugs auto-added to blacklist when dead pool detected
 - POV (GPEP5Z9zfK7AHbFsjrdR48EBvHT1QbZdHpBDjFevpump) manually blacklisted
+
+## Update — Permanent Runtime (March 9 2026)
+- Moved all runtime files from /tmp/gizmo-trade to ~/.gizmo/runtime
+- BASE_DIR updated in gizmo.mjs
+- positions.json, dead-pools.json, kol-state.json all survive reboots now
