@@ -1,5 +1,17 @@
 [
   {
+    "n": 351,
+    "date": "2026-03-10",
+    "token": "SHROOM",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Boost scan score 4/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "xyzR4s6H724bUq6q7MTqWxUnhi8LM5fiKKUq38h8M1P",
+    "ts": 1773140840
+  },
+  {
     "n": 350,
     "date": "2026-03-10",
     "token": "ABANDON",
