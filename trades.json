@@ -1,5 +1,17 @@
 [
   {
+    "n": 368,
+    "date": "2026-03-10",
+    "token": "KING",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "3 KOL convergence: Cented, dov7, clukz",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6LF5Laty8PwpEXEjVCKdzMU5mdEZxiX3YYeor8u8pump",
+    "ts": 1773161127
+  },
+  {
     "n": 367,
     "date": "2026-03-10",
     "token": "LOBSTER",
