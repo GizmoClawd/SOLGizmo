@@ -1,5 +1,17 @@
 [
   {
+    "n": 337,
+    "date": "2026-03-10",
+    "token": "Tyrone",
+    "action": "BUY",
+    "amount": "0.27416416525 SOL",
+    "result": "2 KOL convergence: decu, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "77hyYSQS1hJtXLyiB2KswDjNiLxtLePmY1jeJT2Zpump",
+    "ts": 1773120552
+  },
+  {
     "n": 336,
     "date": "2026-03-10",
     "token": "ClaudeGov",
