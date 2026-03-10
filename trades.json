@@ -1,5 +1,17 @@
 [
   {
+    "n": 305,
+    "date": "2026-03-10",
+    "token": "BTP",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "2 KOL convergence: Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2FomoUseSy22gnRNjBrcALvxZE1xsvrmhTQAZ6j4pump",
+    "ts": 1773108672
+  },
+  {
     "n": 304,
     "date": "2026-03-10",
     "token": "$michi",
