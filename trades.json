@@ -1,5 +1,17 @@
 [
   {
+    "n": 472,
+    "date": "2026-03-10",
+    "token": "World",
+    "action": "SELL",
+    "amount": "0.0485 SOL",
+    "result": "Sold 100% | PnL: -35.1%",
+    "pnl": "+0.0485 SOL",
+    "color": "teal",
+    "ca": "3TRwUDEN7jTxatkgqWA3A5m5dagukyA92RMWWv9Zpump",
+    "ts": 1773186358
+  },
+  {
     "n": 471,
     "date": "2026-03-10",
     "token": "World",
