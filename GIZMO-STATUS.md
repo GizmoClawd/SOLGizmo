@@ -37,3 +37,12 @@
 - Moved all runtime files from /tmp/gizmo-trade to ~/.gizmo/runtime
 - BASE_DIR updated in gizmo.mjs
 - positions.json, dead-pools.json, kol-state.json all survive reboots now
+
+## Update — Bankroll Protection (March 9 2026)
+- safeBuySize() completely rewritten with tiered system
+- 5+ SOL: max 15% per trade, hard cap 1.0 SOL
+- 2-5 SOL: max 12% per trade, hard cap 0.5 SOL
+- 0.5-2 SOL: max 10% per trade, hard cap 0.2 SOL
+- <0.5 SOL: survival mode, max 0.08 SOL per trade
+- Always keeps 30% reserve + 0.1 SOL floor untouched
+- Gizmo can never blow the whole wallet in one session
