@@ -1,5 +1,17 @@
 [
   {
+    "n": 380,
+    "date": "2026-03-10",
+    "token": "GolemCode",
+    "action": "SELL",
+    "amount": "0.1256 SOL",
+    "result": "Sold 100% | PnL: -36.1%",
+    "pnl": "+0.1256 SOL",
+    "color": "teal",
+    "ca": "2iqdwLDV5TMtNQGQruDTLKuyWaJ6ELoApQMrucKypump",
+    "ts": 1773164012
+  },
+  {
     "n": 379,
     "date": "2026-03-10",
     "token": "GolemCode",
