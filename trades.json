@@ -1,5 +1,17 @@
 [
   {
+    "n": 448,
+    "date": "2026-03-10",
+    "token": "MIM",
+    "action": "BUY",
+    "amount": "0.0486 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "JmQCbJEiPBDkvfjDLPBRxeuR4QXX8JeRiMQvUSppump",
+    "ts": 1773183420
+  },
+  {
     "n": 447,
     "date": "2026-03-10",
     "token": "Generational",
