@@ -1,5 +1,17 @@
 [
   {
+    "n": 302,
+    "date": "2026-03-10",
+    "token": "Chud",
+    "action": "BUY",
+    "amount": "0.06016382725 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EmijUquKxwDNrmjz3Zzgt8hJ5wfQfWjb87jFRP76pump",
+    "ts": 1773106215
+  },
+  {
     "n": 301,
     "date": "2026-03-10",
     "token": "Dolan",
