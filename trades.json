@@ -1,5 +1,17 @@
 [
   {
+    "n": 409,
+    "date": "2026-03-10",
+    "token": "BBBY",
+    "action": "SELL",
+    "amount": "0.2502 SOL",
+    "result": "Sold 100% | PnL: +46.7%",
+    "pnl": "+0.2502 SOL",
+    "color": "teal",
+    "ca": "8GiwJT49kDHmn8GhqvdWomK92FEp4ZyMjjC24dW4pump",
+    "ts": 1773171576
+  },
+  {
     "n": 408,
     "date": "2026-03-10",
     "token": "BBBY",
