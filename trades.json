@@ -1,5 +1,17 @@
 [
   {
+    "n": 297,
+    "date": "2026-03-10",
+    "token": "slop",
+    "action": "BUY",
+    "amount": "0.2441671615 SOL",
+    "result": "2 KOL convergence: bandit, Dali",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6n5eX1SJLPzPy3vj8HGxhj8Vs6gReEnt6gCYcNxTpump",
+    "ts": 1773105493
+  },
+  {
     "n": 296,
     "date": "2026-03-10",
     "token": "MEME",
