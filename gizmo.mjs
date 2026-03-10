@@ -758,7 +758,7 @@ async function managePositions() {
     }
 
     // TRAILING SL: enforce on all future cycles
-    if (pos.sl && mc < pos.sl && pos.breakevenSet) {
+    if (pos.sl && mc < pos.sl) {
       log(`🛑 TRAILING SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
       if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
         await postTrade('SELL', pos.name, pos.ca, mc, `Trailing SL ${pnl}%`, null, parseFloat(pnl));
