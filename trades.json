@@ -1,5 +1,17 @@
 [
   {
+    "n": 329,
+    "date": "2026-03-10",
+    "token": "Dogchain",
+    "action": "BUY",
+    "amount": "0.28184691225 SOL",
+    "result": "Boost scan score 4/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "G9pRVyvGV1jgWzttqGwW1vrHtBC98UhZNguCb9vRpump",
+    "ts": 1773116776
+  },
+  {
     "n": 328,
     "date": "2026-03-10",
     "token": "Hapter",
