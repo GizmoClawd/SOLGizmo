@@ -1,5 +1,17 @@
 [
   {
+    "n": 364,
+    "date": "2026-03-10",
+    "token": "bullclaw",
+    "action": "SELL",
+    "amount": "0.1806 SOL",
+    "result": "Sold 50% | PnL: +33.7%",
+    "pnl": "+0.1806 SOL",
+    "color": "teal",
+    "ca": "2zVQPcP5w1WfA1BPY2z2jimV1ZGUrJFzLVHfeCpVU7L7",
+    "ts": 1773160504
+  },
+  {
     "n": 363,
     "date": "2026-03-10",
     "token": "bullclaw",
