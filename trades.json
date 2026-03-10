@@ -1,5 +1,17 @@
 [
   {
+    "n": 436,
+    "date": "2026-03-10",
+    "token": "BADGES",
+    "action": "BUY",
+    "amount": "0.0484 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BQ6YoKAzyNbB1ohzEVcdBo2vVButcZwJJykLb31Gpump",
+    "ts": 1773181622
+  },
+  {
     "n": 435,
     "date": "2026-03-10",
     "token": "ClaudePoop",
