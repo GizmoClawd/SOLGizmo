@@ -212,7 +212,7 @@ function loadPositions() {
     if (fs.existsSync(POSITIONS_FILE)) {
       const data = JSON.parse(fs.readFileSync(POSITIONS_FILE, 'utf8'));
       log(`📂 Loaded ${data.length} positions: ${data.map(p => p.name).join(', ') || 'none'}`);
-  await cleanGhostPositions();
+  // ghost cleanup called from runCycle on first run
       return data;
     }
   } catch (e) { log(`⚠️ Load positions failed: ${e.message}`); }
@@ -1226,7 +1226,10 @@ log(`KOL wallets: ${WALLETS.length} | Max positions: ${MAX_POSITIONS} | Scan: ev
 let cycle = 0;
 let running = false;
 
+let ghostCleanDone = false;
 async function runCycle() {
+  // Clean ghost positions once on first cycle
+  if (!ghostCleanDone) { ghostCleanDone = true; await cleanGhostPositions(); }
   if (running) return;
   running = true;
   cycle++;
