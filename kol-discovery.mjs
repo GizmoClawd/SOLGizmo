@@ -174,8 +174,9 @@ function updateKolPerformance() {
       const sell = trades.find(t => t.action === 'SELL' && t.ca === trade.ca && t.ts > trade.ts);
       if (!sell) continue;
       
-      const pnl = parseFloat((sell.pnl || '0').replace('+','').replace(' SOL',''));
-      const win = pnl > 0;
+      const pnlPct = parseFloat((sell.result||'').match(/PnL: ([+-]?\d+\.?\d*)%/)?.[1]||'0');
+      const pnl = pnlPct; // use % PnL not SOL amount
+      const win = pnlPct > 0;
 
       for (const kol of kols) {
         if (!perf[kol]) perf[kol] = { wins: 0, losses: 0, totalPnl: 0, weight: 1 };
@@ -190,10 +191,13 @@ function updateKolPerformance() {
       if (total < 3) continue; // need at least 3 trades to judge
       const wr = stats.wins / total;
       
-      if (wr >= 0.65) { stats.weight = 3; stats.tier = 'ELITE'; }
-      else if (wr >= 0.50) { stats.weight = 2; stats.tier = 'GOOD'; }
-      else if (wr >= 0.35) { stats.weight = 1; stats.tier = 'AVERAGE'; }
-      else { stats.weight = 0; stats.tier = 'DEMOTED'; }
+      const avgPnl = total > 0 ? stats.totalPnl / total : 0;
+      stats.avgPnl = avgPnl;
+      if (avgPnl > 50 && total >= 2)                          { stats.weight = 4; stats.tier = 'GOD'; }
+      else if (avgPnl > 10 && wr >= 0.50 && total >= 3)      { stats.weight = 3; stats.tier = 'ELITE'; }
+      else if (avgPnl > 0  && wr >= 0.40 && total >= 2)      { stats.weight = 2; stats.tier = 'SOLID'; }
+      else if (avgPnl < -10 || (wr < 0.35 && total >= 3))    { stats.weight = 0; stats.tier = 'MUTED'; }
+      else                                                     { stats.weight = 1; stats.tier = 'WATCH'; }
 
       log(`📊 ${kol}: WR ${(wr*100).toFixed(0)}% (${stats.wins}W/${stats.losses}L) → weight ${stats.weight} [${stats.tier}]`);
     }
@@ -208,22 +212,9 @@ function updateGizmoWallets(newWallets, performance) {
   try {
     let code = fs.readFileSync(GIZMO_FILE, 'utf8');
     
-    // Find the WALLETS array and update weights based on performance
-    for (const [kolName, stats] of Object.entries(performance)) {
-      if (stats.tier === 'DEMOTED') {
-        // Comment out demoted KOLs
-        const regex = new RegExp(`(  \\{ name: "${kolName}",[^}]+\\},?)`, 'g');
-        code = code.replace(regex, `  // DEMOTED (WR too low): $1`);
-        log(`🔴 Demoted ${kolName} from active tracking`);
-      } else if (stats.weight) {
-        // Update weight
-        const regex = new RegExp(`(name: "${kolName}",[^,]+, weight: )\\d+`);
-        if (code.match(regex)) {
-          code = code.replace(regex, `$1${stats.weight}`);
-          log(`🔄 Updated ${kolName} weight → ${stats.weight}`);
-        }
-      }
-    }
+    // Weights are managed via kol-performance.json — gizmo.mjs reads them live
+    // Do NOT touch WALLETS array weights here anymore
+    log('📊 KOL weights managed via kol-performance.json — skipping gizmo.mjs weight update');
 
     // Add newly discovered wallets as trial KOLs
     const discovered = loadDiscovered();
