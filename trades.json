@@ -1,5 +1,17 @@
 [
   {
+    "n": 392,
+    "date": "2026-03-10",
+    "token": "Thanos",
+    "action": "SELL",
+    "amount": "0.5814 SOL",
+    "result": "Sold 100% | PnL: -6.3%",
+    "pnl": "+0.5814 SOL",
+    "color": "teal",
+    "ca": "HsU8pHT6fuUfFA9jcvrJk5NELp6YfviGVsobJBPapump",
+    "ts": 1773167555
+  },
+  {
     "n": 391,
     "date": "2026-03-10",
     "token": "Thanos",
