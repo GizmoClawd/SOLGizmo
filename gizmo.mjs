@@ -881,20 +881,40 @@ async function scanKOLs(state) {
     // Cented(3) + bandit(3) = score 6 = STRONG signal
     // theo(1) + Dali(1)     = score 2 = WEAK, likely skip
     // Minimum score of 4 required to buy (vs old: just 2 KOLs)
-    const convergenceScore = uniqueKols.reduce((sum, kolName) => {
-      const wallet = WALLETS.find(w => w.name === kolName);
-      return sum + (wallet?.weight || 1);
+    // Load live performance weights — overrides hardcoded WALLETS weights
+    let livePerf = {};
+    try { livePerf = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8')); } catch {}
+
+    // Filter out MUTED KOLs entirely — they drag down performance
+    const activeKols = uniqueKols.filter(k => {
+      const perf = livePerf[k];
+      if (perf && perf.weight === 0) { log('🔇 MUTED KOL skipped: ' + k + ' (tier:' + perf.tier + ' avgPnL:' + (perf.avgPnl||0).toFixed(1) + '%)'); return false; }
+      return true;
+    });
+    if (activeKols.length === 0) continue; // all KOLs muted, skip signal
+
+    const convergenceScore = activeKols.reduce((sum, kolName) => {
+      const liveWeight = livePerf[kolName]?.weight;
+      const staticWeight = WALLETS.find(w => w.name === kolName)?.weight || 1;
+      return sum + (liveWeight !== undefined ? liveWeight : staticWeight);
     }, 0);
-    const MIN_SCORE = 4; // require combined weight ≥ 4
-    const hasElite = uniqueKols.some(k => (WALLETS.find(w => w.name === k)?.weight || 1) >= 3);
+    const MIN_SCORE = 4;
+    const hasElite = activeKols.some(k => {
+      const liveWeight = livePerf[k]?.weight;
+      const staticWeight = WALLETS.find(w => w.name === k)?.weight || 1;
+      return (liveWeight !== undefined ? liveWeight : staticWeight) >= 3;
+    });
 
     if (ALERTED.has(mint)) continue;
     if (nonScalper.length < 1) continue;
-    if (uniqueKols.length < MIN_KOLS && convergenceScore < MIN_SCORE) continue;
-    // Allow solo elite KOL if their weight is 3+ (Cented alone = valid signal)
-    if (uniqueKols.length < 2 && !hasElite) continue;
+    if (activeKols.length < MIN_KOLS && convergenceScore < MIN_SCORE) continue;
+    if (activeKols.length < 2 && !hasElite) continue;
 
-    log('📊 CONVERGENCE SCORE: ' + uniqueKols.map(k => k + '(' + (WALLETS.find(w => w.name === k)?.weight || 1) + ')').join(' + ') + ' = ' + convergenceScore);
+    log('📊 CONVERGENCE SCORE: ' + activeKols.map(k => {
+      const w = livePerf[k]?.weight !== undefined ? livePerf[k].weight : (WALLETS.find(w => w.name === k)?.weight || 1);
+      const tier = livePerf[k]?.tier || 'STATIC';
+      return k + '(' + w + '/' + tier + ')';
+    }).join(' + ') + ' = ' + convergenceScore);
     // ────────────────────────────────────────────────────────────────────────
 
     const info = await getTokenInfo(mint);
