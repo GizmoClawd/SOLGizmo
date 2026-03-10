@@ -1,5 +1,17 @@
 [
   {
+    "n": 388,
+    "date": "2026-03-10",
+    "token": "QuadrupleT",
+    "action": "SELL",
+    "amount": "0.4868 SOL",
+    "result": "Sold 100% | PnL: +3.1%",
+    "pnl": "+0.4868 SOL",
+    "color": "teal",
+    "ca": "HpGYXJvmHGD7jRnYDTnLLjdwGFXg2N6ihnAbVZzspump",
+    "ts": 1773166955
+  },
+  {
     "n": 387,
     "date": "2026-03-10",
     "token": "AgentHub",
