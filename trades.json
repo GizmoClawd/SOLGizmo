@@ -1,5 +1,17 @@
 [
   {
+    "n": 465,
+    "date": "2026-03-10",
+    "token": "TOWN",
+    "action": "BUY",
+    "amount": "0.0613 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HUdvmmHmE3qseNCP391Q6p98kCLuu5m6iiRKNGqMa8Uy",
+    "ts": 1773185335
+  },
+  {
     "n": 464,
     "date": "2026-03-10",
     "token": "Grace",
