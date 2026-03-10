@@ -1,5 +1,17 @@
 [
   {
+    "n": 322,
+    "date": "2026-03-10",
+    "token": "LULU",
+    "action": "SELL",
+    "amount": "0.0456 SOL",
+    "result": "Sold 100% | PnL: +57.4%",
+    "pnl": "+0.0456 SOL",
+    "color": "teal",
+    "ca": "9CWKLPEQqxxi34kcZJEMV5oXU3ESNCgdFgW9haMypump",
+    "ts": 1773115821
+  },
+  {
     "n": 321,
     "date": "2026-03-10",
     "token": "LULU",
