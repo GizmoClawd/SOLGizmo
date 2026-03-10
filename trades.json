@@ -1,5 +1,17 @@
 [
   {
+    "n": 280,
+    "date": "2026-03-10",
+    "token": "VAMP",
+    "action": "SELL",
+    "amount": "0.2742 SOL",
+    "result": "Sold 100% | PnL: -18.5%",
+    "pnl": "+0.2742 SOL",
+    "color": "teal",
+    "ca": "8U66GhympMF7Su6DjjW3wuXTwgnYTxhKJrAcm1Upump",
+    "ts": 1773102564
+  },
+  {
     "n": 279,
     "date": "2026-03-10",
     "token": "chad",
