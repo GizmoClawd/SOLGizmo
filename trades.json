@@ -1,5 +1,17 @@
 [
   {
+    "n": 384,
+    "date": "2026-03-10",
+    "token": "AgentHub",
+    "action": "SELL",
+    "amount": "1.2427 SOL",
+    "result": "Sold 100% | PnL: -26.0%",
+    "pnl": "+1.2427 SOL",
+    "color": "teal",
+    "ca": "5qb1ivW87woH3qE1ZVhxL4cEwhEKL4isWWsmEH68pump",
+    "ts": 1773165575
+  },
+  {
     "n": 383,
     "date": "2026-03-10",
     "token": "AgentHub",
