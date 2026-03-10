@@ -1,5 +1,17 @@
 [
   {
+    "n": 319,
+    "date": "2026-03-10",
+    "token": "Burncoin",
+    "action": "SELL",
+    "amount": "0.0518 SOL",
+    "result": "Sold 100% | PnL: -35.3%",
+    "pnl": "+0.0518 SOL",
+    "color": "teal",
+    "ca": "ho3aNAV2NKCxxEKFS7hkZcTJiYa9CfefUWT2Zezpump",
+    "ts": 1773115221
+  },
+  {
     "n": 318,
     "date": "2026-03-10",
     "token": "Burncoin",
