@@ -1,5 +1,17 @@
 [
   {
+    "n": 318,
+    "date": "2026-03-10",
+    "token": "Burncoin",
+    "action": "BUY",
+    "amount": "0.068761511 SOL",
+    "result": "2 KOL convergence: Cented, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ho3aNAV2NKCxxEKFS7hkZcTJiYa9CfefUWT2Zezpump",
+    "ts": 1773115088
+  },
+  {
     "n": 317,
     "date": "2026-03-10",
     "token": "QuadrupleT",
