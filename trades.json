@@ -1,5 +1,17 @@
 [
   {
+    "n": 312,
+    "date": "2026-03-10",
+    "token": "memories",
+    "action": "BUY",
+    "amount": "0.2643681395 SOL",
+    "result": "2 KOL convergence: dv, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3f3RkFNMxUs1KsYyRFJR8Lwm52RbiA8uLMv2JTPopump",
+    "ts": 1773111429
+  },
+  {
     "n": 311,
     "date": "2026-03-10",
     "token": "QuadrupleT",
