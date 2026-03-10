@@ -1,5 +1,17 @@
 [
   {
+    "n": 306,
+    "date": "2026-03-10",
+    "token": "Chud",
+    "action": "SELL",
+    "amount": "0.0633 SOL",
+    "result": "Sold 100% | PnL: +4.7%",
+    "pnl": "+0.0633 SOL",
+    "color": "teal",
+    "ca": "EmijUquKxwDNrmjz3Zzgt8hJ5wfQfWjb87jFRP76pump",
+    "ts": 1773109161
+  },
+  {
     "n": 305,
     "date": "2026-03-10",
     "token": "BTP",
