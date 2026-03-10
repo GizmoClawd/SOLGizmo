@@ -1,5 +1,17 @@
 [
   {
+    "n": 363,
+    "date": "2026-03-10",
+    "token": "bullclaw",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2zVQPcP5w1WfA1BPY2z2jimV1ZGUrJFzLVHfeCpVU7L7",
+    "ts": 1773160280
+  },
+  {
     "n": 362,
     "date": "2026-03-10",
     "token": "Distorted",
