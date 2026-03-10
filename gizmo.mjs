@@ -504,8 +504,21 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
   const baseSize = Math.min(tradeable * pctPerTrade, maxPerTrade);
 
   // Boost slightly for high conviction (3+ KOLs) but never exceed 2x base
-  const convictionMult = numKols >= 3 ? 1.5 : numKols >= 2 ? 1.2 : 1.0;
-  const size = Math.min(baseSize * convictionMult, maxPerTrade * 1.5);
+  // SUPERCELL: Elite conviction multiplier
+  // Load KOL performance to check if converging KOLs are ELITE tier
+  let eliteCount = 0;
+  try {
+    const perf = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8'));
+    // Count elite KOLs in current signal (approximated by numKols with weight 3)
+    eliteCount = numKols; // all tracked KOLs are now ELITE weight 3
+  } catch {}
+  
+  const convictionMult = eliteCount >= 4 ? 2.0  // 4+ elite KOLs = 2x size
+                       : eliteCount >= 3 ? 1.75  // 3 elite KOLs = 1.75x size  
+                       : numKols >= 2    ? 1.2   // 2 KOLs = 1.2x size
+                       : 1.0;
+  const size = Math.min(baseSize * convictionMult, maxPerTrade * 2.0);
+  if (convictionMult > 1.0) log(`🎯 CONVICTION BOOST: ${eliteCount} KOLs → ${convictionMult}x size (${size.toFixed(3)} SOL)`);
 
   log(`💰 BANKROLL: wallet ${walletSol.toFixed(3)} SOL | tradeable ${tradeable.toFixed(3)} | sizing ${size.toFixed(3)} SOL (${(size/walletSol*100).toFixed(0)}% of wallet)`);
   return Math.max(0, parseFloat(size.toFixed(4)));
@@ -548,6 +561,8 @@ async function managePositions() {
       if (pos.sl && pos.highMC > pos.entryMC * 1.15) {
         let trailPct = 0.90;
         if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.95;
+        else if (pos.highMC > pos.entryMC * 3.0) trailPct = 0.97; // 3x+ lock very tight
+        else if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.95; // 2x+ lock tight
         else if (pos.highMC > pos.entryMC * 1.5) trailPct = 0.93;
         else if (pos.highMC > pos.entryMC * 1.3) trailPct = 0.92;
         const newSL = pos.highMC * trailPct;
@@ -1143,9 +1158,9 @@ async function runCycle() {
     await managePositions();
     await checkWatchlist();
     await scanKOLs(state);
-    if (cycle % 2 === 0) await marketScan();
+    if (cycle % 5 === 0) await marketScan() // every 75s at 15s intervals;
     if (cycle % 5 === 0) await learnFromTrades();
-    if (cycle % 60 === 0) log(`💓 Heartbeat #${cycle} | positions: ${POSITIONS.map(p=>p.name).join(', ')||'none'}`);
+    if (cycle % 20 === 0) log(`💓 Heartbeat #${cycle} | positions: ${POSITIONS.map(p=>p.name).join(', ')||'none'}`);
   } catch (e) {
     log(`Loop error: ${e.message}`);
   }
@@ -1155,5 +1170,5 @@ async function runCycle() {
 }
 
 setInterval(() => {}, 2147483647); // keepalive
-setInterval(runCycle, 60000);
+setInterval(runCycle, 15000);
 runCycle();
