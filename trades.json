@@ -1,5 +1,17 @@
 [
   {
+    "n": 394,
+    "date": "2026-03-10",
+    "token": "Birdie",
+    "action": "SELL",
+    "amount": "0.9363 SOL",
+    "result": "Sold 100% | PnL: -46.5%",
+    "pnl": "+0.9363 SOL",
+    "color": "teal",
+    "ca": "FQVCedk4v5jsi8TFQUPUzWm5uR2UfuazBXrZghwTpump",
+    "ts": 1773167856
+  },
+  {
     "n": 393,
     "date": "2026-03-10",
     "token": "Birdie",
