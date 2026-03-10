@@ -796,6 +796,17 @@ async function scanKOLs(state) {
       const walletSol = await getWalletBalance();
       const size = await safeBuySize(walletSol, info.liq, uniqueKols.length);
       if (size < 0.05) { log(`⛔ ${info.symbol}: circuit breaker or wallet too low (${walletSol.toFixed(3)} SOL)`); continue; }
+      // ── 9-SIGNAL SCORE CHECK ──
+      const pairForScore = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mint}`,
+        { signal: AbortSignal.timeout(5000) })
+        .then(r => r.json()).then(d => d.pairs?.[0] || null).catch(() => null);
+      const tokenScore = await scoreToken(info, pairForScore, convergenceScore);
+      // Elite KOL convergence (score 9+) lowers bar to 3, otherwise need 4+
+      const minScore = convergenceScore >= 9 ? 3 : 4;
+      if (tokenScore < minScore) {
+        log(`⛔ ${info.symbol}: 9-signal score ${tokenScore}/9 below min ${minScore} — skip`);
+        continue;
+      }
       // ── NEW WALLET RUG CHECK ──
       const rugCheck = await checkRugWallets(mint);
       if (rugCheck.isRug) {
@@ -804,7 +815,7 @@ async function scanKOLs(state) {
       }
       if (rugCheck.newCount > 5) log(`⚠️ ${info.symbol}: ${rugCheck.newCount}/${rugCheck.total} new wallets detected (below block threshold)`);
       // ────────────────────────────────────────────────────────
-            log(`🎯 CONVERGENCE BUY: ${info.symbol} ${uniqueKols.length} KOLs — buying ${size} SOL`);
+      log(`🎯 CONVERGENCE BUY: ${info.symbol} Score:${tokenScore}/9 ${uniqueKols.length} KOLs — buying ${size} SOL`);
       if (await buy(mint, size)) {
         const p = await checkPrice(mint);
         const mc = p?.fdv || info.mcap;
@@ -818,6 +829,75 @@ async function scanKOLs(state) {
   }
 }
 
+
+// ─── 9-SIGNAL UNIFIED SCORER ──────────────────────────────────────────────────
+// Same brain as solgizmo.com CA analyzer — now inside the bot.
+// Returns score 0-9. Gizmo only buys if score meets threshold.
+async function scoreToken(info, pair, kolScore) {
+  let score = 0;
+  const reasons = [];
+
+  // SIGNAL 1: KOL conviction (0-2 pts)
+  if (kolScore >= 9)      { score += 2; reasons.push('KOL:2'); }
+  else if (kolScore >= 6) { score += 1; reasons.push('KOL:1'); }
+  else                    { score += 0; reasons.push('KOL:0'); }
+
+  // SIGNAL 2: MC sweet spot — $5k-$50k = best risk/reward (0-1 pt)
+  const mc = info.mcap || 0;
+  if (mc >= 5000 && mc <= 50000)       { score += 1; reasons.push('MC:✅'); }
+  else if (mc > 50000 && mc <= 100000) { score += 0; reasons.push('MC:⚠️late'); }
+
+  // SIGNAL 3: Liquidity healthy (0-1 pt)
+  if (info.liq && info.liq >= 15000)      { score += 1; reasons.push('LIQ:✅'); }
+  else if (info.liq && info.liq >= 8000)  { score += 0; reasons.push('LIQ:⚠️low'); }
+
+  // SIGNAL 4: Buy/sell ratio momentum (−1 to +1 pt)
+  const buys5  = pair?.txns?.m5?.buys  || 0;
+  const sells5 = pair?.txns?.m5?.sells || 0;
+  const bsRatio = sells5 > 0 ? buys5 / sells5 : buys5 > 0 ? 3 : 1;
+  if (bsRatio >= 2.0)      { score += 1; reasons.push('BS:✅strong'); }
+  else if (bsRatio < 0.8)  { score -= 1; reasons.push('BS:❌dumping'); }
+  else                     { reasons.push('BS:⚠️neutral'); }
+
+  // SIGNAL 5: Price momentum m5 (−1 to +1 pt)
+  const m5 = pair?.priceChange?.m5 || 0;
+  if (m5 > 5)       { score += 1; reasons.push('MOM:✅'); }
+  else if (m5 < -5) { score -= 1; reasons.push('MOM:❌'); }
+  else              { reasons.push('MOM:⚠️flat'); }
+
+  // SIGNAL 6: Volume spiking vs baseline (0-1 pt)
+  const vol5m = pair?.volume?.m5  || 0;
+  const vol1h = pair?.volume?.h1  || 0;
+  const volRate = vol1h > 0 ? (vol5m / vol1h) * 12 : 0;
+  if (vol5m > 3000 || volRate > 1.5) { score += 1; reasons.push('VOL:✅spike'); }
+  else                               { reasons.push('VOL:⚠️low'); }
+
+  // SIGNAL 7: Token freshness — newer = more upside (−1 to +1 pt)
+  const ageMin = pair?.pairCreatedAt
+    ? (Date.now() - pair.pairCreatedAt) / 60000 : 999;
+  if (ageMin < 30)       { score += 1; reasons.push('AGE:✅fresh'); }
+  else if (ageMin > 240) { score -= 1; reasons.push('AGE:❌old'); }
+  else                   { reasons.push('AGE:⚠️ok'); }
+
+  // SIGNAL 8: Narrative keywords — trending themes pump harder (0-1 pt)
+  const sym = (info.symbol || '').toLowerCase();
+  const hotThemes = ['ai','gpt','agent','pepe','dog','cat','trump','elon',
+                     'based','chad','mog','wojak','frog','inu','sol','pump',
+                     'doge','shib','bonk','wif','gizmo','claw'];
+  if (hotThemes.some(w => sym.includes(w))) { score += 1; reasons.push('NARR:✅'); }
+  else { reasons.push('NARR:⚠️generic'); }
+
+  // SIGNAL 9: Wallet distribution — total buyers in 5min (0-1 pt)
+  const totalTxns = buys5 + sells5;
+  if (totalTxns >= 20)      { score += 1; reasons.push('DIST:✅active'); }
+  else if (totalTxns < 5)   { score -= 1; reasons.push('DIST:❌dead'); }
+  else                      { reasons.push('DIST:⚠️low'); }
+
+  const final = Math.max(0, Math.min(9, score));
+  const emoji = final >= 7 ? '🔥' : final >= 5 ? '✅' : final >= 3 ? '⚠️' : '❌';
+  log(`🧠 9-SIGNAL: ${info.symbol} = ${emoji}${final}/9 | ${reasons.join(' ')}`);
+  return final;
+}
 // ─── MARKET SCAN ──────────────────────────────────────────────────────────────
 let lastMarketScan = 0;
 async function marketScan() {
