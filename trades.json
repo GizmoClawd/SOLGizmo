@@ -1,5 +1,17 @@
 [
   {
+    "n": 263,
+    "date": "2026-03-10",
+    "token": "Research",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "HW KOL: clukz",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6JhpWAPCa4DXA67mfWznfqQFq1SpMwes65kH6Xmupump",
+    "ts": 1773101146
+  },
+  {
     "n": 262,
     "date": "2026-03-09",
     "token": "Midnight",
