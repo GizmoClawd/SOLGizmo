@@ -1,5 +1,17 @@
 [
   {
+    "n": 294,
+    "date": "2026-03-10",
+    "token": "Research",
+    "action": "SELL",
+    "amount": "0.4076 SOL",
+    "result": "Sold 100% | PnL: -30.1%",
+    "pnl": "+0.4076 SOL",
+    "color": "teal",
+    "ca": "6JhpWAPCa4DXA67mfWznfqQFq1SpMwes65kH6Xmupump",
+    "ts": 1773105347
+  },
+  {
     "n": 293,
     "date": "2026-03-10",
     "token": "Chad",
