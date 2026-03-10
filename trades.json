@@ -1,5 +1,17 @@
 [
   {
+    "n": 417,
+    "date": "2026-03-10",
+    "token": "MICHI",
+    "action": "SELL",
+    "amount": "0.0834 SOL",
+    "result": "Sold 100% | PnL: -30.6%",
+    "pnl": "+0.0834 SOL",
+    "color": "teal",
+    "ca": "AywAYdNJnSLSXwKWYxDciPjqGRnwp4iZdQptuuQTpump",
+    "ts": 1773177281
+  },
+  {
     "n": 416,
     "date": "2026-03-10",
     "token": "MICHI",
