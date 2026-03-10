@@ -1,5 +1,17 @@
 [
   {
+    "n": 356,
+    "date": "2026-03-10",
+    "token": "LOBSTER",
+    "action": "BUY",
+    "amount": "0.2708179505 SOL",
+    "result": "3 KOL convergence: Jijo, Cented, radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5kPosFqLTMLibiiR5Jvch9veDhNhemiC1J3xgXyJpump",
+    "ts": 1773155666
+  },
+  {
     "n": 355,
     "date": "2026-03-10",
     "token": "GateClaw",
