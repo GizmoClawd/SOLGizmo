@@ -1,5 +1,17 @@
 [
   {
+    "n": 410,
+    "date": "2026-03-10",
+    "token": "KF1",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "2 KOL convergence: radiance, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3AxEiDmHB8J9qhEUCB9Zn3boG4y47ZbLFsYc58Ejpump",
+    "ts": 1773173304
+  },
+  {
     "n": 409,
     "date": "2026-03-10",
     "token": "BBBY",
