@@ -1,5 +1,17 @@
 [
   {
+    "n": 310,
+    "date": "2026-03-10",
+    "token": "QuadrupleT",
+    "action": "BUY",
+    "amount": "0.271678486 SOL",
+    "result": "2 KOL convergence: Cented, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HpGYXJvmHGD7jRnYDTnLLjdwGFXg2N6ihnAbVZzspump",
+    "ts": 1773110830
+  },
+  {
     "n": 309,
     "date": "2026-03-10",
     "token": "BTP",
