@@ -818,8 +818,15 @@ async function scanKOLs(state) {
   if (!HELIUS_KEY) return;
   const now = Date.now();
   state.recentBuys = (state.recentBuys || []).filter(b => now - b.timestamp < SIGNAL_WINDOW_MS);
+  state.pollCycle = (state.pollCycle || 0) + 1;
 
   for (const wallet of WALLETS) {
+    // Tiered polling — save Helius credits
+    const tier = wallet.weight >= 4 ? 'GOD' : wallet.weight >= 3 ? 'ELITE' : wallet.weight >= 2 ? 'SOLID' : wallet.weight >= 1 ? 'WATCH' : 'MUTED';
+    if (tier === 'MUTED') continue; // never poll muted KOLs
+    if (tier === 'WATCH' && state.pollCycle % 5 !== 0) continue;  // every 5th cycle
+    if (tier === 'SOLID' && state.pollCycle % 3 !== 0) continue;  // every 3rd cycle
+    // GOD + ELITE poll every cycle
     try {
       const url = `https://api.helius.xyz/v0/addresses/${wallet.address}/transactions?api-key=${HELIUS_KEY}&limit=3&type=SWAP`;
       const r = await fetch(url, { signal: AbortSignal.timeout(5000) });
