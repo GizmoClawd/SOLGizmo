@@ -1,5 +1,17 @@
 [
   {
+    "n": 894,
+    "date": "2026-03-11",
+    "token": "POUND",
+    "action": "BUY",
+    "amount": "0.056 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "pfbmtPNpLzYZo1NyCHJxnxMS2B5vrf9YTNJDA4rpump",
+    "ts": 1773251030
+  },
+  {
     "n": 893,
     "date": "2026-03-11",
     "token": "Life",
