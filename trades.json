@@ -1,5 +1,17 @@
 [
   {
+    "n": 580,
+    "date": "2026-03-11",
+    "token": "Salvius",
+    "action": "BUY",
+    "amount": "0.0541 SOL",
+    "result": "HW KOL: decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5UmzXfk5vyHPjHrVq627rpEMuyQiPP3H66RBXSTKpump",
+    "ts": 1773194802
+  },
+  {
     "n": 579,
     "date": "2026-03-11",
     "token": "LOBCOIN",
