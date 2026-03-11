@@ -1,5 +1,17 @@
 [
   {
+    "n": 497,
+    "date": "2026-03-11",
+    "token": "SOB",
+    "action": "BUY",
+    "amount": "0.0444 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3HozEYR23P3k7qjssaDUnG6bw9xHUvkj3brrcF5Vpump",
+    "ts": 1773187925
+  },
+  {
     "n": 496,
     "date": "2026-03-11",
     "token": "99%",
