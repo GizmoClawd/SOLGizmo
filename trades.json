@@ -1,5 +1,17 @@
 [
   {
+    "n": 853,
+    "date": "2026-03-11",
+    "token": "Cupcake",
+    "action": "SELL",
+    "amount": "0.079 SOL",
+    "result": "Sold 100% | PnL: -15.7%",
+    "pnl": "+0.0790 SOL",
+    "color": "teal",
+    "ca": "8AKXPTMwbtr1kj696C6zSUo7qCxWCXcfQ57oS2fjpump",
+    "ts": 1773248619
+  },
+  {
     "n": 852,
     "date": "2026-03-11",
     "token": "Abrese ",
