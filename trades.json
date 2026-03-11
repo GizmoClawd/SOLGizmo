@@ -1,5 +1,17 @@
 [
   {
+    "n": 764,
+    "date": "2026-03-11",
+    "token": "STARBOY",
+    "action": "BUY",
+    "amount": "0.0503 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EvpGZm3Y9WdBWgL5c3TG6XUwmY4CMzLcad16xvFwpump",
+    "ts": 1773241381
+  },
+  {
     "n": 763,
     "date": "2026-03-11",
     "token": "Malt",
