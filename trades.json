@@ -1,5 +1,17 @@
 [
   {
+    "n": 599,
+    "date": "2026-03-11",
+    "token": "feeling",
+    "action": "SELL",
+    "amount": "0.0613 SOL",
+    "result": "Sold 50% | PnL: +38.9%",
+    "pnl": "+0.0613 SOL",
+    "color": "teal",
+    "ca": "F1oHyyT3PDAAGhvyVDcgAz1LJ6KaNUroBhGjGiuFpump",
+    "ts": 1773196535
+  },
+  {
     "n": 598,
     "date": "2026-03-11",
     "token": "feeling",
