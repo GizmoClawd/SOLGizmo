@@ -1,5 +1,17 @@
 [
   {
+    "n": 665,
+    "date": "2026-03-11",
+    "token": "FATE",
+    "action": "BUY",
+    "amount": "0.0596 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Ehj6mtLxH7mqreyRNEwM9wCKR6MpRN2ta3q3C2Cppump",
+    "ts": 1773205393
+  },
+  {
     "n": 664,
     "date": "2026-03-11",
     "token": "LEX",
