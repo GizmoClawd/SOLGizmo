@@ -1,5 +1,17 @@
 [
   {
+    "n": 692,
+    "date": "2026-03-11",
+    "token": "누룽이",
+    "action": "SELL",
+    "amount": "0.0208 SOL",
+    "result": "Sold 100% | PnL: -1.2%",
+    "pnl": "+0.0208 SOL",
+    "color": "teal",
+    "ca": "5kz61MsyyxWmmAyQ79am4Hhp82fUbZ1Vdp92yotDpump",
+    "ts": 1773212253
+  },
+  {
     "n": 691,
     "date": "2026-03-11",
     "token": "누룽이",
