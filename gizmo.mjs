@@ -652,7 +652,7 @@ async function managePositions() {
     log(`${pos.name}: $${Math.round(mc)} (${pnl}%) | High: $${Math.round(pos.highMC)} | SL: $${pos.sl ? Math.round(pos.sl) : 'none'} | B/S:${buys}/${sells}`);
 
     // ZERO-VOLUME KILL SWITCH: 0 buys AND 0 sells for 3+ cycles = dead token, cut it
-    if (buys === 0 && sells === 0) {
+    if (buys === 0 && sells <= 1) {
       pos.zeroVolCycles = (pos.zeroVolCycles || 0) + 1;
       if (pos.zeroVolCycles >= 3) {
         log(`💀 ZERO-VOL KILL ${pos.name} — dead for ${pos.zeroVolCycles} cycles (0 buys, 0 sells) — cutting`);
@@ -983,7 +983,7 @@ async function scanKOLs(state) {
     const hwWallet = await getWalletBalance();
     const hwSize = await safeBuySize(hwWallet, hwInfo.liq, 1);
     if (hwSize < 0.03) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
-    ALERTED.add(signal.mint);
+    // Don't add to ALERTED on successful buy — allow convergence to also evaluate
     log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' size:' + hwSize.toFixed(3) + ' SOL');
     if (await buy(signal.mint, hwSize)) {
       const hwMc = hwInfo.mcap;
