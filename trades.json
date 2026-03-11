@@ -1,5 +1,17 @@
 [
   {
+    "n": 620,
+    "date": "2026-03-11",
+    "token": "BOUNTY",
+    "action": "BUY",
+    "amount": "0.0585 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2R8YC39WfkkDvPBevh6LXki8ve6EE6z16EGEgUiipump",
+    "ts": 1773198512
+  },
+  {
     "n": 619,
     "date": "2026-03-11",
     "token": "4",
