@@ -1,5 +1,17 @@
 [
   {
+    "n": 753,
+    "date": "2026-03-11",
+    "token": "OPTIMUS",
+    "action": "SELL",
+    "amount": "0.0283 SOL",
+    "result": "Sold 50% | PnL: +33.1%",
+    "pnl": "+0.0283 SOL",
+    "color": "teal",
+    "ca": "EcEP6shgosHfg4m5b7wWTHHJZFWzoF1iqcdZMBzwpump",
+    "ts": 1773239904
+  },
+  {
     "n": 752,
     "date": "2026-03-11",
     "token": "OPTIMUS",
