@@ -1,5 +1,17 @@
 [
   {
+    "n": 971,
+    "date": "2026-03-11",
+    "token": "ANGUS",
+    "action": "BUY",
+    "amount": "0.0488 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HRaegEhR1qD12ELx566Gq5eGBGosYZ4hQqQzzxmupump",
+    "ts": 1773264204
+  },
+  {
     "n": 970,
     "date": "2026-03-11",
     "token": "peacecoin",
