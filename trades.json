@@ -1,5 +1,17 @@
 [
   {
+    "n": 656,
+    "date": "2026-03-11",
+    "token": "LEX",
+    "action": "BUY",
+    "amount": "0.0625 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ARBNFyosCGJARPktt1JoDgG2dpUDw3ehXk8AnnBspump",
+    "ts": 1773204340
+  },
+  {
     "n": 655,
     "date": "2026-03-11",
     "token": "Bikini",
