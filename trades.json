@@ -1,5 +1,17 @@
 [
   {
+    "n": 733,
+    "date": "2026-03-11",
+    "token": "Supercoin",
+    "action": "SELL",
+    "amount": "0.0653 SOL",
+    "result": "Sold 50% | PnL: +37.8%",
+    "pnl": "+0.0653 SOL",
+    "color": "teal",
+    "ca": "CRPfF6HFT2oR6tSd7PKF8RgB59EaLdpFRCaNScywpump",
+    "ts": 1773238018
+  },
+  {
     "n": 732,
     "date": "2026-03-11",
     "token": "OIL",
