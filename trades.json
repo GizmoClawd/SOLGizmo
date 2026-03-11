@@ -1,5 +1,17 @@
 [
   {
+    "n": 745,
+    "date": "2026-03-11",
+    "token": "KANGAROO",
+    "action": "BUY",
+    "amount": "0.0564 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "44ZFBWycoCen1KSYbmCZiKm9DwjiJnwF5S8NLPe2pump",
+    "ts": 1773239043
+  },
+  {
     "n": 744,
     "date": "2026-03-11",
     "token": "KANGAROO",
