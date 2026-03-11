@@ -857,6 +857,10 @@ async function scanKOLs(state) {
   for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 2 && !b.scalper)) {
     if (POSITIONS.length >= MAX_POSITIONS) break;
     if (RECENTLY_BOUGHT.has(signal.mint) || ALERTED.has(signal.mint)) continue;
+    // Check live performance weight — skip MUTED KOLs even in HW path
+    try { livePerf = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8')); } catch {}
+    const hwLiveWeight = livePerf[signal.kol]?.weight !== undefined ? livePerf[signal.kol].weight : signal.kolWeight;
+    if (hwLiveWeight === 0) { log(`🔇 MUTED KOL skipped: ${signal.kol} (tier:${livePerf[signal.kol]?.tier} avgPnL:${livePerf[signal.kol]?.avgPnl?.toFixed(1)}%)`); ALERTED.add(signal.mint); continue; }
     const hwInfo = await getTokenInfo(signal.mint);
     if (!hwInfo || hwInfo.mcap < 5000) continue;
     if (hwInfo.liq !== null && hwInfo.liq > 0 && hwInfo.liq < 8000) continue;
