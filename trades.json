@@ -1,5 +1,17 @@
 [
   {
+    "n": 793,
+    "date": "2026-03-11",
+    "token": "Solotshi",
+    "action": "SELL",
+    "amount": "0.0687 SOL",
+    "result": "Sold 100% | PnL: -71.1%",
+    "pnl": "+0.0687 SOL",
+    "color": "teal",
+    "ca": "8f5frrMR8arajxfr3y1ryofkrHqNdVxvvwZzHKH9pump",
+    "ts": 1773244577
+  },
+  {
     "n": 792,
     "date": "2026-03-11",
     "token": "Solotshi",
