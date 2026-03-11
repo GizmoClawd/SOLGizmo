@@ -1,5 +1,17 @@
 [
   {
+    "n": 913,
+    "date": "2026-03-11",
+    "token": "ChristClaude",
+    "action": "BUY",
+    "amount": "0.0415 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6ZWgvGwDGcM1XcCpnnFnX3TVc2tAsbuQJS6hUw1apump",
+    "ts": 1773252270
+  },
+  {
     "n": 912,
     "date": "2026-03-11",
     "token": "AGI",
