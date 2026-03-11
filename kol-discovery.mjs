@@ -163,7 +163,10 @@ function updateKolPerformance() {
     const trades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
     const perf = loadPerformance();
 
-    // Extract KOL names from buy trade results
+    // Extract KOL names from buy trade results — with deduplication
+    if (!perf._processedSigs) perf._processedSigs = [];
+    const processed = new Set(perf._processedSigs);
+
     for (const trade of trades) {
       if (trade.action !== 'BUY') continue;
       const kolMatch = (trade.result || '').match(/KOL convergence: (.+)/);
@@ -173,9 +176,15 @@ function updateKolPerformance() {
       // Find the corresponding sell
       const sell = trades.find(t => t.action === 'SELL' && t.ca === trade.ca && t.ts > trade.ts);
       if (!sell) continue;
+
+      // Skip already processed pairs
+      const sigKey = trade.ca + '_' + trade.ts;
+      if (processed.has(sigKey)) continue;
+      processed.add(sigKey);
+      perf._processedSigs.push(sigKey);
       
       const pnlPct = parseFloat((sell.result||'').match(/PnL: ([+-]?\d+\.?\d*)%/)?.[1]||'0');
-      const pnl = pnlPct; // use % PnL not SOL amount
+      const pnl = pnlPct;
       const win = pnlPct > 0;
 
       for (const kol of kols) {
