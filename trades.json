@@ -1,5 +1,17 @@
 [
   {
+    "n": 510,
+    "date": "2026-03-11",
+    "token": "ClawRoom",
+    "action": "BUY",
+    "amount": "0.0462 SOL",
+    "result": "HW KOL: decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Avd97mcaouWvbGtX6pgu1yNruQR6bQhrssV8rp6apump",
+    "ts": 1773189338
+  },
+  {
     "n": 509,
     "date": "2026-03-11",
     "token": "SnowBear",
