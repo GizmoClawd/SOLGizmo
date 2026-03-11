@@ -1,5 +1,17 @@
 [
   {
+    "n": 808,
+    "date": "2026-03-11",
+    "token": "ZukoCoin",
+    "action": "BUY",
+    "amount": "0.0645 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8PQ1b6BeoUGuPdAsqMzuANyq2vPJy9jYge82MYA7pump",
+    "ts": 1773245499
+  },
+  {
     "n": 807,
     "date": "2026-03-11",
     "token": "Nemotron",
