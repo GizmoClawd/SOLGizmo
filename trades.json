@@ -1,5 +1,17 @@
 [
   {
+    "n": 786,
+    "date": "2026-03-11",
+    "token": "AGOTCHI",
+    "action": "SELL",
+    "amount": "0.0456 SOL",
+    "result": "Sold 100% | PnL: +0.7%",
+    "pnl": "+0.0456 SOL",
+    "color": "teal",
+    "ca": "EWvfzJJGRvWNxyBGLvzwygA5hLTre4SVzYhfwkdepump",
+    "ts": 1773243979
+  },
+  {
     "n": 785,
     "date": "2026-03-11",
     "token": "AGOTCHI",
