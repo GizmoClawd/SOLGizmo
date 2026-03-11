@@ -765,7 +765,7 @@ async function managePositions() {
       const mult = mc / pos.entryMC;
       // Trail tightens as multiplier grows — but keeps room for memecoin volatility
       // Looser trail when h1 momentum is strong — don't shake out real runners
-      const h1Momentum = entryPair?.pairs?.[0]?.priceChange?.h1 || 0;
+      const h1Momentum = p?.priceChange?.h1 || 0;
       const isRipping = h1Momentum > 100;
       const trailPct = isRipping
         ? (mult >= 4 ? 0.75 : mult >= 3 ? 0.70 : 0.65)   // ripping — give it room
