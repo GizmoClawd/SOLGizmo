@@ -1,5 +1,17 @@
 [
   {
+    "n": 1003,
+    "date": "2026-03-11",
+    "token": "Gozier",
+    "action": "BUY",
+    "amount": "0.0331 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9SypBHBVF9ZqLoqNd21Vg8FvzqFEyYERQhgMF8ampump",
+    "ts": 1773266460
+  },
+  {
     "n": 1002,
     "date": "2026-03-11",
     "token": "MACROHARD",
