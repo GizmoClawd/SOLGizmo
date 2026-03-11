@@ -1,5 +1,17 @@
 [
   {
+    "n": 1073,
+    "date": "2026-03-11",
+    "token": "Reggae",
+    "action": "SELL",
+    "amount": "0.0434 SOL",
+    "result": "Sold 100% | PnL: +3.7%",
+    "pnl": "+0.0434 SOL",
+    "color": "teal",
+    "ca": "EqA344FQNN9JntzRnKXW4BXcCXL5K6WPyyX7tWN8pump",
+    "ts": 1773273155
+  },
+  {
     "n": 1072,
     "date": "2026-03-11",
     "token": "Reggae",
