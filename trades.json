@@ -1,5 +1,17 @@
 [
   {
+    "n": 914,
+    "date": "2026-03-11",
+    "token": "AGI",
+    "action": "SELL",
+    "amount": "0.0524 SOL",
+    "result": "Sold 100% | PnL: -73.6%",
+    "pnl": "+0.0524 SOL",
+    "color": "teal",
+    "ca": "Jt3L1rZ5B6LpC3WrDyf24pW5J6FtYP6C9DT1Bqvpump",
+    "ts": 1773252305
+  },
+  {
     "n": 913,
     "date": "2026-03-11",
     "token": "ChristClaude",
