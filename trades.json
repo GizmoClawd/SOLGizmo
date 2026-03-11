@@ -1,5 +1,17 @@
 [
   {
+    "n": 680,
+    "date": "2026-03-11",
+    "token": "Ditto",
+    "action": "BUY",
+    "amount": "0.0625 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DNDbKNwWtFfc9sUyAaMqZCfnUr1Pg47bdADUe4rspump",
+    "ts": 1773210186
+  },
+  {
     "n": 679,
     "date": "2026-03-11",
     "token": "UNPRODUCTIVE ",
