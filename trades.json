@@ -1,5 +1,17 @@
 [
   {
+    "n": 724,
+    "date": "2026-03-11",
+    "token": "MCT",
+    "action": "BUY",
+    "amount": "0.0587 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EFWejWDj9c2g63Q29AKcgXRz7DY2YGLswuAPMkgspump",
+    "ts": 1773236186
+  },
+  {
     "n": 723,
     "date": "2026-03-11",
     "token": "BIRANCE",
