@@ -1,5 +1,17 @@
 [
   {
+    "n": 802,
+    "date": "2026-03-11",
+    "token": "Nemotron",
+    "action": "BUY",
+    "amount": "0.0734 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CjWagnqHjVyZFqgeubKJ8JdNNqcEey3eDQ3yusB6vDMQ",
+    "ts": 1773245171
+  },
+  {
     "n": 801,
     "date": "2026-03-11",
     "token": "Paul",
