@@ -1,5 +1,17 @@
 [
   {
+    "n": 843,
+    "date": "2026-03-11",
+    "token": "DIB",
+    "action": "SELL",
+    "amount": "0.1676 SOL",
+    "result": "Sold 100% | PnL: +480.7%",
+    "pnl": "+0.1676 SOL",
+    "color": "teal",
+    "ca": "2C9ynB9HCqwZLdKjg3TDppTwYdShwwUdwtmymFe6pump",
+    "ts": 1773247593
+  },
+  {
     "n": 842,
     "date": "2026-03-11",
     "token": "DIB",
