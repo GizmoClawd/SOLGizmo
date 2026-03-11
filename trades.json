@@ -1,5 +1,17 @@
 [
   {
+    "n": 536,
+    "date": "2026-03-11",
+    "token": "SolClaw ",
+    "action": "BUY",
+    "amount": "0.0666 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3KbFJGT7uVU6N2ecYGo7pC2Pkf2XVmAXGAy98kogpump",
+    "ts": 1773191055
+  },
+  {
     "n": 535,
     "date": "2026-03-11",
     "token": "SEND",
