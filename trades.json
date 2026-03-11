@@ -1,5 +1,17 @@
 [
   {
+    "n": 640,
+    "date": "2026-03-11",
+    "token": "ROT",
+    "action": "BUY",
+    "amount": "0.0649 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HBrGcm8Xzkk38HNb5QdrMx4YRrVvDvkQ1DYjwo9Vpump",
+    "ts": 1773202327
+  },
+  {
     "n": 639,
     "date": "2026-03-11",
     "token": "ASPROULIS",
