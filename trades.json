@@ -1,5 +1,17 @@
 [
   {
+    "n": 992,
+    "date": "2026-03-11",
+    "token": "IVY",
+    "action": "BUY",
+    "amount": "0.0369 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FqhCuTTg9cHVmbCroxcAduL6VxKqgAqSr72nJywbpump",
+    "ts": 1773265347
+  },
+  {
     "n": 991,
     "date": "2026-03-11",
     "token": "ReverseLM",
