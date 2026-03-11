@@ -1,5 +1,17 @@
 [
   {
+    "n": 654,
+    "date": "2026-03-11",
+    "token": "GIGME",
+    "action": "BUY",
+    "amount": "0.0656 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8nidVKSGiSF7ZjninVXv1x2SHdiKy7W4aYgu9WfFpump",
+    "ts": 1773204019
+  },
+  {
     "n": 653,
     "date": "2026-03-11",
     "token": "Bikini",
