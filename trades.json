@@ -1,5 +1,17 @@
 [
   {
+    "n": 912,
+    "date": "2026-03-11",
+    "token": "AGI",
+    "action": "BUY",
+    "amount": "0.0455 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Jt3L1rZ5B6LpC3WrDyf24pW5J6FtYP6C9DT1Bqvpump",
+    "ts": 1773252246
+  },
+  {
     "n": 911,
     "date": "2026-03-11",
     "token": "P",
