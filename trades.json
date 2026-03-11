@@ -1,5 +1,17 @@
 [
   {
+    "n": 714,
+    "date": "2026-03-11",
+    "token": "SEALION",
+    "action": "BUY",
+    "amount": "0.0697 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CqY4ByPtjnN3WPcvfCC3z1YNDD4Ecf1px6xvbE7upump",
+    "ts": 1773231409
+  },
+  {
     "n": 713,
     "date": "2026-03-11",
     "token": "POUND",
