@@ -1,5 +1,17 @@
 [
   {
+    "n": 1028,
+    "date": "2026-03-11",
+    "token": "Stories",
+    "action": "SELL",
+    "amount": "0.1879 SOL",
+    "result": "Sold 100% | PnL: -15.1%",
+    "pnl": "+0.1879 SOL",
+    "color": "teal",
+    "ca": "DAwEeQ73Pb2Cb7fP1A4MFcdF2o3vkshGvFx2Dy51pump",
+    "ts": 1773268531
+  },
+  {
     "n": 1027,
     "date": "2026-03-11",
     "token": "Kabosu",
