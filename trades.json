@@ -1,5 +1,17 @@
 [
   {
+    "n": 725,
+    "date": "2026-03-11",
+    "token": "BIRANCE",
+    "action": "SELL",
+    "amount": "0.0204 SOL",
+    "result": "Sold 100% | PnL: -69.1%",
+    "pnl": "+0.0204 SOL",
+    "color": "teal",
+    "ca": "HRpxHuHJQRC2roTsZiwVVNsnQb5WKH1r6FZ38Erxpump",
+    "ts": 1773236237
+  },
+  {
     "n": 724,
     "date": "2026-03-11",
     "token": "MCT",
