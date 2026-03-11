@@ -1,5 +1,17 @@
 [
   {
+    "n": 1008,
+    "date": "2026-03-11",
+    "token": "Splash",
+    "action": "BUY",
+    "amount": "0.076 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9M8ee8g7SEX8wMxJu7rdrLo2tdWC26S1Kjpfe7DRpump",
+    "ts": 1773267177
+  },
+  {
     "n": 1007,
     "date": "2026-03-11",
     "token": "Splash",
