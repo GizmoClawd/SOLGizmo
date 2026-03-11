@@ -1,5 +1,17 @@
 [
   {
+    "n": 552,
+    "date": "2026-03-11",
+    "token": "BEAR",
+    "action": "BUY",
+    "amount": "0.055 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4DhYL5DnNTuBXFtn36rFG6mnRSjXXKtVk7EJFLAJpump",
+    "ts": 1773193049
+  },
+  {
     "n": 551,
     "date": "2026-03-11",
     "token": "Fuckcoin",
