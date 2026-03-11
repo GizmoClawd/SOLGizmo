@@ -1,5 +1,17 @@
 [
   {
+    "n": 906,
+    "date": "2026-03-11",
+    "token": "Lucy",
+    "action": "SELL",
+    "amount": "0.0517 SOL",
+    "result": "Sold 100% | PnL: -60.9%",
+    "pnl": "+0.0517 SOL",
+    "color": "teal",
+    "ca": "4t7bbjHoJ76BPGKPgW8PKHF2rhoDaoZTdz2k1S4Hpump",
+    "ts": 1773252079
+  },
+  {
     "n": 905,
     "date": "2026-03-11",
     "token": "Lucy",
