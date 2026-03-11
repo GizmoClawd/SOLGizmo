@@ -1,5 +1,17 @@
 [
   {
+    "n": 948,
+    "date": "2026-03-11",
+    "token": "2027",
+    "action": "SELL",
+    "amount": "0.0501 SOL",
+    "result": "Sold 100% | PnL: -51.7%",
+    "pnl": "+0.0501 SOL",
+    "color": "teal",
+    "ca": "9g5wDgBQCFQS1YCdJPWomaBCkdpwBEU6XPJQWK5ibjgc",
+    "ts": 1773261858
+  },
+  {
     "n": 947,
     "date": "2026-03-11",
     "token": "MARS",
