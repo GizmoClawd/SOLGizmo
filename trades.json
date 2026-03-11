@@ -1,5 +1,17 @@
 [
   {
+    "n": 520,
+    "date": "2026-03-11",
+    "token": "Vasiliy ",
+    "action": "BUY",
+    "amount": "0.0583 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CwSmk9h3miKezbFxD9zrxPH3qtG2TvpsjPtiAQUWpump",
+    "ts": 1773190345
+  },
+  {
     "n": 519,
     "date": "2026-03-11",
     "token": "Monk",
