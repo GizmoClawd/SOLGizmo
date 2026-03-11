@@ -1,5 +1,17 @@
 [
   {
+    "n": 1041,
+    "date": "2026-03-11",
+    "token": "PaperTrade",
+    "action": "SELL",
+    "amount": "",
+    "result": "Dead pool — rugged, unsellable",
+    "pnl": "+0.0000 SOL",
+    "color": "teal",
+    "ca": "5XeFuH6FVSDdXyJQJ2JMpEEfQ9UKg1jYw5bDP1d7pump",
+    "ts": 1773268860
+  },
+  {
     "n": 1040,
     "date": "2026-03-11",
     "token": "PaperTrade",
