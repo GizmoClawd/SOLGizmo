@@ -1,5 +1,17 @@
 [
   {
+    "n": 757,
+    "date": "2026-03-11",
+    "token": "Cheques",
+    "action": "BUY",
+    "amount": "0.0534 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4td5Q97SLfYyXYBWiudFAnfXXALRVsWpLXuydcmzpump",
+    "ts": 1773240569
+  },
+  {
     "n": 756,
     "date": "2026-03-11",
     "token": "uncool",
