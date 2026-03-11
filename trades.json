@@ -1,5 +1,17 @@
 [
   {
+    "n": 935,
+    "date": "2026-03-11",
+    "token": "QLIPHOTH",
+    "action": "SELL",
+    "amount": "0.0283 SOL",
+    "result": "Sold 100% | PnL: -60.7%",
+    "pnl": "+0.0283 SOL",
+    "color": "teal",
+    "ca": "GNgZc1qfTudGXJ6N2FSZXjs46X2trtb7r7GTi9LqYyBZ",
+    "ts": 1773261201
+  },
+  {
     "n": 934,
     "date": "2026-03-11",
     "token": "AI2027",
