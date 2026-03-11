@@ -1,5 +1,17 @@
 [
   {
+    "n": 522,
+    "date": "2026-03-11",
+    "token": "TopGoy",
+    "action": "SELL",
+    "amount": "0.024 SOL",
+    "result": "Sold 100% | PnL: +12.8%",
+    "pnl": "+0.0240 SOL",
+    "color": "teal",
+    "ca": "36zfVDk4jxt89p314nQ1u4DWfwvmht8NQLmpNxNipump",
+    "ts": 1773190411
+  },
+  {
     "n": 521,
     "date": "2026-03-11",
     "token": "TopGoy",
