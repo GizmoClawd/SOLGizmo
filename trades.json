@@ -1,5 +1,17 @@
 [
   {
+    "n": 538,
+    "date": "2026-03-11",
+    "token": "TrashDay",
+    "action": "SELL",
+    "amount": "0.0865 SOL",
+    "result": "Sold 100% | PnL: -34.4%",
+    "pnl": "+0.0865 SOL",
+    "color": "teal",
+    "ca": "A8zuhY3dL5D9dAG9W2WXyGR7uLdQuPxD1i7AGGZupump",
+    "ts": 1773191134
+  },
+  {
     "n": 537,
     "date": "2026-03-11",
     "token": "SolClaw ",
