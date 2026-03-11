@@ -1,5 +1,17 @@
 [
   {
+    "n": 905,
+    "date": "2026-03-11",
+    "token": "Lucy",
+    "action": "BUY",
+    "amount": "0.0544 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4t7bbjHoJ76BPGKPgW8PKHF2rhoDaoZTdz2k1S4Hpump",
+    "ts": 1773252060
+  },
+  {
     "n": 904,
     "date": "2026-03-11",
     "token": "JORBO",
