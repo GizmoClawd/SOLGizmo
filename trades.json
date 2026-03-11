@@ -1,5 +1,17 @@
 [
   {
+    "n": 875,
+    "date": "2026-03-11",
+    "token": "スケッチ",
+    "action": "SELL",
+    "amount": "0.0525 SOL",
+    "result": "Sold 50% | PnL: +35.2%",
+    "pnl": "+0.0525 SOL",
+    "color": "teal",
+    "ca": "AQA8vZcCNM4zMMvvoA6qAGmDFLeJto8LvVakVuAVpump",
+    "ts": 1773250181
+  },
+  {
     "n": 874,
     "date": "2026-03-11",
     "token": "Prayer",
