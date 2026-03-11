@@ -1,5 +1,17 @@
 [
   {
+    "n": 975,
+    "date": "2026-03-11",
+    "token": "pibble",
+    "action": "SELL",
+    "amount": "0.0488 SOL",
+    "result": "Sold 100% | PnL: +3.4%",
+    "pnl": "+0.0488 SOL",
+    "color": "teal",
+    "ca": "Eppcp4FhG6wmaRno3omWWvKsZHbzucVLR316SdXopump",
+    "ts": 1773264292
+  },
+  {
     "n": 974,
     "date": "2026-03-11",
     "token": "ANGUS",
