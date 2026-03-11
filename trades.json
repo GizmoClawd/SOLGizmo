@@ -1,5 +1,17 @@
 [
   {
+    "n": 532,
+    "date": "2026-03-11",
+    "token": "autokernel",
+    "action": "SELL",
+    "amount": "0.0753 SOL",
+    "result": "Sold 100% | PnL: -37.1%",
+    "pnl": "+0.0753 SOL",
+    "color": "teal",
+    "ca": "9d16UHwPoN2HmSYKMs8UAT4AbvZsgPJyGxii5mkmpump",
+    "ts": 1773190891
+  },
+  {
     "n": 531,
     "date": "2026-03-11",
     "token": "SEND",
