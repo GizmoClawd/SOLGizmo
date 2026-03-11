@@ -1,5 +1,17 @@
 [
   {
+    "n": 610,
+    "date": "2026-03-11",
+    "token": "ROY",
+    "action": "BUY",
+    "amount": "0.0622 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3Sd9TLwuUu5e342mzv9VGcdE1Q7eVFTZ5AkERaS5pump",
+    "ts": 1773198084
+  },
+  {
     "n": 609,
     "date": "2026-03-11",
     "token": "CHUD",
