@@ -1,5 +1,17 @@
 [
   {
+    "n": 1063,
+    "date": "2026-03-11",
+    "token": "ZILLA",
+    "action": "BUY",
+    "amount": "0.0344 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AwMi6wWn97vCBzFjL2NdfVNa6BmVSLUBNijECPf2pump",
+    "ts": 1773271241
+  },
+  {
     "n": 1062,
     "date": "2026-03-11",
     "token": "Dan",
