@@ -1,5 +1,17 @@
 [
   {
+    "n": 551,
+    "date": "2026-03-11",
+    "token": "Fuckcoin",
+    "action": "SELL",
+    "amount": "0.0222 SOL",
+    "result": "Sold 100% | PnL: +44.3%",
+    "pnl": "+0.0222 SOL",
+    "color": "teal",
+    "ca": "BarH86RVmUWMCC1xWbY3ZJnVzuMvJod55dhEBeVBpump",
+    "ts": 1773192998
+  },
+  {
     "n": 550,
     "date": "2026-03-11",
     "token": "Fuckcoin",
