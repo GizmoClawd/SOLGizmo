@@ -1,5 +1,17 @@
 [
   {
+    "n": 806,
+    "date": "2026-03-11",
+    "token": "Nemotron",
+    "action": "SELL",
+    "amount": "0.0274 SOL",
+    "result": "Sold 100% | PnL: +147.9%",
+    "pnl": "+0.0274 SOL",
+    "color": "teal",
+    "ca": "CjWagnqHjVyZFqgeubKJ8JdNNqcEey3eDQ3yusB6vDMQ",
+    "ts": 1773245314
+  },
+  {
     "n": 805,
     "date": "2026-03-11",
     "token": "🔺",
