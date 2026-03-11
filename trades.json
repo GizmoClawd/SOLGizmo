@@ -1,5 +1,17 @@
 [
   {
+    "n": 979,
+    "date": "2026-03-11",
+    "token": "peacecoin",
+    "action": "BUY",
+    "amount": "0.0398 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "84PJ6J6dVxoTYECaeXZs4rvDEeBtRtQ62zGffA8npump",
+    "ts": 1773264379
+  },
+  {
     "n": 978,
     "date": "2026-03-11",
     "token": "peacecoin",
