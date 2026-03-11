@@ -1,5 +1,17 @@
 [
   {
+    "n": 785,
+    "date": "2026-03-11",
+    "token": "AGOTCHI",
+    "action": "BUY",
+    "amount": "0.0778 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EWvfzJJGRvWNxyBGLvzwygA5hLTre4SVzYhfwkdepump",
+    "ts": 1773243832
+  },
+  {
     "n": 784,
     "date": "2026-03-11",
     "token": "𝕏$",
