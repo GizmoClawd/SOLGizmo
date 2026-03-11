@@ -1,5 +1,17 @@
 [
   {
+    "n": 792,
+    "date": "2026-03-11",
+    "token": "Solotshi",
+    "action": "BUY",
+    "amount": "0.0704 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8f5frrMR8arajxfr3y1ryofkrHqNdVxvvwZzHKH9pump",
+    "ts": 1773244525
+  },
+  {
     "n": 791,
     "date": "2026-03-11",
     "token": "Solotoshi",
