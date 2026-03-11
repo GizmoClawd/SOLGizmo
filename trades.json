@@ -1,5 +1,17 @@
 [
   {
+    "n": 747,
+    "date": "2026-03-11",
+    "token": "KANGAROO",
+    "action": "SELL",
+    "amount": "0.0149 SOL",
+    "result": "Sold 25% | PnL: +179.9%",
+    "pnl": "+0.0149 SOL",
+    "color": "teal",
+    "ca": "AN56qs3quHWWYfnp32yvG8Fv1rrF3eYWoHR7twmopump",
+    "ts": 1773239110
+  },
+  {
     "n": 746,
     "date": "2026-03-11",
     "token": "KANGAROO",
