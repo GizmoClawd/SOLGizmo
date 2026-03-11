@@ -1,5 +1,17 @@
 [
   {
+    "n": 926,
+    "date": "2026-03-11",
+    "token": "Precious",
+    "action": "BUY",
+    "amount": "0.0329 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6sy3shaztZELZF4B9DAheEieP9AzxG2xVtCftWyHpump",
+    "ts": 1773253361
+  },
+  {
     "n": 925,
     "date": "2026-03-11",
     "token": "Sketch",
