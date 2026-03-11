@@ -1,5 +1,17 @@
 [
   {
+    "n": 830,
+    "date": "2026-03-11",
+    "token": "Newcoin",
+    "action": "BUY",
+    "amount": "0.0731 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "C1HMUhfyPkTHYEgxuhQMNamcbts4reMhjwvV56bmpump",
+    "ts": 1773246851
+  },
+  {
     "n": 829,
     "date": "2026-03-11",
     "token": "JEJE",
