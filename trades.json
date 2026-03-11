@@ -1,5 +1,17 @@
 [
   {
+    "n": 1060,
+    "date": "2026-03-11",
+    "token": "MIAURICIO",
+    "action": "SELL",
+    "amount": "0.0261 SOL",
+    "result": "Sold 100% | PnL: -55.1%",
+    "pnl": "+0.0261 SOL",
+    "color": "teal",
+    "ca": "DqVZ5m6w5CfVpefoyL58hPbzNER4kMr2qPnHBkzKpump",
+    "ts": 1773269735
+  },
+  {
     "n": 1059,
     "date": "2026-03-11",
     "token": "MIAURICIO",
