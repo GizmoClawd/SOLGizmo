@@ -1,5 +1,17 @@
 [
   {
+    "n": 860,
+    "date": "2026-03-11",
+    "token": "NOTCHI",
+    "action": "BUY",
+    "amount": "0.0491 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CmxarzG8u5RemBN318yWLdbKbmEPt6VTFq9tyGxQpump",
+    "ts": 1773249367
+  },
+  {
     "n": 859,
     "date": "2026-03-11",
     "token": "Notchi",
