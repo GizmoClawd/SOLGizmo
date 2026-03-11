@@ -1,5 +1,17 @@
 [
   {
+    "n": 958,
+    "date": "2026-03-11",
+    "token": "MARS",
+    "action": "SELL",
+    "amount": "0.0449 SOL",
+    "result": "Sold 100% | PnL: +2.9%",
+    "pnl": "+0.0449 SOL",
+    "color": "teal",
+    "ca": "MArSdHZS7uzr6fEiJYPMBf17E8WmJT8yhqJJUyrJzfM",
+    "ts": 1773263723
+  },
+  {
     "n": 957,
     "date": "2026-03-11",
     "token": "SANDBOX",
