@@ -1,5 +1,17 @@
 [
   {
+    "n": 886,
+    "date": "2026-03-11",
+    "token": "GBP",
+    "action": "BUY",
+    "amount": "0.0537 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "PJBYqQHVbiVaqg8aeodt5UtskURbANM5ppo7wKspump",
+    "ts": 1773250626
+  },
+  {
     "n": 885,
     "date": "2026-03-11",
     "token": "GBP",
