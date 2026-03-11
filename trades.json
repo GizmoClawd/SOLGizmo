@@ -1,5 +1,17 @@
 [
   {
+    "n": 688,
+    "date": "2026-03-11",
+    "token": "LCASH",
+    "action": "BUY",
+    "amount": "0.057 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DJ6R3zSP645gagzNY6wVhFQuVrJh3nnBFXPYTVTQpump",
+    "ts": 1773212028
+  },
+  {
     "n": 687,
     "date": "2026-03-11",
     "token": "Grid",
