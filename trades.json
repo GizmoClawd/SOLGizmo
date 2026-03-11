@@ -1,5 +1,17 @@
 [
   {
+    "n": 574,
+    "date": "2026-03-11",
+    "token": "NoCoin",
+    "action": "BUY",
+    "amount": "0.0465 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6MJYg8CGwbUUkBGUY1RNyLudL4WhiFkDGZopf6FwjgTp",
+    "ts": 1773194007
+  },
+  {
     "n": 573,
     "date": "2026-03-11",
     "token": "NoCoin",
