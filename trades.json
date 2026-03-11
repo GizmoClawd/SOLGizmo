@@ -1,5 +1,17 @@
 [
   {
+    "n": 960,
+    "date": "2026-03-11",
+    "token": "SANDBOX",
+    "action": "SELL",
+    "amount": "0.0219 SOL",
+    "result": "Sold 100% | PnL: -55.5%",
+    "pnl": "+0.0219 SOL",
+    "color": "teal",
+    "ca": "GahtcKhbD5V3JLGouJWXJdbWvK2P83sq4GkTptdzpump",
+    "ts": 1773263830
+  },
+  {
     "n": 959,
     "date": "2026-03-11",
     "token": "JNF",
