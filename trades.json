@@ -1,5 +1,17 @@
 [
   {
+    "n": 932,
+    "date": "2026-03-11",
+    "token": "SHART",
+    "action": "SELL",
+    "amount": "0.042 SOL",
+    "result": "Sold 100% | PnL: +178.9%",
+    "pnl": "+0.0420 SOL",
+    "color": "teal",
+    "ca": "598H21Hu1qup5AiFt8QYL5sJvwuRi2aRGzGgKxpFpump",
+    "ts": 1773261031
+  },
+  {
     "n": 931,
     "date": "2026-03-11",
     "token": "SHART",
