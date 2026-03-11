@@ -1,5 +1,17 @@
 [
   {
+    "n": 891,
+    "date": "2026-03-11",
+    "token": "GBP",
+    "action": "SELL",
+    "amount": "0.0221 SOL",
+    "result": "Sold 50% | PnL: +48.1%",
+    "pnl": "+0.0221 SOL",
+    "color": "teal",
+    "ca": "8gA5VMTDEK5riRKrS3XoLuf7EFoJUMsuD8NYp9rFpump",
+    "ts": 1773250881
+  },
+  {
     "n": 890,
     "date": "2026-03-11",
     "token": "GBP",
