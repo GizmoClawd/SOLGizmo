@@ -1,5 +1,17 @@
 [
   {
+    "n": 513,
+    "date": "2026-03-11",
+    "token": "SnowBear",
+    "action": "SELL",
+    "amount": "0.0381 SOL",
+    "result": "Sold 100% | PnL: -7.6%",
+    "pnl": "+0.0381 SOL",
+    "color": "teal",
+    "ca": "6WTSj2aSGaKNK8fmeLreSq2WSQqhs33gZD5duPfYpump",
+    "ts": 1773189435
+  },
+  {
     "n": 512,
     "date": "2026-03-11",
     "token": "PVE ",
