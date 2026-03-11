@@ -1,5 +1,17 @@
 [
   {
+    "n": 508,
+    "date": "2026-03-11",
+    "token": "Sim",
+    "action": "SELL",
+    "amount": "0.043 SOL",
+    "result": "Sold 100% | PnL: -22.6%",
+    "pnl": "+0.0430 SOL",
+    "color": "teal",
+    "ca": "5Y82ZXTCe8qGpvHurG1pyma416Cvg7oSAejJ4sXxpump",
+    "ts": 1773189204
+  },
+  {
     "n": 507,
     "date": "2026-03-11",
     "token": "HEHE",
