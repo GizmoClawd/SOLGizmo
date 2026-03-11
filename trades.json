@@ -1,5 +1,17 @@
 [
   {
+    "n": 762,
+    "date": "2026-03-11",
+    "token": "Malt",
+    "action": "BUY",
+    "amount": "0.0514 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FHUY2a3ZFjxduTqLRT257QGDCKFL8pkNBw613tKCpump",
+    "ts": 1773241125
+  },
+  {
     "n": 761,
     "date": "2026-03-11",
     "token": "TiaoTiao",
