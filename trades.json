@@ -1,5 +1,17 @@
 [
   {
+    "n": 589,
+    "date": "2026-03-11",
+    "token": "NOSTALGIA",
+    "action": "SELL",
+    "amount": "0.0194 SOL",
+    "result": "Sold 25% | PnL: +98.8%",
+    "pnl": "+0.0194 SOL",
+    "color": "teal",
+    "ca": "9FiPwaTFbQd9ySuq38PnUPVaWWQvaSREaVtxu6Vgpump",
+    "ts": 1773196155
+  },
+  {
     "n": 588,
     "date": "2026-03-11",
     "token": "NOSTALGIA",
