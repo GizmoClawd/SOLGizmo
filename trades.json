@@ -1,5 +1,17 @@
 [
   {
+    "n": 593,
+    "date": "2026-03-11",
+    "token": "emojirot",
+    "action": "BUY",
+    "amount": "0.0753 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Gx5ouofsR9mQZ8YQD9ewGVj7VMjgQaRxvAzMmzfapump",
+    "ts": 1773196274
+  },
+  {
     "n": 592,
     "date": "2026-03-11",
     "token": "NOSTALGIA",
