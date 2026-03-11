@@ -1,5 +1,17 @@
 [
   {
+    "n": 684,
+    "date": "2026-03-11",
+    "token": "Noorung",
+    "action": "BUY",
+    "amount": "0.0692 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8gtRTTtapRJzr1E5ZS5Pgwi1QVmZNxnmoMUn5UqZpump",
+    "ts": 1773210624
+  },
+  {
     "n": 683,
     "date": "2026-03-11",
     "token": "Ditto",
