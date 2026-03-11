@@ -1,5 +1,17 @@
 [
   {
+    "n": 752,
+    "date": "2026-03-11",
+    "token": "OPTIMUS",
+    "action": "BUY",
+    "amount": "0.0485 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EcEP6shgosHfg4m5b7wWTHHJZFWzoF1iqcdZMBzwpump",
+    "ts": 1773239823
+  },
+  {
     "n": 751,
     "date": "2026-03-11",
     "token": "COOL",
