@@ -619,12 +619,12 @@ async function managePositions() {
         log(`🟢 ${pos.name}: +10% — SL locked at +5%: $${Math.round(pos.sl)}`);
       }
       if (pos.sl && pos.highMC > pos.entryMC * 1.15) {
-        let trailPct = 0.90;
-        if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.95;
-        else if (pos.highMC > pos.entryMC * 3.0) trailPct = 0.97; // 3x+ lock very tight
-        else if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.95; // 2x+ lock tight
-        else if (pos.highMC > pos.entryMC * 1.5) trailPct = 0.93;
-        else if (pos.highMC > pos.entryMC * 1.3) trailPct = 0.92;
+        let trailPct = 0.80; // default — give room to breathe
+        if (pos.highMC > pos.entryMC * 5.0)      trailPct = 0.90; // 5x+ lock tighter
+        else if (pos.highMC > pos.entryMC * 3.0) trailPct = 0.85; // 3x+ moderate lock
+        else if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.82; // 2x let it run
+        else if (pos.highMC > pos.entryMC * 1.5) trailPct = 0.80; // post-TP1 loose
+        else if (pos.highMC > pos.entryMC * 1.3) trailPct = 0.80;
         const newSL = pos.highMC * trailPct;
         if (newSL > (pos.sl || 0) && newSL > pos.entryMC) {
           const old = pos.sl; pos.sl = newSL;
