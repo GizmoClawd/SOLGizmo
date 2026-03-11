@@ -1,5 +1,17 @@
 [
   {
+    "n": 515,
+    "date": "2026-03-11",
+    "token": "ClawRoom",
+    "action": "SELL",
+    "amount": "0.018 SOL",
+    "result": "Sold 100% | PnL: -40.0%",
+    "pnl": "+0.0180 SOL",
+    "color": "teal",
+    "ca": "Avd97mcaouWvbGtX6pgu1yNruQR6bQhrssV8rp6apump",
+    "ts": 1773189705
+  },
+  {
     "n": 514,
     "date": "2026-03-11",
     "token": "PVE ",
