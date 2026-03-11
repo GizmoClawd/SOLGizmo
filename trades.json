@@ -1,5 +1,17 @@
 [
   {
+    "n": 553,
+    "date": "2026-03-11",
+    "token": "1%",
+    "action": "BUY",
+    "amount": "0.055 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DTWgi6rxhB8vLLvduTjDxEE5L3UNy6rtePoV4tQgpump",
+    "ts": 1773193053
+  },
+  {
     "n": 552,
     "date": "2026-03-11",
     "token": "BEAR",
