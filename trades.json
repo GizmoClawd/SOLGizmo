@@ -1,5 +1,17 @@
 [
   {
+    "n": 607,
+    "date": "2026-03-11",
+    "token": "CHUD",
+    "action": "BUY",
+    "amount": "0.0681 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Gd3aEHqUiAE694XkD2yr5pqnE2MGno7xaAokt3fzpump",
+    "ts": 1773197695
+  },
+  {
     "n": 606,
     "date": "2026-03-11",
     "token": "King",
