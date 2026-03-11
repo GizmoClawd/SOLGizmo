@@ -1,5 +1,17 @@
 [
   {
+    "n": 736,
+    "date": "2026-03-11",
+    "token": "Hero",
+    "action": "BUY",
+    "amount": "0.0494 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4sTmLKGkxxETcrhRhx7LcrMryePDt1AAVwS6qAsLpump",
+    "ts": 1773238337
+  },
+  {
     "n": 735,
     "date": "2026-03-11",
     "token": "Supercoin",
