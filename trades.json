@@ -1,5 +1,17 @@
 [
   {
+    "n": 1035,
+    "date": "2026-03-11",
+    "token": "PaperTrade",
+    "action": "BUY",
+    "amount": "0.0645 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5XeFuH6FVSDdXyJQJ2JMpEEfQ9UKg1jYw5bDP1d7pump",
+    "ts": 1773268800
+  },
+  {
     "n": 1034,
     "date": "2026-03-11",
     "token": "PaperTrade",
