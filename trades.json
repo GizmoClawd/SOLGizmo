@@ -1,5 +1,17 @@
 [
   {
+    "n": 723,
+    "date": "2026-03-11",
+    "token": "BIRANCE",
+    "action": "BUY",
+    "amount": "0.0643 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HRpxHuHJQRC2roTsZiwVVNsnQb5WKH1r6FZ38Erxpump",
+    "ts": 1773236067
+  },
+  {
     "n": 722,
     "date": "2026-03-11",
     "token": ":3",
