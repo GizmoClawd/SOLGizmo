@@ -1,5 +1,17 @@
 [
   {
+    "n": 531,
+    "date": "2026-03-11",
+    "token": "SEND",
+    "action": "BUY",
+    "amount": "0.0751 SOL",
+    "result": "HW KOL: dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6Aps1anQZYD2pwXzCw6Uyp3gzseTzNB4dti9m6rtod8x",
+    "ts": 1773190882
+  },
+  {
     "n": 530,
     "date": "2026-03-11",
     "token": "autokernel",
