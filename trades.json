@@ -1,5 +1,17 @@
 [
   {
+    "n": 534,
+    "date": "2026-03-11",
+    "token": "TrashDay",
+    "action": "BUY",
+    "amount": "0.0707 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "A8zuhY3dL5D9dAG9W2WXyGR7uLdQuPxD1i7AGGZupump",
+    "ts": 1773190924
+  },
+  {
     "n": 533,
     "date": "2026-03-11",
     "token": "autokernel",
