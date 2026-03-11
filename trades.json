@@ -1,5 +1,17 @@
 [
   {
+    "n": 898,
+    "date": "2026-03-11",
+    "token": "GBP",
+    "action": "SELL",
+    "amount": "0.0484 SOL",
+    "result": "Sold 100% | PnL: -54.2%",
+    "pnl": "+0.0484 SOL",
+    "color": "teal",
+    "ca": "PJBYqQHVbiVaqg8aeodt5UtskURbANM5ppo7wKspump",
+    "ts": 1773251531
+  },
+  {
     "n": 897,
     "date": "2026-03-11",
     "token": "GAP",
