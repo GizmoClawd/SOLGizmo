@@ -1,5 +1,17 @@
 [
   {
+    "n": 664,
+    "date": "2026-03-11",
+    "token": "LEX",
+    "action": "SELL",
+    "amount": "0.0595 SOL",
+    "result": "Sold 100% | PnL: -15.9%",
+    "pnl": "+0.0595 SOL",
+    "color": "teal",
+    "ca": "ARBNFyosCGJARPktt1JoDgG2dpUDw3ehXk8AnnBspump",
+    "ts": 1773205272
+  },
+  {
     "n": 663,
     "date": "2026-03-11",
     "token": "Emoji",
