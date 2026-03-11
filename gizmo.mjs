@@ -153,7 +153,7 @@ async function learnFromTrades() {
     // Adjust score threshold based on market scan win rate
     // Score threshold driven by OVERALL win rate (not just market — most trades are KOL)
     if (recent.length >= 5) {
-      if (winRate < 0.40 && SCORE_THRESHOLD < 7) {
+      if (winRate <= 0.45 && SCORE_THRESHOLD < 7) {
         SCORE_THRESHOLD = Math.min(7, SCORE_THRESHOLD + 1);
         log(`🧠 WR low (${(winRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
