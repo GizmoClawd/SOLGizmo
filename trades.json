@@ -1,5 +1,17 @@
 [
   {
+    "n": 741,
+    "date": "2026-03-11",
+    "token": "Betsy",
+    "action": "BUY",
+    "amount": "0.0512 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "66WhUXXYD4sG6K2dcL3bhD5yoqPmx3SobuCxCBeCpump",
+    "ts": 1773238830
+  },
+  {
     "n": 740,
     "date": "2026-03-11",
     "token": "Miauricio",
