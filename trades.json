@@ -1,5 +1,17 @@
 [
   {
+    "n": 687,
+    "date": "2026-03-11",
+    "token": "Grid",
+    "action": "BUY",
+    "amount": "0.0625 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2wVTJNBE8tRrT2H4APYuT4k7yGwrePs6BzVegiFwpump",
+    "ts": 1773211866
+  },
+  {
     "n": 686,
     "date": "2026-03-11",
     "token": "Ditto",
