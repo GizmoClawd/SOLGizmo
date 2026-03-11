@@ -1,5 +1,17 @@
 [
   {
+    "n": 790,
+    "date": "2026-03-11",
+    "token": "Paul",
+    "action": "BUY",
+    "amount": "0.0739 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ESAfT2WFeo66N7c4sNERwTBq9fbgcGTPGxnnV3n62YXg",
+    "ts": 1773244432
+  },
+  {
     "n": 789,
     "date": "2026-03-11",
     "token": "Satoshi",
