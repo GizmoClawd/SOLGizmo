@@ -1,5 +1,17 @@
 [
   {
+    "n": 826,
+    "date": "2026-03-11",
+    "token": "Trumpleman",
+    "action": "SELL",
+    "amount": "0.0265 SOL",
+    "result": "Sold 100% | PnL: +64.1%",
+    "pnl": "+0.0265 SOL",
+    "color": "teal",
+    "ca": "6X5byoRtvcuoVKHFGKXaFxpndc62Lpyrjmp2tqQKpump",
+    "ts": 1773246696
+  },
+  {
     "n": 825,
     "date": "2026-03-11",
     "token": "Trumpleman",
