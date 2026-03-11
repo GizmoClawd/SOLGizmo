@@ -1,5 +1,17 @@
 [
   {
+    "n": 530,
+    "date": "2026-03-11",
+    "token": "autokernel",
+    "action": "BUY",
+    "amount": "0.0751 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9d16UHwPoN2HmSYKMs8UAT4AbvZsgPJyGxii5mkmpump",
+    "ts": 1773190878
+  },
+  {
     "n": 529,
     "date": "2026-03-11",
     "token": "autokernel",
