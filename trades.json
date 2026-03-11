@@ -1,5 +1,17 @@
 [
   {
+    "n": 751,
+    "date": "2026-03-11",
+    "token": "COOL",
+    "action": "BUY",
+    "amount": "0.0589 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5tV6oi1xE8F8g27oqfSD2rcWiYW28R4uvbZ2YcPfpump",
+    "ts": 1773239762
+  },
+  {
     "n": 750,
     "date": "2026-03-11",
     "token": "uncool",
