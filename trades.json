@@ -1,5 +1,17 @@
 [
   {
+    "n": 1062,
+    "date": "2026-03-11",
+    "token": "Dan",
+    "action": "SELL",
+    "amount": "0.0618 SOL",
+    "result": "Sold 100% | PnL: -53.3%",
+    "pnl": "+0.0618 SOL",
+    "color": "teal",
+    "ca": "DEwu8avaF6XEGR3DQLafKbeZR8DAG4u8tTe2pScTpump",
+    "ts": 1773270112
+  },
+  {
     "n": 1061,
     "date": "2026-03-11",
     "token": "ChristClaude",
