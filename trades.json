@@ -1,5 +1,17 @@
 [
   {
+    "n": 834,
+    "date": "2026-03-11",
+    "token": "NeMoClaw",
+    "action": "SELL",
+    "amount": "0.0573 SOL",
+    "result": "Sold 100% | PnL: -71.1%",
+    "pnl": "+0.0573 SOL",
+    "color": "teal",
+    "ca": "AgvdozRgXrYESPaTx36ueCL3DCkfeXZWQBR1kwFUpump",
+    "ts": 1773247296
+  },
+  {
     "n": 833,
     "date": "2026-03-11",
     "token": "NeMoClaw",
