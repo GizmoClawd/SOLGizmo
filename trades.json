@@ -1,5 +1,17 @@
 [
   {
+    "n": 1032,
+    "date": "2026-03-11",
+    "token": "BIGFOOT",
+    "action": "BUY",
+    "amount": "0.0651 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2yogUZMgxUzrWkbjgPaH6qDyV4RJ7TeQbkWMPeCupump",
+    "ts": 1773268742
+  },
+  {
     "n": 1031,
     "date": "2026-03-11",
     "token": "BIGFOOT",
