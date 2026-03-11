@@ -1,5 +1,17 @@
 [
   {
+    "n": 876,
+    "date": "2026-03-11",
+    "token": "スケッチ",
+    "action": "SELL",
+    "amount": "0.0546 SOL",
+    "result": "Sold 100% | PnL: +7.6%",
+    "pnl": "+0.0546 SOL",
+    "color": "teal",
+    "ca": "AQA8vZcCNM4zMMvvoA6qAGmDFLeJto8LvVakVuAVpump",
+    "ts": 1773250241
+  },
+  {
     "n": 875,
     "date": "2026-03-11",
     "token": "スケッチ",
