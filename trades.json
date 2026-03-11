@@ -1,5 +1,17 @@
 [
   {
+    "n": 880,
+    "date": "2026-03-11",
+    "token": "Shocked",
+    "action": "BUY",
+    "amount": "0.0521 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "13rp7FksAmaiAtYwSWGFmGMYf9bHwzGEhKkVuQS2J72V",
+    "ts": 1773250429
+  },
+  {
     "n": 879,
     "date": "2026-03-11",
     "token": "Distorted",
