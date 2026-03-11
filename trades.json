@@ -1,5 +1,17 @@
 [
   {
+    "n": 812,
+    "date": "2026-03-11",
+    "token": "Nemotron",
+    "action": "SELL",
+    "amount": "0.0463 SOL",
+    "result": "Sold 100% | PnL: -55.4%",
+    "pnl": "+0.0463 SOL",
+    "color": "teal",
+    "ca": "CHG7Ea5RMMXw6pYFdnSVi7hdKVwvFBvdY7UmF2Krpump",
+    "ts": 1773245703
+  },
+  {
     "n": 811,
     "date": "2026-03-11",
     "token": "ZukoCoin",
