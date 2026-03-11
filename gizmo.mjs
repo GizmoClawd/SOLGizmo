@@ -764,7 +764,12 @@ async function managePositions() {
     if (pos.runnerMode && !pos.runnerTP1Hit && mc >= pos.entryMC * 2.0) {
       const mult = mc / pos.entryMC;
       // Trail tightens as multiplier grows — but keeps room for memecoin volatility
-      const trailPct = mult >= 4 ? 0.88 : mult >= 3 ? 0.85 : 0.80;
+      // Looser trail when h1 momentum is strong — don't shake out real runners
+      const h1Momentum = entryPair?.pairs?.[0]?.priceChange?.h1 || 0;
+      const isRipping = h1Momentum > 100;
+      const trailPct = isRipping
+        ? (mult >= 4 ? 0.75 : mult >= 3 ? 0.70 : 0.65)   // ripping — give it room
+        : (mult >= 4 ? 0.88 : mult >= 3 ? 0.85 : 0.80);  // normal trail
       const newSL = pos.highMC * trailPct;
       if (newSL > (pos.sl || 0)) { pos.sl = newSL; savePositions(); }
       log(`🦁 RUNNER ${pos.name} ${mult.toFixed(1)}x — full bag held | SL: $${Math.round(pos.sl)} (${(trailPct*100).toFixed(0)}% trail) | B/S:${buys}/${sells}`);
