@@ -1,5 +1,17 @@
 [
   {
+    "n": 731,
+    "date": "2026-03-11",
+    "token": "Supercoin",
+    "action": "BUY",
+    "amount": "0.0577 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CRPfF6HFT2oR6tSd7PKF8RgB59EaLdpFRCaNScywpump",
+    "ts": 1773237753
+  },
+  {
     "n": 730,
     "date": "2026-03-11",
     "token": "SEEKERCLAW",
