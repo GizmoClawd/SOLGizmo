@@ -1,5 +1,17 @@
 [
   {
+    "n": 774,
+    "date": "2026-03-11",
+    "token": "MACROHARD",
+    "action": "BUY",
+    "amount": "0.0473 SOL",
+    "result": "HW KOL: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2CcTaEEEVGtC1fnA1i7gVkRTXeUDYrRBTwfzNAaPpump",
+    "ts": 1773242488
+  },
+  {
     "n": 773,
     "date": "2026-03-11",
     "token": "MARCOHARD",
