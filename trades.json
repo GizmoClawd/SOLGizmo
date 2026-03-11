@@ -1,5 +1,17 @@
 [
   {
+    "n": 787,
+    "date": "2026-03-11",
+    "token": "Satoshi",
+    "action": "BUY",
+    "amount": "0.0748 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GCDxjvpYeioh5r9nCPoetgHYpumFWCAs6o6u5p93pump",
+    "ts": 1773244251
+  },
+  {
     "n": 786,
     "date": "2026-03-11",
     "token": "AGOTCHI",
