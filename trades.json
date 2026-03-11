@@ -1,5 +1,17 @@
 [
   {
+    "n": 570,
+    "date": "2026-03-11",
+    "token": "MONEY",
+    "action": "BUY",
+    "amount": "0.051 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F3UgDbTfx4rkJ4iLk28Ct6EeX3tQvHrgde5yZChGpump",
+    "ts": 1773193814
+  },
+  {
     "n": 569,
     "date": "2026-03-11",
     "token": "Fuckcoin",
