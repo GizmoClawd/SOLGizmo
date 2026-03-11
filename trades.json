@@ -1,5 +1,17 @@
 [
   {
+    "n": 718,
+    "date": "2026-03-11",
+    "token": "Jumpy",
+    "action": "SELL",
+    "amount": "0.0475 SOL",
+    "result": "Sold 100% | PnL: -57.4%",
+    "pnl": "+0.0475 SOL",
+    "color": "teal",
+    "ca": "D5pAEfW881zHHFoDBa47qCaujBMERVuorWYnMnEPpump",
+    "ts": 1773233217
+  },
+  {
     "n": 717,
     "date": "2026-03-11",
     "token": "Jumpy",
