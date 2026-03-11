@@ -1,5 +1,17 @@
 [
   {
+    "n": 504,
+    "date": "2026-03-11",
+    "token": "Human",
+    "action": "SELL",
+    "amount": "0.0294 SOL",
+    "result": "Sold 100% | PnL: +52.1%",
+    "pnl": "+0.0294 SOL",
+    "color": "teal",
+    "ca": "HBVnKYMkJVHSqm4WcYisGzZhWG4ugwdUgXk7UVYypump",
+    "ts": 1773188425
+  },
+  {
     "n": 503,
     "date": "2026-03-11",
     "token": "Human",
