@@ -1,5 +1,17 @@
 [
   {
+    "n": 810,
+    "date": "2026-03-11",
+    "token": "ZukoCoin",
+    "action": "SELL",
+    "amount": "0.0237 SOL",
+    "result": "Sold 25% | PnL: +156.8%",
+    "pnl": "+0.0237 SOL",
+    "color": "teal",
+    "ca": "8PQ1b6BeoUGuPdAsqMzuANyq2vPJy9jYge82MYA7pump",
+    "ts": 1773245583
+  },
+  {
     "n": 809,
     "date": "2026-03-11",
     "token": "ZukoCoin",
