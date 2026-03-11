@@ -27,7 +27,8 @@ const MAX_POSITIONS = 3;
 // ─── SESSION GUARD ────────────────────────────────────────────────────────────
 let SESSION_START_BALANCE = null;
 let SESSION_HALTED = false;
-const SESSION_LOSS_LIMIT_SOL = 0.3;
+let SESSION_HALT_TIME = null;
+const SESSION_LOSS_LIMIT_SOL = 0.5;
 
 // ─── PROFIT VAULT ─────────────────────────────────────────────────────────────
 const VAULT_FILE_PATH = process.env.HOME + '/.gizmo/runtime/profit-vault.json';
@@ -59,7 +60,14 @@ async function runProfitVault(currentBalance) {
       const newLock = targetLocked - vault.locked;
       vault.locked = targetLocked;
       saveVault(vault);
-      const msg = '🔐 PROFIT VAULT: Locked ' + newLock.toFixed(3) + ' SOL | Total locked: ' + vault.locked.toFixed(3) + ' SOL | Tradeable: ' + (currentBalance - vault.locked).toFixed(3) + ' SOL';
+      // SAFETY: never lock more than 70% of actual current balance
+      // Scale vault lock by wallet size — never lock so much trading stops
+      const vaultCap = currentBalance >= 5 ? 0.65   // 5+ SOL: lock up to 65%
+                     : currentBalance >= 2 ? 0.55   // 2-5 SOL: lock up to 55%
+                     : 0.45;                         // <2 SOL: lock up to 45%
+      vault.locked = Math.min(vault.locked, currentBalance * vaultCap);
+      const tradeable = currentBalance - vault.locked;
+      const msg = '🔐 PROFIT VAULT: Locked ' + vault.locked.toFixed(3) + ' SOL | Tradeable: ' + tradeable.toFixed(3) + ' SOL';
       log(msg);
       try { execSync('openclaw message --text "' + msg.replace(/"/g,"'") + '" --agent gizmo', { timeout: 5000 }); } catch {}
     }
@@ -192,7 +200,7 @@ async function learnFromTrades() {
 // ─── LOGGING ─────────────────────────────────────────────────────────────────
 function log(msg) {
   const line = `[${new Date().toLocaleString()}] ${msg}`;
-  console.log(line);
+  process.stderr.write(line + '\n'); // stderr so LaunchAgent stdout doesn't double-log
   try { fs.appendFileSync(LOG_FILE, line + '\n'); } catch {}
 }
 
@@ -203,11 +211,58 @@ function loadPositions() {
   try {
     if (fs.existsSync(POSITIONS_FILE)) {
       const data = JSON.parse(fs.readFileSync(POSITIONS_FILE, 'utf8'));
-      log(`📂 Loaded ${data.length} positions: ${data.map(p => p.name).join(', ') || 'none'}`);
-      return data;
+      let deadPools = [];
+      try { deadPools = JSON.parse(fs.readFileSync('/Users/younghogey/.gizmo/runtime/dead-pools.json','utf8')); } catch {}
+      const filtered = data.filter(p => !deadPools.includes(p.ca));
+      if (filtered.length < data.length) log(`🚫 Filtered ${data.length - filtered.length} dead pool position(s) on load`);
+      log(`📂 Loaded ${filtered.length} positions: ${filtered.map(p => p.name).join(', ') || 'none'}`);
+  // ghost cleanup called from runCycle on first run
+      return filtered;
     }
   } catch (e) { log(`⚠️ Load positions failed: ${e.message}`); }
   return [];
+}
+
+// ─── GHOST POSITION CLEANUP ──────────────────────────────────────────────────
+// Checks actual on-chain token balance for each position on startup.
+// If wallet holds 0 tokens but position is in JSON → ghost. Remove it.
+async function cleanGhostPositions() {
+  if (POSITIONS.length === 0) return;
+  const toRemove = [];
+  for (const pos of POSITIONS) {
+    try {
+      const hKey = HELIUS_KEY || '2de73660-14b8-412a-9ff2-8e6989c53266';
+      const resp = await fetch('https://mainnet.helius-rpc.com/?api-key=' + hKey, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0', id: 1,
+          method: 'getTokenAccountsByOwner',
+          params: [WALLET, { mint: pos.ca }, { encoding: 'jsonParsed' }]
+        }),
+        signal: AbortSignal.timeout(5000)
+      });
+      const data = await resp.json();
+      const accounts = data?.result?.value || [];
+      const balance = accounts.reduce((sum, a) => sum + (a.account?.data?.parsed?.info?.tokenAmount?.uiAmount || 0), 0);
+      if (balance === 0) {
+        log(`🧹 GHOST POSITION: ${pos.name} has 0 tokens on-chain — removing from positions`);
+        toRemove.push(pos.ca);
+      } else {
+        log(`✅ ${pos.name}: confirmed ${balance.toFixed(2)} tokens on-chain`);
+      }
+    } catch (e) {
+      log(`⚠️ Could not verify ${pos.name} balance — keeping position`);
+    }
+  }
+  if (toRemove.length > 0) {
+    toRemove.forEach(ca => {
+      const idx = POSITIONS.findIndex(p => p.ca === ca);
+      if (idx !== -1) POSITIONS.splice(idx, 1);
+    });
+    savePositions();
+    log(`🧹 Cleaned ${toRemove.length} ghost position(s)`);
+  }
 }
 
 function savePositions() {
@@ -271,7 +326,8 @@ if (deadOnLoad.length > 0) {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
-const ALERTED = new Set();
+const ALERTED = new Set((() => { try { return JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/alerted.json', 'utf8')); } catch { return []; } })());
+function saveAlerted() { try { fs.writeFileSync(process.env.HOME + '/.gizmo/runtime/alerted.json', JSON.stringify([...ALERTED])); } catch {} }
 const WATCHLIST = [];
 // Load recently bought CAs from trades.json to survive restarts
 const RECENTLY_BOUGHT = new Map((() => {
@@ -303,20 +359,20 @@ const WALLETS = [
   { name: "bandit", address: "5B79fMkcFeRTiwm7ehsZsFiKsC7m7n1Bgv9yLxPp9q2X", weight: 3 },
   { name: "dov7", address: "8nqtxpFpuXwfXG4pBLsDkkuMMPK9FjSkBMCn542HiM3v", weight: 3 },
   { name: "Jijo", address: "4BdKaxN8G6ka4GYtQQWk4G4dZRUTX2vQH9GcXdBREFUk", weight: 3 },
-  { name: "Kadenox", address: "B32QbbdDAyhvUQzjcaM5j6ZVKwjCxAwGH5Xgvb9SJqnC", weight: 1 },
+  { name: "Kadenox", address: "B32QbbdDAyhvUQzjcaM5j6ZVKwjCxAwGH5Xgvb9SJqnC", weight: 3 },
   { name: "theo", address: "Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt", weight: 3 },
-  { name: "Dali", address: "CvNiezB8hofusHCKqu8irJ6t2FKY7VjzpSckofMzk5mB", weight: 1 },
-  { name: "radiance", address: "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke", weight: 1 },
+  { name: "Dali", address: "CvNiezB8hofusHCKqu8irJ6t2FKY7VjzpSckofMzk5mB", weight: 3 },
+  { name: "radiance", address: "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke", weight: 3 },
   { name: "Coasty", address: "CATk62cYqDFXTh3rsRbS1ibCyzBeovc2KXpXEaxEg3nB", weight: 1 },
-  { name: "clukz", address: "G6fUXjMKPJzCY1rveAE6Qm7wy5U3vZgKDJmN1VPAdiZC", weight: 1 },
+  { name: "clukz", address: "G6fUXjMKPJzCY1rveAE6Qm7wy5U3vZgKDJmN1VPAdiZC", weight: 3 },
   { name: "dv", address: "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd", weight: 3 },
   { name: "cryptovillain", address: "5sNnKuWKUtZkdC1eFNyqz3XHpNoCRQ1D1DfHcNHMV7gn", weight: 1 },
-  { name: "Joji", address: "525LueqAyZJueCoiisfWy6nyh4MTvmF4X9jSqi6efXJT", weight: 1 },
+  { name: "Joji", address: "525LueqAyZJueCoiisfWy6nyh4MTvmF4X9jSqi6efXJT", weight: 3 },
   { name: "decu", address: "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9", weight: 3 },
   { name: "Cupsey", address: "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f", weight: 1, scalper: true },
   { name: "mercy", address: "F5jWYuiDLTiaLYa54D88YbpXgEsA6NKHzWy4SN4bMYjt", weight: 1 },
-  { name: "Silver", address: "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U", weight: 1 },
-  { name: "Pain", address: "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa", weight: 1 },
+  { name: "Silver", address: "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U", weight: 3 },
+  { name: "Pain", address: "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa", weight: 3 },
   // ── AUTO-DISCOVERED SMART MONEY (Mon Mar 09 2026) ──
   { name: "smart_gizmo-wins_1", address: "DKfejcSsTYVFU4jHSyjrGJiYAMdGwe5varF11ArFcmeB", weight: 1 }, // auto-discovered WR:100%
 ];
@@ -341,7 +397,7 @@ async function getTokenInfo(mint) {
 // Fetches recent buyers of a token via Helius, checks how many wallets are <7 days old.
 // If 15+ new wallets are found, it's likely a coordinated rug setup.
 const NEW_WALLET_DAYS = 7;
-const NEW_WALLET_THRESHOLD = 15;
+const NEW_WALLET_THRESHOLD = 36;
 
 async function checkRugWallets(mint) {
   if (!HELIUS_KEY) return { isRug: false, newCount: 0, total: 0 };
@@ -374,7 +430,10 @@ async function checkRugWallets(mint) {
       } catch {}
     }));
 
-    return { isRug: newWalletCount >= NEW_WALLET_THRESHOLD, newCount: newWalletCount, total: wallets.length };
+    // Use ratio-based check: block only if >85% of buyers are new wallets AND at least 10 buyers checked
+    const newWalletRatio = wallets.length > 0 ? newWalletCount / wallets.length : 0;
+    const isRug = wallets.length >= 10 && newWalletRatio > 0.85;
+    return { isRug, newCount: newWalletCount, total: wallets.length, ratio: (newWalletRatio*100).toFixed(0) };
   } catch (e) {
     log(`⚠️ checkRugWallets error: ${e.message?.slice(0, 80)}`);
     return { isRug: false, newCount: 0, total: 0 };
@@ -431,6 +490,7 @@ async function sell(ca, pct, posName, entryMC, currentMC) {
 
 // ─── BUY ──────────────────────────────────────────────────────────────────────
 async function buy(ca, amount) {
+  if (DEAD_POOLS.has(ca)) { log(`🚫 BUY BLOCKED: ${ca} is blacklisted in dead pool`); return false; }
   try {
     const out = execSync(`cd ${WORKSPACE} && node trade.mjs ${ca} ${amount}`, { timeout: 30000 }).toString();
     log(`BUY ${amount} SOL: ${out.trim().split('\n').pop()}`);
@@ -441,7 +501,7 @@ async function buy(ca, amount) {
 // ─── WALLET BALANCE ───────────────────────────────────────────────────────────
 async function getWalletBalance() {
   try {
-    const r = await fetch('https://solana.publicnode.com',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz']}),signal:AbortSignal.timeout(3000)});
+    const r = await fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz']}),signal:AbortSignal.timeout(3000)});
     const d = await r.json(); return (d.result?.value||0)/1e9;
   } catch { return 1; }
 }
@@ -467,11 +527,15 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
   // ── BANKROLL PROTECTION ─────────────────────────────────────────────────────
   // FLOOR: always keep 0.1 SOL untouched for gas/fees
   const FLOOR = 0.1;
-  // RESERVE: keep 30% of wallet as safe reserve, never trade it
-  const RESERVE = walletSol * 0.30;
+  // RESERVE: keep 15% of wallet as safe reserve, never trade it
+  const RESERVE = walletSol * 0.15;
   // TRADEABLE: only risk from the tradeable portion
   const tradeable = walletSol - FLOOR - RESERVE;
-  if (tradeable <= 0) { log(`🛑 BANKROLL: wallet too low (${walletSol.toFixed(3)} SOL) — protecting floor`); return 0; }
+  if (tradeable <= 0) { 
+    const locked = loadVault().locked;
+    log(`🛑 BANKROLL: tradeable too low — wallet:${walletSol.toFixed(3)} vault:${locked.toFixed(3)} floor:0.1 reserve:15% = nothing left`); 
+    return 0; 
+  }
 
   // Circuit breaker: stop if lost 1.5 SOL today
   const dailyPnL = getDailyPnL();
@@ -501,8 +565,21 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
   const baseSize = Math.min(tradeable * pctPerTrade, maxPerTrade);
 
   // Boost slightly for high conviction (3+ KOLs) but never exceed 2x base
-  const convictionMult = numKols >= 3 ? 1.5 : numKols >= 2 ? 1.2 : 1.0;
-  const size = Math.min(baseSize * convictionMult, maxPerTrade * 1.5);
+  // SUPERCELL: Elite conviction multiplier
+  // Load KOL performance to check if converging KOLs are ELITE tier
+  let eliteCount = 0;
+  try {
+    const perf = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8'));
+    // Count elite KOLs in current signal (approximated by numKols with weight 3)
+    eliteCount = numKols; // all tracked KOLs are now ELITE weight 3
+  } catch {}
+  
+  const convictionMult = eliteCount >= 4 ? 2.0  // 4+ elite KOLs = 2x size
+                       : eliteCount >= 3 ? 1.75  // 3 elite KOLs = 1.75x size  
+                       : numKols >= 2    ? 1.2   // 2 KOLs = 1.2x size
+                       : 1.0;
+  const size = Math.min(baseSize * convictionMult, maxPerTrade * 2.0);
+  if (convictionMult > 1.0) log(`🎯 CONVICTION BOOST: ${eliteCount} KOLs → ${convictionMult}x size (${size.toFixed(3)} SOL)`);
 
   log(`💰 BANKROLL: wallet ${walletSol.toFixed(3)} SOL | tradeable ${tradeable.toFixed(3)} | sizing ${size.toFixed(3)} SOL (${(size/walletSol*100).toFixed(0)}% of wallet)`);
   return Math.max(0, parseFloat(size.toFixed(4)));
@@ -535,7 +612,7 @@ async function managePositions() {
     const sells = p.txns?.m5?.sells || 0;
 
     // Update high water mark + trail SL
-    if (mc > (pos.sl || 0)) { pos.slBreachCount = 0; }
+    if (mc > (pos.sl || 0)) { pos.slBreachCount = 0; } else if (pos.sl && mc < pos.sl) { pos.slBreachCount = (pos.slBreachCount || 0) + 1; }
     if (mc > pos.highMC) {
       pos.highMC = mc;
       if (mc > pos.entryMC * 1.10 && !pos.sl) {
@@ -543,10 +620,12 @@ async function managePositions() {
         log(`🟢 ${pos.name}: +10% — SL locked at +5%: $${Math.round(pos.sl)}`);
       }
       if (pos.sl && pos.highMC > pos.entryMC * 1.15) {
-        let trailPct = 0.90;
-        if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.95;
-        else if (pos.highMC > pos.entryMC * 1.5) trailPct = 0.93;
-        else if (pos.highMC > pos.entryMC * 1.3) trailPct = 0.92;
+        let trailPct = 0.80; // default — give room to breathe
+        if (pos.highMC > pos.entryMC * 5.0)      trailPct = 0.90; // 5x+ lock tighter
+        else if (pos.highMC > pos.entryMC * 3.0) trailPct = 0.85; // 3x+ moderate lock
+        else if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.82; // 2x let it run
+        else if (pos.highMC > pos.entryMC * 1.5) trailPct = 0.80; // post-TP1 loose
+        else if (pos.highMC > pos.entryMC * 1.3) trailPct = 0.80;
         const newSL = pos.highMC * trailPct;
         if (newSL > (pos.sl || 0) && newSL > pos.entryMC) {
           const old = pos.sl; pos.sl = newSL;
@@ -569,14 +648,45 @@ async function managePositions() {
       continue;
     }
 
-    // HARD STOP: -30% with no SL set
-    if (mc <= pos.entryMC * 0.70 && !pos.sl) {
-      log(`💀 HARD STOP ${pos.name} at ${pnl}% — cutting`);
-      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
-        await postTrade('SELL', pos.name, pos.ca, mc, `Hard stop ${pnl}%`, null, parseFloat(pnl));
-        POSITIONS.splice(i, 1); savePositions();
+    // DCA: add to position if price dips back to entry zone (not top blasting)
+    if (!pos.dcaAdded && pos.dcaSize > 0.02) {
+      pos.dcaCycles = (pos.dcaCycles || 0) + 1;
+      const dipPct = (mc - pos.entryMC) / pos.entryMC;
+      const goodDip = dipPct >= -0.10 && dipPct <= 0.05; // within 10% below or 5% above entry
+      const momentumOk = buys > sells && m5 > -2;
+      if (goodDip && momentumOk && pos.dcaCycles >= 2) {
+        log(`📉 DCA: ${pos.name} dipped to entry zone (${(dipPct*100).toFixed(1)}%) — adding ${pos.dcaSize.toFixed(3)} SOL`);
+        if (await buy(pos.ca, pos.dcaSize)) {
+          pos.dcaAdded = true;
+          const newEntryMC = (pos.entryMC + mc) / 2; // average down
+          pos.entryMC = newEntryMC;
+          pos.tp1 = newEntryMC * 1.5;
+          pos.tp2 = newEntryMC * 2.0;
+          savePositions();
+          log(`✅ DCA filled — new avg entry: ${Math.round(newEntryMC)}`);
+        }
+      } else if (pos.dcaCycles >= 5 && !pos.dcaAdded) {
+        pos.dcaAdded = true; // timeout — skip DCA, missed the window
+        savePositions();
+        log(`⏭️ DCA timeout: ${pos.name} — no dip after 5 cycles, skipping add`);
       }
-      continue;
+    }
+
+    // HARD STOP: -30% with no SL set — only cut if genuine rug (sells dominating + volume dying)
+    if (mc <= pos.entryMC * 0.70 && !pos.sl) {
+      const bsRatio = buys / Math.max(sells, 1);
+      const isGenuineRug = bsRatio < 0.5 && sells > 10; // sells 2x+ buys with real volume
+      const isDeepDump = mc <= pos.entryMC * 0.45;       // -55%+ always cut regardless
+      if (isGenuineRug || isDeepDump) {
+        log(`💀 HARD STOP ${pos.name} at ${pnl}% — ${isDeepDump ? 'deep dump' : 'genuine rug'} (B/S:${buys}/${sells})`);
+        if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+          await postTrade('SELL', pos.name, pos.ca, mc, `Hard stop ${pnl}%`, null, parseFloat(pnl));
+          POSITIONS.splice(i, 1); savePositions();
+        }
+        continue;
+      } else {
+        log(`⏳ ${pos.name} at ${pnl}% — holding, momentum ok (B/S:${buys}/${sells})`);
+      }
     }
 
     // FAST PUMP: +30%+ fading momentum — sell half
@@ -595,34 +705,73 @@ async function managePositions() {
       }
     }
 
-    // TP1: 2x+ — sell half unless still ripping
-    if (!pos.tp1Hit && mc >= pos.entryMC * 2.0) {
-      const bsRatio = buys / Math.max(sells, 1);
+    // TP1: 1.5x — sell 25% (first profit lock)
+    if (!pos.tp1Hit && mc >= pos.entryMC * 1.5) {
       const mult = mc / pos.entryMC;
+      log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — locking 25%`);
+      if (await sell(pos.ca, '25%', pos.name, pos.entryMC, mc)) {
+        pos.tp1Hit = true;
+        pos.sl = Math.max(pos.sl || 0, pos.entryMC * 1.02); // SL to breakeven
+        savePositions();
+        await postTrade('SELL', pos.name, pos.ca, mc, `TP1 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+      }
+      continue;
+    }
+
+    // TP2: 2x — sell another 25% (50% total out, 50% moonbag)
+    if (pos.tp1Hit && !pos.tp2Hit && mc >= pos.entryMC * 2.0) {
+      const mult = mc / pos.entryMC;
+      const bsRatio = buys / Math.max(sells, 1);
       if (m5 > 3 && bsRatio >= 2.0 && mult < 4.0) {
+        // Still ripping — tighten SL and let it run
         const rSL = pos.highMC * 0.90;
         if (rSL > (pos.sl || 0)) { pos.sl = rSL; savePositions(); }
-        log(`🚀 ${pos.name}: ${mult.toFixed(1)}x RIPPING — holding, SL tightened`);
+        log(`🚀 ${pos.name}: ${mult.toFixed(1)}x RIPPING — holding moonbag, SL tightened to ${Math.round(pos.sl)}`);
       } else {
-        log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — selling half`);
-        if (await sell(pos.ca, '50%', pos.name, pos.entryMC, mc)) {
-          pos.tp1Hit = true; pos.sl = Math.max(pos.sl || 0, mc * 0.90); savePositions();
+        log(`🎯 TP2 ${pos.name} ${mult.toFixed(1)}x — selling another 25%, moonbag riding`);
+        if (await sell(pos.ca, '25%', pos.name, pos.entryMC, mc)) {
+          pos.tp2Hit = true;
+          pos.sl = Math.max(pos.sl || 0, mc * 0.65); // loose trail on moonbag — let it run to 5x+
+          savePositions();
+          await postTrade('SELL', pos.name, pos.ca, mc, `TP2 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
         }
       }
+      continue;
+    }
+
+    // MOONBAG TP3: 5x — sell everything
+    if (pos.tp2Hit && mc >= pos.entryMC * 5.0) {
+      const mult = mc / pos.entryMC;
+      log(`🌙 MOONBAG TP3 ${pos.name} ${mult.toFixed(1)}x — selling all`);
+      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+        await postTrade('SELL', pos.name, pos.ca, mc, `Moonbag ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+        POSITIONS.splice(i, 1); savePositions();
+      }
+      continue;
     }
 
     // BREAKEVEN SL after 1.5x — never let winner become loser
     if (!pos.breakevenSet && mc >= pos.entryMC * 1.5) {
       const beSL = pos.entryMC * 1.05;
       if (!pos.sl || beSL > pos.sl) { pos.sl = beSL; pos.breakevenSet = true; savePositions(); log('BREAKEVEN SL: ' + pos.name + ' -> $' + Math.round(beSL)); }
-      if (pos.slBreachCount >= 2 || mc < pos.sl * 0.70 || (pos.slBreachCount >= 1 && m5 < 0)) {
+      if (mc <= pos.sl) {
         log(`🛑 SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
         if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
           await postTrade('SELL', pos.name, pos.ca, mc, `SL hit ${pnl}%`, null, parseFloat(pnl));
           WATCHLIST.push({ name: pos.name, ca: pos.ca, exitMC: mc, exitTime: Date.now(), entryMC: pos.entryMC });
           POSITIONS.splice(i, 1); savePositions();
         } else { log(`⚠️ ${pos.name} SELL FAILED — retry next cycle`); }
-      } else { log(`⚠️ ${pos.name} at SL but 5m red — waiting green candle`); }
+      } // SL breach handled above — no waiting
+      continue;
+    }
+
+    // TRAILING SL: enforce on all future cycles
+    if (pos.sl && mc < pos.sl) {
+      log(`🛑 TRAILING SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
+      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+        await postTrade('SELL', pos.name, pos.ca, mc, `Trailing SL ${pnl}%`, null, parseFloat(pnl));
+        POSITIONS.splice(i, 1); savePositions();
+      } else { log(`⚠️ ${pos.name} TRAILING SL SELL FAILED — retry next cycle`); }
       continue;
     }
 
@@ -677,8 +826,15 @@ async function scanKOLs(state) {
   if (!HELIUS_KEY) return;
   const now = Date.now();
   state.recentBuys = (state.recentBuys || []).filter(b => now - b.timestamp < SIGNAL_WINDOW_MS);
+  state.pollCycle = (state.pollCycle || 0) + 1;
 
   for (const wallet of WALLETS) {
+    // Tiered polling — save Helius credits
+    const tier = wallet.weight >= 4 ? 'GOD' : wallet.weight >= 3 ? 'ELITE' : wallet.weight >= 2 ? 'SOLID' : wallet.weight >= 1 ? 'WATCH' : 'MUTED';
+    if (tier === 'MUTED') continue; // never poll muted KOLs
+    if (tier === 'WATCH' && state.pollCycle % 5 !== 0) continue;  // every 5th cycle
+    if (tier === 'SOLID' && state.pollCycle % 3 !== 0) continue;  // every 3rd cycle
+    // GOD + ELITE poll every cycle
     try {
       const url = `https://api.helius.xyz/v0/addresses/${wallet.address}/transactions?api-key=${HELIUS_KEY}&limit=3&type=SWAP`;
       const r = await fetch(url, { signal: AbortSignal.timeout(5000) });
@@ -706,20 +862,30 @@ async function scanKOLs(state) {
   }
 
   // HIGH-WEIGHT SINGLE KOL BUY (weight >= 2)
-  for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 2 && !b.scalper)) {
+  for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 3 && !b.scalper)) {
     if (POSITIONS.length >= MAX_POSITIONS) break;
     if (RECENTLY_BOUGHT.has(signal.mint) || ALERTED.has(signal.mint)) continue;
+    // Check live performance weight — skip MUTED KOLs even in HW path
+    let livePerf = {}; try { livePerf = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8')); } catch {}
+    const hwLiveWeight = livePerf[signal.kol]?.weight !== undefined ? livePerf[signal.kol].weight : signal.kolWeight;
+    if (hwLiveWeight === 0) { log(`🔇 MUTED KOL skipped: ${signal.kol} (tier:${livePerf[signal.kol]?.tier} avgPnL:${livePerf[signal.kol]?.avgPnl?.toFixed(1)}%)`); ALERTED.add(signal.mint); continue; }
     const hwInfo = await getTokenInfo(signal.mint);
-    if (!hwInfo || hwInfo.mcap < 20000 || hwInfo.liq < 20000) continue;
+    if (!hwInfo || hwInfo.mcap < 5000) continue;
+    if (hwInfo.liq !== null && hwInfo.liq > 0 && hwInfo.liq < 8000) continue;
     if (TOXIC_WORDS.some(w => (hwInfo.symbol||'').toLowerCase().includes(w))) continue;
+    // ENTRY FILTER: reject if sells > buys at entry (rug in progress)
+    const entryPair = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${signal.mint}`).then(r=>r.json()).catch(()=>null);
+    const entryBuys = entryPair?.pairs?.[0]?.txns?.m5?.buys || 0;
+    const entrySells = entryPair?.pairs?.[0]?.txns?.m5?.sells || 0;
+    if (entrySells > entryBuys * 1.5) { log(`⛔ ${hwInfo.symbol}: sells (${entrySells}) > buys (${entryBuys}) — rug in progress, skipping`); ALERTED.add(signal.mint); saveAlerted(); continue; }
     const hwWallet = await getWalletBalance();
     const hwSize = await safeBuySize(hwWallet, hwInfo.liq, 1);
-    if (hwSize < 0.05) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
+    if (hwSize < 0.03) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
     ALERTED.add(signal.mint);
     log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' size:' + hwSize.toFixed(3) + ' SOL');
     if (await buy(signal.mint, hwSize)) {
       const hwMc = hwInfo.mcap;
-      POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now() });
+      POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, tp2Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now(), dcaAdded: false, dcaSize: hwSize * 0.4, dcaCycles: 0, entrySize: hwSize });
       savePositions();
       logTrade('BUY', hwInfo.symbol, signal.mint, hwSize, null, null, 'HW KOL: ' + signal.kol);
       RECENTLY_BOUGHT.set(signal.mint, Date.now());
@@ -739,20 +905,40 @@ async function scanKOLs(state) {
     // Cented(3) + bandit(3) = score 6 = STRONG signal
     // theo(1) + Dali(1)     = score 2 = WEAK, likely skip
     // Minimum score of 4 required to buy (vs old: just 2 KOLs)
-    const convergenceScore = uniqueKols.reduce((sum, kolName) => {
-      const wallet = WALLETS.find(w => w.name === kolName);
-      return sum + (wallet?.weight || 1);
+    // Load live performance weights — overrides hardcoded WALLETS weights
+    let livePerf = {};
+    try { livePerf = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8')); } catch {}
+
+    // Filter out MUTED KOLs entirely — they drag down performance
+    const activeKols = uniqueKols.filter(k => {
+      const perf = livePerf[k];
+      if (perf && perf.weight === 0) { log('🔇 MUTED KOL skipped: ' + k + ' (tier:' + perf.tier + ' avgPnL:' + (perf.avgPnl||0).toFixed(1) + '%)'); return false; }
+      return true;
+    });
+    if (activeKols.length === 0) continue; // all KOLs muted, skip signal
+
+    const convergenceScore = activeKols.reduce((sum, kolName) => {
+      const liveWeight = livePerf[kolName]?.weight;
+      const staticWeight = WALLETS.find(w => w.name === kolName)?.weight || 1;
+      return sum + (liveWeight !== undefined ? liveWeight : staticWeight);
     }, 0);
-    const MIN_SCORE = 4; // require combined weight ≥ 4
-    const hasElite = uniqueKols.some(k => (WALLETS.find(w => w.name === k)?.weight || 1) >= 3);
+    const MIN_SCORE = 4;
+    const hasElite = activeKols.some(k => {
+      const liveWeight = livePerf[k]?.weight;
+      const staticWeight = WALLETS.find(w => w.name === k)?.weight || 1;
+      return (liveWeight !== undefined ? liveWeight : staticWeight) >= 3;
+    });
 
     if (ALERTED.has(mint)) continue;
     if (nonScalper.length < 1) continue;
-    if (uniqueKols.length < MIN_KOLS && convergenceScore < MIN_SCORE) continue;
-    // Allow solo elite KOL if their weight is 3+ (Cented alone = valid signal)
-    if (uniqueKols.length < 2 && !hasElite) continue;
+    if (activeKols.length < MIN_KOLS && convergenceScore < MIN_SCORE) continue;
+    if (activeKols.length < 2 && !hasElite) continue;
 
-    log('📊 CONVERGENCE SCORE: ' + uniqueKols.map(k => k + '(' + (WALLETS.find(w => w.name === k)?.weight || 1) + ')').join(' + ') + ' = ' + convergenceScore);
+    log('📊 CONVERGENCE SCORE: ' + activeKols.map(k => {
+      const w = livePerf[k]?.weight !== undefined ? livePerf[k].weight : (WALLETS.find(w => w.name === k)?.weight || 1);
+      const tier = livePerf[k]?.tier || 'STATIC';
+      return k + '(' + w + '/' + tier + ')';
+    }).join(' + ') + ' = ' + convergenceScore);
     // ────────────────────────────────────────────────────────────────────────
 
     const info = await getTokenInfo(mint);
@@ -773,20 +959,32 @@ async function scanKOLs(state) {
       if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
       const walletSol = await getWalletBalance();
       const size = await safeBuySize(walletSol, info.liq, uniqueKols.length);
-      if (size < 0.05) { log(`⛔ ${info.symbol}: circuit breaker or wallet too low (${walletSol.toFixed(3)} SOL)`); continue; }
+      const minSize = walletSol >= 5 ? 0.5 : walletSol >= 2 ? 0.3 : 0.09;
+      if (size < minSize) { log(`⛔ ${info.symbol}: size ${size} below tier minimum ${minSize} SOL (wallet ${walletSol.toFixed(3)})`); continue; }
+      // ── 9-SIGNAL SCORE CHECK ──
+      const pairForScore = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mint}`,
+        { signal: AbortSignal.timeout(5000) })
+        .then(r => r.json()).then(d => d.pairs?.[0] || null).catch(() => null);
+      const tokenScore = await scoreToken(info, pairForScore, convergenceScore);
+      // Elite KOL convergence (score 9+) lowers bar to 3, otherwise need 4+
+      const minScore = convergenceScore >= 9 ? 3 : 4;
+      if (tokenScore < minScore) {
+        log(`⛔ ${info.symbol}: 9-signal score ${tokenScore}/9 below min ${minScore} — skip`);
+        continue;
+      }
       // ── NEW WALLET RUG CHECK ──
       const rugCheck = await checkRugWallets(mint);
       if (rugCheck.isRug) {
-        log(`🚩 RUG WALLETS: ${info.symbol} — ${rugCheck.newCount}/${rugCheck.total} buyers are <7 days old. BLOCKED.`);
+        log(`🚩 RUG WALLETS: ${info.symbol} — ${rugCheck.newCount}/${rugCheck.total} buyers new (${rugCheck.ratio}%). BLOCKED.`);
         continue;
       }
       if (rugCheck.newCount > 5) log(`⚠️ ${info.symbol}: ${rugCheck.newCount}/${rugCheck.total} new wallets detected (below block threshold)`);
       // ────────────────────────────────────────────────────────
-            log(`🎯 CONVERGENCE BUY: ${info.symbol} ${uniqueKols.length} KOLs — buying ${size} SOL`);
+      log(`🎯 CONVERGENCE BUY: ${info.symbol} Score:${tokenScore}/9 ${uniqueKols.length} KOLs — buying ${size} SOL`);
       if (await buy(mint, size)) {
         const p = await checkPrice(mint);
         const mc = p?.fdv || info.mcap;
-        POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, entryTime: Date.now() });
+        POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, tp2Hit: false, entryTime: Date.now(), dcaAdded: false, dcaSize: size * 0.4, dcaCycles: 0, entrySize: size });
         savePositions();
         logTrade('BUY', info.symbol, mint, size, null, null, `${uniqueKols.length} KOL convergence: ${uniqueKols.join(', ')}`);
         await postTrade('BUY', info.symbol, mint, mc, `${uniqueKols.length} KOL convergence`, size);
@@ -796,6 +994,75 @@ async function scanKOLs(state) {
   }
 }
 
+
+// ─── 9-SIGNAL UNIFIED SCORER ──────────────────────────────────────────────────
+// Same brain as solgizmo.com CA analyzer — now inside the bot.
+// Returns score 0-9. Gizmo only buys if score meets threshold.
+async function scoreToken(info, pair, kolScore) {
+  let score = 0;
+  const reasons = [];
+
+  // SIGNAL 1: KOL conviction (0-2 pts)
+  if (kolScore >= 9)      { score += 2; reasons.push('KOL:2'); }
+  else if (kolScore >= 6) { score += 1; reasons.push('KOL:1'); }
+  else                    { score += 0; reasons.push('KOL:0'); }
+
+  // SIGNAL 2: MC sweet spot — $5k-$50k = best risk/reward (0-1 pt)
+  const mc = info.mcap || 0;
+  if (mc >= 5000 && mc <= 50000)       { score += 1; reasons.push('MC:✅'); }
+  else if (mc > 50000 && mc <= 100000) { score += 0; reasons.push('MC:⚠️late'); }
+
+  // SIGNAL 3: Liquidity healthy (0-1 pt)
+  if (info.liq && info.liq >= 15000)      { score += 1; reasons.push('LIQ:✅'); }
+  else if (info.liq && info.liq >= 8000)  { score += 0; reasons.push('LIQ:⚠️low'); }
+
+  // SIGNAL 4: Buy/sell ratio momentum (−1 to +1 pt)
+  const buys5  = pair?.txns?.m5?.buys  || 0;
+  const sells5 = pair?.txns?.m5?.sells || 0;
+  const bsRatio = sells5 > 0 ? buys5 / sells5 : buys5 > 0 ? 3 : 1;
+  if (bsRatio >= 2.0)      { score += 1; reasons.push('BS:✅strong'); }
+  else if (bsRatio < 0.8)  { score -= 1; reasons.push('BS:❌dumping'); }
+  else                     { reasons.push('BS:⚠️neutral'); }
+
+  // SIGNAL 5: Price momentum m5 (−1 to +1 pt)
+  const m5 = pair?.priceChange?.m5 || 0;
+  if (m5 > 5)       { score += 1; reasons.push('MOM:✅'); }
+  else if (m5 < -5) { score -= 1; reasons.push('MOM:❌'); }
+  else              { reasons.push('MOM:⚠️flat'); }
+
+  // SIGNAL 6: Volume spiking vs baseline (0-1 pt)
+  const vol5m = pair?.volume?.m5  || 0;
+  const vol1h = pair?.volume?.h1  || 0;
+  const volRate = vol1h > 0 ? (vol5m / vol1h) * 12 : 0;
+  if (vol5m > 3000 || volRate > 1.5) { score += 1; reasons.push('VOL:✅spike'); }
+  else                               { reasons.push('VOL:⚠️low'); }
+
+  // SIGNAL 7: Token freshness — newer = more upside (−1 to +1 pt)
+  const ageMin = pair?.pairCreatedAt
+    ? (Date.now() - pair.pairCreatedAt) / 60000 : 999;
+  if (ageMin < 30)       { score += 1; reasons.push('AGE:✅fresh'); }
+  else if (ageMin > 240) { score -= 1; reasons.push('AGE:❌old'); }
+  else                   { reasons.push('AGE:⚠️ok'); }
+
+  // SIGNAL 8: Narrative keywords — trending themes pump harder (0-1 pt)
+  const sym = (info.symbol || '').toLowerCase();
+  const hotThemes = ['ai','gpt','agent','pepe','dog','cat','trump','elon',
+                     'based','chad','mog','wojak','frog','inu','sol','pump',
+                     'doge','shib','bonk','wif','gizmo','claw'];
+  if (hotThemes.some(w => sym.includes(w))) { score += 1; reasons.push('NARR:✅'); }
+  else { reasons.push('NARR:⚠️generic'); }
+
+  // SIGNAL 9: Wallet distribution — total buyers in 5min (0-1 pt)
+  const totalTxns = buys5 + sells5;
+  if (totalTxns >= 20)      { score += 1; reasons.push('DIST:✅active'); }
+  else if (totalTxns < 5)   { score -= 1; reasons.push('DIST:❌dead'); }
+  else                      { reasons.push('DIST:⚠️low'); }
+
+  const final = Math.max(0, Math.min(9, score));
+  const emoji = final >= 7 ? '🔥' : final >= 5 ? '✅' : final >= 3 ? '⚠️' : '❌';
+  log(`🧠 9-SIGNAL: ${info.symbol} = ${emoji}${final}/9 | ${reasons.join(' ')}`);
+  return final;
+}
 // ─── MARKET SCAN ──────────────────────────────────────────────────────────────
 let lastMarketScan = 0;
 async function marketScan() {
@@ -838,7 +1105,7 @@ async function marketScan() {
       if (score < SCORE_THRESHOLD) continue;
       const mktWallet = await getWalletBalance();
       const size = await safeBuySize(mktWallet, liq, 2);
-      if (size < 0.05) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
+      if (size < 0.03) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
 
       log(`🎯 MARKET BUY: ${p.baseToken.symbol} score:${score}/9 MC:$${Math.round(p.fdv)} buying ${size} SOL`);
       if (await buy(t.tokenAddress, size)) {
@@ -1073,7 +1340,10 @@ log(`KOL wallets: ${WALLETS.length} | Max positions: ${MAX_POSITIONS} | Scan: ev
 let cycle = 0;
 let running = false;
 
+let ghostCleanDone = false;
 async function runCycle() {
+  // Clean ghost positions once on first cycle
+  if (!ghostCleanDone) { ghostCleanDone = true; await cleanGhostPositions(); }
   if (running) return;
   running = true;
   cycle++;
@@ -1106,8 +1376,16 @@ async function runCycle() {
       const d = await r.json();
       const current = (d.result?.value || 0) / 1e9;
       const lost = SESSION_START_BALANCE - current;
+      // Auto-reset session every 30 minutes so halt never stops trading forever
+      const sessionAge = (Date.now() - (SESSION_HALT_TIME || Date.now())) / 60000;
+      if (SESSION_HALTED && sessionAge > 30) {
+        SESSION_HALTED = false;
+        SESSION_START_BALANCE = currentBalance;
+        log('[SESSION] ⏰ Auto-resumed after 30min cooldown — new session started at ' + currentBalance.toFixed(3) + ' SOL');
+      }
       if (lost >= SESSION_LOSS_LIMIT_SOL) {
         SESSION_HALTED = true;
+        SESSION_HALT_TIME = Date.now();
         const msg = `🚨 DAILY LOSS LIMIT HIT\nStarted: ${SESSION_START_BALANCE.toFixed(3)} SOL\nNow: ${current.toFixed(3)} SOL\nLost: ${lost.toFixed(3)} SOL\n\nHalting all buys. Still managing open positions. Resume tomorrow.`;
         log('[SESSION] ' + msg);
         try { execSync(`openclaw message --text "${msg.replace(/"/g,"'")}" --agent gizmo`, { timeout: 5000 }); } catch {}
@@ -1140,17 +1418,17 @@ async function runCycle() {
     await managePositions();
     await checkWatchlist();
     await scanKOLs(state);
-    if (cycle % 2 === 0) await marketScan();
+    if (cycle % 5 === 0) await marketScan() // every 75s at 15s intervals;
     if (cycle % 5 === 0) await learnFromTrades();
-    if (cycle % 60 === 0) log(`💓 Heartbeat #${cycle} | positions: ${POSITIONS.map(p=>p.name).join(', ')||'none'}`);
+    if (cycle % 20 === 0) log(`💓 Heartbeat #${cycle} | positions: ${POSITIONS.map(p=>p.name).join(', ')||'none'}`);
   } catch (e) {
     log(`Loop error: ${e.message}`);
   }
   saveState(state);
-  fs.appendFileSync(LOG_FILE, `[${new Date().toLocaleString()}] 💓 cycle ${cycle} complete\n`);
+  log(`💓 cycle ${cycle} complete`);
   running = false;
 }
 
 setInterval(() => {}, 2147483647); // keepalive
-setInterval(runCycle, 60000);
+setInterval(runCycle, 15000);
 runCycle();
