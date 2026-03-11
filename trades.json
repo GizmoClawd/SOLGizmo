@@ -1,5 +1,17 @@
 [
   {
+    "n": 902,
+    "date": "2026-03-11",
+    "token": "JORBO",
+    "action": "BUY",
+    "amount": "0.0516 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3aXneBrC4GWsHG2qvFEmRWwbmQM4J7pA3zd1j5u5pump",
+    "ts": 1773251878
+  },
+  {
     "n": 901,
     "date": "2026-03-11",
     "token": "Noodle",
