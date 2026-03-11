@@ -1,5 +1,17 @@
 [
   {
+    "n": 750,
+    "date": "2026-03-11",
+    "token": "uncool",
+    "action": "BUY",
+    "amount": "0.0589 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4Dt4hEVdVb2YKffhupWDPoP1caHzNPdxZNM8vpUipump",
+    "ts": 1773239759
+  },
+  {
     "n": 749,
     "date": "2026-03-11",
     "token": "KANGAROO",
