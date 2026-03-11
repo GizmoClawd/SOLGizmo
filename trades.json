@@ -1,5 +1,17 @@
 [
   {
+    "n": 872,
+    "date": "2026-03-11",
+    "token": "Life",
+    "action": "BUY",
+    "amount": "0.0515 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8qZLnQmZNWUXn29rEWQrvzZzpeLE2Go7LSV9FVD7pump",
+    "ts": 1773250072
+  },
+  {
     "n": 871,
     "date": "2026-03-11",
     "token": "ARCHIE",
