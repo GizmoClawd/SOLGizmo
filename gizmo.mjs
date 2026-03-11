@@ -45,6 +45,16 @@ function saveVault(v) {
 async function runProfitVault(currentBalance) {
   if (SESSION_START_BALANCE === null) return;
   const vault = loadVault();
+  // DEPOSIT DETECTION — don't treat top-ups as profit
+  if (vault.lastBalance && currentBalance > vault.lastBalance + 0.3) {
+    SESSION_START_BALANCE = currentBalance;
+    log(`💳 DEPOSIT DETECTED — resetting session baseline to ${currentBalance.toFixed(3)} SOL`);
+    vault.locked = 0.3;
+    vault.lastBalance = currentBalance;
+    saveVault(vault);
+    return;
+  }
+  vault.lastBalance = currentBalance;
   const sessionProfit = currentBalance - SESSION_START_BALANCE;
 
   if (currentBalance > vault.allTimeHigh) vault.allTimeHigh = currentBalance;
