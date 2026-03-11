@@ -1,5 +1,17 @@
 [
   {
+    "n": 936,
+    "date": "2026-03-11",
+    "token": "MONEY",
+    "action": "BUY",
+    "amount": "0.058 SOL",
+    "result": "HW KOL: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3877X752kRJeFStcXaFJS85fYXLGNQEvfzxHMS85pump",
+    "ts": 1773261286
+  },
+  {
     "n": 935,
     "date": "2026-03-11",
     "token": "QLIPHOTH",
