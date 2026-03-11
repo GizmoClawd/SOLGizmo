@@ -1,5 +1,17 @@
 [
   {
+    "n": 579,
+    "date": "2026-03-11",
+    "token": "LOBCOIN",
+    "action": "SELL",
+    "amount": "0.0796 SOL",
+    "result": "Sold 100% | PnL: +17.0%",
+    "pnl": "+0.0796 SOL",
+    "color": "teal",
+    "ca": "F1Tq1a8NVJfgimf1dDyJivhFxah4tT82fMvFJn5Xpump",
+    "ts": 1773194381
+  },
+  {
     "n": 578,
     "date": "2026-03-11",
     "token": "LOBCOIN",
