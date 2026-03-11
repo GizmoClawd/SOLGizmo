@@ -1,5 +1,17 @@
 [
   {
+    "n": 817,
+    "date": "2026-03-11",
+    "token": "<TF>",
+    "action": "SELL",
+    "amount": "0.054 SOL",
+    "result": "Sold 100% | PnL: -60.4%",
+    "pnl": "+0.0540 SOL",
+    "color": "teal",
+    "ca": "9ud32WsvhnKoq2fTYeiYuLQwgxUuV2dkL5d2Nt93uE2D",
+    "ts": 1773245870
+  },
+  {
     "n": 816,
     "date": "2026-03-11",
     "token": "Zuko",
