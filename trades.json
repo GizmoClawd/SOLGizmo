@@ -1,5 +1,17 @@
 [
   {
+    "n": 1001,
+    "date": "2026-03-11",
+    "token": "Super",
+    "action": "SELL",
+    "amount": "0.038 SOL",
+    "result": "Sold 100% | PnL: -50.8%",
+    "pnl": "+0.0380 SOL",
+    "color": "teal",
+    "ca": "GE3g9ALY2auwh8W7GCcZtVYYuFyYNu5KREuiCdqgpump",
+    "ts": 1773266441
+  },
+  {
     "n": 1000,
     "date": "2026-03-11",
     "token": "Super",
