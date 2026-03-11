@@ -1,5 +1,17 @@
 [
   {
+    "n": 653,
+    "date": "2026-03-11",
+    "token": "Bikini",
+    "action": "BUY",
+    "amount": "0.0689 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "kgCoA4rBNGnBXW8ryn86XjtX7WfHCLiBG8ghixspump",
+    "ts": 1773203948
+  },
+  {
     "n": 652,
     "date": "2026-03-11",
     "token": "Satoshi",
