@@ -1,5 +1,17 @@
 [
   {
+    "n": 780,
+    "date": "2026-03-11",
+    "token": "STARBOY",
+    "action": "SELL",
+    "amount": "0.2104 SOL",
+    "result": "Sold 25% | PnL: +60.8%",
+    "pnl": "+0.2104 SOL",
+    "color": "teal",
+    "ca": "EvpGZm3Y9WdBWgL5c3TG6XUwmY4CMzLcad16xvFwpump",
+    "ts": 1773242935
+  },
+  {
     "n": 779,
     "date": "2026-03-11",
     "token": "STARBOY",
