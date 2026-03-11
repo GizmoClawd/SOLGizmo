@@ -1,5 +1,17 @@
 [
   {
+    "n": 1057,
+    "date": "2026-03-11",
+    "token": "ChristClaude",
+    "action": "BUY",
+    "amount": "0.0392 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3m1Qcs5BZgjWqyjGSbxcSDwdscK4rpuVnNejGgzfpump",
+    "ts": 1773269653
+  },
+  {
     "n": 1056,
     "date": "2026-03-11",
     "token": "Dan",
