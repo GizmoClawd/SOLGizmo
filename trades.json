@@ -1,5 +1,17 @@
 [
   {
+    "n": 864,
+    "date": "2026-03-11",
+    "token": "スケッチ",
+    "action": "BUY",
+    "amount": "0.0555 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AQA8vZcCNM4zMMvvoA6qAGmDFLeJto8LvVakVuAVpump",
+    "ts": 1773249593
+  },
+  {
     "n": 863,
     "date": "2026-03-11",
     "token": "NOTCHI",
