@@ -1,5 +1,17 @@
 [
   {
+    "n": 730,
+    "date": "2026-03-11",
+    "token": "SEEKERCLAW",
+    "action": "SELL",
+    "amount": "0.0372 SOL",
+    "result": "Sold 100% | PnL: -57.0%",
+    "pnl": "+0.0372 SOL",
+    "color": "teal",
+    "ca": "3WgSj7aMhoNpQDmMKARxRKGQBazgZCUxmALUoS35BWbt",
+    "ts": 1773237516
+  },
+  {
     "n": 729,
     "date": "2026-03-11",
     "token": "SEEKERCLAW",
