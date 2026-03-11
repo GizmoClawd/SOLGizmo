@@ -1,5 +1,17 @@
 [
   {
+    "n": 694,
+    "date": "2026-03-11",
+    "token": "Noorung",
+    "action": "BUY",
+    "amount": "0.0555 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5Vt84ukEKHuxYA7wjH3PDwCzTGumPS7MDNGX4cFLpump",
+    "ts": 1773212329
+  },
+  {
     "n": 693,
     "date": "2026-03-11",
     "token": "Grid",
