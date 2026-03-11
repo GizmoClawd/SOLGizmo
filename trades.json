@@ -1,5 +1,17 @@
 [
   {
+    "n": 657,
+    "date": "2026-03-11",
+    "token": "BANANASIM",
+    "action": "BUY",
+    "amount": "0.057 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4UK8V8S2U5bMJ31ByWjKYn2oswE4jZDaywwBbLVRpump",
+    "ts": 1773204605
+  },
+  {
     "n": 656,
     "date": "2026-03-11",
     "token": "LEX",
