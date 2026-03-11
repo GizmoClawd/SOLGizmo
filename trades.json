@@ -1,5 +1,17 @@
 [
   {
+    "n": 959,
+    "date": "2026-03-11",
+    "token": "JNF",
+    "action": "BUY",
+    "amount": "0.0406 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "66ZknJpoHPJ9x6zcMP8HpG49YEKc1XPsrtVnQ1x5pump",
+    "ts": 1773263811
+  },
+  {
     "n": 958,
     "date": "2026-03-11",
     "token": "MARS",
