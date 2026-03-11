@@ -1,5 +1,17 @@
 [
   {
+    "n": 1005,
+    "date": "2026-03-11",
+    "token": "Pikachu",
+    "action": "BUY",
+    "amount": "0.0714 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "85So6ZgVP2QmHtqPv9JRpzt9SuDvDrTboTK19nA7pump",
+    "ts": 1773266934
+  },
+  {
     "n": 1004,
     "date": "2026-03-11",
     "token": "Pikachu",
