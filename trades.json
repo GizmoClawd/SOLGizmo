@@ -1,5 +1,17 @@
 [
   {
+    "n": 934,
+    "date": "2026-03-11",
+    "token": "AI2027",
+    "action": "SELL",
+    "amount": "0.0261 SOL",
+    "result": "Sold 100% | PnL: -26.4%",
+    "pnl": "+0.0261 SOL",
+    "color": "teal",
+    "ca": "8f8u62qNhGSkATtG8Pn8NnPeDXD1MDzVkWUj9aFepump",
+    "ts": 1773261197
+  },
+  {
     "n": 933,
     "date": "2026-03-11",
     "token": "AI2027",
