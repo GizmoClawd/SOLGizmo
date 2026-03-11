@@ -326,7 +326,8 @@ if (deadOnLoad.length > 0) {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
-const ALERTED = new Set();
+const ALERTED = new Set((() => { try { return JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/alerted.json', 'utf8')); } catch { return []; } })());
+function saveAlerted() { try { fs.writeFileSync(process.env.HOME + '/.gizmo/runtime/alerted.json', JSON.stringify([...ALERTED])); } catch {} }
 const WATCHLIST = [];
 // Load recently bought CAs from trades.json to survive restarts
 const RECENTLY_BOUGHT = new Map((() => {
@@ -723,7 +724,7 @@ async function managePositions() {
         log(`🎯 TP2 ${pos.name} ${mult.toFixed(1)}x — selling another 25%, moonbag riding`);
         if (await sell(pos.ca, '25%', pos.name, pos.entryMC, mc)) {
           pos.tp2Hit = true;
-          pos.sl = Math.max(pos.sl || 0, mc * 0.88); // tight trail on moonbag
+          pos.sl = Math.max(pos.sl || 0, mc * 0.65); // loose trail on moonbag — let it run to 5x+
           savePositions();
           await postTrade('SELL', pos.name, pos.ca, mc, `TP2 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
         }
@@ -854,7 +855,7 @@ async function scanKOLs(state) {
   }
 
   // HIGH-WEIGHT SINGLE KOL BUY (weight >= 2)
-  for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 2 && !b.scalper)) {
+  for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 3 && !b.scalper)) {
     if (POSITIONS.length >= MAX_POSITIONS) break;
     if (RECENTLY_BOUGHT.has(signal.mint) || ALERTED.has(signal.mint)) continue;
     // Check live performance weight — skip MUTED KOLs even in HW path
