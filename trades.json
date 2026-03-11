@@ -1,5 +1,17 @@
 [
   {
+    "n": 1024,
+    "date": "2026-03-11",
+    "token": "Kabosu",
+    "action": "SELL",
+    "amount": "0.15 SOL",
+    "result": "Sold 50% | PnL: +43.6%",
+    "pnl": "+0.1500 SOL",
+    "color": "teal",
+    "ca": "GE4Lcad5FSRt8bzyo1FhYxkGQzCY15mAmvPUnM5ipump",
+    "ts": 1773268468
+  },
+  {
     "n": 1023,
     "date": "2026-03-11",
     "token": "Kabosu",
