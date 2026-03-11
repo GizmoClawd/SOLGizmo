@@ -1,5 +1,17 @@
 [
   {
+    "n": 953,
+    "date": "2026-03-11",
+    "token": "COOKED",
+    "action": "SELL",
+    "amount": "0.0061 SOL",
+    "result": "Sold 25% | PnL: +88.3%",
+    "pnl": "+0.0061 SOL",
+    "color": "teal",
+    "ca": "GwQjXZvDTVVWyadJAvjx9upEZsFFToVQHY5NRrZ6wzTR",
+    "ts": 1773262161
+  },
+  {
     "n": 952,
     "date": "2026-03-11",
     "token": "COOKED",
