@@ -1,5 +1,17 @@
 [
   {
+    "n": 491,
+    "date": "2026-03-11",
+    "token": "Jonathan",
+    "action": "SELL",
+    "amount": "0.0907 SOL",
+    "result": "Sold 100% | PnL: +0.2%",
+    "pnl": "+0.0907 SOL",
+    "color": "teal",
+    "ca": "55ip1Bz1oknHQQSpj9hksTP8dp3yNjPvknn6iur3pump",
+    "ts": 1773187565
+  },
+  {
     "n": 490,
     "date": "2026-03-11",
     "token": "CHIGGA",
