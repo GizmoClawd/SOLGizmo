@@ -1,5 +1,17 @@
 [
   {
+    "n": 950,
+    "date": "2026-03-11",
+    "token": "SPIRAL",
+    "action": "BUY",
+    "amount": "0.0429 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5Xda6aYqQ3WGweY6THPq4N4rwJ4owHcfK17F4UHTpump",
+    "ts": 1773261963
+  },
+  {
     "n": 949,
     "date": "2026-03-11",
     "token": "Max",
