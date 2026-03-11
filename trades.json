@@ -1,5 +1,17 @@
 [
   {
+    "n": 559,
+    "date": "2026-03-11",
+    "token": "brainu",
+    "action": "SELL",
+    "amount": "0.0492 SOL",
+    "result": "Sold 100% | PnL: -30.8%",
+    "pnl": "+0.0492 SOL",
+    "color": "teal",
+    "ca": "8z35dCf6vnJAp9W9nWEHNPAwSVx2j8QYb2Ky5NyP3inu",
+    "ts": 1773193446
+  },
+  {
     "n": 558,
     "date": "2026-03-11",
     "token": "brainu",
