@@ -1,5 +1,17 @@
 [
   {
+    "n": 588,
+    "date": "2026-03-11",
+    "token": "NOSTALGIA",
+    "action": "BUY",
+    "amount": "0.0716 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9FiPwaTFbQd9ySuq38PnUPVaWWQvaSREaVtxu6Vgpump",
+    "ts": 1773196120
+  },
+  {
     "n": 587,
     "date": "2026-03-11",
     "token": "LOBCOIN",
