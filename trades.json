@@ -1,5 +1,17 @@
 [
   {
+    "n": 930,
+    "date": "2026-03-11",
+    "token": "SHART",
+    "action": "SELL",
+    "amount": "0.0337 SOL",
+    "result": "Sold 50% | PnL: +94.5%",
+    "pnl": "+0.0337 SOL",
+    "color": "teal",
+    "ca": "598H21Hu1qup5AiFt8QYL5sJvwuRi2aRGzGgKxpFpump",
+    "ts": 1773260971
+  },
+  {
     "n": 929,
     "date": "2026-03-11",
     "token": "QLIPHOTH",
