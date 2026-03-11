@@ -1,5 +1,17 @@
 [
   {
+    "n": 743,
+    "date": "2026-03-11",
+    "token": "Betsy",
+    "action": "SELL",
+    "amount": "0.0509 SOL",
+    "result": "Sold 100% | PnL: -12.8%",
+    "pnl": "+0.0509 SOL",
+    "color": "teal",
+    "ca": "66WhUXXYD4sG6K2dcL3bhD5yoqPmx3SobuCxCBeCpump",
+    "ts": 1773238915
+  },
+  {
     "n": 742,
     "date": "2026-03-11",
     "token": "OIL",
