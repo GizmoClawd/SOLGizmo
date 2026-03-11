@@ -1,5 +1,17 @@
 [
   {
+    "n": 982,
+    "date": "2026-03-11",
+    "token": "ANGUS",
+    "action": "BUY",
+    "amount": "0.0351 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4X9oihdX3qSpPB4Aim65BXVw1x2FV1QWqQRrkaMNpump",
+    "ts": 1773264540
+  },
+  {
     "n": 981,
     "date": "2026-03-11",
     "token": "ANGUS",
