@@ -1,5 +1,17 @@
 [
   {
+    "n": 998,
+    "date": "2026-03-11",
+    "token": "GitClaw",
+    "action": "SELL",
+    "amount": "0.0155 SOL",
+    "result": "Sold 100% | PnL: -40.3%",
+    "pnl": "+0.0155 SOL",
+    "color": "teal",
+    "ca": "6yhKt6ATBwmBBRqf8bHD2gH6QPBJbjDaAkpvxVQHSzrV",
+    "ts": 1773265780
+  },
+  {
     "n": 997,
     "date": "2026-03-11",
     "token": "GitClaw",
