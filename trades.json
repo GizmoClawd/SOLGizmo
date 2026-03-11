@@ -1,5 +1,17 @@
 [
   {
+    "n": 674,
+    "date": "2026-03-11",
+    "token": "CASINO",
+    "action": "BUY",
+    "amount": "0.0533 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6cNzMSxyifV4ynEFDk4wp6BjQCh1M69zYhF8RGApump",
+    "ts": 1773208152
+  },
+  {
     "n": 673,
     "date": "2026-03-11",
     "token": "🍵",
