@@ -1,5 +1,17 @@
 [
   {
+    "n": 707,
+    "date": "2026-03-11",
+    "token": "FAMPU",
+    "action": "SELL",
+    "amount": "0.0219 SOL",
+    "result": "Sold 50% | PnL: +58.8%",
+    "pnl": "+0.0219 SOL",
+    "color": "teal",
+    "ca": "ET4ZEBZSNEatzPXiUcoXn2xnvdkDUQgGmmpAPBfxpump",
+    "ts": 1773229148
+  },
+  {
     "n": 706,
     "date": "2026-03-11",
     "token": "FAMPU",
