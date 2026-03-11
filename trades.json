@@ -1,5 +1,17 @@
 [
   {
+    "n": 542,
+    "date": "2026-03-11",
+    "token": "build",
+    "action": "BUY",
+    "amount": "0.0625 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9entUNqQgVdHHzMDTcje7WfGSPdP93SmLRXUAxt9pump",
+    "ts": 1773191925
+  },
+  {
     "n": 541,
     "date": "2026-03-11",
     "token": "RAGEBAIT",
