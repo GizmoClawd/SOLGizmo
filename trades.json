@@ -1,5 +1,17 @@
 [
   {
+    "n": 1033,
+    "date": "2026-03-11",
+    "token": "Sperm Racing",
+    "action": "SELL",
+    "amount": "0.1204 SOL",
+    "result": "Sold 100% | PnL: -11.9%",
+    "pnl": "+0.1204 SOL",
+    "color": "teal",
+    "ca": "JUdBm6avdnZV52QvoRfdKW7JqDLqCJtatRfTck6pump",
+    "ts": 1773268746
+  },
+  {
     "n": 1032,
     "date": "2026-03-11",
     "token": "BIGFOOT",
