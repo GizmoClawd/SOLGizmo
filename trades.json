@@ -1,5 +1,17 @@
 [
   {
+    "n": 709,
+    "date": "2026-03-11",
+    "token": "Deer",
+    "action": "BUY",
+    "amount": "0.0732 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5mpmAyedCt8m4yeA6wZi4co6Rq2trdWrMRUQr5RBpump",
+    "ts": 1773230762
+  },
+  {
     "n": 708,
     "date": "2026-03-11",
     "token": "FAMPU",
