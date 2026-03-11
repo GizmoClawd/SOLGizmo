@@ -1,5 +1,17 @@
 [
   {
+    "n": 606,
+    "date": "2026-03-11",
+    "token": "King",
+    "action": "SELL",
+    "amount": "0.0451 SOL",
+    "result": "Sold 100% | PnL: -37.7%",
+    "pnl": "+0.0451 SOL",
+    "color": "teal",
+    "ca": "BxevpvQDLiWJURaM64fymbmsNVctFq2bPHpT5c8ypump",
+    "ts": 1773197277
+  },
+  {
     "n": 605,
     "date": "2026-03-11",
     "token": "King",
