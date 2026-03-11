@@ -1,5 +1,17 @@
 [
   {
+    "n": 1027,
+    "date": "2026-03-11",
+    "token": "Kabosu",
+    "action": "SELL",
+    "amount": "",
+    "result": "Dead pool — rugged, unsellable",
+    "pnl": "+0.0000 SOL",
+    "color": "teal",
+    "ca": "GE4Lcad5FSRt8bzyo1FhYxkGQzCY15mAmvPUnM5ipump",
+    "ts": 1773268508
+  },
+  {
     "n": 1026,
     "date": "2026-03-11",
     "token": "Kabosu",
