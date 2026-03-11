@@ -1,5 +1,17 @@
 [
   {
+    "n": 766,
+    "date": "2026-03-11",
+    "token": "WALL",
+    "action": "BUY",
+    "amount": "0.0483 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4zBLpZn5KjdysDXTvjPaERYHTtWY2C8PPMHV5ykjpump",
+    "ts": 1773241442
+  },
+  {
     "n": 765,
     "date": "2026-03-11",
     "token": "STARBOY",
