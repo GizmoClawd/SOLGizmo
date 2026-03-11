@@ -1,5 +1,17 @@
 [
   {
+    "n": 1049,
+    "date": "2026-03-11",
+    "token": "Mogger",
+    "action": "SELL",
+    "amount": "0.0588 SOL",
+    "result": "Sold 100% | PnL: -58.1%",
+    "pnl": "+0.0588 SOL",
+    "color": "teal",
+    "ca": "7Pg7MSzvJXtCzyY9Y87fEQ9Ndn8WafKv9jNRiiS5pump",
+    "ts": 1773269238
+  },
+  {
     "n": 1048,
     "date": "2026-03-11",
     "token": "BIGFOOT",
