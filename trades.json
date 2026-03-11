@@ -1,5 +1,17 @@
 [
   {
+    "n": 555,
+    "date": "2026-03-11",
+    "token": "Fuckcoin",
+    "action": "BUY",
+    "amount": "0.0506 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BarH86RVmUWMCC1xWbY3ZJnVzuMvJod55dhEBeVBpump",
+    "ts": 1773193265
+  },
+  {
     "n": 554,
     "date": "2026-03-11",
     "token": "1%",
