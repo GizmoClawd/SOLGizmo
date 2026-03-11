@@ -1,5 +1,17 @@
 [
   {
+    "n": 561,
+    "date": "2026-03-11",
+    "token": "BEAR",
+    "action": "SELL",
+    "amount": "0.0541 SOL",
+    "result": "Sold 100% | PnL: +0.1%",
+    "pnl": "+0.0541 SOL",
+    "color": "teal",
+    "ca": "4DhYL5DnNTuBXFtn36rFG6mnRSjXXKtVk7EJFLAJpump",
+    "ts": 1773193506
+  },
+  {
     "n": 560,
     "date": "2026-03-11",
     "token": "Fuckcoin",
