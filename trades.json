@@ -1,5 +1,17 @@
 [
   {
+    "n": 874,
+    "date": "2026-03-11",
+    "token": "Prayer",
+    "action": "BUY",
+    "amount": "0.0481 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EPsDUeZhp2Eu1EBhPT39YjeKrLU3fdvo47mTK2V3pump",
+    "ts": 1773250128
+  },
+  {
     "n": 873,
     "date": "2026-03-11",
     "token": "MEMES",
