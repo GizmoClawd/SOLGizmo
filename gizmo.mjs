@@ -685,7 +685,7 @@ async function managePositions() {
       const dipPct = (mc - pos.entryMC) / pos.entryMC;
       const goodDip = dipPct >= -0.10 && dipPct <= 0.05; // within 10% below or 5% above entry
       const momentumOk = buys > sells && m5 > -2;
-      if (goodDip && momentumOk && pos.dcaCycles >= 2) {
+      if (goodDip if (goodDip && momentumOk && pos.dcaCycles >= 2) {if (goodDip && momentumOk && pos.dcaCycles >= 2) { momentumOk if (goodDip && momentumOk && pos.dcaCycles >= 2) {if (goodDip && momentumOk && pos.dcaCycles >= 2) { pos.dcaCycles >= 2 && (!pos.sl || mc > pos.sl)) {
         log(`📉 DCA: ${pos.name} dipped to entry zone (${(dipPct*100).toFixed(1)}%) — adding ${pos.dcaSize.toFixed(3)} SOL`);
         if (await buy(pos.ca, pos.dcaSize)) {
           pos.dcaAdded = true;
