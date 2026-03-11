@@ -1,5 +1,17 @@
 [
   {
+    "n": 968,
+    "date": "2026-03-11",
+    "token": "JNF",
+    "action": "SELL",
+    "amount": "",
+    "result": "Dead pool — rugged, unsellable",
+    "pnl": "+0.0000 SOL",
+    "color": "teal",
+    "ca": "66ZknJpoHPJ9x6zcMP8HpG49YEKc1XPsrtVnQ1x5pump",
+    "ts": 1773264164
+  },
+  {
     "n": 967,
     "date": "2026-03-11",
     "token": "JNF",
