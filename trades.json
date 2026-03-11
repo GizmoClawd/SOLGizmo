@@ -1,5 +1,17 @@
 [
   {
+    "n": 608,
+    "date": "2026-03-11",
+    "token": "CHUD",
+    "action": "SELL",
+    "amount": "0.0958 SOL",
+    "result": "Sold 100% | PnL: +0.5%",
+    "pnl": "+0.0958 SOL",
+    "color": "teal",
+    "ca": "Gd3aEHqUiAE694XkD2yr5pqnE2MGno7xaAokt3fzpump",
+    "ts": 1773197758
+  },
+  {
     "n": 607,
     "date": "2026-03-11",
     "token": "CHUD",
