@@ -1,5 +1,17 @@
 [
   {
+    "n": 937,
+    "date": "2026-03-11",
+    "token": "MONEY",
+    "action": "BUY",
+    "amount": "0.0529 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8gdZnBosrxQ5ZzMMDLhSJqbDq45EF9taJvLDeYRypump",
+    "ts": 1773261320
+  },
+  {
     "n": 936,
     "date": "2026-03-11",
     "token": "MONEY",
