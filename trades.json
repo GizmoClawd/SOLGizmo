@@ -1,5 +1,17 @@
 [
   {
+    "n": 961,
+    "date": "2026-03-11",
+    "token": "JNF",
+    "action": "BUY",
+    "amount": "0.0389 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "66ZknJpoHPJ9x6zcMP8HpG49YEKc1XPsrtVnQ1x5pump",
+    "ts": 1773263852
+  },
+  {
     "n": 960,
     "date": "2026-03-11",
     "token": "SANDBOX",
