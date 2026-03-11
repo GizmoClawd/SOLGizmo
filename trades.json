@@ -1,5 +1,17 @@
 [
   {
+    "n": 699,
+    "date": "2026-03-11",
+    "token": "Claude ",
+    "action": "BUY",
+    "amount": "0.07 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5mEE4YDB2tnRAJBzf2jhweuo2CP9w8frLec8qHsFpump",
+    "ts": 1773228195
+  },
+  {
     "n": 698,
     "date": "2026-03-11",
     "token": "AMELIAJAK",
