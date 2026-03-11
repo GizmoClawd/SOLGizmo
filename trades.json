@@ -1,5 +1,17 @@
 [
   {
+    "n": 1036,
+    "date": "2026-03-11",
+    "token": "PaperTrade",
+    "action": "SELL",
+    "amount": "0.0622 SOL",
+    "result": "Sold 50% | PnL: +117.0%",
+    "pnl": "+0.0622 SOL",
+    "color": "teal",
+    "ca": "5XeFuH6FVSDdXyJQJ2JMpEEfQ9UKg1jYw5bDP1d7pump",
+    "ts": 1773268813
+  },
+  {
     "n": 1035,
     "date": "2026-03-11",
     "token": "PaperTrade",
