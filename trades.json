@@ -1,5 +1,17 @@
 [
   {
+    "n": 832,
+    "date": "2026-03-11",
+    "token": "Coin",
+    "action": "SELL",
+    "amount": "0.0414 SOL",
+    "result": "Sold 100% | PnL: -58.8%",
+    "pnl": "+0.0414 SOL",
+    "color": "teal",
+    "ca": "DGgZGfMwWc6uJRxvoHTz1ivH3rHDLM25JDJ2FLQrpump",
+    "ts": 1773247161
+  },
+  {
     "n": 831,
     "date": "2026-03-11",
     "token": "Coin",
