@@ -1,5 +1,17 @@
 [
   {
+    "n": 1043,
+    "date": "2026-03-11",
+    "token": "Mogger",
+    "action": "BUY",
+    "amount": "0.0405 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7Pg7MSzvJXtCzyY9Y87fEQ9Ndn8WafKv9jNRiiS5pump",
+    "ts": 1773269078
+  },
+  {
     "n": 1042,
     "date": "2026-03-11",
     "token": "BIGFOOT",
