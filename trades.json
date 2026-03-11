@@ -1,5 +1,17 @@
 [
   {
+    "n": 763,
+    "date": "2026-03-11",
+    "token": "Malt",
+    "action": "SELL",
+    "amount": "0.0394 SOL",
+    "result": "Sold 100% | PnL: -0.8%",
+    "pnl": "+0.0394 SOL",
+    "color": "teal",
+    "ca": "FHUY2a3ZFjxduTqLRT257QGDCKFL8pkNBw613tKCpump",
+    "ts": 1773241300
+  },
+  {
     "n": 762,
     "date": "2026-03-11",
     "token": "Malt",
