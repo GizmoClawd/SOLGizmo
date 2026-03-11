@@ -1,5 +1,17 @@
 [
   {
+    "n": 560,
+    "date": "2026-03-11",
+    "token": "Fuckcoin",
+    "action": "BUY",
+    "amount": "0.0494 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BarH86RVmUWMCC1xWbY3ZJnVzuMvJod55dhEBeVBpump",
+    "ts": 1773193467
+  },
+  {
     "n": 559,
     "date": "2026-03-11",
     "token": "brainu",
