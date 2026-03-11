@@ -1,5 +1,17 @@
 [
   {
+    "n": 703,
+    "date": "2026-03-11",
+    "token": "Max",
+    "action": "BUY",
+    "amount": "0.0734 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DMpbVKHqR7NVD7MEkyfodGR6CXeSz93PyRTrc5Gdpump",
+    "ts": 1773228661
+  },
+  {
     "n": 702,
     "date": "2026-03-11",
     "token": "Claude ",
