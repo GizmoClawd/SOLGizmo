@@ -1,5 +1,17 @@
 [
   {
+    "n": 900,
+    "date": "2026-03-11",
+    "token": "Noodle",
+    "action": "BUY",
+    "amount": "0.0559 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HDg6ZVJt5RADmZKvrPwmThf2gC1wZaC9SV5iiwLmpump",
+    "ts": 1773251740
+  },
+  {
     "n": 899,
     "date": "2026-03-11",
     "token": "GAP",
