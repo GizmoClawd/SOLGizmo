@@ -1,5 +1,17 @@
 [
   {
+    "n": 602,
+    "date": "2026-03-11",
+    "token": "King",
+    "action": "BUY",
+    "amount": "0.0712 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BxevpvQDLiWJURaM64fymbmsNVctFq2bPHpT5c8ypump",
+    "ts": 1773196768
+  },
+  {
     "n": 601,
     "date": "2026-03-11",
     "token": "feeling",
