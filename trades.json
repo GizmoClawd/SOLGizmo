@@ -1,5 +1,17 @@
 [
   {
+    "n": 682,
+    "date": "2026-03-11",
+    "token": "Ditto",
+    "action": "SELL",
+    "amount": "0.0486 SOL",
+    "result": "Sold 25% | PnL: +232.3%",
+    "pnl": "+0.0486 SOL",
+    "color": "teal",
+    "ca": "DNDbKNwWtFfc9sUyAaMqZCfnUr1Pg47bdADUe4rspump",
+    "ts": 1773210301
+  },
+  {
     "n": 681,
     "date": "2026-03-11",
     "token": "Ditto",
