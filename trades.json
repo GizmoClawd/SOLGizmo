@@ -1,5 +1,17 @@
 [
   {
+    "n": 947,
+    "date": "2026-03-11",
+    "token": "MARS",
+    "action": "BUY",
+    "amount": "0.0469 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "MArSdHZS7uzr6fEiJYPMBf17E8WmJT8yhqJJUyrJzfM",
+    "ts": 1773261764
+  },
+  {
     "n": 946,
     "date": "2026-03-11",
     "token": "QLIPHOTH",
