@@ -1,5 +1,17 @@
 [
   {
+    "n": 767,
+    "date": "2026-03-11",
+    "token": "WALL",
+    "action": "SELL",
+    "amount": "0.0114 SOL",
+    "result": "Sold 25% | PnL: +72.3%",
+    "pnl": "+0.0114 SOL",
+    "color": "teal",
+    "ca": "4zBLpZn5KjdysDXTvjPaERYHTtWY2C8PPMHV5ykjpump",
+    "ts": 1773241480
+  },
+  {
     "n": 766,
     "date": "2026-03-11",
     "token": "WALL",
