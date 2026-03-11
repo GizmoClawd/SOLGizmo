@@ -1,5 +1,17 @@
 [
   {
+    "n": 506,
+    "date": "2026-03-11",
+    "token": "Sim",
+    "action": "BUY",
+    "amount": "0.0512 SOL",
+    "result": "HW KOL: decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5Y82ZXTCe8qGpvHurG1pyma416Cvg7oSAejJ4sXxpump",
+    "ts": 1773189041
+  },
+  {
     "n": 505,
     "date": "2026-03-11",
     "token": "Flork",
