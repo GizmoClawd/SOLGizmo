@@ -672,14 +672,21 @@ async function managePositions() {
       }
     }
 
-    // HARD STOP: -30% with no SL set
+    // HARD STOP: -30% with no SL set — only cut if genuine rug (sells dominating + volume dying)
     if (mc <= pos.entryMC * 0.70 && !pos.sl) {
-      log(`💀 HARD STOP ${pos.name} at ${pnl}% — cutting`);
-      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
-        await postTrade('SELL', pos.name, pos.ca, mc, `Hard stop ${pnl}%`, null, parseFloat(pnl));
-        POSITIONS.splice(i, 1); savePositions();
+      const bsRatio = buys / Math.max(sells, 1);
+      const isGenuineRug = bsRatio < 0.5 && sells > 10; // sells 2x+ buys with real volume
+      const isDeepDump = mc <= pos.entryMC * 0.45;       // -55%+ always cut regardless
+      if (isGenuineRug || isDeepDump) {
+        log(`💀 HARD STOP ${pos.name} at ${pnl}% — ${isDeepDump ? 'deep dump' : 'genuine rug'} (B/S:${buys}/${sells})`);
+        if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+          await postTrade('SELL', pos.name, pos.ca, mc, `Hard stop ${pnl}%`, null, parseFloat(pnl));
+          POSITIONS.splice(i, 1); savePositions();
+        }
+        continue;
+      } else {
+        log(`⏳ ${pos.name} at ${pnl}% — holding, momentum ok (B/S:${buys}/${sells})`);
       }
-      continue;
     }
 
     // FAST PUMP: +30%+ fading momentum — sell half
