@@ -1,5 +1,17 @@
 [
   {
+    "n": 739,
+    "date": "2026-03-11",
+    "token": "Hero",
+    "action": "SELL",
+    "amount": "0.031 SOL",
+    "result": "Sold 100% | PnL: -51.0%",
+    "pnl": "+0.0310 SOL",
+    "color": "teal",
+    "ca": "4sTmLKGkxxETcrhRhx7LcrMryePDt1AAVwS6qAsLpump",
+    "ts": 1773238720
+  },
+  {
     "n": 738,
     "date": "2026-03-11",
     "token": "Miauricio",
