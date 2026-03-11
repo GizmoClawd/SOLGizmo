@@ -1,5 +1,17 @@
 [
   {
+    "n": 629,
+    "date": "2026-03-11",
+    "token": "Guy",
+    "action": "SELL",
+    "amount": "0.0394 SOL",
+    "result": "Sold 100% | PnL: -33.5%",
+    "pnl": "+0.0394 SOL",
+    "color": "teal",
+    "ca": "Fen7Uu7Rh2oGGge7cW1ZuydjziN8VoWQesfwodRipump",
+    "ts": 1773200026
+  },
+  {
     "n": 628,
     "date": "2026-03-11",
     "token": "Jslutty",
