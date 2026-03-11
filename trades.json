@@ -1,5 +1,17 @@
 [
   {
+    "n": 988,
+    "date": "2026-03-11",
+    "token": "Notchi",
+    "action": "BUY",
+    "amount": "0.0364 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2cNeGFxpwNEAHvJ4GNgBonuZ5ohyBmgTaQjAiZ2EHHtJ",
+    "ts": 1773265141
+  },
+  {
     "n": 987,
     "date": "2026-03-11",
     "token": "pibble",
