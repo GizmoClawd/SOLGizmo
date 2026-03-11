@@ -1,5 +1,17 @@
 [
   {
+    "n": 1046,
+    "date": "2026-03-11",
+    "token": "BIGFOOT",
+    "action": "BUY",
+    "amount": "0.0337 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3zmNzj7JtzofLTvwwBAVdg1TGmUa941yemNEFnRMpump",
+    "ts": 1773269188
+  },
+  {
     "n": 1045,
     "date": "2026-03-11",
     "token": "BIGFOOT",
