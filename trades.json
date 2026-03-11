@@ -1,5 +1,17 @@
 [
   {
+    "n": 509,
+    "date": "2026-03-11",
+    "token": "SnowBear",
+    "action": "BUY",
+    "amount": "0.0462 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6WTSj2aSGaKNK8fmeLreSq2WSQqhs33gZD5duPfYpump",
+    "ts": 1773189334
+  },
+  {
     "n": 508,
     "date": "2026-03-11",
     "token": "Sim",
