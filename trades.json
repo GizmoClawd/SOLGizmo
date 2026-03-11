@@ -1,5 +1,17 @@
 [
   {
+    "n": 622,
+    "date": "2026-03-11",
+    "token": "BOUNTY",
+    "action": "SELL",
+    "amount": "0.0462 SOL",
+    "result": "Sold 100% | PnL: -51.3%",
+    "pnl": "+0.0462 SOL",
+    "color": "teal",
+    "ca": "2R8YC39WfkkDvPBevh6LXki8ve6EE6z16EGEgUiipump",
+    "ts": 1773198556
+  },
+  {
     "n": 621,
     "date": "2026-03-11",
     "token": "RTP",
