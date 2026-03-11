@@ -1,5 +1,17 @@
 [
   {
+    "n": 918,
+    "date": "2026-03-11",
+    "token": "ChristClaude",
+    "action": "SELL",
+    "amount": "0.0214 SOL",
+    "result": "Sold 100% | PnL: +64.5%",
+    "pnl": "+0.0214 SOL",
+    "color": "teal",
+    "ca": "6ZWgvGwDGcM1XcCpnnFnX3TVc2tAsbuQJS6hUw1apump",
+    "ts": 1773252471
+  },
+  {
     "n": 917,
     "date": "2026-03-11",
     "token": "1%",
