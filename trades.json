@@ -1,5 +1,17 @@
 [
   {
+    "n": 1013,
+    "date": "2026-03-11",
+    "token": "SCIENCEROT",
+    "action": "BUY",
+    "amount": "0.0696 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GQvrKiwSP5t4kP29v6q3GuWanpnb3qmg6gutbW4Rpump",
+    "ts": 1773267427
+  },
+  {
     "n": 1012,
     "date": "2026-03-11",
     "token": "SCIENCEROT",
