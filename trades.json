@@ -1,5 +1,17 @@
 [
   {
+    "n": 670,
+    "date": "2026-03-11",
+    "token": "retard.ai",
+    "action": "SELL",
+    "amount": "0.0126 SOL",
+    "result": "Sold 25% | PnL: +100.7%",
+    "pnl": "+0.0126 SOL",
+    "color": "teal",
+    "ca": "2FAZ4MhUwiTd5fR1WJ7TH5STQRxi2GGkHAU7Uq2Kpump",
+    "ts": 1773206112
+  },
+  {
     "n": 669,
     "date": "2026-03-11",
     "token": "retard.ai",
