@@ -952,6 +952,23 @@ async function scanKOLs(state) {
     const entryBuys = entryPair?.pairs?.[0]?.txns?.m5?.buys || 0;
     const entrySells = entryPair?.pairs?.[0]?.txns?.m5?.sells || 0;
     if (entrySells > entryBuys * 1.5) { log(`⛔ ${hwInfo.symbol}: sells (${entrySells}) > buys (${entryBuys}) — rug in progress, skipping`); ALERTED.add(signal.mint); saveAlerted(); continue; }
+    // DEAD CAT FILTER: big move already happened, now fading — we'd be buying the corpse
+    const hwH1  = entryPair?.pairs?.[0]?.priceChange?.h1  || 0;
+    const hwH6  = entryPair?.pairs?.[0]?.priceChange?.h6  || 0;
+    const hwH24 = entryPair?.pairs?.[0]?.priceChange?.h24 || 0;
+    const hwVolH1 = entryPair?.pairs?.[0]?.volume?.h1 || 0;
+    const hwVolH6 = entryPair?.pairs?.[0]?.volume?.h6 || 0;
+    const hwM5  = entryPair?.pairs?.[0]?.priceChange?.m5  || 0;
+    const hwLiq = entryPair?.pairs?.[0]?.liquidity?.usd || hwInfo.liq || 0;
+    const hwFdv = entryPair?.pairs?.[0]?.fdv || hwInfo.mcap || 0;
+    const isDeadCat = hwH24 > 200 && hwH1 < 5 && hwM5 < 5;   // pumped hard 24h ago, momentum gone
+    const isFadingRun = hwH6 > 150 && hwM5 < -3;              // big 6h run, now actively dumping
+    const isVampire = hwH1 > 150 && hwVolH1 > 0 && hwVolH6 > 0 && (hwVolH1 / hwVolH6) > 0.85; // 85%+ of all volume in last hour = one-candle pump
+    const isPaperLiq = hwLiq > 0 && hwLiq < 5000 && hwFdv > 8000; // paper liquidity trap
+    if (isDeadCat)   { log(`⛔ ${hwInfo.symbol}: DEAD CAT — h24:+${hwH24.toFixed(0)}% but h1:${hwH1.toFixed(0)}% m5:${hwM5.toFixed(0)}% — peak already in`); ALERTED.add(signal.mint); saveAlerted(); continue; }
+    if (isFadingRun) { log(`⛔ ${hwInfo.symbol}: FADING RUN — h6:+${hwH6.toFixed(0)}% but m5:${hwM5.toFixed(0)}% — dumping now`); ALERTED.add(signal.mint); saveAlerted(); continue; }
+    if (isVampire)   { log(`⛔ ${hwInfo.symbol}: VAMPIRE — ${((hwVolH1/hwVolH6)*100).toFixed(0)}% of volume in last hour — one-candle pump`); ALERTED.add(signal.mint); saveAlerted(); continue; }
+    if (isPaperLiq)  { log(`⛔ ${hwInfo.symbol}: PAPER LIQ — $${Math.round(hwLiq)} liq on $${Math.round(hwFdv)} MC — one sell wipes it`); ALERTED.add(signal.mint); saveAlerted(); continue; }
     const hwWallet = await getWalletBalance();
     const hwSize = await safeBuySize(hwWallet, hwInfo.liq, 1);
     if (hwSize < 0.03) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
@@ -1063,6 +1080,19 @@ async function scanKOLs(state) {
         log(`⛔ ${info.symbol}: entry rejected — sells (${convEntrySells}) dominating buys (${convEntryBuys}) — dump in progress`);
         continue;
       }
+      // DEAD CAT / VAMPIRE FILTERS
+      const cH1  = pairForScore?.priceChange?.h1  || 0;
+      const cH6  = pairForScore?.priceChange?.h6  || 0;
+      const cH24 = pairForScore?.priceChange?.h24 || 0;
+      const cM5  = pairForScore?.priceChange?.m5  || 0;
+      const cVolH1 = pairForScore?.volume?.h1 || 0;
+      const cVolH6 = pairForScore?.volume?.h6 || 0;
+      const cLiq = pairForScore?.liquidity?.usd || 0;
+      const cFdv = pairForScore?.fdv || info.mcap || 0;
+      if (cH24 > 200 && cH1 < 5 && cM5 < 5)   { log(`⛔ ${info.symbol}: DEAD CAT — h24:+${cH24.toFixed(0)}% but h1:${cH1.toFixed(0)}% — peak already in`); continue; }
+      if (cH6 > 150 && cM5 < -3)               { log(`⛔ ${info.symbol}: FADING RUN — h6:+${cH6.toFixed(0)}% m5:${cM5.toFixed(0)}%`); continue; }
+      if (cH1 > 150 && cVolH1 > 0 && cVolH6 > 0 && (cVolH1/cVolH6) > 0.85) { log(`⛔ ${info.symbol}: VAMPIRE — one-candle pump, ${((cVolH1/cVolH6)*100).toFixed(0)}% vol in h1`); continue; }
+      if (cLiq > 0 && cLiq < 5000 && cFdv > 8000) { log(`⛔ ${info.symbol}: PAPER LIQ — $${Math.round(cLiq)} liq`); continue; }
       if (await buy(mint, size)) {
         const p = await checkPrice(mint);
         const mc = p?.fdv || info.mcap;
