@@ -1,5 +1,17 @@
 [
   {
+    "n": 855,
+    "date": "2026-03-11",
+    "token": "OSCAR",
+    "action": "SELL",
+    "amount": "0.0863 SOL",
+    "result": "Sold 100% | PnL: -1.4%",
+    "pnl": "+0.0863 SOL",
+    "color": "teal",
+    "ca": "GqWTjVsKBsGzo8Vse2kMLi4bhqVCDbqaNUWqzFJjpump",
+    "ts": 1773249009
+  },
+  {
     "n": 854,
     "date": "2026-03-11",
     "token": "OSCAR",
