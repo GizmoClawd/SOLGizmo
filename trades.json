@@ -1,5 +1,17 @@
 [
   {
+    "n": 858,
+    "date": "2026-03-11",
+    "token": "YOYO",
+    "action": "BUY",
+    "amount": "0.0637 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FzoTZMbpJSP9JjnXZFZ7G7ZTBeD1TVTd7aknX1FZrxHM",
+    "ts": 1773249139
+  },
+  {
     "n": 857,
     "date": "2026-03-11",
     "token": "Buckets",
