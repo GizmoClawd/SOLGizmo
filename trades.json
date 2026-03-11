@@ -1,5 +1,17 @@
 [
   {
+    "n": 995,
+    "date": "2026-03-11",
+    "token": "MACROHARD",
+    "action": "BUY",
+    "amount": "0.0436 SOL",
+    "result": "Boost scan score 4/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DVZMdNkcET3852usHEi1e6WB9ShffZsxbkbW55eEpump",
+    "ts": 1773265534
+  },
+  {
     "n": 994,
     "date": "2026-03-11",
     "token": "IVY",
