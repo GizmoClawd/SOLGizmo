@@ -1,5 +1,17 @@
 [
   {
+    "n": 646,
+    "date": "2026-03-11",
+    "token": "Shigetaka",
+    "action": "SELL",
+    "amount": "0.0869 SOL",
+    "result": "Sold 100% | PnL: -21.8%",
+    "pnl": "+0.0869 SOL",
+    "color": "teal",
+    "ca": "5EhTDhCmur92o5DRk6HuRtYE4ThW86HdEViB4pL2pump",
+    "ts": 1773202704
+  },
+  {
     "n": 645,
     "date": "2026-03-11",
     "token": "DICKLONG",
