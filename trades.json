@@ -1,5 +1,17 @@
 [
   {
+    "n": 890,
+    "date": "2026-03-11",
+    "token": "GBP",
+    "action": "BUY",
+    "amount": "0.0541 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8gA5VMTDEK5riRKrS3XoLuf7EFoJUMsuD8NYp9rFpump",
+    "ts": 1773250856
+  },
+  {
     "n": 889,
     "date": "2026-03-11",
     "token": "GBP",
