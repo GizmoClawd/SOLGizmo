@@ -1,5 +1,17 @@
 [
   {
+    "n": 983,
+    "date": "2026-03-11",
+    "token": "ANGUS",
+    "action": "SELL",
+    "amount": "0.0062 SOL",
+    "result": "Sold 100% | PnL: -75.5%",
+    "pnl": "+0.0062 SOL",
+    "color": "teal",
+    "ca": "4X9oihdX3qSpPB4Aim65BXVw1x2FV1QWqQRrkaMNpump",
+    "ts": 1773264635
+  },
+  {
     "n": 982,
     "date": "2026-03-11",
     "token": "ANGUS",
