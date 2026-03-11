@@ -1,5 +1,17 @@
 [
   {
+    "n": 868,
+    "date": "2026-03-11",
+    "token": "ARCHIE",
+    "action": "BUY",
+    "amount": "0.0555 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DupRbJsmnbST1F8guVN9nuoapmmGYufwWhZJgXVSpump",
+    "ts": 1773249955
+  },
+  {
     "n": 867,
     "date": "2026-03-11",
     "token": "WAR",
