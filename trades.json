@@ -1,5 +1,17 @@
 [
   {
+    "n": 993,
+    "date": "2026-03-11",
+    "token": "IVY",
+    "action": "SELL",
+    "amount": "0.0253 SOL",
+    "result": "Sold 50% | PnL: +45.6%",
+    "pnl": "+0.0253 SOL",
+    "color": "teal",
+    "ca": "FqhCuTTg9cHVmbCroxcAduL6VxKqgAqSr72nJywbpump",
+    "ts": 1773265367
+  },
+  {
     "n": 992,
     "date": "2026-03-11",
     "token": "IVY",
