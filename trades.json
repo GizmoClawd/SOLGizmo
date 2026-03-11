@@ -1,5 +1,17 @@
 [
   {
+    "n": 717,
+    "date": "2026-03-11",
+    "token": "Jumpy",
+    "action": "BUY",
+    "amount": "0.0693 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "D5pAEfW881zHHFoDBa47qCaujBMERVuorWYnMnEPpump",
+    "ts": 1773233031
+  },
+  {
     "n": 716,
     "date": "2026-03-11",
     "token": "SEALION",
