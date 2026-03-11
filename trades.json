@@ -1,5 +1,17 @@
 [
   {
+    "n": 815,
+    "date": "2026-03-11",
+    "token": "<TF>",
+    "action": "BUY",
+    "amount": "0.0679 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9ud32WsvhnKoq2fTYeiYuLQwgxUuV2dkL5d2Nt93uE2D",
+    "ts": 1773245833
+  },
+  {
     "n": 814,
     "date": "2026-03-11",
     "token": "Zuko",
