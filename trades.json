@@ -1,5 +1,17 @@
 [
   {
+    "n": 642,
+    "date": "2026-03-11",
+    "token": "DICKLONG",
+    "action": "BUY",
+    "amount": "0.0692 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3Z73DbRx5Gc9kTnjS13xKDB1Fzo9kd6r2ZTzg5knpump",
+    "ts": 1773202522
+  },
+  {
     "n": 641,
     "date": "2026-03-11",
     "token": "ROT",
