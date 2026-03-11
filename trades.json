@@ -1,5 +1,17 @@
 [
   {
+    "n": 777,
+    "date": "2026-03-11",
+    "token": "𝕏$",
+    "action": "BUY",
+    "amount": "0.0478 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "cWbkmPh9etNWpHgjDEDRhi5EZyemhuAPMjqxKJ9DBHE",
+    "ts": 1773242822
+  },
+  {
     "n": 776,
     "date": "2026-03-11",
     "token": "MACROHARD",
