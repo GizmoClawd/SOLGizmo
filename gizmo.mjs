@@ -86,6 +86,7 @@ let MIN_KOLS = 2;
 let POSITION_SIZE_MULT = 1.0;
 
 const LEARN_FILE = BASE_DIR + '/learn-state.json';
+const RECENT_BOUGHT_FILE = BASE_DIR + '/recently-bought.json';
 
 function loadLearnState() {
   try {
@@ -981,6 +982,7 @@ async function scanKOLs(state) {
       savePositions();
       logTrade('BUY', hwInfo.symbol, signal.mint, hwSize, null, null, 'HW KOL: ' + signal.kol);
       RECENTLY_BOUGHT.set(signal.mint, Date.now());
+      try { fs.writeFileSync(RECENT_BOUGHT_FILE, JSON.stringify(Object.fromEntries(RECENTLY_BOUGHT))); } catch {}
     }
   }
 
