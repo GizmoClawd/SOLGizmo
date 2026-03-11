@@ -1,5 +1,17 @@
 [
   {
+    "n": 871,
+    "date": "2026-03-11",
+    "token": "ARCHIE",
+    "action": "SELL",
+    "amount": "0.0369 SOL",
+    "result": "Sold 100% | PnL: -55.0%",
+    "pnl": "+0.0369 SOL",
+    "color": "teal",
+    "ca": "DupRbJsmnbST1F8guVN9nuoapmmGYufwWhZJgXVSpump",
+    "ts": 1773250045
+  },
+  {
     "n": 870,
     "date": "2026-03-11",
     "token": "MEMES",
