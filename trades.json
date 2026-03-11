@@ -1,5 +1,17 @@
 [
   {
+    "n": 940,
+    "date": "2026-03-11",
+    "token": "MONEY",
+    "action": "SELL",
+    "amount": "0.0087 SOL",
+    "result": "Sold 25% | PnL: +107.2%",
+    "pnl": "+0.0087 SOL",
+    "color": "teal",
+    "ca": "8gdZnBosrxQ5ZzMMDLhSJqbDq45EF9taJvLDeYRypump",
+    "ts": 1773261436
+  },
+  {
     "n": 939,
     "date": "2026-03-11",
     "token": "MONEY",
