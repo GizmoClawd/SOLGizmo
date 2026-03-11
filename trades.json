@@ -1,5 +1,17 @@
 [
   {
+    "n": 955,
+    "date": "2026-03-11",
+    "token": "COOKED",
+    "action": "BUY",
+    "amount": "0.0424 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EcNBqFVrRFqnRAkkBDpTh4qEghxVwob12ANovMZytYbB",
+    "ts": 1773262210
+  },
+  {
     "n": 954,
     "date": "2026-03-11",
     "token": "COOKED",
