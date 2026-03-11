@@ -1,5 +1,17 @@
 [
   {
+    "n": 495,
+    "date": "2026-03-11",
+    "token": "SEALION",
+    "action": "SELL",
+    "amount": "0.0227 SOL",
+    "result": "Sold 100% | PnL: -41.8%",
+    "pnl": "+0.0227 SOL",
+    "color": "teal",
+    "ca": "T1DXpDjJYX8ZNLdaoa7ipD8XWSLxk6sUajrDd2Ppump",
+    "ts": 1773187718
+  },
+  {
     "n": 494,
     "date": "2026-03-11",
     "token": "CHIGGA",
