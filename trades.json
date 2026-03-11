@@ -1,5 +1,17 @@
 [
   {
+    "n": 788,
+    "date": "2026-03-11",
+    "token": "Satoshi",
+    "action": "SELL",
+    "amount": "0.0107 SOL",
+    "result": "Sold 25% | PnL: +110.9%",
+    "pnl": "+0.0107 SOL",
+    "color": "teal",
+    "ca": "GCDxjvpYeioh5r9nCPoetgHYpumFWCAs6o6u5p93pump",
+    "ts": 1773244290
+  },
+  {
     "n": 787,
     "date": "2026-03-11",
     "token": "Satoshi",
