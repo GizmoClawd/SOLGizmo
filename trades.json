@@ -1,5 +1,17 @@
 [
   {
+    "n": 704,
+    "date": "2026-03-11",
+    "token": "Max",
+    "action": "SELL",
+    "amount": "0.1162 SOL",
+    "result": "Sold 50% | PnL: +39.4%",
+    "pnl": "+0.1162 SOL",
+    "color": "teal",
+    "ca": "DMpbVKHqR7NVD7MEkyfodGR6CXeSz93PyRTrc5Gdpump",
+    "ts": 1773228922
+  },
+  {
     "n": 703,
     "date": "2026-03-11",
     "token": "Max",
