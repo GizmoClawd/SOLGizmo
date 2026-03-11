@@ -1,5 +1,17 @@
 [
   {
+    "n": 679,
+    "date": "2026-03-11",
+    "token": "UNPRODUCTIVE ",
+    "action": "SELL",
+    "amount": "0.0847 SOL",
+    "result": "Sold 100% | PnL: -4.9%",
+    "pnl": "+0.0847 SOL",
+    "color": "teal",
+    "ca": "GbarZW1faMzJX1BzzGTQY25PTDPDF2ggAeNg7WpYpump",
+    "ts": 1773208816
+  },
+  {
     "n": 678,
     "date": "2026-03-11",
     "token": "🍵",
