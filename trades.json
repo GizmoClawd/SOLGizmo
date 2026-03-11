@@ -1,5 +1,17 @@
 [
   {
+    "n": 927,
+    "date": "2026-03-11",
+    "token": "ChristClaude",
+    "action": "BUY",
+    "amount": "0.5 SOL",
+    "result": "Re-entry @ $3252",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6ZWgvGwDGcM1XcCpnnFnX3TVc2tAsbuQJS6hUw1apump",
+    "ts": 1773253688
+  },
+  {
     "n": 926,
     "date": "2026-03-11",
     "token": "Precious",
