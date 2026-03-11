@@ -1,5 +1,17 @@
 [
   {
+    "n": 732,
+    "date": "2026-03-11",
+    "token": "OIL",
+    "action": "BUY",
+    "amount": "0.0526 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2s93qBeapcPN26buMxdsSZejmNQAmfnZiNDm7UH8Fa6t",
+    "ts": 1773237979
+  },
+  {
     "n": 731,
     "date": "2026-03-11",
     "token": "Supercoin",
