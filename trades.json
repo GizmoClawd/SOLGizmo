@@ -1,5 +1,17 @@
 [
   {
+    "n": 866,
+    "date": "2026-03-11",
+    "token": "YOYO",
+    "action": "SELL",
+    "amount": "0.0301 SOL",
+    "result": "Sold 100% | PnL: -60.3%",
+    "pnl": "+0.0301 SOL",
+    "color": "teal",
+    "ca": "FzoTZMbpJSP9JjnXZFZ7G7ZTBeD1TVTd7aknX1FZrxHM",
+    "ts": 1773249651
+  },
+  {
     "n": 865,
     "date": "2026-03-11",
     "token": "WAR",
