@@ -1,5 +1,17 @@
 [
   {
+    "n": 494,
+    "date": "2026-03-11",
+    "token": "CHIGGA",
+    "action": "SELL",
+    "amount": "0.0231 SOL",
+    "result": "Sold 100% | PnL: -50.3%",
+    "pnl": "+0.0231 SOL",
+    "color": "teal",
+    "ca": "BfMVBFvKFsWAymp5cTX4nsCdsCUh8GprEVjhqZZgkxyE",
+    "ts": 1773187674
+  },
+  {
     "n": 493,
     "date": "2026-03-11",
     "token": "Flork",
