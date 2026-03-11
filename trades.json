@@ -1,5 +1,17 @@
 [
   {
+    "n": 691,
+    "date": "2026-03-11",
+    "token": "누룽이",
+    "action": "BUY",
+    "amount": "0.0558 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5kz61MsyyxWmmAyQ79am4Hhp82fUbZ1Vdp92yotDpump",
+    "ts": 1773212197
+  },
+  {
     "n": 690,
     "date": "2026-03-11",
     "token": "LCASH",
