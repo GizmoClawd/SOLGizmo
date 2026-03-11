@@ -1,5 +1,17 @@
 [
   {
+    "n": 586,
+    "date": "2026-03-11",
+    "token": "LOBCOIN",
+    "action": "BUY",
+    "amount": "0.0785 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F1Tq1a8NVJfgimf1dDyJivhFxah4tT82fMvFJn5Xpump",
+    "ts": 1773196024
+  },
+  {
     "n": 585,
     "date": "2026-03-11",
     "token": "MONEY",
