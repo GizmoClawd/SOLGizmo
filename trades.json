@@ -1,5 +1,17 @@
 [
   {
+    "n": 1038,
+    "date": "2026-03-11",
+    "token": "prime",
+    "action": "BUY",
+    "amount": "0.0448 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "14sGqDnLjbB4dktJM3Ez9BtMVbV5y2faWdfBPjVWpump",
+    "ts": 1773268839
+  },
+  {
     "n": 1037,
     "date": "2026-03-11",
     "token": "PaperTrade",
