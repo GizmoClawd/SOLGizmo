@@ -1,5 +1,17 @@
 [
   {
+    "n": 689,
+    "date": "2026-03-11",
+    "token": "LCASH",
+    "action": "SELL",
+    "amount": "0.0255 SOL",
+    "result": "Sold 50% | PnL: +52.6%",
+    "pnl": "+0.0255 SOL",
+    "color": "teal",
+    "ca": "DJ6R3zSP645gagzNY6wVhFQuVrJh3nnBFXPYTVTQpump",
+    "ts": 1773212146
+  },
+  {
     "n": 688,
     "date": "2026-03-11",
     "token": "LCASH",
