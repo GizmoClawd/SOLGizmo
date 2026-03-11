@@ -1,5 +1,17 @@
 [
   {
+    "n": 924,
+    "date": "2026-03-11",
+    "token": "Itzae",
+    "action": "SELL",
+    "amount": "0.0159 SOL",
+    "result": "Sold 100% | PnL: +0.7%",
+    "pnl": "+0.0159 SOL",
+    "color": "teal",
+    "ca": "2vxQjhDC8xTcdG6J7uZ2cQBb33K8ve3PHFAviSNMpump",
+    "ts": 1773253088
+  },
+  {
     "n": 923,
     "date": "2026-03-11",
     "token": "Itzae",
