@@ -1,5 +1,17 @@
 [
   {
+    "n": 729,
+    "date": "2026-03-11",
+    "token": "SEEKERCLAW",
+    "action": "BUY",
+    "amount": "0.0598 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3WgSj7aMhoNpQDmMKARxRKGQBazgZCUxmALUoS35BWbt",
+    "ts": 1773237423
+  },
+  {
     "n": 728,
     "date": "2026-03-11",
     "token": "PUMP",
