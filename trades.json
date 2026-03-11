@@ -1,5 +1,17 @@
 [
   {
+    "n": 1002,
+    "date": "2026-03-11",
+    "token": "MACROHARD",
+    "action": "SELL",
+    "amount": "0.0346 SOL",
+    "result": "Sold 100% | PnL: -17.2%",
+    "pnl": "+0.0346 SOL",
+    "color": "teal",
+    "ca": "DVZMdNkcET3852usHEi1e6WB9ShffZsxbkbW55eEpump",
+    "ts": 1773266445
+  },
+  {
     "n": 1001,
     "date": "2026-03-11",
     "token": "Super",
