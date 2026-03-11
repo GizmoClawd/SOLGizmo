@@ -1,5 +1,17 @@
 [
   {
+    "n": 1020,
+    "date": "2026-03-11",
+    "token": "Kabosu",
+    "action": "BUY",
+    "amount": "0.0636 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GE4Lcad5FSRt8bzyo1FhYxkGQzCY15mAmvPUnM5ipump",
+    "ts": 1773268359
+  },
+  {
     "n": 1019,
     "date": "2026-03-11",
     "token": "nothing",
