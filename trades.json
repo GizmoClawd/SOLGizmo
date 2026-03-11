@@ -1,5 +1,17 @@
 [
   {
+    "n": 507,
+    "date": "2026-03-11",
+    "token": "HEHE",
+    "action": "BUY",
+    "amount": "0.0466 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9jpwUpdJV8y3Hg3Keg8FnYkEMFZ8HqNECqrmHHBVpump",
+    "ts": 1773189200
+  },
+  {
     "n": 506,
     "date": "2026-03-11",
     "token": "Sim",
