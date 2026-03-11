@@ -1,5 +1,17 @@
 [
   {
+    "n": 839,
+    "date": "2026-03-11",
+    "token": "DIB",
+    "action": "BUY",
+    "amount": "0.0554 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2C9ynB9HCqwZLdKjg3TDppTwYdShwwUdwtmymFe6pump",
+    "ts": 1773247444
+  },
+  {
     "n": 838,
     "date": "2026-03-11",
     "token": "COLLECTOR",
