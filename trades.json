@@ -1,5 +1,17 @@
 [
   {
+    "n": 903,
+    "date": "2026-03-11",
+    "token": "JORBO",
+    "action": "SELL",
+    "amount": "0.0172 SOL",
+    "result": "Sold 25% | PnL: +65.6%",
+    "pnl": "+0.0172 SOL",
+    "color": "teal",
+    "ca": "3aXneBrC4GWsHG2qvFEmRWwbmQM4J7pA3zd1j5u5pump",
+    "ts": 1773251957
+  },
+  {
     "n": 902,
     "date": "2026-03-11",
     "token": "JORBO",
