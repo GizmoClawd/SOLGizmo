@@ -1,5 +1,17 @@
 [
   {
+    "n": 895,
+    "date": "2026-03-11",
+    "token": "POUND",
+    "action": "SELL",
+    "amount": "0.0147 SOL",
+    "result": "Sold 100% | PnL: -46.9%",
+    "pnl": "+0.0147 SOL",
+    "color": "teal",
+    "ca": "pfbmtPNpLzYZo1NyCHJxnxMS2B5vrf9YTNJDA4rpump",
+    "ts": 1773251228
+  },
+  {
     "n": 894,
     "date": "2026-03-11",
     "token": "POUND",
