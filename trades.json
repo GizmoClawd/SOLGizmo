@@ -1,5 +1,17 @@
 [
   {
+    "n": 813,
+    "date": "2026-03-11",
+    "token": "Zuko",
+    "action": "BUY",
+    "amount": "0.0705 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ERP2aLwpuxaMuy31GpKVBtRJeHYYHSwjeazPg459pump",
+    "ts": 1773245742
+  },
+  {
     "n": 812,
     "date": "2026-03-11",
     "token": "Nemotron",
