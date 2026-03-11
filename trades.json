@@ -1,5 +1,17 @@
 [
   {
+    "n": 896,
+    "date": "2026-03-11",
+    "token": "GAP",
+    "action": "BUY",
+    "amount": "0.0523 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3SFLi3koqmkwHzm9UnTry1CZX7jkC8MDyELB4u6Lpump",
+    "ts": 1773251362
+  },
+  {
     "n": 895,
     "date": "2026-03-11",
     "token": "POUND",
