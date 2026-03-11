@@ -1,5 +1,17 @@
 [
   {
+    "n": 837,
+    "date": "2026-03-11",
+    "token": "COLLECTOR",
+    "action": "BUY",
+    "amount": "0.0574 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9H5UepRcS9oaFFK4fYEDzgDoy6tgybkLGYv6XkgSpump",
+    "ts": 1773247387
+  },
+  {
     "n": 836,
     "date": "2026-03-11",
     "token": "COLLECTOR",
