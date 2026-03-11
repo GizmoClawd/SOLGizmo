@@ -1,5 +1,17 @@
 [
   {
+    "n": 567,
+    "date": "2026-03-11",
+    "token": "SOS",
+    "action": "SELL",
+    "amount": "0.0526 SOL",
+    "result": "Sold 100% | PnL: -10.5%",
+    "pnl": "+0.0526 SOL",
+    "color": "teal",
+    "ca": "33dhma9QA7xefhVpA7c5vMrN826xcHanSHruUEKF2LmW",
+    "ts": 1773193754
+  },
+  {
     "n": 566,
     "date": "2026-03-11",
     "token": "MONEY",
