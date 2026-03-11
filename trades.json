@@ -1,5 +1,17 @@
 [
   {
+    "n": 1016,
+    "date": "2026-03-11",
+    "token": "SCIENCEROT",
+    "action": "SELL",
+    "amount": "0.1255 SOL",
+    "result": "Sold 100% | PnL: -0.8%",
+    "pnl": "+0.1255 SOL",
+    "color": "teal",
+    "ca": "GQvrKiwSP5t4kP29v6q3GuWanpnb3qmg6gutbW4Rpump",
+    "ts": 1773267513
+  },
+  {
     "n": 1015,
     "date": "2026-03-11",
     "token": "nothing",
