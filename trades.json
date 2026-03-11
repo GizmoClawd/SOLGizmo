@@ -1,5 +1,17 @@
 [
   {
+    "n": 492,
+    "date": "2026-03-11",
+    "token": "SEALION",
+    "action": "BUY",
+    "amount": "0.0539 SOL",
+    "result": "HW KOL: decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "T1DXpDjJYX8ZNLdaoa7ipD8XWSLxk6sUajrDd2Ppump",
+    "ts": 1773187593
+  },
+  {
     "n": 491,
     "date": "2026-03-11",
     "token": "Jonathan",
