@@ -1,5 +1,17 @@
 [
   {
+    "n": 907,
+    "date": "2026-03-11",
+    "token": "LANA",
+    "action": "BUY",
+    "amount": "0.054 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "JBKSn397BVmA3KmWQMxU5kg4RNPh79R88LnCqEnJoMzn",
+    "ts": 1773252096
+  },
+  {
     "n": 906,
     "date": "2026-03-11",
     "token": "Lucy",
