@@ -1,5 +1,17 @@
 [
   {
+    "n": 523,
+    "date": "2026-03-11",
+    "token": "Vasiliy ",
+    "action": "SELL",
+    "amount": "0.0378 SOL",
+    "result": "Sold 25% | PnL: +71.5%",
+    "pnl": "+0.0378 SOL",
+    "color": "teal",
+    "ca": "CwSmk9h3miKezbFxD9zrxPH3qtG2TvpsjPtiAQUWpump",
+    "ts": 1773190457
+  },
+  {
     "n": 522,
     "date": "2026-03-11",
     "token": "TopGoy",
