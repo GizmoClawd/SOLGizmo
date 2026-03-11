@@ -1,5 +1,17 @@
 [
   {
+    "n": 686,
+    "date": "2026-03-11",
+    "token": "Ditto",
+    "action": "BUY",
+    "amount": "0.067 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "D4rYzmXpYWn9RUWGZdqWxfV7drzLa5JT4gjGEnQVpump",
+    "ts": 1773211477
+  },
+  {
     "n": 685,
     "date": "2026-03-11",
     "token": "Noorung",
