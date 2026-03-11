@@ -1,5 +1,17 @@
 [
   {
+    "n": 660,
+    "date": "2026-03-11",
+    "token": "GIGME",
+    "action": "SELL",
+    "amount": "0.056 SOL",
+    "result": "Sold 100% | PnL: -35.7%",
+    "pnl": "+0.0560 SOL",
+    "color": "teal",
+    "ca": "8nidVKSGiSF7ZjninVXv1x2SHdiKy7W4aYgu9WfFpump",
+    "ts": 1773204942
+  },
+  {
     "n": 659,
     "date": "2026-03-11",
     "token": "Emoji",
