@@ -1,5 +1,17 @@
 [
   {
+    "n": 667,
+    "date": "2026-03-11",
+    "token": "Garden",
+    "action": "BUY",
+    "amount": "0.0604 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DRGVf4BgJ5VTxgoLEmRHJTBW5dX98KceWRaT1Wszpump",
+    "ts": 1773205949
+  },
+  {
     "n": 666,
     "date": "2026-03-11",
     "token": "FATE",
