@@ -1,5 +1,17 @@
 [
   {
+    "n": 678,
+    "date": "2026-03-11",
+    "token": "🍵",
+    "action": "SELL",
+    "amount": "0.0444 SOL",
+    "result": "Sold 100% | PnL: -54.5%",
+    "pnl": "+0.0444 SOL",
+    "color": "teal",
+    "ca": "Su8EjWssNcufiRWfxZACZczF7eN7sgzrfFwo58wpump",
+    "ts": 1773208696
+  },
+  {
     "n": 677,
     "date": "2026-03-11",
     "token": "CASINO",
