@@ -1,5 +1,17 @@
 [
   {
+    "n": 1054,
+    "date": "2026-03-11",
+    "token": "PEAK",
+    "action": "SELL",
+    "amount": "0.0228 SOL",
+    "result": "Sold 100% | PnL: -3.6%",
+    "pnl": "+0.0228 SOL",
+    "color": "teal",
+    "ca": "D3ukrYadH8jP6NWhJrj5yocR5Sf7Qzo9pbtu1QF8pump",
+    "ts": 1773269446
+  },
+  {
     "n": 1053,
     "date": "2026-03-11",
     "token": "PEAK",
