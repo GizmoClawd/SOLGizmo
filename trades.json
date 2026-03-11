@@ -1,5 +1,17 @@
 [
   {
+    "n": 798,
+    "date": "2026-03-11",
+    "token": "moonpay",
+    "action": "BUY",
+    "amount": "0.0737 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5YVdpadRgqi7ZrEPSqmCmVhnNwqdd1ezpLtqtAbFpump",
+    "ts": 1773244704
+  },
+  {
     "n": 797,
     "date": "2026-03-11",
     "token": "Paul",
