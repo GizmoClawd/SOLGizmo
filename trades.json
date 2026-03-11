@@ -1,5 +1,17 @@
 [
   {
+    "n": 999,
+    "date": "2026-03-11",
+    "token": "Super",
+    "action": "BUY",
+    "amount": "0.0327 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GE3g9ALY2auwh8W7GCcZtVYYuFyYNu5KREuiCdqgpump",
+    "ts": 1773266037
+  },
+  {
     "n": 998,
     "date": "2026-03-11",
     "token": "GitClaw",
