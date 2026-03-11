@@ -1,5 +1,17 @@
 [
   {
+    "n": 854,
+    "date": "2026-03-11",
+    "token": "OSCAR",
+    "action": "BUY",
+    "amount": "0.0656 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GqWTjVsKBsGzo8Vse2kMLi4bhqVCDbqaNUWqzFJjpump",
+    "ts": 1773248873
+  },
+  {
     "n": 853,
     "date": "2026-03-11",
     "token": "Cupcake",
