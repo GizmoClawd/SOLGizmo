@@ -1,5 +1,17 @@
 [
   {
+    "n": 908,
+    "date": "2026-03-11",
+    "token": "Lucy",
+    "action": "BUY",
+    "amount": "0.054 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GPxJKaHcxFiRbpL1wXYu5w9JTxRMCH7DSLh9M6espump",
+    "ts": 1773252100
+  },
+  {
     "n": 907,
     "date": "2026-03-11",
     "token": "LANA",
