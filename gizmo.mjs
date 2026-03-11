@@ -123,7 +123,9 @@ async function learnFromTrades() {
     for (const s of sells) {
       const b = buys.find(b => b.ca === s.ca && b.ts < s.ts);
       if (!b) continue;
-      const pnlPct = parseFloat((s.pnl || '0').replace('%','').replace('+',''));
+      // pnl field stores SOL amount — actual % is in result field
+      const pnlMatch = (s.result || '').match(/PnL:\s*([+-]?\d+\.?\d*)%/);
+      const pnlPct = pnlMatch ? parseFloat(pnlMatch[1]) : parseFloat((s.pnl || '0').replace(/[^0-9.+-]/g,'')) || 0;
       const win = pnlPct > 0;
       const signalType = (b.result || '').includes('KOL') ? 'kol' : 'market';
       const kolCount = signalType === 'kol' ? parseInt((b.result || '').match(/(\d+) KOL/)?.[1] || 2) : 0;
@@ -133,7 +135,7 @@ async function learnFromTrades() {
 
     if (pairs.length < 3) { log(`🧠 Not enough closed trades to learn yet (${pairs.length}/3 needed)`); return; }
 
-    const recent = pairs.slice(0, 20); // last 20 closed trades
+    const recent = pairs.slice(-20); // last 20 closed trades
     const wins = recent.filter(p => p.win).length;
     const winRate = wins / recent.length;
     const avgPnl = recent.reduce((s, p) => s + p.pnlPct, 0) / recent.length;
@@ -148,14 +150,15 @@ async function learnFromTrades() {
     let changed = false;
 
     // Adjust score threshold based on market scan win rate
-    if (marketTrades.length >= 3) {
-      if (marketWinRate < 0.35 && SCORE_THRESHOLD < 7) {
+    // Score threshold driven by OVERALL win rate (not just market — most trades are KOL)
+    if (recent.length >= 5) {
+      if (winRate < 0.40 && SCORE_THRESHOLD < 7) {
         SCORE_THRESHOLD = Math.min(7, SCORE_THRESHOLD + 1);
-        log(`🧠 Market WR low (${(marketWinRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
+        log(`🧠 WR low (${(winRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
-      } else if (marketWinRate > 0.60 && SCORE_THRESHOLD > 4) {
-        SCORE_THRESHOLD = Math.max(4, SCORE_THRESHOLD - 1);
-        log(`🧠 Market WR strong (${(marketWinRate*100).toFixed(0)}%) — lowering score threshold to ${SCORE_THRESHOLD}`);
+      } else if (winRate > 0.65 && SCORE_THRESHOLD > 5) {
+        SCORE_THRESHOLD = Math.max(5, SCORE_THRESHOLD - 1);
+        log(`🧠 WR strong (${(winRate*100).toFixed(0)}%) — lowering score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
       }
     }
@@ -636,6 +639,23 @@ async function managePositions() {
     }
 
     log(`${pos.name}: $${Math.round(mc)} (${pnl}%) | High: $${Math.round(pos.highMC)} | SL: $${pos.sl ? Math.round(pos.sl) : 'none'} | B/S:${buys}/${sells}`);
+
+    // ZERO-VOLUME KILL SWITCH: 0 buys AND 0 sells for 3+ cycles = dead token, cut it
+    if (buys === 0 && sells === 0) {
+      pos.zeroVolCycles = (pos.zeroVolCycles || 0) + 1;
+      if (pos.zeroVolCycles >= 3) {
+        log(`💀 ZERO-VOL KILL ${pos.name} — dead for ${pos.zeroVolCycles} cycles (0 buys, 0 sells) — cutting`);
+        if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+          await postTrade('SELL', pos.name, pos.ca, mc, `Zero volume ${pnl}%`, null, parseFloat(pnl));
+          POSITIONS.splice(i, 1); savePositions();
+        }
+        continue;
+      } else {
+        log(`⚠️ ${pos.name}: zero volume cycle ${pos.zeroVolCycles}/3`);
+      }
+    } else {
+      pos.zeroVolCycles = 0; // reset if volume returns
+    }
 
     // RUG DETECT: -40% within 4 mins of entry = instant exit
     const minsHeld = pos.entryTime ? (Date.now() - pos.entryTime) / 60000 : 999;
