@@ -1,5 +1,17 @@
 [
   {
+    "n": 883,
+    "date": "2026-03-11",
+    "token": "GPB",
+    "action": "BUY",
+    "amount": "0.055 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9t2LpFJCjktRETQoRr7P8LyUbs5RfYJ8gNUWKRdDpump",
+    "ts": 1773250557
+  },
+  {
     "n": 882,
     "date": "2026-03-11",
     "token": "Prayer",
