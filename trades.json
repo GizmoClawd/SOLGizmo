@@ -1,5 +1,17 @@
 [
   {
+    "n": 598,
+    "date": "2026-03-11",
+    "token": "feeling",
+    "action": "BUY",
+    "amount": "0.0685 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F1oHyyT3PDAAGhvyVDcgAz1LJ6KaNUroBhGjGiuFpump",
+    "ts": 1773196486
+  },
+  {
     "n": 597,
     "date": "2026-03-11",
     "token": "emojirot",
