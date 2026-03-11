@@ -1,5 +1,17 @@
 [
   {
+    "n": 632,
+    "date": "2026-03-11",
+    "token": "Lenny",
+    "action": "BUY",
+    "amount": "0.0456 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "E7xWqQZ3qYyiXf35yo3e6sz2LVriaCVDXCto4Ttypump",
+    "ts": 1773201377
+  },
+  {
     "n": 631,
     "date": "2026-03-11",
     "token": "SMILEY",
