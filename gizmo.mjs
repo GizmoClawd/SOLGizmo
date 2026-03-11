@@ -866,6 +866,11 @@ async function scanKOLs(state) {
     if (!hwInfo || hwInfo.mcap < 5000) continue;
     if (hwInfo.liq !== null && hwInfo.liq > 0 && hwInfo.liq < 8000) continue;
     if (TOXIC_WORDS.some(w => (hwInfo.symbol||'').toLowerCase().includes(w))) continue;
+    // ENTRY FILTER: reject if sells > buys at entry (rug in progress)
+    const entryPair = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${signal.mint}`).then(r=>r.json()).catch(()=>null);
+    const entryBuys = entryPair?.pairs?.[0]?.txns?.m5?.buys || 0;
+    const entrySells = entryPair?.pairs?.[0]?.txns?.m5?.sells || 0;
+    if (entrySells > entryBuys * 1.5) { log(`⛔ ${hwInfo.symbol}: sells (${entrySells}) > buys (${entryBuys}) — rug in progress, skipping`); ALERTED.add(signal.mint); saveAlerted(); continue; }
     const hwWallet = await getWalletBalance();
     const hwSize = await safeBuySize(hwWallet, hwInfo.liq, 1);
     if (hwSize < 0.03) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
