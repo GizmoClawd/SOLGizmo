@@ -1,5 +1,17 @@
 [
   {
+    "n": 1066,
+    "date": "2026-03-11",
+    "token": "TILLY",
+    "action": "BUY",
+    "amount": "0.0382 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9FtfWxPpPGAzcRdNut5thsfNcebbv7qxYC7fvGA2pump",
+    "ts": 1773272271
+  },
+  {
     "n": 1065,
     "date": "2026-03-11",
     "token": "TILLY",
