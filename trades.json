@@ -1,5 +1,17 @@
 [
   {
+    "n": 910,
+    "date": "2026-03-11",
+    "token": "LANA",
+    "action": "SELL",
+    "amount": "0.0369 SOL",
+    "result": "Sold 100% | PnL: -60.2%",
+    "pnl": "+0.0369 SOL",
+    "color": "teal",
+    "ca": "JBKSn397BVmA3KmWQMxU5kg4RNPh79R88LnCqEnJoMzn",
+    "ts": 1773252203
+  },
+  {
     "n": 909,
     "date": "2026-03-11",
     "token": "Lucy",
