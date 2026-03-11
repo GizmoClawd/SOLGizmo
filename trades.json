@@ -1,5 +1,17 @@
 [
   {
+    "n": 833,
+    "date": "2026-03-11",
+    "token": "NeMoClaw",
+    "action": "BUY",
+    "amount": "0.0666 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AgvdozRgXrYESPaTx36ueCL3DCkfeXZWQBR1kwFUpump",
+    "ts": 1773247255
+  },
+  {
     "n": 832,
     "date": "2026-03-11",
     "token": "Coin",
