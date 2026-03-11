@@ -1,5 +1,17 @@
 [
   {
+    "n": 1048,
+    "date": "2026-03-11",
+    "token": "BIGFOOT",
+    "action": "SELL",
+    "amount": "0.0145 SOL",
+    "result": "Sold 25% | PnL: +64.1%",
+    "pnl": "+0.0145 SOL",
+    "color": "teal",
+    "ca": "3zmNzj7JtzofLTvwwBAVdg1TGmUa941yemNEFnRMpump",
+    "ts": 1773269233
+  },
+  {
     "n": 1047,
     "date": "2026-03-11",
     "token": "BIGFOOT",
