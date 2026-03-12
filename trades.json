@@ -1,5 +1,17 @@
 [
   {
+    "n": 1076,
+    "date": "2026-03-12",
+    "token": "Andrew",
+    "action": "BUY",
+    "amount": "0.0637 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9PG6tRg99GYVbpZig5rv5HwQ6VKeJQfY2zuHiua8pump",
+    "ts": 1773275573
+  },
+  {
     "n": 1075,
     "date": "2026-03-12",
     "token": "BLACKOUT ",
