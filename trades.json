@@ -1,5 +1,17 @@
 [
   {
+    "n": 1169,
+    "date": "2026-03-12",
+    "token": "Deepfake",
+    "action": "BUY",
+    "amount": "0.0698 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HR7CfrCi2V1FoMyWT3ngth2afpnoYKyrgJ4Di8iZpump",
+    "ts": 1773293582
+  },
+  {
     "n": 1168,
     "date": "2026-03-12",
     "token": "burncoin",
