@@ -1,5 +1,17 @@
 [
   {
+    "n": 1202,
+    "date": "2026-03-12",
+    "token": "LILACH",
+    "action": "SELL",
+    "amount": "0.0568 SOL",
+    "result": "Sold 100% | PnL: -57.0%",
+    "pnl": "+0.0568 SOL",
+    "color": "teal",
+    "ca": "w1CSJZxzhoctBopY5Ji1rxQUyNJZ5dLADX9MMiYpump",
+    "ts": 1773327232
+  },
+  {
     "n": 1201,
     "date": "2026-03-12",
     "token": "LILAC",
