@@ -1,5 +1,17 @@
 [
   {
+    "n": 1157,
+    "date": "2026-03-12",
+    "token": "Machi",
+    "action": "BUY",
+    "amount": "0.0732 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ATBR4i19gcQ31Rfr7ymA2XvkCQEAkNFGBtVKTmdqpump",
+    "ts": 1773289984
+  },
+  {
     "n": 1156,
     "date": "2026-03-12",
     "token": "CASIMIR",
