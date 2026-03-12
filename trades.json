@@ -1,5 +1,17 @@
 [
   {
+    "n": 1279,
+    "date": "2026-03-12",
+    "token": "Otrovert",
+    "action": "BUY",
+    "amount": "0.0657 SOL",
+    "result": "HW KOL: Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4ymbkvczDeoSCfjwFpnc1V1aSwpHxyekGbD9v5SxejYP",
+    "ts": 1773339655
+  },
+  {
     "n": 1278,
     "date": "2026-03-12",
     "token": "Mindset",
