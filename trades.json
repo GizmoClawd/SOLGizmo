@@ -1,5 +1,17 @@
 [
   {
+    "n": 1090,
+    "date": "2026-03-12",
+    "token": "LabClaw",
+    "action": "SELL",
+    "amount": "0.0157 SOL",
+    "result": "Sold 100% | PnL: -15.2%",
+    "pnl": "+0.0157 SOL",
+    "color": "teal",
+    "ca": "82n9AtiahW3yG7JZhLiLMyn6f3dzp3njETqwBMbCpump",
+    "ts": 1773276609
+  },
+  {
     "n": 1089,
     "date": "2026-03-12",
     "token": "LabClaw",
