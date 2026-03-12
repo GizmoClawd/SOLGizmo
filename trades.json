@@ -1,5 +1,17 @@
 [
   {
+    "n": 1315,
+    "date": "2026-03-12",
+    "token": "COPUS",
+    "action": "SELL",
+    "amount": "0.07 SOL",
+    "result": "Sold 100% | PnL: -63.2%",
+    "pnl": "+0.0700 SOL",
+    "color": "teal",
+    "ca": "4Ug7pmxmTfWf6AtNhVLA31gVifcGKUEprbfgPNnuiVRv",
+    "ts": 1773344565
+  },
+  {
     "n": 1314,
     "date": "2026-03-12",
     "token": "COPUS",
