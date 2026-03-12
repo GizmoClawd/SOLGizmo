@@ -1,5 +1,17 @@
 [
   {
+    "n": 1272,
+    "date": "2026-03-12",
+    "token": "HUNT",
+    "action": "BUY",
+    "amount": "0.075 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "38Jn2CG2aakJXafcgybRfYcBQaD4P4fmNtYivFZxpump",
+    "ts": 1773339382
+  },
+  {
     "n": 1271,
     "date": "2026-03-12",
     "token": "OUT",
