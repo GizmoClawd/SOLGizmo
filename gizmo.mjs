@@ -292,7 +292,7 @@ function loadState() {
 function saveState(s) { try { fs.writeFileSync(STATE_FILE, JSON.stringify(s, null, 2)); } catch {} }
 
 // ─── TRADES.JSON LOGGER ───────────────────────────────────────────────────────
-function logTrade(action, name, ca, solAmount, pnlSol, txSig, result) {
+function logTrade(action, name, ca, solAmount, pnlSol, txSig, result, meta={}) {
   try {
     let trades = [];
     if (fs.existsSync(TRADES_FILE)) trades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
@@ -303,7 +303,18 @@ function logTrade(action, name, ca, solAmount, pnlSol, txSig, result) {
       result: result || (txSig ? 'TX: ' + txSig : ''),
       pnl: pnlSol !== null && pnlSol !== undefined ? (pnlSol >= 0 ? '+' : '') + pnlSol.toFixed(4) + ' SOL' : '',
       color: action === 'BUY' ? 'teal' : (pnlSol >= 0 ? 'teal' : 'red'),
-      ca, ts: Math.floor(Date.now() / 1000)
+      ca, ts: Math.floor(Date.now() / 1000),
+      // 🧠 BRAIN DATA
+      mc: meta.mc || null,
+      vol24: meta.vol24 || null,
+      vol1h: meta.vol1h || null,
+      buys: meta.buys || null,
+      sells: meta.sells || null,
+      liq: meta.liq || null,
+      kols: meta.kols || null,
+      entryScore: meta.entryScore || null,
+      exitReason: meta.exitReason || null,
+      pnlPct: meta.pnlPct || null,
     });
     fs.writeFileSync(TRADES_FILE, JSON.stringify(trades, null, 2));
     try {
@@ -1007,7 +1018,7 @@ async function scanKOLs(state) {
       const hwPairAge = entryPair?.pairs?.[0]?.pairCreatedAt ? Date.now() - entryPair.pairs[0].pairCreatedAt : 0;
       POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, tp2Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now(), tokenAge: hwPairAge, dcaAdded: false, dcaSize: hwSize * 0.4, dcaCycles: 0, entrySize: hwSize });
       savePositions();
-      logTrade('BUY', hwInfo.symbol, signal.mint, hwSize, null, null, 'HW KOL: ' + signal.kol);
+      logTrade('BUY', hwInfo.symbol, signal.mint, hwSize, null, null, 'HW KOL: ' + signal.kol, {mc: hwInfo.mcap, vol24: entryPair?.pairs?.[0]?.volume?.h24, vol1h: entryPair?.pairs?.[0]?.volume?.h1, buys: entryPair?.pairs?.[0]?.txns?.h1?.buys, sells: entryPair?.pairs?.[0]?.txns?.h1?.sells, liq: hwLiq, kols: [signal.kol]});
       RECENTLY_BOUGHT.set(signal.mint, Date.now());
       try { fs.writeFileSync(RECENT_BOUGHT_FILE, JSON.stringify(Object.fromEntries(RECENTLY_BOUGHT))); } catch {}
     }
@@ -1130,7 +1141,7 @@ async function scanKOLs(state) {
         const convPairAge = pairForScore?.pairCreatedAt ? Date.now() - pairForScore.pairCreatedAt : 0;
         POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, tp2Hit: false, entryTime: Date.now(), tokenAge: convPairAge, dcaAdded: false, dcaSize: size * 0.4, dcaCycles: 0, entrySize: size });
         savePositions();
-        logTrade('BUY', info.symbol, mint, size, null, null, `${uniqueKols.length} KOL convergence: ${uniqueKols.join(', ')}`);
+        logTrade('BUY', info.symbol, mint, size, null, null, `${uniqueKols.length} KOL convergence: ${uniqueKols.join(', ')}`, {mc: info.mcap, vol24: pairForScore?.volume?.h24, vol1h: pairForScore?.volume?.h1, buys: pairForScore?.txns?.h1?.buys, sells: pairForScore?.txns?.h1?.sells, liq: info.liq, kols: uniqueKols, entryScore: score});
         await postTrade('BUY', info.symbol, mint, mc, `${uniqueKols.length} KOL convergence`, size);
         RECENTLY_BOUGHT.set(mint, Date.now());
       }
