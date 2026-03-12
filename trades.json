@@ -1,5 +1,17 @@
 [
   {
+    "n": 1243,
+    "date": "2026-03-12",
+    "token": "LIFE",
+    "action": "SELL",
+    "amount": "0.0421 SOL",
+    "result": "Sold 100% | PnL: -45.2%",
+    "pnl": "+0.0421 SOL",
+    "color": "teal",
+    "ca": "9d6x23gALkiN68mJaVGMUR6U2ij9Mr24PjBcmgNMpump",
+    "ts": 1773333223
+  },
+  {
     "n": 1242,
     "date": "2026-03-12",
     "token": "OCI-MSA",
