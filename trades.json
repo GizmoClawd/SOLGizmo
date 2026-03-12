@@ -1,5 +1,17 @@
 [
   {
+    "n": 1198,
+    "date": "2026-03-12",
+    "token": "LILACH",
+    "action": "BUY",
+    "amount": "0.0707 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "w1CSJZxzhoctBopY5Ji1rxQUyNJZ5dLADX9MMiYpump",
+    "ts": 1773327095
+  },
+  {
     "n": 1197,
     "date": "2026-03-12",
     "token": "LILAC",
