@@ -1,5 +1,17 @@
 [
   {
+    "n": 1249,
+    "date": "2026-03-12",
+    "token": "WILLIAM",
+    "action": "BUY",
+    "amount": "0.0783 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Fud3q1EtvuxA2YcTnk3Hwuu6awaEz5uJMrJ8BQXppump",
+    "ts": 1773335250
+  },
+  {
     "n": 1248,
     "date": "2026-03-12",
     "token": "LIP",
