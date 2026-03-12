@@ -1,5 +1,17 @@
 [
   {
+    "n": 1188,
+    "date": "2026-03-12",
+    "token": "PushAgent",
+    "action": "SELL",
+    "amount": "0.335 SOL",
+    "result": "Sold 100% | PnL: +412.7%",
+    "pnl": "+0.3350 SOL",
+    "color": "teal",
+    "ca": "GzRZVHp1vju2d6hjeBqJPXwjZ1eRkdu3ZfRAKWyppump",
+    "ts": 1773323418
+  },
+  {
     "n": 1187,
     "date": "2026-03-12",
     "token": "PushAgent",
