@@ -1,5 +1,17 @@
 [
   {
+    "n": 1265,
+    "date": "2026-03-12",
+    "token": "Claude",
+    "action": "SELL",
+    "amount": "0.0787 SOL",
+    "result": "Sold 100% | PnL: -50.1%",
+    "pnl": "+0.0787 SOL",
+    "color": "teal",
+    "ca": "6X58bta6pruNBs9EH2GxBxxwddcJXdBTRCNwg1eZpump",
+    "ts": 1773337940
+  },
+  {
     "n": 1264,
     "date": "2026-03-12",
     "token": "OG",
