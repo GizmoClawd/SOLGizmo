@@ -1,5 +1,17 @@
 [
   {
+    "n": 1127,
+    "date": "2026-03-12",
+    "token": "EDJ",
+    "action": "BUY",
+    "amount": "0.0374 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6YcAJ2PwxjBvpCU7JwwjBWmrFWdhziVAeSmjN3kn1sKr",
+    "ts": 1773280604
+  },
+  {
     "n": 1126,
     "date": "2026-03-12",
     "token": "EDJ",
