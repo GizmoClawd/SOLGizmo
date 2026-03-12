@@ -1,5 +1,17 @@
 [
   {
+    "n": 1102,
+    "date": "2026-03-12",
+    "token": "KJP",
+    "action": "BUY",
+    "amount": "0.0338 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AwdhzRqnpFccGu2w378hzB5kBWx4RBCGFgWhV2aSVKt7",
+    "ts": 1773278259
+  },
+  {
     "n": 1101,
     "date": "2026-03-12",
     "token": "KJP",
