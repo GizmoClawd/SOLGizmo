@@ -1,5 +1,29 @@
 [
   {
+    "n": 1355,
+    "date": "2026-03-12",
+    "token": "kabosu",
+    "action": "BUY",
+    "amount": "0.1257 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ZVgabseBKbM9mawnJDwVETMpaPqoA41sxH4m8eBpump",
+    "ts": 1773351546,
+    "mc": 45730,
+    "vol24": 42470.19,
+    "vol1h": 42470.19,
+    "buys": 403,
+    "sells": 354,
+    "liq": 16749.32,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1354,
     "date": "2026-03-12",
     "token": "MIROFISH",
