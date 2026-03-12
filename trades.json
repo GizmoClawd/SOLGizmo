@@ -1,5 +1,17 @@
 [
   {
+    "n": 1083,
+    "date": "2026-03-12",
+    "token": "Slop",
+    "action": "BUY",
+    "amount": "0.0515 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BdfKwhcAYWv8kmXPQmnecpycUxHUy51wWX3XovHEpump",
+    "ts": 1773275933
+  },
+  {
     "n": 1082,
     "date": "2026-03-12",
     "token": "PUMP",
