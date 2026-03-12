@@ -1,5 +1,17 @@
 [
   {
+    "n": 1192,
+    "date": "2026-03-12",
+    "token": "Nike",
+    "action": "SELL",
+    "amount": "0.0534 SOL",
+    "result": "Sold 100% | PnL: -52.8%",
+    "pnl": "+0.0534 SOL",
+    "color": "teal",
+    "ca": "4gzU41m9PfwFY5z3TnZVRfYUJxdDM1yjkamB5WjVpump",
+    "ts": 1773325652
+  },
+  {
     "n": 1191,
     "date": "2026-03-12",
     "token": "Nike",
