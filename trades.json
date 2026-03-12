@@ -1,5 +1,17 @@
 [
   {
+    "n": 1299,
+    "date": "2026-03-12",
+    "token": "XMONEY",
+    "action": "SELL",
+    "amount": "0.0943 SOL",
+    "result": "Sold 100% | PnL: -7.0%",
+    "pnl": "+0.0943 SOL",
+    "color": "teal",
+    "ca": "3yVpLuXvYn7PgitcK3d6vNjVaFz89kQPzGXZLcbepump",
+    "ts": 1773342101
+  },
+  {
     "n": 1298,
     "date": "2026-03-12",
     "token": "Chatty",
