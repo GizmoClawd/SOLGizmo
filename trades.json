@@ -1,5 +1,17 @@
 [
   {
+    "n": 1276,
+    "date": "2026-03-12",
+    "token": "Exhausted",
+    "action": "BUY",
+    "amount": "0.066 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BxnmHFbgPFFRsufcuDGLSTXF5nYTUBMFah6eENwzpump",
+    "ts": 1773339595
+  },
+  {
     "n": 1275,
     "date": "2026-03-12",
     "token": "KF1",
