@@ -1,5 +1,17 @@
 [
   {
+    "n": 1199,
+    "date": "2026-03-12",
+    "token": "LILAC",
+    "action": "BUY",
+    "amount": "0.0683 SOL",
+    "result": "HW KOL: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "C8KarkBSXFcJ6Gz4QEqeUs5voHL1XbRXYEyiWnBQpump",
+    "ts": 1773327126
+  },
+  {
     "n": 1198,
     "date": "2026-03-12",
     "token": "LILACH",
