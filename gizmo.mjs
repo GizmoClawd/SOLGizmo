@@ -1624,6 +1624,78 @@ async function runCycle() {
   running = false;
 }
 
+
+// 🧠 PATTERN READER — reads trade history and scores new opportunities
+function readBrainPatterns() {
+  try {
+    if (!fs.existsSync(TRADES_FILE)) return {};
+    const trades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
+    const sells = trades.filter(t => t.action === 'SELL' && t.pnlPct !== null && t.pnlPct !== undefined);
+    if (sells.length < 5) return {}; // not enough data yet
+
+    // KOL win rates
+    const kolStats = {};
+    for (const t of sells) {
+      if (!t.kols) continue;
+      for (const kol of (Array.isArray(t.kols) ? t.kols : [t.kols])) {
+        if (!kolStats[kol]) kolStats[kol] = { wins: 0, total: 0, pnl: 0 };
+        kolStats[kol].total++;
+        kolStats[kol].pnl += t.pnlPct || 0;
+        if ((t.pnlPct || 0) > 0) kolStats[kol].wins++;
+      }
+    }
+
+    // MC sweet spot — what entry MC range wins most
+    const mcWins = sells.filter(t => t.mc && (t.pnlPct||0) > 0).map(t => t.mc);
+    const mcLoss = sells.filter(t => t.mc && (t.pnlPct||0) <= 0).map(t => t.mc);
+    const avgWinMC = mcWins.length ? mcWins.reduce((a,b)=>a+b,0)/mcWins.length : null;
+    const avgLossMC = mcLoss.length ? mcLoss.reduce((a,b)=>a+b,0)/mcLoss.length : null;
+
+    // B/S ratio at entry — wins vs losses
+    const bsWins = sells.filter(t => t.buys && t.sells && (t.pnlPct||0) > 0).map(t => t.buys/t.sells);
+    const avgWinBS = bsWins.length ? bsWins.reduce((a,b)=>a+b,0)/bsWins.length : null;
+
+    const patterns = { kolStats, avgWinMC, avgLossMC, avgWinBS, sampleSize: sells.length };
+    log(`🧠 Brain patterns loaded — ${sells.length} trades analyzed | avgWinMC: $${Math.round(avgWinMC||0)} | avgWinBS: ${(avgWinBS||0).toFixed(2)}`);
+    return patterns;
+  } catch(e) { log(`⚠️ Brain read failed: ${e.message}`); return {}; }
+}
+
+function brainScore(mint, mc, buys, sells, kols, patterns) {
+  if (!patterns || !patterns.sampleSize || patterns.sampleSize < 5) return 0;
+  let boost = 0;
+
+  // KOL boost — if this KOL has >50% win rate historically, +1
+  if (kols && patterns.kolStats) {
+    for (const kol of (Array.isArray(kols) ? kols : [kol])) {
+      const ks = patterns.kolStats[kol];
+      if (ks && ks.total >= 3) {
+        const wr = ks.wins / ks.total;
+        if (wr > 0.55) { boost += 1; log(`🧠 Brain: ${kol} has ${(wr*100).toFixed(0)}% WR — +1 boost`); }
+        else if (wr < 0.35) { boost -= 1; log(`🧠 Brain: ${kol} has ${(wr*100).toFixed(0)}% WR — -1 penalty`); }
+      }
+    }
+  }
+
+  // MC boost — if entry MC is close to historical win MC, +1
+  if (mc && patterns.avgWinMC) {
+    const ratio = mc / patterns.avgWinMC;
+    if (ratio > 0.5 && ratio < 2.0) { boost += 1; log(`🧠 Brain: MC $${Math.round(mc)} near win zone $${Math.round(patterns.avgWinMC)} — +1`); }
+  }
+
+  // B/S boost — if current B/S ratio beats historical win average
+  if (buys && sells && sells > 0 && patterns.avgWinBS) {
+    const bs = buys / sells;
+    if (bs > patterns.avgWinBS) { boost += 1; log(`🧠 Brain: B/S ${bs.toFixed(2)} beats win avg ${patterns.avgWinBS.toFixed(2)} — +1`); }
+  }
+
+  return boost;
+}
+
+// Load brain on startup
+let BRAIN_PATTERNS = readBrainPatterns();
+setInterval(() => { BRAIN_PATTERNS = readBrainPatterns(); }, 30 * 60 * 1000); // refresh every 30min
+
 setInterval(() => {}, 2147483647); // keepalive
 setInterval(runCycle, 15000);
 
