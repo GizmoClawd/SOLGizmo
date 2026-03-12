@@ -1,5 +1,17 @@
 [
   {
+    "n": 1280,
+    "date": "2026-03-12",
+    "token": "Otrovert",
+    "action": "SELL",
+    "amount": "0.0376 SOL",
+    "result": "Sold 50% | PnL: +32.7%",
+    "pnl": "+0.0376 SOL",
+    "color": "teal",
+    "ca": "4ymbkvczDeoSCfjwFpnc1V1aSwpHxyekGbD9v5SxejYP",
+    "ts": 1773339685
+  },
+  {
     "n": 1279,
     "date": "2026-03-12",
     "token": "Otrovert",
