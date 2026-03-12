@@ -1,5 +1,17 @@
 [
   {
+    "n": 1288,
+    "date": "2026-03-12",
+    "token": "Luck",
+    "action": "SELL",
+    "amount": "0.0485 SOL",
+    "result": "Sold 100% | PnL: -53.8%",
+    "pnl": "+0.0485 SOL",
+    "color": "teal",
+    "ca": "DTmE7KMcc3J9jm7ybuzNuvGCEXtMCuTqYyLZUsZUKigi",
+    "ts": 1773340076
+  },
+  {
     "n": 1287,
     "date": "2026-03-12",
     "token": "Otrovert",
