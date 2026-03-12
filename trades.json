@@ -1,5 +1,17 @@
 [
   {
+    "n": 1275,
+    "date": "2026-03-12",
+    "token": "KF1",
+    "action": "BUY",
+    "amount": "0.0701 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BbyU1S1UGziLGJhND9wonZFghvoYtiafedJYG9DS6geV",
+    "ts": 1773339507
+  },
+  {
     "n": 1274,
     "date": "2026-03-12",
     "token": "HUNT",
