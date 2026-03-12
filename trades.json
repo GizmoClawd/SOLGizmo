@@ -1,5 +1,17 @@
 [
   {
+    "n": 1207,
+    "date": "2026-03-12",
+    "token": "MIROFISH",
+    "action": "BUY",
+    "amount": "0.0692 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4B41mDWzeG9GnDbiUruh1UUEzTZ9aY5iJVFXVcpJpump",
+    "ts": 1773328176
+  },
+  {
     "n": 1206,
     "date": "2026-03-12",
     "token": "FOREHEAD",
