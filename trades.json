@@ -1,5 +1,17 @@
 [
   {
+    "n": 1128,
+    "date": "2026-03-12",
+    "token": "EDJ",
+    "action": "SELL",
+    "amount": "0.0424 SOL",
+    "result": "Sold 100% | PnL: -55.9%",
+    "pnl": "+0.0424 SOL",
+    "color": "teal",
+    "ca": "6YcAJ2PwxjBvpCU7JwwjBWmrFWdhziVAeSmjN3kn1sKr",
+    "ts": 1773280668
+  },
+  {
     "n": 1127,
     "date": "2026-03-12",
     "token": "EDJ",
