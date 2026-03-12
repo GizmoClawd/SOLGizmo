@@ -1,5 +1,17 @@
 [
   {
+    "n": 1183,
+    "date": "2026-03-12",
+    "token": "HAMPACINO",
+    "action": "BUY",
+    "amount": "0.0813 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6ToZFKFmExiBuDLVCZtK3pAZJCtLVnceSLyWwQ2wpump",
+    "ts": 1773317150
+  },
+  {
     "n": 1182,
     "date": "2026-03-12",
     "token": "BlackSheep",
