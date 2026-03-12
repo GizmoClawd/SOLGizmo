@@ -1,5 +1,17 @@
 [
   {
+    "n": 1147,
+    "date": "2026-03-12",
+    "token": "COMPUTER",
+    "action": "SELL",
+    "amount": "0.0182 SOL",
+    "result": "Sold 25% | PnL: +83.4%",
+    "pnl": "+0.0182 SOL",
+    "color": "teal",
+    "ca": "8W2bvGCJg2gYSJSSq9n61aoCyZFyzW2G13upNRwEpump",
+    "ts": 1773287189
+  },
+  {
     "n": 1146,
     "date": "2026-03-12",
     "token": "COMPUTER",
