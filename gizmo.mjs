@@ -1698,6 +1698,25 @@ async function pollTelegram() {
       const isTagged = text.includes('@gizmoclawdmogbot') || msg.reply_to_message?.from?.username === 'GizmoClawdMogBot';
       if (!isTagged) continue;
       const clean = text.replace('@gizmoclawdmogbot', '').trim();
+      // Owner kill switch commands
+      if (clean.includes('/stop') || clean.includes('stop trading')) {
+        SESSION_HALTED = true;
+        await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, text: '🛑 Gizmo halted — no new buys. Existing positions still managed.', reply_to_message_id: msg.message_id })
+        });
+        log('🛑 HALTED via Telegram command');
+        continue;
+      }
+      if (clean.includes('/resume') || clean.includes('resume trading')) {
+        SESSION_HALTED = false;
+        await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, text: '✅ Gizmo resumed — scanning for alpha. 🦞', reply_to_message_id: msg.message_id })
+        });
+        log('✅ RESUMED via Telegram command');
+        continue;
+      }
       let reply = null;
       for (const r of TG_REPLIES) {
         if (r.triggers.some(t => clean.includes(t))) { reply = r.reply(); break; }
