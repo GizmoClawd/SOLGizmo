@@ -1,5 +1,17 @@
 [
   {
+    "n": 1219,
+    "date": "2026-03-12",
+    "token": "JOB",
+    "action": "BUY",
+    "amount": "0.0715 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8HWaPkLnNd8ui7dsMfVzrwoj9EjLBRbFdKYF2iYhpump",
+    "ts": 1773330127
+  },
+  {
     "n": 1218,
     "date": "2026-03-12",
     "token": "JakePaul",
