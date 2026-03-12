@@ -1,5 +1,17 @@
 [
   {
+    "n": 1260,
+    "date": "2026-03-12",
+    "token": "Awakening",
+    "action": "SELL",
+    "amount": "0.1108 SOL",
+    "result": "Sold 100% | PnL: -3.5%",
+    "pnl": "+0.1108 SOL",
+    "color": "teal",
+    "ca": "FXrZEKBcyd5HKNUNiH46rJWQf1bRFEFZFmJ5uYV8pump",
+    "ts": 1773337330
+  },
+  {
     "n": 1259,
     "date": "2026-03-12",
     "token": "Awakening",
