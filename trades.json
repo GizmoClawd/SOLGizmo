@@ -1,5 +1,17 @@
 [
   {
+    "n": 1324,
+    "date": "2026-03-12",
+    "token": "0x98",
+    "action": "BUY",
+    "amount": "0.0731 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "42ALVNnfhkjd6o15qn7voTdFMxBX6HEF7GSGvWeFpump",
+    "ts": 1773346213
+  },
+  {
     "n": 1323,
     "date": "2026-03-12",
     "token": "Agent Smith",
