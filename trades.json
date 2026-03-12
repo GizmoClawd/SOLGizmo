@@ -1,5 +1,17 @@
 [
   {
+    "n": 1245,
+    "date": "2026-03-12",
+    "token": "Dawkins",
+    "action": "SELL",
+    "amount": "0.0734 SOL",
+    "result": "Sold 100% | PnL: -62.2%",
+    "pnl": "+0.0734 SOL",
+    "color": "teal",
+    "ca": "hQaPS9gzX7SFaLBNtQa75Y7C4FQ7XJesG6VLXJtpump",
+    "ts": 1773333508
+  },
+  {
     "n": 1244,
     "date": "2026-03-12",
     "token": "Dawkins",
