@@ -1,5 +1,17 @@
 [
   {
+    "n": 1190,
+    "date": "2026-03-12",
+    "token": "YahuCoin™",
+    "action": "SELL",
+    "amount": "0.0625 SOL",
+    "result": "Sold 100% | PnL: -17.6%",
+    "pnl": "+0.0625 SOL",
+    "color": "teal",
+    "ca": "CqAnuYU4ezab15P87pJ9Bab9HbX4RiBfVmpR3fPUpump",
+    "ts": 1773324468
+  },
+  {
     "n": 1189,
     "date": "2026-03-12",
     "token": "YahuCoin™",
