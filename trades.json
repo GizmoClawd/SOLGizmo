@@ -1,5 +1,17 @@
 [
   {
+    "n": 1131,
+    "date": "2026-03-12",
+    "token": "Vaughn",
+    "action": "BUY",
+    "amount": "0.0332 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4dXtQFZ2GjrwDv4mxWqCW4847X1mashZXAoA9bK5GLya",
+    "ts": 1773281000
+  },
+  {
     "n": 1130,
     "date": "2026-03-12",
     "token": "TrashDay",
