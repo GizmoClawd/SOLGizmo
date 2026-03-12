@@ -1,5 +1,17 @@
 [
   {
+    "n": 1154,
+    "date": "2026-03-12",
+    "token": "ANTIWAR",
+    "action": "SELL",
+    "amount": "0.0617 SOL",
+    "result": "Sold 100% | PnL: -63.3%",
+    "pnl": "+0.0617 SOL",
+    "color": "teal",
+    "ca": "5hi3Ki4LLBPPUyaisdWsEbXnnSGfHKHKmhaNiwcJDV61",
+    "ts": 1773289754
+  },
+  {
     "n": 1153,
     "date": "2026-03-12",
     "token": "ANTIWAR",
