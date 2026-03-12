@@ -1,5 +1,29 @@
 [
   {
+    "n": 1354,
+    "date": "2026-03-12",
+    "token": "MIROFISH",
+    "action": "BUY",
+    "amount": "0.1376 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FxCJTGbjgjqm64bpJPRETPBNPaBGv9mibHjfL4bGpump",
+    "ts": 1773351315,
+    "mc": 27767,
+    "vol24": 33517.05,
+    "vol1h": 8713.43,
+    "buys": 55,
+    "sells": 79,
+    "liq": 13012.24,
+    "kols": [
+      "Silver"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1353,
     "date": "2026-03-12",
     "token": "OPENCLAW3D",
