@@ -1,5 +1,17 @@
 [
   {
+    "n": 1282,
+    "date": "2026-03-12",
+    "token": "Luck",
+    "action": "BUY",
+    "amount": "0.0668 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DTmE7KMcc3J9jm7ybuzNuvGCEXtMCuTqYyLZUsZUKigi",
+    "ts": 1773339706
+  },
+  {
     "n": 1281,
     "date": "2026-03-12",
     "token": "Exhausted",
