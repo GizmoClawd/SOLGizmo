@@ -1,5 +1,17 @@
 [
   {
+    "n": 1105,
+    "date": "2026-03-12",
+    "token": "Pew",
+    "action": "BUY",
+    "amount": "0.0347 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FZ1sRu2mnvEUYE6sx4FJrLiuAbgRurHDkktvqjh7kZzH",
+    "ts": 1773278688
+  },
+  {
     "n": 1104,
     "date": "2026-03-12",
     "token": "Pew",
