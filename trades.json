@@ -1,5 +1,17 @@
 [
   {
+    "n": 1136,
+    "date": "2026-03-12",
+    "token": "BUILD",
+    "action": "BUY",
+    "amount": "0.0368 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "LkhpUgSvYvZd6hXmVzCzZKYUARqUjbM4Hfs7N89pump",
+    "ts": 1773284011
+  },
+  {
     "n": 1135,
     "date": "2026-03-12",
     "token": "COIN",
