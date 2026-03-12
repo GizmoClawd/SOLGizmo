@@ -1,5 +1,17 @@
 [
   {
+    "n": 1196,
+    "date": "2026-03-12",
+    "token": "shipOS",
+    "action": "SELL",
+    "amount": "0.0766 SOL",
+    "result": "Sold 100% | PnL: -31.0%",
+    "pnl": "+0.0766 SOL",
+    "color": "teal",
+    "ca": "4DgS9FTYsfXreGqGQFUqKvdQMycQFw4rVZ22jKGHpump",
+    "ts": 1773326943
+  },
+  {
     "n": 1195,
     "date": "2026-03-12",
     "token": "shipOS",
