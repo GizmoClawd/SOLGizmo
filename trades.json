@@ -1,5 +1,17 @@
 [
   {
+    "n": 1328,
+    "date": "2026-03-12",
+    "token": "Metalify",
+    "action": "BUY",
+    "amount": "0.0703 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2dJiftqxrmLAM9Hfx28siB2B2W5FJxTX55FxHaqzpump",
+    "ts": 1773346860
+  },
+  {
     "n": 1327,
     "date": "2026-03-12",
     "token": "0x98",
