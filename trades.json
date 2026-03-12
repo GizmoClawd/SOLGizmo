@@ -1,5 +1,17 @@
 [
   {
+    "n": 1247,
+    "date": "2026-03-12",
+    "token": "LIP",
+    "action": "BUY",
+    "amount": "0.0785 SOL",
+    "result": "HW KOL: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2z68CWmycAuKbCoihFCNbAM9FattCkLGC7fqS719pump",
+    "ts": 1773334787
+  },
+  {
     "n": 1246,
     "date": "2026-03-12",
     "token": "OCI-MSA",
