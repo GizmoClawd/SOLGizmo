@@ -1,5 +1,17 @@
 [
   {
+    "n": 1116,
+    "date": "2026-03-12",
+    "token": "MAN HACKS",
+    "action": "BUY",
+    "amount": "0.0416 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6QbGky4ih7s5rfMUuY4Z7DghBT42spJB355QNhwDpump",
+    "ts": 1773280168
+  },
+  {
     "n": 1115,
     "date": "2026-03-12",
     "token": "Shibboleth",
