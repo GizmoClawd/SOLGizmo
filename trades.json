@@ -1,5 +1,17 @@
 [
   {
+    "n": 1290,
+    "date": "2026-03-12",
+    "token": "X Money",
+    "action": "BUY",
+    "amount": "0.0741 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7CQtdL62UQrVtn3fjS1H8LSWeGhRqee2ViiBHm5kSNPb",
+    "ts": 1773340764
+  },
+  {
     "n": 1289,
     "date": "2026-03-12",
     "token": "Reflection",
