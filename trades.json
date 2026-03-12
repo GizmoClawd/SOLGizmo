@@ -1,5 +1,17 @@
 [
   {
+    "n": 1340,
+    "date": "2026-03-12",
+    "token": "OpenPaw",
+    "action": "BUY",
+    "amount": "0.0691 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DqjKm7E9MjdFvDWndogto9sw9EDDG2heiRC94pzhpump",
+    "ts": 1773348012
+  },
+  {
     "n": 1339,
     "date": "2026-03-12",
     "token": "GIVE",
