@@ -1,5 +1,17 @@
 [
   {
+    "n": 1348,
+    "date": "2026-03-12",
+    "token": "NPC",
+    "action": "BUY",
+    "amount": "0.0685 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "96VZ8iCG9vEHs1yAUbYkTzsLFfGywzGQewmPBxnVpump",
+    "ts": 1773348870
+  },
+  {
     "n": 1347,
     "date": "2026-03-12",
     "token": "DOGSHIT2 ",
