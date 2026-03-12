@@ -1,5 +1,17 @@
 [
   {
+    "n": 1271,
+    "date": "2026-03-12",
+    "token": "OUT",
+    "action": "SELL",
+    "amount": "0.0666 SOL",
+    "result": "Sold 100% | PnL: -57.4%",
+    "pnl": "+0.0666 SOL",
+    "color": "teal",
+    "ca": "A4soV2iqnYgLpoN8JrJP7qfn5bfdcX3XnSdGzhL7ux3q",
+    "ts": 1773338529
+  },
+  {
     "n": 1270,
     "date": "2026-03-12",
     "token": "OUT",
