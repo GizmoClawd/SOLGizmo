@@ -1,5 +1,17 @@
 [
   {
+    "n": 1323,
+    "date": "2026-03-12",
+    "token": "Agent Smith",
+    "action": "SELL",
+    "amount": "0.0145 SOL",
+    "result": "Sold 100% | PnL: +4.6%",
+    "pnl": "+0.0145 SOL",
+    "color": "teal",
+    "ca": "eCEXTn2xVZ8D7oymbhdWKuUS88hdSu5yQNn4XkCpump",
+    "ts": 1773345810
+  },
+  {
     "n": 1322,
     "date": "2026-03-12",
     "token": "Agent Smith",
