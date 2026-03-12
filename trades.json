@@ -1,5 +1,17 @@
 [
   {
+    "n": 1246,
+    "date": "2026-03-12",
+    "token": "OCI-MSA",
+    "action": "SELL",
+    "amount": "0.0711 SOL",
+    "result": "Sold 100% | PnL: -51.2%",
+    "pnl": "+0.0711 SOL",
+    "color": "teal",
+    "ca": "7iCbmy52fHBRQHthXBdC2L8JgCk9DRWiywu8i5tWpump",
+    "ts": 1773334048
+  },
+  {
     "n": 1245,
     "date": "2026-03-12",
     "token": "Dawkins",
