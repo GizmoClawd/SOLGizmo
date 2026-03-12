@@ -1,5 +1,17 @@
 [
   {
+    "n": 1292,
+    "date": "2026-03-12",
+    "token": "X Money",
+    "action": "SELL",
+    "amount": "0.0667 SOL",
+    "result": "Sold 100% | PnL: -57.0%",
+    "pnl": "+0.0667 SOL",
+    "color": "teal",
+    "ca": "7CQtdL62UQrVtn3fjS1H8LSWeGhRqee2ViiBHm5kSNPb",
+    "ts": 1773340976
+  },
+  {
     "n": 1291,
     "date": "2026-03-12",
     "token": "XMONEY",
