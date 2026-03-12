@@ -1,5 +1,17 @@
 [
   {
+    "n": 1317,
+    "date": "2026-03-12",
+    "token": "KIRK",
+    "action": "BUY",
+    "amount": "0.0713 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8ip2awmshoN3B1siej4qBhrx7CJ3tEbsiVEwTszRpump",
+    "ts": 1773344773
+  },
+  {
     "n": 1316,
     "date": "2026-03-12",
     "token": "X MONEY",
