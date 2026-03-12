@@ -1,5 +1,17 @@
 [
   {
+    "n": 1193,
+    "date": "2026-03-12",
+    "token": "percolator",
+    "action": "BUY",
+    "amount": "0.0778 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "78ivJwGeD3Lnt1d8peMwpf3DcyxyxJucTmktG19Jpump",
+    "ts": 1773326106
+  },
+  {
     "n": 1192,
     "date": "2026-03-12",
     "token": "Nike",
