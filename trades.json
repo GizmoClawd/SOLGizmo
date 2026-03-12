@@ -1,5 +1,17 @@
 [
   {
+    "n": 1232,
+    "date": "2026-03-12",
+    "token": "hopecore",
+    "action": "BUY",
+    "amount": "0.0675 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8BuUimv2U2PTBqx9vFjtbaTeU1zqKdfddUTe1Coapump",
+    "ts": 1773331862
+  },
+  {
     "n": 1231,
     "date": "2026-03-12",
     "token": "KEY",
