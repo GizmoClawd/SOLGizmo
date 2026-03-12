@@ -1,5 +1,17 @@
 [
   {
+    "n": 1178,
+    "date": "2026-03-12",
+    "token": "LabClaw",
+    "action": "BUY",
+    "amount": "0.0786 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "B5XoZcpDkmj7VNcujWRwQvLw7p6K5BLFeEuDjs5gpump",
+    "ts": 1773300935
+  },
+  {
     "n": 1177,
     "date": "2026-03-12",
     "token": "zad",
