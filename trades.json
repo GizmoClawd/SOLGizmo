@@ -1,5 +1,17 @@
 [
   {
+    "n": 1137,
+    "date": "2026-03-12",
+    "token": "Gerald ",
+    "action": "BUY",
+    "amount": "0.0368 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BahugwXEJ6DEqhC4AZAmyHRgR68BzKsUU3XLRETjpump",
+    "ts": 1773284014
+  },
+  {
     "n": 1136,
     "date": "2026-03-12",
     "token": "BUILD",
