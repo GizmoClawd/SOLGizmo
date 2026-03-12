@@ -1,5 +1,17 @@
 [
   {
+    "n": 1195,
+    "date": "2026-03-12",
+    "token": "shipOS",
+    "action": "BUY",
+    "amount": "0.0776 SOL",
+    "result": "HW KOL: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4DgS9FTYsfXreGqGQFUqKvdQMycQFw4rVZ22jKGHpump",
+    "ts": 1773326406
+  },
+  {
     "n": 1194,
     "date": "2026-03-12",
     "token": "percolator",
