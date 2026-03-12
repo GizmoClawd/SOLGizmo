@@ -1,5 +1,17 @@
 [
   {
+    "n": 1309,
+    "date": "2026-03-12",
+    "token": "C",
+    "action": "BUY",
+    "amount": "0.0748 SOL",
+    "result": "HW KOL: Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GcjFhBFXRBLwAnVzUGjzLXyjVDnmDVxGkVpAwdYipump",
+    "ts": 1773343674
+  },
+  {
     "n": 1308,
     "date": "2026-03-12",
     "token": "CLAUD",
