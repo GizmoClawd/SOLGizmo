@@ -1,5 +1,17 @@
 [
   {
+    "n": 1122,
+    "date": "2026-03-12",
+    "token": "MAN HACKS",
+    "action": "SELL",
+    "amount": "0.0061 SOL",
+    "result": "Sold 100% | PnL: -55.9%",
+    "pnl": "+0.0061 SOL",
+    "color": "teal",
+    "ca": "6QbGky4ih7s5rfMUuY4Z7DghBT42spJB355QNhwDpump",
+    "ts": 1773280212
+  },
+  {
     "n": 1121,
     "date": "2026-03-12",
     "token": "FORTUNE",
