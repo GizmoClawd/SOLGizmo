@@ -1,5 +1,17 @@
 [
   {
+    "n": 1224,
+    "date": "2026-03-12",
+    "token": "DREAM",
+    "action": "BUY",
+    "amount": "0.0737 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6KHX9Bn3XLk3e6HPYRW9So7TDTCyiTBsd4bznzRMpump",
+    "ts": 1773330657
+  },
+  {
     "n": 1223,
     "date": "2026-03-12",
     "token": "Lightpanda",
