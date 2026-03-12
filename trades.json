@@ -1,5 +1,17 @@
 [
   {
+    "n": 1093,
+    "date": "2026-03-12",
+    "token": "PERFECT",
+    "action": "SELL",
+    "amount": "0.0787 SOL",
+    "result": "Sold 100% | PnL: -55.0%",
+    "pnl": "+0.0787 SOL",
+    "color": "teal",
+    "ca": "E2NvnAQDJmG7GLqYa1gajKwEzuwWNnBcAyDXZk7Wpump",
+    "ts": 1773277148
+  },
+  {
     "n": 1092,
     "date": "2026-03-12",
     "token": "PERFECT",
