@@ -1,5 +1,29 @@
 [
   {
+    "n": 1358,
+    "date": "2026-03-12",
+    "token": "cabbit",
+    "action": "BUY",
+    "amount": "0.1323 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "62xZtRdh2Xcf6ShuF6r1bRnMHULNfGwhk7eNU6oApump",
+    "ts": 1773352651,
+    "mc": 91031,
+    "vol24": 49270.25,
+    "vol1h": 3503.12,
+    "buys": 16,
+    "sells": 8,
+    "liq": 23908.21,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1357,
     "date": "2026-03-12",
     "token": "MIROFISH",
