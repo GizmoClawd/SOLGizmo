@@ -1,5 +1,17 @@
 [
   {
+    "n": 1342,
+    "date": "2026-03-12",
+    "token": "FOX",
+    "action": "BUY",
+    "amount": "0.0698 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GftezzfiS97GZRiSek5WTt3Yux9aoZGtgFysstPwpump",
+    "ts": 1773348373
+  },
+  {
     "n": 1341,
     "date": "2026-03-12",
     "token": "OpenPaw",
