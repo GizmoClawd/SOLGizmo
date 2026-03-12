@@ -1,5 +1,17 @@
 [
   {
+    "n": 1238,
+    "date": "2026-03-12",
+    "token": "OCI",
+    "action": "BUY",
+    "amount": "0.0844 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EXMboAiKVV6D2Mwcyu2Cv5XNEiGjiwsHc3TmJHdZpump",
+    "ts": 1773332839
+  },
+  {
     "n": 1237,
     "date": "2026-03-12",
     "token": "BeCum",
