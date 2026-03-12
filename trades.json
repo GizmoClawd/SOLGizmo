@@ -1,5 +1,17 @@
 [
   {
+    "n": 1165,
+    "date": "2026-03-12",
+    "token": "TUKI",
+    "action": "SELL",
+    "amount": "0.0263 SOL",
+    "result": "Sold 25% | PnL: +60.7%",
+    "pnl": "+0.0263 SOL",
+    "color": "teal",
+    "ca": "HLGHE7wSfFcKEVqBe8HZKViRTgR3kzTQ8sETs5Spump",
+    "ts": 1773291373
+  },
+  {
     "n": 1164,
     "date": "2026-03-12",
     "token": "Gerald ",
