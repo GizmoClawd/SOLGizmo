@@ -1,5 +1,17 @@
 [
   {
+    "n": 1255,
+    "date": "2026-03-12",
+    "token": "CONSCIOUS",
+    "action": "BUY",
+    "amount": "0.0753 SOL",
+    "result": "HW KOL: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GB88qpgzwYAnA1yiFmCGoZjNruV8z4Xh43SooK3vpump",
+    "ts": 1773336962
+  },
+  {
     "n": 1254,
     "date": "2026-03-12",
     "token": "TempleCoin",
