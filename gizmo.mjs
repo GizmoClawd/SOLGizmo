@@ -971,6 +971,8 @@ async function scanKOLs(state) {
     if (hwLiveWeight === 0) { log(`🔇 MUTED KOL skipped: ${signal.kol} (tier:${livePerf[signal.kol]?.tier} avgPnL:${livePerf[signal.kol]?.avgPnl?.toFixed(1)}%)`); ALERTED.add(signal.mint); continue; }
     const hwInfo = await getTokenInfo(signal.mint);
     if (!hwInfo || hwInfo.mcap < 8000) continue;
+    const hwVol24 = entryPair?.pairs?.[0]?.volume?.h24 || 0;
+    if (hwVol24 < 10000) { log(`⛔ ${hwInfo.symbol}: low volume $${Math.round(hwVol24)} 24h — ghost token`); ALERTED.add(signal.mint); continue; }
     if (hwInfo.liq !== null && hwInfo.liq > 0 && hwInfo.liq < 8000) continue;
     if (TOXIC_WORDS.some(w => (hwInfo.symbol||'').toLowerCase().includes(w))) continue;
     // ENTRY FILTER: reject if sells > buys at entry (rug in progress)
@@ -1062,6 +1064,8 @@ async function scanKOLs(state) {
 
     const info = await getTokenInfo(mint);
     ALERTED.add(mint);
+    const convVol24 = pairForScore?.volume?.h24 || 0;
+    if (convVol24 < 10000) { log(`⛔ ${mint.slice(0,8)}: low volume $${Math.round(convVol24)} 24h — ghost token`); continue; }
     if (!info || info.mcap < 8000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
     if (info.mcap > 100000) { log(`⛔ ${info.symbol}: MC too high ${Math.round(info.mcap)} — too late`); continue; }
 
