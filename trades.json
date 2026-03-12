@@ -1,5 +1,17 @@
 [
   {
+    "n": 1352,
+    "date": "2026-03-12",
+    "token": "Dundun",
+    "action": "SELL",
+    "amount": "0.0758 SOL",
+    "result": "Sold 100% | PnL: -64.2%",
+    "pnl": "+0.0758 SOL",
+    "color": "teal",
+    "ca": "FPWamYZYEB5PbYR7f1Mk7YuCcJ86hUyX8NHr96aR9ehJ",
+    "ts": 1773349380
+  },
+  {
     "n": 1351,
     "date": "2026-03-12",
     "token": "Dundun",
