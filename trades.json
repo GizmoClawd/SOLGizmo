@@ -1,5 +1,17 @@
 [
   {
+    "n": 1251,
+    "date": "2026-03-12",
+    "token": "WILLIAM",
+    "action": "SELL",
+    "amount": "0.0928 SOL",
+    "result": "Sold 100% | PnL: -18.5%",
+    "pnl": "+0.0928 SOL",
+    "color": "teal",
+    "ca": "Fud3q1EtvuxA2YcTnk3Hwuu6awaEz5uJMrJ8BQXppump",
+    "ts": 1773336523
+  },
+  {
     "n": 1250,
     "date": "2026-03-12",
     "token": "FUNDED",
