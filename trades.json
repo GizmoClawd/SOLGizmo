@@ -1,5 +1,17 @@
 [
   {
+    "n": 1261,
+    "date": "2026-03-12",
+    "token": "SOUL",
+    "action": "BUY",
+    "amount": "0.0744 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DaJymVPtvaU16ijiEv4FMuQByz91ZcHvcepSztNBst9h",
+    "ts": 1773337595
+  },
+  {
     "n": 1260,
     "date": "2026-03-12",
     "token": "Awakening",
