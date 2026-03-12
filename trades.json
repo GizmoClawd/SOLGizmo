@@ -1,5 +1,17 @@
 [
   {
+    "n": 1129,
+    "date": "2026-03-12",
+    "token": "TrashDay",
+    "action": "BUY",
+    "amount": "0.0345 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F1MnXZmhsZL7wejF64z6mxJsUnZPj7tEUNxpkmeqpump",
+    "ts": 1773280697
+  },
+  {
     "n": 1128,
     "date": "2026-03-12",
     "token": "EDJ",
