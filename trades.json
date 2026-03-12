@@ -1,5 +1,17 @@
 [
   {
+    "n": 1319,
+    "date": "2026-03-12",
+    "token": "KIRK",
+    "action": "SELL",
+    "amount": "0.0772 SOL",
+    "result": "Sold 100% | PnL: +314.5%",
+    "pnl": "+0.0772 SOL",
+    "color": "teal",
+    "ca": "8ip2awmshoN3B1siej4qBhrx7CJ3tEbsiVEwTszRpump",
+    "ts": 1773344849
+  },
+  {
     "n": 1318,
     "date": "2026-03-12",
     "token": "KIRK",
