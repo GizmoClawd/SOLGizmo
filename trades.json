@@ -1,5 +1,17 @@
 [
   {
+    "n": 1191,
+    "date": "2026-03-12",
+    "token": "Nike",
+    "action": "BUY",
+    "amount": "0.0789 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4gzU41m9PfwFY5z3TnZVRfYUJxdDM1yjkamB5WjVpump",
+    "ts": 1773325313
+  },
+  {
     "n": 1190,
     "date": "2026-03-12",
     "token": "YahuCoin™",
