@@ -1,5 +1,17 @@
 [
   {
+    "n": 1220,
+    "date": "2026-03-12",
+    "token": "JOB",
+    "action": "SELL",
+    "amount": "0.0406 SOL",
+    "result": "Sold 50% | PnL: +33.0%",
+    "pnl": "+0.0406 SOL",
+    "color": "teal",
+    "ca": "8HWaPkLnNd8ui7dsMfVzrwoj9EjLBRbFdKYF2iYhpump",
+    "ts": 1773330273
+  },
+  {
     "n": 1219,
     "date": "2026-03-12",
     "token": "JOB",
