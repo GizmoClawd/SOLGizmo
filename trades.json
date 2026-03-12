@@ -1,5 +1,17 @@
 [
   {
+    "n": 1325,
+    "date": "2026-03-12",
+    "token": "worth",
+    "action": "BUY",
+    "amount": "0.0691 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8tKWk9c3o8sbvcqTBePv2B99ZTthMdXAhSVRQ1zApump",
+    "ts": 1773346590
+  },
+  {
     "n": 1324,
     "date": "2026-03-12",
     "token": "0x98",
