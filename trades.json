@@ -1,5 +1,17 @@
 [
   {
+    "n": 1237,
+    "date": "2026-03-12",
+    "token": "BeCum",
+    "action": "SELL",
+    "amount": "0.0856 SOL",
+    "result": "Sold 100% | PnL: +4.1%",
+    "pnl": "+0.0856 SOL",
+    "color": "teal",
+    "ca": "9SFw12qvfE2oRAh93EwJcGmnGZNqQNthroQFdaA6pump",
+    "ts": 1773332818
+  },
+  {
     "n": 1236,
     "date": "2026-03-12",
     "token": "BeCum",
