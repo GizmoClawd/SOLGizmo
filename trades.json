@@ -1,5 +1,17 @@
 [
   {
+    "n": 1234,
+    "date": "2026-03-12",
+    "token": "hopecore",
+    "action": "SELL",
+    "amount": "0.055 SOL",
+    "result": "Sold 100% | PnL: -55.1%",
+    "pnl": "+0.0550 SOL",
+    "color": "teal",
+    "ca": "8BuUimv2U2PTBqx9vFjtbaTeU1zqKdfddUTe1Coapump",
+    "ts": 1773332230
+  },
+  {
     "n": 1233,
     "date": "2026-03-12",
     "token": "Megatron",
