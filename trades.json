@@ -1,5 +1,17 @@
 [
   {
+    "n": 1172,
+    "date": "2026-03-12",
+    "token": "Wob",
+    "action": "BUY",
+    "amount": "0.0758 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2AXfPwXtqy8KVwWLcHNNHbh9KejZhDb5WhKnoH4Cpump",
+    "ts": 1773294959
+  },
+  {
     "n": 1171,
     "date": "2026-03-12",
     "token": "Deepfake",
