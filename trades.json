@@ -1,5 +1,17 @@
 [
   {
+    "n": 1152,
+    "date": "2026-03-12",
+    "token": "BASEDGROK",
+    "action": "SELL",
+    "amount": "0.0402 SOL",
+    "result": "Sold 100% | PnL: -54.0%",
+    "pnl": "+0.0402 SOL",
+    "color": "teal",
+    "ca": "2KwtCwJvn9tmkvGtC96RK6V5Q3nFCU7AxdL8YYxCpump",
+    "ts": 1773289425
+  },
+  {
     "n": 1151,
     "date": "2026-03-12",
     "token": "BASEDGROK",
