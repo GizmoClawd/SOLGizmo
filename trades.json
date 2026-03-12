@@ -1,5 +1,17 @@
 [
   {
+    "n": 1167,
+    "date": "2026-03-12",
+    "token": "TUKI",
+    "action": "SELL",
+    "amount": "0.0756 SOL",
+    "result": "Sold 100% | PnL: +23.0%",
+    "pnl": "+0.0756 SOL",
+    "color": "teal",
+    "ca": "HLGHE7wSfFcKEVqBe8HZKViRTgR3kzTQ8sETs5Spump",
+    "ts": 1773291569
+  },
+  {
     "n": 1166,
     "date": "2026-03-12",
     "token": "burncoin",
