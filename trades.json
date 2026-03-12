@@ -1,5 +1,17 @@
 [
   {
+    "n": 1284,
+    "date": "2026-03-12",
+    "token": "Otrovert",
+    "action": "SELL",
+    "amount": "0.0096 SOL",
+    "result": "Sold 25% | PnL: +101.9%",
+    "pnl": "+0.0096 SOL",
+    "color": "teal",
+    "ca": "4ymbkvczDeoSCfjwFpnc1V1aSwpHxyekGbD9v5SxejYP",
+    "ts": 1773339761
+  },
+  {
     "n": 1283,
     "date": "2026-03-12",
     "token": "KF1",
