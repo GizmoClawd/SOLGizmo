@@ -1,5 +1,17 @@
 [
   {
+    "n": 1241,
+    "date": "2026-03-12",
+    "token": "LIFE",
+    "action": "BUY",
+    "amount": "0.0811 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9d6x23gALkiN68mJaVGMUR6U2ij9Mr24PjBcmgNMpump",
+    "ts": 1773333051
+  },
+  {
     "n": 1240,
     "date": "2026-03-12",
     "token": "OCI",
