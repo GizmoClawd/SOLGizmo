@@ -1,5 +1,17 @@
 [
   {
+    "n": 1166,
+    "date": "2026-03-12",
+    "token": "burncoin",
+    "action": "BUY",
+    "amount": "0.0676 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ANWk61PAkg7Us562QVAGA9THFkwuvmGnsuTY7Zt6pump",
+    "ts": 1773291524
+  },
+  {
     "n": 1165,
     "date": "2026-03-12",
     "token": "TUKI",
