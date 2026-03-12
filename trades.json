@@ -1,5 +1,17 @@
 [
   {
+    "n": 1098,
+    "date": "2026-03-12",
+    "token": "LabClaw",
+    "action": "SELL",
+    "amount": "0.0444 SOL",
+    "result": "Sold 100% | PnL: -56.2%",
+    "pnl": "+0.0444 SOL",
+    "color": "teal",
+    "ca": "733upSiWEXhXMRB7Aw1he6HkvbCR73qf94WUmSJipump",
+    "ts": 1773277704
+  },
+  {
     "n": 1097,
     "date": "2026-03-12",
     "token": "Doom",
