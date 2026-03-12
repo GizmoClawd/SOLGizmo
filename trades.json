@@ -1,5 +1,17 @@
 [
   {
+    "n": 1351,
+    "date": "2026-03-12",
+    "token": "Dundun",
+    "action": "BUY",
+    "amount": "0.081 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FPWamYZYEB5PbYR7f1Mk7YuCcJ86hUyX8NHr96aR9ehJ",
+    "ts": 1773349335
+  },
+  {
     "n": 1350,
     "date": "2026-03-12",
     "token": "OPENCLAW3D",
