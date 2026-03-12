@@ -1,5 +1,17 @@
 [
   {
+    "n": 1253,
+    "date": "2026-03-12",
+    "token": "FUNDED",
+    "action": "SELL",
+    "amount": "0.0459 SOL",
+    "result": "Sold 100% | PnL: -55.6%",
+    "pnl": "+0.0459 SOL",
+    "color": "teal",
+    "ca": "7Ld4PXVjepWyUdA88KVLSxjsNdFWR1rGdfcZnMhXpump",
+    "ts": 1773336718
+  },
+  {
     "n": 1252,
     "date": "2026-03-12",
     "token": "TempleCoin",
