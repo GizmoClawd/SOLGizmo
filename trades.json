@@ -1,5 +1,17 @@
 [
   {
+    "n": 1080,
+    "date": "2026-03-12",
+    "token": "Trump",
+    "action": "SELL",
+    "amount": "0.0648 SOL",
+    "result": "Sold 100% | PnL: -58.7%",
+    "pnl": "+0.0648 SOL",
+    "color": "teal",
+    "ca": "FTD6qo9gximcgepenojkz1uSCqAWy3NmpbKcnY3ipump",
+    "ts": 1773275762
+  },
+  {
     "n": 1079,
     "date": "2026-03-12",
     "token": "Andrew",
