@@ -1,5 +1,17 @@
 [
   {
+    "n": 1297,
+    "date": "2026-03-12",
+    "token": "metalana",
+    "action": "SELL",
+    "amount": "0.066 SOL",
+    "result": "Sold 100% | PnL: +15.3%",
+    "pnl": "+0.0660 SOL",
+    "color": "teal",
+    "ca": "A7V1UVWKGpSUYYHtRuoojaBioidfJKCXcHnNV5FmCk7z",
+    "ts": 1773341815
+  },
+  {
     "n": 1296,
     "date": "2026-03-12",
     "token": "BUMMIT",
