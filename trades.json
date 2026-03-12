@@ -1,5 +1,17 @@
 [
   {
+    "n": 1175,
+    "date": "2026-03-12",
+    "token": "zad",
+    "action": "BUY",
+    "amount": "0.076 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9ydys4zfoiJQV3NXm8qJNftYabugH99eNfaVjsQgpump",
+    "ts": 1773297135
+  },
+  {
     "n": 1174,
     "date": "2026-03-12",
     "token": "Wob",
