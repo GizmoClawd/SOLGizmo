@@ -1,5 +1,17 @@
 [
   {
+    "n": 1230,
+    "date": "2026-03-12",
+    "token": "KEY",
+    "action": "BUY",
+    "amount": "0.0677 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Rx4nz2vrw8DMFQVoJwtTe7Udu2hG2b3qjv75vyCpump",
+    "ts": 1773331696
+  },
+  {
     "n": 1229,
     "date": "2026-03-12",
     "token": "MATTER",
