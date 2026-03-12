@@ -1,5 +1,17 @@
 [
   {
+    "n": 1301,
+    "date": "2026-03-12",
+    "token": "KITTY",
+    "action": "BUY",
+    "amount": "0.0701 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5wr6x7b9e7M39aPgjwiGdQLQq5ubUXf1V152kqHppump",
+    "ts": 1773343134
+  },
+  {
     "n": 1300,
     "date": "2026-03-12",
     "token": "Chatty",
