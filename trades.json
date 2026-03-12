@@ -1,5 +1,17 @@
 [
   {
+    "n": 1197,
+    "date": "2026-03-12",
+    "token": "LILAC",
+    "action": "BUY",
+    "amount": "0.0775 SOL",
+    "result": "HW KOL: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DUA6xJxpzVvF1DUvL5oKHmGXZw6ecA3jriXJ4kgpyiVZ",
+    "ts": 1773327068
+  },
+  {
     "n": 1196,
     "date": "2026-03-12",
     "token": "shipOS",
