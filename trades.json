@@ -1,5 +1,17 @@
 [
   {
+    "n": 1293,
+    "date": "2026-03-12",
+    "token": "metalana",
+    "action": "BUY",
+    "amount": "0.0687 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "A7V1UVWKGpSUYYHtRuoojaBioidfJKCXcHnNV5FmCk7z",
+    "ts": 1773341323
+  },
+  {
     "n": 1292,
     "date": "2026-03-12",
     "token": "X Money",
