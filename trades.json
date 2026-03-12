@@ -1,5 +1,17 @@
 [
   {
+    "n": 1146,
+    "date": "2026-03-12",
+    "token": "COMPUTER",
+    "action": "BUY",
+    "amount": "0.0841 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8W2bvGCJg2gYSJSSq9n61aoCyZFyzW2G13upNRwEpump",
+    "ts": 1773287174
+  },
+  {
     "n": 1145,
     "date": "2026-03-12",
     "token": "cyb3rwr3n",
