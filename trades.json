@@ -1,5 +1,17 @@
 [
   {
+    "n": 1294,
+    "date": "2026-03-12",
+    "token": "BUMMIT",
+    "action": "BUY",
+    "amount": "0.0654 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "72VKadbZkBr7grQnJpd3geY9D4WY3mXau8ug94yHpump",
+    "ts": 1773341575
+  },
+  {
     "n": 1293,
     "date": "2026-03-12",
     "token": "metalana",
