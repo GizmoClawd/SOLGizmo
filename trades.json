@@ -1,5 +1,17 @@
 [
   {
+    "n": 1274,
+    "date": "2026-03-12",
+    "token": "HUNT",
+    "action": "SELL",
+    "amount": "0.0593 SOL",
+    "result": "Sold 100% | PnL: -59.7%",
+    "pnl": "+0.0593 SOL",
+    "color": "teal",
+    "ca": "38Jn2CG2aakJXafcgybRfYcBQaD4P4fmNtYivFZxpump",
+    "ts": 1773339491
+  },
+  {
     "n": 1273,
     "date": "2026-03-12",
     "token": "Mindset",
