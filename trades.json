@@ -1,5 +1,17 @@
 [
   {
+    "n": 1185,
+    "date": "2026-03-12",
+    "token": "PushAgent",
+    "action": "BUY",
+    "amount": "0.0809 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GzRZVHp1vju2d6hjeBqJPXwjZ1eRkdu3ZfRAKWyppump",
+    "ts": 1773323190
+  },
+  {
     "n": 1184,
     "date": "2026-03-12",
     "token": "HAMPACINO",
