@@ -970,7 +970,7 @@ async function scanKOLs(state) {
     const hwLiveWeight = livePerf[signal.kol]?.weight !== undefined ? livePerf[signal.kol].weight : signal.kolWeight;
     if (hwLiveWeight === 0) { log(`🔇 MUTED KOL skipped: ${signal.kol} (tier:${livePerf[signal.kol]?.tier} avgPnL:${livePerf[signal.kol]?.avgPnl?.toFixed(1)}%)`); ALERTED.add(signal.mint); continue; }
     const hwInfo = await getTokenInfo(signal.mint);
-    if (!hwInfo || hwInfo.mcap < 5000) continue;
+    if (!hwInfo || hwInfo.mcap < 8000) continue;
     if (hwInfo.liq !== null && hwInfo.liq > 0 && hwInfo.liq < 8000) continue;
     if (TOXIC_WORDS.some(w => (hwInfo.symbol||'').toLowerCase().includes(w))) continue;
     // ENTRY FILTER: reject if sells > buys at entry (rug in progress)
@@ -1062,7 +1062,7 @@ async function scanKOLs(state) {
 
     const info = await getTokenInfo(mint);
     ALERTED.add(mint);
-    if (!info || info.mcap < 5000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
+    if (!info || info.mcap < 8000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
     if (info.mcap > 100000) { log(`⛔ ${info.symbol}: MC too high ${Math.round(info.mcap)} — too late`); continue; }
 
     const totalSol = buys.reduce((s, b) => s + b.solSpent, 0);
@@ -1682,6 +1682,7 @@ async function pollTelegram() {
   try {
     const r = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/getUpdates?offset=${tgLastUpdateId + 1}&timeout=10`);
     const data = await r.json();
+    if (data.result?.length) log(`📨 TG poll: ${data.result.length} updates`);
     if (!data.ok || !data.result?.length) return;
     for (const update of data.result) {
       tgLastUpdateId = update.update_id;
