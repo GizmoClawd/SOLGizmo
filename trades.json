@@ -1,5 +1,17 @@
 [
   {
+    "n": 1343,
+    "date": "2026-03-12",
+    "token": "FOX",
+    "action": "SELL",
+    "amount": "0.0456 SOL",
+    "result": "Sold 50% | PnL: +33.5%",
+    "pnl": "+0.0456 SOL",
+    "color": "teal",
+    "ca": "GftezzfiS97GZRiSek5WTt3Yux9aoZGtgFysstPwpump",
+    "ts": 1773348389
+  },
+  {
     "n": 1342,
     "date": "2026-03-12",
     "token": "FOX",
