@@ -1,5 +1,17 @@
 [
   {
+    "n": 1347,
+    "date": "2026-03-12",
+    "token": "DOGSHIT2 ",
+    "action": "SELL",
+    "amount": "0.0099 SOL",
+    "result": "Sold 100% | PnL: -58.4%",
+    "pnl": "+0.0099 SOL",
+    "color": "teal",
+    "ca": "5kEckWshudXzGf9ZSJsYKsDoxBA53TdUPEDt7eL6pump",
+    "ts": 1773348780
+  },
+  {
     "n": 1346,
     "date": "2026-03-12",
     "token": "DOGSHIT2 ",
