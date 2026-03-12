@@ -1,5 +1,17 @@
 [
   {
+    "n": 1267,
+    "date": "2026-03-12",
+    "token": "SOMETHING",
+    "action": "BUY",
+    "amount": "0.0762 SOL",
+    "result": "HW KOL: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "APfxoVA8viW6wSe8hSnKkm5CMMFTexJeLUnS1bNFpump",
+    "ts": 1773338344
+  },
+  {
     "n": 1266,
     "date": "2026-03-12",
     "token": "OG",
