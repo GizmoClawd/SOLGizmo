@@ -1,5 +1,29 @@
 [
   {
+    "n": 1360,
+    "date": "2026-03-12",
+    "token": "Hachimi",
+    "action": "BUY",
+    "amount": "0.1316 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8tU7ZZLLvjzyFwhGKtb7a2kL3gmHvB9GfiN3pQkUpump",
+    "ts": 1773353076,
+    "mc": 58895,
+    "vol24": 88292.44,
+    "vol1h": 88292.44,
+    "buys": 1260,
+    "sells": 1138,
+    "liq": 19111.96,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1359,
     "date": "2026-03-12",
     "token": "cabbit",
