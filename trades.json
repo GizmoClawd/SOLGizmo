@@ -1,5 +1,17 @@
 [
   {
+    "n": 1248,
+    "date": "2026-03-12",
+    "token": "LIP",
+    "action": "SELL",
+    "amount": "0.0755 SOL",
+    "result": "Sold 100% | PnL: +22.5%",
+    "pnl": "+0.0755 SOL",
+    "color": "teal",
+    "ca": "2z68CWmycAuKbCoihFCNbAM9FattCkLGC7fqS719pump",
+    "ts": 1773334827
+  },
+  {
     "n": 1247,
     "date": "2026-03-12",
     "token": "LIP",
