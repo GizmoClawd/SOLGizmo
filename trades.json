@@ -1,5 +1,17 @@
 [
   {
+    "n": 1189,
+    "date": "2026-03-12",
+    "token": "YahuCoin™",
+    "action": "BUY",
+    "amount": "0.0796 SOL",
+    "result": "HW KOL: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CqAnuYU4ezab15P87pJ9Bab9HbX4RiBfVmpR3fPUpump",
+    "ts": 1773324323
+  },
+  {
     "n": 1188,
     "date": "2026-03-12",
     "token": "PushAgent",
