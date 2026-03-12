@@ -616,7 +616,7 @@ async function postTrade(type, symbol, ca, mc, reason, solAmount, pnl) {
   try {
     await fetch(\`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage\`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: '@SolgizmoClawd', text })
+      body: JSON.stringify({ chat_id: -1003765430591, text })
     });
     log(`📢 Telegram: ${type} ${symbol}`);
   } catch(e) { log(`Telegram failed: ${e.message?.slice(0,60)}`); }
@@ -1643,7 +1643,7 @@ async function postStoic() {
   try {
     await fetch(`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: '@SolgizmoClawd', text: full })
+      body: JSON.stringify({ chat_id: -1003765430591, text: full })
     });
   } catch(e) {}
   log(`🧠 Stoic message posted`);
@@ -1739,7 +1739,7 @@ async function postStoic() {
   try {
     await fetch(`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: '@SolgizmoClawd', text: full })
+      body: JSON.stringify({ chat_id: -1003765430591, text: full })
     });
   } catch(e) {}
   log(`🧠 Stoic message posted`);
