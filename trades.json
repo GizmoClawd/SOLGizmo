@@ -1,5 +1,17 @@
 [
   {
+    "n": 1096,
+    "date": "2026-03-12",
+    "token": "Doom",
+    "action": "BUY",
+    "amount": "0.0378 SOL",
+    "result": "HW KOL: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AukyjhMSmN5VEGjQ9npeu6Eu9X21feL1qCbZSPeJpump",
+    "ts": 1773277661
+  },
+  {
     "n": 1095,
     "date": "2026-03-12",
     "token": "LabClaw",
