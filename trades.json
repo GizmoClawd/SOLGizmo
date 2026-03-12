@@ -1,5 +1,17 @@
 [
   {
+    "n": 1337,
+    "date": "2026-03-12",
+    "token": "GIVE",
+    "action": "BUY",
+    "amount": "0.0693 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CkJgoT1YcPqWdjUbvqgPf5BDwvq2GeBX7REG9TCCpump",
+    "ts": 1773347778
+  },
+  {
     "n": 1336,
     "date": "2026-03-12",
     "token": "NeuriCo",
