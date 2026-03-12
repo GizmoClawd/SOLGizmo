@@ -1,5 +1,17 @@
 [
   {
+    "n": 1239,
+    "date": "2026-03-12",
+    "token": "OCI",
+    "action": "SELL",
+    "amount": "0.0539 SOL",
+    "result": "Sold 50% | PnL: +45.1%",
+    "pnl": "+0.0539 SOL",
+    "color": "teal",
+    "ca": "EXMboAiKVV6D2Mwcyu2Cv5XNEiGjiwsHc3TmJHdZpump",
+    "ts": 1773332892
+  },
+  {
     "n": 1238,
     "date": "2026-03-12",
     "token": "OCI",
