@@ -1,5 +1,17 @@
 [
   {
+    "n": 1203,
+    "date": "2026-03-12",
+    "token": "SOPHIA",
+    "action": "BUY",
+    "amount": "0.0717 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "513jonNJy82juFjKuCapdnwesahicA99xzE1TfVvpump",
+    "ts": 1773327354
+  },
+  {
     "n": 1202,
     "date": "2026-03-12",
     "token": "LILACH",
