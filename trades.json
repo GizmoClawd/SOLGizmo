@@ -1,5 +1,17 @@
 [
   {
+    "n": 1258,
+    "date": "2026-03-12",
+    "token": "CONSCIOUS",
+    "action": "SELL",
+    "amount": "0.0685 SOL",
+    "result": "Sold 100% | PnL: +50.0%",
+    "pnl": "+0.0685 SOL",
+    "color": "teal",
+    "ca": "GB88qpgzwYAnA1yiFmCGoZjNruV8z4Xh43SooK3vpump",
+    "ts": 1773337085
+  },
+  {
     "n": 1257,
     "date": "2026-03-12",
     "token": "Claude",
