@@ -1,5 +1,17 @@
 [
   {
+    "n": 1086,
+    "date": "2026-03-12",
+    "token": "Slop",
+    "action": "SELL",
+    "amount": "0.1078 SOL",
+    "result": "Sold 100% | PnL: +42.8%",
+    "pnl": "+0.1078 SOL",
+    "color": "teal",
+    "ca": "BdfKwhcAYWv8kmXPQmnecpycUxHUy51wWX3XovHEpump",
+    "ts": 1773276110
+  },
+  {
     "n": 1085,
     "date": "2026-03-12",
     "token": "PUMP",
