@@ -1,5 +1,17 @@
 [
   {
+    "n": 1173,
+    "date": "2026-03-12",
+    "token": "Wob",
+    "action": "SELL",
+    "amount": "0.0184 SOL",
+    "result": "Sold 25% | PnL: +53.5%",
+    "pnl": "+0.0184 SOL",
+    "color": "teal",
+    "ca": "2AXfPwXtqy8KVwWLcHNNHbh9KejZhDb5WhKnoH4Cpump",
+    "ts": 1773295080
+  },
+  {
     "n": 1172,
     "date": "2026-03-12",
     "token": "Wob",
