@@ -1,5 +1,17 @@
 [
   {
+    "n": 1281,
+    "date": "2026-03-12",
+    "token": "Exhausted",
+    "action": "SELL",
+    "amount": "0.0378 SOL",
+    "result": "Sold 100% | PnL: -0.6%",
+    "pnl": "+0.0378 SOL",
+    "color": "teal",
+    "ca": "BxnmHFbgPFFRsufcuDGLSTXF5nYTUBMFah6eENwzpump",
+    "ts": 1773339691
+  },
+  {
     "n": 1280,
     "date": "2026-03-12",
     "token": "Otrovert",
