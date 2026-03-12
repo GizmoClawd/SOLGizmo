@@ -1,5 +1,17 @@
 [
   {
+    "n": 1087,
+    "date": "2026-03-12",
+    "token": "LabClaw",
+    "action": "BUY",
+    "amount": "0.0522 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "82n9AtiahW3yG7JZhLiLMyn6f3dzp3njETqwBMbCpump",
+    "ts": 1773276450
+  },
+  {
     "n": 1086,
     "date": "2026-03-12",
     "token": "Slop",
