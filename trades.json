@@ -1,5 +1,17 @@
 [
   {
+    "n": 1353,
+    "date": "2026-03-12",
+    "token": "OPENCLAW3D",
+    "action": "SELL",
+    "amount": "0.0821 SOL",
+    "result": "Sold 100% | PnL: +40.4%",
+    "pnl": "+0.0821 SOL",
+    "color": "teal",
+    "ca": "BowH6RbRHxFmmhZc5aiGkuGeyVjMsZ1KaQ8erYU9pump",
+    "ts": 1773349383
+  },
+  {
     "n": 1352,
     "date": "2026-03-12",
     "token": "Dundun",
