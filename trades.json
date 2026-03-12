@@ -1,5 +1,17 @@
 [
   {
+    "n": 1108,
+    "date": "2026-03-12",
+    "token": "Pew",
+    "action": "SELL",
+    "amount": "0.0191 SOL",
+    "result": "Sold 25% | PnL: +181.5%",
+    "pnl": "+0.0191 SOL",
+    "color": "teal",
+    "ca": "FZ1sRu2mnvEUYE6sx4FJrLiuAbgRurHDkktvqjh7kZzH",
+    "ts": 1773278748
+  },
+  {
     "n": 1107,
     "date": "2026-03-12",
     "token": "KJP",
