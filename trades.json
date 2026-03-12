@@ -1,5 +1,17 @@
 [
   {
+    "n": 1291,
+    "date": "2026-03-12",
+    "token": "XMONEY",
+    "action": "BUY",
+    "amount": "0.0741 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3yVpLuXvYn7PgitcK3d6vNjVaFz89kQPzGXZLcbepump",
+    "ts": 1773340768
+  },
+  {
     "n": 1290,
     "date": "2026-03-12",
     "token": "X Money",
