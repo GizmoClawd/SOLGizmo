@@ -1,5 +1,27 @@
 [
   {
+    "n": 1356,
+    "date": "2026-03-12",
+    "token": "kabosu",
+    "action": "SELL",
+    "amount": "0.1287 SOL",
+    "result": "Sold 100% | PnL: -11.3%",
+    "pnl": "+0.1287 SOL",
+    "color": "teal",
+    "ca": "ZVgabseBKbM9mawnJDwVETMpaPqoA41sxH4m8eBpump",
+    "ts": 1773351732,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1355,
     "date": "2026-03-12",
     "token": "kabosu",
