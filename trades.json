@@ -1,5 +1,17 @@
 [
   {
+    "n": 1103,
+    "date": "2026-03-12",
+    "token": "Doom",
+    "action": "SELL",
+    "amount": "0.0803 SOL",
+    "result": "Sold 100% | PnL: +9.2%",
+    "pnl": "+0.0803 SOL",
+    "color": "teal",
+    "ca": "AukyjhMSmN5VEGjQ9npeu6Eu9X21feL1qCbZSPeJpump",
+    "ts": 1773278605
+  },
+  {
     "n": 1102,
     "date": "2026-03-12",
     "token": "KJP",
