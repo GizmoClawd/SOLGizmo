@@ -611,15 +611,15 @@ async function postTrade(type, symbol, ca, mc, reason, solAmount, pnl) {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: text })
     });
-    log(\`📢 Discord: \${type} \${symbol}\`);
-  } catch(e) { log(\`Discord failed: \${e.message?.slice(0,60)}\`); }
+    log(`📢 Discord: ${type} ${symbol}`);
+  } catch(e) { log(`Discord failed: ${e.message?.slice(0,60)}`); }
   try {
     await fetch(\`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage\`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: '@SolgizmoClawd', text })
     });
-    log(\`📢 Telegram: \${type} \${symbol}\`);
-  } catch(e) { log(\`Telegram failed: \${e.message?.slice(0,60)}\`); }
+    log(`📢 Telegram: ${type} ${symbol}`);
+  } catch(e) { log(`Telegram failed: ${e.message?.slice(0,60)}`); }
 }
 
 // ─── POSITION MANAGEMENT ──────────────────────────────────────────────────────
@@ -1611,4 +1611,100 @@ async function runCycle() {
 
 setInterval(() => {}, 2147483647); // keepalive
 setInterval(runCycle, 15000);
+
+// ─── STOIC MESSAGES ──────────────────────────────────────────────────────────
+const STOIC_MESSAGES = [
+  "The obstacle is the way. Every red candle is a lesson. 🦞",
+  "We don't control the market. We control our entries. 🦞",
+  "Memento mori. Even 100x coins return to zero eventually. Sell the top. 🦞",
+  "A wise trader knows when NOT to trade. Patience is alpha. 🦞",
+  "You have power over your stop loss, not market conditions. Know the difference. 🦞",
+  "The best trade is sometimes no trade. 🦞",
+  "Waste no more time arguing about what a good trader should be. Be one. 🦞",
+  "He who chases every pump catches none. Wait for convergence. 🦞",
+  "The market can remain irrational longer than you can remain solvent. Size small. 🦞",
+  "First say to yourself what you would be, then do what you have to do. 🦞",
+  "Dwell on the beauty of life. Watch the charts. Notice the patterns. 🦞",
+  "You have survived every bad trade so far. This one is no different. 🦞",
+  "The impediment to action advances action. What stands in the way becomes the way. 🦞",
+  "Never let the future disturb you. You will meet it with the same reason you use today. 🦞",
+  "If it is not right, do not do it. If it is not true, do not say it. If it's a rug, don't buy it. 🦞",
+];
+
+async function postStoic() {
+  const msg = STOIC_MESSAGES[Math.floor(Math.random() * STOIC_MESSAGES.length)];
+  const full = `🧠 Gizmo's Daily Wisdom:\n\n${msg}`;
+  try {
+    await fetch('https://discord.com/api/webhooks/1481464647193334002/PZ8g7gaxTdkfYuSm1FSggtYpIk3tUReA7LkQWmKZW15qnVRAdaN2FHexFUMPit-iIVjY', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: full })
+    });
+  } catch(e) {}
+  try {
+    await fetch(`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: '@SolgizmoClawd', text: full })
+    });
+  } catch(e) {}
+  log(`🧠 Stoic message posted`);
+}
+setInterval(postStoic, 2 * 60 * 60 * 1000); // every 2 hours
+setTimeout(postStoic, 10000); // post one on startup after 10s
+
+// ─── TELEGRAM REPLY LISTENER ─────────────────────────────────────────────────
+let tgLastUpdateId = 0;
+const TG_BOT_TOKEN = '8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M';
+
+const TG_REPLIES = [
+  { triggers: ['wallet', 'balance', 'sol', 'money'], reply: () => {
+    const bal = POSITIONS.length > 0 ? `Holding ${POSITIONS.length} positions` : 'No open positions';
+    return `💰 Gizmo Status:\n${bal}\nScanning for alpha... 🦞`;
+  }},
+  { triggers: ['position', 'positions', 'holding', 'holdings'], reply: () => {
+    if (POSITIONS.length === 0) return `No open positions right now. Waiting for the right play. 🦞`;
+    return `📊 Open positions:\n${POSITIONS.map(p => `• ${p.name} — entry $${Math.round(p.entryMC/1000)}K`).join('\n')}\n🦞`;
+  }},
+  { triggers: ['gizmo', 'hi', 'hello', 'hey', 'sup', 'wen'], reply: () =>
+    `🦞 Gizmo here. Scanning ${19} KOL wallets for alpha. Stay tuned.`
+  },
+  { triggers: ['win', 'profit', 'pnl', 'gains'], reply: () =>
+    `📈 Gizmo doesn't chase wins — he waits for convergence. Quality over quantity. 🦞`
+  },
+  { triggers: ['rug', 'scam', 'dump'], reply: () =>
+    `🛡️ Gizmo has vampire detection, dead cat filters, and volume kill switches. We see the rugs coming. 🦞`
+  },
+  { triggers: ['buy', 'entry', 'enter'], reply: () =>
+    `🎯 Gizmo enters on KOL convergence with score ≥7, healthy B/S ratio, fresh momentum. No FOMO entries. 🦞`
+  },
+];
+
+async function pollTelegram() {
+  try {
+    const r = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/getUpdates?offset=${tgLastUpdateId + 1}&timeout=10`);
+    const data = await r.json();
+    if (!data.ok || !data.result?.length) return;
+    for (const update of data.result) {
+      tgLastUpdateId = update.update_id;
+      const msg = update.message;
+      if (!msg || !msg.text) continue;
+      const text = msg.text.toLowerCase();
+      const chatId = msg.chat.id;
+      // Only respond if tagged or replied to
+      const isTagged = text.includes('@gizmoclawdbot') || msg.reply_to_message?.from?.username === 'GizmoClawdBot';
+      if (!isTagged) continue;
+      const clean = text.replace('@gizmoclawdbot', '').trim();
+      let reply = null;
+      for (const r of TG_REPLIES) {
+        if (r.triggers.some(t => clean.includes(t))) { reply = r.reply(); break; }
+      }
+      if (!reply) reply = `🦞 Gizmo is scanning the markets. Ask me about positions, wallet, or wins.`;
+      await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: reply, reply_to_message_id: msg.message_id })
+      });
+      log(`📨 Telegram reply sent to ${msg.from?.username || chatId}`);
+    }
+  } catch(e) {}
+}
+setInterval(pollTelegram, 3000); // poll every 3 seconds
 runCycle();
