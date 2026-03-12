@@ -1,5 +1,17 @@
 [
   {
+    "n": 1161,
+    "date": "2026-03-12",
+    "token": "FUCKED",
+    "action": "SELL",
+    "amount": "0.0514 SOL",
+    "result": "Sold 50% | PnL: +39.8%",
+    "pnl": "+0.0514 SOL",
+    "color": "teal",
+    "ca": "2HCAX6fg5LmByXQ1gRPTTyL3P4JgqZT35KoWMDZ7pump",
+    "ts": 1773290983
+  },
+  {
     "n": 1160,
     "date": "2026-03-12",
     "token": "FUCKED",
