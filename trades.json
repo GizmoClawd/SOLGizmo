@@ -1,5 +1,17 @@
 [
   {
+    "n": 1132,
+    "date": "2026-03-12",
+    "token": "Vaughn",
+    "action": "SELL",
+    "amount": "0.0125 SOL",
+    "result": "Sold 50% | PnL: +32.5%",
+    "pnl": "+0.0125 SOL",
+    "color": "teal",
+    "ca": "4dXtQFZ2GjrwDv4mxWqCW4847X1mashZXAoA9bK5GLya",
+    "ts": 1773281043
+  },
+  {
     "n": 1131,
     "date": "2026-03-12",
     "token": "Vaughn",
