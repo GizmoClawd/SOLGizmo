@@ -1,5 +1,17 @@
 [
   {
+    "n": 1177,
+    "date": "2026-03-12",
+    "token": "zad",
+    "action": "SELL",
+    "amount": "0.0462 SOL",
+    "result": "Sold 100% | PnL: -58.3%",
+    "pnl": "+0.0462 SOL",
+    "color": "teal",
+    "ca": "9ydys4zfoiJQV3NXm8qJNftYabugH99eNfaVjsQgpump",
+    "ts": 1773297344
+  },
+  {
     "n": 1176,
     "date": "2026-03-12",
     "token": "Machi",
