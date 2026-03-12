@@ -602,14 +602,24 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
 
 // ─── POST TRADE TWEET ─────────────────────────────────────────────────────────
 async function postTrade(type, symbol, ca, mc, reason, solAmount, pnl) {
+  const emoji = type === 'BUY' ? '🟢' : (pnl && pnl > 0 ? '💰' : '🔴');
+  const text = type === 'BUY'
+    ? `${emoji} BOUGHT $${symbol}\n\n${reason}\n\nMC: $${Math.round(mc/1000)}K | ${solAmount} SOL\n\nCA: ${ca}\n\n🦞`
+    : `${emoji} SOLD $${symbol} (${pnl > 0 ? '+' : ''}${pnl.toFixed(1)}%)\n\n${reason}\n\nMC: $${Math.round(mc/1000)}K\n\n🦞`;
   try {
-    const emoji = type === 'BUY' ? '🟢' : (pnl && pnl > 0 ? '💰' : '🔴');
-    const text = type === 'BUY'
-      ? `${emoji} BOUGHT $${symbol}\n\n${reason}\n\nMC: $${Math.round(mc / 1000)}K | ${solAmount} SOL\n\nCA: ${ca}\n\n🦞`
-      : `${emoji} SOLD $${symbol} (${pnl > 0 ? '+' : ''}${pnl.toFixed(1)}%)\n\n${reason}\n\nMC: $${Math.round(mc / 1000)}K\n\n🦞`;
-    execSync(`cd ${BASE_DIR} && node tweet.mjs "${text.replace(/"/g, '\\"').replace(/\$/g, '\\$')}"`, { timeout: 15000 });
-    log(`📢 Tweeted: ${type} ${symbol}`);
-  } catch (e) { log(`Tweet failed: ${e.message?.slice(0, 60)}`); }
+    await fetch('https://discord.com/api/webhooks/1481464647193334002/PZ8g7gaxTdkfYuSm1FSggtYpIk3tUReA7LkQWmKZW15qnVRAdaN2FHexFUMPit-iIVjY', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: text })
+    });
+    log(\`📢 Discord: \${type} \${symbol}\`);
+  } catch(e) { log(\`Discord failed: \${e.message?.slice(0,60)}\`); }
+  try {
+    await fetch(\`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage\`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: '@SolgizmoClawd', text })
+    });
+    log(\`📢 Telegram: \${type} \${symbol}\`);
+  } catch(e) { log(\`Telegram failed: \${e.message?.slice(0,60)}\`); }
 }
 
 // ─── POSITION MANAGEMENT ──────────────────────────────────────────────────────
