@@ -1,5 +1,17 @@
 [
   {
+    "n": 1222,
+    "date": "2026-03-12",
+    "token": "Lightpanda",
+    "action": "BUY",
+    "amount": "0.071 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9gzEKwrYdRQunLCr4sEj9EiLS1UPez53VE17DNompump",
+    "ts": 1773330399
+  },
+  {
     "n": 1221,
     "date": "2026-03-12",
     "token": "JOB",
