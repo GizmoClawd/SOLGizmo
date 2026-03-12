@@ -1,5 +1,17 @@
 [
   {
+    "n": 1257,
+    "date": "2026-03-12",
+    "token": "Claude",
+    "action": "BUY",
+    "amount": "0.0771 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6X58bta6pruNBs9EH2GxBxxwddcJXdBTRCNwg1eZpump",
+    "ts": 1773337076
+  },
+  {
     "n": 1256,
     "date": "2026-03-12",
     "token": "CONSCIOUS",
