@@ -1,5 +1,17 @@
 [
   {
+    "n": 1308,
+    "date": "2026-03-12",
+    "token": "CLAUD",
+    "action": "SELL",
+    "amount": "0.0469 SOL",
+    "result": "Sold 50% | PnL: +34.7%",
+    "pnl": "+0.0469 SOL",
+    "color": "teal",
+    "ca": "DkRgBe7tiMtZ7ZHe4SMCcyvCWzBbTYhDpQwjmzuspump",
+    "ts": 1773343587
+  },
+  {
     "n": 1307,
     "date": "2026-03-12",
     "token": "CLAUD",
