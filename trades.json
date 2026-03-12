@@ -1,5 +1,17 @@
 [
   {
+    "n": 1330,
+    "date": "2026-03-12",
+    "token": "worth",
+    "action": "SELL",
+    "amount": "0.0547 SOL",
+    "result": "Sold 100% | PnL: -57.0%",
+    "pnl": "+0.0547 SOL",
+    "color": "teal",
+    "ca": "8tKWk9c3o8sbvcqTBePv2B99ZTthMdXAhSVRQ1zApump",
+    "ts": 1773347179
+  },
+  {
     "n": 1329,
     "date": "2026-03-12",
     "token": "Metalify",
