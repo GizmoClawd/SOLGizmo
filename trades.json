@@ -1,5 +1,17 @@
 [
   {
+    "n": 1218,
+    "date": "2026-03-12",
+    "token": "JakePaul",
+    "action": "SELL",
+    "amount": "0.0841 SOL",
+    "result": "Sold 100% | PnL: +20.8%",
+    "pnl": "+0.0841 SOL",
+    "color": "teal",
+    "ca": "DN6VEujuFM65aQgpu2eTuSiNEddK4Qi4zHQrQK5Ppump",
+    "ts": 1773330003
+  },
+  {
     "n": 1217,
     "date": "2026-03-12",
     "token": "JakePaul",
