@@ -1,5 +1,17 @@
 [
   {
+    "n": 1225,
+    "date": "2026-03-12",
+    "token": "DREAM",
+    "action": "SELL",
+    "amount": "0.0848 SOL",
+    "result": "Sold 100% | PnL: +37.0%",
+    "pnl": "+0.0848 SOL",
+    "color": "teal",
+    "ca": "6KHX9Bn3XLk3e6HPYRW9So7TDTCyiTBsd4bznzRMpump",
+    "ts": 1773330934
+  },
+  {
     "n": 1224,
     "date": "2026-03-12",
     "token": "DREAM",
