@@ -1,5 +1,17 @@
 [
   {
+    "n": 1204,
+    "date": "2026-03-12",
+    "token": "SOPHIA",
+    "action": "SELL",
+    "amount": "0.0406 SOL",
+    "result": "Sold 100% | PnL: -56.2%",
+    "pnl": "+0.0406 SOL",
+    "color": "teal",
+    "ca": "513jonNJy82juFjKuCapdnwesahicA99xzE1TfVvpump",
+    "ts": 1773327605
+  },
+  {
     "n": 1203,
     "date": "2026-03-12",
     "token": "SOPHIA",
