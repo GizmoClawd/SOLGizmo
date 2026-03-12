@@ -1,5 +1,17 @@
 [
   {
+    "n": 1338,
+    "date": "2026-03-12",
+    "token": "NeuriCo",
+    "action": "SELL",
+    "amount": "0.0172 SOL",
+    "result": "Sold 100% | PnL: +17.6%",
+    "pnl": "+0.0172 SOL",
+    "color": "teal",
+    "ca": "4Pij7X1tTNDUw7k1gCReYwsMbsBeS4WHDRCJejVFpump",
+    "ts": 1773347790
+  },
+  {
     "n": 1337,
     "date": "2026-03-12",
     "token": "GIVE",
