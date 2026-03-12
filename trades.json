@@ -1,5 +1,17 @@
 [
   {
+    "n": 1206,
+    "date": "2026-03-12",
+    "token": "FOREHEAD",
+    "action": "BUY",
+    "amount": "0.0731 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EmwcCNgDotKYb2WB7UZUPwDMV5pyyz4vG6zZ4KxDpump",
+    "ts": 1773327952
+  },
+  {
     "n": 1205,
     "date": "2026-03-12",
     "token": "LILAC",
