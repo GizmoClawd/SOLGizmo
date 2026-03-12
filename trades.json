@@ -1,5 +1,17 @@
 [
   {
+    "n": 1313,
+    "date": "2026-03-12",
+    "token": "X MONEY",
+    "action": "BUY",
+    "amount": "0.077 SOL",
+    "result": "HW KOL: Dali",
+    "pnl": "",
+    "color": "teal",
+    "ca": "75koK8nsuEiUpd3jgfTSazpuvtQyLw7aLUF2uRhLpump",
+    "ts": 1773344273
+  },
+  {
     "n": 1312,
     "date": "2026-03-12",
     "token": "CLAUD",
