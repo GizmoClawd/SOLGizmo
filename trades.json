@@ -1,5 +1,17 @@
 [
   {
+    "n": 1304,
+    "date": "2026-03-12",
+    "token": "KITTY",
+    "action": "SELL",
+    "amount": "0.03 SOL",
+    "result": "Sold 100% | PnL: -58.6%",
+    "pnl": "+0.0300 SOL",
+    "color": "teal",
+    "ca": "5wr6x7b9e7M39aPgjwiGdQLQq5ubUXf1V152kqHppump",
+    "ts": 1773343350
+  },
+  {
     "n": 1303,
     "date": "2026-03-12",
     "token": "𒅒𒈔𒅒",
