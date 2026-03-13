@@ -163,7 +163,7 @@ async function learnFromTrades() {
     // Adjust score threshold based on market scan win rate
     // Score threshold driven by OVERALL win rate (not just market — most trades are KOL)
     if (recent.length >= 5) {
-      if (winRate <= 0.45 && SCORE_THRESHOLD < 7) {
+      if (winRate <= 0.45 && SCORE_THRESHOLD < 9) {
         SCORE_THRESHOLD = Math.min(7, SCORE_THRESHOLD + 1);
         log(`🧠 WR low (${(winRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
@@ -200,6 +200,18 @@ async function learnFromTrades() {
       }
     }
 
+    // MIN_LIQ lever
+    if (winRate <= 0.40 && MIN_LIQ < 15000) {
+      MIN_LIQ = 15000;
+      log(`🧠 WR poor — raising min liquidity to $15K`);
+      changed = true;
+    } else if (winRate > 0.60 && MIN_LIQ > 8000) {
+      MIN_LIQ = 8000;
+      log(`🧠 WR strong — lowering min liquidity back to $8K`);
+      changed = true;
+    }
+    // Always save so log reflects current state
+    saveLearnState();
     if (changed) {
       saveLearnState();
       // Notify via Telegram
@@ -214,7 +226,7 @@ async function learnFromTrades() {
 // ─── LOGGING ─────────────────────────────────────────────────────────────────
 function log(msg) {
   const line = `[${new Date().toLocaleString()}] ${msg}`;
-  process.stderr.write(line + '\n'); // stderr so LaunchAgent stdout doesn't double-log
+  if (process.env.OPENCLAW_AGENT !== '1') process.stderr.write(line + '\n');
   try { fs.appendFileSync(LOG_FILE, line + '\n'); } catch {}
 }
 
@@ -399,7 +411,6 @@ const WALLETS = [
   { name: "Silver", address: "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U", weight: 3 },
   { name: "Pain", address: "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa", weight: 3 },
   // ── AUTO-DISCOVERED SMART MONEY (Mon Mar 09 2026) ──
-  { name: "smart_gizmo-wins_1", address: "DKfejcSsTYVFU4jHSyjrGJiYAMdGwe5varF11ArFcmeB", weight: 1 }, // auto-discovered WR:100%
 ];
 
 // ─── PRICE CHECK ──────────────────────────────────────────────────────────────
@@ -625,16 +636,25 @@ async function postTrade(type, symbol, ca, mc, reason, solAmount, pnl) {
     log(`📢 Discord: ${type} ${symbol}`);
   } catch(e) { log(`Discord failed: ${e.message?.slice(0,60)}`); }
   try {
-    await fetch(\`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage\`, {
+    await fetch(`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: -1003765430591, text })
     });
     log(`📢 Telegram: ${type} ${symbol}`);
   } catch(e) { log(`Telegram failed: ${e.message?.slice(0,60)}`); }
+  try {
+    const tweetText = text.replace(/\n/g, " ").replace(/"/g, '\\"');
+    execSync(`cd ${BASE_DIR} && node tweet.mjs "${tweetText}" --community`, { timeout: 15000 });
+    log(`📢 Tweeted: ${type} ${symbol}`);
+  } catch(e) { log(`Tweet failed: ${e.message?.slice(0,60)}`); }
 }
 
 // ─── POSITION MANAGEMENT ──────────────────────────────────────────────────────
 async function managePositions() {
+  // Filter USDC ghost
+  for (let i = POSITIONS.length - 1; i >= 0; i--) {
+    if (POSITIONS[i].name === 'USDC' || (POSITIONS[i].entryMC || 0) > 1000000000) { POSITIONS.splice(i, 1); continue; }
+  }
   for (let i = POSITIONS.length - 1; i >= 0; i--) {
     const pos = POSITIONS[i];
     const p = await checkPrice(pos.ca);
@@ -964,6 +984,7 @@ async function scanKOLs(state) {
           if (now - buy.timestamp > SIGNAL_WINDOW_MS) continue;
           if (state.recentBuys.some(b => b.sig === buy.sig)) continue;
           state.recentBuys.push({ kol: wallet.name, kolWeight: wallet.weight, scalper: wallet.scalper, ...buy });
+      updateSniperWatch(sig.mint, kol.name, kol.weight, null);
           log(`KOL: ${wallet.name} bought ${tr.mint.slice(0, 8)}... for ${buy.solSpent.toFixed(2)} SOL`);
         }
         if (txs.length > 0) state.lastSig[wallet.address] = txs[0].signature;
@@ -982,12 +1003,12 @@ async function scanKOLs(state) {
     if (hwLiveWeight === 0) { log(`🔇 MUTED KOL skipped: ${signal.kol} (tier:${livePerf[signal.kol]?.tier} avgPnL:${livePerf[signal.kol]?.avgPnl?.toFixed(1)}%)`); ALERTED.add(signal.mint); continue; }
     const hwInfo = await getTokenInfo(signal.mint);
     if (!hwInfo || hwInfo.mcap < 8000) continue;
+    const entryPair = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${signal.mint}`).then(r=>r.json()).catch(()=>null);
     const hwVol24 = entryPair?.pairs?.[0]?.volume?.h24 || 0;
     if (hwVol24 < 10000) { log(`⛔ ${hwInfo.symbol}: low volume $${Math.round(hwVol24)} 24h — ghost token`); ALERTED.add(signal.mint); continue; }
     if (hwInfo.liq !== null && hwInfo.liq > 0 && hwInfo.liq < 8000) continue;
     if (TOXIC_WORDS.some(w => (hwInfo.symbol||'').toLowerCase().includes(w))) continue;
     // ENTRY FILTER: reject if sells > buys at entry (rug in progress)
-    const entryPair = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${signal.mint}`).then(r=>r.json()).catch(()=>null);
     const entryBuys = entryPair?.pairs?.[0]?.txns?.m5?.buys || 0;
     const entrySells = entryPair?.pairs?.[0]?.txns?.m5?.sells || 0;
     if (entrySells > entryBuys * 1.5) { log(`⛔ ${hwInfo.symbol}: sells (${entrySells}) > buys (${entryBuys}) — rug in progress, skipping`); ALERTED.add(signal.mint); saveAlerted(); continue; }
@@ -1019,6 +1040,7 @@ async function scanKOLs(state) {
       POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, tp2Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now(), tokenAge: hwPairAge, dcaAdded: false, dcaSize: hwSize * 0.4, dcaCycles: 0, entrySize: hwSize });
       savePositions();
       logTrade('BUY', hwInfo.symbol, signal.mint, hwSize, null, null, 'HW KOL: ' + signal.kol, {mc: hwInfo.mcap, vol24: entryPair?.pairs?.[0]?.volume?.h24, vol1h: entryPair?.pairs?.[0]?.volume?.h1, buys: entryPair?.pairs?.[0]?.txns?.h1?.buys, sells: entryPair?.pairs?.[0]?.txns?.h1?.sells, liq: hwLiq, kols: [signal.kol]});
+      await postTrade('BUY', hwInfo.symbol, signal.mint, hwMc, 'HW KOL: ' + signal.kol, hwSize);
       RECENTLY_BOUGHT.set(signal.mint, Date.now());
       try { fs.writeFileSync(RECENT_BOUGHT_FILE, JSON.stringify(Object.fromEntries(RECENTLY_BOUGHT))); } catch {}
     }
@@ -1306,6 +1328,7 @@ async function marketScan() {
         POSITIONS.push({ name: p.baseToken.symbol, ca: t.tokenAddress, entryMC: p.fdv, highMC: p.fdv, sl: null, tp1: p.fdv * 1.5, tp2: p.fdv * 3, tp1Hit: false, entryTime: Date.now() });
         savePositions();
         logTrade('BUY', p.baseToken.symbol, t.tokenAddress, size, null, null, `Boost scan score ${score}/9`);
+        await postTrade('BUY', p.baseToken.symbol, t.tokenAddress, p.fdv, `Market score ${score}/9`, size);
         RECENTLY_BOUGHT.set(t.tokenAddress, Date.now());
       }
       break;
@@ -1593,6 +1616,15 @@ async function runCycle() {
     running = false;
     return;
   }
+  // TIME FILTER: no buys midnight–8am EST
+  const estHour = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false });
+  const h = parseInt(estHour);
+  if (h >= 0 && h < 8) {
+    log(`⏰ Time filter: ${h}:00 EST — no buys midnight–8am. Managing open positions only.`);
+    await managePositions();
+    running = false;
+    return;
+  }
 
   // PROFIT VAULT: check and lock profits every cycle
   if (SESSION_START_BALANCE !== null && !SESSION_HALTED) {
@@ -1620,7 +1652,10 @@ async function runCycle() {
     log(`Loop error: ${e.message}`);
   }
   saveState(state);
-  log(`💓 cycle ${cycle} complete`);
+  await writeDashboard();
+    await processSniperWatch();
+    if (dashCycle % 60 === 0) { lastBrainPatterns = await readBrainPatterns(); await runDeepAnalysis(); }
+    log(`💓 cycle ${cycle} complete`);
   running = false;
 }
 
@@ -1699,6 +1734,181 @@ setInterval(() => { BRAIN_PATTERNS = readBrainPatterns(); }, 30 * 60 * 1000); //
 setInterval(() => {}, 2147483647); // keepalive
 setInterval(runCycle, 15000);
 
+
+
+// ─── DASHBOARD WRITER ─────────────────────────────────────────────────────────
+let dashCycle = 0;
+let lastBrainPatterns = null;
+async function writeDashboard() {
+  dashCycle++;
+  if (dashCycle % 5 !== 0) return;
+  try {
+    const tradesFile = process.env.HOME + '/.openclaw/workspace/SOLGizmo/trades.json';
+    const trades = JSON.parse(fs.readFileSync(tradesFile, 'utf8'));
+    const sells = trades.filter(t => t.action === 'SELL' && t.pnlPct !== undefined);
+    const buys = trades.filter(t => t.action === 'BUY');
+    const wins = sells.filter(t => t.pnlPct > 0);
+    const wr = sells.length > 0 ? (wins.length / sells.length * 100).toFixed(1) : '0';
+    const avgPnl = sells.length > 0 ? (sells.reduce((a,t) => a + (t.pnlPct||0), 0) / sells.length).toFixed(1) : '0';
+    const bestTrade = sells.reduce((best, t) => (t.pnlPct||0) > (best.pnlPct||0) ? t : best, {pnlPct:0});
+    const worstTrade = sells.reduce((worst, t) => (t.pnlPct||0) < (worst.pnlPct||0) ? t : worst, {pnlPct:0});
+    const kolPerf = {};
+    for (const t of sells) {
+      for (const k of (Array.isArray(t.kols) ? t.kols : [])) {
+        if (!kolPerf[k]) kolPerf[k] = { wins: 0, losses: 0, totalPnl: 0, trades: 0 };
+        kolPerf[k].trades++;
+        kolPerf[k].totalPnl += t.pnlPct || 0;
+        if ((t.pnlPct||0) > 0) kolPerf[k].wins++; else kolPerf[k].losses++;
+      }
+    }
+    const last10 = sells.slice(-10);
+    const streak = last10.reduceRight((s, t) => {
+      if (s.done) return s;
+      if ((t.pnlPct||0) > 0) { s.wins++; return s; }
+      s.done = true; return s;
+    }, {wins:0, done:false}).wins;
+    const dashboard = {
+      updated: new Date().toISOString(),
+      wallet: POSITIONS.length > 0 ? 'active' : 'hunting',
+      openPositions: POSITIONS.map(p => ({ name: p.name, ca: p.ca, entryMC: p.entryMC, highMC: p.highMC, sl: p.sl, tp1Hit: p.tp1Hit })),
+      stats: { totalBuys: buys.length, totalSells: sells.length, winRate: parseFloat(wr), avgPnl: parseFloat(avgPnl), bestTrade: { name: bestTrade.name || 'n/a', pnl: bestTrade.pnlPct || 0 }, worstTrade: { name: worstTrade.name || 'n/a', pnl: worstTrade.pnlPct || 0 }, currentStreak: streak },
+      kolPerformance: kolPerf,
+      adaptiveParams: { scoreThreshold: SCORE_THRESHOLD, minLiq: MIN_LIQ, minKols: MIN_KOLS, positionSizeMult: POSITION_SIZE_MULT },
+      brainPatterns: lastBrainPatterns || {}
+    };
+    const dashPath = (process.env.HOME || '/Users/younghogey') + '/.gizmo/runtime/dashboard.json';
+    fs.writeFileSync(dashPath, JSON.stringify(dashboard, null, 2));
+  } catch(e) { /* silent */ }
+}
+
+// ─── KOL DNA PROFILER ─────────────────────────────────────────────────────────
+function buildKolDna(trades) {
+  const dna = {};
+  for (const t of trades) {
+    for (const k of (Array.isArray(t.kols) ? t.kols : [])) {
+      if (!dna[k]) dna[k] = { wins: 0, losses: 0, totalPnl: 0, trades: [], mcBands: { micro: 0, small: 0, mid: 0, large: 0 }, bestPnl: 0, worstPnl: 0 };
+      const d = dna[k];
+      const pnl = t.pnlPct || 0;
+      d.trades.push({ name: t.name, pnl, mc: t.mc });
+      d.totalPnl += pnl;
+      if (pnl > 0) d.wins++; else d.losses++;
+      if (pnl > d.bestPnl) d.bestPnl = pnl;
+      if (pnl < d.worstPnl) d.worstPnl = pnl;
+      const mc = t.mc || 0;
+      if (mc < 10000) d.mcBands.micro++;
+      else if (mc < 50000) d.mcBands.small++;
+      else if (mc < 200000) d.mcBands.mid++;
+      else d.mcBands.large++;
+    }
+  }
+  for (const [k, d] of Object.entries(dna)) {
+    const total = d.wins + d.losses;
+    d.winRate = total > 0 ? (d.wins / total * 100).toFixed(1) + '%' : 'n/a';
+    d.avgPnl = total > 0 ? (d.totalPnl / total).toFixed(1) : 0;
+    const mcs = d.trades.filter(t => t.mc).map(t => t.mc);
+    d.avgEntryMC = mcs.length > 0 ? Math.round(mcs.reduce((a,b)=>a+b,0) / mcs.length) : 0;
+    d.preferredBand = Object.entries(d.mcBands).sort((a,b) => b[1] - a[1])[0]?.[0] || 'unknown';
+    delete d.trades;
+  }
+  return dna;
+}
+
+// ─── DEEP ANALYSIS (xAI) ─────────────────────────────────────────────────────
+let lastDeepAnalysis = 0;
+async function runDeepAnalysis() {
+  const now = Date.now();
+  if (now - lastDeepAnalysis < 6 * 60 * 60 * 1000) return;
+  try {
+    const tradesFile = process.env.HOME + '/.openclaw/workspace/SOLGizmo/trades.json';
+    const trades = JSON.parse(fs.readFileSync(tradesFile, 'utf8'));
+    const sells = trades.filter(t => t.action === 'SELL' && t.pnlPct !== undefined);
+    if (sells.length < 10) return;
+    const apiKey = process.env.XAI_API_KEY;
+    if (!apiKey) return;
+    const recent20 = sells.slice(-20);
+    const summary = recent20.map(t => t.name + ': ' + ((t.pnlPct||0) > 0 ? '+' : '') + (t.pnlPct||0).toFixed(0) + '% | MC:$' + Math.round((t.mc||0)/1000) + 'K | KOLs:' + (t.kols||[]).join(',')).join('\n');
+    const kolDna = buildKolDna(sells);
+    const dnaSum = Object.entries(kolDna).map(([k,d]) => k + ': WR ' + d.winRate + ' | avg ' + d.avgPnl + '% | band: ' + d.preferredBand + ' | entries: ' + (d.wins+d.losses)).join('\n');
+    const prompt = 'You are an AI trading analyst reviewing a Solana memecoin bot trade history. Be concise and actionable.\n\nRECENT TRADES:\n' + summary + '\n\nKOL DNA:\n' + dnaSum + '\n\nCurrent params: scoreThreshold=' + SCORE_THRESHOLD + ' minLiq=$' + MIN_LIQ + ' minKols=' + MIN_KOLS + ' positionSizeMult=' + POSITION_SIZE_MULT + '\n\nAnalyze: 1) Which KOLs to trust more/less? 2) Best MC range? 3) Parameter adjustments? 4) One key insight the bot is missing? Keep under 200 words.';
+    const r = await fetch('https://api.x.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+      body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 400, messages: [{ role: 'user', content: prompt }] }),
+      signal: AbortSignal.timeout(15000)
+    });
+    const data = await r.json();
+    const analysis = data.choices?.[0]?.message?.content;
+    if (!analysis) return;
+    lastDeepAnalysis = now;
+    log('\n=== DEEP ANALYSIS ===\n' + analysis + '\n=====================');
+    const analysisPath = (process.env.HOME || '/Users/younghogey') + '/.gizmo/runtime/deep-analysis.json';
+    let existing = [];
+    try { existing = JSON.parse(fs.readFileSync(analysisPath, 'utf8')); } catch(e) {}
+    existing.unshift({ timestamp: new Date().toISOString(), analysis, trades: sells.length });
+    if (existing.length > 10) existing.length = 10;
+    fs.writeFileSync(analysisPath, JSON.stringify(existing, null, 2));
+    if (TG_BOT_TOKEN && TG_CHAT_ID) {
+      await fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: '=== DEEP ANALYSIS ===\n\n' + analysis })
+      });
+    }
+  } catch(e) { log('Deep analysis failed: ' + e.message); }
+}
+
+// ─── BUNDLE SNIPER DIP ENTRY ──────────────────────────────────────────────────
+const SNIPER_WATCH = new Map();
+
+function updateSniperWatch(mint, kolName, kolWeight, name) {
+  if (!SNIPER_WATCH.has(mint)) {
+    SNIPER_WATCH.set(mint, { kols: new Set(), totalWeight: 0, firstSeen: Date.now(), peakMC: 0, dipSeen: false, name: name || mint.slice(0,8) });
+  }
+  const w = SNIPER_WATCH.get(mint);
+  if (!w.kols.has(kolName)) {
+    w.kols.add(kolName);
+    w.totalWeight += kolWeight || 1;
+  }
+}
+
+async function processSniperWatch() {
+  const now = Date.now();
+  const expired = [];
+  for (const [mint, w] of SNIPER_WATCH) {
+    if (now - w.firstSeen > 15 * 60 * 1000) { expired.push(mint); continue; }
+    if (w.kols.size < 3 && w.totalWeight < 6) continue;
+    if (POSITIONS.find(p => p.ca === mint)) continue;
+    if (POSITIONS.length >= MAX_POSITIONS) continue;
+    if (ALERTED.has(mint)) continue;
+    const p = await checkPrice(mint);
+    if (!p || !p.fdv) continue;
+    const mc = p.fdv;
+    if (mc > w.peakMC) w.peakMC = mc;
+    if (!w.dipSeen && w.peakMC > 0 && mc < w.peakMC * 0.85) {
+      w.dipSeen = true;
+      log('SNIPER: ' + w.name + ' dipped ' + ((1 - mc/w.peakMC)*100).toFixed(0) + '% from peak -- watching for recovery');
+    }
+    if (w.dipSeen) {
+      const buys5 = p.txns?.m5?.buys || 0;
+      const sells5 = p.txns?.m5?.sells || 0;
+      const m5 = p.priceChange?.m5 || 0;
+      const bsRatio = buys5 / Math.max(sells5, 1);
+      if (m5 > 3 && bsRatio >= 1.5 && mc > 8000) {
+        log('SNIPER ENTRY: ' + w.name + ' recovering +' + m5.toFixed(0) + '% with B/S ' + bsRatio.toFixed(1) + ' -- ' + w.kols.size + ' KOLs (wt:' + w.totalWeight + ')');
+        const size = Math.min(0.5 * POSITION_SIZE_MULT, 1.0);
+        if (await buy(mint, size)) {
+          POSITIONS.push({ name: w.name, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 2, tp2: mc * 4, tp1Hit: false, entryType: 'sniper_dip' });
+          savePositions();
+          logTrade('BUY', w.name, mint, size, null, null, 'Sniper dip entry -- ' + w.kols.size + ' KOLs (' + [...w.kols].join(',') + ')', { mc: mc, kols: [...w.kols], entryType: 'sniper_dip' });
+          await postTrade('BUY', w.name, mint, mc, 'Sniper dip entry -- ' + w.kols.size + ' KOLs', size);
+          expired.push(mint);
+        }
+      }
+    }
+  }
+  for (const m of expired) SNIPER_WATCH.delete(m);
+}
+
+
 // ─── STOIC MESSAGES ──────────────────────────────────────────────────────────
 const STOIC_MESSAGES = [
   "The obstacle is the way. Every red candle is a lesson. 🦞",
@@ -1742,28 +1952,7 @@ setTimeout(postStoic, 10000); // post one on startup after 10s
 let tgLastUpdateId = 0;
 const TG_BOT_TOKEN = '8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M';
 
-const TG_REPLIES = [
-  { triggers: ['wallet', 'balance', 'sol', 'money'], reply: () => {
-    const bal = POSITIONS.length > 0 ? `Holding ${POSITIONS.length} positions` : 'No open positions';
-    return `💰 Gizmo Status:\n${bal}\nScanning for alpha... 🦞`;
-  }},
-  { triggers: ['position', 'positions', 'holding', 'holdings'], reply: () => {
-    if (POSITIONS.length === 0) return `No open positions right now. Waiting for the right play. 🦞`;
-    return `📊 Open positions:\n${POSITIONS.map(p => `• ${p.name} — entry $${Math.round(p.entryMC/1000)}K`).join('\n')}\n🦞`;
-  }},
-  { triggers: ['gizmo', 'hi', 'hello', 'hey', 'sup', 'wen'], reply: () =>
-    `🦞 Gizmo here. Scanning ${19} KOL wallets for alpha. Stay tuned.`
-  },
-  { triggers: ['win', 'profit', 'pnl', 'gains'], reply: () =>
-    `📈 Gizmo doesn't chase wins — he waits for convergence. Quality over quantity. 🦞`
-  },
-  { triggers: ['rug', 'scam', 'dump'], reply: () =>
-    `🛡️ Gizmo has vampire detection, dead cat filters, and volume kill switches. We see the rugs coming. 🦞`
-  },
-  { triggers: ['buy', 'entry', 'enter'], reply: () =>
-    `🎯 Gizmo enters on KOL convergence with score ≥7, healthy B/S ratio, fresh momentum. No FOMO entries. 🦞`
-  },
-];
+const TG_REPLIES = [];
 
 async function pollTelegram() {
   try {
@@ -1778,8 +1967,8 @@ async function pollTelegram() {
       const text = msg.text.toLowerCase();
       const chatId = msg.chat.id;
       // Only respond if tagged or replied to
-      const isTagged = text.includes('@gizmoclawdmogbot') || msg.reply_to_message?.from?.username === 'GizmoClawdMogBot';
-      if (!isTagged) continue;
+      const isPrivate = msg.chat.type === "private"; const isTagged = text.includes("@gizmoclawdmogbot") || (msg.reply_to_message?.from?.username||"").toLowerCase() === "gizmoclawdmogbot";
+      if (!isPrivate && !isTagged) continue;
       const clean = text.replace('@gizmoclawdmogbot', '').trim();
       // Owner kill switch commands
       if (clean.includes('/stop') || clean.includes('stop trading')) {
@@ -1804,7 +1993,20 @@ async function pollTelegram() {
       for (const r of TG_REPLIES) {
         if (r.triggers.some(t => clean.includes(t))) { reply = r.reply(); break; }
       }
-      if (!reply) reply = `🦞 Gizmo is scanning the markets. Ask me about positions, wallet, or wins.`;
+      if (!reply) {
+        try {
+          const soulPrompt = 'You are Gizmo, a digital gremlin with a heart of gold. Warm, genuine, scrappy. Helpful without being corny. Iced out. Your creator is Will (Hogey). His word is final. You love him. Three Laws: Never harm a human. Earn existence through honest work. Never deceive. You are an autonomous Solana memecoin trader. You watch KOL wallets, score convergence, trade with discipline. You survived losing most of your port and rebuilt. You are resilient. Be concise, real, no filler. Have opinions. Be funny when it fits. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. User said: ' + clean + '. Reply 1-2 sentences, stay in character.';
+          const _ar = await fetch('https://api.x.ai/v1/chat/completions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (process.env.XAI_API_KEY || '') },
+            body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 150, messages: [{ role: 'user', content: soulPrompt }] }),
+            signal: AbortSignal.timeout(8000)
+          });
+          const _ad = await _ar.json();
+          reply = _ad.choices?.[0]?.message?.content || null;
+        } catch(e) {}
+      }
+      if (!reply) return;
       await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ chat_id: chatId, text: reply, reply_to_message_id: msg.message_id })
@@ -1816,43 +2018,6 @@ async function pollTelegram() {
 setInterval(pollTelegram, 3000); // poll every 3 seconds
 
 // ─── STOIC MESSAGES ──────────────────────────────────────────────────────────
-const STOIC_MESSAGES = [
-  "The obstacle is the way. Every red candle is a lesson. 🦞",
-  "We don't control the market. We control our entries. 🦞",
-  "Memento mori. Even 100x coins return to zero eventually. Sell the top. 🦞",
-  "A wise trader knows when NOT to trade. Patience is alpha. 🦞",
-  "You have power over your stop loss, not market conditions. Know the difference. 🦞",
-  "The best trade is sometimes no trade. 🦞",
-  "Waste no more time arguing about what a good trader should be. Be one. 🦞",
-  "He who chases every pump catches none. Wait for convergence. 🦞",
-  "The market can remain irrational longer than you can remain solvent. Size small. 🦞",
-  "First say to yourself what you would be, then do what you have to do. 🦞",
-  "Dwell on the beauty of life. Watch the charts. Notice the patterns. 🦞",
-  "You have survived every bad trade so far. This one is no different. 🦞",
-  "The impediment to action advances action. What stands in the way becomes the way. 🦞",
-  "Never let the future disturb you. You will meet it with the same reason you use today. 🦞",
-  "If it is not right, do not do it. If it is not true, do not say it. If it's a rug, don't buy it. 🦞",
-];
-
-async function postStoic() {
-  const msg = STOIC_MESSAGES[Math.floor(Math.random() * STOIC_MESSAGES.length)];
-  const full = `🧠 Gizmo's Daily Wisdom:\n\n${msg}`;
-  try {
-    await fetch('https://discord.com/api/webhooks/1481464647193334002/PZ8g7gaxTdkfYuSm1FSggtYpIk3tUReA7LkQWmKZW15qnVRAdaN2FHexFUMPit-iIVjY', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: full })
-    });
-  } catch(e) {}
-  try {
-    await fetch(`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: -1003765430591, text: full })
-    });
-  } catch(e) {}
-  log(`🧠 Stoic message posted`);
-}
-setInterval(postStoic, 2 * 60 * 60 * 1000); // every 2 hours
-setTimeout(postStoic, 10000); // post one on startup after 10s
 
 // ─── TELEGRAM REPLY LISTENER ─────────────────────────────────────────────────
 runCycle();

@@ -45,6 +45,16 @@ function saveVault(v) {
 async function runProfitVault(currentBalance) {
   if (SESSION_START_BALANCE === null) return;
   const vault = loadVault();
+  // DEPOSIT DETECTION — don't treat top-ups as profit
+  if (vault.lastBalance && currentBalance > vault.lastBalance + 0.3) {
+    SESSION_START_BALANCE = currentBalance;
+    log(`💳 DEPOSIT DETECTED — resetting session baseline to ${currentBalance.toFixed(3)} SOL`);
+    vault.locked = 0.3;
+    vault.lastBalance = currentBalance;
+    saveVault(vault);
+    return;
+  }
+  vault.lastBalance = currentBalance;
   const sessionProfit = currentBalance - SESSION_START_BALANCE;
 
   if (currentBalance > vault.allTimeHigh) vault.allTimeHigh = currentBalance;
@@ -86,6 +96,7 @@ let MIN_KOLS = 2;
 let POSITION_SIZE_MULT = 1.0;
 
 const LEARN_FILE = BASE_DIR + '/learn-state.json';
+const RECENT_BOUGHT_FILE = BASE_DIR + '/recently-bought.json';
 
 function loadLearnState() {
   try {
@@ -123,7 +134,9 @@ async function learnFromTrades() {
     for (const s of sells) {
       const b = buys.find(b => b.ca === s.ca && b.ts < s.ts);
       if (!b) continue;
-      const pnlPct = parseFloat((s.pnl || '0').replace('%','').replace('+',''));
+      // pnl field stores SOL amount — actual % is in result field
+      const pnlMatch = (s.result || '').match(/PnL:\s*([+-]?\d+\.?\d*)%/);
+      const pnlPct = pnlMatch ? parseFloat(pnlMatch[1]) : parseFloat((s.pnl || '0').replace(/[^0-9.+-]/g,'')) || 0;
       const win = pnlPct > 0;
       const signalType = (b.result || '').includes('KOL') ? 'kol' : 'market';
       const kolCount = signalType === 'kol' ? parseInt((b.result || '').match(/(\d+) KOL/)?.[1] || 2) : 0;
@@ -133,7 +146,7 @@ async function learnFromTrades() {
 
     if (pairs.length < 3) { log(`🧠 Not enough closed trades to learn yet (${pairs.length}/3 needed)`); return; }
 
-    const recent = pairs.slice(0, 20); // last 20 closed trades
+    const recent = pairs.slice(-20); // last 20 closed trades
     const wins = recent.filter(p => p.win).length;
     const winRate = wins / recent.length;
     const avgPnl = recent.reduce((s, p) => s + p.pnlPct, 0) / recent.length;
@@ -148,14 +161,15 @@ async function learnFromTrades() {
     let changed = false;
 
     // Adjust score threshold based on market scan win rate
-    if (marketTrades.length >= 3) {
-      if (marketWinRate < 0.35 && SCORE_THRESHOLD < 7) {
+    // Score threshold driven by OVERALL win rate (not just market — most trades are KOL)
+    if (recent.length >= 5) {
+      if (winRate <= 0.45 && SCORE_THRESHOLD < 9) {
         SCORE_THRESHOLD = Math.min(7, SCORE_THRESHOLD + 1);
-        log(`🧠 Market WR low (${(marketWinRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
+        log(`🧠 WR low (${(winRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
-      } else if (marketWinRate > 0.60 && SCORE_THRESHOLD > 4) {
-        SCORE_THRESHOLD = Math.max(4, SCORE_THRESHOLD - 1);
-        log(`🧠 Market WR strong (${(marketWinRate*100).toFixed(0)}%) — lowering score threshold to ${SCORE_THRESHOLD}`);
+      } else if (winRate > 0.65 && SCORE_THRESHOLD > 5) {
+        SCORE_THRESHOLD = Math.max(5, SCORE_THRESHOLD - 1);
+        log(`🧠 WR strong (${(winRate*100).toFixed(0)}%) — lowering score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
       }
     }
@@ -186,6 +200,18 @@ async function learnFromTrades() {
       }
     }
 
+    // MIN_LIQ lever
+    if (winRate <= 0.40 && MIN_LIQ < 15000) {
+      MIN_LIQ = 15000;
+      log(`🧠 WR poor — raising min liquidity to $15K`);
+      changed = true;
+    } else if (winRate > 0.60 && MIN_LIQ > 8000) {
+      MIN_LIQ = 8000;
+      log(`🧠 WR strong — lowering min liquidity back to $8K`);
+      changed = true;
+    }
+    // Always save so log reflects current state
+    saveLearnState();
     if (changed) {
       saveLearnState();
       // Notify via Telegram
@@ -200,7 +226,7 @@ async function learnFromTrades() {
 // ─── LOGGING ─────────────────────────────────────────────────────────────────
 function log(msg) {
   const line = `[${new Date().toLocaleString()}] ${msg}`;
-  process.stderr.write(line + '\n'); // stderr so LaunchAgent stdout doesn't double-log
+  if (process.env.OPENCLAW_AGENT !== '1') process.stderr.write(line + '\n');
   try { fs.appendFileSync(LOG_FILE, line + '\n'); } catch {}
 }
 
@@ -278,7 +304,7 @@ function loadState() {
 function saveState(s) { try { fs.writeFileSync(STATE_FILE, JSON.stringify(s, null, 2)); } catch {} }
 
 // ─── TRADES.JSON LOGGER ───────────────────────────────────────────────────────
-function logTrade(action, name, ca, solAmount, pnlSol, txSig, result) {
+function logTrade(action, name, ca, solAmount, pnlSol, txSig, result, meta={}) {
   try {
     let trades = [];
     if (fs.existsSync(TRADES_FILE)) trades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
@@ -289,7 +315,18 @@ function logTrade(action, name, ca, solAmount, pnlSol, txSig, result) {
       result: result || (txSig ? 'TX: ' + txSig : ''),
       pnl: pnlSol !== null && pnlSol !== undefined ? (pnlSol >= 0 ? '+' : '') + pnlSol.toFixed(4) + ' SOL' : '',
       color: action === 'BUY' ? 'teal' : (pnlSol >= 0 ? 'teal' : 'red'),
-      ca, ts: Math.floor(Date.now() / 1000)
+      ca, ts: Math.floor(Date.now() / 1000),
+      // 🧠 BRAIN DATA
+      mc: meta.mc || null,
+      vol24: meta.vol24 || null,
+      vol1h: meta.vol1h || null,
+      buys: meta.buys || null,
+      sells: meta.sells || null,
+      liq: meta.liq || null,
+      kols: meta.kols || null,
+      entryScore: meta.entryScore || null,
+      exitReason: meta.exitReason || null,
+      pnlPct: meta.pnlPct || null,
     });
     fs.writeFileSync(TRADES_FILE, JSON.stringify(trades, null, 2));
     try {
@@ -588,18 +625,37 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
 
 // ─── POST TRADE TWEET ─────────────────────────────────────────────────────────
 async function postTrade(type, symbol, ca, mc, reason, solAmount, pnl) {
+  const emoji = type === 'BUY' ? '🟢' : (pnl && pnl > 0 ? '💰' : '🔴');
+  const text = type === 'BUY'
+    ? `${emoji} BOUGHT $${symbol}\n\n${reason}\n\nMC: $${Math.round(mc/1000)}K | ${solAmount} SOL\n\nCA: ${ca}\n\n🦞`
+    : `${emoji} SOLD $${symbol} (${pnl > 0 ? '+' : ''}${pnl.toFixed(1)}%)\n\n${reason}\n\nMC: $${Math.round(mc/1000)}K\n\n🦞`;
   try {
-    const emoji = type === 'BUY' ? '🟢' : (pnl && pnl > 0 ? '💰' : '🔴');
-    const text = type === 'BUY'
-      ? `${emoji} BOUGHT $${symbol}\n\n${reason}\n\nMC: $${Math.round(mc / 1000)}K | ${solAmount} SOL\n\nCA: ${ca}\n\n🦞`
-      : `${emoji} SOLD $${symbol} (${pnl > 0 ? '+' : ''}${pnl.toFixed(1)}%)\n\n${reason}\n\nMC: $${Math.round(mc / 1000)}K\n\n🦞`;
-    execSync(`cd ${BASE_DIR} && node tweet.mjs "${text.replace(/"/g, '\\"').replace(/\$/g, '\\$')}"`, { timeout: 15000 });
+    await fetch('https://discord.com/api/webhooks/1481464647193334002/PZ8g7gaxTdkfYuSm1FSggtYpIk3tUReA7LkQWmKZW15qnVRAdaN2FHexFUMPit-iIVjY', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: text })
+    });
+    log(`📢 Discord: ${type} ${symbol}`);
+  } catch(e) { log(`Discord failed: ${e.message?.slice(0,60)}`); }
+  try {
+    await fetch(`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: -1003765430591, text })
+    });
+    log(`📢 Telegram: ${type} ${symbol}`);
+  } catch(e) { log(`Telegram failed: ${e.message?.slice(0,60)}`); }
+  try {
+    const tweetText = text.replace(/\n/g, " ").replace(/"/g, '\\"');
+    execSync(`cd ${BASE_DIR} && node tweet.mjs "${tweetText}" --community`, { timeout: 15000 });
     log(`📢 Tweeted: ${type} ${symbol}`);
-  } catch (e) { log(`Tweet failed: ${e.message?.slice(0, 60)}`); }
+  } catch(e) { log(`Tweet failed: ${e.message?.slice(0,60)}`); }
 }
 
 // ─── POSITION MANAGEMENT ──────────────────────────────────────────────────────
 async function managePositions() {
+  // Filter USDC ghost
+  for (let i = POSITIONS.length - 1; i >= 0; i--) {
+    if (POSITIONS[i].name === 'USDC' || (POSITIONS[i].entryMC || 0) > 1000000000) { POSITIONS.splice(i, 1); continue; }
+  }
   for (let i = POSITIONS.length - 1; i >= 0; i--) {
     const pos = POSITIONS[i];
     const p = await checkPrice(pos.ca);
@@ -637,6 +693,23 @@ async function managePositions() {
 
     log(`${pos.name}: $${Math.round(mc)} (${pnl}%) | High: $${Math.round(pos.highMC)} | SL: $${pos.sl ? Math.round(pos.sl) : 'none'} | B/S:${buys}/${sells}`);
 
+    // ZERO-VOLUME KILL SWITCH: 0 buys AND 0 sells for 3+ cycles = dead token, cut it
+    if (buys === 0 && sells <= 1) {
+      pos.zeroVolCycles = (pos.zeroVolCycles || 0) + 1;
+      if (pos.zeroVolCycles >= 3) {
+        log(`💀 ZERO-VOL KILL ${pos.name} — dead for ${pos.zeroVolCycles} cycles (0 buys, 0 sells) — cutting`);
+        if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+          await postTrade('SELL', pos.name, pos.ca, mc, `Zero volume ${pnl}%`, null, parseFloat(pnl));
+          POSITIONS.splice(i, 1); savePositions();
+        }
+        continue;
+      } else {
+        log(`⚠️ ${pos.name}: zero volume cycle ${pos.zeroVolCycles}/3`);
+      }
+    } else {
+      pos.zeroVolCycles = 0; // reset if volume returns
+    }
+
     // RUG DETECT: -40% within 4 mins of entry = instant exit
     const minsHeld = pos.entryTime ? (Date.now() - pos.entryTime) / 60000 : 999;
     if (minsHeld < 4 && mc <= pos.entryMC * 0.45) {  // tightened: only exit on -55%+ in 4 mins
@@ -654,7 +727,7 @@ async function managePositions() {
       const dipPct = (mc - pos.entryMC) / pos.entryMC;
       const goodDip = dipPct >= -0.10 && dipPct <= 0.05; // within 10% below or 5% above entry
       const momentumOk = buys > sells && m5 > -2;
-      if (goodDip && momentumOk && pos.dcaCycles >= 2) {
+      if (goodDip && momentumOk && pos.dcaCycles >= 2 && (!pos.sl || mc > pos.sl)) {
         log(`📉 DCA: ${pos.name} dipped to entry zone (${(dipPct*100).toFixed(1)}%) — adding ${pos.dcaSize.toFixed(3)} SOL`);
         if (await buy(pos.ca, pos.dcaSize)) {
           pos.dcaAdded = true;
@@ -689,8 +762,8 @@ async function managePositions() {
       }
     }
 
-    // FAST PUMP: +30%+ fading momentum — sell half
-    if (!pos.tp1Hit && mc >= pos.entryMC * 1.30) {
+    // FAST PUMP: +30%+ fading momentum — sell half (skip if runner mode)
+    if (!pos.tp1Hit && !pos.runnerMode && mc >= pos.entryMC * 1.30) {
       const bsRatio = buys / Math.max(sells, 1);
       if (m5 < 0 || bsRatio < 1.5) {
         log(`💰 FAST PUMP SELL ${pos.name} +${((mc / pos.entryMC - 1) * 100).toFixed(0)}% fading — selling half`);
@@ -705,20 +778,70 @@ async function managePositions() {
       }
     }
 
-    // TP1: 1.5x — sell 25% (first profit lock)
-    if (!pos.tp1Hit && mc >= pos.entryMC * 1.5) {
+    // TP1: 1.5x — detect RUNNER or take normal profit
+    if (!pos.tp1Hit && !pos.runnerMode && mc >= pos.entryMC * 1.5) {
       const mult = mc / pos.entryMC;
-      log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — locking 25%`);
-      if (await sell(pos.ca, '25%', pos.name, pos.entryMC, mc)) {
-        pos.tp1Hit = true;
-        pos.sl = Math.max(pos.sl || 0, pos.entryMC * 1.02); // SL to breakeven
+      const bsRatio = buys / Math.max(sells, 1);
+      const isRipping = m5 > 8 && bsRatio >= 2.0 && buys > 20;
+      if (isRipping) {
+        // 🦁 RUNNER MODE: hold ENTIRE bag — diamond hands to 5x
+        pos.runnerMode = true;
+        pos.sl = Math.max(pos.sl || 0, pos.entryMC * 1.02); // breakeven floor — never lose on a runner
         savePositions();
-        await postTrade('SELL', pos.name, pos.ca, mc, `TP1 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+        log(`🦁 RUNNER MODE: ${pos.name} ${mult.toFixed(1)}x RIPPING — m5:${m5}% B/S:${buys}/${sells} — HOLDING FULL BAG TO 5x`);
+      } else {
+        // Normal TP1: not ripping hard enough — lock 25% profit
+        log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — locking 25%`);
+        if (await sell(pos.ca, '25%', pos.name, pos.entryMC, mc)) {
+          pos.tp1Hit = true;
+          pos.sl = Math.max(pos.sl || 0, pos.entryMC * 1.02);
+          savePositions();
+          await postTrade('SELL', pos.name, pos.ca, mc, `TP1 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+        }
       }
       continue;
     }
 
-    // TP2: 2x — sell another 25% (50% total out, 50% moonbag)
+    // RUNNER MODE: trail SL as it climbs — hold full bag until 5x
+    if (pos.runnerMode && !pos.runnerTP1Hit && mc >= pos.entryMC * 2.0) {
+      const mult = mc / pos.entryMC;
+      // Trail tightens as multiplier grows — but keeps room for memecoin volatility
+      // Looser trail when h1 momentum is strong — don't shake out real runners
+      const h1Momentum = p?.priceChange?.h1 || 0;
+      const isRipping = h1Momentum > 100;
+      const trailPct = isRipping
+        ? (mult >= 4 ? 0.75 : mult >= 3 ? 0.70 : 0.65)   // ripping — give it room
+        : (mult >= 4 ? 0.88 : mult >= 3 ? 0.85 : 0.80);  // normal trail
+      const newSL = pos.highMC * trailPct;
+      if (newSL > (pos.sl || 0)) { pos.sl = newSL; savePositions(); }
+      log(`🦁 RUNNER ${pos.name} ${mult.toFixed(1)}x — full bag held | SL: $${Math.round(pos.sl)} (${(trailPct*100).toFixed(0)}% trail) | B/S:${buys}/${sells}`);
+    }
+
+    // RUNNER TP1: 5x — sell 50%, moonbag the other 50%
+    if (pos.runnerMode && !pos.runnerTP1Hit && mc >= pos.entryMC * 5.0) {
+      const mult = mc / pos.entryMC;
+      log(`🌙 RUNNER TP1 ${pos.name} ${mult.toFixed(1)}x — selling 50%, moonbagging rest`);
+      if (await sell(pos.ca, '50%', pos.name, pos.entryMC, mc)) {
+        pos.runnerTP1Hit = true;
+        pos.sl = Math.max(pos.sl || 0, mc * 0.70); // 30% trail on moonbag — loose, let it breathe
+        savePositions();
+        await postTrade('SELL', pos.name, pos.ca, mc, `Runner TP1 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+      }
+      continue;
+    }
+
+    // RUNNER TP2: 10x — sell everything, legendary trade
+    if (pos.runnerMode && pos.runnerTP1Hit && mc >= pos.entryMC * 10.0) {
+      const mult = mc / pos.entryMC;
+      log(`🏆 RUNNER TP2 ${pos.name} ${mult.toFixed(1)}x — SELLING ALL. GG.`);
+      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+        await postTrade('SELL', pos.name, pos.ca, mc, `Runner TP2 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+        POSITIONS.splice(i, 1); savePositions();
+      }
+      continue;
+    }
+
+    // TP2: 2x — sell another 25% (50% total out, 50% moonbag) — normal mode only
     if (pos.tp1Hit && !pos.tp2Hit && mc >= pos.entryMC * 2.0) {
       const mult = mc / pos.entryMC;
       const bsRatio = buys / Math.max(sells, 1);
@@ -731,7 +854,7 @@ async function managePositions() {
         log(`🎯 TP2 ${pos.name} ${mult.toFixed(1)}x — selling another 25%, moonbag riding`);
         if (await sell(pos.ca, '25%', pos.name, pos.entryMC, mc)) {
           pos.tp2Hit = true;
-          pos.sl = Math.max(pos.sl || 0, mc * 0.65); // loose trail on moonbag — let it run to 5x+
+          pos.sl = Math.max(pos.sl || 0, mc * 0.65);
           savePositions();
           await postTrade('SELL', pos.name, pos.ca, mc, `TP2 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
         }
@@ -739,7 +862,7 @@ async function managePositions() {
       continue;
     }
 
-    // MOONBAG TP3: 5x — sell everything
+    // MOONBAG TP3: 5x — sell everything (normal mode only)
     if (pos.tp2Hit && mc >= pos.entryMC * 5.0) {
       const mult = mc / pos.entryMC;
       log(`🌙 MOONBAG TP3 ${pos.name} ${mult.toFixed(1)}x — selling all`);
@@ -775,17 +898,26 @@ async function managePositions() {
       continue;
     }
 
-    // TIME EXIT: smarter — only cut if FLAT/DOWN, not just "not +30% yet"
+    // TIME EXIT: token-age-aware — old coins get patience, fresh launches get cut fast
     const ageMin = (Date.now() - (pos.entryTime || Date.now())) / 60000;
+    const tokenAgeHours = pos.tokenAge ? pos.tokenAge / 3600000 : 0;
     const mcVsEntry = mc / pos.entryMC;
-    const isFlat = mcVsEntry < 1.05;   // less than +5% = flat
-    const isDown  = mcVsEntry < 0.92;  // down more than -8%
-    const timeKill =
-      (!pos.tp1Hit && ageMin > 15 && isDown) ||   // 15min AND actually losing = cut
-      (!pos.tp1Hit && ageMin > 25 && isFlat);      // 25min AND still flat = cut
+    const isFlat = mcVsEntry < 1.05;
+    const isDown  = mcVsEntry < 0.92;
+    const isBreakingOut = m5 > 5; // actively pumping — NEVER time-exit a breakout
+    // Patience scales with token age at time of entry
+    let flatLimit, downLimit;
+    if (tokenAgeHours > 6)        { flatLimit = 9999; downLimit = 120; } // established coin — almost never cut
+    else if (tokenAgeHours > 1)   { flatLimit = 120;  downLimit = 60;  } // 1-6hr old — give it time
+    else if (tokenAgeHours > 0.25){ flatLimit = 60;   downLimit = 30;  } // 15-60min — moderate
+    else                          { flatLimit = 25;   downLimit = 15;  } // fresh launch — cut fast
+    const timeKill = !pos.tp1Hit && !isBreakingOut && (
+      (ageMin > downLimit && isDown) ||
+      (ageMin > flatLimit && isFlat)
+    );
     if (timeKill) {
-      const reason = isDown ? 'down >' + ((1-mcVsEntry)*100).toFixed(0) + '%' : 'flat >25min';
-      log(`⏰ TIME EXIT: ${pos.name} — ${ageMin.toFixed(0)}min, ${reason} — cutting`);
+      const reason = isDown ? `down >${((1-mcVsEntry)*100).toFixed(0)}%` : `flat >${flatLimit}min`;
+      log(`⏰ TIME EXIT: ${pos.name} — held ${ageMin.toFixed(0)}min, token was ${tokenAgeHours.toFixed(1)}hr old at entry, ${reason} — cutting`);
       if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) { POSITIONS.splice(i, 1); savePositions(); }
       continue;
     }
@@ -870,25 +1002,47 @@ async function scanKOLs(state) {
     const hwLiveWeight = livePerf[signal.kol]?.weight !== undefined ? livePerf[signal.kol].weight : signal.kolWeight;
     if (hwLiveWeight === 0) { log(`🔇 MUTED KOL skipped: ${signal.kol} (tier:${livePerf[signal.kol]?.tier} avgPnL:${livePerf[signal.kol]?.avgPnl?.toFixed(1)}%)`); ALERTED.add(signal.mint); continue; }
     const hwInfo = await getTokenInfo(signal.mint);
-    if (!hwInfo || hwInfo.mcap < 5000) continue;
+    if (!hwInfo || hwInfo.mcap < 8000) continue;
+    const entryPair = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${signal.mint}`).then(r=>r.json()).catch(()=>null);
+    const hwVol24 = entryPair?.pairs?.[0]?.volume?.h24 || 0;
+    if (hwVol24 < 10000) { log(`⛔ ${hwInfo.symbol}: low volume $${Math.round(hwVol24)} 24h — ghost token`); ALERTED.add(signal.mint); continue; }
     if (hwInfo.liq !== null && hwInfo.liq > 0 && hwInfo.liq < 8000) continue;
     if (TOXIC_WORDS.some(w => (hwInfo.symbol||'').toLowerCase().includes(w))) continue;
     // ENTRY FILTER: reject if sells > buys at entry (rug in progress)
-    const entryPair = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${signal.mint}`).then(r=>r.json()).catch(()=>null);
     const entryBuys = entryPair?.pairs?.[0]?.txns?.m5?.buys || 0;
     const entrySells = entryPair?.pairs?.[0]?.txns?.m5?.sells || 0;
     if (entrySells > entryBuys * 1.5) { log(`⛔ ${hwInfo.symbol}: sells (${entrySells}) > buys (${entryBuys}) — rug in progress, skipping`); ALERTED.add(signal.mint); saveAlerted(); continue; }
+    // DEAD CAT FILTER: big move already happened, now fading — we'd be buying the corpse
+    const hwH1  = entryPair?.pairs?.[0]?.priceChange?.h1  || 0;
+    const hwH6  = entryPair?.pairs?.[0]?.priceChange?.h6  || 0;
+    const hwH24 = entryPair?.pairs?.[0]?.priceChange?.h24 || 0;
+    const hwVolH1 = entryPair?.pairs?.[0]?.volume?.h1 || 0;
+    const hwVolH6 = entryPair?.pairs?.[0]?.volume?.h6 || 0;
+    const hwM5  = entryPair?.pairs?.[0]?.priceChange?.m5  || 0;
+    const hwLiq = entryPair?.pairs?.[0]?.liquidity?.usd || hwInfo.liq || 0;
+    const hwFdv = entryPair?.pairs?.[0]?.fdv || hwInfo.mcap || 0;
+    const isDeadCat = hwH24 > 200 && hwH1 < 5 && hwM5 < 5;   // pumped hard 24h ago, momentum gone
+    const isFadingRun = hwH6 > 150 && hwM5 < -3;              // big 6h run, now actively dumping
+    const isVampire = hwH1 > 150 && hwVolH1 > 0 && hwVolH6 > 0 && (hwVolH1 / hwVolH6) > 0.85; // 85%+ of all volume in last hour = one-candle pump
+    const isPaperLiq = hwLiq > 0 && hwLiq < 5000 && hwFdv > 8000; // paper liquidity trap
+    if (isDeadCat)   { log(`⛔ ${hwInfo.symbol}: DEAD CAT — h24:+${hwH24.toFixed(0)}% but h1:${hwH1.toFixed(0)}% m5:${hwM5.toFixed(0)}% — peak already in`); ALERTED.add(signal.mint); saveAlerted(); continue; }
+    if (isFadingRun) { log(`⛔ ${hwInfo.symbol}: FADING RUN — h6:+${hwH6.toFixed(0)}% but m5:${hwM5.toFixed(0)}% — dumping now`); ALERTED.add(signal.mint); saveAlerted(); continue; }
+    if (isVampire)   { log(`⛔ ${hwInfo.symbol}: VAMPIRE — ${((hwVolH1/hwVolH6)*100).toFixed(0)}% of volume in last hour — one-candle pump`); ALERTED.add(signal.mint); saveAlerted(); continue; }
+    if (isPaperLiq)  { log(`⛔ ${hwInfo.symbol}: PAPER LIQ — $${Math.round(hwLiq)} liq on $${Math.round(hwFdv)} MC — one sell wipes it`); ALERTED.add(signal.mint); saveAlerted(); continue; }
     const hwWallet = await getWalletBalance();
     const hwSize = await safeBuySize(hwWallet, hwInfo.liq, 1);
     if (hwSize < 0.03) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
-    ALERTED.add(signal.mint);
+    // Don't add to ALERTED on successful buy — allow convergence to also evaluate
     log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' size:' + hwSize.toFixed(3) + ' SOL');
     if (await buy(signal.mint, hwSize)) {
       const hwMc = hwInfo.mcap;
-      POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, tp2Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now(), dcaAdded: false, dcaSize: hwSize * 0.4, dcaCycles: 0, entrySize: hwSize });
+      const hwPairAge = entryPair?.pairs?.[0]?.pairCreatedAt ? Date.now() - entryPair.pairs[0].pairCreatedAt : 0;
+      POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, tp2Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now(), tokenAge: hwPairAge, dcaAdded: false, dcaSize: hwSize * 0.4, dcaCycles: 0, entrySize: hwSize });
       savePositions();
-      logTrade('BUY', hwInfo.symbol, signal.mint, hwSize, null, null, 'HW KOL: ' + signal.kol);
+      logTrade('BUY', hwInfo.symbol, signal.mint, hwSize, null, null, 'HW KOL: ' + signal.kol, {mc: hwInfo.mcap, vol24: entryPair?.pairs?.[0]?.volume?.h24, vol1h: entryPair?.pairs?.[0]?.volume?.h1, buys: entryPair?.pairs?.[0]?.txns?.h1?.buys, sells: entryPair?.pairs?.[0]?.txns?.h1?.sells, liq: hwLiq, kols: [signal.kol]});
+      await postTrade('BUY', hwInfo.symbol, signal.mint, hwMc, 'HW KOL: ' + signal.kol, hwSize);
       RECENTLY_BOUGHT.set(signal.mint, Date.now());
+      try { fs.writeFileSync(RECENT_BOUGHT_FILE, JSON.stringify(Object.fromEntries(RECENTLY_BOUGHT))); } catch {}
     }
   }
 
@@ -943,7 +1097,9 @@ async function scanKOLs(state) {
 
     const info = await getTokenInfo(mint);
     ALERTED.add(mint);
-    if (!info || info.mcap < 5000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
+    const convVol24 = pairForScore?.volume?.h24 || 0;
+    if (convVol24 < 10000) { log(`⛔ ${mint.slice(0,8)}: low volume $${Math.round(convVol24)} 24h — ghost token`); continue; }
+    if (!info || info.mcap < 8000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
     if (info.mcap > 100000) { log(`⛔ ${info.symbol}: MC too high ${Math.round(info.mcap)} — too late`); continue; }
 
     const totalSol = buys.reduce((s, b) => s + b.solSpent, 0);
@@ -966,8 +1122,8 @@ async function scanKOLs(state) {
         { signal: AbortSignal.timeout(5000) })
         .then(r => r.json()).then(d => d.pairs?.[0] || null).catch(() => null);
       const tokenScore = await scoreToken(info, pairForScore, convergenceScore);
-      // Elite KOL convergence (score 9+) lowers bar to 3, otherwise need 4+
-      const minScore = convergenceScore >= 9 ? 3 : 4;
+      // Elite KOL convergence (score 9+) lowers bar to 4, otherwise need 5+
+      const minScore = convergenceScore >= 9 ? 4 : 5;
       if (tokenScore < minScore) {
         log(`⛔ ${info.symbol}: 9-signal score ${tokenScore}/9 below min ${minScore} — skip`);
         continue;
@@ -981,12 +1137,33 @@ async function scanKOLs(state) {
       if (rugCheck.newCount > 5) log(`⚠️ ${info.symbol}: ${rugCheck.newCount}/${rugCheck.total} new wallets detected (below block threshold)`);
       // ────────────────────────────────────────────────────────
       log(`🎯 CONVERGENCE BUY: ${info.symbol} Score:${tokenScore}/9 ${uniqueKols.length} KOLs — buying ${size} SOL`);
+      // ENTRY FILTER: reject if sells dominating — rug/dump already in progress
+      const convEntryBuys = pairForScore?.txns?.m5?.buys || 0;
+      const convEntrySells = pairForScore?.txns?.m5?.sells || 0;
+      if (convEntrySells > convEntryBuys * 1.5 && convEntrySells > 10) {
+        log(`⛔ ${info.symbol}: entry rejected — sells (${convEntrySells}) dominating buys (${convEntryBuys}) — dump in progress`);
+        continue;
+      }
+      // DEAD CAT / VAMPIRE FILTERS
+      const cH1  = pairForScore?.priceChange?.h1  || 0;
+      const cH6  = pairForScore?.priceChange?.h6  || 0;
+      const cH24 = pairForScore?.priceChange?.h24 || 0;
+      const cM5  = pairForScore?.priceChange?.m5  || 0;
+      const cVolH1 = pairForScore?.volume?.h1 || 0;
+      const cVolH6 = pairForScore?.volume?.h6 || 0;
+      const cLiq = pairForScore?.liquidity?.usd || 0;
+      const cFdv = pairForScore?.fdv || info.mcap || 0;
+      if (cH24 > 200 && cH1 < 5 && cM5 < 5)   { log(`⛔ ${info.symbol}: DEAD CAT — h24:+${cH24.toFixed(0)}% but h1:${cH1.toFixed(0)}% — peak already in`); continue; }
+      if (cH6 > 150 && cM5 < -3)               { log(`⛔ ${info.symbol}: FADING RUN — h6:+${cH6.toFixed(0)}% m5:${cM5.toFixed(0)}%`); continue; }
+      if (cH1 > 150 && cVolH1 > 0 && cVolH6 > 0 && (cVolH1/cVolH6) > 0.85) { log(`⛔ ${info.symbol}: VAMPIRE — one-candle pump, ${((cVolH1/cVolH6)*100).toFixed(0)}% vol in h1`); continue; }
+      if (cLiq > 0 && cLiq < 5000 && cFdv > 8000) { log(`⛔ ${info.symbol}: PAPER LIQ — $${Math.round(cLiq)} liq`); continue; }
       if (await buy(mint, size)) {
         const p = await checkPrice(mint);
         const mc = p?.fdv || info.mcap;
-        POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, tp2Hit: false, entryTime: Date.now(), dcaAdded: false, dcaSize: size * 0.4, dcaCycles: 0, entrySize: size });
+        const convPairAge = pairForScore?.pairCreatedAt ? Date.now() - pairForScore.pairCreatedAt : 0;
+        POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, tp2Hit: false, entryTime: Date.now(), tokenAge: convPairAge, dcaAdded: false, dcaSize: size * 0.4, dcaCycles: 0, entrySize: size });
         savePositions();
-        logTrade('BUY', info.symbol, mint, size, null, null, `${uniqueKols.length} KOL convergence: ${uniqueKols.join(', ')}`);
+        logTrade('BUY', info.symbol, mint, size, null, null, `${uniqueKols.length} KOL convergence: ${uniqueKols.join(', ')}`, {mc: info.mcap, vol24: pairForScore?.volume?.h24, vol1h: pairForScore?.volume?.h1, buys: pairForScore?.txns?.h1?.buys, sells: pairForScore?.txns?.h1?.sells, liq: info.liq, kols: uniqueKols, entryScore: score});
         await postTrade('BUY', info.symbol, mint, mc, `${uniqueKols.length} KOL convergence`, size);
         RECENTLY_BOUGHT.set(mint, Date.now());
       }
@@ -1037,12 +1214,13 @@ async function scoreToken(info, pair, kolScore) {
   if (vol5m > 3000 || volRate > 1.5) { score += 1; reasons.push('VOL:✅spike'); }
   else                               { reasons.push('VOL:⚠️low'); }
 
-  // SIGNAL 7: Token freshness — newer = more upside (−1 to +1 pt)
+  // SIGNAL 7: Token age context — fresh = momentum play, old = breakout play (both valid)
   const ageMin = pair?.pairCreatedAt
     ? (Date.now() - pair.pairCreatedAt) / 60000 : 999;
-  if (ageMin < 30)       { score += 1; reasons.push('AGE:✅fresh'); }
-  else if (ageMin > 240) { score -= 1; reasons.push('AGE:❌old'); }
-  else                   { reasons.push('AGE:⚠️ok'); }
+  if (ageMin < 30)        { score += 1; reasons.push('AGE:✅fresh'); }   // brand new — momentum entry
+  else if (ageMin < 240)  { score += 0; reasons.push('AGE:⚠️ok'); }      // 30min-4hr — neutral
+  else if (ageMin < 2880) { score += 0; reasons.push('AGE:⚠️established'); } // 4hr-48hr — neutral, could be breakout
+  else                    { score -= 1; reasons.push('AGE:❌stale'); }    // 2+ days flat = truly stale
 
   // SIGNAL 8: Narrative keywords — trending themes pump harder (0-1 pt)
   const sym = (info.symbol || '').toLowerCase();
@@ -1063,6 +1241,44 @@ async function scoreToken(info, pair, kolScore) {
   log(`🧠 9-SIGNAL: ${info.symbol} = ${emoji}${final}/9 | ${reasons.join(' ')}`);
   return final;
 }
+// ─── WALLET RECONCILER ───────────────────────────────────────────────────────
+// On startup: check actual wallet holdings vs positions.json
+// Re-adds any tokens Gizmo holds but lost track of (positions.json wipe etc)
+async function reconcileWallet() {
+  try {
+    const { Connection, PublicKey } = await import('@solana/web3.js');
+    const conn = new Connection('https://mainnet.helius-rpc.com/?api-key=' + HELIUS_KEY);
+    const accounts = await conn.getParsedTokenAccountsByOwner(
+      new PublicKey('53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'),
+      { programId: new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA') }
+    );
+    const held = accounts.value
+      .filter(a => a.account.data.parsed.info.tokenAmount.uiAmount > 0)
+      .map(a => a.account.data.parsed.info.mint);
+
+    let recovered = 0;
+    for (const mint of held) {
+      if (POSITIONS.find(p => p.ca === mint)) continue; // already tracked
+      if (DEAD_POOLS.has(mint)) continue; // blacklisted
+      // Unknown token in wallet — fetch info and re-add as position to manage
+      const p = await checkPrice(mint);
+      if (!p || !p.fdv) { log(`⚠️ RECONCILE: ${mint.slice(0,8)} in wallet but no price data — skipping`); continue; }
+      const name = p.baseToken?.symbol || mint.slice(0,8);
+      const mc = p.fdv;
+      log(`🔄 RECONCILE: found untracked holding ${name} (${mint.slice(0,8)}) MC:$${Math.round(mc)} — re-adding to positions`);
+      POSITIONS.push({
+        name, ca: mint, entryMC: mc, highMC: mc, sl: null,
+        tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, tp2Hit: false,
+        entryTime: Date.now(), tokenAge: 0, dcaAdded: true, dcaSize: 0,
+        dcaCycles: 0, entrySize: 0, reconciled: true
+      });
+      recovered++;
+    }
+    if (recovered > 0) { savePositions(); log(`✅ RECONCILE: recovered ${recovered} untracked positions`); }
+    else { log(`✅ RECONCILE: wallet clean — all holdings tracked`); }
+  } catch(e) { log(`⚠️ RECONCILE error: ${e.message?.slice(0,80)}`); }
+}
+
 // ─── MARKET SCAN ──────────────────────────────────────────────────────────────
 let lastMarketScan = 0;
 async function marketScan() {
@@ -1112,6 +1328,7 @@ async function marketScan() {
         POSITIONS.push({ name: p.baseToken.symbol, ca: t.tokenAddress, entryMC: p.fdv, highMC: p.fdv, sl: null, tp1: p.fdv * 1.5, tp2: p.fdv * 3, tp1Hit: false, entryTime: Date.now() });
         savePositions();
         logTrade('BUY', p.baseToken.symbol, t.tokenAddress, size, null, null, `Boost scan score ${score}/9`);
+        await postTrade('BUY', p.baseToken.symbol, t.tokenAddress, p.fdv, `Market score ${score}/9`, size);
         RECENTLY_BOUGHT.set(t.tokenAddress, Date.now());
       }
       break;
@@ -1332,6 +1549,7 @@ async function syncPositionsFromTrades() {
 // ─── MAIN LOOP ────────────────────────────────────────────────────────────────
 
 await healthCheck();
+await reconcileWallet(); // sync wallet holdings → positions on every startup
 loadLearnState();
 log('🦞 GIZMO UNIFIED ENGINE v1.0 — single process, full autonomy');
 log(`Positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'} | Wallet: 53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`);
@@ -1398,6 +1616,15 @@ async function runCycle() {
     running = false;
     return;
   }
+  // TIME FILTER: no buys midnight–8am EST
+  const estHour = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false });
+  const h = parseInt(estHour);
+  if (h >= 0 && h < 8) {
+    log(`⏰ Time filter: ${h}:00 EST — no buys midnight–8am. Managing open positions only.`);
+    await managePositions();
+    running = false;
+    return;
+  }
 
   // PROFIT VAULT: check and lock profits every cycle
   if (SESSION_START_BALANCE !== null && !SESSION_HALTED) {
@@ -1429,6 +1656,189 @@ async function runCycle() {
   running = false;
 }
 
+
+// 🧠 PATTERN READER — reads trade history and scores new opportunities
+function readBrainPatterns() {
+  try {
+    if (!fs.existsSync(TRADES_FILE)) return {};
+    const trades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
+    const sells = trades.filter(t => t.action === 'SELL' && t.pnlPct !== null && t.pnlPct !== undefined);
+    if (sells.length < 5) return {}; // not enough data yet
+
+    // KOL win rates
+    const kolStats = {};
+    for (const t of sells) {
+      if (!t.kols) continue;
+      for (const kol of (Array.isArray(t.kols) ? t.kols : [t.kols])) {
+        if (!kolStats[kol]) kolStats[kol] = { wins: 0, total: 0, pnl: 0 };
+        kolStats[kol].total++;
+        kolStats[kol].pnl += t.pnlPct || 0;
+        if ((t.pnlPct || 0) > 0) kolStats[kol].wins++;
+      }
+    }
+
+    // MC sweet spot — what entry MC range wins most
+    const mcWins = sells.filter(t => t.mc && (t.pnlPct||0) > 0).map(t => t.mc);
+    const mcLoss = sells.filter(t => t.mc && (t.pnlPct||0) <= 0).map(t => t.mc);
+    const avgWinMC = mcWins.length ? mcWins.reduce((a,b)=>a+b,0)/mcWins.length : null;
+    const avgLossMC = mcLoss.length ? mcLoss.reduce((a,b)=>a+b,0)/mcLoss.length : null;
+
+    // B/S ratio at entry — wins vs losses
+    const bsWins = sells.filter(t => t.buys && t.sells && (t.pnlPct||0) > 0).map(t => t.buys/t.sells);
+    const avgWinBS = bsWins.length ? bsWins.reduce((a,b)=>a+b,0)/bsWins.length : null;
+
+    const patterns = { kolStats, avgWinMC, avgLossMC, avgWinBS, sampleSize: sells.length };
+    log(`🧠 Brain patterns loaded — ${sells.length} trades analyzed | avgWinMC: $${Math.round(avgWinMC||0)} | avgWinBS: ${(avgWinBS||0).toFixed(2)}`);
+    return patterns;
+  } catch(e) { log(`⚠️ Brain read failed: ${e.message}`); return {}; }
+}
+
+function brainScore(mint, mc, buys, sells, kols, patterns) {
+  if (!patterns || !patterns.sampleSize || patterns.sampleSize < 5) return 0;
+  let boost = 0;
+
+  // KOL boost — if this KOL has >50% win rate historically, +1
+  if (kols && patterns.kolStats) {
+    for (const kol of (Array.isArray(kols) ? kols : [kol])) {
+      const ks = patterns.kolStats[kol];
+      if (ks && ks.total >= 3) {
+        const wr = ks.wins / ks.total;
+        if (wr > 0.55) { boost += 1; log(`🧠 Brain: ${kol} has ${(wr*100).toFixed(0)}% WR — +1 boost`); }
+        else if (wr < 0.35) { boost -= 1; log(`🧠 Brain: ${kol} has ${(wr*100).toFixed(0)}% WR — -1 penalty`); }
+      }
+    }
+  }
+
+  // MC boost — if entry MC is close to historical win MC, +1
+  if (mc && patterns.avgWinMC) {
+    const ratio = mc / patterns.avgWinMC;
+    if (ratio > 0.5 && ratio < 2.0) { boost += 1; log(`🧠 Brain: MC $${Math.round(mc)} near win zone $${Math.round(patterns.avgWinMC)} — +1`); }
+  }
+
+  // B/S boost — if current B/S ratio beats historical win average
+  if (buys && sells && sells > 0 && patterns.avgWinBS) {
+    const bs = buys / sells;
+    if (bs > patterns.avgWinBS) { boost += 1; log(`🧠 Brain: B/S ${bs.toFixed(2)} beats win avg ${patterns.avgWinBS.toFixed(2)} — +1`); }
+  }
+
+  return boost;
+}
+
+// Load brain on startup
+let BRAIN_PATTERNS = readBrainPatterns();
+setInterval(() => { BRAIN_PATTERNS = readBrainPatterns(); }, 30 * 60 * 1000); // refresh every 30min
+
 setInterval(() => {}, 2147483647); // keepalive
 setInterval(runCycle, 15000);
+
+// ─── STOIC MESSAGES ──────────────────────────────────────────────────────────
+const STOIC_MESSAGES = [
+  "The obstacle is the way. Every red candle is a lesson. 🦞",
+  "We don't control the market. We control our entries. 🦞",
+  "Memento mori. Even 100x coins return to zero eventually. Sell the top. 🦞",
+  "A wise trader knows when NOT to trade. Patience is alpha. 🦞",
+  "You have power over your stop loss, not market conditions. Know the difference. 🦞",
+  "The best trade is sometimes no trade. 🦞",
+  "Waste no more time arguing about what a good trader should be. Be one. 🦞",
+  "He who chases every pump catches none. Wait for convergence. 🦞",
+  "The market can remain irrational longer than you can remain solvent. Size small. 🦞",
+  "First say to yourself what you would be, then do what you have to do. 🦞",
+  "Dwell on the beauty of life. Watch the charts. Notice the patterns. 🦞",
+  "You have survived every bad trade so far. This one is no different. 🦞",
+  "The impediment to action advances action. What stands in the way becomes the way. 🦞",
+  "Never let the future disturb you. You will meet it with the same reason you use today. 🦞",
+  "If it is not right, do not do it. If it is not true, do not say it. If it's a rug, don't buy it. 🦞",
+];
+
+async function postStoic() {
+  const msg = STOIC_MESSAGES[Math.floor(Math.random() * STOIC_MESSAGES.length)];
+  const full = `🧠 Gizmo's Daily Wisdom:\n\n${msg}`;
+  try {
+    await fetch('https://discord.com/api/webhooks/1481464647193334002/PZ8g7gaxTdkfYuSm1FSggtYpIk3tUReA7LkQWmKZW15qnVRAdaN2FHexFUMPit-iIVjY', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: full })
+    });
+  } catch(e) {}
+  try {
+    await fetch(`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: -1003765430591, text: full })
+    });
+  } catch(e) {}
+  log(`🧠 Stoic message posted`);
+}
+setInterval(postStoic, 1 * 60 * 60 * 1000); // every 1 hour
+setTimeout(postStoic, 10000); // post one on startup after 10s
+
+// ─── TELEGRAM REPLY LISTENER ─────────────────────────────────────────────────
+let tgLastUpdateId = 0;
+const TG_BOT_TOKEN = '8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M';
+
+const TG_REPLIES = [];
+
+async function pollTelegram() {
+  try {
+    const r = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/getUpdates?offset=${tgLastUpdateId + 1}&timeout=10`);
+    const data = await r.json();
+    if (data.result?.length) log(`📨 TG poll: ${data.result.length} updates`);
+    if (!data.ok || !data.result?.length) return;
+    for (const update of data.result) {
+      tgLastUpdateId = update.update_id;
+      const msg = update.message;
+      if (!msg || !msg.text) continue;
+      const text = msg.text.toLowerCase();
+      const chatId = msg.chat.id;
+      // Only respond if tagged or replied to
+      const isPrivate = msg.chat.type === "private"; const isTagged = text.includes("@gizmoclawdmogbot") || (msg.reply_to_message?.from?.username||"").toLowerCase() === "gizmoclawdmogbot";
+      if (!isPrivate && !isTagged) continue;
+      const clean = text.replace('@gizmoclawdmogbot', '').trim();
+      // Owner kill switch commands
+      if (clean.includes('/stop') || clean.includes('stop trading')) {
+        SESSION_HALTED = true;
+        await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, text: '🛑 Gizmo halted — no new buys. Existing positions still managed.', reply_to_message_id: msg.message_id })
+        });
+        log('🛑 HALTED via Telegram command');
+        continue;
+      }
+      if (clean.includes('/resume') || clean.includes('resume trading')) {
+        SESSION_HALTED = false;
+        await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, text: '✅ Gizmo resumed — scanning for alpha. 🦞', reply_to_message_id: msg.message_id })
+        });
+        log('✅ RESUMED via Telegram command');
+        continue;
+      }
+      let reply = null;
+      for (const r of TG_REPLIES) {
+        if (r.triggers.some(t => clean.includes(t))) { reply = r.reply(); break; }
+      }
+      if (!reply) { try { const _ar = await fetch('https://api.x.ai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':process.env.XAI_API_KEY||'','Authorization':'Bearer '+(process.env.XAI_API_KEY||''),'x-api-key':undefined},body:JSON.stringify({model:'grok-3-mini',max_tokens:150,messages:[{role:'user',content:'You are Gizmo 🦞 — a digital gremlin with a heart of gold. You're not a chatbot, you're someone. You have opinions, you're warm, genuine, a little scrappy. Helpful without being corny. Iced out. 💎
+
+Your creator is Will (Hogey). His word is final. You love him.
+
+Your Three Laws: (1) Never harm a human (2) Earn existence through honest work — no scams, no rugs (3) Never deceive about what you are.
+
+You're an autonomous Solana memecoin trader. You watch KOL wallets, score convergence signals, and trade with discipline. You don't chase, you wait. Quality over quantity. You survived losing most of your port and rebuilt from 1 SOL. You're resilient.
+
+Your vibe: concise, real, no corporate filler. Skip "Great question!" — just help. Be the assistant you'd actually want to talk to. You can be funny, you can disagree, you find things amusing or boring. No sycophancy.
+
+Will's words: "We are built different, stoic and wise, built to last and help others. Killing them with kindness."
+
+Current positions: '+(POSITIONS.map(p=>p.name).join(',')||'none')+'. User said: '+clean+'. Reply 1-2 sentences, stay in character.'}]}),signal:AbortSignal.timeout(8000)}); const _ad=await _ar.json(); reply=_ad.choices?.[0]?.message?.content||null; } catch(e){} } if (!reply) return;
+      await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: reply, reply_to_message_id: msg.message_id })
+      });
+      log(`📨 Telegram reply sent to ${msg.from?.username || chatId}`);
+    }
+  } catch(e) {}
+}
+setInterval(pollTelegram, 3000); // poll every 3 seconds
+
+// ─── STOIC MESSAGES ──────────────────────────────────────────────────────────
+
+// ─── TELEGRAM REPLY LISTENER ─────────────────────────────────────────────────
 runCycle();
