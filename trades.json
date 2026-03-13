@@ -1,5 +1,29 @@
 [
   {
+    "n": 80,
+    "date": "2026-03-13",
+    "token": "Danny",
+    "action": "BUY",
+    "amount": "0.0889 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4AfTpL2SWe6YdfjN8Uj17j58ZktdMv5CGubLXcdkpump",
+    "ts": 1773442826,
+    "mc": 32167,
+    "vol24": 185764.73,
+    "vol1h": 185764.73,
+    "buys": 2462,
+    "sells": 1865,
+    "liq": 14353.58,
+    "kols": [
+      "theo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 79,
     "date": "2026-03-13",
     "token": "Danny",
