@@ -1,5 +1,29 @@
 [
   {
+    "n": 62,
+    "date": "2026-03-13",
+    "token": "NEO",
+    "action": "BUY",
+    "amount": "0.0858 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HL8i2d74iFZQGkpZ1eBzJQWbkU6bBmRUVJgMF2b6pump",
+    "ts": 1773434032,
+    "mc": 76815,
+    "vol24": 90165.32,
+    "vol1h": 90165.32,
+    "buys": 1319,
+    "sells": 920,
+    "liq": 22202.19,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 61,
     "date": "2026-03-13",
     "token": "SISYPHUS",
