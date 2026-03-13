@@ -1,5 +1,29 @@
 [
   {
+    "n": 6,
+    "date": "2026-03-13",
+    "token": "ZOO",
+    "action": "BUY",
+    "amount": "0.1498 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8QoornHynNCGVSwsRif9mbB24WA12D4RFBASYSDepump",
+    "ts": 1773370481,
+    "mc": 110632,
+    "vol24": 373761.42,
+    "vol1h": 30545.55,
+    "buys": 233,
+    "sells": 157,
+    "liq": 29333.52,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 5,
     "date": "2026-03-13",
     "token": "DOIL",
