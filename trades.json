@@ -1,5 +1,27 @@
 [
   {
+    "n": 54,
+    "date": "2026-03-13",
+    "token": "WINSTON",
+    "action": "SELL",
+    "amount": "0.1755 SOL",
+    "result": "Sold 25% | PnL: +151.7%",
+    "pnl": "+0.1755 SOL",
+    "color": "teal",
+    "ca": "2BcPK2AvLrLDiekQmXqtVDYn79jVvZVVSihxXhJZpump",
+    "ts": 1773433237,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 53,
     "date": "2026-03-13",
     "token": "Goose",
