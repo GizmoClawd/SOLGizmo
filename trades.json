@@ -1,5 +1,29 @@
 [
   {
+    "n": 87,
+    "date": "2026-03-13",
+    "token": "BurgerQueen",
+    "action": "BUY",
+    "amount": "0.0611 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "12RQZ3aXKxa6uyWCqr6KVWmKcSTTmYciAx5zhnpcpump",
+    "ts": 1773445444,
+    "mc": 8184.81,
+    "vol24": 20424.15,
+    "vol1h": 20424.15,
+    "buys": 200,
+    "sells": 143,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 86,
     "date": "2026-03-13",
     "token": "JEW",
