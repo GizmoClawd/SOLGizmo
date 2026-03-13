@@ -1,5 +1,29 @@
 [
   {
+    "n": 82,
+    "date": "2026-03-13",
+    "token": "TerpBot",
+    "action": "BUY",
+    "amount": "0.0738 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EAeHua7uXt2BH5CMokJsHtuu71C7j2cTW5351ah17wLD",
+    "ts": 1773443136,
+    "mc": 8019.13,
+    "vol24": 16227.12,
+    "vol1h": 16227.12,
+    "buys": 249,
+    "sells": 150,
+    "liq": null,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 81,
     "date": "2026-03-13",
     "token": "Danny",
