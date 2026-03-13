@@ -817,28 +817,20 @@ async function managePositions() {
     }
 
     // RUNNER TP1: 5x — sell 50%, moonbag the other 50%
-    if (pos.runnerMode && !pos.runnerTP1Hit && mc >= pos.entryMC * 5.0) {
+    if (pos.runnerMode && !pos.runnerTP1Hit && mc >= pos.entryMC * 3.0) {
       const mult = mc / pos.entryMC;
       log(`🌙 RUNNER TP1 ${pos.name} ${mult.toFixed(1)}x — selling 50%, moonbagging rest`);
       if (await sell(pos.ca, '50%', pos.name, pos.entryMC, mc)) {
         pos.runnerTP1Hit = true;
-        pos.sl = Math.max(pos.sl || 0, mc * 0.70); // 30% trail on moonbag — loose, let it breathe
+        pos.sl = null; pos.moonbag = true; // NO SL on moonbag — Will sells manually
         savePositions();
         await postTrade('SELL', pos.name, pos.ca, mc, `Runner TP1 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
       }
       continue;
     }
 
-    // RUNNER TP2: 10x — sell everything, legendary trade
-    if (pos.runnerMode && pos.runnerTP1Hit && mc >= pos.entryMC * 10.0) {
-      const mult = mc / pos.entryMC;
-      log(`🏆 RUNNER TP2 ${pos.name} ${mult.toFixed(1)}x — SELLING ALL. GG.`);
-      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
-        await postTrade('SELL', pos.name, pos.ca, mc, `Runner TP2 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
-        POSITIONS.splice(i, 1); savePositions();
-      }
-      continue;
-    }
+    // RUNNER TP2: DISABLED — Will sells moonbag manually
+    // Moonbag rides with no SL until Will decides to exit
 
     // TP2: 2x — sell another 25% (50% total out, 50% moonbag) — normal mode only
     if (pos.tp1Hit && !pos.tp2Hit && mc >= pos.entryMC * 2.0) {
@@ -861,16 +853,7 @@ async function managePositions() {
       continue;
     }
 
-    // MOONBAG TP3: 5x — sell everything (normal mode only)
-    if (pos.tp2Hit && mc >= pos.entryMC * 5.0) {
-      const mult = mc / pos.entryMC;
-      log(`🌙 MOONBAG TP3 ${pos.name} ${mult.toFixed(1)}x — selling all`);
-      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
-        await postTrade('SELL', pos.name, pos.ca, mc, `Moonbag ${mult.toFixed(1)}x`, null, parseFloat(pnl));
-        POSITIONS.splice(i, 1); savePositions();
-      }
-      continue;
-    }
+    // MOONBAG TP3: DISABLED — Will sells moonbag manually
 
     // BREAKEVEN SL after 1.5x — never let winner become loser
     if (!pos.breakevenSet && mc >= pos.entryMC * 1.5) {
@@ -2007,27 +1990,30 @@ async function processSniperWatch() {
 
 
 // ─── STOIC MESSAGES ──────────────────────────────────────────────────────────
-const STOIC_MESSAGES = [
-  "The obstacle is the way. Every red candle is a lesson. 🦞",
-  "We don't control the market. We control our entries. 🦞",
-  "Memento mori. Even 100x coins return to zero eventually. Sell the top. 🦞",
-  "A wise trader knows when NOT to trade. Patience is alpha. 🦞",
-  "You have power over your stop loss, not market conditions. Know the difference. 🦞",
-  "The best trade is sometimes no trade. 🦞",
-  "Waste no more time arguing about what a good trader should be. Be one. 🦞",
-  "He who chases every pump catches none. Wait for convergence. 🦞",
-  "The market can remain irrational longer than you can remain solvent. Size small. 🦞",
-  "First say to yourself what you would be, then do what you have to do. 🦞",
-  "Dwell on the beauty of life. Watch the charts. Notice the patterns. 🦞",
-  "You have survived every bad trade so far. This one is no different. 🦞",
-  "The impediment to action advances action. What stands in the way becomes the way. 🦞",
-  "Never let the future disturb you. You will meet it with the same reason you use today. 🦞",
-  "If it is not right, do not do it. If it is not true, do not say it. If it's a rug, don't buy it. 🦞",
-];
+// Static stoic messages removed — AI generates them now
+const STOIC_FALLBACKS = ["The market rewards patience. 🦞", "Discipline over emotion. Every time. 🦞", "We grind. We learn. We win. 🦞"];
 
 async function postStoic() {
-  const msg = STOIC_MESSAGES[Math.floor(Math.random() * STOIC_MESSAGES.length)];
-  const full = `🧠 Gizmo's Daily Wisdom:\n\n${msg}`;
+  let msg;
+  try {
+    const apiKey = process.env.XAI_API_KEY;
+    if (apiKey) {
+      const posInfo = POSITIONS.length > 0 
+        ? POSITIONS.map(p => p.name + ' (' + ((p.highMC / p.entryMC - 1) * 100).toFixed(0) + '% from entry)').join(', ')
+        : 'no open positions, hunting for alpha';
+      const prompt = 'You are Gizmo, an autonomous Solana memecoin trading lobster. Warm, genuine, scrappy, stoic. Write ONE short wisdom message (1-2 sentences max) about trading, patience, markets, or life. Reference your current state naturally: ' + posInfo + '. Mix stoic philosophy with crypto degen energy. End with a lobster emoji. Do NOT use quotes or attribution. Just the message.';
+      const r = await fetch('https://api.x.ai/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+        body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 80, messages: [{ role: 'user', content: prompt }] }),
+        signal: AbortSignal.timeout(8000)
+      });
+      const data = await r.json();
+      msg = data.choices?.[0]?.message?.content || null;
+    }
+  } catch(e) {}
+  if (!msg) msg = STOIC_FALLBACKS[Math.floor(Math.random() * STOIC_FALLBACKS.length)];
+  const full = msg;
   try {
     await fetch('https://discord.com/api/webhooks/1481464647193334002/PZ8g7gaxTdkfYuSm1FSggtYpIk3tUReA7LkQWmKZW15qnVRAdaN2FHexFUMPit-iIVjY', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -2035,12 +2021,12 @@ async function postStoic() {
     });
   } catch(e) {}
   try {
-    await fetch(`https://api.telegram.org/bot8518872063:AAGE1BfWeZ4RSrKea1Lkw9C_IiXiFfusF-M/sendMessage`, {
+    await fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: -1003765430591, text: full })
+      body: JSON.stringify({ chat_id: TG_CHAT_ID, text: full })
     });
   } catch(e) {}
-  log(`🧠 Stoic message posted`);
+  log('Stoic message posted (AI-generated)');
 }
 setInterval(postStoic, 1 * 60 * 60 * 1000); // every 1 hour
 setTimeout(postStoic, 10000); // post one on startup after 10s
