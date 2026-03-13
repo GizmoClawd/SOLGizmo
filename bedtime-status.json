@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-03-03T06:58:04.618Z",
+  "wallet": "53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz",
+  "balances": {
+    "SOL": 4.083937838,
+    "GREEN": 1062561.086744
+  },
+  "trading": {
+    "target": "5% GREEN sell",
+    "amount": 53128.0543372,
+    "method": "Autonomous execution"
+  },
+  "urls": {
+    "greenSell": "https://pump.fun/41iR3ejFc4zTdn4LJeMhKUTZfQkV4xCahCRYtV1xpump?tab=sell&amount=5"
+  },
+  "instructions": [
+    "System will attempt autonomous execution",
+    "Browser automation as backup",
+    "Manual links available if needed",
+    "Check overnight-log.txt for activity"
+  ],
+  "status": "Ready for overnight autonomous trading"
+}

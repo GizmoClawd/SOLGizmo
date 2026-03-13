@@ -1,0 +1,17 @@
+{
+  "date": "Tue Mar 03 2026",
+  "tradingPeriod": "Overnight + Work Hours",
+  "initialBalances": {
+    "SOL": 4.083937838,
+    "GREEN": 1062561.086744
+  },
+  "targets": {
+    "greenSell": 53128.0543372
+  },
+  "status": "Trading in progress - check logs",
+  "checkCommands": [
+    "cat overnight-log.txt",
+    "node check-balances.mjs",
+    "open bedtime-status.json"
+  ]
+}

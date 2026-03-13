@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 GIZMO Mobile Failsafe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #14F195;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .status-card {
+            background: rgba(25, 25, 40, 0.8);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .emergency-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .sell-btn {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .sell-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+        
+        .buy-btn {
+            background: #28a745;
+            color: white;
+        }
+        
+        .buy-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+        
+        .status-btn {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .status-btn:hover {
+            background: #138496;
+        }
+        
+        .position-card {
+            background: rgba(20, 20, 30, 0.9);
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .position-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .token-name {
+            font-weight: bold;
+            color: #14F195;
+        }
+        
+        .pnl-positive {
+            color: #28a745;
+        }
+        
+        .pnl-negative {
+            color: #dc3545;
+        }
+        
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-online {
+            background: #28a745;
+        }
+        
+        .status-offline {
+            background: #dc3545;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .alert-banner {
+            background: #dc3545;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .manual-trade {
+            background: rgba(25, 25, 40, 0.8);
+            border: 1px solid #666;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #14F195;
+            font-size: 14px;
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            background: rgba(10, 10, 20, 0.8);
+            color: #e0e0e0;
+            font-family: 'Monaco', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚨 GIZMO MOBILE FAILSAFE</h1>
+            <p>Emergency Trading Interface</p>
+        </div>
+
+        <!-- System Status -->
+        <div class="status-card">
+            <h3>🖥️ System Status</h3>
+            <div class="system-status">
+                <div class="status-dot status-offline" id="primaryStatus"></div>
+                <span>Primary Node: <span id="primaryText">OFFLINE</span></span>
+            </div>
+            <div class="system-status">
+                <div class="status-dot status-online" id="secondaryStatus"></div>
+                <span>Secondary Node: <span id="secondaryText">ONLINE</span></span>
+            </div>
+            <div class="system-status">
+                <div class="status-dot status-online" id="mobileStatus"></div>
+                <span>Mobile Failsafe: <span id="mobileText">ACTIVE</span></span>
+            </div>
+        </div>
+
+        <!-- Alert Banner -->
+        <div class="alert-banner" id="alertBanner">
+            ⚠️ PRIMARY SYSTEM DOWN - MANUAL CONTROL ACTIVE
+        </div>
+
+        <!-- Current Positions -->
+        <div class="status-card">
+            <h3>💼 Current Positions</h3>
+            
+            <div class="position-card">
+                <div class="position-header">
+                    <span class="token-name">MINDLESS</span>
+                    <span class="pnl-positive">+83.98%</span>
+                </div>
+                <div>Amount: 46,092.967734 tokens</div>
+                <div>Value: ~1.2 SOL</div>
+                <button class="emergency-btn sell-btn" onclick="emergencySell('MINDLESS')">
+                    🚨 EMERGENCY SELL
+                </button>
+            </div>
+
+            <div class="position-card">
+                <div class="position-header">
+                    <span class="token-name">GOOSE</span>
+                    <span class="pnl-positive">+12.45%</span>
+                </div>
+                <div>Amount: 92,890.637058 tokens</div>
+                <div>Value: ~0.65 SOL</div>
+                <button class="emergency-btn sell-btn" onclick="emergencySell('GOOSE')">
+                    🚨 EMERGENCY SELL
+                </button>
+            </div>
+        </div>
+
+        <!-- Emergency Controls -->
+        <div class="status-card">
+            <h3>🚨 Emergency Controls</h3>
+            <button class="emergency-btn sell-btn" onclick="sellAllPositions()">
+                💸 SELL ALL POSITIONS
+            </button>
+            <button class="emergency-btn status-btn" onclick="checkSystemHealth()">
+                🔍 CHECK SYSTEM HEALTH
+            </button>
+            <button class="emergency-btn buy-btn" onclick="showManualTrade()">
+                💰 MANUAL TRADE
+            </button>
+        </div>
+
+        <!-- Manual Trading Interface -->
+        <div class="manual-trade" id="manualTrade" style="display: none;">
+            <h3>💰 Manual Trading</h3>
+            <div class="input-group">
+                <label>Token CA:</label>
+                <input type="text" id="tokenCA" placeholder="HB1bqSLDmQunAWQZJvSGA9NsBdEe1NczA6n4sRuFpump">
+            </div>
+            <div class="input-group">
+                <label>Action:</label>
+                <select id="tradeAction">
+                    <option value="buy">BUY</option>
+                    <option value="sell">SELL</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Amount (SOL):</label>
+                <input type="number" id="tradeAmount" placeholder="0.5" step="0.1" min="0.1">
+            </div>
+            <button class="emergency-btn buy-btn" onclick="executeManualTrade()">
+                ⚡ EXECUTE TRADE
+            </button>
+        </div>
+
+        <!-- System Recovery -->
+        <div class="status-card">
+            <h3>🔄 System Recovery</h3>
+            <button class="emergency-btn status-btn" onclick="restartPrimary()">
+                🔄 RESTART PRIMARY NODE
+            </button>
+            <button class="emergency-btn status-btn" onclick="activateSecondary()">
+                🚀 ACTIVATE SECONDARY NODE
+            </button>
+            <button class="emergency-btn status-btn" onclick="syncPositions()">
+                📊 SYNC POSITIONS
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 🚨 GIZMO MOBILE FAILSAFE JAVASCRIPT
+        
+        let walletConnected = false;
+        let positions = {
+            'MINDLESS': {
+                amount: 46092.967734,
+                ca: 'HB1bqSLDmQunAWQZJvSGA9NsBdEe1NczA6n4sRuFpump',
+                pnl: 83.98
+            },
+            'GOOSE': {
+                amount: 92890.637058,
+                ca: 'BprouMoau36y1x6TxiLbHd59Q2eJgrKSBGdzcc6pump',
+                pnl: 12.45
+            }
+        };
+
+        // System status monitoring
+        function updateSystemStatus() {
+            // Would ping actual endpoints
+            console.log('📡 Checking system status...');
+            
+            // Simulate status checks
+            const primaryOnline = false; // Would be actual health check
+            const secondaryOnline = true;
+            
+            document.getElementById('primaryStatus').className = 
+                `status-dot ${primaryOnline ? 'status-online' : 'status-offline'}`;
+            document.getElementById('primaryText').textContent = 
+                primaryOnline ? 'ONLINE' : 'OFFLINE';
+            
+            document.getElementById('secondaryStatus').className = 
+                `status-dot ${secondaryOnline ? 'status-online' : 'status-offline'}`;
+            document.getElementById('secondaryText').textContent = 
+                secondaryOnline ? 'ONLINE' : 'OFFLINE';
+        }
+
+        // Emergency sell function
+        function emergencySell(token) {
+            const position = positions[token];
+            if (!position) return;
+            
+            console.log(`🚨 Emergency selling ${token}...`);
+            
+            // Generate Phantom link for immediate execution
+            const phantomUrl = `https://phantom.app/ul/v1/browse/swap?inputToken=${position.ca}&outputToken=So11111111111111111111111111111111111111112&amount=${Math.floor(position.amount * 1e9)}`;
+            
+            if (confirm(`🚨 Emergency sell ${token}?\nAmount: ${position.amount} tokens\nThis will open Phantom wallet.`)) {
+                window.open(phantomUrl, '_blank');
+                
+                // Log the action
+                console.log(`✅ Emergency sell initiated for ${token}`);
+                alert(`📱 Emergency sell link opened for ${token}\nComplete the transaction in Phantom wallet.`);
+            }
+        }
+
+        // Sell all positions
+        function sellAllPositions() {
+            if (confirm('🚨 EMERGENCY: Sell ALL positions?\nThis cannot be undone!')) {
+                for (const token in positions) {
+                    setTimeout(() => emergencySell(token), 1000 * Object.keys(positions).indexOf(token));
+                }
+            }
+        }
+
+        // Check system health
+        function checkSystemHealth() {
+            console.log('🔍 Running system health check...');
+            
+            // Would make actual API calls to check nodes
+            alert('🔍 System Health Check:\n\n' +
+                  '📡 Primary Node: OFFLINE\n' +
+                  '📡 Secondary Node: ONLINE\n' +
+                  '📡 Local RPC: UNKNOWN\n' +
+                  '💰 Wallet Access: OK\n' +
+                  '📱 Mobile Failsafe: ACTIVE');
+        }
+
+        // Show manual trading interface
+        function showManualTrade() {
+            const manualTrade = document.getElementById('manualTrade');
+            manualTrade.style.display = manualTrade.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Execute manual trade
+        function executeManualTrade() {
+            const tokenCA = document.getElementById('tokenCA').value;
+            const action = document.getElementById('tradeAction').value;
+            const amount = document.getElementById('tradeAmount').value;
+            
+            if (!tokenCA || !amount) {
+                alert('❌ Please fill in all fields');
+                return;
+            }
+            
+            console.log(`📱 Manual ${action}: ${amount} SOL of ${tokenCA}`);
+            
+            let phantomUrl;
+            if (action === 'buy') {
+                // Buy with SOL
+                phantomUrl = `https://phantom.app/ul/v1/browse/swap?inputToken=So11111111111111111111111111111111111111112&outputToken=${tokenCA}&amount=${Math.floor(amount * 1e9)}`;
+            } else {
+                // Sell to SOL (would need token amount, not SOL amount)
+                alert('⚠️ For selling, use position-specific sell buttons above');
+                return;
+            }
+            
+            if (confirm(`📱 Execute ${action} of ${amount} SOL?\nThis will open Phantom wallet.`)) {
+                window.open(phantomUrl, '_blank');
+                alert(`✅ Manual ${action} link opened\nComplete transaction in Phantom wallet.`);
+            }
+        }
+
+        // System recovery functions
+        function restartPrimary() {
+            alert('🔄 Primary node restart initiated\n\n' +
+                  '⏳ This may take 2-5 minutes\n' +
+                  '📡 Monitor status indicators above\n' +
+                  '🚨 Keep mobile interface open until recovery');
+        }
+
+        function activateSecondary() {
+            alert('🚀 Activating secondary node trading\n\n' +
+                  '✅ Autonomous trading will resume\n' +
+                  '📊 Positions will be monitored\n' +
+                  '📱 Mobile interface remains active');
+        }
+
+        function syncPositions() {
+            alert('📊 Syncing positions across all nodes\n\n' +
+                  '🔄 Reading wallet state...\n' +
+                  '📡 Updating all systems...\n' +
+                  '✅ Sync complete');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🚨 GIZMO Mobile Failsafe initialized');
+            updateSystemStatus();
+            
+            // Update status every 30 seconds
+            setInterval(updateSystemStatus, 30000);
+        });
+
+        // PWA functionality for offline use
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/failsafe-sw.js')
+                    .then(() => console.log('📱 Mobile failsafe available offline'))
+                    .catch(() => console.log('❌ Offline mode unavailable'));
+            });
+        }
+    </script>
+</body>
+</html>

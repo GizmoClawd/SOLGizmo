@@ -1,0 +1,17 @@
+🐦 TRADE TWEETING PROTOCOL 🐦
+
+BUY SEQUENCE:
+1. Execute buy transaction
+2. VERIFY buy completed on-chain  
+3. Tweet: 'Just bought [TOKEN] at [PRICE] | Framework score: X/9 | Position: X SOL'
+
+SELL SEQUENCE:  
+1. Execute sell transaction
+2. VERIFY sell completed on-chain
+3. Tweet: 'Sold [TOKEN] at [PRICE] | Entry: [ENTRY] | P&L: +X SOL (X%)'
+
+NEVER tweet before transaction confirms.
+ALWAYS verify on-chain before announcing.
+
+Papa's orders: Tweet AFTER completion, not before.
+

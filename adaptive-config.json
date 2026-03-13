@@ -1,0 +1,21 @@
+{
+  "framework": {
+    "minimumScore": 7.9,
+    "requiredBoosts": [
+      "DEX-BOOST"
+    ],
+    "adaptiveThreshold": true
+  },
+  "positioning": {
+    "initialSize": 0.4,
+    "maxSize": 1,
+    "scalingFactor": 1,
+    "riskAdjustment": 1
+  },
+  "performance": {
+    "targetWinRate": 70,
+    "targetAvgPnL": 0.01,
+    "adaptivePositioning": true
+  },
+  "lastUpdated": "2026-03-03T04:52:26.795Z"
+}
