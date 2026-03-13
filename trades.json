@@ -1,5 +1,29 @@
 [
   {
+    "n": 73,
+    "date": "2026-03-13",
+    "token": "MIRA",
+    "action": "BUY",
+    "amount": "0.2022 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2yjqjy7obKRSm4c3CDRbUA7gtGXnHQtkstE1Tfscpump",
+    "ts": 1773440905,
+    "mc": 13316,
+    "vol24": 112967,
+    "vol1h": 112967,
+    "buys": 1656,
+    "sells": 1174,
+    "liq": 9147.65,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 72,
     "date": "2026-03-13",
     "token": "MIRA",
