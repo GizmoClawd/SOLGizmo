@@ -1,5 +1,29 @@
 [
   {
+    "n": 77,
+    "date": "2026-03-13",
+    "token": "Crustae",
+    "action": "BUY",
+    "amount": "0.1084 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "85gyZEPdFGNU7unvsMNEnESn4sd2gwc9TnwXQZK2pump",
+    "ts": 1773442315,
+    "mc": 42376,
+    "vol24": 57947.83,
+    "vol1h": 57947.83,
+    "buys": 331,
+    "sells": 272,
+    "liq": 16278.81,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 76,
     "date": "2026-03-13",
     "token": "Danny",
