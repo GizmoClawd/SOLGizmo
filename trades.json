@@ -1,5 +1,27 @@
 [
   {
+    "n": 83,
+    "date": "2026-03-13",
+    "token": "TerpBot",
+    "action": "SELL",
+    "amount": "0.0531 SOL",
+    "result": "Sold 100% | PnL: -27.6%",
+    "pnl": "+0.0531 SOL",
+    "color": "teal",
+    "ca": "EAeHua7uXt2BH5CMokJsHtuu71C7j2cTW5351ah17wLD",
+    "ts": 1773443185,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 82,
     "date": "2026-03-13",
     "token": "TerpBot",
