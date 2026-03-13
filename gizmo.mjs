@@ -1080,8 +1080,7 @@ async function scanKOLs(state) {
 
     const info = await getTokenInfo(mint);
     ALERTED.add(mint);
-    const convVol24 = pairForScore?.volume?.h24 || 0;
-    if (convVol24 < 10000) { log(`⛔ ${mint.slice(0,8)}: low volume $${Math.round(convVol24)} 24h — ghost token`); continue; }
+    // volume check moved after pairForScore fetch
     if (!info || info.mcap < 8000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
     if (info.mcap > 100000) { log(`⛔ ${info.symbol}: MC too high ${Math.round(info.mcap)} — too late`); continue; }
 
@@ -1104,6 +1103,8 @@ async function scanKOLs(state) {
       const pairForScore = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mint}`,
         { signal: AbortSignal.timeout(5000) })
         .then(r => r.json()).then(d => d.pairs?.[0] || null).catch(() => null);
+      const convVol24 = pairForScore?.volume?.h24 || 0;
+      if (convVol24 < 10000) { log(`⛔ ${info.symbol}: low volume ${Math.round(convVol24)} 24h — ghost token`); ALERTED.add(mint); continue; }
       const tokenScore = await scoreToken(info, pairForScore, convergenceScore);
       // Elite KOL convergence (score 9+) lowers bar to 4, otherwise need 5+
       const minScore = convergenceScore >= 9 ? 4 : 5;
