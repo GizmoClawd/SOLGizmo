@@ -1,5 +1,27 @@
 [
   {
+    "n": 75,
+    "date": "2026-03-13",
+    "token": "MIRA",
+    "action": "SELL",
+    "amount": "0.3407 SOL",
+    "result": "Sold 100% | PnL: -51.7%",
+    "pnl": "+0.3407 SOL",
+    "color": "teal",
+    "ca": "2yjqjy7obKRSm4c3CDRbUA7gtGXnHQtkstE1Tfscpump",
+    "ts": 1773440936,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 74,
     "date": "2026-03-13",
     "token": "MIRA",
