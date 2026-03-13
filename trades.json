@@ -1,5 +1,27 @@
 [
   {
+    "n": 85,
+    "date": "2026-03-13",
+    "token": "JEW",
+    "action": "BUY",
+    "amount": "0.0925 SOL",
+    "result": "Boost scan score 5/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4D9jZY6nkXnm3ofmWWJVcJrvtXDMfE5Zwy8rZMy5pump",
+    "ts": 1773445158,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 84,
     "date": "2026-03-13",
     "token": "Danny",
