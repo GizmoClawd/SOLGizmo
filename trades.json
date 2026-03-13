@@ -1,5 +1,29 @@
 [
   {
+    "n": 55,
+    "date": "2026-03-13",
+    "token": "SISYPHUS",
+    "action": "BUY",
+    "amount": "0.1567 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4psoNo6jUWHPBxmCSVmyfrLxHxrbyKJzJsKWXBZspump",
+    "ts": 1773433259,
+    "mc": 77067,
+    "vol24": 47594.94,
+    "vol1h": 47594.94,
+    "buys": 430,
+    "sells": 387,
+    "liq": 22018.1,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 54,
     "date": "2026-03-13",
     "token": "WINSTON",
