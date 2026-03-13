@@ -1,5 +1,29 @@
 [
   {
+    "n": 8,
+    "date": "2026-03-13",
+    "token": "ZOO",
+    "action": "BUY",
+    "amount": "0.1946 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8QoornHynNCGVSwsRif9mbB24WA12D4RFBASYSDepump",
+    "ts": 1773370648,
+    "mc": 93298,
+    "vol24": 374896.8,
+    "vol1h": 32312.96,
+    "buys": 247,
+    "sells": 174,
+    "liq": 26952.19,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 7,
     "date": "2026-03-13",
     "token": "aurelius",
