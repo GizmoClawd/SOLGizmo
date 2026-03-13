@@ -1,5 +1,27 @@
 [
   {
+    "n": 60,
+    "date": "2026-03-13",
+    "token": "SISYPHUS",
+    "action": "SELL",
+    "amount": "0.1129 SOL",
+    "result": "Sold 50% | PnL: +30.4%",
+    "pnl": "+0.1129 SOL",
+    "color": "teal",
+    "ca": "4psoNo6jUWHPBxmCSVmyfrLxHxrbyKJzJsKWXBZspump",
+    "ts": 1773433733,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 59,
     "date": "2026-03-13",
     "token": "SISYPHUS",
