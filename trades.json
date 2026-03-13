@@ -1,5 +1,29 @@
 [
   {
+    "n": 66,
+    "date": "2026-03-13",
+    "token": "WENDYS",
+    "action": "BUY",
+    "amount": "0.0578 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9xRZgabPKGBteGgnsoMHpXrd3NpKZ1uaYwKTd3gLpump",
+    "ts": 1773438118,
+    "mc": 47882,
+    "vol24": 17045.89,
+    "vol1h": 17045.89,
+    "buys": 125,
+    "sells": 91,
+    "liq": 17306.93,
+    "kols": [
+      "theo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 65,
     "date": "2026-03-13",
     "token": "NEO",
