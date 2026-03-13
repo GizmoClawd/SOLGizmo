@@ -1,5 +1,29 @@
 [
   {
+    "n": 76,
+    "date": "2026-03-13",
+    "token": "Danny",
+    "action": "BUY",
+    "amount": "0.1039 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4AfTpL2SWe6YdfjN8Uj17j58ZktdMv5CGubLXcdkpump",
+    "ts": 1773442148,
+    "mc": 66241,
+    "vol24": 59073.57,
+    "vol1h": 59073.57,
+    "buys": 753,
+    "sells": 514,
+    "liq": 20356.22,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 75,
     "date": "2026-03-13",
     "token": "MIRA",
