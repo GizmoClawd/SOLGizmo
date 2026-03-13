@@ -1817,40 +1817,137 @@ function buildKolDna(trades) {
 let lastDeepAnalysis = 0;
 async function runDeepAnalysis() {
   const now = Date.now();
-  if (now - lastDeepAnalysis < 6 * 60 * 60 * 1000) return;
+  if (now - lastDeepAnalysis < 6 * 60 * 60 * 1000) return; // max every 6 hours
+  
   try {
     const tradesFile = process.env.HOME + '/.openclaw/workspace/SOLGizmo/trades.json';
     const trades = JSON.parse(fs.readFileSync(tradesFile, 'utf8'));
     const sells = trades.filter(t => t.action === 'SELL' && t.pnlPct !== undefined);
-    if (sells.length < 10) return;
+    if (sells.length < 10) return; // need 10+ closed trades
     const apiKey = process.env.XAI_API_KEY;
     if (!apiKey) return;
+    
+    // Build trade summary
     const recent20 = sells.slice(-20);
     const summary = recent20.map(t => t.name + ': ' + ((t.pnlPct||0) > 0 ? '+' : '') + (t.pnlPct||0).toFixed(0) + '% | MC:$' + Math.round((t.mc||0)/1000) + 'K | KOLs:' + (t.kols||[]).join(',')).join('\n');
+    
+    // Build KOL DNA
     const kolDna = buildKolDna(sells);
     const dnaSum = Object.entries(kolDna).map(([k,d]) => k + ': WR ' + d.winRate + ' | avg ' + d.avgPnl + '% | band: ' + d.preferredBand + ' | entries: ' + (d.wins+d.losses)).join('\n');
-    const prompt = 'You are an AI trading analyst reviewing a Solana memecoin bot trade history. Be concise and actionable.\n\nRECENT TRADES:\n' + summary + '\n\nKOL DNA:\n' + dnaSum + '\n\nCurrent params: scoreThreshold=' + SCORE_THRESHOLD + ' minLiq=$' + MIN_LIQ + ' minKols=' + MIN_KOLS + ' positionSizeMult=' + POSITION_SIZE_MULT + '\n\nAnalyze: 1) Which KOLs to trust more/less? 2) Best MC range? 3) Parameter adjustments? 4) One key insight the bot is missing? Keep under 200 words.';
+    
+    // Load current muted KOLs
+    let perfData = {};
+    try { perfData = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8')); } catch(e) {}
+    const currentMuted = Object.entries(perfData).filter(([k,v]) => v.weight === 0).map(([k]) => k);
+    
+    const prompt = 'You are Gizmo brain, an AI trading analyst. Analyze this Solana memecoin bot data and return ONLY valid JSON with your recommendations. No markdown, no backticks, no explanation outside the JSON.\n\nRECENT TRADES:\n' + summary + '\n\nKOL DNA:\n' + dnaSum + '\n\nCurrent params: scoreThreshold=' + SCORE_THRESHOLD + ' minLiq=$' + MIN_LIQ + ' minKols=' + MIN_KOLS + ' positionSizeMult=' + POSITION_SIZE_MULT + '\nCurrently muted: ' + (currentMuted.join(',') || 'none') + '\n\nReturn JSON exactly like this (adjust values based on data):\n{"scoreThreshold": 5, "minLiq": 8000, "minKols": 2, "positionSizeMult": 1.0, "muteKols": [], "unmuteKols": [], "analysis": "your 2-3 sentence summary of key findings and why you made these changes"}\n\nRules:\n- scoreThreshold: 4-9 (lower = more trades, higher = pickier)\n- minLiq: 5000-20000\n- minKols: 1-3\n- positionSizeMult: 0.5-2.0\n- muteKols: KOL names with consistent negative PnL (<-10% avg) and 3+ trades\n- unmuteKols: previously muted KOLs that might deserve another chance\n- Only make changes backed by the data. If things are working, say so and make minimal changes.\n- ONLY return JSON, nothing else.';
+
     const r = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-      body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 400, messages: [{ role: 'user', content: prompt }] }),
+      body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 500, messages: [{ role: 'user', content: prompt }] }),
       signal: AbortSignal.timeout(15000)
     });
     const data = await r.json();
-    const analysis = data.choices?.[0]?.message?.content;
-    if (!analysis) return;
+    const raw = (data.choices?.[0]?.message?.content || '').trim();
+    if (!raw) return;
+    
+    // Parse JSON — strip backticks if Grok wraps them
+    let parsed;
+    try {
+      const cleaned = raw.replace(/```json\n?/g, '').replace(/```/g, '').trim();
+      parsed = JSON.parse(cleaned);
+    } catch(e) {
+      log('Deep analysis returned non-JSON: ' + raw.substring(0, 200));
+      lastDeepAnalysis = now;
+      return;
+    }
+    
     lastDeepAnalysis = now;
-    log('\n=== DEEP ANALYSIS ===\n' + analysis + '\n=====================');
+    
+    // ─── APPLY CHANGES ───
+    const changes = [];
+    
+    // Score threshold
+    if (parsed.scoreThreshold !== undefined) {
+      const v = Math.max(4, Math.min(9, Math.round(parsed.scoreThreshold)));
+      if (v !== SCORE_THRESHOLD) { changes.push('score: ' + SCORE_THRESHOLD + ' -> ' + v); SCORE_THRESHOLD = v; }
+    }
+    
+    // Min liquidity
+    if (parsed.minLiq !== undefined) {
+      const v = Math.max(5000, Math.min(20000, Math.round(parsed.minLiq)));
+      if (v !== MIN_LIQ) { changes.push('minLiq: $' + MIN_LIQ + ' -> $' + v); MIN_LIQ = v; }
+    }
+    
+    // Min KOLs
+    if (parsed.minKols !== undefined) {
+      const v = Math.max(1, Math.min(3, Math.round(parsed.minKols)));
+      if (v !== MIN_KOLS) { changes.push('minKols: ' + MIN_KOLS + ' -> ' + v); MIN_KOLS = v; }
+    }
+    
+    // Position size multiplier
+    if (parsed.positionSizeMult !== undefined) {
+      const v = Math.max(0.5, Math.min(2.0, parseFloat(parsed.positionSizeMult.toFixed(1))));
+      if (v !== POSITION_SIZE_MULT) { changes.push('sizeMult: ' + POSITION_SIZE_MULT + ' -> ' + v); POSITION_SIZE_MULT = v; }
+    }
+    
+    // Save updated params
+    if (changes.length > 0) {
+      const learnPath = process.env.HOME + '/.gizmo/runtime/learn-state.json';
+      const learnData = { scoreThreshold: SCORE_THRESHOLD, minLiq: MIN_LIQ, minKols: MIN_KOLS, positionSizeMult: POSITION_SIZE_MULT, lastUpdated: new Date().toISOString() };
+      fs.writeFileSync(learnPath, JSON.stringify(learnData, null, 2));
+    }
+    
+    // Mute KOLs
+    if (Array.isArray(parsed.muteKols) && parsed.muteKols.length > 0) {
+      for (const k of parsed.muteKols) {
+        if (!perfData[k]) perfData[k] = {};
+        perfData[k].weight = 0;
+        perfData[k].tier = 'MUTED';
+        perfData[k].mutedBy = 'deep-analysis';
+        perfData[k].mutedAt = new Date().toISOString();
+        changes.push('MUTED: ' + k);
+      }
+    }
+    
+    // Unmute KOLs
+    if (Array.isArray(parsed.unmuteKols) && parsed.unmuteKols.length > 0) {
+      for (const k of parsed.unmuteKols) {
+        if (perfData[k] && perfData[k].weight === 0) {
+          perfData[k].weight = 1;
+          perfData[k].tier = 'WATCH';
+          perfData[k].unmutedBy = 'deep-analysis';
+          perfData[k].unmutedAt = new Date().toISOString();
+          changes.push('UNMUTED: ' + k);
+        }
+      }
+    }
+    
+    // Save KOL performance
+    if (parsed.muteKols?.length || parsed.unmuteKols?.length) {
+      fs.writeFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', JSON.stringify(perfData, null, 2));
+    }
+    
+    // Log everything
+    const analysisText = parsed.analysis || 'No summary provided';
+    const changeLog = changes.length > 0 ? '\nCHANGES APPLIED: ' + changes.join(' | ') : '\nNo parameter changes needed.';
+    log('\n=== DEEP ANALYSIS (AUTO-ADJUST) ===' + '\n' + analysisText + changeLog + '\n===================================');
+    
+    // Save analysis history
     const analysisPath = (process.env.HOME || '/Users/younghogey') + '/.gizmo/runtime/deep-analysis.json';
     let existing = [];
     try { existing = JSON.parse(fs.readFileSync(analysisPath, 'utf8')); } catch(e) {}
-    existing.unshift({ timestamp: new Date().toISOString(), analysis, trades: sells.length });
-    if (existing.length > 10) existing.length = 10;
+    existing.unshift({ timestamp: new Date().toISOString(), analysis: analysisText, changes: changes, params: { scoreThreshold: SCORE_THRESHOLD, minLiq: MIN_LIQ, minKols: MIN_KOLS, positionSizeMult: POSITION_SIZE_MULT }, trades: sells.length });
+    if (existing.length > 20) existing.length = 20;
     fs.writeFileSync(analysisPath, JSON.stringify(existing, null, 2));
+    
+    // Post to Telegram
     if (TG_BOT_TOKEN && TG_CHAT_ID) {
+      const tgMsg = '=== DEEP ANALYSIS ===' + '\n' + analysisText + changeLog;
       await fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: '=== DEEP ANALYSIS ===\n\n' + analysis })
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: tgMsg })
       });
     }
   } catch(e) { log('Deep analysis failed: ' + e.message); }
