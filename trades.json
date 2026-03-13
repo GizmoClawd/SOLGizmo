@@ -1,5 +1,27 @@
 [
   {
+    "n": 88,
+    "date": "2026-03-13",
+    "token": "BurgerQueen",
+    "action": "SELL",
+    "amount": "0.0149 SOL",
+    "result": "Sold 25% | PnL: +53.7%",
+    "pnl": "+0.0149 SOL",
+    "color": "teal",
+    "ca": "12RQZ3aXKxa6uyWCqr6KVWmKcSTTmYciAx5zhnpcpump",
+    "ts": 1773445508,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 87,
     "date": "2026-03-13",
     "token": "BurgerQueen",
