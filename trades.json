@@ -1,5 +1,29 @@
 [
   {
+    "n": 2,
+    "date": "2026-03-13",
+    "token": "aurelius",
+    "action": "BUY",
+    "amount": "0.2031 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3F9GVZLRoP89yudbZnhWp21TZHWGEcX5ocehXsLDpump",
+    "ts": 1773369565,
+    "mc": 36649,
+    "vol24": 28973.86,
+    "vol1h": 28973.86,
+    "buys": 180,
+    "sells": 84,
+    "liq": 15221.23,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1,
     "date": "2026-03-13",
     "token": "WID",
