@@ -1092,7 +1092,7 @@ async function scanKOLs(state) {
       // HARD duplicate block — never buy same CA twice
       if (POSITIONS.find(p => p.ca === mint)) { log(`⛔ ${info.symbol}: already in positions`); continue; }
       const name = (info.symbol || '').toLowerCase();
-      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${info.symbol}: toxic name`); continue; }
+      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${p.baseToken?.symbol}: toxic name`); continue; }
       if (info.liq !== null && info.liq > 0 && info.liq < MIN_LIQ) { log(`⛔ ${info.symbol}: liq too low $${Math.round(info.liq)} (min $${MIN_LIQ})`); continue; }
       if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
       const walletSol = await getWalletBalance();
