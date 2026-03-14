@@ -1,5 +1,27 @@
 [
   {
+    "n": 125,
+    "date": "2026-03-14",
+    "token": "EXPRESSION",
+    "action": "SELL",
+    "amount": "0.072 SOL",
+    "result": "Sold 100% | PnL: -32.3%",
+    "pnl": "+0.0720 SOL",
+    "color": "teal",
+    "ca": "3VgL5HHqhmPJM1BJjZLo1e2CosM233zcL3HB3PiKpump",
+    "ts": 1773459535,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 124,
     "date": "2026-03-14",
     "token": "RIGGED ",
