@@ -1,5 +1,29 @@
 [
   {
+    "n": 92,
+    "date": "2026-03-14",
+    "token": "TerpBot",
+    "action": "BUY",
+    "amount": "0.0976 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EAeHua7uXt2BH5CMokJsHtuu71C7j2cTW5351ah17wLD",
+    "ts": 1773449308,
+    "mc": 10888.22,
+    "vol24": 73519.49,
+    "vol1h": 37074.2,
+    "buys": 355,
+    "sells": 272,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 91,
     "date": "2026-03-14",
     "token": "EXPRESSION",
