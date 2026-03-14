@@ -1,5 +1,27 @@
 [
   {
+    "n": 171,
+    "date": "2026-03-14",
+    "token": "RIGGED ",
+    "action": "SELL",
+    "amount": "0.2923 SOL",
+    "result": "Sold 100% | PnL: -2.3%",
+    "pnl": "+0.2923 SOL",
+    "color": "teal",
+    "ca": "FP22h3sQ6N1SkFd2EqtVjSYmt15Fiaup2gh67CZNpump",
+    "ts": 1773518801,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 170,
     "date": "2026-03-14",
     "token": "Ride",
