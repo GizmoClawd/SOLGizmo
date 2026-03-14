@@ -1,5 +1,29 @@
 [
   {
+    "n": 115,
+    "date": "2026-03-14",
+    "token": "WHITEPILL",
+    "action": "BUY",
+    "amount": "0.0901 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HmK3yw3u6aw2NgjDzJkTuwy1rtgS4fb9dQVFfa2qpump",
+    "ts": 1773455866,
+    "mc": 62100,
+    "vol24": 16398.64,
+    "vol1h": 16398.64,
+    "buys": 165,
+    "sells": 161,
+    "liq": 19648.37,
+    "kols": [
+      "theo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 114,
     "date": "2026-03-14",
     "token": "SOS",
