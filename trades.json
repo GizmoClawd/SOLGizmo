@@ -1,5 +1,29 @@
 [
   {
+    "n": 162,
+    "date": "2026-03-14",
+    "token": "AgentCity",
+    "action": "BUY",
+    "amount": "0.1399 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GaxHcsg7BfUbu8Yzkc16isouDvwqxwbpknhcfPCEpump",
+    "ts": 1773515325,
+    "mc": 81080,
+    "vol24": 111004.99,
+    "vol1h": 111004.99,
+    "buys": 1645,
+    "sells": 1110,
+    "liq": 22571.14,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 161,
     "date": "2026-03-14",
     "token": "RIGGED ",
