@@ -1,5 +1,27 @@
 [
   {
+    "n": 116,
+    "date": "2026-03-14",
+    "token": "WHITEPILL",
+    "action": "SELL",
+    "amount": "0.1029 SOL",
+    "result": "Sold 100% | PnL: +3.2%",
+    "pnl": "+0.1029 SOL",
+    "color": "teal",
+    "ca": "HmK3yw3u6aw2NgjDzJkTuwy1rtgS4fb9dQVFfa2qpump",
+    "ts": 1773456735,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 115,
     "date": "2026-03-14",
     "token": "WHITEPILL",
