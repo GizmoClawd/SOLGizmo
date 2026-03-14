@@ -1,5 +1,27 @@
 [
   {
+    "n": 208,
+    "date": "2026-03-14",
+    "token": "gomu",
+    "action": "SELL",
+    "amount": "0.1018 SOL",
+    "result": "Sold 25% | PnL: +107.3%",
+    "pnl": "+0.1018 SOL",
+    "color": "teal",
+    "ca": "Bx74hpFiaiBbSonrjyqxjGfAA7gRxM2CeKiy31uN6biR",
+    "ts": 1773529001,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 207,
     "date": "2026-03-14",
     "token": "AGENTJAK",
