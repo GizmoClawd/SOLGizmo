@@ -1,5 +1,27 @@
 [
   {
+    "n": 186,
+    "date": "2026-03-14",
+    "token": "JACK",
+    "action": "SELL",
+    "amount": "0.0951 SOL",
+    "result": "Sold 100% | PnL: -82.4%",
+    "pnl": "+0.0951 SOL",
+    "color": "teal",
+    "ca": "12qZxaaoKJsBF8shN5t3tvMrj7BK6AUastjwCTGEpump",
+    "ts": 1773521316,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 185,
     "date": "2026-03-14",
     "token": "JACK",
