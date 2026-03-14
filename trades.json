@@ -1,5 +1,27 @@
 [
   {
+    "n": 138,
+    "date": "2026-03-14",
+    "token": "MEMECARD",
+    "action": "BUY",
+    "amount": "0.1046 SOL",
+    "result": "Boost scan score 4/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ACc3ZBq1c9h7pofwn2J8b8bvRHvqMFwynVg8neLZpump",
+    "ts": 1773496859,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 137,
     "date": "2026-03-14",
     "token": "FUEL",
