@@ -1,5 +1,29 @@
 [
   {
+    "n": 195,
+    "date": "2026-03-14",
+    "token": "硕飞",
+    "action": "BUY",
+    "amount": "0.1509 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FiXL5FCM99G1YPsCGoFRjJm15f4Y9auughTGfMzzpump",
+    "ts": 1773521877,
+    "mc": 28146,
+    "vol24": 88440.49,
+    "vol1h": 88440.49,
+    "buys": 543,
+    "sells": 310,
+    "liq": 13231.49,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 194,
     "date": "2026-03-14",
     "token": "JACK",
