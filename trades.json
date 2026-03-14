@@ -1,5 +1,29 @@
 [
   {
+    "n": 179,
+    "date": "2026-03-14",
+    "token": "WIN",
+    "action": "BUY",
+    "amount": "0.2009 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3M32C2UFzATaFoDXnUEEiad2vmD8kun7p8gT8Rj4oCg7",
+    "ts": 1773520551,
+    "mc": 5882.37,
+    "vol24": 10549.92,
+    "vol1h": 10549.92,
+    "buys": 59,
+    "sells": 45,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 178,
     "date": "2026-03-14",
     "token": "Wrigley",
