@@ -1,5 +1,29 @@
 [
   {
+    "n": 143,
+    "date": "2026-03-14",
+    "token": "FLOFLO",
+    "action": "BUY",
+    "amount": "0.2348 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4WQ52vpiQtPyZWq8QCcj9Nbh6qDJLwmUyZiiHsf8pump",
+    "ts": 1773503760,
+    "mc": 22374,
+    "vol24": 86237.58,
+    "vol1h": 86237.58,
+    "buys": 1068,
+    "sells": 946,
+    "liq": 11752.55,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 142,
     "date": "2026-03-14",
     "token": "MEMECARD",
