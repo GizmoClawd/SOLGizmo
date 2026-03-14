@@ -1,5 +1,29 @@
 [
   {
+    "n": 189,
+    "date": "2026-03-14",
+    "token": "JACK",
+    "action": "BUY",
+    "amount": "0.1566 SOL",
+    "result": "HW KOL: theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FHCWYz9ws9tztTnyai5vijzENaBgX8b8L53a2WMxpump",
+    "ts": 1773521450,
+    "mc": 6797.84,
+    "vol24": 18215.66,
+    "vol1h": 18215.66,
+    "buys": 129,
+    "sells": 92,
+    "liq": null,
+    "kols": [
+      "theo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 188,
     "date": "2026-03-14",
     "token": "JACK",
