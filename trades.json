@@ -1,5 +1,27 @@
 [
   {
+    "n": 118,
+    "date": "2026-03-14",
+    "token": "SOS",
+    "action": "BUY",
+    "amount": "0.1506 SOL",
+    "result": "Boost scan score 4/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DpxKNEi3XVeRByaGqYKvz2w6E2PhPgBAqdayLcQEpump",
+    "ts": 1773457738,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 117,
     "date": "2026-03-14",
     "token": "EXPRESSION",
