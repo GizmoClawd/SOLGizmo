@@ -1,5 +1,29 @@
 [
   {
+    "n": 146,
+    "date": "2026-03-14",
+    "token": "GIGI",
+    "action": "BUY",
+    "amount": "0.3292 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3Q5EYppzZxVRraFWHkf41TcFp765NRfXm2eu5fNhpump",
+    "ts": 1773504052,
+    "mc": 67854,
+    "vol24": 39755.35,
+    "vol1h": 39755.35,
+    "buys": 179,
+    "sells": 150,
+    "liq": 20419.24,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 145,
     "date": "2026-03-14",
     "token": "FLOFLO",
