@@ -1,5 +1,29 @@
 [
   {
+    "n": 180,
+    "date": "2026-03-14",
+    "token": "AFC",
+    "action": "BUY",
+    "amount": "0.1729 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3GnyTs3bj66aze6YJfUdyy2W2c5TD3jG6zEUbx6Mpump",
+    "ts": 1773520759,
+    "mc": 60137,
+    "vol24": 43879.78,
+    "vol1h": 43879.78,
+    "buys": 319,
+    "sells": 355,
+    "liq": 19263.41,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 179,
     "date": "2026-03-14",
     "token": "WIN",
