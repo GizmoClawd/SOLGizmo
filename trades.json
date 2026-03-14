@@ -1,5 +1,29 @@
 [
   {
+    "n": 168,
+    "date": "2026-03-14",
+    "token": "TBOTE",
+    "action": "BUY",
+    "amount": "0.2029 SOL",
+    "result": "HW KOL: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F3mB51ex4e1yg3XJmMQMbQMWAJ2qUE95PEESqCYPDboz",
+    "ts": 1773518132,
+    "mc": 6069.65,
+    "vol24": 25544.45,
+    "vol1h": 25544.45,
+    "buys": 223,
+    "sells": 167,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 167,
     "date": "2026-03-14",
     "token": "RIGGED ",
