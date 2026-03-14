@@ -1,5 +1,29 @@
 [
   {
+    "n": 177,
+    "date": "2026-03-14",
+    "token": "Wrigley",
+    "action": "BUY",
+    "amount": "0.218 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5heFasevtrtAD2N4LhFphGSbYugSL6fUDsLshjFepump",
+    "ts": 1773519868,
+    "mc": 5334.37,
+    "vol24": 11572.82,
+    "vol1h": 11572.82,
+    "buys": 177,
+    "sells": 90,
+    "liq": null,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 176,
     "date": "2026-03-14",
     "token": "MEMECARD",
