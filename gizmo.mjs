@@ -193,8 +193,8 @@ async function learnFromTrades() {
         POSITION_SIZE_MULT = Math.max(0.5, POSITION_SIZE_MULT - 0.25);
         log(`🧠 WR poor (${(winRate*100).toFixed(0)}%) — reducing position size to ${POSITION_SIZE_MULT}x`);
         changed = true;
-      } else if (winRate > 0.60 && avgPnl > 10 && POSITION_SIZE_MULT < 1.5) {
-        POSITION_SIZE_MULT = Math.min(1.5, POSITION_SIZE_MULT + 0.25);
+      } else if (winRate > 0.60 && avgPnl > 10 && POSITION_SIZE_MULT < 2.0) {
+        POSITION_SIZE_MULT = Math.min(2.0, POSITION_SIZE_MULT + 0.25);
         log(`🧠 WR strong + profitable — increasing position size to ${POSITION_SIZE_MULT}x`);
         changed = true;
       }
@@ -564,7 +564,7 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
   // FLOOR: always keep 0.1 SOL untouched for gas/fees
   const FLOOR = 0.1;
   // RESERVE: keep 15% of wallet as safe reserve, never trade it
-  const RESERVE = walletSol * 0.15;
+  const RESERVE = walletSol * 0.10;
   // TRADEABLE: only risk from the tradeable portion
   const tradeable = walletSol - FLOOR - RESERVE;
   if (tradeable <= 0) { 
@@ -582,20 +582,20 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
 
   if (walletSol >= 5) {
     // Healthy: max 15% of tradeable per trade, hard cap 1.0 SOL
-    pctPerTrade = 0.15;
-    maxPerTrade = 1.0;
+    pctPerTrade = 0.20;
+    maxPerTrade = 2.0;
   } else if (walletSol >= 2) {
     // Cautious: max 12% of tradeable, hard cap 0.5 SOL
-    pctPerTrade = 0.12;
-    maxPerTrade = 0.5;
+    pctPerTrade = 0.18;
+    maxPerTrade = 1.0;
   } else if (walletSol >= 0.5) {
     // Recovery mode: max 10% of tradeable, hard cap 0.2 SOL
-    pctPerTrade = 0.10;
-    maxPerTrade = 0.2;
+    pctPerTrade = 0.15;
+    maxPerTrade = 0.5;
   } else {
     // Survival mode: max 8% of tradeable, hard cap 0.08 SOL
-    pctPerTrade = 0.08;
-    maxPerTrade = 0.08;
+    pctPerTrade = 0.10;
+    maxPerTrade = 0.15;
   }
 
   const baseSize = Math.min(tradeable * pctPerTrade, maxPerTrade);
