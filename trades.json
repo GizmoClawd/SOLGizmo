@@ -1,5 +1,29 @@
 [
   {
+    "n": 107,
+    "date": "2026-03-14",
+    "token": "Cooked",
+    "action": "BUY",
+    "amount": "0.0938 SOL",
+    "result": "HW KOL: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ivRC8zjhQKWGy8woAJ2JVe6mAV5993Q9GG3x7gspump",
+    "ts": 1773453771,
+    "mc": 50665,
+    "vol24": 61596.64,
+    "vol1h": 61596.64,
+    "buys": 887,
+    "sells": 644,
+    "liq": 17852.55,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 106,
     "date": "2026-03-14",
     "token": "EXPRESSION",
