@@ -1,5 +1,27 @@
 [
   {
+    "n": 100,
+    "date": "2026-03-14",
+    "token": "SOS",
+    "action": "SELL",
+    "amount": "0.0786 SOL",
+    "result": "Sold 50% | PnL: +30.9%",
+    "pnl": "+0.0786 SOL",
+    "color": "teal",
+    "ca": "DpxKNEi3XVeRByaGqYKvz2w6E2PhPgBAqdayLcQEpump",
+    "ts": 1773451595,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 99,
     "date": "2026-03-14",
     "token": "SheepCoin",
