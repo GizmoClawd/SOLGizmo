@@ -1,5 +1,29 @@
 [
   {
+    "n": 130,
+    "date": "2026-03-14",
+    "token": "WHEN",
+    "action": "BUY",
+    "amount": "0.0881 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "E4YcZ98MdFQdbRmxUxAMhrMAVdjNYH42C3YDFW1dpump",
+    "ts": 1773491554,
+    "mc": 37230,
+    "vol24": 28158.74,
+    "vol1h": 28158.74,
+    "buys": 397,
+    "sells": 395,
+    "liq": 15104.63,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 129,
     "date": "2026-03-14",
     "token": "SOS",
