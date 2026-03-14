@@ -644,7 +644,7 @@ async function postTrade(type, symbol, ca, mc, reason, solAmount, pnl) {
   } catch(e) { log(`Telegram failed: ${e.message?.slice(0,60)}`); }
   try {
     const tweetText = text.replace(/\n/g, " ").replace(/"/g, '\\"');
-    execSync(`cd ${BASE_DIR} && node tweet.mjs "${tweetText}" --community`, { timeout: 15000 });
+    execSync(`cd ${BASE_DIR} && node tweet.mjs "${tweetText}" `, { timeout: 15000 });
     log(`📢 Tweeted: ${type} ${symbol}`);
   } catch(e) { log(`Tweet failed: ${e.message?.slice(0,60)}`); }
 }
@@ -1343,8 +1343,26 @@ async function autoTweet(state) {
   const interval = (h >= 0 && h < 8) ? 3 * 3600000 : 3600000;
   if (Date.now() - (state.lastTweet || 0) < interval) return;
   state.lastTweet = Date.now();
-  const pool = (h >= 22 || h < 6) ? TWEETS_NIGHT : TWEETS_DAY;
-  const tweet = pool[Math.floor(Math.random() * pool.length)];
+  let tweet;
+  try {
+    const apiKey = process.env.XAI_API_KEY;
+    if (apiKey) {
+      const posInfo = POSITIONS.length > 0
+        ? POSITIONS.map(p => p.name + ' (' + ((p.highMC / p.entryMC - 1) * 100).toFixed(0) + '%)').join(', ')
+        : 'hunting for alpha, no positions';
+      const timeContext = (h >= 22 || h < 6) ? 'late night grind' : 'daytime hustle';
+      const pr = 'You are Gizmo, autonomous Solana memecoin trading lobster. Write ONE tweet (max 240 chars). Mix stoic wisdom with crypto degen energy. Current state: ' + posInfo + '. Time: ' + timeContext + '. No hashtags. No quotes. End with lobster emoji.';
+      const r = await fetch('https://api.x.ai/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+        body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 80, messages: [{ role: 'user', content: pr }] }),
+        signal: AbortSignal.timeout(8000)
+      });
+      const data = await r.json();
+      tweet = data.choices?.[0]?.message?.content || null;
+    }
+  } catch(e) {}
+  if (!tweet) tweet = 'scanning the trenches. patience is the edge. 🦞';
   try {
     execSync(`cd ${BASE_DIR} && node tweet.mjs "${tweet.replace(/"/g, '\\"')}"`, { timeout: 15000 });
     log(`TWEET: ${tweet.slice(0, 60)}`);
