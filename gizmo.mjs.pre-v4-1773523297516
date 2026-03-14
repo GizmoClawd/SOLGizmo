@@ -902,7 +902,6 @@ async function managePositions() {
 
 // ─── WATCHLIST RE-ENTRY ───────────────────────────────────────────────────────
 async function checkWatchlist() {
-  return; // DISABLED — stop re-buying tokens we already exited. Each re-entry bleeds SOL.
   for (let i = WATCHLIST.length - 1; i >= 0; i--) {
     const w = WATCHLIST[i];
     if (Date.now() - w.exitTime > 30 * 60 * 1000) { WATCHLIST.splice(i, 1); continue; }
@@ -964,14 +963,13 @@ async function scanKOLs(state) {
   }
 
   // HIGH-WEIGHT SINGLE KOL BUY (weight >= 2)
-  for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 4 && !b.scalper)) {
+  for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 3 && !b.scalper)) {
     if (POSITIONS.length >= MAX_POSITIONS) break;
     if (RECENTLY_BOUGHT.has(signal.mint) || ALERTED.has(signal.mint)) continue;
     // Check live performance weight — skip MUTED KOLs even in HW path
     let livePerf = {}; try { livePerf = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8')); } catch {}
     const hwLiveWeight = livePerf[signal.kol]?.weight !== undefined ? livePerf[signal.kol].weight : signal.kolWeight;
-    if (hwLiveWeight < 4) { if (hwLiveWeight === 0 && !_mutedLoggedThisCycle.has(signal.kol)) { _mutedLoggedThisCycle.add(signal.kol); log('🔇 SKIPPED KOL: ' + signal.kol + ' (w:' + hwLiveWeight + ' — need w:4 for solo buy)'); } ALERTED.add(signal.mint); continue; }
-    if (false) { if (!_mutedLoggedThisCycle.has(signal.kol)) { _mutedLoggedThisCycle.add(signal.kol); log(`🔇 MUTED KOL skipped: ${signal.kol} (tier:${livePerf[signal.kol]?.tier} avgPnL:${livePerf[signal.kol]?.avgPnl?.toFixed(1)}%)`); } ALERTED.add(signal.mint); continue; }
+    if (hwLiveWeight === 0) { if (!_mutedLoggedThisCycle.has(signal.kol)) { _mutedLoggedThisCycle.add(signal.kol); log(`🔇 MUTED KOL skipped: ${signal.kol} (tier:${livePerf[signal.kol]?.tier} avgPnL:${livePerf[signal.kol]?.avgPnl?.toFixed(1)}%)`); } ALERTED.add(signal.mint); continue; }
     const hwInfo = await getTokenInfo(signal.mint);
     if (!hwInfo || hwInfo.mcap < 5000) continue;
     const entryPair = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${signal.mint}`).then(r=>r.json()).catch(()=>null);
@@ -1636,8 +1634,7 @@ async function runCycle() {
     await managePositions();
     await checkWatchlist();
     await scanKOLs(state);
-    // MARKET SCAN DISABLED — was -0.270 SOL over 29 trades. Focus on proven KOL signals only.
-    // if (cycle % 5 === 0) await marketScan();
+    if (cycle % 5 === 0) await marketScan();
     if (cycle % 5 === 0) await learnFromTrades();
     await writeDashboard();
     await processSniperWatch();
@@ -1908,11 +1905,15 @@ async function runDeepAnalysis() {
     if (Array.isArray(parsed.muteKols) && parsed.muteKols.length > 0) {
       for (const k of parsed.muteKols) {
         if (!perfData[k]) perfData[k] = {};
-        // PROTECTION: only protect KOLs with explicit protected:true flag
-        // (set based on actual SOL P&L, not % win rate)
+        // PROTECTION: never mute a KOL with positive totalPnl or protected flag
         if (perfData[k].protected) {
           log('🛡️ PROTECTED KOL: ' + k + ' — deep analysis tried to mute, BLOCKED');
-          changes.push('BLOCKED MUTE: ' + k + ' (protected — proven SOL profitable)');
+          changes.push('BLOCKED MUTE: ' + k + ' (protected)');
+          continue;
+        }
+        if ((perfData[k].totalPnl || 0) > 0) {
+          log('🛡️ POSITIVE PNL KOL: ' + k + ' (totalPnl: ' + (perfData[k].totalPnl||0).toFixed(1) + ') — refusing to mute');
+          changes.push('BLOCKED MUTE: ' + k + ' (positive PnL)');
           continue;
         }
         perfData[k].weight = 0;
@@ -1938,13 +1939,13 @@ async function runDeepAnalysis() {
     
     // Save KOL performance — enforce protection floors before saving
     if (parsed.muteKols?.length || parsed.unmuteKols?.length) {
-      // PROTECTION FLOOR: only restore KOLs with protected:true (proven SOL profitable)
+      // PROTECTION FLOOR: restore protected KOLs if deep analysis demoted them
       for (const [k, v] of Object.entries(perfData)) {
-        if (v.protected === true && v.weight < 2) {
+        if (v.protected && v.weight < 2) {
           const oldW = v.weight;
-          v.weight = Math.max(v.weight, 3); // protected KOLs stay at least ELITE
-          v.tier = v.weight >= 4 ? 'GOD' : 'ELITE';
-          if (oldW < 3) log('🛡️ RESTORED: ' + k + ' weight ' + oldW + ' → ' + v.weight + ' (SOL profitable, protected)');
+          v.weight = Math.max(v.weight, 2);
+          v.tier = v.weight >= 3 ? 'ELITE' : 'SOLID';
+          if (oldW < 2) log('🛡️ RESTORED: ' + k + ' weight ' + oldW + ' → ' + v.weight + ' (protected floor)');
         }
       }
       fs.writeFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', JSON.stringify(perfData, null, 2));
