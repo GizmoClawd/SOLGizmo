@@ -1,5 +1,27 @@
 [
   {
+    "n": 201,
+    "date": "2026-03-14",
+    "token": "AGENTJAK",
+    "action": "BUY",
+    "amount": "0.1836 SOL",
+    "result": "Boost scan score 6/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GKyTdLZG7BXjwWUW3QFwz7UykZE9wGXU9bKYDLdbpump",
+    "ts": 1773522904,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 200,
     "date": "2026-03-14",
     "token": "UBT",
