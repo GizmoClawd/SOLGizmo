@@ -1,5 +1,27 @@
 [
   {
+    "n": 193,
+    "date": "2026-03-14",
+    "token": "ALEX",
+    "action": "SELL",
+    "amount": "0.1452 SOL",
+    "result": "Sold 100% | PnL: -46.3%",
+    "pnl": "+0.1452 SOL",
+    "color": "teal",
+    "ca": "AUguwmm6hKGCHfxUqVRMWJQDvdoDT2jA2MXjzwV9pump",
+    "ts": 1773521826,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 192,
     "date": "2026-03-14",
     "token": "ALEX",
