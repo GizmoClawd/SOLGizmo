@@ -1,5 +1,29 @@
 [
   {
+    "n": 183,
+    "date": "2026-03-14",
+    "token": "JACK",
+    "action": "BUY",
+    "amount": "0.1928 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "12qZxaaoKJsBF8shN5t3tvMrj7BK6AUastjwCTGEpump",
+    "ts": 1773521273,
+    "mc": 19812,
+    "vol24": 23455.78,
+    "vol1h": 23455.78,
+    "buys": 116,
+    "sells": 99,
+    "liq": 11031.89,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 182,
     "date": "2026-03-14",
     "token": "WIN",
