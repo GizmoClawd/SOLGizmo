@@ -1266,7 +1266,7 @@ async function reconcileWallet() {
 // ─── MARKET SCAN ──────────────────────────────────────────────────────────────
 let lastMarketScan = 0;
 async function marketScan() {
-  if (Date.now() - lastMarketScan < 10 * 60 * 1000) return;
+  if (Date.now() - lastMarketScan < 3 * 60 * 1000) return;
   lastMarketScan = Date.now();
   try {
     const r = await fetch('https://api.dexscreener.com/token-boosts/top/v1', { signal: AbortSignal.timeout(8000) });
@@ -1279,17 +1279,17 @@ async function marketScan() {
 
       const p = await checkPrice(t.tokenAddress); if (!p) continue;
       if (!['pumpswap', 'meteora', 'raydium'].includes(p.dexId)) continue;
-      if (p.fdv < 20000 || p.fdv > 5000000) continue;
+      if (p.fdv < 8000 || p.fdv > 5000000) continue;
 
       const name = (p.baseToken?.name || '').toLowerCase() + ' ' + (p.baseToken?.symbol || '').toLowerCase();
       if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${info.symbol}: toxic name`); continue; }
 
       const m5 = p.priceChange?.m5 || 0, h1 = p.priceChange?.h1 || 0, h6 = p.priceChange?.h6 || 0;
       const liq = p.liquidity?.usd || 0;
-      if (m5 < 3 || h1 > 100 || h6 > 200 || liq < 30000) continue;
-      if ((p.txns?.m5?.buys || 0) < 50) continue;
+      if (m5 < 1 || h1 > 100 || h6 > 200 || liq < 10000) continue;
+      if ((p.txns?.m5?.buys || 0) < 15) continue;
       if ((p.txns?.m5?.buys || 0) / Math.max(p.txns?.m5?.sells || 0, 1) < 2) continue;
-      if ((p.volume?.m5 || 0) < 3000) continue;
+      if ((p.volume?.m5 || 0) < 1000) continue;
 
       let score = 0;
       if ((p.txns.m5.buys / Math.max(p.txns.m5.sells, 1)) >= 2.5) score++;
@@ -1302,7 +1302,7 @@ async function marketScan() {
       if ((p.txns.h1?.buys || 0) > 200) score++;
       if (h6 < 0 && m5 > 5) score++;
 
-      if (score < SCORE_THRESHOLD) continue;
+      if (score < 4) continue;
       const mktWallet = await getWalletBalance();
       const size = await safeBuySize(mktWallet, liq, 2);
       if (size < 0.03) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
