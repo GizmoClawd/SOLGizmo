@@ -643,8 +643,9 @@ async function postTrade(type, symbol, ca, mc, reason, solAmount, pnl) {
     log(`📢 Telegram: ${type} ${symbol}`);
   } catch(e) { log(`Telegram failed: ${e.message?.slice(0,60)}`); }
   try {
-    const tweetText = text.replace(/\n/g, " ").replace(/"/g, '\\"');
-    execSync(`cd ${BASE_DIR} && node tweet.mjs "${tweetText}" `, { timeout: 15000 });
+    const tweetText = String(text).replace(/\n/g, " ").replace(/"/g, "'").replace(/`/g, "'").slice(0, 270);
+    fs.writeFileSync('/tmp/gizmo-tweet.txt', tweetText);
+    execSync(`cd ${BASE_DIR} && node tweet.mjs "$(cat /tmp/gizmo-tweet.txt)"`, { timeout: 15000 });
     log(`📢 Tweeted: ${type} ${symbol}`);
   } catch(e) { log(`Tweet failed: ${e.message?.slice(0,60)}`); }
 }
@@ -2046,6 +2047,13 @@ async function postStoic() {
     });
   } catch(e) {}
   log('Stoic message posted (AI-generated)');
+  // Post to X too
+  try {
+    const stoicTweet = String(msg).replace(/\n/g, " ").replace(/"/g, "'").slice(0, 270);
+    fs.writeFileSync('/tmp/gizmo-tweet.txt', stoicTweet);
+    execSync(`cd ${BASE_DIR} && node tweet.mjs "$(cat /tmp/gizmo-tweet.txt)"`, { timeout: 15000 });
+    log('Stoic tweeted to X');
+  } catch(e) { log('Stoic tweet failed: ' + (e.message || '').slice(0, 60)); }
 }
 setInterval(postStoic, 1 * 60 * 60 * 1000); // every 1 hour
 setTimeout(postStoic, 10000); // post one on startup after 10s
