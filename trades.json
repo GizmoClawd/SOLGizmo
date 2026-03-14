@@ -1,5 +1,29 @@
 [
   {
+    "n": 110,
+    "date": "2026-03-14",
+    "token": "RTRDX",
+    "action": "BUY",
+    "amount": "0.0762 SOL",
+    "result": "HW KOL: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DuDrHvCDjHDhYAgU2mLsGo4LgSLYhPAqHsVaF5pbpump",
+    "ts": 1773454928,
+    "mc": 21672,
+    "vol24": 661102,
+    "vol1h": 661102,
+    "buys": 2278,
+    "sells": 1929,
+    "liq": 8238.96,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 109,
     "date": "2026-03-14",
     "token": "SOS",
