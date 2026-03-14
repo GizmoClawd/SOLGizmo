@@ -1,5 +1,27 @@
 [
   {
+    "n": 93,
+    "date": "2026-03-14",
+    "token": "Gojo",
+    "action": "BUY",
+    "amount": "0.1013 SOL",
+    "result": "Boost scan score 4/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6fWxjAcEKdYF3TB67mg5EnV8Epw9VerNNmNDVwrnpump",
+    "ts": 1773449342,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 92,
     "date": "2026-03-14",
     "token": "TerpBot",
