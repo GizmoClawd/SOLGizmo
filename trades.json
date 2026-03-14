@@ -1,5 +1,27 @@
 [
   {
+    "n": 145,
+    "date": "2026-03-14",
+    "token": "FLOFLO",
+    "action": "SELL",
+    "amount": "0.327 SOL",
+    "result": "Sold 100% | PnL: +37.1%",
+    "pnl": "+0.3270 SOL",
+    "color": "teal",
+    "ca": "4WQ52vpiQtPyZWq8QCcj9Nbh6qDJLwmUyZiiHsf8pump",
+    "ts": 1773503906,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 144,
     "date": "2026-03-14",
     "token": "FLOFLO",
