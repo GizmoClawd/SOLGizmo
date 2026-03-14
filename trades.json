@@ -1,5 +1,27 @@
 [
   {
+    "n": 141,
+    "date": "2026-03-14",
+    "token": "gomu",
+    "action": "BUY",
+    "amount": "0.3912 SOL",
+    "result": "Boost scan score 4/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Bx74hpFiaiBbSonrjyqxjGfAA7gRxM2CeKiy31uN6biR",
+    "ts": 1773501861,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 140,
     "date": "2026-03-14",
     "token": "MEMECARD",
