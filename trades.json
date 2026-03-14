@@ -1,5 +1,29 @@
 [
   {
+    "n": 184,
+    "date": "2026-03-14",
+    "token": "JACK",
+    "action": "BUY",
+    "amount": "0.1659 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EGkuznkGfUraCygodv9uWoiyuHnquEF9V2uyR1QVpump",
+    "ts": 1773521299,
+    "mc": 10304,
+    "vol24": 65228.8,
+    "vol1h": 65228.8,
+    "buys": 302,
+    "sells": 301,
+    "liq": 7974.7,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 183,
     "date": "2026-03-14",
     "token": "JACK",
