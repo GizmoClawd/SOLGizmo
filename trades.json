@@ -1,5 +1,29 @@
 [
   {
+    "n": 296,
+    "date": "2026-03-15",
+    "token": "LIBRA2",
+    "action": "BUY",
+    "amount": "0.1863 SOL",
+    "result": "1 KOL convergence: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BjAczfn8XcwQcwy5Bmg35gF7yY7qsK94uKpPcPXtpump",
+    "ts": 1773603097,
+    "mc": 51983,
+    "vol24": 74678.68,
+    "vol1h": 74678.68,
+    "buys": 961,
+    "sells": 445,
+    "liq": 18095.16,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 295,
     "date": "2026-03-15",
     "token": "GPD",
