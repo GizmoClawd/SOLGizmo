@@ -1,5 +1,27 @@
 [
   {
+    "n": 283,
+    "date": "2026-03-15",
+    "token": "Money",
+    "action": "SELL",
+    "amount": "0.1141 SOL",
+    "result": "Sold 100% | PnL: -8.4%",
+    "pnl": "+0.1141 SOL",
+    "color": "teal",
+    "ca": "FVUt6qw7y2umMGDU9uZxEsWV9RhnGpt4yoQxFyYzpump",
+    "ts": 1773602644,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 282,
     "date": "2026-03-15",
     "token": "TJR",
