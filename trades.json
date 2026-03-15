@@ -1,5 +1,30 @@
 [
   {
+    "n": 307,
+    "date": "2026-03-15",
+    "token": "AI",
+    "action": "BUY",
+    "amount": "0.4044 SOL",
+    "result": "2 KOL convergence: decu, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4P3QU45Zu5MoqDY9qE5pQhXLnD4rnYnrgQRyTFWrpump",
+    "ts": 1773604534,
+    "mc": 12129.68,
+    "vol24": 58909.19,
+    "vol1h": 58909.19,
+    "buys": 824,
+    "sells": 599,
+    "liq": null,
+    "kols": [
+      "decu",
+      "Cented"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 306,
     "date": "2026-03-15",
     "token": "AI",
