@@ -1,5 +1,27 @@
 [
   {
+    "n": 268,
+    "date": "2026-03-15",
+    "token": "Coffeegate",
+    "action": "SELL",
+    "amount": "0.4292 SOL",
+    "result": "Sold 100% | PnL: +82.8%",
+    "pnl": "+0.4292 SOL",
+    "color": "teal",
+    "ca": "CJYgKNJ9G66YWbpu6FCYh7LVFzRQp1AZ3sqggmXCpump",
+    "ts": 1773600965,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 267,
     "date": "2026-03-15",
     "token": "PONZI",
