@@ -1,5 +1,27 @@
 [
   {
+    "n": 224,
+    "date": "2026-03-15",
+    "token": "MOGGED",
+    "action": "SELL",
+    "amount": "0.0559 SOL",
+    "result": "Sold 25% | PnL: +124.6%",
+    "pnl": "+0.0559 SOL",
+    "color": "teal",
+    "ca": "CwdVZL7bVt37eyvHvrUZtbo5d3wVBnaLqT6WXZP4pump",
+    "ts": 1773540655,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 223,
     "date": "2026-03-15",
     "token": "MOGGED",
