@@ -1,5 +1,27 @@
 [
   {
+    "n": 302,
+    "date": "2026-03-15",
+    "token": "GROKBUILD",
+    "action": "SELL",
+    "amount": "0.2586 SOL",
+    "result": "Sold 100% | PnL: +8.3%",
+    "pnl": "+0.2586 SOL",
+    "color": "teal",
+    "ca": "FWoLA2H63F4pZ7WnAgXJi9LsLgkC8827BqcgogtHrpGo",
+    "ts": 1773603454,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 301,
     "date": "2026-03-15",
     "token": "LIBRA2",
