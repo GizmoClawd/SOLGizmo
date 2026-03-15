@@ -1,5 +1,27 @@
 [
   {
+    "n": 228,
+    "date": "2026-03-15",
+    "token": "YUNJU",
+    "action": "SELL",
+    "amount": "0.025 SOL",
+    "result": "Sold 15% | PnL: +31.7%",
+    "pnl": "+0.0250 SOL",
+    "color": "teal",
+    "ca": "CVgfhfHCZiWJzSnSA3WZDtuHTC6w54fBf1mmXtSpump",
+    "ts": 1773541165,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 227,
     "date": "2026-03-15",
     "token": "JJK",
