@@ -1,5 +1,27 @@
 [
   {
+    "n": 233,
+    "date": "2026-03-15",
+    "token": "Palli",
+    "action": "SELL",
+    "amount": "0.1201 SOL",
+    "result": "Sold 100% | PnL: +17.7%",
+    "pnl": "+0.1201 SOL",
+    "color": "teal",
+    "ca": "HkLoHLLo3yuZJBHxvyD5DchgtXv9QcYAngLEUueJyHJn",
+    "ts": 1773543675,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 232,
     "date": "2026-03-15",
     "token": "JACK",
