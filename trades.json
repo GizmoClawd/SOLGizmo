@@ -1,5 +1,27 @@
 [
   {
+    "n": 259,
+    "date": "2026-03-15",
+    "token": "BAGWORKOOR",
+    "action": "SELL",
+    "amount": "0.0461 SOL",
+    "result": "Sold 15% | PnL: +33.7%",
+    "pnl": "+0.0461 SOL",
+    "color": "teal",
+    "ca": "FDQ77aHDgV6ozbv1b4WM5oXuHGV1cMnjSXpxvgSzpump",
+    "ts": 1773600517,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 258,
     "date": "2026-03-15",
     "token": "Coffeegate",
