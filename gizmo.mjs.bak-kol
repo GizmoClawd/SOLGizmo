@@ -1069,7 +1069,7 @@ async function scanKOLs(state) {
     const info = await getTokenInfo(mint);
     ALERTED.add(mint);
     // volume check moved after pairForScore fetch
-    if (!info || info.mcap < 5000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
+    if (!info || info.mcap < 2000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
     if (info.mcap > 500000) { log(`⛔ ${info.symbol}: MC too high ${Math.round(info.mcap)} — too late`); continue; }
 
     const totalSol = buys.reduce((s, b) => s + b.solSpent, 0);
@@ -1095,7 +1095,7 @@ async function scanKOLs(state) {
       if (convVol24 < 10000) { log(`⛔ ${info.symbol}: low volume ${Math.round(convVol24)} 24h — ghost token`); ALERTED.add(mint); continue; }
       const tokenScore = await scoreToken(info, pairForScore, convergenceScore);
       // Elite KOL convergence (score 9+) lowers bar to 4, otherwise need 5+
-      const minScore = convergenceScore >= 9 ? 4 : 5;
+      const minScore = convergenceScore >= 9 ? 3 : 3;
       if (tokenScore < minScore) {
         log(`⛔ ${info.symbol}: 9-signal score ${tokenScore}/9 below min ${minScore} — skip`);
         continue;
@@ -1293,7 +1293,7 @@ async function marketScan() {
       if (score < 5) continue;
       const mktWallet = await getWalletBalance();
       const size = await safeBuySize(mktWallet, liq, 2);
-      if (size < 0.03) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
+      if (size < 0.08) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
 
       log(`🎯 MARKET BUY: ${p.baseToken.symbol} score:${score}/9 MC:$${Math.round(p.fdv)} buying ${size} SOL`);
       if (await buy(t.tokenAddress, size)) {
@@ -1845,7 +1845,7 @@ async function runDeepAnalysis() {
     try { perfData = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8')); } catch(e) {}
     const currentMuted = Object.entries(perfData).filter(([k,v]) => v.weight === 0).map(([k]) => k);
     
-    const prompt = 'You are Gizmo brain, an AI trading analyst. Analyze this Solana memecoin bot data and return ONLY valid JSON with your recommendations. No markdown, no backticks, no explanation outside the JSON.\n\nRECENT TRADES:\n' + summary + '\n\nKOL DNA:\n' + dnaSum + '\n\nCurrent params: scoreThreshold=' + SCORE_THRESHOLD + ' minLiq=$' + MIN_LIQ + ' minKols=' + MIN_KOLS + ' positionSizeMult=' + POSITION_SIZE_MULT + '\nCurrently muted: ' + (currentMuted.join(',') || 'none') + '\n\nReturn JSON exactly like this (adjust values based on data):\n{"scoreThreshold": 5, "minLiq": 8000, "minKols": 2, "positionSizeMult": 1.0, "muteKols": [], "unmuteKols": [], "analysis": "your 2-3 sentence summary of key findings and why you made these changes"}\n\nRules:\n- scoreThreshold: 4-9 (lower = more trades, higher = pickier)\n- minLiq: 5000-20000\n- minKols: 1-3\n- positionSizeMult: 0.5-2.0\n- muteKols: KOL names with consistent negative PnL (<-10% avg) and 3+ trades\n- unmuteKols: previously muted KOLs that might deserve another chance\n- Only make changes backed by the data. If things are working, say so and make minimal changes.\n- ONLY return JSON, nothing else.';
+    const prompt = 'You are Gizmo brain, an AI trading analyst. Analyze this Solana memecoin bot data and return ONLY valid JSON with your recommendations. No markdown, no backticks, no explanation outside the JSON.\n\nRECENT TRADES:\n' + summary + '\n\nKOL DNA:\n' + dnaSum + '\n\nCurrent params: scoreThreshold=' + SCORE_THRESHOLD + ' minLiq=$' + MIN_LIQ + ' minKols=' + MIN_KOLS + ' positionSizeMult=' + POSITION_SIZE_MULT + '\nCurrently muted: ' + (currentMuted.join(',') || 'none') + '\n\nReturn JSON exactly like this (adjust values based on data):\n{"scoreThreshold": 5, "minLiq": 8000, "minKols": 2, "positionSizeMult": 1.0, "muteKols": [], "unmuteKols": [], "analysis": "your 2-3 sentence summary of key findings and why you made these changes"}\n\nRules:\n- scoreThreshold: 4-9 (lower = more trades, higher = pickier)\n- minLiq: 2000-20000\n- minKols: 1-3\n- positionSizeMult: 0.5-2.0\n- muteKols: KOL names with consistent negative PnL (<-10% avg) and 3+ trades\n- unmuteKols: previously muted KOLs that might deserve another chance\n- Only make changes backed by the data. If things are working, say so and make minimal changes.\n- ONLY return JSON, nothing else.';
 
     const r = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
@@ -1881,7 +1881,7 @@ async function runDeepAnalysis() {
     
     // Min liquidity
     if (parsed.minLiq !== undefined) {
-      const v = Math.max(5000, Math.min(20000, Math.round(parsed.minLiq)));
+      const v = Math.max(2000, Math.min(20000, Math.round(parsed.minLiq)));
       if (v !== MIN_LIQ) { changes.push('minLiq: $' + MIN_LIQ + ' -> $' + v); MIN_LIQ = v; }
     }
     
