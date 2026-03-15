@@ -1,5 +1,29 @@
 [
   {
+    "n": 252,
+    "date": "2026-03-15",
+    "token": "CORGI",
+    "action": "BUY",
+    "amount": "0.211 SOL",
+    "result": "1 KOL convergence: Casino",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CQnTXFK4zZ6yxEfWw1EntYmawYahEi13JhnTKzhmpump",
+    "ts": 1773591082,
+    "mc": 31413.46,
+    "vol24": 205765.59,
+    "vol1h": 38072.97,
+    "buys": 474,
+    "sells": 336,
+    "liq": null,
+    "kols": [
+      "Casino"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 251,
     "date": "2026-03-15",
     "token": "Mixing",
