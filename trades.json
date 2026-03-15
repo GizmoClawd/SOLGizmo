@@ -1,5 +1,29 @@
 [
   {
+    "n": 270,
+    "date": "2026-03-15",
+    "token": "AI",
+    "action": "BUY",
+    "amount": "0.3179 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HLcWvW24aDjKb8dB2oU4qbuPNCJHMwvQJA3ppoXMpump",
+    "ts": 1773602022,
+    "mc": 12077.4,
+    "vol24": 79433.44,
+    "vol1h": 79433.44,
+    "buys": 1153,
+    "sells": 833,
+    "liq": null,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 269,
     "date": "2026-03-15",
     "token": "BAGWORKOOR",
