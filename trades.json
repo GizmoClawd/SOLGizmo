@@ -1,5 +1,30 @@
 [
   {
+    "n": 273,
+    "date": "2026-03-15",
+    "token": "/buy",
+    "action": "BUY",
+    "amount": "0.2733 SOL",
+    "result": "2 KOL convergence: Cented, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FdLRA7Et698dq3HRH1FY6THYrbrVSQdSb5amdwhxpump",
+    "ts": 1773602408,
+    "mc": 14307.07,
+    "vol24": 29181.09,
+    "vol1h": 29181.09,
+    "buys": 393,
+    "sells": 237,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Jijo"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 272,
     "date": "2026-03-15",
     "token": "AI",
