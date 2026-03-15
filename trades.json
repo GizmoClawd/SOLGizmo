@@ -1,5 +1,29 @@
 [
   {
+    "n": 278,
+    "date": "2026-03-15",
+    "token": "TJR",
+    "action": "BUY",
+    "amount": "0.2276 SOL",
+    "result": "1 KOL convergence: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ENjB1ZqzVzBV9Z89dfHoVwGFHMNDb2T4XpdLmufYpump",
+    "ts": 1773602482,
+    "mc": 8019.05,
+    "vol24": 16343.59,
+    "vol1h": 9437.23,
+    "buys": 103,
+    "sells": 72,
+    "liq": null,
+    "kols": [
+      "radiance"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 277,
     "date": "2026-03-15",
     "token": "Coffeegate",
