@@ -1,5 +1,29 @@
 [
   {
+    "n": 256,
+    "date": "2026-03-15",
+    "token": "BAGWORKOOR",
+    "action": "BUY",
+    "amount": "0.2506 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FDQ77aHDgV6ozbv1b4WM5oXuHGV1cMnjSXpxvgSzpump",
+    "ts": 1773600459,
+    "mc": 24886,
+    "vol24": 28855.42,
+    "vol1h": 28855.42,
+    "buys": 553,
+    "sells": 407,
+    "liq": 12437.74,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 255,
     "date": "2026-03-15",
     "token": "Mixing",
