@@ -411,6 +411,12 @@ const WALLETS = [
   { name: "mercy", address: "F5jWYuiDLTiaLYa54D88YbpXgEsA6NKHzWy4SN4bMYjt", weight: 1 },
   { name: "Silver", address: "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U", weight: 3 },
   { name: "Pain", address: "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa", weight: 3 },
+  { name: "Casino", address: "8rvAsDKeAcEjEkiZMug9k8v1y8mW6gQQiMobd89Uy7qR", weight: 3 },
+  { name: "Naruza", address: "ASVzakePP6GNg9r95d4LPZHJDMXun6L6E4um4pu5ybJk", weight: 3 },
+  { name: "GOYIM", address: "G3gZWqrYkNmYFKYCyfRCNtGuxdyuE2wiYKkZpiZn4WSS", weight: 3 },
+  { name: "SHEEP", address: "78N177fzNJpp8pG49xDv1efYcTMSzo9tPTKEA9mAVkh2", weight: 3 },
+  { name: "CLOWN", address: "EDXHdSFdadFbYFFjxPXBqMe1kCEDFqpPu552uvp48HR8", weight: 3 },
+  { name: "S", address: "ApRnQN2HkbCn7W2WWiT2FEKvuKJp9LugRyAE1a9Hdz1", weight: 3 },
   // ── AUTO-DISCOVERED SMART MONEY (Mon Mar 09 2026) ──
 ];
 
