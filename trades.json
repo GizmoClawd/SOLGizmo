@@ -1,5 +1,27 @@
 [
   {
+    "n": 285,
+    "date": "2026-03-15",
+    "token": "/buy",
+    "action": "SELL",
+    "amount": "0.1168 SOL",
+    "result": "Sold 100% | PnL: -17.9%",
+    "pnl": "+0.1168 SOL",
+    "color": "teal",
+    "ca": "FdLRA7Et698dq3HRH1FY6THYrbrVSQdSb5amdwhxpump",
+    "ts": 1773602712,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 284,
     "date": "2026-03-15",
     "token": "Money",
