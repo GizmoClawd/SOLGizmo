@@ -1,5 +1,30 @@
 [
   {
+    "n": 287,
+    "date": "2026-03-15",
+    "token": "Money",
+    "action": "BUY",
+    "amount": "0.4533 SOL",
+    "result": "2 KOL convergence: Cented, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FVUt6qw7y2umMGDU9uZxEsWV9RhnGpt4yoQxFyYzpump",
+    "ts": 1773602800,
+    "mc": 3449.75,
+    "vol24": 42806.21,
+    "vol1h": 42806.21,
+    "buys": 740,
+    "sells": 604,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "dv"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 286,
     "date": "2026-03-15",
     "token": "Coffeegate",
