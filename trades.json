@@ -1,5 +1,29 @@
 [
   {
+    "n": 309,
+    "date": "2026-03-15",
+    "token": "Barista",
+    "action": "BUY",
+    "amount": "0.0757 SOL",
+    "result": "1 KOL convergence: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EeVYb59vHxDcPrFaz6K4t6293BTfb5HEdmxCinjcpump",
+    "ts": 1773604774,
+    "mc": 2569,
+    "vol24": 14390.59,
+    "vol1h": 14390.59,
+    "buys": 226,
+    "sells": 205,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 308,
     "date": "2026-03-15",
     "token": "Barista",
