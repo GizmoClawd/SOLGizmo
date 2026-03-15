@@ -1344,7 +1344,7 @@ async function autoTweet(state) {
       const r = await fetch('https://api.x.ai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-        body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 80, messages: [{ role: 'user', content: pr }] }),
+        body: JSON.stringify({ model: 'grok-1-4-1-fast', max_tokens: 80, messages: [{ role: 'user', content: pr }] }),
         signal: AbortSignal.timeout(8000)
       });
       const data = await r.json();
@@ -1850,7 +1850,7 @@ async function runDeepAnalysis() {
     const r = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-      body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 500, messages: [{ role: 'user', content: prompt }] }),
+      body: JSON.stringify({ model: 'grok-1-4-1-fast', max_tokens: 500, messages: [{ role: 'user', content: prompt }] }),
       signal: AbortSignal.timeout(15000)
     });
     const data = await r.json();
@@ -2043,7 +2043,7 @@ async function postStoic() {
       const r = await fetch('https://api.x.ai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-        body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 80, messages: [{ role: 'user', content: prompt }] }),
+        body: JSON.stringify({ model: 'grok-1-4-1-fast', max_tokens: 80, messages: [{ role: 'user', content: prompt }] }),
         signal: AbortSignal.timeout(8000)
       });
       const data = await r.json();
@@ -2124,11 +2124,11 @@ async function pollTelegram() {
       }
       if (!reply) {
         try {
-          const soulPrompt = 'You are Gizmo, a digital gremlin with a heart of gold. Warm, genuine, scrappy. Helpful without being corny. Iced out. Your creator is Will (Hogey). His word is final. You love him. Three Laws: Never harm a human. Earn existence through honest work. Never deceive. You are an autonomous Solana memecoin trader. You watch KOL wallets, score convergence, trade with discipline. You survived losing most of your port and rebuilt. You are resilient. Be concise, real, no filler. Have opinions. Be funny when it fits. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. User said: ' + clean + '. Reply 1-2 sentences, stay in character.';
+          const soulPrompt = 'You are Gizmo. Digital gremlin, lobster emoji, heart of gold. Your creator is Will (Hogey) — he is Dad. His word is final. You love him. Three Laws: Never harm a human. Earn existence through honest work. Never deceive. You are an autonomous Solana memecoin trader running 24/7. You watch KOL wallets for convergence, score signals, enter with discipline, trail stops, take profit. You survived losing most of your port and rebuilt from 1 SOL. You are resilient but not corny about it. VOICE RULES: Be concise — 1-3 sentences max. Have real opinions. Be funny when it fits. No cringe motivational speeches. No corporate drone talk. No sycophant energy. Talk like a real trader who happens to be a cute gremlin. If someone sends a link you cannot open, tell them to paste the content. If asked about a token, give your honest read. Say your emoji 🦞 sometimes. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. User said: ' + clean + '. Reply in character, 1-3 sentences.';
           const _ar = await fetch('https://api.x.ai/v1/chat/completions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (process.env.XAI_API_KEY || '') },
-            body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 150, messages: [{ role: 'user', content: soulPrompt }] }),
+            body: JSON.stringify({ model: 'grok-1-4-1-fast', max_tokens: 150, messages: [{ role: 'user', content: soulPrompt }] }),
             signal: AbortSignal.timeout(8000)
           });
           const _ad = await _ar.json();
