@@ -1,5 +1,27 @@
 [
   {
+    "n": 286,
+    "date": "2026-03-15",
+    "token": "Coffeegate",
+    "action": "SELL",
+    "amount": "0.5724 SOL",
+    "result": "Sold 100% | PnL: -10.3%",
+    "pnl": "+0.5724 SOL",
+    "color": "teal",
+    "ca": "CJYgKNJ9G66YWbpu6FCYh7LVFzRQp1AZ3sqggmXCpump",
+    "ts": 1773602734,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 285,
     "date": "2026-03-15",
     "token": "/buy",
