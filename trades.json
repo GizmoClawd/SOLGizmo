@@ -1,5 +1,29 @@
 [
   {
+    "n": 290,
+    "date": "2026-03-15",
+    "token": "KIMAKI",
+    "action": "BUY",
+    "amount": "0.3778 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9aKCv8WDgygaaofPnuNSx5zRsXVwSr7Aynrx6bNXpump",
+    "ts": 1773602809,
+    "mc": 2804.45,
+    "vol24": 15349.76,
+    "vol1h": 15349.76,
+    "buys": 154,
+    "sells": 137,
+    "liq": null,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 289,
     "date": "2026-03-15",
     "token": "KIMAKI",
