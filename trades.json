@@ -1,5 +1,29 @@
 [
   {
+    "n": 312,
+    "date": "2026-03-15",
+    "token": "OSGILIATH",
+    "action": "BUY",
+    "amount": "0.1517 SOL",
+    "result": "1 KOL convergence: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "A7tAhUXoDM6Eony83b9MKQfGEt4MH3x3a86FJiSUpump",
+    "ts": 1773604924,
+    "mc": 6723,
+    "vol24": 12764.76,
+    "vol1h": 12764.76,
+    "buys": 91,
+    "sells": 77,
+    "liq": 6829.01,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 311,
     "date": "2026-03-15",
     "token": "AI",
