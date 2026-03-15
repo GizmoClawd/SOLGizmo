@@ -1,5 +1,30 @@
 [
   {
+    "n": 257,
+    "date": "2026-03-15",
+    "token": "╬",
+    "action": "BUY",
+    "amount": "0.3007 SOL",
+    "result": "2 KOL convergence: radiance, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FTZ1Js8n1uzpipuWsNU9jSgH4aab4JSeL2tbL4T4pump",
+    "ts": 1773600468,
+    "mc": 5386.26,
+    "vol24": 12601.4,
+    "vol1h": 12601.4,
+    "buys": 210,
+    "sells": 150,
+    "liq": null,
+    "kols": [
+      "radiance",
+      "decu"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 256,
     "date": "2026-03-15",
     "token": "BAGWORKOOR",
