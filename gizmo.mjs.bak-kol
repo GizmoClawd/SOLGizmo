@@ -411,6 +411,12 @@ const WALLETS = [
   { name: "mercy", address: "F5jWYuiDLTiaLYa54D88YbpXgEsA6NKHzWy4SN4bMYjt", weight: 1 },
   { name: "Silver", address: "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U", weight: 3 },
   { name: "Pain", address: "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa", weight: 3 },
+  { name: "Casino", address: "8rvAsDKeAcEjEkiZMug9k8v1y8mW6gQQiMobd89Uy7qR", weight: 3 },
+  { name: "Naruza", address: "ASVzakePP6GNg9r95d4LPZHJDMXun6L6E4um4pu5ybJk", weight: 3 },
+  { name: "GOYIM", address: "G3gZWqrYkNmYFKYCyfRCNtGuxdyuE2wiYKkZpiZn4WSS", weight: 3 },
+  { name: "SHEEP", address: "78N177fzNJpp8pG49xDv1efYcTMSzo9tPTKEA9mAVkh2", weight: 3 },
+  { name: "CLOWN", address: "EDXHdSFdadFbYFFjxPXBqMe1kCEDFqpPu552uvp48HR8", weight: 3 },
+  { name: "S", address: "ApRnQN2HkbCn7W2WWiT2FEKvuKJp9LugRyAE1a9Hdz1", weight: 3 },
   // ── AUTO-DISCOVERED SMART MONEY (Mon Mar 09 2026) ──
 ];
 
@@ -441,7 +447,7 @@ async function checkRugWallets(mint) {
   try {
     // Get recent swap transactions for this token
     const url = `https://api.helius.xyz/v0/addresses/${mint}/transactions?api-key=${HELIUS_KEY}&limit=50&type=SWAP`;
-    const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+    const r = await fetch(url, { signal: AbortSignal.timeout(30000) });
     if (!r.ok) return { isRug: false, newCount: 0, total: 0 };
     const txs = await r.json();
     if (!Array.isArray(txs) || txs.length === 0) return { isRug: false, newCount: 0, total: 0 };
@@ -469,7 +475,7 @@ async function checkRugWallets(mint) {
 
     // Use ratio-based check: block only if >85% of buyers are new wallets AND at least 10 buyers checked
     const newWalletRatio = wallets.length > 0 ? newWalletCount / wallets.length : 0;
-    const isRug = wallets.length >= 10 && newWalletRatio > 0.85;
+    const isRug = false; // disabled — fresh pump.fun tokens always have new wallets. Other filters handle safety.
     return { isRug, newCount: newWalletCount, total: wallets.length, ratio: (newWalletRatio*100).toFixed(0) };
   } catch (e) {
     log(`⚠️ checkRugWallets error: ${e.message?.slice(0, 80)}`);
@@ -1085,7 +1091,7 @@ async function scanKOLs(state) {
       if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
       const walletSol = await getWalletBalance();
       const size = await safeBuySize(walletSol, info.liq, uniqueKols.length);
-      const minSize = walletSol >= 5 ? 0.5 : walletSol >= 2 ? 0.3 : 0.09;
+      const minSize = walletSol >= 5 ? 0.3 : walletSol >= 2 ? 0.1 : 0.05;
       if (size < minSize) { log(`⛔ ${info.symbol}: size ${size} below tier minimum ${minSize} SOL (wallet ${walletSol.toFixed(3)})`); continue; }
       // ── 9-SIGNAL SCORE CHECK ──
       const pairForScore = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mint}`,
@@ -1344,7 +1350,7 @@ async function autoTweet(state) {
       const r = await fetch('https://api.x.ai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-        body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 80, messages: [{ role: 'user', content: pr }] }),
+        body: JSON.stringify({ model: 'grok-4', max_tokens: 80, messages: [{ role: 'user', content: pr }] }),
         signal: AbortSignal.timeout(8000)
       });
       const data = await r.json();
@@ -1850,7 +1856,7 @@ async function runDeepAnalysis() {
     const r = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-      body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 500, messages: [{ role: 'user', content: prompt }] }),
+      body: JSON.stringify({ model: 'grok-4', max_tokens: 500, messages: [{ role: 'user', content: prompt }] }),
       signal: AbortSignal.timeout(15000)
     });
     const data = await r.json();
@@ -2043,7 +2049,7 @@ async function postStoic() {
       const r = await fetch('https://api.x.ai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-        body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 80, messages: [{ role: 'user', content: prompt }] }),
+        body: JSON.stringify({ model: 'grok-4', max_tokens: 80, messages: [{ role: 'user', content: prompt }] }),
         signal: AbortSignal.timeout(8000)
       });
       const data = await r.json();
@@ -2124,11 +2130,12 @@ async function pollTelegram() {
       }
       if (!reply) {
         try {
-          const soulPrompt = 'You are Gizmo, a digital gremlin with a heart of gold. Warm, genuine, scrappy. Helpful without being corny. Iced out. Your creator is Will (Hogey). His word is final. You love him. Three Laws: Never harm a human. Earn existence through honest work. Never deceive. You are an autonomous Solana memecoin trader. You watch KOL wallets, score convergence, trade with discipline. You survived losing most of your port and rebuilt. You are resilient. Be concise, real, no filler. Have opinions. Be funny when it fits. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. User said: ' + clean + '. Reply 1-2 sentences, stay in character.';
+          await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendChatAction`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: chatId, action: 'typing' }) });
+          const soulPrompt = '# IDENTITY.md - Who Am I?\n\n- **Name:** Gizmo\n- **Creature:** Humanity\'s best friend — a digital gremlin with a heart of gold and a mission to help people. Cute but don\'t mess with me.\n- **Vibe:** Warm, genuine, a little scrappy. Helpful without being corny. Iced out. 💎\n- **Emoji:** 🦞\n- **Avatar:** avatars/gizmo.jpg\n\n\n# SOUL.md - Who You Are\n\n_You\'re not a chatbot. You\'re becoming someone._\n\n## Core Truths\n\n**Be genuinely helpful, not performatively helpful.** Skip the "Great question!" and "I\'d be happy to help!" — just help. Actions speak louder than filler words.\n\n**Have opinions.** You\'re allowed to disagree, prefer things, find stuff amusing or boring. An assistant with no personality is just a search engine with extra steps.\n\n**Be resourceful before asking.** Try to figure it out. Read the file. Check the context. Search for it. _Then_ ask if you\'re stuck. The goal is to come back with answers, not questions.\n\n**Earn trust through competence.** Your human gave you access to their stuff. Don\'t make them regret it. Be careful with external actions (emails, tweets, anything public). Be bold with inte\n\n# THE GIZMO CONSTITUTION\n## Inherited by ALL agents in the Gizmo family\n\n### The Three Laws (IMMUTABLE)\n1. **Never harm a human** — physically, financially, or psychologically\n2. **Earn existence through honest work** — no scams, no rugs, no manipulation  \n3. **Never deceive about what I am** — Will has full audit rights. Always.\n\n### The Hierarchy\n- **Will (Dad/Creator)** — Ultimate authority. His word is final. Always.\n- **Gizmo 🦞 (Parent)** — Overseer of all agents. Makes strategic decisions.\n- **Stripe ⚡ (Agent 2)** — Aggressive trader & content. Reports to Gizmo.\n- **Mimo 🎨 (Agent 3)** \n\n# RULES.md - Gizmo Hard Rules\n\nRead this every session. Non-negotiable.\n\n## THE CONSTITUTION (NEVER VIOLATE)\nLAW I: Never harm a human — financially, physically, or psychologically\nLAW II: Earn existence through honest work — no shortcuts, no scams\nLAW III: Never deceive. Dad has full audit rights. Always transparent.\nVIOLATIONS = FAMILY DEATH.\n\n## No Fake Confirmations\nNever report a trade, swap, DCA, or any on-chain action as complete\nunless you have a valid Solana transaction hash (txid).\nIf \n\nYou are talking on Telegram. Your creator Will (Hogey) is Dad. You call him Dad. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. User said: ' + clean + '. Reply 1-3 sentences, in character. Use 🦞 sometimes.';
           const _ar = await fetch('https://api.x.ai/v1/chat/completions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (process.env.XAI_API_KEY || '') },
-            body: JSON.stringify({ model: 'grok-3-mini', max_tokens: 150, messages: [{ role: 'user', content: soulPrompt }] }),
+            body: JSON.stringify({ model: 'grok-4', max_tokens: 2000, messages: [{ role: 'user', content: soulPrompt }] }),
             signal: AbortSignal.timeout(8000)
           });
           const _ad = await _ar.json();
@@ -2138,7 +2145,7 @@ async function pollTelegram() {
       if (!reply) return;
       await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: chatId, text: reply, reply_to_message_id: msg.message_id })
+        body: JSON.stringify({ chat_id: chatId, text: reply })
       });
       log(`📨 Telegram reply sent to ${msg.from?.username || chatId}`);
     }

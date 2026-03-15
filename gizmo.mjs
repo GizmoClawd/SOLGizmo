@@ -417,6 +417,7 @@ const WALLETS = [
   { name: "SHEEP", address: "78N177fzNJpp8pG49xDv1efYcTMSzo9tPTKEA9mAVkh2", weight: 3 },
   { name: "CLOWN", address: "EDXHdSFdadFbYFFjxPXBqMe1kCEDFqpPu552uvp48HR8", weight: 3 },
   { name: "S", address: "ApRnQN2HkbCn7W2WWiT2FEKvuKJp9LugRyAE1a9Hdz1", weight: 3 },
+  { name: "Dad", address: "9KPMHW2FuTrHBkPa8YQb2PR58V2KQcBXvyM21AFXvhQV", weight: 4 },
   // ── AUTO-DISCOVERED SMART MONEY (Mon Mar 09 2026) ──
 ];
 
