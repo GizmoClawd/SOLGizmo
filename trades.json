@@ -1,5 +1,30 @@
 [
   {
+    "n": 264,
+    "date": "2026-03-15",
+    "token": "MILK",
+    "action": "BUY",
+    "amount": "0.2214 SOL",
+    "result": "2 KOL convergence: Jijo, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HzAt6tMZJz1AJzFepsPG23oD71ihhq5gFeMYQswspump",
+    "ts": 1773600848,
+    "mc": 2660.41,
+    "vol24": 27610.58,
+    "vol1h": 27610.58,
+    "buys": 309,
+    "sells": 317,
+    "liq": null,
+    "kols": [
+      "Jijo",
+      "Silver"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 263,
     "date": "2026-03-15",
     "token": "PONZI",
