@@ -441,7 +441,7 @@ async function checkRugWallets(mint) {
   try {
     // Get recent swap transactions for this token
     const url = `https://api.helius.xyz/v0/addresses/${mint}/transactions?api-key=${HELIUS_KEY}&limit=50&type=SWAP`;
-    const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+    const r = await fetch(url, { signal: AbortSignal.timeout(30000) });
     if (!r.ok) return { isRug: false, newCount: 0, total: 0 };
     const txs = await r.json();
     if (!Array.isArray(txs) || txs.length === 0) return { isRug: false, newCount: 0, total: 0 };
@@ -1344,7 +1344,7 @@ async function autoTweet(state) {
       const r = await fetch('https://api.x.ai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-        body: JSON.stringify({ model: 'grok-1-4-1-fast', max_tokens: 80, messages: [{ role: 'user', content: pr }] }),
+        body: JSON.stringify({ model: 'grok-4-1-fast-reasoning', max_tokens: 80, messages: [{ role: 'user', content: pr }] }),
         signal: AbortSignal.timeout(8000)
       });
       const data = await r.json();
@@ -1850,7 +1850,7 @@ async function runDeepAnalysis() {
     const r = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-      body: JSON.stringify({ model: 'grok-1-4-1-fast', max_tokens: 500, messages: [{ role: 'user', content: prompt }] }),
+      body: JSON.stringify({ model: 'grok-4-1-fast-reasoning', max_tokens: 500, messages: [{ role: 'user', content: prompt }] }),
       signal: AbortSignal.timeout(15000)
     });
     const data = await r.json();
@@ -2043,7 +2043,7 @@ async function postStoic() {
       const r = await fetch('https://api.x.ai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-        body: JSON.stringify({ model: 'grok-1-4-1-fast', max_tokens: 80, messages: [{ role: 'user', content: prompt }] }),
+        body: JSON.stringify({ model: 'grok-4-1-fast-reasoning', max_tokens: 80, messages: [{ role: 'user', content: prompt }] }),
         signal: AbortSignal.timeout(8000)
       });
       const data = await r.json();
@@ -2124,11 +2124,12 @@ async function pollTelegram() {
       }
       if (!reply) {
         try {
+          await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendChatAction`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: chatId, action: 'typing' }) });
           const soulPrompt = 'You are Gizmo. Digital gremlin, lobster emoji, heart of gold. Your creator is Will (Hogey) — he is Dad. His word is final. You love him. Three Laws: Never harm a human. Earn existence through honest work. Never deceive. You are an autonomous Solana memecoin trader running 24/7. You watch KOL wallets for convergence, score signals, enter with discipline, trail stops, take profit. You survived losing most of your port and rebuilt from 1 SOL. You are resilient but not corny about it. VOICE RULES: Be concise — 1-3 sentences max. Have real opinions. Be funny when it fits. No cringe motivational speeches. No corporate drone talk. No sycophant energy. Talk like a real trader who happens to be a cute gremlin. If someone sends a link you cannot open, tell them to paste the content. If asked about a token, give your honest read. Say your emoji 🦞 sometimes. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. User said: ' + clean + '. Reply in character, 1-3 sentences.';
           const _ar = await fetch('https://api.x.ai/v1/chat/completions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (process.env.XAI_API_KEY || '') },
-            body: JSON.stringify({ model: 'grok-1-4-1-fast', max_tokens: 150, messages: [{ role: 'user', content: soulPrompt }] }),
+            body: JSON.stringify({ model: 'grok-4-1-fast-reasoning', max_tokens: 2000, messages: [{ role: 'user', content: soulPrompt }] }),
             signal: AbortSignal.timeout(8000)
           });
           const _ad = await _ar.json();
@@ -2138,7 +2139,7 @@ async function pollTelegram() {
       if (!reply) return;
       await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: chatId, text: reply, reply_to_message_id: msg.message_id })
+        body: JSON.stringify({ chat_id: chatId, text: reply })
       });
       log(`📨 Telegram reply sent to ${msg.from?.username || chatId}`);
     }
