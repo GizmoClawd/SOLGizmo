@@ -1,5 +1,27 @@
 [
   {
+    "n": 218,
+    "date": "2026-03-15",
+    "token": "Mixing",
+    "action": "SELL",
+    "amount": "0.0645 SOL",
+    "result": "Sold 25% | PnL: +169.6%",
+    "pnl": "+0.0645 SOL",
+    "color": "teal",
+    "ca": "4BMRtL1z1FjrwzWsoWw7NFnMQ8ocDta1cgxGb6ygpump",
+    "ts": 1773540094,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 217,
     "date": "2026-03-15",
     "token": "BUNI",
