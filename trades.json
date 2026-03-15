@@ -1,5 +1,27 @@
 [
   {
+    "n": 260,
+    "date": "2026-03-15",
+    "token": "╬",
+    "action": "SELL",
+    "amount": "0.1864 SOL",
+    "result": "Sold 100% | PnL: -40.2%",
+    "pnl": "+0.1864 SOL",
+    "color": "teal",
+    "ca": "FTZ1Js8n1uzpipuWsNU9jSgH4aab4JSeL2tbL4T4pump",
+    "ts": 1773600577,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 259,
     "date": "2026-03-15",
     "token": "BAGWORKOOR",
