@@ -1,5 +1,27 @@
 [
   {
+    "n": 239,
+    "date": "2026-03-15",
+    "token": "VIBE",
+    "action": "SELL",
+    "amount": "0.0988 SOL",
+    "result": "Sold 15% | PnL: +221.3%",
+    "pnl": "+0.0988 SOL",
+    "color": "teal",
+    "ca": "AYjBJLXgGNRgAmVHTD6VtaxD2pjdMTyAMn4nqPv3MDBM",
+    "ts": 1773587672,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 238,
     "date": "2026-03-15",
     "token": "LARP",
