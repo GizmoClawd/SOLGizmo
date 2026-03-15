@@ -1,5 +1,30 @@
 [
   {
+    "n": 314,
+    "date": "2026-03-15",
+    "token": "Barista",
+    "action": "BUY",
+    "amount": "0.1305 SOL",
+    "result": "2 KOL convergence: theo, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "vsaRyNeKgCCg2qPrnmy8jEmhaC2jHMUjZwaSdhmpump",
+    "ts": 1773605043,
+    "mc": 21606.12,
+    "vol24": 55212.46,
+    "vol1h": 55212.46,
+    "buys": 819,
+    "sells": 566,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Cented"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 313,
     "date": "2026-03-15",
     "token": "OSGILIATH",
