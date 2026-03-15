@@ -1,5 +1,30 @@
 [
   {
+    "n": 281,
+    "date": "2026-03-15",
+    "token": "Money",
+    "action": "BUY",
+    "amount": "0.1632 SOL",
+    "result": "2 KOL convergence: Cented, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FVUt6qw7y2umMGDU9uZxEsWV9RhnGpt4yoQxFyYzpump",
+    "ts": 1773602589,
+    "mc": 8860.43,
+    "vol24": 27074.5,
+    "vol1h": 27074.5,
+    "buys": 452,
+    "sells": 353,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "dv"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 280,
     "date": "2026-03-15",
     "token": "/buy",
