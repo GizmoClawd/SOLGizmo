@@ -1,5 +1,29 @@
 [
   {
+    "n": 298,
+    "date": "2026-03-15",
+    "token": "GROKBUILD",
+    "action": "BUY",
+    "amount": "0.1863 SOL",
+    "result": "1 KOL convergence: dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FWoLA2H63F4pZ7WnAgXJi9LsLgkC8827BqcgogtHrpGo",
+    "ts": 1773603106,
+    "mc": 8748.81,
+    "vol24": 11890.36,
+    "vol1h": 11890.36,
+    "buys": 138,
+    "sells": 99,
+    "liq": null,
+    "kols": [
+      "dv"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 297,
     "date": "2026-03-15",
     "token": "GROKBUILD",
