@@ -1,5 +1,29 @@
 [
   {
+    "n": 304,
+    "date": "2026-03-15",
+    "token": "JOBS",
+    "action": "BUY",
+    "amount": "0.337 SOL",
+    "result": "1 KOL convergence: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "A3groKXFP8aipQZVt7iajAs31sa7v89KGxc8Z3X8pump",
+    "ts": 1773604525,
+    "mc": 22098.13,
+    "vol24": 86341.26,
+    "vol1h": 47404.41,
+    "buys": 557,
+    "sells": 404,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 303,
     "date": "2026-03-15",
     "token": "GPD",
