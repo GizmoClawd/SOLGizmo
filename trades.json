@@ -1,5 +1,27 @@
 [
   {
+    "n": 316,
+    "date": "2026-03-15",
+    "token": "Barista",
+    "action": "SELL",
+    "amount": "0.0905 SOL",
+    "result": "Sold 100% | PnL: -20.9%",
+    "pnl": "+0.0905 SOL",
+    "color": "teal",
+    "ca": "vsaRyNeKgCCg2qPrnmy8jEmhaC2jHMUjZwaSdhmpump",
+    "ts": 1773605137,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 315,
     "date": "2026-03-15",
     "token": "AI",
