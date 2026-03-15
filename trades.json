@@ -1,5 +1,29 @@
 [
   {
+    "n": 291,
+    "date": "2026-03-15",
+    "token": "SHIKOKU",
+    "action": "BUY",
+    "amount": "0.3778 SOL",
+    "result": "1 KOL convergence: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7TvfNnDxstnrfb5eF5pg4PcwXPMfiJLu9eysA7qJpump",
+    "ts": 1773602817,
+    "mc": 32322.16,
+    "vol24": 60238.41,
+    "vol1h": 60238.41,
+    "buys": 845,
+    "sells": 597,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 290,
     "date": "2026-03-15",
     "token": "KIMAKI",
