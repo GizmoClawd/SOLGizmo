@@ -1,5 +1,30 @@
 [
   {
+    "n": 295,
+    "date": "2026-03-15",
+    "token": "GPD",
+    "action": "BUY",
+    "amount": "0.2765 SOL",
+    "result": "2 KOL convergence: Joji, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DpzGhNZe5AdFmUEAaefTts1ssPNau5ZLLytwZJifpump",
+    "ts": 1773603088,
+    "mc": 38866,
+    "vol24": 80445,
+    "vol1h": 80445,
+    "buys": 683,
+    "sells": 585,
+    "liq": 15640.37,
+    "kols": [
+      "Joji",
+      "Cented"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 294,
     "date": "2026-03-15",
     "token": "LIBRA2",
