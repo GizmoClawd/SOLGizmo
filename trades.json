@@ -1,5 +1,29 @@
 [
   {
+    "n": 251,
+    "date": "2026-03-15",
+    "token": "Mixing",
+    "action": "BUY",
+    "amount": "0.2452 SOL",
+    "result": "1 KOL convergence: Casino",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4BMRtL1z1FjrwzWsoWw7NFnMQ8ocDta1cgxGb6ygpump",
+    "ts": 1773589781,
+    "mc": 19813.3,
+    "vol24": 120420.03,
+    "vol1h": 20766.43,
+    "buys": 191,
+    "sells": 148,
+    "liq": null,
+    "kols": [
+      "Casino"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 250,
     "date": "2026-03-15",
     "token": "ZEC",
