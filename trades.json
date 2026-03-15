@@ -1,5 +1,29 @@
 [
   {
+    "n": 258,
+    "date": "2026-03-15",
+    "token": "Coffeegate",
+    "action": "BUY",
+    "amount": "0.2506 SOL",
+    "result": "1 KOL convergence: SHEEP",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CJYgKNJ9G66YWbpu6FCYh7LVFzRQp1AZ3sqggmXCpump",
+    "ts": 1773600475,
+    "mc": 47658,
+    "vol24": 146976.48,
+    "vol1h": 98230.84,
+    "buys": 1248,
+    "sells": 951,
+    "liq": 17335.08,
+    "kols": [
+      "SHEEP"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 257,
     "date": "2026-03-15",
     "token": "╬",
