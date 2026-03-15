@@ -1,5 +1,29 @@
 [
   {
+    "n": 263,
+    "date": "2026-03-15",
+    "token": "PONZI",
+    "action": "BUY",
+    "amount": "0.1845 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3kCtBgGPWPNfrojYEoyHjiNAMeGKBi3gkAwKncoopump",
+    "ts": 1773600840,
+    "mc": 7329.76,
+    "vol24": 25506.42,
+    "vol1h": 25506.42,
+    "buys": 350,
+    "sells": 221,
+    "liq": null,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 262,
     "date": "2026-03-15",
     "token": "BAGWORKOOR",
