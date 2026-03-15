@@ -1,5 +1,29 @@
 [
   {
+    "n": 294,
+    "date": "2026-03-15",
+    "token": "LIBRA2",
+    "action": "BUY",
+    "amount": "0.3171 SOL",
+    "result": "1 KOL convergence: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BjAczfn8XcwQcwy5Bmg35gF7yY7qsK94uKpPcPXtpump",
+    "ts": 1773603069,
+    "mc": 49960,
+    "vol24": 66732.93,
+    "vol1h": 66732.93,
+    "buys": 840,
+    "sells": 393,
+    "liq": 17720.65,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 293,
     "date": "2026-03-15",
     "token": "SHIKOKU",
