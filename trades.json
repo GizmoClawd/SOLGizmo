@@ -1,5 +1,27 @@
 [
   {
+    "n": 238,
+    "date": "2026-03-15",
+    "token": "LARP",
+    "action": "SELL",
+    "amount": "0.1398 SOL",
+    "result": "Sold 100% | PnL: +32.0%",
+    "pnl": "+0.1398 SOL",
+    "color": "teal",
+    "ca": "D1KStHZw7twX6iP8kKq5WTX3C75BQksMBs2Kj8svpump",
+    "ts": 1773587604,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 237,
     "date": "2026-03-15",
     "token": "LARP",
