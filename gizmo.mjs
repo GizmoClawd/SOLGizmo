@@ -469,7 +469,7 @@ async function checkRugWallets(mint) {
 
     // Use ratio-based check: block only if >85% of buyers are new wallets AND at least 10 buyers checked
     const newWalletRatio = wallets.length > 0 ? newWalletCount / wallets.length : 0;
-    const isRug = wallets.length >= 30 && newWalletRatio > 0.97;
+    const isRug = false; // disabled — fresh pump.fun tokens always have new wallets. Other filters handle safety.
     return { isRug, newCount: newWalletCount, total: wallets.length, ratio: (newWalletRatio*100).toFixed(0) };
   } catch (e) {
     log(`⚠️ checkRugWallets error: ${e.message?.slice(0, 80)}`);
