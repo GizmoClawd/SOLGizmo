@@ -1,5 +1,27 @@
 [
   {
+    "n": 217,
+    "date": "2026-03-15",
+    "token": "BUNI",
+    "action": "SELL",
+    "amount": "0.18 SOL",
+    "result": "Sold 100% | PnL: +17.1%",
+    "pnl": "+0.1800 SOL",
+    "color": "teal",
+    "ca": "7VRz8HY5vKXPccfMqQM6ipXE36fGZbMZ43xycJQo756V",
+    "ts": 1773540004,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 216,
     "date": "2026-03-15",
     "token": "BUNI",
