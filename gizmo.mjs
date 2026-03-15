@@ -1085,7 +1085,7 @@ async function scanKOLs(state) {
       if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
       const walletSol = await getWalletBalance();
       const size = await safeBuySize(walletSol, info.liq, uniqueKols.length);
-      const minSize = walletSol >= 5 ? 0.5 : walletSol >= 2 ? 0.3 : 0.09;
+      const minSize = walletSol >= 5 ? 0.3 : walletSol >= 2 ? 0.1 : 0.05;
       if (size < minSize) { log(`⛔ ${info.symbol}: size ${size} below tier minimum ${minSize} SOL (wallet ${walletSol.toFixed(3)})`); continue; }
       // ── 9-SIGNAL SCORE CHECK ──
       const pairForScore = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mint}`,

@@ -1037,7 +1037,7 @@ async function scanKOLs(state) {
     // Filter out MUTED KOLs entirely — they drag down performance
     const activeKols = uniqueKols.filter(k => {
       const perf = livePerf[k];
-      if (perf && perf.weight === 0) { if (!_mutedLoggedThisCycle.has(k)) { _mutedLoggedThisCycle.add(k); log('🔇 MUTED KOL skipped: ' + k + ' (tier:' + perf.tier + ' avgPnL:' + (perf.avgPnl||0).toFixed(1) + '%)'); } return false; }
+      if (perf && perf.weight === 0) { perf.weight = 1; /* unmuted for convergence */ }
       return true;
     });
     if (activeKols.length === 0) continue; // all KOLs muted, skip signal
