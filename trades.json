@@ -1,5 +1,27 @@
 [
   {
+    "n": 616,
+    "date": "2026-03-16",
+    "token": "🐕",
+    "action": "BUY",
+    "amount": "0.0989 SOL",
+    "result": "Boost scan score 7/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DLScRnWofxiYGqnvZWGy9Gt98MPqKdznaK4TRukxpump",
+    "ts": 1773662802,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 615,
     "date": "2026-03-16",
     "token": "5YEjdkSK",
