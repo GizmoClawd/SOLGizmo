@@ -14,9 +14,26 @@ import bs58 from 'bs58';
 import fs from 'fs';
 import { execSync, spawnSync } from 'child_process';
 
+// ─── PID LOCKFILE ─────────────────────────────────────────────────────────────
+const _LOCKFILE = (process.env.HOME || '/root') + '/.gizmo/runtime/gizmo.pid';
+try {
+  if (fs.existsSync(_LOCKFILE)) {
+    const _oldPid = parseInt(fs.readFileSync(_LOCKFILE, 'utf8'));
+    try { process.kill(_oldPid, 0); console.error('\u{1F6D1} Gizmo already running (PID ' + _oldPid + '). Exiting.'); process.exit(1); }
+    catch {} // old process dead, safe to continue
+  }
+  fs.mkdirSync((process.env.HOME || '/root') + '/.gizmo/runtime', { recursive: true });
+  fs.writeFileSync(_LOCKFILE, String(process.pid));
+  const _cleanPid = () => { try { fs.unlinkSync(_LOCKFILE); } catch {} };
+  process.on('exit', _cleanPid);
+  process.on('SIGINT', () => { _cleanPid(); process.exit(); });
+  process.on('SIGTERM', () => { _cleanPid(); process.exit(); });
+} catch(e) { console.error('PID lock warning: ' + e.message); }
+
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 const BASE_DIR = process.env.HOME + '/.gizmo/runtime';
-const WORKSPACE = '/Users/younghogey/.openclaw/workspace/SOLGizmo';
+const WALLET_ADDRESS = process.env.SOLANA_WALLET || '53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz';
+const WORKSPACE = (process.env.HOME || '/root') + '/.openclaw/workspace/SOLGizmo';
 const POSITIONS_FILE = BASE_DIR + '/positions.json';
 const TRADES_FILE = WORKSPACE + '/trades.json';
 const STATE_FILE = BASE_DIR + '/kol-state.json';
@@ -133,11 +150,12 @@ async function learnFromTrades() {
     const buys = trades.filter(t => t.action === 'BUY' && t.ca);
 
     for (const s of sells) {
-      const b = buys.find(b => b.ca === s.ca && b.ts < s.ts);
+      const b = buys.filter(b => b.ca === s.ca && b.ts < s.ts).pop(); // FIXED: use LAST buy before this sell, not first
       if (!b) continue;
       // pnl field stores SOL amount — actual % is in result field
       const pnlMatch = (s.result || '').match(/PnL:\s*([+-]?\d+\.?\d*)%/);
-      const pnlPct = pnlMatch ? parseFloat(pnlMatch[1]) : parseFloat((s.pnl || '0').replace(/[^0-9.+-]/g,'')) || 0;
+      if (!pnlMatch) continue; // PERFECT CELL: skip trades without real PnL% — SOL amount fallback was inflating win rate
+      const pnlPct = parseFloat(pnlMatch[1]);
       const win = pnlPct > 0;
       const signalType = (b.result || '').includes('KOL') ? 'kol' : 'market';
       const kolCount = signalType === 'kol' ? parseInt((b.result || '').match(/(\d+) KOL/)?.[1] || 2) : 0;
@@ -147,7 +165,7 @@ async function learnFromTrades() {
 
     if (pairs.length < 3) { log(`🧠 Not enough closed trades to learn yet (${pairs.length}/3 needed)`); return; }
 
-    const recent = pairs.slice(-20); // last 20 closed trades
+    const recent = pairs.slice(-50); // FIXED: last 50 trades for better signal
     const wins = recent.filter(p => p.win).length;
     const winRate = wins / recent.length;
     const avgPnl = recent.reduce((s, p) => s + p.pnlPct, 0) / recent.length;
@@ -194,8 +212,8 @@ async function learnFromTrades() {
         POSITION_SIZE_MULT = Math.max(0.5, POSITION_SIZE_MULT - 0.25);
         log(`🧠 WR poor (${(winRate*100).toFixed(0)}%) — reducing position size to ${POSITION_SIZE_MULT}x`);
         changed = true;
-      } else if (winRate > 0.60 && avgPnl > 10 && POSITION_SIZE_MULT < 2.0) {
-        POSITION_SIZE_MULT = Math.min(2.0, POSITION_SIZE_MULT + 0.25);
+      } else if (winRate > 0.60 && avgPnl > 10 && POSITION_SIZE_MULT < 1.5) {
+        POSITION_SIZE_MULT = Math.min(1.5, POSITION_SIZE_MULT + 0.25);
         log(`🧠 WR strong + profitable — increasing position size to ${POSITION_SIZE_MULT}x`);
         changed = true;
       }
@@ -239,7 +257,7 @@ function loadPositions() {
     if (fs.existsSync(POSITIONS_FILE)) {
       const data = JSON.parse(fs.readFileSync(POSITIONS_FILE, 'utf8'));
       let deadPools = [];
-      try { deadPools = JSON.parse(fs.readFileSync('/Users/younghogey/.gizmo/runtime/dead-pools.json','utf8')); } catch {}
+      try { deadPools = JSON.parse(fs.readFileSync(BASE_DIR + '/dead-pools.json','utf8')); } catch {}
       const filtered = data.filter(p => !deadPools.includes(p.ca));
       if (filtered.length < data.length) log(`🚫 Filtered ${data.length - filtered.length} dead pool position(s) on load`);
       log(`📂 Loaded ${filtered.length} positions: ${filtered.map(p => p.name).join(', ') || 'none'}`);
@@ -265,7 +283,7 @@ async function cleanGhostPositions() {
         body: JSON.stringify({
           jsonrpc: '2.0', id: 1,
           method: 'getTokenAccountsByOwner',
-          params: [WALLET, { mint: pos.ca }, { encoding: 'jsonParsed' }]
+          params: [WALLET_ADDRESS, { mint: pos.ca }, { encoding: 'jsonParsed' }]
         }),
         signal: AbortSignal.timeout(5000)
       });
@@ -332,8 +350,8 @@ function logTrade(action, name, ca, solAmount, pnlSol, txSig, result, meta={}) {
     fs.writeFileSync(TRADES_FILE, JSON.stringify(trades, null, 2));
     try {
       execSync(`cd ${WORKSPACE} && git add trades.json && git commit -m "trade #${n}: ${action} ${name}" && git push`, { timeout: 20000 });
-      log(`📡 Trade #${n} pushed → solgizmo.com updating`);
-    } catch (e) { log(`⚠️ Git push failed: ${e.message?.slice(0, 80)}`); }
+      log('📡 Trade #' + n + ' pushed → solgizmo.com updating');
+    } catch (e) { log('⚠️ Git push failed: ' + (e.message || '').slice(0, 80)); }
   } catch (e) { log(`⚠️ logTrade failed: ${e.message}`); }
 }
 
@@ -542,6 +560,22 @@ async function buy(ca, amount) {
   } catch (e) { log(`BUY FAILED: ${e.message?.slice(0, 100)}`); return false; }
 }
 
+// ─── VERIFY BUY (ghost position guard) ──────────────────────────────────────
+async function verifyBuySuccess(ca) {
+  try {
+    const hKey = HELIUS_KEY || '2de73660-14b8-412a-9ff2-8e6989c53266';
+    const resp = await fetch('https://mainnet.helius-rpc.com/?api-key=' + hKey, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getTokenAccountsByOwner',
+        params: [WALLET_ADDRESS, { mint: ca }, { encoding: 'jsonParsed' }] }),
+      signal: AbortSignal.timeout(5000)
+    });
+    const data = await resp.json();
+    const balance = (data?.result?.value || []).reduce((sum, a) => sum + (a.account?.data?.parsed?.info?.tokenAmount?.uiAmount || 0), 0);
+    return balance > 0;
+  } catch { return true; } // if check fails, assume buy succeeded (safer than dropping)
+}
+
 // ─── WALLET BALANCE ───────────────────────────────────────────────────────────
 async function getWalletBalance() {
   try {
@@ -692,12 +726,12 @@ async function managePositions() {
         log(`🟢 ${pos.name}: +8% — SL locked at +4%: ${Math.round(pos.sl)}`);
       }
       if (pos.sl && pos.highMC > pos.entryMC * 1.12) {
-        let trailPct = 0.80; // default — give room to breathe
-        if (pos.highMC > pos.entryMC * 5.0)      trailPct = 0.90; // 5x+ lock tighter
-        else if (pos.highMC > pos.entryMC * 3.0) trailPct = 0.85; // 3x+ moderate lock
-        else if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.82; // 2x let it run
-        else if (pos.highMC > pos.entryMC * 1.5) trailPct = 0.80; // post-TP1 loose
-        else if (pos.highMC > pos.entryMC * 1.3) trailPct = 0.80;
+        let trailPct = 0.72; // LOOSENED — let winners breathe
+        if (pos.highMC > pos.entryMC * 5.0)      trailPct = 0.85; // 5x+ lock moderate
+        else if (pos.highMC > pos.entryMC * 3.0) trailPct = 0.80; // 3x+ still loose
+        else if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.75; // 2x give room
+        else if (pos.highMC > pos.entryMC * 1.5) trailPct = 0.72; // post-TP1 loose
+        else if (pos.highMC > pos.entryMC * 1.3) trailPct = 0.72;
         const newSL = pos.highMC * trailPct;
         if (newSL > (pos.sl || 0) && newSL > pos.entryMC) {
           const old = pos.sl; pos.sl = newSL;
@@ -761,7 +795,7 @@ async function managePositions() {
     // FAST PUMP: DISABLED — let trailing SL handle exits, don't cap upside
     // Instead: when up 40%+, just tighten the SL to protect gains
     if (!pos.tp1Hit && !pos.runnerMode && mc >= pos.entryMC * 1.40) {
-      const tightSL = Math.max(pos.sl || 0, mc * 0.85, pos.entryMC * 1.15);
+      const tightSL = Math.max(pos.sl || 0, mc * 0.75, pos.entryMC * 1.10);
       if (tightSL > (pos.sl || 0)) {
         pos.sl = tightSL;
         savePositions();
@@ -802,7 +836,7 @@ async function managePositions() {
       const isRipping = h1Momentum > 100;
       const trailPct = isRipping
         ? (mult >= 4 ? 0.75 : mult >= 3 ? 0.70 : 0.65)   // ripping — give it room
-        : (mult >= 4 ? 0.88 : mult >= 3 ? 0.85 : 0.80);  // normal trail
+        : (mult >= 4 ? 0.82 : mult >= 3 ? 0.78 : 0.72);  // LOOSENED normal trail
       const newSL = pos.highMC * trailPct;
       if (newSL > (pos.sl || 0)) { pos.sl = newSL; savePositions(); }
       log(`🦁 RUNNER ${pos.name} ${mult.toFixed(1)}x — full bag held | SL: $${Math.round(pos.sl)} (${(trailPct*100).toFixed(0)}% trail) | B/S:${buys}/${sells}`);
@@ -862,7 +896,8 @@ async function managePositions() {
       continue;
     }
 
-    // TRAILING SL: enforce on all future cycles
+    // TRAILING SL: enforce on all future cycles (skip moonbags — Will sells manually)
+    if (pos.moonbag) { log(`\u{1F319} ${pos.name}: moonbag — no auto-SL, manual sell only via /sell`); continue; }
     if (pos.sl && mc < pos.sl) {
       log(`🛑 TRAILING SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
       if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
@@ -936,39 +971,76 @@ async function scanKOLs(state) {
   state.recentBuys = (state.recentBuys || []).filter(b => now - b.timestamp < SIGNAL_WINDOW_MS);
   state.pollCycle = (state.pollCycle || 0) + 1;
 
-  for (const wallet of WALLETS) {
-    // Tiered polling — save Helius credits
-    const tier = wallet.weight >= 4 ? 'GOD' : wallet.weight >= 3 ? 'ELITE' : wallet.weight >= 2 ? 'SOLID' : wallet.weight >= 1 ? 'WATCH' : 'MUTED';
-    if (tier === 'MUTED') continue; // never poll muted KOLs
-    if (tier === 'WATCH' && state.pollCycle % 5 !== 0) continue;  // every 5th cycle
-    if (tier === 'SOLID' && state.pollCycle % 3 !== 0) continue;  // every 3rd cycle
-    // GOD + ELITE poll every cycle
-    try {
-      const url = `https://api.helius.xyz/v0/addresses/${wallet.address}/transactions?api-key=${HELIUS_KEY}&limit=3&type=SWAP`;
-      const r = await fetch(url, { signal: AbortSignal.timeout(5000) });
-      if (!r.ok) continue;
-      const txs = await r.json();
-
-      for (const tx of txs) {
+  // ── VPS WEBHOOK POLL (local file on VPS, HTTP when remote) ──
+  try {
+    const isOnVPS = fs.existsSync('/root/webhook-queue.json');
+    let vpsR;
+    if (isOnVPS) {
+      // ON VPS: read queue file directly (zero latency)
+      try {
+        const raw = fs.readFileSync('/root/webhook-queue.json', 'utf8');
+        const queue = JSON.parse(raw || '[]');
+        if (queue.length > 0) fs.writeFileSync('/root/webhook-queue.json', '[]');
+        vpsR = { ok: true, json: async () => queue };
+      } catch { vpsR = { ok: true, json: async () => [] }; }
+    } else {
+      // REMOTE (Mac): HTTP poll
+      vpsR = await fetch('http://178.156.160.143:3000/poll', { signal: AbortSignal.timeout(5000) });
+    }
+    if (vpsR.ok) {
+      const vpsTxs = await vpsR.json();
+      if (vpsTxs.length > 0) log(`\u{1F4E1} VPS poll: ${vpsTxs.length} new txs`);
+      for (const tx of vpsTxs) {
         if (tx.type !== 'SWAP' || tx.transactionError) continue;
+        const allAccounts = [...(tx.nativeTransfers || []).map(t => t.fromUserAccount), ...(tx.tokenTransfers || []).map(t => t.toUserAccount), ...(tx.tokenTransfers || []).map(t => t.fromUserAccount)];
+        const wallet = WALLETS.find(w => allAccounts.includes(w.address));
+        if (!wallet) continue;
+        const tier = wallet.weight >= 4 ? 'GOD' : wallet.weight >= 3 ? 'ELITE' : wallet.weight >= 2 ? 'SOLID' : wallet.weight >= 1 ? 'WATCH' : 'MUTED';
+        if (tier === 'MUTED') continue;
+
         const nativeIn = (tx.nativeTransfers || []).filter(t => t.fromUserAccount === wallet.address).reduce((s, t) => s + t.amount, 0);
         const tokensIn = (tx.tokenTransfers || []).filter(t => t.toUserAccount === wallet.address && t.mint !== SOL_MINT);
         if (nativeIn <= 0 || !tokensIn.length) continue;
 
         for (const tr of tokensIn) {
-          const buy = { mint: tr.mint, solSpent: nativeIn / LAMPORTS_PER_SOL, sig: tx.signature, timestamp: tx.timestamp * 1000 };
+          const buy = { mint: tr.mint, solSpent: nativeIn / LAMPORTS_PER_SOL, sig: tx.signature, timestamp: (tx.timestamp || Math.floor(Date.now()/1000)) * 1000 };
           if (state.lastSig[wallet.address] === buy.sig) break;
           if (now - buy.timestamp > SIGNAL_WINDOW_MS) continue;
           if (state.recentBuys.some(b => b.sig === buy.sig)) continue;
           state.recentBuys.push({ kol: wallet.name, kolWeight: wallet.weight, scalper: wallet.scalper, ...buy });
-      updateSniperWatch(signal.mint, wallet.name, wallet.weight, null);
+          try { updateSniperWatch(buy.mint, wallet.name, wallet.weight, null); } catch {}
           log(`KOL: ${wallet.name} bought ${tr.mint.slice(0, 8)}... for ${buy.solSpent.toFixed(2)} SOL`);
         }
-        if (txs.length > 0) state.lastSig[wallet.address] = txs[0].signature;
+        if (tx.signature) state.lastSig[wallet.address] = tx.signature;
       }
-    } catch {}
-    await new Promise(r => setTimeout(r, 200));
-  }
+    } else {
+      log('\u26A0\uFE0F VPS poll failed: ' + vpsR.status + ' -- falling back to Helius');
+      for (const wallet of WALLETS.filter(w => w.weight >= 4)) {
+        try {
+          const url = `https://api.helius.xyz/v0/addresses/${wallet.address}/transactions?api-key=${HELIUS_KEY}&limit=3&type=SWAP`;
+          const r = await fetch(url, { signal: AbortSignal.timeout(5000) });
+          if (!r.ok) continue;
+          const txs = await r.json();
+          for (const tx of txs) {
+            if (tx.type !== 'SWAP' || tx.transactionError) continue;
+            const nativeIn = (tx.nativeTransfers || []).filter(t => t.fromUserAccount === wallet.address).reduce((s, t) => s + t.amount, 0);
+            const tokensIn = (tx.tokenTransfers || []).filter(t => t.toUserAccount === wallet.address && t.mint !== SOL_MINT);
+            if (nativeIn <= 0 || !tokensIn.length) continue;
+            for (const tr of tokensIn) {
+              const buy = { mint: tr.mint, solSpent: nativeIn / LAMPORTS_PER_SOL, sig: tx.signature, timestamp: tx.timestamp * 1000 };
+              if (state.lastSig[wallet.address] === buy.sig) break;
+              if (now - buy.timestamp > SIGNAL_WINDOW_MS) continue;
+              if (state.recentBuys.some(b => b.sig === buy.sig)) continue;
+              state.recentBuys.push({ kol: wallet.name, kolWeight: wallet.weight, scalper: wallet.scalper, ...buy });
+              try { updateSniperWatch(buy.mint, wallet.name, wallet.weight, null); } catch {}
+              log(`KOL: ${wallet.name} bought ${tr.mint.slice(0, 8)}... for ${buy.solSpent.toFixed(2)} SOL`);
+            }
+            if (txs.length > 0) state.lastSig[wallet.address] = txs[0].signature;
+          }
+        } catch {}
+      }
+    }
+  } catch (e) { log('\u26A0\uFE0F VPS poll error: ' + e.message); }
 
   // HIGH-WEIGHT SINGLE KOL BUY (weight >= 2)
   for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 4 && !b.scalper)) {
@@ -1001,7 +1073,8 @@ async function scanKOLs(state) {
     const hwFdv = entryPair?.pairs?.[0]?.fdv || hwInfo.mcap || 0;
     const isDeadCat = hwH24 > 200 && hwH1 < 5 && hwM5 < 5;   // pumped hard 24h ago, momentum gone
     const isFadingRun = hwH6 > 150 && hwM5 < -3;              // big 6h run, now actively dumping
-    const isVampire = hwH1 > 150 && hwVolH1 > 0 && hwVolH6 > 0 && (hwVolH1 / hwVolH6) > 0.85; // 85%+ of all volume in last hour = one-candle pump
+    const hwPairAgeMs = entryPair?.pairs?.[0]?.pairCreatedAt ? (Date.now() - entryPair.pairs[0].pairCreatedAt) : 999999999;
+    const isVampire = hwH1 > 150 && hwVolH1 > 0 && hwVolH6 > 0 && (hwVolH1 / hwVolH6) > 0.85 && hwPairAgeMs > 7200000; // 85%+ volume in h1 BUT only for tokens > 2hrs old
     const isPaperLiq = hwLiq > 0 && hwLiq < 5000 && hwFdv > 8000; // paper liquidity trap
     if (isDeadCat)   { log(`⛔ ${hwInfo.symbol}: DEAD CAT — h24:+${hwH24.toFixed(0)}% but h1:${hwH1.toFixed(0)}% m5:${hwM5.toFixed(0)}% — peak already in`); ALERTED.add(signal.mint); saveAlerted(); continue; }
     if (isFadingRun) { log(`⛔ ${hwInfo.symbol}: FADING RUN — h6:+${hwH6.toFixed(0)}% but m5:${hwM5.toFixed(0)}% — dumping now`); ALERTED.add(signal.mint); saveAlerted(); continue; }
@@ -1054,6 +1127,22 @@ async function scanKOLs(state) {
       const staticWeight = WALLETS.find(w => w.name === kolName)?.weight || 1;
       return sum + (liveWeight !== undefined ? liveWeight : staticWeight);
     }, 0);
+    // ── STACKING BONUS: elite KOL buying 3+ times = conviction ──────────
+    let stackingBonus = 0;
+    for (const kolName of activeKols) {
+      const lw = livePerf[kolName]?.weight;
+      const sw = WALLETS.find(w => w.name === kolName)?.weight || 1;
+      const w = lw !== undefined ? lw : sw;
+      if (w >= 3) {
+        const buyCount = buys.filter(b => b.kol === kolName).length;
+        if (buyCount >= 3) {
+          stackingBonus = 2;
+          log('🔄 STACKING: ' + kolName + ' bought ' + buyCount + 'x — conviction bonus +2');
+        }
+      }
+    }
+    const finalScore = convergenceScore + stackingBonus;
+
     const MIN_SCORE = 4;
     const hasElite = activeKols.some(k => {
       const liveWeight = livePerf[k]?.weight;
@@ -1063,8 +1152,8 @@ async function scanKOLs(state) {
 
     if (ALERTED.has(mint)) continue;
     if (nonScalper.length < 1) continue;
-    if (activeKols.length < MIN_KOLS && convergenceScore < MIN_SCORE) continue;
-    if (activeKols.length < 2 && !hasElite) continue;
+    if (activeKols.length < MIN_KOLS && finalScore < MIN_SCORE) continue;
+    if (activeKols.length < 2 && !hasElite && stackingBonus === 0) continue;
 
     log('📊 CONVERGENCE SCORE: ' + activeKols.map(k => {
       const w = livePerf[k]?.weight !== undefined ? livePerf[k].weight : (WALLETS.find(w => w.name === k)?.weight || 1);
@@ -1074,10 +1163,10 @@ async function scanKOLs(state) {
     // ────────────────────────────────────────────────────────────────────────
 
     const info = await getTokenInfo(mint);
-    ALERTED.add(mint);
     // volume check moved after pairForScore fetch
-    if (!info || info.mcap < 2000) { log(`⛔ ${mint.slice(0,8)}: no info or MC too low (${Math.round(info?.mcap||0)})`); continue; }
-    if (info.mcap > 500000) { log(`⛔ ${info.symbol}: MC too high ${Math.round(info.mcap)} — too late`); continue; }
+    if (!info || info.mcap === 0) { log(`⏳ ${mint.slice(0,8)}: no data yet (MC:0) — will retry next cycle`); continue; }
+    if (info.mcap < 2000) { log(`⛔ ${info.symbol}: MC too low (${Math.round(info.mcap)})`); ALERTED.add(mint); continue; }
+    if (info.mcap > 500000) { log(`⛔ ${info.symbol}: MC too high ${Math.round(info.mcap)} — too late`); ALERTED.add(mint); continue; }
 
     const totalSol = buys.reduce((s, b) => s + b.solSpent, 0);
     log(`🔥 CONVERGENCE: ${info.symbol} | MC: ${Math.round(info.mcap)} | KOLs: ${uniqueKols.join(', ')} | Score: ${convergenceScore} | ${totalSol.toFixed(1)} SOL`);
@@ -1134,7 +1223,9 @@ async function scanKOLs(state) {
       const cFdv = pairForScore?.fdv || info.mcap || 0;
       if (cH24 > 200 && cH1 < 5 && cM5 < 5)   { log(`⛔ ${info.symbol}: DEAD CAT — h24:+${cH24.toFixed(0)}% but h1:${cH1.toFixed(0)}% — peak already in`); continue; }
       if (cH6 > 150 && cM5 < -3)               { log(`⛔ ${info.symbol}: FADING RUN — h6:+${cH6.toFixed(0)}% m5:${cM5.toFixed(0)}%`); continue; }
-      if (cH1 > 150 && cVolH1 > 0 && cVolH6 > 0 && (cVolH1/cVolH6) > 0.85) { log(`⛔ ${info.symbol}: VAMPIRE — one-candle pump, ${((cVolH1/cVolH6)*100).toFixed(0)}% vol in h1`); continue; }
+      const cPairAge = pairForScore?.pairCreatedAt ? (Date.now() - pairForScore.pairCreatedAt) : 999999999;
+      if (cH1 > 150 && cVolH1 > 0 && cVolH6 > 0 && (cVolH1/cVolH6) > 0.85 && cPairAge > 7200000) { log(`⛔ ${info.symbol}: VAMPIRE — one-candle pump, ${((cVolH1/cVolH6)*100).toFixed(0)}% vol in h1 (age: ${Math.round(cPairAge/60000)}min)`); continue; }
+      if (cH1 > 150 && cVolH1 > 0 && cVolH6 > 0 && (cVolH1/cVolH6) > 0.85 && cPairAge <= 7200000) { log(`🧛 ${info.symbol}: VAMPIRE skip — fresh token (${Math.round(cPairAge/60000)}min old), allowing`); }
       if (cLiq > 0 && cLiq < 5000 && cFdv > 8000) { log(`⛔ ${info.symbol}: PAPER LIQ — $${Math.round(cLiq)} liq`); continue; }
       if (await buy(mint, size)) {
         const p = await checkPrice(mint);
@@ -1142,7 +1233,7 @@ async function scanKOLs(state) {
         const convPairAge = pairForScore?.pairCreatedAt ? Date.now() - pairForScore.pairCreatedAt : 0;
         POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, tp2Hit: false, entryTime: Date.now(), tokenAge: convPairAge, dcaAdded: false, dcaSize: size * 0.4, dcaCycles: 0, entrySize: size });
         savePositions();
-        logTrade('BUY', info.symbol, mint, size, null, null, `${uniqueKols.length} KOL convergence: ${uniqueKols.join(', ')}`, {mc: info.mcap, vol24: pairForScore?.volume?.h24, vol1h: pairForScore?.volume?.h1, buys: pairForScore?.txns?.h1?.buys, sells: pairForScore?.txns?.h1?.sells, liq: info.liq, kols: uniqueKols, entryScore: score});
+        logTrade('BUY', info.symbol, mint, size, null, null, `${uniqueKols.length} KOL convergence: ${uniqueKols.join(', ')}`, {mc: info.mcap, vol24: pairForScore?.volume?.h24, vol1h: pairForScore?.volume?.h1, buys: pairForScore?.txns?.h1?.buys, sells: pairForScore?.txns?.h1?.sells, liq: info.liq, kols: uniqueKols, entryScore: tokenScore});
         await postTrade('BUY', info.symbol, mint, mc, `${uniqueKols.length} KOL convergence`, size);
         RECENTLY_BOUGHT.set(mint, Date.now());
       }
@@ -1159,8 +1250,8 @@ async function scoreToken(info, pair, kolScore) {
   const reasons = [];
 
   // SIGNAL 1: KOL conviction (0-2 pts)
-  if (kolScore >= 9)      { score += 2; reasons.push('KOL:2'); }
-  else if (kolScore >= 6) { score += 1; reasons.push('KOL:1'); }
+  if (kolScore >= 5)      { score += 2; reasons.push('KOL:2'); }
+  else if (kolScore >= 3) { score += 1; reasons.push('KOL:1'); }
   else                    { score += 0; reasons.push('KOL:0'); }
 
   // SIGNAL 2: MC sweet spot — $5k-$50k = best risk/reward (0-1 pt)
@@ -1228,7 +1319,7 @@ async function reconcileWallet() {
     const { Connection, PublicKey } = await import('@solana/web3.js');
     const conn = new Connection('https://mainnet.helius-rpc.com/?api-key=' + HELIUS_KEY);
     const accounts = await conn.getParsedTokenAccountsByOwner(
-      new PublicKey('53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'),
+      new PublicKey(WALLET_ADDRESS),
       { programId: new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA') }
     );
     const held = accounts.value
@@ -1297,7 +1388,7 @@ async function marketScan() {
       if ((p.txns.h1?.buys || 0) > 200) score++;
       if (h6 < 0 && m5 > 5) score++;
 
-      if (score < 5) continue;
+      if (score < 7) continue; // raised from 5 — only strong independent plays
       const mktWallet = await getWalletBalance();
       const size = await safeBuySize(mktWallet, liq, 2);
       if (size < 0.08) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
@@ -1415,7 +1506,7 @@ async function healthCheck() {
   const checks = [];
   try { const r = await fetch('https://api.dexscreener.com/token-boosts/top/v1', { signal: AbortSignal.timeout(5000) }); checks.push(r.ok ? '✅ DexScreener' : '❌ DexScreener'); } catch { checks.push('❌ DexScreener'); }
   try { const r = await fetch('https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump&amount=100000000&slippageBps=500', { signal: AbortSignal.timeout(5000) }); const d = await r.json(); checks.push(d.outAmount ? '✅ Jupiter' : '❌ Jupiter'); } catch { checks.push('❌ Jupiter'); }
-  try { const r = await fetch('https://solana.publicnode.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'] }), signal: AbortSignal.timeout(5000) }); const d = await r.json(); const sol = (d.result?.value || 0) / 1e9; checks.push(sol > 0 ? `✅ Wallet: ${sol.toFixed(2)} SOL` : '⚠️ Wallet: 0 SOL'); } catch { checks.push('❌ Wallet RPC'); }
+  try { const r = await fetch('https://solana.publicnode.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: [WALLET_ADDRESS] }), signal: AbortSignal.timeout(5000) }); const d = await r.json(); const sol = (d.result?.value || 0) / 1e9; checks.push(sol > 0 ? `✅ Wallet: ${sol.toFixed(2)} SOL` : '⚠️ Wallet: 0 SOL'); } catch { checks.push('❌ Wallet RPC'); }
   checks.push(HELIUS_KEY ? '✅ Helius key present' : '⚠️ No Helius key — KOL scan disabled');
   log('=== HEALTH CHECK ===');
   checks.forEach(c => log(c));
@@ -1434,7 +1525,7 @@ async function syncPositionsFromWallet() {
         jsonrpc: '2.0', id: 1,
         method: 'getTokenAccountsByOwner',
         params: [
-          '53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz',
+          WALLET_ADDRESS,
           { programId: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' },
           { encoding: 'jsonParsed', commitment: 'confirmed' }
         ]
@@ -1550,7 +1641,7 @@ await healthCheck();
 await reconcileWallet(); // sync wallet holdings → positions on every startup
 loadLearnState();
 log('🦞 GIZMO UNIFIED ENGINE v1.0 — single process, full autonomy');
-log(`Positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'} | Wallet: 53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`);
+log(`Positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'} | Wallet: ${WALLET_ADDRESS}`);
 log(`KOL wallets: ${WALLETS.length} | Max positions: ${MAX_POSITIONS} | Scan: every 30s | Market scan: every 10min`);
 
 let cycle = 0;
@@ -1571,7 +1662,7 @@ async function runCycle() {
       const r = await fetch('https://solana.publicnode.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'] }),
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: [WALLET_ADDRESS] }),
         signal: AbortSignal.timeout(5000)
       });
       const d = await r.json();
@@ -1586,7 +1677,7 @@ async function runCycle() {
       const r = await fetch('https://solana.publicnode.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'] }),
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: [WALLET_ADDRESS] }),
         signal: AbortSignal.timeout(5000)
       });
       const d = await r.json();
@@ -1596,8 +1687,8 @@ async function runCycle() {
       const sessionAge = (Date.now() - (SESSION_HALT_TIME || Date.now())) / 60000;
       if (SESSION_HALTED && sessionAge > 30) {
         SESSION_HALTED = false;
-        SESSION_START_BALANCE = currentBalance;
-        log('[SESSION] ⏰ Auto-resumed after 30min cooldown — new session started at ' + currentBalance.toFixed(3) + ' SOL');
+        SESSION_START_BALANCE = current;
+        log('[SESSION] \u23F0 Auto-resumed after 30min cooldown — new session started at ' + current.toFixed(3) + ' SOL');
       }
       if (lost >= SESSION_LOSS_LIMIT_SOL) {
         SESSION_HALTED = true;
@@ -1629,7 +1720,7 @@ async function runCycle() {
     try {
       const r = await fetch('https://solana.publicnode.com', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: ['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz'] }),
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: [WALLET_ADDRESS] }),
         signal: AbortSignal.timeout(5000)
       });
       const d = await r.json();
@@ -1643,8 +1734,8 @@ async function runCycle() {
     await managePositions();
     await checkWatchlist();
     await scanKOLs(state);
-    // MARKET SCAN DISABLED — was -0.270 SOL over 29 trades. Focus on proven KOL signals only.
-    // if (cycle % 5 === 0) await marketScan();
+    // MARKET SCAN RE-ENABLED — score threshold raised to 7/9 for independent plays
+    if (cycle % 5 === 0) await marketScan();
     if (cycle % 5 === 0) await learnFromTrades();
     await writeDashboard();
     await processSniperWatch();
@@ -2019,7 +2110,9 @@ async function processSniperWatch() {
       const bsRatio = buys5 / Math.max(sells5, 1);
       if (m5 > 3 && bsRatio >= 1.5 && mc > 8000) {
         log('SNIPER ENTRY: ' + w.name + ' recovering +' + m5.toFixed(0) + '% with B/S ' + bsRatio.toFixed(1) + ' -- ' + w.kols.size + ' KOLs (wt:' + w.totalWeight + ')');
-        const size = Math.min(0.5 * POSITION_SIZE_MULT, 1.0);
+        let sniperTradeable = 0.5;
+        try { const _r = await fetch('https://solana.publicnode.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: [WALLET_ADDRESS] }), signal: AbortSignal.timeout(3000) }); const _d = await _r.json(); sniperTradeable = Math.max((_d.result?.value || 0) / 1e9 - 0.3, 0.1); } catch {}
+        const size = Math.min(0.5 * POSITION_SIZE_MULT, sniperTradeable * 0.15, 0.3);  // FIXED: cap sniper at 15% of tradeable or 0.3 SOL max
         if (await buy(mint, size)) {
           POSITIONS.push({ name: w.name, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 2, tp2: mc * 4, tp1Hit: false, entryType: 'sniper_dip' });
           savePositions();
@@ -2116,6 +2209,32 @@ async function pollTelegram() {
         log('🛑 HALTED via Telegram command');
         continue;
       }
+      // MANUAL SELL: /sell <CA or name>
+      if (clean.startsWith('/sell ')) {
+        const target = clean.replace('/sell ', '').trim();
+        const pos = POSITIONS.find(p => p.ca === target || p.name.toLowerCase() === target.toLowerCase());
+        if (pos) {
+          const sellResult = await sell(pos.ca, '100%', pos.name, pos.entryMC, pos.highMC);
+          const replyText = sellResult ? '\u2705 Sold ' + pos.name + ' — removed from positions.' : '\u274C Sell failed for ' + pos.name + ' — check logs.';
+          if (sellResult) { POSITIONS.splice(POSITIONS.indexOf(pos), 1); savePositions(); }
+          await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: chatId, text: replyText, reply_to_message_id: msg.message_id }) });
+          log('\u{1F4F1} TG /sell: ' + pos.name + ' — ' + (sellResult ? 'SUCCESS' : 'FAILED'));
+        } else {
+          await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: chatId, text: '\u274C Position not found: ' + target + '\nOpen: ' + (POSITIONS.map(p => p.name).join(', ') || 'none'), reply_to_message_id: msg.message_id }) });
+        }
+        continue;
+      }
+      // MANUAL STATUS: /status
+      if (clean.includes('/status')) {
+        const bal = await getWalletBalance();
+        const posText = POSITIONS.length > 0 ? POSITIONS.map(p => {
+          const pnl = p.highMC > 0 ? ((p.highMC / p.entryMC - 1) * 100).toFixed(0) + '%' : '?';
+          return p.name + (p.moonbag ? ' \u{1F319}' : '') + (p.runnerMode ? ' \u{1F981}' : '') + ' ' + pnl;
+        }).join('\n') : 'No positions';
+        const statusText = '\u{1F4CA} GIZMO STATUS\n\n\u{1F4B0} Wallet: ' + bal.toFixed(3) + ' SOL\nPositions: ' + POSITIONS.length + '/' + MAX_POSITIONS + '\n\n' + posText + '\n\nScore: \u2265' + SCORE_THRESHOLD + ' | Size: ' + POSITION_SIZE_MULT + 'x | MinKols: ' + MIN_KOLS;
+        await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: chatId, text: statusText, reply_to_message_id: msg.message_id }) });
+        continue;
+      }
       if (clean.includes('/resume') || clean.includes('resume trading')) {
         SESSION_HALTED = false;
         await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
@@ -2157,4 +2276,4 @@ setInterval(pollTelegram, 3000); // poll every 3 seconds
 // ─── STOIC MESSAGES ──────────────────────────────────────────────────────────
 
 // ─── TELEGRAM REPLY LISTENER ─────────────────────────────────────────────────
-runCycle();
+// runCycle(); // REMOVED — startAdaptiveCycle already handles this
