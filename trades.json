@@ -1,5 +1,30 @@
 [
   {
+    "n": 606,
+    "date": "2026-03-16",
+    "token": "不死鸟",
+    "action": "BUY",
+    "amount": "0.0978 SOL",
+    "result": "2 KOL convergence: dv, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "546CsqAqq9s9XZdqeSFTZvnt16fY8ivsgf6MYF3fpump",
+    "ts": 1773630606,
+    "mc": 5957.47,
+    "vol24": 59561.77,
+    "vol1h": 59561.77,
+    "buys": 823,
+    "sells": 680,
+    "liq": null,
+    "kols": [
+      "dv",
+      "bandit"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 605,
     "date": "2026-03-16",
     "token": "不死鸟",
