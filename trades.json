@@ -1,5 +1,27 @@
 [
   {
+    "n": 620,
+    "date": "2026-03-16",
+    "token": "VEESA",
+    "action": "BUY",
+    "amount": "0.123 SOL",
+    "result": "Boost scan score 7/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AetrqKMgn6Q5LCvRBShnu5DGM5qz4CSHURzUccgDpump",
+    "ts": 1773672672,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 619,
     "date": "2026-03-16",
     "token": "VEESA",
