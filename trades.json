@@ -1,5 +1,29 @@
 [
   {
+    "n": 608,
+    "date": "2026-03-16",
+    "token": "Wife",
+    "action": "BUY",
+    "amount": "0.079 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5YEjdkSKGw1WLzGhQur8cWTxEy95Kr7uxfwEwDigpump",
+    "ts": 1773630668,
+    "mc": 10486.47,
+    "vol24": 11743.14,
+    "vol1h": 11743.14,
+    "buys": 151,
+    "sells": 79,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 607,
     "date": "2026-03-16",
     "token": "WILLARD",
