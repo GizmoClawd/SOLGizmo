@@ -1,5 +1,30 @@
 [
   {
+    "n": 615,
+    "date": "2026-03-16",
+    "token": "5YEjdkSK",
+    "action": "BUY",
+    "amount": "0.16872851325 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (bandit,dv)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5YEjdkSKGw1WLzGhQur8cWTxEy95Kr7uxfwEwDigpump",
+    "ts": 1773631391,
+    "mc": 58613,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "bandit",
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 614,
     "date": "2026-03-16",
     "token": "7tDZP4sb",
