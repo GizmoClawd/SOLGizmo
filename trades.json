@@ -1,5 +1,30 @@
 [
   {
+    "n": 693,
+    "date": "2026-03-17",
+    "token": "Bonk",
+    "action": "BUY",
+    "amount": "0.1313 SOL",
+    "result": "2 KOL convergence: Cented, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BQFUEBXGHFQFe9XSvckQ2L2gQnpKurEtRhBQuymYpump",
+    "ts": 1773761786,
+    "mc": 39666,
+    "vol24": 30077.65,
+    "vol1h": 30077.65,
+    "buys": 366,
+    "sells": 278,
+    "liq": 16190.94,
+    "kols": [
+      "Cented",
+      "Joji"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 692,
     "date": "2026-03-17",
     "token": "USEFUL",
