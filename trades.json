@@ -1,5 +1,29 @@
 [
   {
+    "n": 648,
+    "date": "2026-03-17",
+    "token": "Claude",
+    "action": "BUY",
+    "amount": "0.077 SOL",
+    "result": "1 KOL convergence: CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4j6UgozmsSHe1kD5n3u4Y4YBGiRj6zCiPZsnmUz7pump",
+    "ts": 1773716299,
+    "mc": 13485.43,
+    "vol24": 27704.08,
+    "vol1h": 27704.08,
+    "buys": 305,
+    "sells": 226,
+    "liq": null,
+    "kols": [
+      "CLOWN"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 647,
     "date": "2026-03-17",
     "token": "Dz4bX3sn",
