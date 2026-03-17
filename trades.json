@@ -1,5 +1,27 @@
 [
   {
+    "n": 791,
+    "date": "2026-03-17",
+    "token": "please",
+    "action": "SELL",
+    "amount": "0.1281 SOL",
+    "result": "Sold 100% | PnL: -41.6%",
+    "pnl": "+0.1281 SOL",
+    "color": "teal",
+    "ca": "BAg17G7C3kdLP3TfPR6n4cb7stmrS3WsmTifeTZTFJFR",
+    "ts": 1773769997,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 790,
     "date": "2026-03-17",
     "token": "please",
