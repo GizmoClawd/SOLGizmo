@@ -1,5 +1,29 @@
 [
   {
+    "n": 703,
+    "date": "2026-03-17",
+    "token": "TWINKLE",
+    "action": "BUY",
+    "amount": "0.1357 SOL",
+    "result": "1 KOL convergence: Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AJa11Um6nQBBtRULwbW7TGxaXNDs3LuimcE9eLAypump",
+    "ts": 1773764670,
+    "mc": 12664,
+    "vol24": 41696.64,
+    "vol1h": 415.67,
+    "buys": 7,
+    "sells": 11,
+    "liq": 9421.57,
+    "kols": [
+      "Kadenox"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 702,
     "date": "2026-03-17",
     "token": "3z9uMqeT",
