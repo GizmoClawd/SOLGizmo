@@ -1,5 +1,27 @@
 [
   {
+    "n": 725,
+    "date": "2026-03-17",
+    "token": "MFG",
+    "action": "SELL",
+    "amount": "0.0083 SOL",
+    "result": "Sold 100% | PnL: -79.9%",
+    "pnl": "+0.0083 SOL",
+    "color": "teal",
+    "ca": "9VaApy7LosXL4om96J4fSFNVvadfAWamHEVb2mCYpump",
+    "ts": 1773764424,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 724,
     "date": "2026-03-17",
     "token": "FLUCKI",
