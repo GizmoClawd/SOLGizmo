@@ -1,5 +1,30 @@
 [
   {
+    "n": 792,
+    "date": "2026-03-17",
+    "token": "DRAMA",
+    "action": "BUY",
+    "amount": "0.1509 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2WHR1qRsPuhs7eU5nfqb82trmfivDgWX95NUFTzvx3xS",
+    "ts": 1773770148,
+    "mc": 38819.96,
+    "vol24": 26745.14,
+    "vol1h": 26745.14,
+    "buys": 172,
+    "sells": 83,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Cupsey"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 791,
     "date": "2026-03-17",
     "token": "please",
