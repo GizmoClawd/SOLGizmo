@@ -1,5 +1,30 @@
 [
   {
+    "n": 765,
+    "date": "2026-03-17",
+    "token": "DC",
+    "action": "BUY",
+    "amount": "0.1763 SOL",
+    "result": "2 KOL convergence: CLOWN, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4HHtqcxHPPYdYkDBLPhNxxmzXcxzQT6rLFyZBnKspump",
+    "ts": 1773789395,
+    "mc": 37851.59,
+    "vol24": 17775.89,
+    "vol1h": 17775.89,
+    "buys": 76,
+    "sells": 20,
+    "liq": null,
+    "kols": [
+      "CLOWN",
+      "Silver"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 764,
     "date": "2026-03-17",
     "token": "Diy7g2fY",
