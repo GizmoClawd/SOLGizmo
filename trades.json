@@ -1,5 +1,27 @@
 [
   {
+    "n": 677,
+    "date": "2026-03-17",
+    "token": "TERA",
+    "action": "SELL",
+    "amount": "0.086 SOL",
+    "result": "Sold 100% | PnL: +2.1%",
+    "pnl": "+0.0860 SOL",
+    "color": "teal",
+    "ca": "54FDPRKPFDFr13VPPo6FPiiWeBRXyYHnR99JYjg5pump",
+    "ts": 1773727103,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 676,
     "date": "2026-03-17",
     "token": "TERA",
