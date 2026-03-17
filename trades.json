@@ -1,5 +1,30 @@
 [
   {
+    "n": 706,
+    "date": "2026-03-17",
+    "token": "Up",
+    "action": "BUY",
+    "amount": "0.1591 SOL",
+    "result": "2 KOL convergence: Cupsey, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DDcfD2RbqCuCWv2JCMrcuqausE5VsZ3espoVRLX2pump",
+    "ts": 1773765368,
+    "mc": 28155.22,
+    "vol24": 23731.62,
+    "vol1h": 23731.62,
+    "buys": 367,
+    "sells": 221,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "dv"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 705,
     "date": "2026-03-17",
     "token": "UGOR",
