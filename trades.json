@@ -1,5 +1,30 @@
 [
   {
+    "n": 684,
+    "date": "2026-03-17",
+    "token": "LULU",
+    "action": "BUY",
+    "amount": "0.1951 SOL",
+    "result": "2 KOL convergence: dov7, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "91zYqxarFcsUrUetMY29tGboG8GJU3KRj1omkDV1pump",
+    "ts": 1773756538,
+    "mc": 19003,
+    "vol24": 50114.66,
+    "vol1h": 50114.66,
+    "buys": 564,
+    "sells": 473,
+    "liq": 11221.3,
+    "kols": [
+      "dov7",
+      "Joji"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 683,
     "date": "2026-03-17",
     "token": "TRUST",
