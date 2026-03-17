@@ -1,5 +1,31 @@
 [
   {
+    "n": 848,
+    "date": "2026-03-17",
+    "token": "RETARDMAXXING",
+    "action": "BUY",
+    "amount": "0.1216 SOL",
+    "result": "3 KOL convergence: clukz, Cupsey, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HNunYXfgoiHfVpQLyfStZZNGSiAW1k7t6p8U1TWSmVev",
+    "ts": 1773775928,
+    "mc": 9326,
+    "vol24": 35495.28,
+    "vol1h": 35495.28,
+    "buys": 180,
+    "sells": 132,
+    "liq": 7896.8,
+    "kols": [
+      "clukz",
+      "Cupsey",
+      "Cented"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 847,
     "date": "2026-03-17",
     "token": "AMBER",
