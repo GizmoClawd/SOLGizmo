@@ -1,5 +1,30 @@
 [
   {
+    "n": 674,
+    "date": "2026-03-17",
+    "token": "Zero",
+    "action": "BUY",
+    "amount": "0.2861 SOL",
+    "result": "2 KOL convergence: clukz, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7gVGRq4EYWeaFiS9ynpxj9yiHKL5k8GT5FRMx3w7pump",
+    "ts": 1773726654,
+    "mc": 5926,
+    "vol24": 37831.5,
+    "vol1h": 6271.98,
+    "buys": 40,
+    "sells": 28,
+    "liq": 6251.72,
+    "kols": [
+      "clukz",
+      "Silver"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 673,
     "date": "2026-03-17",
     "token": "NikolAI",
