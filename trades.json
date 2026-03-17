@@ -1,5 +1,27 @@
 [
   {
+    "n": 722,
+    "date": "2026-03-17",
+    "token": "GFM",
+    "action": "SELL",
+    "amount": "0.2691 SOL",
+    "result": "Sold 100% | PnL: -61.2%",
+    "pnl": "+0.2691 SOL",
+    "color": "teal",
+    "ca": "CwUiQV1Qu5CiDhbbkgpN8u9bCppbA1V9Api7WBsmDMra",
+    "ts": 1773764397,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 721,
     "date": "2026-03-17",
     "token": "MFG",
