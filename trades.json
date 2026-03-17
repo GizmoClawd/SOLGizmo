@@ -1,5 +1,27 @@
 [
   {
+    "n": 770,
+    "date": "2026-03-17",
+    "token": "DWa137vK",
+    "action": "SELL",
+    "amount": "0.115 SOL",
+    "result": "Sold 25% | PnL: +31.9%",
+    "pnl": "+0.1150 SOL",
+    "color": "teal",
+    "ca": "DWa137vKLweHW6TeaRANpa4iGvyjoExqvh8dubKopump",
+    "ts": 1773789879,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 769,
     "date": "2026-03-17",
     "token": "SHfVxvyt",
