@@ -1,5 +1,29 @@
 [
   {
+    "n": 667,
+    "date": "2026-03-17",
+    "token": "OLAF",
+    "action": "BUY",
+    "amount": "0.1317 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "84DXfFNRhgNMPb58fjduBg6JNj3xcaGKzQSEEFSnP3MN",
+    "ts": 1773720145,
+    "mc": 83255,
+    "vol24": 768518.08,
+    "vol1h": 23371.92,
+    "buys": 247,
+    "sells": 171,
+    "liq": 25386.16,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 666,
     "date": "2026-03-17",
     "token": "ARC",
