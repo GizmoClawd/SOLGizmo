@@ -1,5 +1,30 @@
 [
   {
+    "n": 817,
+    "date": "2026-03-17",
+    "token": "kit",
+    "action": "BUY",
+    "amount": "0.0666 SOL",
+    "result": "2 KOL convergence: Cupsey, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HPQZW2puagwF3qjWBTWYSDHr4X2zu767DpmR67XWpump",
+    "ts": 1773774450,
+    "mc": 21479.6,
+    "vol24": 190403.61,
+    "vol1h": 18215.68,
+    "buys": 156,
+    "sells": 110,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "dov7"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 816,
     "date": "2026-03-17",
     "token": "KIt",
