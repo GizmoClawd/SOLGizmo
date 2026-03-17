@@ -1,5 +1,30 @@
 [
   {
+    "n": 766,
+    "date": "2026-03-17",
+    "token": "Solana",
+    "action": "BUY",
+    "amount": "0.1013 SOL",
+    "result": "2 KOL convergence: Cented, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9eRN6d8vTGVwG9M6XTj8sqX3rDBSZWfc2VXF66pnpump",
+    "ts": 1773767427,
+    "mc": 15111.02,
+    "vol24": 13845.96,
+    "vol1h": 13845.96,
+    "buys": 70,
+    "sells": 30,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Silver"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 765,
     "date": "2026-03-17",
     "token": "Mashu",
