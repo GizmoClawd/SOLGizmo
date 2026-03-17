@@ -1,5 +1,29 @@
 [
   {
+    "n": 739,
+    "date": "2026-03-17",
+    "token": "biscuits",
+    "action": "BUY",
+    "amount": "0.2012 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BsLcXiRGq98FZaNAA88N1foQesiVoAqY66SyKAVJZffH",
+    "ts": 1773765047,
+    "mc": 3328.03,
+    "vol24": 12656.86,
+    "vol1h": 12656.86,
+    "buys": 105,
+    "sells": 93,
+    "liq": null,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 738,
     "date": "2026-03-17",
     "token": "BELIEVERS",
