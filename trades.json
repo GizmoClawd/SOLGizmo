@@ -1,5 +1,27 @@
 [
   {
+    "n": 713,
+    "date": "2026-03-17",
+    "token": "8NayGGqs",
+    "action": "SELL",
+    "amount": "0.2477 SOL",
+    "result": "Sold 100% | PnL: +1.8%",
+    "pnl": "+0.2477 SOL",
+    "color": "teal",
+    "ca": "8NayGGqspRBUTRr7Abxv9ow4epEjsjxatAae1LARpump",
+    "ts": 1773764018,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 712,
     "date": "2026-03-17",
     "token": "8NayGGqs",
