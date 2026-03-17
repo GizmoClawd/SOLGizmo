@@ -1,5 +1,27 @@
 [
   {
+    "n": 676,
+    "date": "2026-03-17",
+    "token": "NARUTO",
+    "action": "SELL",
+    "amount": "0.0436 SOL",
+    "result": "Sold 15% | PnL: +30.8%",
+    "pnl": "+0.0436 SOL",
+    "color": "teal",
+    "ca": "424GsDF6hwHSHJuvPstquqAG7etUVWR2dv3uer5zpump",
+    "ts": 1773755380,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 675,
     "date": "2026-03-17",
     "token": "NARUTO",
