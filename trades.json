@@ -1,5 +1,30 @@
 [
   {
+    "n": 662,
+    "date": "2026-03-17",
+    "token": "NETAINYAHU",
+    "action": "BUY",
+    "amount": "0.2335 SOL",
+    "result": "2 KOL convergence: dov7, Casino",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BBkUQdTDdVySDKXT4TngbmbpC2ktwBeymMSdn41ppump",
+    "ts": 1773752204,
+    "mc": 132800,
+    "vol24": 354489.29,
+    "vol1h": 9036.66,
+    "buys": 73,
+    "sells": 98,
+    "liq": 35691.77,
+    "kols": [
+      "dov7",
+      "Casino"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 661,
     "date": "2026-03-17",
     "token": "patricklon",
