@@ -1,5 +1,32 @@
 [
   {
+    "n": 736,
+    "date": "2026-03-17",
+    "token": "Gany",
+    "action": "BUY",
+    "amount": "0.3519 SOL",
+    "result": "4 KOL convergence: theo, bandit, Cented, Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Dz4bX3snTDxqdKyZwdUgKoDvSjyvmoA23E6j5odZpump",
+    "ts": 1773781204,
+    "mc": 378937,
+    "vol24": 2190314.01,
+    "vol1h": 233470.81,
+    "buys": 1290,
+    "sells": 825,
+    "liq": 57883.25,
+    "kols": [
+      "theo",
+      "bandit",
+      "Cented",
+      "Kadenox"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 735,
     "date": "2026-03-17",
     "token": "inu",
