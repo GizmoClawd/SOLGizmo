@@ -1,5 +1,27 @@
 [
   {
+    "n": 693,
+    "date": "2026-03-17",
+    "token": "Nerd",
+    "action": "SELL",
+    "amount": "0.0949 SOL",
+    "result": "Sold 100% | PnL: -41.0%",
+    "pnl": "+0.0949 SOL",
+    "color": "teal",
+    "ca": "BRKGNhG8pYHBqTrRFZSR8bbEPnsvqAbDcvmmK4g7pump",
+    "ts": 1773758254,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 692,
     "date": "2026-03-17",
     "token": "Nerd",
