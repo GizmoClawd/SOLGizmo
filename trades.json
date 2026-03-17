@@ -1,5 +1,27 @@
 [
   {
+    "n": 732,
+    "date": "2026-03-17",
+    "token": "6gXRxfGR",
+    "action": "SELL",
+    "amount": "0.0143 SOL",
+    "result": "Sold 100% | PnL: -56.5%",
+    "pnl": "+0.0143 SOL",
+    "color": "teal",
+    "ca": "6gXRxfGRX8SvMCfeZWdm5UcUBen9MHPa34Dn9kbxpump",
+    "ts": 1773780451,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 731,
     "date": "2026-03-17",
     "token": "6gXRxfGR",
