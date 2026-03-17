@@ -1,5 +1,30 @@
 [
   {
+    "n": 658,
+    "date": "2026-03-17",
+    "token": "Claude",
+    "action": "BUY",
+    "amount": "0.0791 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4j6UgozmsSHe1kD5n3u4Y4YBGiRj6zCiPZsnmUz7pump",
+    "ts": 1773716267,
+    "mc": 16574.66,
+    "vol24": 25679.99,
+    "vol1h": 25679.99,
+    "buys": 280,
+    "sells": 207,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 657,
     "date": "2026-03-17",
     "token": "Ganymede",
