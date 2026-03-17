@@ -1,5 +1,30 @@
 [
   {
+    "n": 702,
+    "date": "2026-03-17",
+    "token": "INFDFI",
+    "action": "BUY",
+    "amount": "0.3039 SOL",
+    "result": "2 KOL convergence: Cented, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8NayGGqspRBUTRr7Abxv9ow4epEjsjxatAae1LARpump",
+    "ts": 1773763307,
+    "mc": 8587.42,
+    "vol24": 13011.5,
+    "vol1h": 13011.5,
+    "buys": 132,
+    "sells": 86,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Silver"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 701,
     "date": "2026-03-17",
     "token": "HEISEI",
