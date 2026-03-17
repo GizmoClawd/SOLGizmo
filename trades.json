@@ -1,5 +1,30 @@
 [
   {
+    "n": 682,
+    "date": "2026-03-17",
+    "token": "TRUST",
+    "action": "BUY",
+    "amount": "0.2079 SOL",
+    "result": "2 KOL convergence: dv, radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HGYiaHSpJAfiwZBkYvw2HWgdKULW2LyDqwQ7zXsNpump",
+    "ts": 1773756302,
+    "mc": 127996,
+    "vol24": 472755.65,
+    "vol1h": 472755.65,
+    "buys": 4293,
+    "sells": 3158,
+    "liq": 30045.39,
+    "kols": [
+      "dv",
+      "radiance"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 681,
     "date": "2026-03-17",
     "token": "2MJb8ouH",
