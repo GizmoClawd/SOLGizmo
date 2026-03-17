@@ -1,5 +1,30 @@
 [
   {
+    "n": 790,
+    "date": "2026-03-17",
+    "token": "please",
+    "action": "BUY",
+    "amount": "0.156 SOL",
+    "result": "2 KOL convergence: dv, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BAg17G7C3kdLP3TfPR6n4cb7stmrS3WsmTifeTZTFJFR",
+    "ts": 1773769908,
+    "mc": 6544.18,
+    "vol24": 39540.66,
+    "vol1h": 39540.66,
+    "buys": 445,
+    "sells": 354,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Joji"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 789,
     "date": "2026-03-17",
     "token": "AlphA",
