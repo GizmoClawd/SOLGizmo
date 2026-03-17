@@ -1,5 +1,27 @@
 [
   {
+    "n": 705,
+    "date": "2026-03-17",
+    "token": "UGOR",
+    "action": "BUY",
+    "amount": "0.269 SOL",
+    "result": "Boost scan score 7/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CNEq4NnvjVWaqJWPtD3PNGrY8T71K9jDe74iES3Epump",
+    "ts": 1773765265,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 704,
     "date": "2026-03-17",
     "token": "TWINKLE",
