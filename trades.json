@@ -1,5 +1,30 @@
 [
   {
+    "n": 672,
+    "date": "2026-03-17",
+    "token": "NikolAI",
+    "action": "BUY",
+    "amount": "0.2853 SOL",
+    "result": "2 KOL convergence: theo, Casino",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8xH18sEcy9VaFWNUNuDaq27rg3tyMzxNC8kzaF4Epump",
+    "ts": 1773723894,
+    "mc": 19498.67,
+    "vol24": 26491.11,
+    "vol1h": 26491.11,
+    "buys": 171,
+    "sells": 89,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Casino"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 671,
     "date": "2026-03-17",
     "token": "pvpdog",
