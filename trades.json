@@ -1,5 +1,30 @@
 [
   {
+    "n": 711,
+    "date": "2026-03-17",
+    "token": "C+V",
+    "action": "BUY",
+    "amount": "0.2254 SOL",
+    "result": "2 KOL convergence: dv, theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FKAgZd5qXnUkGoFKPeiuPMMA2mNL9Wqi3bEWkkdZpump",
+    "ts": 1773766589,
+    "mc": 18021.91,
+    "vol24": 14420.34,
+    "vol1h": 14420.34,
+    "buys": 86,
+    "sells": 37,
+    "liq": null,
+    "kols": [
+      "dv",
+      "theo"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 710,
     "date": "2026-03-17",
     "token": "INFDFI",
