@@ -1,5 +1,30 @@
 [
   {
+    "n": 710,
+    "date": "2026-03-17",
+    "token": "9dPUSCQy",
+    "action": "BUY",
+    "amount": "0.2789500209 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Silver,Jijo)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9dPUSCQyna2bXo9wpz9stPP779VJ789M5u8kEm1gpump",
+    "ts": 1773763674,
+    "mc": 28651,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Silver",
+      "Jijo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 709,
     "date": "2026-03-17",
     "token": "INFDFI",
