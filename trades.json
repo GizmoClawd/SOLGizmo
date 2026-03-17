@@ -1,5 +1,30 @@
 [
   {
+    "n": 686,
+    "date": "2026-03-17",
+    "token": "Scamcoin",
+    "action": "BUY",
+    "amount": "0.1827 SOL",
+    "result": "2 KOL convergence: dv, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "88v6vb6LDagFWTZ9q9sdpuzaLpKWARRMQgSAjQYepump",
+    "ts": 1773756778,
+    "mc": 9083.03,
+    "vol24": 23204.26,
+    "vol1h": 23204.26,
+    "buys": 395,
+    "sells": 247,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Joji"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 685,
     "date": "2026-03-17",
     "token": "LULU",
