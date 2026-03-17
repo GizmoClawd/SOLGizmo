@@ -1,5 +1,30 @@
 [
   {
+    "n": 687,
+    "date": "2026-03-17",
+    "token": "Thinker",
+    "action": "BUY",
+    "amount": "0.1612 SOL",
+    "result": "2 KOL convergence: Cented, Naruza",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8DRpeEVbQYqQnFyB7U6Br2dRsCjAcVm1riQfUK6Spump",
+    "ts": 1773760277,
+    "mc": 4060.36,
+    "vol24": 10877.48,
+    "vol1h": 10877.48,
+    "buys": 172,
+    "sells": 117,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Naruza"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 686,
     "date": "2026-03-17",
     "token": "tomorrow",
