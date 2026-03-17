@@ -1,5 +1,29 @@
 [
   {
+    "n": 679,
+    "date": "2026-03-17",
+    "token": "Lucky",
+    "action": "BUY",
+    "amount": "0.1924 SOL",
+    "result": "1 KOL convergence: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8a4x4Qu9RZa1svTFW6gkwetJDA48Go7cRvGpXxf5pump",
+    "ts": 1773752457,
+    "mc": 9263.67,
+    "vol24": 46030.84,
+    "vol1h": 46030.84,
+    "buys": 591,
+    "sells": 443,
+    "liq": null,
+    "kols": [
+      "radiance"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 678,
     "date": "2026-03-17",
     "token": "Zero",
