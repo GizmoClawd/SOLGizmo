@@ -1,5 +1,29 @@
 [
   {
+    "n": 684,
+    "date": "2026-03-17",
+    "token": "tomorrow",
+    "action": "BUY",
+    "amount": "0.1443 SOL",
+    "result": "1 KOL convergence: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4NVz43tvArphuc3Btm7nzHWXNpgNFzN5bty74WESpump",
+    "ts": 1773756357,
+    "mc": 12088,
+    "vol24": 73426.56,
+    "vol1h": 73426.56,
+    "buys": 1359,
+    "sells": 1084,
+    "liq": 8936.02,
+    "kols": [
+      "radiance"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 683,
     "date": "2026-03-17",
     "token": "Thinker",
