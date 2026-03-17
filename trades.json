@@ -1,5 +1,30 @@
 [
   {
+    "n": 629,
+    "date": "2026-03-17",
+    "token": "grokette",
+    "action": "BUY",
+    "amount": "0.1676 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8AGFNmf6rwB9ctLEHnC9xEkUMnmFhXT2ZJEbhvAxpump",
+    "ts": 1773712759,
+    "mc": 8952.21,
+    "vol24": 14958.64,
+    "vol1h": 14958.64,
+    "buys": 160,
+    "sells": 80,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Cupsey"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 628,
     "date": "2026-03-17",
     "token": "GEEKED",
