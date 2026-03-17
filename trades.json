@@ -1,5 +1,29 @@
 [
   {
+    "n": 638,
+    "date": "2026-03-17",
+    "token": "Replacement",
+    "action": "BUY",
+    "amount": "0.1468 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7STZgGYW7HsVpZGdaCYfikLu2FuebbpqC7gwaP3Apump",
+    "ts": 1773715505,
+    "mc": 38543,
+    "vol24": 160680.72,
+    "vol1h": 160680.72,
+    "buys": 2090,
+    "sells": 1616,
+    "liq": 16195.14,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 637,
     "date": "2026-03-17",
     "token": "Replacemen",
