@@ -1,5 +1,30 @@
 [
   {
+    "n": 794,
+    "date": "2026-03-17",
+    "token": "Einstein",
+    "action": "BUY",
+    "amount": "0.103 SOL",
+    "result": "2 KOL convergence: CLOWN, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6Eft1nQihL9QrbRte77Rqkm1XPkdZp2X8HGcibMupump",
+    "ts": 1773771081,
+    "mc": 42850,
+    "vol24": 49731.35,
+    "vol1h": 49731.35,
+    "buys": 321,
+    "sells": 337,
+    "liq": 16968.55,
+    "kols": [
+      "CLOWN",
+      "Cupsey"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 793,
     "date": "2026-03-17",
     "token": "DRAMA",
