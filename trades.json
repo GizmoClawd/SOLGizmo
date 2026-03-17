@@ -1,5 +1,29 @@
 [
   {
+    "n": 730,
+    "date": "2026-03-17",
+    "token": "INSECURE",
+    "action": "BUY",
+    "amount": "0.1753 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "cLxhgrzXPWdfvX4qDvxzyp6sYvD9ynHcjUC7Jv4pump",
+    "ts": 1773780419,
+    "mc": 5790.54,
+    "vol24": 134101.14,
+    "vol1h": 134101.14,
+    "buys": 2090,
+    "sells": 1479,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 729,
     "date": "2026-03-17",
     "token": "AI",
