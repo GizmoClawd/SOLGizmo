@@ -1,5 +1,29 @@
 [
   {
+    "n": 707,
+    "date": "2026-03-17",
+    "token": "Coomer",
+    "action": "BUY",
+    "amount": "0.2134 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FSXdEB4666WwzPDjuGPeZtx24wYmo8py1zerQGjZpump",
+    "ts": 1773763526,
+    "mc": 3285.77,
+    "vol24": 12723.19,
+    "vol1h": 12723.19,
+    "buys": 102,
+    "sells": 81,
+    "liq": null,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 706,
     "date": "2026-03-17",
     "token": "3/17",
