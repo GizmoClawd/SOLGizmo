@@ -1,5 +1,31 @@
 [
   {
+    "n": 728,
+    "date": "2026-03-17",
+    "token": "3z9uMqeT",
+    "action": "BUY",
+    "amount": "0.18382855515 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (Cupsey,dv,Casino)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3z9uMqeTttSMfZXWBrF2zFeVeeXu18B9DYcYDC3apump",
+    "ts": 1773764507,
+    "mc": 47736,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "dv",
+      "Casino"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 727,
     "date": "2026-03-17",
     "token": "BELIEVERS",
