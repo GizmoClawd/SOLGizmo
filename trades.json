@@ -1,5 +1,27 @@
 [
   {
+    "n": 818,
+    "date": "2026-03-17",
+    "token": "EXPO",
+    "action": "SELL",
+    "amount": "0.0907 SOL",
+    "result": "Sold 100% | PnL: -1.4%",
+    "pnl": "+0.0907 SOL",
+    "color": "teal",
+    "ca": "F6HnfGkY65GwxcPaGiy1ZGCizoWhr1QvWFA2t3J5pump",
+    "ts": 1773774490,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 817,
     "date": "2026-03-17",
     "token": "kit",
