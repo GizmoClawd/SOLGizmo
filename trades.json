@@ -1,5 +1,31 @@
 [
   {
+    "n": 828,
+    "date": "2026-03-17",
+    "token": "HPQZW2pu",
+    "action": "BUY",
+    "amount": "0.1568024613 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (Cupsey,dov7,Pain)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HPQZW2puagwF3qjWBTWYSDHr4X2zu767DpmR67XWpump",
+    "ts": 1773775277,
+    "mc": 20314,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "dov7",
+      "Pain"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 827,
     "date": "2026-03-17",
     "token": "PHIL",
