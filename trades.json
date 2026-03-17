@@ -1,5 +1,27 @@
 [
   {
+    "n": 806,
+    "date": "2026-03-17",
+    "token": "ERIC",
+    "action": "SELL",
+    "amount": "0.0928 SOL",
+    "result": "Sold 100% | PnL: -1.4%",
+    "pnl": "+0.0928 SOL",
+    "color": "teal",
+    "ca": "B8XXuEP3dXXzbap3ydfjg9pqamiVAYD2jXaowsRWpump",
+    "ts": 1773773395,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 805,
     "date": "2026-03-17",
     "token": "ERIC",
