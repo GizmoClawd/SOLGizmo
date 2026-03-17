@@ -1,5 +1,29 @@
 [
   {
+    "n": 656,
+    "date": "2026-03-17",
+    "token": "USDC",
+    "action": "BUY",
+    "amount": "0.1972 SOL",
+    "result": "1 KOL convergence: CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6gWygYZ4byuy8GqfbBBRKnbAJsNAM1PWPXznuQdLpump",
+    "ts": 1773719148,
+    "mc": 14198.53,
+    "vol24": 20891.92,
+    "vol1h": 20891.92,
+    "buys": 283,
+    "sells": 192,
+    "liq": null,
+    "kols": [
+      "CLOWN"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 655,
     "date": "2026-03-17",
     "token": "Mina",
