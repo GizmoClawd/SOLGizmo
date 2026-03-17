@@ -1,5 +1,30 @@
 [
   {
+    "n": 724,
+    "date": "2026-03-17",
+    "token": "Freedom",
+    "action": "BUY",
+    "amount": "0.3987 SOL",
+    "result": "2 KOL convergence: theo, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "H91uaiLMd8rN2w91cKqNBKaekH72KZLnfBh1KME9pump",
+    "ts": 1773778540,
+    "mc": 12481.33,
+    "vol24": 35661.74,
+    "vol1h": 35661.74,
+    "buys": 457,
+    "sells": 306,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 723,
     "date": "2026-03-17",
     "token": "CANCRIE",
