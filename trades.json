@@ -1,5 +1,30 @@
 [
   {
+    "n": 748,
+    "date": "2026-03-17",
+    "token": "Kagi",
+    "action": "BUY",
+    "amount": "0.1839 SOL",
+    "result": "2 KOL convergence: dov7, radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6RnxhUqhkRPVLWuZFki4yZzy4qRV4hVpdpjDGUQdpump",
+    "ts": 1773783722,
+    "mc": 14902.31,
+    "vol24": 32638.69,
+    "vol1h": 32638.69,
+    "buys": 314,
+    "sells": 209,
+    "liq": null,
+    "kols": [
+      "dov7",
+      "radiance"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 747,
     "date": "2026-03-17",
     "token": "Gvg1yaQ2",
