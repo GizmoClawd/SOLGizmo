@@ -1,5 +1,29 @@
 [
   {
+    "n": 866,
+    "date": "2026-03-17",
+    "token": "INSECURE",
+    "action": "BUY",
+    "amount": "0.2129 SOL",
+    "result": "1 KOL convergence: Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "cLxhgrzXPWdfvX4qDvxzyp6sYvD9ynHcjUC7Jv4pump",
+    "ts": 1773778983,
+    "mc": 28842.45,
+    "vol24": 58886.89,
+    "vol1h": 58886.89,
+    "buys": 865,
+    "sells": 531,
+    "liq": null,
+    "kols": [
+      "Kadenox"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 865,
     "date": "2026-03-17",
     "token": "Retardmaxx",
