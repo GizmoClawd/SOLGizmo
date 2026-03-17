@@ -1,5 +1,30 @@
 [
   {
+    "n": 727,
+    "date": "2026-03-17",
+    "token": "EAM",
+    "action": "BUY",
+    "amount": "0.2821 SOL",
+    "result": "2 KOL convergence: Cented, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EidVc4GmKhydPn3btUjpS2GdjhS1XKKZoqVijSu8umm7",
+    "ts": 1773779491,
+    "mc": 10163.68,
+    "vol24": 14896.34,
+    "vol1h": 14896.34,
+    "buys": 233,
+    "sells": 131,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 726,
     "date": "2026-03-17",
     "token": "CANCRIE",
