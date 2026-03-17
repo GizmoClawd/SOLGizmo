@@ -1,5 +1,30 @@
 [
   {
+    "n": 708,
+    "date": "2026-03-17",
+    "token": "INFDFI",
+    "action": "BUY",
+    "amount": "0.232 SOL",
+    "result": "2 KOL convergence: Pain, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8NayGGqspRBUTRr7Abxv9ow4epEjsjxatAae1LARpump",
+    "ts": 1773766199,
+    "mc": 85624,
+    "vol24": 60352.46,
+    "vol1h": 60352.46,
+    "buys": 807,
+    "sells": 769,
+    "liq": 24154.51,
+    "kols": [
+      "Pain",
+      "Cented"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 707,
     "date": "2026-03-17",
     "token": "Up",
