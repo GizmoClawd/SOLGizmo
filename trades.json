@@ -1,5 +1,29 @@
 [
   {
+    "n": 872,
+    "date": "2026-03-17",
+    "token": "INSECURE",
+    "action": "BUY",
+    "amount": "0.1499 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "cLxhgrzXPWdfvX4qDvxzyp6sYvD9ynHcjUC7Jv4pump",
+    "ts": 1773785008,
+    "mc": 5487.67,
+    "vol24": 175756.4,
+    "vol1h": 34467.35,
+    "buys": 393,
+    "sells": 274,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 871,
     "date": "2026-03-17",
     "token": "MONKE",
