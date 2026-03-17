@@ -1,5 +1,29 @@
 [
   {
+    "n": 662,
+    "date": "2026-03-17",
+    "token": "AIFRUITS",
+    "action": "BUY",
+    "amount": "0.1065 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6Bp9LWtyVXcEATi5nuquX5p1hPGUg1cVoUuXGN9Epump",
+    "ts": 1773716988,
+    "mc": 173062,
+    "vol24": 208063.35,
+    "vol1h": 16055.47,
+    "buys": 93,
+    "sells": 58,
+    "liq": 36717.7,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 661,
     "date": "2026-03-17",
     "token": "Dz4bX3sn",
