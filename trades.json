@@ -1,5 +1,30 @@
 [
   {
+    "n": 839,
+    "date": "2026-03-17",
+    "token": "reCAPTCHA",
+    "action": "BUY",
+    "amount": "0.0844 SOL",
+    "result": "2 KOL convergence: Kadenox, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "E87Q3BVJ2xfALs96FUfVSwhUWr5c6ixB77VyvRMqpump",
+    "ts": 1773775677,
+    "mc": 12403,
+    "vol24": 51953.46,
+    "vol1h": 51953.46,
+    "buys": 691,
+    "sells": 554,
+    "liq": 9117.76,
+    "kols": [
+      "Kadenox",
+      "Cented"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 838,
     "date": "2026-03-17",
     "token": "reCAPTCHA",
