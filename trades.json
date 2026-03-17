@@ -1,5 +1,32 @@
 [
   {
+    "n": 764,
+    "date": "2026-03-17",
+    "token": "5MfjV5bo",
+    "action": "BUY",
+    "amount": "0.14171481239999997 SOL",
+    "result": "Sniper dip entry -- 4 KOLs (Cented,Cupsey,Silver,CLOWN)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5MfjV5bosyia6NaqhvSP1BxESZSnFNWjz9cWzjsdpump",
+    "ts": 1773767324,
+    "mc": 24088.46,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Cupsey",
+      "Silver",
+      "CLOWN"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 763,
     "date": "2026-03-17",
     "token": "Mashu",
