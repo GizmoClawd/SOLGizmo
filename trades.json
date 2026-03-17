@@ -1,5 +1,30 @@
 [
   {
+    "n": 672,
+    "date": "2026-03-17",
+    "token": "Yukie ",
+    "action": "BUY",
+    "amount": "0.2192 SOL",
+    "result": "2 KOL convergence: dov7, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "afT6cZz7z9bRG2JGP7XN8wSsgnNaWxaCuvzEmfBpump",
+    "ts": 1773755091,
+    "mc": 21185.8,
+    "vol24": 14508.95,
+    "vol1h": 14508.95,
+    "buys": 195,
+    "sells": 114,
+    "liq": null,
+    "kols": [
+      "dov7",
+      "dv"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 671,
     "date": "2026-03-17",
     "token": "tomorrow",
