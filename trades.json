@@ -1,5 +1,30 @@
 [
   {
+    "n": 747,
+    "date": "2026-03-17",
+    "token": "Cupsey",
+    "action": "BUY",
+    "amount": "0.1752 SOL",
+    "result": "2 KOL convergence: Cented, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6qsPbdzeDZ1nWFTNwXwUntZp47VjfLBxjgATJmdppump",
+    "ts": 1773765599,
+    "mc": 7474.82,
+    "vol24": 28650.3,
+    "vol1h": 28650.3,
+    "buys": 295,
+    "sells": 273,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Silver"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 746,
     "date": "2026-03-17",
     "token": "Up",
