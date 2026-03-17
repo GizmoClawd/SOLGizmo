@@ -1,5 +1,27 @@
 [
   {
+    "n": 742,
+    "date": "2026-03-17",
+    "token": "GANYMEDE",
+    "action": "SELL",
+    "amount": "0.0895 SOL",
+    "result": "Sold 100% | PnL: -39.8%",
+    "pnl": "+0.0895 SOL",
+    "color": "teal",
+    "ca": "DqEiDEFMo7GSJ92B721NYopLoViNd8sgmuFDPvsApump",
+    "ts": 1773782632,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 741,
     "date": "2026-03-17",
     "token": "GANYMEDE",
