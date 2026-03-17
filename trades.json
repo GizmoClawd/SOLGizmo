@@ -1,5 +1,27 @@
 [
   {
+    "n": 739,
+    "date": "2026-03-17",
+    "token": "Gany",
+    "action": "SELL",
+    "amount": "0.2653 SOL",
+    "result": "Sold 100% | PnL: -2.8%",
+    "pnl": "+0.2653 SOL",
+    "color": "teal",
+    "ca": "Dz4bX3snTDxqdKyZwdUgKoDvSjyvmoA23E6j5odZpump",
+    "ts": 1773782272,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 738,
     "date": "2026-03-17",
     "token": "Gany",
