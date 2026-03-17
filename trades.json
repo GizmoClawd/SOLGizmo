@@ -1,5 +1,27 @@
 [
   {
+    "n": 683,
+    "date": "2026-03-17",
+    "token": "TRUST",
+    "action": "SELL",
+    "amount": "0.1762 SOL",
+    "result": "Sold 100% | PnL: +1.6%",
+    "pnl": "+0.1762 SOL",
+    "color": "teal",
+    "ca": "HGYiaHSpJAfiwZBkYvw2HWgdKULW2LyDqwQ7zXsNpump",
+    "ts": 1773756386,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 682,
     "date": "2026-03-17",
     "token": "TRUST",
