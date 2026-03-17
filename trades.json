@@ -1,5 +1,30 @@
 [
   {
+    "n": 689,
+    "date": "2026-03-17",
+    "token": "Unicode",
+    "action": "BUY",
+    "amount": "0.1532 SOL",
+    "result": "2 KOL convergence: Cented, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BwiUdto4JTk1B4qJpLNz5E6N72jkoPyfYKoc8BUhpump",
+    "ts": 1773760908,
+    "mc": 22804.76,
+    "vol24": 41094.07,
+    "vol1h": 41094.07,
+    "buys": 422,
+    "sells": 297,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Joji"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 688,
     "date": "2026-03-17",
     "token": "Thinker",
