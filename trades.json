@@ -1,5 +1,30 @@
 [
   {
+    "n": 700,
+    "date": "2026-03-17",
+    "token": "FLUCKI",
+    "action": "BUY",
+    "amount": "0.1942 SOL",
+    "result": "2 KOL convergence: Casino, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3z9uMqeTttSMfZXWBrF2zFeVeeXu18B9DYcYDC3apump",
+    "ts": 1773764429,
+    "mc": 66063,
+    "vol24": 171055.94,
+    "vol1h": 171055.94,
+    "buys": 1317,
+    "sells": 1124,
+    "liq": 21221,
+    "kols": [
+      "Casino",
+      "dv"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 699,
     "date": "2026-03-17",
     "token": "Bald",
