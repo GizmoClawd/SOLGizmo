@@ -1,5 +1,30 @@
 [
   {
+    "n": 807,
+    "date": "2026-03-17",
+    "token": "NINO",
+    "action": "BUY",
+    "amount": "0.095 SOL",
+    "result": "2 KOL convergence: decu, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "eDojKtwNBZoa3F3CQ3eB1BW9HCaspq6eS9uQh8fpump",
+    "ts": 1773773598,
+    "mc": 7263.35,
+    "vol24": 10177.44,
+    "vol1h": 10177.44,
+    "buys": 66,
+    "sells": 46,
+    "liq": null,
+    "kols": [
+      "decu",
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 806,
     "date": "2026-03-17",
     "token": "ERIC",
