@@ -1,5 +1,27 @@
 [
   {
+    "n": 712,
+    "date": "2026-03-17",
+    "token": "C+V",
+    "action": "SELL",
+    "amount": "0.0955 SOL",
+    "result": "Sold 100% | PnL: -34.8%",
+    "pnl": "+0.0955 SOL",
+    "color": "teal",
+    "ca": "FKAgZd5qXnUkGoFKPeiuPMMA2mNL9Wqi3bEWkkdZpump",
+    "ts": 1773766670,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 711,
     "date": "2026-03-17",
     "token": "C+V",
