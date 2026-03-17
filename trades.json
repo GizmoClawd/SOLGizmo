@@ -1,5 +1,27 @@
 [
   {
+    "n": 827,
+    "date": "2026-03-17",
+    "token": "PHIL",
+    "action": "SELL",
+    "amount": "0.1532 SOL",
+    "result": "Sold 100% | PnL: +11.6%",
+    "pnl": "+0.1532 SOL",
+    "color": "teal",
+    "ca": "DFM4Ad4zw3ZR1qjypwLDy3Mm92waqEsZqVY7s282pump",
+    "ts": 1773775150,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 826,
     "date": "2026-03-17",
     "token": "PHIL",
