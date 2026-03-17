@@ -1,5 +1,30 @@
 [
   {
+    "n": 784,
+    "date": "2026-03-17",
+    "token": "DOODLIFY",
+    "action": "BUY",
+    "amount": "0.1465 SOL",
+    "result": "2 KOL convergence: Cupsey, mercy",
+    "pnl": "",
+    "color": "teal",
+    "ca": "y9fmbJTrR6PmoFLvPgFjugm3PWWuvoSFFEu2zy4pump",
+    "ts": 1773769348,
+    "mc": 10013,
+    "vol24": 21967.98,
+    "vol1h": 21967.98,
+    "buys": 122,
+    "sells": 76,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "mercy"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 783,
     "date": "2026-03-17",
     "token": "PROMETHEUS",
