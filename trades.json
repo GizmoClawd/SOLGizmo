@@ -1,5 +1,31 @@
 [
   {
+    "n": 847,
+    "date": "2026-03-17",
+    "token": "AMBER",
+    "action": "BUY",
+    "amount": "0.1216 SOL",
+    "result": "3 KOL convergence: Cented, Kadenox, S",
+    "pnl": "",
+    "color": "teal",
+    "ca": "UnnrJMnQbdSXTdAEEvjvWFxQgWQ2CcPHdwyjVBYpump",
+    "ts": 1773775922,
+    "mc": 27823,
+    "vol24": 109191.6,
+    "vol1h": 62067.5,
+    "buys": 616,
+    "sells": 459,
+    "liq": 13746.02,
+    "kols": [
+      "Cented",
+      "Kadenox",
+      "S"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 846,
     "date": "2026-03-17",
     "token": "reCAPTCHA",
