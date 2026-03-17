@@ -1,5 +1,30 @@
 [
   {
+    "n": 737,
+    "date": "2026-03-17",
+    "token": "5HLXFe8n",
+    "action": "BUY",
+    "amount": "0.015 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Cented,SHEEP)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5HLXFe8naeRQj2UQz3mhuPsbpXEpLF8AjhF17Qg8pump",
+    "ts": 1773781298,
+    "mc": 12476.79,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "SHEEP"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 736,
     "date": "2026-03-17",
     "token": "Gany",
