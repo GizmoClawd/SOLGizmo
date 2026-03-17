@@ -1,5 +1,30 @@
 [
   {
+    "n": 731,
+    "date": "2026-03-17",
+    "token": "Frontier",
+    "action": "BUY",
+    "amount": "0.1683 SOL",
+    "result": "2 KOL convergence: Cented, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3kqBvxJ9cak97hvpHuRSGqoJPLazV2C3w1RdDKAvpump",
+    "ts": 1773764787,
+    "mc": 13550.89,
+    "vol24": 18736.74,
+    "vol1h": 18736.74,
+    "buys": 161,
+    "sells": 126,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 730,
     "date": "2026-03-17",
     "token": "3z9uMqeT",
