@@ -1,5 +1,29 @@
 [
   {
+    "n": 715,
+    "date": "2026-03-17",
+    "token": "BELIEVERS",
+    "action": "BUY",
+    "amount": "0.2458 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FK4ci9ysykWEuEJn27KqRQ9TpHuR4wFoENgQEXnpump",
+    "ts": 1773764208,
+    "mc": 7251.47,
+    "vol24": 11256,
+    "vol1h": 11256,
+    "buys": 88,
+    "sells": 38,
+    "liq": null,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 714,
     "date": "2026-03-17",
     "token": "9dPUSCQy",
