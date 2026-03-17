@@ -1,5 +1,30 @@
 [
   {
+    "n": 691,
+    "date": "2026-03-17",
+    "token": "USEFUL",
+    "action": "BUY",
+    "amount": "0.1509 SOL",
+    "result": "2 KOL convergence: dv, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "71RRACEzdg6x9gu4aS4acbd1nbWnr3zwYN5g6wVipump",
+    "ts": 1773761688,
+    "mc": 100271,
+    "vol24": 304922.34,
+    "vol1h": 304922.34,
+    "buys": 2978,
+    "sells": 2905,
+    "liq": 26396.54,
+    "kols": [
+      "dv",
+      "Jijo"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 690,
     "date": "2026-03-17",
     "token": "Unicode",
