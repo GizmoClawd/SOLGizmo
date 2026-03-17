@@ -1,5 +1,30 @@
 [
   {
+    "n": 833,
+    "date": "2026-03-17",
+    "token": "AGENT",
+    "action": "BUY",
+    "amount": "0.1389 SOL",
+    "result": "2 KOL convergence: decu, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9VjKzV5hDn5Bi4TW6QbTi1sP6riezBGx3v5eNuugpump",
+    "ts": 1773775480,
+    "mc": 7120.86,
+    "vol24": 59380.18,
+    "vol1h": 59380.18,
+    "buys": 1308,
+    "sells": 660,
+    "liq": null,
+    "kols": [
+      "decu",
+      "dv"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 832,
     "date": "2026-03-17",
     "token": "reCAPTCHA",
