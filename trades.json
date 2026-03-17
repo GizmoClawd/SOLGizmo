@@ -1,5 +1,30 @@
 [
   {
+    "n": 809,
+    "date": "2026-03-17",
+    "token": "EXPO",
+    "action": "BUY",
+    "amount": "0.082 SOL",
+    "result": "2 KOL convergence: dov7, CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F6HnfGkY65GwxcPaGiy1ZGCizoWhr1QvWFA2t3J5pump",
+    "ts": 1773773809,
+    "mc": 11055.99,
+    "vol24": 18713.27,
+    "vol1h": 18713.27,
+    "buys": 293,
+    "sells": 167,
+    "liq": null,
+    "kols": [
+      "dov7",
+      "CLOWN"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 808,
     "date": "2026-03-17",
     "token": "NINO",
