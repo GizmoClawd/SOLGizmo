@@ -1,5 +1,30 @@
 [
   {
+    "n": 667,
+    "date": "2026-03-17",
+    "token": "Thinker",
+    "action": "BUY",
+    "amount": "0.2484 SOL",
+    "result": "2 KOL convergence: dv, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CeAR75ZmvDfGUcQumQ5qLsnAG2gWKdTVpMp5YF2Jpump",
+    "ts": 1773754130,
+    "mc": 13438.27,
+    "vol24": 37671.12,
+    "vol1h": 37671.12,
+    "buys": 632,
+    "sells": 455,
+    "liq": null,
+    "kols": [
+      "dv",
+      "dov7"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 666,
     "date": "2026-03-17",
     "token": "NETAINYAHU",
