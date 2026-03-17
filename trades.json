@@ -1,5 +1,30 @@
 [
   {
+    "n": 783,
+    "date": "2026-03-17",
+    "token": "PROMETHEUS",
+    "action": "BUY",
+    "amount": "0.176 SOL",
+    "result": "2 KOL convergence: theo, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "MddKUVCtxs3BY82b5c73a3tSGuALJtZLZsaauFkpump",
+    "ts": 1773768470,
+    "mc": 4821.26,
+    "vol24": 13203.8,
+    "vol1h": 13203.8,
+    "buys": 71,
+    "sells": 66,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Silver"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 782,
     "date": "2026-03-17",
     "token": "hahahaha",
