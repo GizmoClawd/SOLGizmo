@@ -1,5 +1,30 @@
 [
   {
+    "n": 682,
+    "date": "2026-03-17",
+    "token": "Thinker",
+    "action": "BUY",
+    "amount": "0.2642 SOL",
+    "result": "2 KOL convergence: dov7, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CeAR75ZmvDfGUcQumQ5qLsnAG2gWKdTVpMp5YF2Jpump",
+    "ts": 1773753838,
+    "mc": 11278.36,
+    "vol24": 19854.41,
+    "vol1h": 19854.41,
+    "buys": 338,
+    "sells": 221,
+    "liq": null,
+    "kols": [
+      "dov7",
+      "dv"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 681,
     "date": "2026-03-17",
     "token": "Lucky",
