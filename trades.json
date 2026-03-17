@@ -1,5 +1,29 @@
 [
   {
+    "n": 802,
+    "date": "2026-03-17",
+    "token": "Thinker",
+    "action": "BUY",
+    "amount": "0.0877 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7F87Qx3iEQmAVAi3E2mkSiMCZXzE1P2uJ31fe1Gkpump",
+    "ts": 1773772433,
+    "mc": 22592.11,
+    "vol24": 135120.5,
+    "vol1h": 135120.5,
+    "buys": 1886,
+    "sells": 1448,
+    "liq": null,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 801,
     "date": "2026-03-17",
     "token": "#FIRING",
