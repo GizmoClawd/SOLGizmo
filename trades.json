@@ -1,5 +1,29 @@
 [
   {
+    "n": 670,
+    "date": "2026-03-17",
+    "token": "pvpdog",
+    "action": "BUY",
+    "amount": "0.2223 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9UT2T4XPYAtiUuSBdgkHTBbCTcfUtDVUSdSkTev1pump",
+    "ts": 1773721584,
+    "mc": 10500.73,
+    "vol24": 15356.63,
+    "vol1h": 15356.63,
+    "buys": 155,
+    "sells": 81,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 669,
     "date": "2026-03-17",
     "token": "OLAF",
