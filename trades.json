@@ -1,5 +1,30 @@
 [
   {
+    "n": 689,
+    "date": "2026-03-17",
+    "token": "kit",
+    "action": "BUY",
+    "amount": "0.1782 SOL",
+    "result": "2 KOL convergence: SHEEP, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7f6Hb8oepz2s1KXcySw5vPXnpZfd5syfugpbd5sVpump",
+    "ts": 1773757738,
+    "mc": 4578.04,
+    "vol24": 13085.34,
+    "vol1h": 13085.34,
+    "buys": 141,
+    "sells": 106,
+    "liq": null,
+    "kols": [
+      "SHEEP",
+      "dv"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 688,
     "date": "2026-03-17",
     "token": "Scamcoin",
