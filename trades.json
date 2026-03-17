@@ -1,5 +1,30 @@
 [
   {
+    "n": 640,
+    "date": "2026-03-17",
+    "token": "Ganymede",
+    "action": "BUY",
+    "amount": "0.1695 SOL",
+    "result": "2 KOL convergence: theo, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2y3d2rZw9L7XG3c9xCeirWpNvsrfqmJm1sM7mqfcpump",
+    "ts": 1773715684,
+    "mc": 19228.34,
+    "vol24": 19356.93,
+    "vol1h": 19356.93,
+    "buys": 207,
+    "sells": 242,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 639,
     "date": "2026-03-17",
     "token": "Replacement",
