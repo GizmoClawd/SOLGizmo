@@ -1,5 +1,27 @@
 [
   {
+    "n": 722,
+    "date": "2026-03-17",
+    "token": "yDArfofu",
+    "action": "SELL",
+    "amount": "0.0457 SOL",
+    "result": "Sold 100% | PnL: +22.2%",
+    "pnl": "+0.0457 SOL",
+    "color": "teal",
+    "ca": "yDArfofuQuiTajazoNgWt14YKbKt9n35v2UjVFppump",
+    "ts": 1773778447,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 721,
     "date": "2026-03-17",
     "token": "yDArfofu",
