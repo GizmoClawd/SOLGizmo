@@ -1,5 +1,32 @@
 [
   {
+    "n": 719,
+    "date": "2026-03-17",
+    "token": "MFG",
+    "action": "BUY",
+    "amount": "0.2714 SOL",
+    "result": "4 KOL convergence: theo, Cented, Casino, Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9VaApy7LosXL4om96J4fSFNVvadfAWamHEVb2mCYpump",
+    "ts": 1773764380,
+    "mc": 19929.94,
+    "vol24": 31176.22,
+    "vol1h": 31176.22,
+    "buys": 193,
+    "sells": 118,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Cented",
+      "Casino",
+      "Kadenox"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 718,
     "date": "2026-03-17",
     "token": "GFM",
