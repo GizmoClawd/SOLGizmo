@@ -1,5 +1,30 @@
 [
   {
+    "n": 677,
+    "date": "2026-03-17",
+    "token": "Yukie",
+    "action": "BUY",
+    "amount": "0.181 SOL",
+    "result": "2 KOL convergence: dv, Casino",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2MJb8ouHXoUcj75HKnqmrKXFa64u1RLWPaZExZQDpump",
+    "ts": 1773755388,
+    "mc": 10721.22,
+    "vol24": 61780,
+    "vol1h": 61780,
+    "buys": 843,
+    "sells": 586,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Casino"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 676,
     "date": "2026-03-17",
     "token": "NARUTO",
