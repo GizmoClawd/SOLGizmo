@@ -1,5 +1,30 @@
 [
   {
+    "n": 671,
+    "date": "2026-03-17",
+    "token": "tomorrow",
+    "action": "BUY",
+    "amount": "0.2631 SOL",
+    "result": "2 KOL convergence: dv, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4NVz43tvArphuc3Btm7nzHWXNpgNFzN5bty74WESpump",
+    "ts": 1773754880,
+    "mc": 24162,
+    "vol24": 25253.69,
+    "vol1h": 25253.69,
+    "buys": 439,
+    "sells": 353,
+    "liq": 12676.32,
+    "kols": [
+      "dv",
+      "dov7"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 670,
     "date": "2026-03-17",
     "token": "Thinker",
