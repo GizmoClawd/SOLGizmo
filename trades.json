@@ -1,5 +1,30 @@
 [
   {
+    "n": 714,
+    "date": "2026-03-17",
+    "token": "Einstein",
+    "action": "BUY",
+    "amount": "0.1238 SOL",
+    "result": "2 KOL convergence: Cented, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6Eft1nQihL9QrbRte77Rqkm1XPkdZp2X8HGcibMupump",
+    "ts": 1773771059,
+    "mc": 38868,
+    "vol24": 34359.66,
+    "vol1h": 34359.66,
+    "buys": 205,
+    "sells": 228,
+    "liq": 16145.88,
+    "kols": [
+      "Cented",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 713,
     "date": "2026-03-17",
     "token": "DRAMA",
