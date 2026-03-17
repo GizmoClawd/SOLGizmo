@@ -1,5 +1,30 @@
 [
   {
+    "n": 654,
+    "date": "2026-03-17",
+    "token": "Mina",
+    "action": "BUY",
+    "amount": "0.1716 SOL",
+    "result": "2 KOL convergence: dv, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2Y9fxJHYLjCxcs9C8Jyfab6wDPPD4gEb7dcKUAvvpump",
+    "ts": 1773717612,
+    "mc": 6062.59,
+    "vol24": 15728.47,
+    "vol1h": 15728.47,
+    "buys": 141,
+    "sells": 90,
+    "liq": null,
+    "kols": [
+      "dv",
+      "decu"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 653,
     "date": "2026-03-17",
     "token": "ARC",
