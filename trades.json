@@ -1,5 +1,29 @@
 [
   {
+    "n": 743,
+    "date": "2026-03-17",
+    "token": "YOU",
+    "action": "BUY",
+    "amount": "0.1638 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2SC7P6SmUBNyPfowFDzmM97djp9QB3sVmXUTmC16pump",
+    "ts": 1773783243,
+    "mc": 18542.33,
+    "vol24": 44053.28,
+    "vol1h": 44053.28,
+    "buys": 555,
+    "sells": 366,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 742,
     "date": "2026-03-17",
     "token": "GANYMEDE",
