@@ -1,5 +1,30 @@
 [
   {
+    "n": 723,
+    "date": "2026-03-17",
+    "token": "CANCRIE",
+    "action": "BUY",
+    "amount": "0.3987 SOL",
+    "result": "2 KOL convergence: Cented, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BpV4nbT11TwaUBEGCL5EBaJvghpxUWyYaxarUJmUpump",
+    "ts": 1773778531,
+    "mc": 5962.63,
+    "vol24": 31001.98,
+    "vol1h": 31001.98,
+    "buys": 395,
+    "sells": 328,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "decu"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 722,
     "date": "2026-03-17",
     "token": "yDArfofu",
