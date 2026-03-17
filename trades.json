@@ -1,5 +1,27 @@
 [
   {
+    "n": 699,
+    "date": "2026-03-17",
+    "token": "Bald",
+    "action": "SELL",
+    "amount": "0.049 SOL",
+    "result": "Sold 100% | PnL: -47.1%",
+    "pnl": "+0.0490 SOL",
+    "color": "teal",
+    "ca": "A5aJoer9nr2UDR1qrrR8zGkTX9ZtpTxs3RTUT7pzpump",
+    "ts": 1773760128,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 698,
     "date": "2026-03-17",
     "token": "Bald",
