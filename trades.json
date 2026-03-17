@@ -1,5 +1,30 @@
 [
   {
+    "n": 675,
+    "date": "2026-03-17",
+    "token": "NARUTO",
+    "action": "BUY",
+    "amount": "0.2174 SOL",
+    "result": "2 KOL convergence: Jijo, Casino",
+    "pnl": "",
+    "color": "teal",
+    "ca": "424GsDF6hwHSHJuvPstquqAG7etUVWR2dv3uer5zpump",
+    "ts": 1773755271,
+    "mc": 12892.23,
+    "vol24": 29952.47,
+    "vol1h": 29952.47,
+    "buys": 425,
+    "sells": 232,
+    "liq": null,
+    "kols": [
+      "Jijo",
+      "Casino"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 674,
     "date": "2026-03-17",
     "token": "tomorrow",
