@@ -1,5 +1,29 @@
 [
   {
+    "n": 624,
+    "date": "2026-03-17",
+    "token": "GEEKED",
+    "action": "BUY",
+    "amount": "0.1611 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9d8eLRNJtYjN53DMK6dznFLuTtB4fBhmRgkCD4Mpump",
+    "ts": 1773711716,
+    "mc": 56068,
+    "vol24": 84967.32,
+    "vol1h": 84967.32,
+    "buys": 885,
+    "sells": 709,
+    "liq": 19585.65,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 623,
     "date": "2026-03-17",
     "token": "6q9ph4k5",
