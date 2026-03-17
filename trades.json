@@ -1,5 +1,30 @@
 [
   {
+    "n": 799,
+    "date": "2026-03-17",
+    "token": "SFM",
+    "action": "BUY",
+    "amount": "0.1015 SOL",
+    "result": "2 KOL convergence: Joji, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6Gyyk89H6HVimzSQqTjesbuaPEdarQBCx3GNewr6pump",
+    "ts": 1773771978,
+    "mc": 6061.38,
+    "vol24": 13996.43,
+    "vol1h": 13996.43,
+    "buys": 167,
+    "sells": 115,
+    "liq": null,
+    "kols": [
+      "Joji",
+      "dov7"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 798,
     "date": "2026-03-17",
     "token": "JEET",
