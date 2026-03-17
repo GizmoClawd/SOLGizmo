@@ -1,5 +1,32 @@
 [
   {
+    "n": 862,
+    "date": "2026-03-17",
+    "token": "EVERYTHING",
+    "action": "BUY",
+    "amount": "0.1972 SOL",
+    "result": "4 KOL convergence: Cented, theo, decu, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "53rQfXZLWnGrwxC2PbzuQwQsiHU3HP9GkHeAFvZopump",
+    "ts": 1773776713,
+    "mc": 8834.93,
+    "vol24": 15446.34,
+    "vol1h": 15446.34,
+    "buys": 164,
+    "sells": 76,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "theo",
+      "decu",
+      "Cupsey"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 861,
     "date": "2026-03-17",
     "token": "AMBER",
