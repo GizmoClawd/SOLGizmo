@@ -1,5 +1,30 @@
 [
   {
+    "n": 853,
+    "date": "2026-03-17",
+    "token": "FLORA",
+    "action": "BUY",
+    "amount": "0.0652 SOL",
+    "result": "2 KOL convergence: decu, theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7MQEz1JSxp7V4MEWvhzCKMuQSacYTBYWXniX3PkJWzWc",
+    "ts": 1773776181,
+    "mc": 4981.51,
+    "vol24": 36676.11,
+    "vol1h": 36676.11,
+    "buys": 259,
+    "sells": 270,
+    "liq": null,
+    "kols": [
+      "decu",
+      "theo"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 852,
     "date": "2026-03-17",
     "token": "Retardmaxx",
