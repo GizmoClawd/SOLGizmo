@@ -1,5 +1,31 @@
 [
   {
+    "n": 717,
+    "date": "2026-03-17",
+    "token": "Floki",
+    "action": "BUY",
+    "amount": "0.4023 SOL",
+    "result": "3 KOL convergence: Casino, radiance, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6DYbnvYNq4FGLc6kEZLKHGRmgmyerxEpRqUuskBspump",
+    "ts": 1773764359,
+    "mc": 63507,
+    "vol24": 69249.92,
+    "vol1h": 69249.92,
+    "buys": 374,
+    "sells": 341,
+    "liq": 20650.54,
+    "kols": [
+      "Casino",
+      "radiance",
+      "Jijo"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 716,
     "date": "2026-03-17",
     "token": "BELIEVERS",
