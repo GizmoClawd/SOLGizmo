@@ -1,5 +1,27 @@
 [
   {
+    "n": 789,
+    "date": "2026-03-17",
+    "token": "AlphA",
+    "action": "SELL",
+    "amount": "0.1669 SOL",
+    "result": "Sold 100% | PnL: +8.6%",
+    "pnl": "+0.1669 SOL",
+    "color": "teal",
+    "ca": "E5pSmhBmNJ8E6a9SkfCo27N356ZxTfXTAysBLLmopump",
+    "ts": 1773769719,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 788,
     "date": "2026-03-17",
     "token": "SE",
