@@ -1,5 +1,32 @@
 [
   {
+    "n": 729,
+    "date": "2026-03-17",
+    "token": "AI",
+    "action": "BUY",
+    "amount": "0.4739 SOL",
+    "result": "4 KOL convergence: dv, theo, Cupsey, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FdhE1E3Sgu59yX5YTKUyChH5jNPMBfnzpWWsx2Lipump",
+    "ts": 1773780121,
+    "mc": 23758.87,
+    "vol24": 25866.27,
+    "vol1h": 25866.27,
+    "buys": 298,
+    "sells": 125,
+    "liq": null,
+    "kols": [
+      "dv",
+      "theo",
+      "Cupsey",
+      "decu"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 728,
     "date": "2026-03-17",
     "token": "EAM",
