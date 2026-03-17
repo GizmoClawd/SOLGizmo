@@ -1,5 +1,30 @@
 [
   {
+    "n": 696,
+    "date": "2026-03-17",
+    "token": "PATRIOT",
+    "action": "BUY",
+    "amount": "0.127 SOL",
+    "result": "2 KOL convergence: Casino, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CHv8udYoLMAfnydpwZSGnYU6dpj41EogSTs62Kpjpump",
+    "ts": 1773762018,
+    "mc": 13798.37,
+    "vol24": 21979.2,
+    "vol1h": 21979.2,
+    "buys": 311,
+    "sells": 169,
+    "liq": null,
+    "kols": [
+      "Casino",
+      "dv"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 695,
     "date": "2026-03-17",
     "token": "USEFUL",
