@@ -1,5 +1,27 @@
 [
   {
+    "n": 787,
+    "date": "2026-03-17",
+    "token": "DOODLIFY",
+    "action": "SELL",
+    "amount": "0.0805 SOL",
+    "result": "Sold 100% | PnL: +128.0%",
+    "pnl": "+0.0805 SOL",
+    "color": "teal",
+    "ca": "y9fmbJTrR6PmoFLvPgFjugm3PWWuvoSFFEu2zy4pump",
+    "ts": 1773769599,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 786,
     "date": "2026-03-17",
     "token": "SE",
