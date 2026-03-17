@@ -1,5 +1,30 @@
 [
   {
+    "n": 834,
+    "date": "2026-03-17",
+    "token": "PHIL",
+    "action": "BUY",
+    "amount": "0.1389 SOL",
+    "result": "2 KOL convergence: Cented, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DFM4Ad4zw3ZR1qjypwLDy3Mm92waqEsZqVY7s282pump",
+    "ts": 1773775488,
+    "mc": 65314,
+    "vol24": 133055.31,
+    "vol1h": 133055.31,
+    "buys": 1468,
+    "sells": 1267,
+    "liq": 21165.15,
+    "kols": [
+      "Cented",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 833,
     "date": "2026-03-17",
     "token": "AGENT",
