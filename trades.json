@@ -1,5 +1,30 @@
 [
   {
+    "n": 713,
+    "date": "2026-03-17",
+    "token": "DRAMA",
+    "action": "BUY",
+    "amount": "0.1509 SOL",
+    "result": "2 KOL convergence: dv, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2WHR1qRsPuhs7eU5nfqb82trmfivDgWX95NUFTzvx3xS",
+    "ts": 1773770160,
+    "mc": 38819.96,
+    "vol24": 26745.14,
+    "vol1h": 26745.14,
+    "buys": 172,
+    "sells": 83,
+    "liq": null,
+    "kols": [
+      "dv",
+      "dov7"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 712,
     "date": "2026-03-17",
     "token": "C+V",
