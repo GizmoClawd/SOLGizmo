@@ -1,5 +1,30 @@
 [
   {
+    "n": 761,
+    "date": "2026-03-17",
+    "token": "JONES",
+    "action": "BUY",
+    "amount": "0.1613 SOL",
+    "result": "2 KOL convergence: Cented, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7KbwzV9FdxezDDMZyrDZ5ftrYHKd5bcpzn35XoRwpump",
+    "ts": 1773767060,
+    "mc": 17863.83,
+    "vol24": 20966.81,
+    "vol1h": 20966.81,
+    "buys": 209,
+    "sells": 174,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "dv"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 760,
     "date": "2026-03-17",
     "token": "Solana",
