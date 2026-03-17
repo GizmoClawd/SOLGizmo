@@ -1,5 +1,27 @@
 [
   {
+    "n": 780,
+    "date": "2026-03-17",
+    "token": "SSCC",
+    "action": "SELL",
+    "amount": "0.0298 SOL",
+    "result": "Sold 25% | PnL: +35.6%",
+    "pnl": "+0.0298 SOL",
+    "color": "teal",
+    "ca": "9x3BmwRswFMHGntTZ7oz4ZxNuBMDwQsNNisYPTKVpump",
+    "ts": 1773768369,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 779,
     "date": "2026-03-17",
     "token": "SSCC",
