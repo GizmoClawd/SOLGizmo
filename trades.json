@@ -1,5 +1,27 @@
 [
   {
+    "n": 730,
+    "date": "2026-03-17",
+    "token": "3z9uMqeT",
+    "action": "SELL",
+    "amount": "0.1687 SOL",
+    "result": "Sold 100% | PnL: -5.8%",
+    "pnl": "+0.1687 SOL",
+    "color": "teal",
+    "ca": "3z9uMqeTttSMfZXWBrF2zFeVeeXu18B9DYcYDC3apump",
+    "ts": 1773764716,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 729,
     "date": "2026-03-17",
     "token": "3z9uMqeT",
