@@ -1,5 +1,29 @@
 [
   {
+    "n": 796,
+    "date": "2026-03-17",
+    "token": "JEET",
+    "action": "BUY",
+    "amount": "0.1035 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FwHNSVysishfXnA3b6Rax6FFr2VTsKhp96nV2CUJpump",
+    "ts": 1773771528,
+    "mc": 12507.9,
+    "vol24": 17341.13,
+    "vol1h": 17341.13,
+    "buys": 165,
+    "sells": 111,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 795,
     "date": "2026-03-17",
     "token": "Einstein",
