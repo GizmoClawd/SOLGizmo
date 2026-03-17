@@ -1,5 +1,27 @@
 [
   {
+    "n": 808,
+    "date": "2026-03-17",
+    "token": "NINO",
+    "action": "SELL",
+    "amount": "0.119 SOL",
+    "result": "Sold 100% | PnL: -16.6%",
+    "pnl": "+0.1190 SOL",
+    "color": "teal",
+    "ca": "eDojKtwNBZoa3F3CQ3eB1BW9HCaspq6eS9uQh8fpump",
+    "ts": 1773773785,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 807,
     "date": "2026-03-17",
     "token": "NINO",
