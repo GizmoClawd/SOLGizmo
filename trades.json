@@ -1,5 +1,29 @@
 [
   {
+    "n": 777,
+    "date": "2026-03-17",
+    "token": "hahahaha",
+    "action": "BUY",
+    "amount": "0.1522 SOL",
+    "result": "1 KOL convergence: S",
+    "pnl": "",
+    "color": "teal",
+    "ca": "717WLXLM7GGiSi1BTFDL3Q3LQAmBJx5tcCa8f3Akpump",
+    "ts": 1773768259,
+    "mc": 27546.87,
+    "vol24": 121294.97,
+    "vol1h": 121294.97,
+    "buys": 1594,
+    "sells": 1133,
+    "liq": null,
+    "kols": [
+      "S"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 776,
     "date": "2026-03-17",
     "token": "Solana",
