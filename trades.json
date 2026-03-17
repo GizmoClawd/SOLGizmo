@@ -1,5 +1,31 @@
 [
   {
+    "n": 873,
+    "date": "2026-03-17",
+    "token": "Merchant",
+    "action": "BUY",
+    "amount": "0.2261 SOL",
+    "result": "3 KOL convergence: decu, bandit, CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "PVfWe6SG1D9ThQjWw325tJW7keuSS4uJATpHtdBpump",
+    "ts": 1773785191,
+    "mc": 7303.73,
+    "vol24": 30299.31,
+    "vol1h": 30299.31,
+    "buys": 293,
+    "sells": 232,
+    "liq": null,
+    "kols": [
+      "decu",
+      "bandit",
+      "CLOWN"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 872,
     "date": "2026-03-17",
     "token": "INSECURE",
