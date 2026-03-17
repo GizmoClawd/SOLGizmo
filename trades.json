@@ -1,5 +1,29 @@
 [
   {
+    "n": 638,
+    "date": "2026-03-17",
+    "token": "wallahi",
+    "action": "BUY",
+    "amount": "0.1275 SOL",
+    "result": "1 KOL convergence: Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F7LN7WFZ1JCN9mXVypyEV5yyFzTnwDrmt7sP2UgRpump",
+    "ts": 1773714467,
+    "mc": 34327,
+    "vol24": 64206.09,
+    "vol1h": 3456.21,
+    "buys": 30,
+    "sells": 49,
+    "liq": 15498.01,
+    "kols": [
+      "Kadenox"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 637,
     "date": "2026-03-17",
     "token": "Replacement",
