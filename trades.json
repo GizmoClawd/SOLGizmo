@@ -1,5 +1,29 @@
 [
   {
+    "n": 651,
+    "date": "2026-03-17",
+    "token": "Replacement",
+    "action": "BUY",
+    "amount": "0.0889 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7STZgGYW7HsVpZGdaCYfikLu2FuebbpqC7gwaP3Apump",
+    "ts": 1773716055,
+    "mc": 27040,
+    "vol24": 185913.39,
+    "vol1h": 185913.39,
+    "buys": 2522,
+    "sells": 1913,
+    "liq": 13576.49,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 650,
     "date": "2026-03-17",
     "token": "Ganymede",
