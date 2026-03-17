@@ -1,5 +1,29 @@
 [
   {
+    "n": 717,
+    "date": "2026-03-17",
+    "token": "JEET",
+    "action": "BUY",
+    "amount": "0.0981 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FwHNSVysishfXnA3b6Rax6FFr2VTsKhp96nV2CUJpump",
+    "ts": 1773771758,
+    "mc": 13997.13,
+    "vol24": 35222.93,
+    "vol1h": 35222.93,
+    "buys": 320,
+    "sells": 251,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 716,
     "date": "2026-03-17",
     "token": "Thinker",
