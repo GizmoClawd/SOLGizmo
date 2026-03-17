@@ -1,5 +1,30 @@
 [
   {
+    "n": 801,
+    "date": "2026-03-17",
+    "token": "#FIRING",
+    "action": "BUY",
+    "amount": "0.1052 SOL",
+    "result": "2 KOL convergence: Pain, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "88njXqyF8DH68jewFnMYXoZ1be5BiF7YXXwJPs5Ypump",
+    "ts": 1773772429,
+    "mc": 16586.09,
+    "vol24": 30700.13,
+    "vol1h": 30700.13,
+    "buys": 292,
+    "sells": 213,
+    "liq": null,
+    "kols": [
+      "Pain",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 800,
     "date": "2026-03-17",
     "token": "SFM",
