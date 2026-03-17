@@ -1,5 +1,27 @@
 [
   {
+    "n": 699,
+    "date": "2026-03-17",
+    "token": "PATRIOT",
+    "action": "SELL",
+    "amount": "1.1187 SOL",
+    "result": "Sold 100% | PnL: +1802.7%",
+    "pnl": "+1.1187 SOL",
+    "color": "teal",
+    "ca": "CHv8udYoLMAfnydpwZSGnYU6dpj41EogSTs62Kpjpump",
+    "ts": 1773762954,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 698,
     "date": "2026-03-17",
     "token": "PATRIOT",
