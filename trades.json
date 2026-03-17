@@ -1,5 +1,27 @@
 [
   {
+    "n": 765,
+    "date": "2026-03-17",
+    "token": "Mashu",
+    "action": "SELL",
+    "amount": "0.0584 SOL",
+    "result": "Sold 25% | PnL: +43.6%",
+    "pnl": "+0.0584 SOL",
+    "color": "teal",
+    "ca": "GJVi1ycRWijA1sor4PrgaAna59EoLT6xaP1U6RL9pump",
+    "ts": 1773767378,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 764,
     "date": "2026-03-17",
     "token": "5MfjV5bo",
