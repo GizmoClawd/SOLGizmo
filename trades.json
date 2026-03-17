@@ -1,5 +1,31 @@
 [
   {
+    "n": 712,
+    "date": "2026-03-17",
+    "token": "8NayGGqs",
+    "action": "BUY",
+    "amount": "0.2623219041 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (Cented,Silver,Pain)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8NayGGqspRBUTRr7Abxv9ow4epEjsjxatAae1LARpump",
+    "ts": 1773763958,
+    "mc": 20679.61,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Silver",
+      "Pain"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 711,
     "date": "2026-03-17",
     "token": "Coomer",
