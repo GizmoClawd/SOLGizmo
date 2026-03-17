@@ -1,5 +1,27 @@
 [
   {
+    "n": 683,
+    "date": "2026-03-17",
+    "token": "Thinker",
+    "action": "SELL",
+    "amount": "0.1692 SOL",
+    "result": "Sold 100% | PnL: -26.4%",
+    "pnl": "+0.1692 SOL",
+    "color": "teal",
+    "ca": "CeAR75ZmvDfGUcQumQ5qLsnAG2gWKdTVpMp5YF2Jpump",
+    "ts": 1773753888,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 682,
     "date": "2026-03-17",
     "token": "Thinker",
