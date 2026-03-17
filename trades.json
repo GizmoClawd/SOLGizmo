@@ -1,5 +1,32 @@
 [
   {
+    "n": 877,
+    "date": "2026-03-17",
+    "token": "FkjtaLwC",
+    "action": "BUY",
+    "amount": "0.17971192889999998 SOL",
+    "result": "Sniper dip entry -- 4 KOLs (Cented,decu,Jijo,Joji)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FkjtaLwC3DjxxSMHJExReyREKBNWaGZwAdQzGVNPj3oT",
+    "ts": 1773785730,
+    "mc": 12753.76,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "decu",
+      "Jijo",
+      "Joji"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 876,
     "date": "2026-03-17",
     "token": "Kagi",
