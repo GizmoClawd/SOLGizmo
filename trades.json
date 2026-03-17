@@ -1,5 +1,29 @@
 [
   {
+    "n": 625,
+    "date": "2026-03-17",
+    "token": "CLUDSTAR",
+    "action": "BUY",
+    "amount": "0.1161 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2WVTfBD8ZfN4JwDFpfPvugWeJFy3FRC12Bw4QowFpump",
+    "ts": 1773712006,
+    "mc": 12600.46,
+    "vol24": 19018.17,
+    "vol1h": 19018.17,
+    "buys": 303,
+    "sells": 181,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 624,
     "date": "2026-03-17",
     "token": "6q9ph4k5",
