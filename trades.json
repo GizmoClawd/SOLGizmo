@@ -1,5 +1,31 @@
 [
   {
+    "n": 751,
+    "date": "2026-03-17",
+    "token": "Yunho",
+    "action": "BUY",
+    "amount": "0.3668 SOL",
+    "result": "3 KOL convergence: Kadenox, Cented, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "74QxGCcLfiFHYpPke3duybkAzkZi5ubggLxJGg1Ypump",
+    "ts": 1773765716,
+    "mc": 18354.53,
+    "vol24": 22182.61,
+    "vol1h": 22182.61,
+    "buys": 174,
+    "sells": 78,
+    "liq": null,
+    "kols": [
+      "Kadenox",
+      "Cented",
+      "dv"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 750,
     "date": "2026-03-17",
     "token": "Cupsey",
