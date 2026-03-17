@@ -1,5 +1,29 @@
 [
   {
+    "n": 751,
+    "date": "2026-03-17",
+    "token": "commotitty",
+    "action": "BUY",
+    "amount": "0.1673 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "42odccNEHMfpwrMXAWNrewPvCfjKSt7LbZzFZNuH2BUU",
+    "ts": 1773784079,
+    "mc": 69818,
+    "vol24": 73818.33,
+    "vol1h": 73818.33,
+    "buys": 597,
+    "sells": 515,
+    "liq": 21776.16,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 750,
     "date": "2026-03-17",
     "token": "Kagi",
