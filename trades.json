@@ -1,5 +1,30 @@
 [
   {
+    "n": 786,
+    "date": "2026-03-17",
+    "token": "SE",
+    "action": "BUY",
+    "amount": "0.1273 SOL",
+    "result": "2 KOL convergence: theo, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6RDBPjku1JFpN1cEeTuXRfTAgtKpQrc8Yvq3jd2Bpump",
+    "ts": 1773769401,
+    "mc": 6256.29,
+    "vol24": 56986.11,
+    "vol1h": 13192.93,
+    "buys": 37,
+    "sells": 24,
+    "liq": null,
+    "kols": [
+      "theo",
+      "dov7"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 785,
     "date": "2026-03-17",
     "token": "DOODLIFY",
