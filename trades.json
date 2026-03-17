@@ -1,5 +1,29 @@
 [
   {
+    "n": 675,
+    "date": "2026-03-17",
+    "token": "TERA",
+    "action": "BUY",
+    "amount": "0.1986 SOL",
+    "result": "1 KOL convergence: S",
+    "pnl": "",
+    "color": "teal",
+    "ca": "54FDPRKPFDFr13VPPo6FPiiWeBRXyYHnR99JYjg5pump",
+    "ts": 1773727053,
+    "mc": 11940.5,
+    "vol24": 21330.99,
+    "vol1h": 21330.99,
+    "buys": 222,
+    "sells": 153,
+    "liq": null,
+    "kols": [
+      "S"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 674,
     "date": "2026-03-17",
     "token": "Zero",
