@@ -1,5 +1,29 @@
 [
   {
+    "n": 875,
+    "date": "2026-03-17",
+    "token": "Kagi",
+    "action": "BUY",
+    "amount": "0.1043 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6RnxhUqhkRPVLWuZFki4yZzy4qRV4hVpdpjDGUQdpump",
+    "ts": 1773785372,
+    "mc": 45600,
+    "vol24": 83599.48,
+    "vol1h": 83599.48,
+    "buys": 1248,
+    "sells": 682,
+    "liq": 17513.84,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 874,
     "date": "2026-03-17",
     "token": "Merchant",
