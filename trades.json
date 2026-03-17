@@ -1,5 +1,30 @@
 [
   {
+    "n": 651,
+    "date": "2026-03-17",
+    "token": "ARC",
+    "action": "BUY",
+    "amount": "0.1249 SOL",
+    "result": "2 KOL convergence: Cupsey, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2oBe59KhZ8s7pzYGbHNWVDK5RGSA2Yx9ufAe85TGpump",
+    "ts": 1773717207,
+    "mc": 10937.89,
+    "vol24": 13247.25,
+    "vol1h": 13247.25,
+    "buys": 122,
+    "sells": 46,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "decu"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 650,
     "date": "2026-03-17",
     "token": "Gany",
