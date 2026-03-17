@@ -1,5 +1,31 @@
 [
   {
+    "n": 724,
+    "date": "2026-03-17",
+    "token": "FLUCKI",
+    "action": "BUY",
+    "amount": "0.2175 SOL",
+    "result": "3 KOL convergence: Cupsey, dv, Casino",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3z9uMqeTttSMfZXWBrF2zFeVeeXu18B9DYcYDC3apump",
+    "ts": 1773764414,
+    "mc": 98160,
+    "vol24": 111462.17,
+    "vol1h": 111462.17,
+    "buys": 690,
+    "sells": 624,
+    "liq": 25709.52,
+    "kols": [
+      "Cupsey",
+      "dv",
+      "Casino"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 723,
     "date": "2026-03-17",
     "token": "MFG",
