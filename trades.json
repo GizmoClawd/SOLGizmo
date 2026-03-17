@@ -1,5 +1,29 @@
 [
   {
+    "n": 698,
+    "date": "2026-03-17",
+    "token": "Bald",
+    "action": "BUY",
+    "amount": "0.1472 SOL",
+    "result": "1 KOL convergence: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "A5aJoer9nr2UDR1qrrR8zGkTX9ZtpTxs3RTUT7pzpump",
+    "ts": 1773760078,
+    "mc": 17821.28,
+    "vol24": 12565.77,
+    "vol1h": 12565.77,
+    "buys": 117,
+    "sells": 65,
+    "liq": null,
+    "kols": [
+      "radiance"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 697,
     "date": "2026-03-17",
     "token": "PVE",
