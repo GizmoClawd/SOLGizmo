@@ -1,5 +1,27 @@
 [
   {
+    "n": 767,
+    "date": "2026-03-17",
+    "token": "DC",
+    "action": "SELL",
+    "amount": "0.1218 SOL",
+    "result": "Sold 100% | PnL: +16.3%",
+    "pnl": "+0.1218 SOL",
+    "color": "teal",
+    "ca": "4HHtqcxHPPYdYkDBLPhNxxmzXcxzQT6rLFyZBnKspump",
+    "ts": 1773789790,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 766,
     "date": "2026-03-17",
     "token": "DC",
