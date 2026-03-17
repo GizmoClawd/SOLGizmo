@@ -1,5 +1,33 @@
 [
   {
+    "n": 653,
+    "date": "2026-03-17",
+    "token": "Gany",
+    "action": "BUY",
+    "amount": "0.1777 SOL",
+    "result": "5 KOL convergence: Cented, theo, Silver, bandit, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Dz4bX3snTDxqdKyZwdUgKoDvSjyvmoA23E6j5odZpump",
+    "ts": 1773716065,
+    "mc": 27867,
+    "vol24": 78379.09,
+    "vol1h": 78379.09,
+    "buys": 858,
+    "sells": 652,
+    "liq": 13694.13,
+    "kols": [
+      "Cented",
+      "theo",
+      "Silver",
+      "bandit",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 652,
     "date": "2026-03-17",
     "token": "Ganymede",
