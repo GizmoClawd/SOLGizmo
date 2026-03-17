@@ -1,5 +1,30 @@
 [
   {
+    "n": 756,
+    "date": "2026-03-17",
+    "token": "Solana",
+    "action": "BUY",
+    "amount": "0.1785 SOL",
+    "result": "2 KOL convergence: Cupsey, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HGL9hnt7nYUYctUGbPTtgSppFLHexBUtdcs4wuC4pump",
+    "ts": 1773766880,
+    "mc": 8450.87,
+    "vol24": 22178.61,
+    "vol1h": 22178.61,
+    "buys": 173,
+    "sells": 153,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "Silver"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 755,
     "date": "2026-03-17",
     "token": "AlphA",
