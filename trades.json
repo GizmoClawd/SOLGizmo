@@ -1,5 +1,27 @@
 [
   {
+    "n": 623,
+    "date": "2026-03-17",
+    "token": "GEEKED",
+    "action": "SELL",
+    "amount": "0.4042 SOL",
+    "result": "Sold 100% | PnL: -64.6%",
+    "pnl": "+0.4042 SOL",
+    "color": "teal",
+    "ca": "6q9ph4k5tot5zuLaDFbgjWLDqTdazf4DKJarYjCxpump",
+    "ts": 1773711563,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 622,
     "date": "2026-03-17",
     "token": "GEEKED",
