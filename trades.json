@@ -1,5 +1,27 @@
 [
   {
+    "n": 793,
+    "date": "2026-03-17",
+    "token": "DRAMA",
+    "action": "SELL",
+    "amount": "0.1459 SOL",
+    "result": "Sold 100% | PnL: -38.2%",
+    "pnl": "+0.1459 SOL",
+    "color": "teal",
+    "ca": "2WHR1qRsPuhs7eU5nfqb82trmfivDgWX95NUFTzvx3xS",
+    "ts": 1773770207,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 792,
     "date": "2026-03-17",
     "token": "DRAMA",
