@@ -1,5 +1,29 @@
 [
   {
+    "n": 829,
+    "date": "2026-03-17",
+    "token": "reCAPTCHA",
+    "action": "BUY",
+    "amount": "0.1076 SOL",
+    "result": "1 KOL convergence: Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "E87Q3BVJ2xfALs96FUfVSwhUWr5c6ixB77VyvRMqpump",
+    "ts": 1773775310,
+    "mc": 14564.49,
+    "vol24": 19963.74,
+    "vol1h": 19963.74,
+    "buys": 245,
+    "sells": 182,
+    "liq": null,
+    "kols": [
+      "Kadenox"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 828,
     "date": "2026-03-17",
     "token": "HPQZW2pu",
