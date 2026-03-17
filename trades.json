@@ -1,5 +1,27 @@
 [
   {
+    "n": 762,
+    "date": "2026-03-17",
+    "token": "FkjtaLwC",
+    "action": "SELL",
+    "amount": "0.1897 SOL",
+    "result": "Sold 100% | PnL: +15.1%",
+    "pnl": "+0.1897 SOL",
+    "color": "teal",
+    "ca": "FkjtaLwC3DjxxSMHJExReyREKBNWaGZwAdQzGVNPj3oT",
+    "ts": 1773786751,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 761,
     "date": "2026-03-17",
     "token": "EJdQXNeP",
