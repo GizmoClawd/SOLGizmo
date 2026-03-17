@@ -1,5 +1,30 @@
 [
   {
+    "n": 715,
+    "date": "2026-03-17",
+    "token": "Thinker",
+    "action": "BUY",
+    "amount": "0.1242 SOL",
+    "result": "2 KOL convergence: dv, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7F87Qx3iEQmAVAi3E2mkSiMCZXzE1P2uJ31fe1Gkpump",
+    "ts": 1773771539,
+    "mc": 23446.03,
+    "vol24": 104210.44,
+    "vol1h": 104210.44,
+    "buys": 1313,
+    "sells": 992,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Jijo"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 714,
     "date": "2026-03-17",
     "token": "Einstein",
