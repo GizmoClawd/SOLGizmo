@@ -1,5 +1,27 @@
 [
   {
+    "n": 741,
+    "date": "2026-03-17",
+    "token": "biscuits",
+    "action": "SELL",
+    "amount": "0.1187 SOL",
+    "result": "Sold 100% | PnL: -19.8%",
+    "pnl": "+0.1187 SOL",
+    "color": "teal",
+    "ca": "BsLcXiRGq98FZaNAA88N1foQesiVoAqY66SyKAVJZffH",
+    "ts": 1773765106,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 740,
     "date": "2026-03-17",
     "token": "biscuits",
