@@ -1,5 +1,30 @@
 [
   {
+    "n": 763,
+    "date": "2026-03-17",
+    "token": "Mashu",
+    "action": "BUY",
+    "amount": "0.1385 SOL",
+    "result": "2 KOL convergence: Cupsey, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GJVi1ycRWijA1sor4PrgaAna59EoLT6xaP1U6RL9pump",
+    "ts": 1773767321,
+    "mc": 10319.98,
+    "vol24": 15909.17,
+    "vol1h": 15909.17,
+    "buys": 133,
+    "sells": 66,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "dv"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 762,
     "date": "2026-03-17",
     "token": "JONES",
