@@ -1,5 +1,30 @@
 [
   {
+    "n": 753,
+    "date": "2026-03-17",
+    "token": "Gvg1yaQ2",
+    "action": "BUY",
+    "amount": "0.17271747525 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Cented,bandit)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Gvg1yaQ2CazLHXVn5QV5eDmgG3smQ5QZ9ZV717Xopump",
+    "ts": 1773784175,
+    "mc": 22716,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "bandit"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 752,
     "date": "2026-03-17",
     "token": "commotitty",
