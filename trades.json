@@ -1,5 +1,31 @@
 [
   {
+    "n": 643,
+    "date": "2026-03-17",
+    "token": "Gany",
+    "action": "BUY",
+    "amount": "0.1686 SOL",
+    "result": "3 KOL convergence: Cupsey, dv, Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BgtczEGgf9mZMcGBLi4J5Pn8PtmFy6Xz5uBKkMfspump",
+    "ts": 1773715745,
+    "mc": 80244,
+    "vol24": 123930.38,
+    "vol1h": 123930.38,
+    "buys": 1163,
+    "sells": 1095,
+    "liq": 23464.51,
+    "kols": [
+      "Cupsey",
+      "dv",
+      "Kadenox"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 642,
     "date": "2026-03-17",
     "token": "Replacement",
