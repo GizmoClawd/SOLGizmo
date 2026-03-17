@@ -1,5 +1,30 @@
 [
   {
+    "n": 870,
+    "date": "2026-03-17",
+    "token": "MONKE",
+    "action": "BUY",
+    "amount": "0.1927 SOL",
+    "result": "2 KOL convergence: dv, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BTGM8S45QkNCaKzC5utC61sZQNGpVGUdMDAy8Vf7pump",
+    "ts": 1773782323,
+    "mc": 70870,
+    "vol24": 229776.25,
+    "vol1h": 229776.25,
+    "buys": 2148,
+    "sells": 2018,
+    "liq": 22200.62,
+    "kols": [
+      "dv",
+      "Jijo"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 869,
     "date": "2026-03-17",
     "token": "5HLXFe8n",
