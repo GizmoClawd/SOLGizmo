@@ -1,5 +1,30 @@
 [
   {
+    "n": 805,
+    "date": "2026-03-17",
+    "token": "ERIC",
+    "action": "BUY",
+    "amount": "0.0956 SOL",
+    "result": "2 KOL convergence: Pain, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "B8XXuEP3dXXzbap3ydfjg9pqamiVAYD2jXaowsRWpump",
+    "ts": 1773773328,
+    "mc": 30273.66,
+    "vol24": 117505.44,
+    "vol1h": 117505.44,
+    "buys": 1290,
+    "sells": 959,
+    "liq": null,
+    "kols": [
+      "Pain",
+      "Cented"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 804,
     "date": "2026-03-17",
     "token": "Thinker",
