@@ -1,5 +1,29 @@
 [
   {
+    "n": 755,
+    "date": "2026-03-17",
+    "token": "EA",
+    "action": "BUY",
+    "amount": "0.159 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2NP2Q7M2sYEdhkXFaGZDDM4qUqLd7PQS8YYSjsHMpump",
+    "ts": 1773784593,
+    "mc": 13588.39,
+    "vol24": 10796.84,
+    "vol1h": 10796.84,
+    "buys": 25,
+    "sells": 7,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 754,
     "date": "2026-03-17",
     "token": "Gvg1yaQ2",
