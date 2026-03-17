@@ -1,5 +1,29 @@
 [
   {
+    "n": 755,
+    "date": "2026-03-17",
+    "token": "AlphA",
+    "action": "BUY",
+    "amount": "0.1564 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "E5pSmhBmNJ8E6a9SkfCo27N356ZxTfXTAysBLLmopump",
+    "ts": 1773766666,
+    "mc": 19308,
+    "vol24": 141000.38,
+    "vol1h": 9362.81,
+    "buys": 128,
+    "sells": 69,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 754,
     "date": "2026-03-17",
     "token": "Yunho",
