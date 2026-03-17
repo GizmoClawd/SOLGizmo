@@ -1,5 +1,31 @@
 [
   {
+    "n": 623,
+    "date": "2026-03-17",
+    "token": "6q9ph4k5",
+    "action": "BUY",
+    "amount": "0.22514474175 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (dv,dov7,Dad)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6q9ph4k5tot5zuLaDFbgjWLDqTdazf4DKJarYjCxpump",
+    "ts": 1773711685,
+    "mc": 14139.01,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "dv",
+      "dov7",
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 622,
     "date": "2026-03-17",
     "token": "GEEKED",
