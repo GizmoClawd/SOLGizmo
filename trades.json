@@ -1,5 +1,30 @@
 [
   {
+    "n": 692,
+    "date": "2026-03-17",
+    "token": "Nerd",
+    "action": "BUY",
+    "amount": "0.1718 SOL",
+    "result": "2 KOL convergence: dv, Joji",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BRKGNhG8pYHBqTrRFZSR8bbEPnsvqAbDcvmmK4g7pump",
+    "ts": 1773757948,
+    "mc": 10549.41,
+    "vol24": 10921.71,
+    "vol1h": 10921.71,
+    "buys": 103,
+    "sells": 49,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Joji"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 691,
     "date": "2026-03-17",
     "token": "kit",
