@@ -1,5 +1,30 @@
 [
   {
+    "n": 740,
+    "date": "2026-03-17",
+    "token": "GANYMEDE",
+    "action": "BUY",
+    "amount": "0.209 SOL",
+    "result": "2 KOL convergence: radiance, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DqEiDEFMo7GSJ92B721NYopLoViNd8sgmuFDPvsApump",
+    "ts": 1773782583,
+    "mc": 61442,
+    "vol24": 24232,
+    "vol1h": 24232,
+    "buys": 184,
+    "sells": 133,
+    "liq": 20325.86,
+    "kols": [
+      "radiance",
+      "Cented"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 739,
     "date": "2026-03-17",
     "token": "Gany",
