@@ -1,5 +1,30 @@
 [
   {
+    "n": 718,
+    "date": "2026-03-17",
+    "token": "GFM",
+    "action": "BUY",
+    "amount": "0.2759 SOL",
+    "result": "2 KOL convergence: Cented, Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CwUiQV1Qu5CiDhbbkgpN8u9bCppbA1V9Api7WBsmDMra",
+    "ts": 1773764364,
+    "mc": 6938.17,
+    "vol24": 10918.82,
+    "vol1h": 10918.82,
+    "buys": 54,
+    "sells": 41,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Silver"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 717,
     "date": "2026-03-17",
     "token": "Floki",
