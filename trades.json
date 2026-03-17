@@ -1,5 +1,30 @@
 [
   {
+    "n": 657,
+    "date": "2026-03-17",
+    "token": "6gWygYZ4",
+    "action": "BUY",
+    "amount": "0.20077620974999996 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (CLOWN,Dad)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6gWygYZ4byuy8GqfbBBRKnbAJsNAM1PWPXznuQdLpump",
+    "ts": 1773719536,
+    "mc": 11589.98,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "CLOWN",
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 656,
     "date": "2026-03-17",
     "token": "USDC",
