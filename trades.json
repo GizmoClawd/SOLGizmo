@@ -1,5 +1,29 @@
 [
   {
+    "n": 649,
+    "date": "2026-03-17",
+    "token": "Gany",
+    "action": "BUY",
+    "amount": "0.0871 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BgtczEGgf9mZMcGBLi4J5Pn8PtmFy6Xz5uBKkMfspump",
+    "ts": 1773716531,
+    "mc": 217246,
+    "vol24": 566716.56,
+    "vol1h": 566716.56,
+    "buys": 4472,
+    "sells": 4484,
+    "liq": 39720.93,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 648,
     "date": "2026-03-17",
     "token": "Claude",
