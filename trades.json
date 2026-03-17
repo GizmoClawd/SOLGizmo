@@ -1,5 +1,27 @@
 [
   {
+    "n": 815,
+    "date": "2026-03-17",
+    "token": "Kit",
+    "action": "SELL",
+    "amount": "0.2048 SOL",
+    "result": "Sold 100% | PnL: -55.8%",
+    "pnl": "+0.2048 SOL",
+    "color": "teal",
+    "ca": "CxG9cXQP9kVYNiM37zbV2nRDuywjftdEsjctdgyLpump",
+    "ts": 1773774437,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 814,
     "date": "2026-03-17",
     "token": "Kit",
