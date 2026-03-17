@@ -1,5 +1,30 @@
 [
   {
+    "n": 700,
+    "date": "2026-03-17",
+    "token": "HEISEI",
+    "action": "BUY",
+    "amount": "0.3851 SOL",
+    "result": "2 KOL convergence: Silver, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9dPUSCQyna2bXo9wpz9stPP779VJ789M5u8kEm1gpump",
+    "ts": 1773762978,
+    "mc": 23739.53,
+    "vol24": 43457.29,
+    "vol1h": 43457.29,
+    "buys": 436,
+    "sells": 283,
+    "liq": null,
+    "kols": [
+      "Silver",
+      "Jijo"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 699,
     "date": "2026-03-17",
     "token": "PATRIOT",
