@@ -1,5 +1,29 @@
 [
   {
+    "n": 665,
+    "date": "2026-03-17",
+    "token": "ARC",
+    "action": "BUY",
+    "amount": "0.142 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2oBe59KhZ8s7pzYGbHNWVDK5RGSA2Yx9ufAe85TGpump",
+    "ts": 1773719575,
+    "mc": 19429,
+    "vol24": 12300.67,
+    "vol1h": 12300.67,
+    "buys": 161,
+    "sells": 108,
+    "liq": 11479.84,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 664,
     "date": "2026-03-17",
     "token": "Gany",
