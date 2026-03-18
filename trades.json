@@ -1,5 +1,30 @@
 [
   {
+    "n": 939,
+    "date": "2026-03-18",
+    "token": "Handprint",
+    "action": "BUY",
+    "amount": "0.0673 SOL",
+    "result": "2 KOL convergence: dv, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AWn4JKLvuJhywm8M91sMux16bai5srt3d4TABPC2pump",
+    "ts": 1773859521,
+    "mc": 52141,
+    "vol24": 55638.72,
+    "vol1h": 55638.72,
+    "buys": 583,
+    "sells": 563,
+    "liq": 18259.56,
+    "kols": [
+      "dv",
+      "Cented"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 938,
     "date": "2026-03-18",
     "token": "pattern",
