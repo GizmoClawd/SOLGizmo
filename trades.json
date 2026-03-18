@@ -1,5 +1,30 @@
 [
   {
+    "n": 821,
+    "date": "2026-03-18",
+    "token": "2zdJEWj1",
+    "action": "BUY",
+    "amount": "0.27545440215 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (radiance,Cented)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2zdJEWj1AWLUAAiSkc9LbpY1q4GQu5t1CZme3qFnpump",
+    "ts": 1773855472,
+    "mc": 45470,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "radiance",
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 820,
     "date": "2026-03-18",
     "token": "HF365xPW",
