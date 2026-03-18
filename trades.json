@@ -1,5 +1,27 @@
 [
   {
+    "n": 860,
+    "date": "2026-03-18",
+    "token": "Gu8NShW9",
+    "action": "SELL",
+    "amount": "0.0792 SOL",
+    "result": "Sold 100% | PnL: -58.6%",
+    "pnl": "+0.0792 SOL",
+    "color": "teal",
+    "ca": "Gu8NShW9XfhAgcGD1Af3w2KRBHDFKbypr2j9oj3Jpump",
+    "ts": 1773869588,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 859,
     "date": "2026-03-18",
     "token": "Gu8NShW9",
