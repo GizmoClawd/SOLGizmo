@@ -1,5 +1,27 @@
 [
   {
+    "n": 896,
+    "date": "2026-03-18",
+    "token": "E32CyEcb",
+    "action": "SELL",
+    "amount": "0.4203 SOL",
+    "result": "Sold 100% | PnL: +42.1%",
+    "pnl": "+0.4203 SOL",
+    "color": "teal",
+    "ca": "E32CyEcbFq1y73qzDrGJSSrTpqLqxvp3F3HXsu7hpump",
+    "ts": 1773796815,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 895,
     "date": "2026-03-18",
     "token": "E32CyEcb",
