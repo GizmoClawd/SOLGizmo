@@ -202,10 +202,14 @@ function updateKolPerformance() {
       
       const avgPnl = total > 0 ? stats.totalPnl / total : 0;
       stats.avgPnl = avgPnl;
+      // Weight by PROFITABILITY first, win rate second
+      // Cented pattern: 39% WR but +127% total PnL = still elite
       if (avgPnl > 50 && total >= 2)                          { stats.weight = 4; stats.tier = 'GOD'; }
-      else if (avgPnl > 10 && wr >= 0.50 && total >= 3)      { stats.weight = 3; stats.tier = 'ELITE'; }
-      else if (avgPnl > 0  && wr >= 0.40 && total >= 2)      { stats.weight = 2; stats.tier = 'SOLID'; }
-      else if (avgPnl < -10 || (wr < 0.35 && total >= 3))    { stats.weight = 0; stats.tier = 'MUTED'; }
+      else if (stats.totalPnl > 80 && total >= 5)             { stats.weight = 3; stats.tier = 'ELITE'; }  // profitable overall = elite regardless of WR
+      else if (avgPnl > 10 && wr >= 0.45 && total >= 3)      { stats.weight = 3; stats.tier = 'ELITE'; }  // loosened WR from 0.50 to 0.45
+      else if (avgPnl > 0  && wr >= 0.35 && total >= 2)      { stats.weight = 2; stats.tier = 'SOLID'; }
+      else if (stats.totalPnl < -20 && total >= 3)            { stats.weight = 0; stats.tier = 'MUTED'; }  // mute on total loss, not just avg
+      else if (avgPnl < -15 || (wr < 0.30 && total >= 5))    { stats.weight = 0; stats.tier = 'MUTED'; }
       else                                                     { stats.weight = 1; stats.tier = 'WATCH'; }
 
       log(`📊 ${kol}: WR ${(wr*100).toFixed(0)}% (${stats.wins}W/${stats.losses}L) → weight ${stats.weight} [${stats.tier}]`);

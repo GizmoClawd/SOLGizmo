@@ -108,10 +108,118 @@ const SIGNAL_WINDOW_MS = 10 * 60 * 1000;
 const HELIUS_KEY = process.env.HELIUS_API_KEY || '';
 
 // ─── ADAPTIVE PARAMS (learning system) ───────────────────────────────────────
-let SCORE_THRESHOLD = 6;
+let SCORE_THRESHOLD = 7;
 let MIN_LIQ = 8000;
 let MIN_KOLS = 2;
+let MIN_KOL_WEIGHT = 3; // require at least one ELITE+ (w>=3) KOL in convergence
 let POSITION_SIZE_MULT = 1.0;
+let vpsFailCount = 0;
+
+// ─── ADAPTIVE EXIT PARAMS (brain-controlled) ─────────────────────────────────
+let HARD_STOP_PCT = 0.65;      // cut at -35% (mc <= entry * this)
+let TP1_SELL_PCT = 40;          // sell 40% at TP1
+let TRAIL_TIGHTNESS = 0.72;    // base trailing SL percentage
+let FRESH_FLAT_LIMIT = 8;      // minutes to hold flat fresh token
+let FRESH_DOWN_LIMIT = 3;      // minutes to hold down fresh token
+
+// ─── ENTRY INTUITION (pattern memory) ────────────────────────────────────────
+const INTUITION_FILE = process.env.HOME + '/.gizmo/runtime/intuition.json';
+let INTUITION = { winPatterns: [], losePatterns: [], updatedAt: null };
+try { if (fs.existsSync(INTUITION_FILE)) INTUITION = JSON.parse(fs.readFileSync(INTUITION_FILE, 'utf8')); } catch {}
+
+function buildIntuition() {
+  log("{1F50D} Building intuition...");
+  try {
+    if (!fs.existsSync(TRADES_FILE)) return;
+    const trades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
+    const buysData = trades.filter(t => t.action === 'BUY' && t.mc);
+    const sellsData = trades.filter(t => t.action === 'SELL' && t.ca);
+    
+    const patterns = [];
+    for (const b of buysData) {
+      const matchingSells = sellsData.filter(s => s.ca === b.ca && (s.ts||0) > (b.ts||0));
+      let bestPnl = 0;
+      for (const s of matchingSells) {
+        const m = (s.result || '').match(/PnL:\s*([+-]?\d+\.?\d*)%/);
+        if (m) { const p = parseFloat(m[1]); if (p > bestPnl) bestPnl = p; }
+      }
+      const worstPnl = matchingSells.reduce((w, s) => {
+        const m = (s.result || '').match(/PnL:\s*([+-]?\d+\.?\d*)%/);
+        return m ? Math.min(w, parseFloat(m[1])) : w;
+      }, 0);
+      
+      patterns.push({
+        win: bestPnl > 10,
+        mc: b.mc || 0,
+        vol24: b.vol24 || 0,
+        vol1h: b.vol1h || 0,
+        buys: b.buys || 0,
+        sells: b.sells || 0,
+        bsRatio: (b.buys || 0) / Math.max(b.sells || 1, 1),
+        liq: b.liq || 0,
+        bestPnl, worstPnl,
+        kols: b.kols || []
+      });
+    }
+    
+    INTUITION.winPatterns = patterns.filter(p => p.win);
+    INTUITION.losePatterns = patterns.filter(p => !p.win);
+    
+    // Calculate sweet spots
+    if (INTUITION.winPatterns.length >= 3) {
+      const wins = INTUITION.winPatterns;
+      INTUITION.sweetSpot = {
+        mcLow: Math.min(...wins.map(w => w.mc)),
+        mcHigh: Math.max(...wins.map(w => w.mc)),
+        mcMedian: wins.map(w => w.mc).sort((a,b) => a-b)[Math.floor(wins.length/2)],
+        avgBSRatio: wins.reduce((s,w) => s + w.bsRatio, 0) / wins.length,
+        minBSRatio: Math.min(...wins.map(w => w.bsRatio)),
+        avgLiq: wins.reduce((s,w) => s + w.liq, 0) / wins.length,
+      };
+    }
+    if (INTUITION.losePatterns.length >= 3) {
+      const loses = INTUITION.losePatterns;
+      INTUITION.dangerZone = {
+        mcMedian: loses.map(l => l.mc).sort((a,b) => a-b)[Math.floor(loses.length/2)],
+        avgBSRatio: loses.reduce((s,l) => s + l.bsRatio, 0) / loses.length,
+        commonMCRange: [
+          loses.map(l => l.mc).sort((a,b) => a-b)[Math.floor(loses.length * 0.25)],
+          loses.map(l => l.mc).sort((a,b) => a-b)[Math.floor(loses.length * 0.75)]
+        ]
+      };
+    }
+    
+    INTUITION.updatedAt = new Date().toISOString();
+    fs.writeFileSync(INTUITION_FILE, JSON.stringify(INTUITION, null, 2));
+    
+    const ws = INTUITION.sweetSpot;
+    const dz = INTUITION.dangerZone;
+    if (ws) log(`\u{1F9E0} INTUITION: sweet spot MC:$${Math.round(ws.mcLow)}-$${Math.round(ws.mcHigh)} median:$${Math.round(ws.mcMedian)} B/S>${ws.minBSRatio.toFixed(1)} | ${INTUITION.winPatterns.length}W/${INTUITION.losePatterns.length}L patterns`);
+  } catch (e) { log('Intuition build error: ' + e.message); }
+}
+
+function intuitionScore(mc, bsRatio, liq, vol1h) {
+  let score = 0;
+  const ws = INTUITION.sweetSpot;
+  const dz = INTUITION.dangerZone;
+  if (!ws) return 0; // not enough data yet
+  
+  // MC in winner sweet spot = +2, in loser danger zone = -2
+  if (mc >= ws.mcLow * 0.5 && mc <= ws.mcHigh * 1.5) score += 2;
+  if (dz && mc >= dz.commonMCRange[0] && mc <= dz.commonMCRange[1] && mc > ws.mcMedian * 2) score -= 2;
+  
+  // B/S ratio above winner average = +1, below loser average = -1
+  if (bsRatio >= ws.avgBSRatio * 0.8) score += 1;
+  if (dz && bsRatio < dz.avgBSRatio) score -= 1;
+  
+  // Strong B/S (buys 2x sells) = +1 bonus
+  if (bsRatio >= 2.0) score += 1;
+  
+  // Very weak B/S (sells > buys) = -2 danger
+  if (bsRatio < 1.0) score -= 2;
+  
+  return score;
+}
 
 const LEARN_FILE = BASE_DIR + '/learn-state.json';
 const RECENT_BOUGHT_FILE = BASE_DIR + '/recently-bought.json';
@@ -120,11 +228,16 @@ function loadLearnState() {
   try {
     if (fs.existsSync(LEARN_FILE)) {
       const s = JSON.parse(fs.readFileSync(LEARN_FILE, 'utf8'));
-      SCORE_THRESHOLD = s.scoreThreshold ?? 5;
+      SCORE_THRESHOLD = Math.max(7, s.scoreThreshold ?? 7);
       MIN_LIQ = s.minLiq ?? 8000;
       MIN_KOLS = s.minKols ?? 2;
       POSITION_SIZE_MULT = s.positionSizeMult ?? 1.0;
-      log(`🧠 Loaded adaptive params: score≥${SCORE_THRESHOLD} liq≥$${MIN_LIQ} kols≥${MIN_KOLS} sizeMult=${POSITION_SIZE_MULT}`);
+      HARD_STOP_PCT = s.hardStopPct ?? 0.65;
+      TP1_SELL_PCT = s.tp1SellPct ?? 40;
+      TRAIL_TIGHTNESS = s.trailTightness ?? 0.72;
+      FRESH_FLAT_LIMIT = s.freshFlatLimit ?? 8;
+      FRESH_DOWN_LIMIT = s.freshDownLimit ?? 3;
+      log(`🧠 Loaded adaptive params: score≥${SCORE_THRESHOLD} liq≥$${MIN_LIQ} kols≥${MIN_KOLS} sizeMult=${POSITION_SIZE_MULT} hardStop:${(100-HARD_STOP_PCT*100).toFixed(0)}% tp1Sell:${TP1_SELL_PCT}% trail:${(TRAIL_TIGHTNESS*100).toFixed(0)}%`);
     }
   } catch {}
 }
@@ -134,6 +247,9 @@ function saveLearnState() {
     fs.writeFileSync(LEARN_FILE, JSON.stringify({
       scoreThreshold: SCORE_THRESHOLD, minLiq: MIN_LIQ,
       minKols: MIN_KOLS, positionSizeMult: POSITION_SIZE_MULT,
+      hardStopPct: HARD_STOP_PCT, tp1SellPct: TP1_SELL_PCT,
+      trailTightness: TRAIL_TIGHTNESS,
+      freshFlatLimit: FRESH_FLAT_LIMIT, freshDownLimit: FRESH_DOWN_LIMIT,
       updatedAt: new Date().toISOString()
     }, null, 2));
   } catch {}
@@ -182,12 +298,12 @@ async function learnFromTrades() {
     // Adjust score threshold based on market scan win rate
     // Score threshold driven by OVERALL win rate (not just market — most trades are KOL)
     if (recent.length >= 5) {
-      if (winRate <= 0.45 && SCORE_THRESHOLD < 9) {
-        SCORE_THRESHOLD = Math.min(7, SCORE_THRESHOLD + 1);
+      if (winRate <= 0.58 && SCORE_THRESHOLD < 9) {
+        SCORE_THRESHOLD = Math.min(8, SCORE_THRESHOLD + 1);
         log(`🧠 WR low (${(winRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
       } else if (winRate > 0.65 && SCORE_THRESHOLD > 5) {
-        SCORE_THRESHOLD = Math.max(5, SCORE_THRESHOLD - 1);
+        SCORE_THRESHOLD = Math.max(7, SCORE_THRESHOLD - 1);
         log(`🧠 WR strong (${(winRate*100).toFixed(0)}%) — lowering score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
       }
@@ -195,7 +311,7 @@ async function learnFromTrades() {
 
     // Adjust KOL min threshold
     if (kolTrades.length >= 3) {
-      if (kolWinRate < 0.35 && MIN_KOLS < 3) {
+      if (kolWinRate < 0.55 && MIN_KOLS < 3) {
         MIN_KOLS = 3;
         log(`🧠 KOL WR low (${(kolWinRate*100).toFixed(0)}%) — requiring 3+ KOLs`);
         changed = true;
@@ -208,7 +324,7 @@ async function learnFromTrades() {
 
     // Adjust position size multiplier based on overall performance
     if (recent.length >= 5) {
-      if (winRate < 0.30 && POSITION_SIZE_MULT > 0.5) {
+      if (winRate < 0.55 && POSITION_SIZE_MULT > 0.5) {
         POSITION_SIZE_MULT = Math.max(0.5, POSITION_SIZE_MULT - 0.25);
         log(`🧠 WR poor (${(winRate*100).toFixed(0)}%) — reducing position size to ${POSITION_SIZE_MULT}x`);
         changed = true;
@@ -220,7 +336,7 @@ async function learnFromTrades() {
     }
 
     // MIN_LIQ lever
-    if (winRate <= 0.40 && MIN_LIQ < 15000) {
+    if (winRate <= 0.55 && MIN_LIQ < 15000) {
       MIN_LIQ = 15000;
       log(`🧠 WR poor — raising min liquidity to $15K`);
       changed = true;
@@ -229,6 +345,96 @@ async function learnFromTrades() {
       log(`🧠 WR strong — lowering min liquidity back to $8K`);
       changed = true;
     }
+    // ─── ADAPTIVE EXIT LOGIC ───────────────────────────────────────────────────
+    // Analyze HOW trades ended to tune exit params
+    const recentSells = sells.filter(s => s.ts > Date.now()/1000 - 7*86400); // last 7 days
+    const hardStopLosses = recentSells.filter(s => (s.result||'').includes('Hard stop') || (s.result||'').includes('Rug'));
+    const timeExitLosses = recentSells.filter(s => (s.result||'').includes('TIME EXIT') || (s.result||'').includes('Zero volume'));
+    const tp1Sells = recentSells.filter(s => (s.result||'').includes('TP1'));
+    const trailSLSells = recentSells.filter(s => (s.result||'').includes('Trailing SL'));
+    
+    // Count trades where we sold partial at profit but ended net negative
+    const bleedOuts = pairs.slice(-20).filter(p => p.pnlPct < -20);
+    const bigWins = pairs.slice(-20).filter(p => p.pnlPct > 50);
+    
+    if (recent.length >= 10) {
+      const lossRate = 1 - winRate;
+      const avgLoss = recent.filter(p => !p.win).length > 0 ? 
+        recent.filter(p => !p.win).reduce((s,p) => s + p.pnlPct, 0) / recent.filter(p => !p.win).length : 0;
+      const avgWin = recent.filter(p => p.win).length > 0 ?
+        recent.filter(p => p.win).reduce((s,p) => s + p.pnlPct, 0) / recent.filter(p => p.win).length : 0;
+      
+      // HARD STOP: if avg loss is deep, tighten. If wins are big enough to absorb, loosen slightly
+      if (avgLoss < -35 && HARD_STOP_PCT < 0.75) {
+        HARD_STOP_PCT = Math.min(0.75, HARD_STOP_PCT + 0.05);
+        log(`🧠 EXIT ADAPT: avg loss ${avgLoss.toFixed(0)}% too deep — tightening hard stop to -${((1-HARD_STOP_PCT)*100).toFixed(0)}%`);
+        changed = true;
+      } else if (avgLoss > -15 && avgWin > 40 && HARD_STOP_PCT > 0.60) {
+        HARD_STOP_PCT = Math.max(0.60, HARD_STOP_PCT - 0.03);
+        log(`🧠 EXIT ADAPT: losses controlled, big wins — loosening hard stop to -${((1-HARD_STOP_PCT)*100).toFixed(0)}%`);
+        changed = true;
+      }
+      
+      // TP1 SELL %: if we keep bleeding after TP1, sell more. If wins are running huge, sell less
+      if (bleedOuts.length > bigWins.length && TP1_SELL_PCT < 60) {
+        TP1_SELL_PCT = Math.min(60, TP1_SELL_PCT + 5);
+        log(`🧠 EXIT ADAPT: too many bleed-outs — TP1 sell increased to ${TP1_SELL_PCT}%`);
+        changed = true;
+      } else if (bigWins.length >= bleedOuts.length * 2 && TP1_SELL_PCT > 25) {
+        TP1_SELL_PCT = Math.max(25, TP1_SELL_PCT - 5);
+        log(`🧠 EXIT ADAPT: runners outweigh bleeds — TP1 sell decreased to ${TP1_SELL_PCT}%`);
+        changed = true;
+      }
+      
+      // TRAILING SL: if trailing SL exits are mostly losers, tighten. If mostly winners, loosen
+      if (lossRate > 0.55 && TRAIL_TIGHTNESS < 0.82) {
+        TRAIL_TIGHTNESS = Math.min(0.82, TRAIL_TIGHTNESS + 0.03);
+        log(`🧠 EXIT ADAPT: too many losses — trailing SL tightened to ${(TRAIL_TIGHTNESS*100).toFixed(0)}%`);
+        changed = true;
+      } else if (winRate > 0.65 && avgWin > 30 && TRAIL_TIGHTNESS > 0.65) {
+        TRAIL_TIGHTNESS = Math.max(0.65, TRAIL_TIGHTNESS - 0.02);
+        log(`🧠 EXIT ADAPT: strong WR + wins — trailing SL loosened to ${(TRAIL_TIGHTNESS*100).toFixed(0)}%`);
+        changed = true;
+      }
+      
+      // FRESH TOKEN PATIENCE: if time exits keep saving us (cutting losers), keep tight. If we cut winners too early, loosen
+      const timeExitWins = recentSells.filter(s => {
+        const m = (s.result||'').match(/PnL:\s*([+-]?\d+\.?\d*)%/);
+        return m && parseFloat(m[1]) > 5 && ((s.result||'').includes('TIME EXIT'));
+      });
+      if (timeExitWins.length > 3 && FRESH_FLAT_LIMIT < 15) {
+        FRESH_FLAT_LIMIT = Math.min(15, FRESH_FLAT_LIMIT + 2);
+        FRESH_DOWN_LIMIT = Math.min(8, FRESH_DOWN_LIMIT + 1);
+        log(`🧠 EXIT ADAPT: cutting winners too early — fresh limits loosened to ${FRESH_FLAT_LIMIT}/${FRESH_DOWN_LIMIT}min`);
+        changed = true;
+      } else if (timeExitLosses.length > 5 && FRESH_FLAT_LIMIT > 5) {
+        FRESH_FLAT_LIMIT = Math.max(5, FRESH_FLAT_LIMIT - 1);
+        FRESH_DOWN_LIMIT = Math.max(2, FRESH_DOWN_LIMIT - 1);
+        log(`🧠 EXIT ADAPT: time exits saving capital — fresh limits tightened to ${FRESH_FLAT_LIMIT}/${FRESH_DOWN_LIMIT}min`);
+        changed = true;
+      }
+    }
+    
+    // Build entry intuition from trade patterns
+    buildIntuition();
+
+    // NET SOL CHECK: if average trade loses SOL, emergency tighten everything
+    const avgNetSOL = avgPnl; // approximate
+    if (winRate < 0.65 && avgPnl < 55) {
+      // We're not profitable enough — be pickier
+      if (SCORE_THRESHOLD < 6) { SCORE_THRESHOLD = 6; log('\u{1F6A8} BRAIN: WR ${(winRate*100).toFixed(0)}% + low avgPnl — score threshold forced to 6'); changed = true; }
+      if (MIN_KOLS < 2) { MIN_KOLS = 2; log('\u{1F6A8} BRAIN: requiring 2+ KOLs — too many losses'); changed = true; }
+      if (POSITION_SIZE_MULT > 1.0) { POSITION_SIZE_MULT = 1.0; log('\u{1F6A8} BRAIN: position size back to 1x — capital preservation'); changed = true; }
+    }
+    
+    // HARD STOP on trade frequency: if more than 20 losses in last 50, tighten hard
+    const recentLosses = recent.filter(p => !p.win).length;
+    if (recentLosses > 18) {
+      if (SCORE_THRESHOLD < 7) { SCORE_THRESHOLD = 7; log('\u{1F6A8} BRAIN: ${recentLosses} losses in last 50 — score threshold EMERGENCY 7'); changed = true; }
+      if (HARD_STOP_PCT < 0.72) { HARD_STOP_PCT = 0.72; log('\u{1F6A8} BRAIN: tightening hard stop to -28% — too many deep losses'); changed = true; }
+      if (FRESH_FLAT_LIMIT > 6) { FRESH_FLAT_LIMIT = 6; FRESH_DOWN_LIMIT = 2; log('\u{1F6A8} BRAIN: cutting losers faster — ${FRESH_FLAT_LIMIT}/${FRESH_DOWN_LIMIT}min'); changed = true; }
+    }
+
     // Always save so log reflects current state
     saveLearnState();
     if (changed) {
@@ -547,6 +753,19 @@ async function sell(ca, pct, posName, entryMC, currentMC) {
   log(`🚨 SELL FAILED ALL 3 ATTEMPTS on ${posName} — MANUAL ACTION NEEDED`);
   try { fs.writeFileSync(BASE_DIR + '/SELL_FAILED_URGENT.txt', `SELL FAILED: ${posName} (${ca}) at ${new Date().toISOString()}\nManual: cd ${WORKSPACE} && node sell.mjs ${ca} 100%\n`); } catch {}
   try { execSync(`openclaw system event --text "🚨 SELL FAILED: ${posName} — manual action needed!" --mode now`, { timeout: 5000 }); } catch {}
+  // Check if sell actually went through despite error
+  try {
+    const chkResult = spawnSync('node', ['sell.mjs', ca, '100%'], { cwd: WORKSPACE, timeout: 60000, encoding: 'utf8' });
+    const chkOut = (chkResult.stdout || '') + (chkResult.stderr || '');
+    if (chkOut.includes('No tokens to sell') || chkOut.includes('no tokens')) {
+      log('\u2705 ' + posName + ': tokens already gone — sell went through despite error. Cleaning up.');
+      return true;
+    }
+    if (chkOut.includes('CONFIRMED')) {
+      log('\u2705 ' + posName + ': 4th attempt succeeded!');
+      return true;
+    }
+  } catch {}
   return false;
 }
 
@@ -717,6 +936,85 @@ async function managePositions() {
     const buys = p.txns?.m5?.buys || 0;
     const sells = p.txns?.m5?.sells || 0;
 
+    // ─── DISCERNMENT: read the chart like a degen ──────────────────────────
+    const h1Change = p.priceChange?.h1 || 0;
+    const bsRatio = buys / Math.max(sells, 1);
+    const vol1h = p.volume?.h1 || 0;
+    const vol5m = p.volume?.m5 || 0;
+    const liq = p.liquidity?.usd || 0;
+    
+    // Track momentum history on the position
+    if (!pos.momentumHistory) pos.momentumHistory = [];
+    pos.momentumHistory.push({ m5, bsRatio, buys, sells, mc, ts: Date.now() });
+    if (pos.momentumHistory.length > 20) pos.momentumHistory.shift(); // keep last 20 readings
+    
+    // Calculate momentum trend (are things getting better or worse?)
+    const recentMomentum = pos.momentumHistory.slice(-5);
+    const olderMomentum = pos.momentumHistory.slice(-10, -5);
+    const recentAvgBS = recentMomentum.reduce((s,m) => s + m.bsRatio, 0) / recentMomentum.length;
+    const olderAvgBS = olderMomentum.length ? olderMomentum.reduce((s,m) => s + m.bsRatio, 0) / olderMomentum.length : recentAvgBS;
+    const momentumTrend = recentAvgBS - olderAvgBS; // positive = improving, negative = dying
+    
+    // DISCERNMENT SIGNALS
+    const chartDying = bsRatio < 0.7 && m5 < -3 && momentumTrend < -0.3;      // sells dominating + dumping + getting worse
+    const chartPumping = bsRatio > 2.0 && m5 > 5 && buys > 10;                 // buys dominating + pumping
+    const volumeDrying = buys + sells < 3 && vol5m < 500;                       // nobody trading
+    const sellWall = sells > buys * 3 && sells > 15;                            // massive sell pressure
+    const bullishReversal = m5 > 3 && bsRatio > 1.5 && momentumTrend > 0.2;    // recovering from dip
+    
+    // ACT ON DISCERNMENT
+    // 1. Chart dying + in profit = tighten SL aggressively to protect gains
+    if (chartDying && mc > pos.entryMC * 1.05 && pos.sl) {
+      const tightSL = mc * 0.92; // 8% trail instead of normal
+      if (tightSL > pos.sl) {
+        pos.sl = tightSL;
+        log(`\u{1F9E0} DISCERN: ${pos.name} chart dying but in profit — SL tightened to $${Math.round(tightSL)} (protect gains)`);
+        savePositions();
+      }
+    }
+    
+    // 2. Chart dying + underwater + no SL = early cut (don't wait for hard stop)
+    if (chartDying && mc < pos.entryMC * 0.90 && !pos.sl && !pos.tp1Hit) {
+      log(`\u{1F9E0} DISCERN EXIT: ${pos.name} at ${pnl}% — chart dying (B/S:${bsRatio.toFixed(1)} m5:${m5.toFixed(0)}% trend:${momentumTrend.toFixed(2)}) — cutting early`);
+      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+        await postTrade('SELL', pos.name, pos.ca, mc, 'Discern exit ' + pnl + '%', null, parseFloat(pnl));
+        POSITIONS.splice(i, 1); savePositions();
+      }
+      continue;
+    }
+    
+    // 3. Sell wall detected + underwater = emergency exit
+    if (sellWall && mc < pos.entryMC * 0.85) {
+      log(`\u{1F9E0} DISCERN SELL WALL: ${pos.name} at ${pnl}% — ${sells} sells vs ${buys} buys — dumping detected, cutting`);
+      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+        await postTrade('SELL', pos.name, pos.ca, mc, 'Sell wall exit ' + pnl + '%', null, parseFloat(pnl));
+        POSITIONS.splice(i, 1); savePositions();
+      }
+      continue;
+    }
+    
+    // 4. Chart pumping hard = loosen SL to let it run (override tight trail)
+    if (chartPumping && pos.sl && mc > pos.entryMC * 1.2) {
+      const looseSL = mc * 0.68; // give it room to breathe
+      if (looseSL < pos.sl && looseSL > pos.entryMC) {
+        // Only loosen if we're still above entry
+        pos.sl = looseSL;
+        log(`\u{1F9E0} DISCERN: ${pos.name} PUMPING — loosened SL to $${Math.round(looseSL)} (let it run)`);
+        savePositions();
+      }
+    }
+    
+    // 5. Bullish reversal while down = hold through the dip (extend time limits)
+    if (bullishReversal && mc < pos.entryMC && mc > pos.entryMC * 0.85) {
+      pos.lastBullishSignal = Date.now(); // prevents time exit for 2 more minutes
+      log(`\u{1F9E0} DISCERN: ${pos.name} bullish reversal at ${pnl}% — holding through dip`);
+    }
+    
+    // 6. Volume completely dried up = don't wait 3 cycles, flag it immediately
+    if (volumeDrying && mc < pos.entryMC * 0.95) {
+      pos.zeroVolCycles = (pos.zeroVolCycles || 0) + 0.5; // accelerate the zero-vol kill
+    }
+
     // Update high water mark + trail SL
     if (mc > (pos.sl || 0)) { pos.slBreachCount = 0; } else if (pos.sl && mc < pos.sl) { pos.slBreachCount = (pos.slBreachCount || 0) + 1; }
     if (mc > pos.highMC) {
@@ -726,7 +1024,7 @@ async function managePositions() {
         log(`🟢 ${pos.name}: +8% — SL locked at +4%: ${Math.round(pos.sl)}`);
       }
       if (pos.sl && pos.highMC > pos.entryMC * 1.12) {
-        let trailPct = 0.72; // LOOSENED — let winners breathe
+        let trailPct = TRAIL_TIGHTNESS; // brain-controlled trailing SL
         if (pos.highMC > pos.entryMC * 5.0)      trailPct = 0.85; // 5x+ lock moderate
         else if (pos.highMC > pos.entryMC * 3.0) trailPct = 0.80; // 3x+ still loose
         else if (pos.highMC > pos.entryMC * 2.0) trailPct = 0.75; // 2x give room
@@ -776,10 +1074,10 @@ async function managePositions() {
     if (!pos.dcaAdded) { pos.dcaAdded = true; }
 
     // HARD STOP: -30% with no SL set — only cut if genuine rug (sells dominating + volume dying)
-    if (mc <= pos.entryMC * 0.75 && !pos.sl) {
+    if (mc <= pos.entryMC * (HARD_STOP_PCT + 0.05) && !pos.sl) {
       const bsRatio = buys / Math.max(sells, 1);
       const isGenuineRug = bsRatio < 0.5 && sells > 10; // sells 2x+ buys with real volume
-      const isDeepDump = mc <= pos.entryMC * 0.45;       // -55%+ always cut regardless
+      const isDeepDump = mc <= pos.entryMC * HARD_STOP_PCT;       // adaptive deep dump cut
       if (isGenuineRug || isDeepDump) {
         log(`💀 HARD STOP ${pos.name} at ${pnl}% — ${isDeepDump ? 'deep dump' : 'genuine rug'} (B/S:${buys}/${sells})`);
         if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
@@ -815,9 +1113,9 @@ async function managePositions() {
         savePositions();
         log(`🦁 RUNNER MODE: ${pos.name} ${mult.toFixed(1)}x RIPPING — m5:${m5}% B/S:${buys}/${sells} — HOLDING FULL BAG TO 5x`);
       } else {
-        // Normal TP1: not ripping hard enough — lock 15% profit (keep 85% riding)
-        log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — locking 15%`);
-        if (await sell(pos.ca, '15%', pos.name, pos.entryMC, mc)) {
+        // Normal TP1: not ripping hard enough — lock profit (brain-controlled %)
+        log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — locking ${TP1_SELL_PCT}%`);
+        if (await sell(pos.ca, `${TP1_SELL_PCT}%`, pos.name, pos.entryMC, mc)) {
           pos.tp1Hit = true;
           pos.sl = Math.max(pos.sl || 0, pos.entryMC * 1.02);
           savePositions();
@@ -897,7 +1195,20 @@ async function managePositions() {
     }
 
     // TRAILING SL: enforce on all future cycles (skip moonbags — Will sells manually)
-    if (pos.moonbag) { log(`\u{1F319} ${pos.name}: moonbag — no auto-SL, manual sell only via /sell`); continue; }
+    if (pos.moonbag) {
+      if (!pos.moonbagSL) { pos.moonbagSL = pos.highMC * 0.55; }
+      if (mc > pos.highMC) { pos.highMC = mc; pos.moonbagSL = mc * 0.55; }
+      if (mc < pos.moonbagSL) {
+        log(`\u{1F319} MOONBAG SL ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.moonbagSL)} — auto-cutting`);
+        if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+          await postTrade('SELL', pos.name, pos.ca, mc, `Moonbag SL ${pnl}%`, null, parseFloat(pnl));
+          POSITIONS.splice(i, 1); savePositions();
+        }
+        continue;
+      }
+      log(`\u{1F319} ${pos.name}: moonbag — SL:$${Math.round(pos.moonbagSL)}`);
+      continue;
+    }
     if (pos.sl && mc < pos.sl) {
       log(`🛑 TRAILING SL HIT ${pos.name} MC:$${Math.round(mc)} SL:$${Math.round(pos.sl)}`);
       if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
@@ -913,13 +1224,13 @@ async function managePositions() {
     const mcVsEntry = mc / pos.entryMC;
     const isFlat = mcVsEntry < 1.05;
     const isDown  = mcVsEntry < 0.92;
-    const isBreakingOut = m5 > 5; // actively pumping — NEVER time-exit a breakout
+    const isBreakingOut = m5 > 5 || (pos.lastBullishSignal && Date.now() - pos.lastBullishSignal < 120000); // pumping OR recent bullish reversal
     // Patience scales with token age at time of entry
     let flatLimit, downLimit;
     if (tokenAgeHours > 6)        { flatLimit = 9999; downLimit = 120; } // established coin — almost never cut
     else if (tokenAgeHours > 1)   { flatLimit = 120;  downLimit = 60;  } // 1-6hr old — give it time
-    else if (tokenAgeHours > 0.25){ flatLimit = 30;   downLimit = 12;  } // 15-60min — tighter (was 60/30)
-    else                          { flatLimit = 12;   downLimit = 5;   } // fresh launch — cut FAST (was 25/15)
+    else if (tokenAgeHours > 0.25){ flatLimit = 20;   downLimit = 8;   } // 15-60min — tight
+    else                          { flatLimit = FRESH_FLAT_LIMIT; downLimit = FRESH_DOWN_LIMIT; } // fresh launch — brain-controlled
     const timeKill = !pos.tp1Hit && !isBreakingOut && (
       (ageMin > downLimit && isDown) ||
       (ageMin > flatLimit && isFlat)
@@ -990,6 +1301,7 @@ async function scanKOLs(state) {
     if (vpsR.ok) {
       const vpsTxs = await vpsR.json();
       if (vpsTxs.length > 0) log(`\u{1F4E1} VPS poll: ${vpsTxs.length} new txs`);
+      vpsFailCount = 0;
       for (const tx of vpsTxs) {
         if (tx.type !== 'SWAP' || tx.transactionError) continue;
         const allAccounts = [...(tx.nativeTransfers || []).map(t => t.fromUserAccount), ...(tx.tokenTransfers || []).map(t => t.toUserAccount), ...(tx.tokenTransfers || []).map(t => t.fromUserAccount)];
@@ -1040,7 +1352,20 @@ async function scanKOLs(state) {
         } catch {}
       }
     }
-  } catch (e) { log('\u26A0\uFE0F VPS poll error: ' + e.message); }
+  } catch (e) {
+    vpsFailCount++;
+    log(`\u26A0\uFE0F VPS poll error (${vpsFailCount}/3): ${e.message}`);
+    if (vpsFailCount >= 3) {
+      log('\u{1F6E0}\uFE0F VPS watcher down 3x — auto-restarting via SSH...');
+      try {
+        execSync('ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no root@178.156.160.143 "pm2 restart kol-watcher 2>/dev/null || pm2 start ~/webhook-receiver.mjs --name kol-watcher"', { timeout: 15000 });
+        log('\u2705 VPS watcher restarted remotely');
+        vpsFailCount = 0;
+      } catch (sshErr) {
+        log('\u274C VPS SSH restart failed: ' + sshErr.message);
+      }
+    }
+  }
 
   // HIGH-WEIGHT SINGLE KOL BUY (weight >= 2)
   for (const signal of (state.recentBuys || []).filter(b => b.kolWeight >= 4 && !b.scalper)) {
@@ -1084,7 +1409,16 @@ async function scanKOLs(state) {
     const hwSize = await safeBuySize(hwWallet, hwInfo.liq, 1);
     if (hwSize < 0.03) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
     // Don't add to ALERTED on successful buy — allow convergence to also evaluate
-    log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' size:' + hwSize.toFixed(3) + ' SOL');
+    // INTUITION CHECK on HW KOL
+    const hwBuysCount = entryPair?.pairs?.[0]?.txns?.h1?.buys || 0;
+    const hwSellsCount = entryPair?.pairs?.[0]?.txns?.h1?.sells || 0;
+    const hwBSRatio = hwBuysCount / Math.max(hwSellsCount, 1);
+    const hwIScore = intuitionScore(hwFdv, hwBSRatio, hwLiq, hwVolH1);
+    if (hwIScore <= -3) {
+      log(`\u{1F9E0} INTUITION BLOCK HW: ${hwInfo.symbol} — intuition:${hwIScore} (strong loser pattern) MC:$${Math.round(hwFdv)} B/S:${hwBuysCount}/${hwSellsCount}`);
+      ALERTED.add(signal.mint); saveAlerted(); continue;
+    }
+    log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' size:' + hwSize.toFixed(3) + ' SOL' + (hwIScore !== 0 ? ' intuition:' + hwIScore : ''));
     if (await buy(signal.mint, hwSize)) {
       const hwMc = hwInfo.mcap;
       const hwPairAge = entryPair?.pairs?.[0]?.pairCreatedAt ? Date.now() - entryPair.pairs[0].pairCreatedAt : 0;
@@ -1116,11 +1450,13 @@ async function scanKOLs(state) {
 
     // Filter out MUTED KOLs entirely — they drag down performance
     const activeKols = uniqueKols.filter(k => {
-      const perf = livePerf[k];
-      if (perf && perf.weight === 0) { perf.weight = 1; /* unmuted for convergence */ }
+      const lw = livePerf[k]?.weight;
+      const sw = WALLETS.find(w => w.name === k)?.weight || 1;
+      const w = lw !== undefined ? lw : sw;
+      if (w <= 1) { log('⛔ ' + k + ' (w:' + w + ') filtered from convergence — MUTED/WATCH'); return false; }
       return true;
     });
-    if (activeKols.length === 0) continue; // all KOLs muted, skip signal
+    if (activeKols.length === 0) { log('⛔ All KOLs in signal are MUTED/WATCH — skipping'); continue; }
 
     const convergenceScore = activeKols.reduce((sum, kolName) => {
       const liveWeight = livePerf[kolName]?.weight;
@@ -1153,6 +1489,9 @@ async function scanKOLs(state) {
     if (ALERTED.has(mint)) continue;
     if (nonScalper.length < 1) continue;
     if (activeKols.length < MIN_KOLS && finalScore < MIN_SCORE) continue;
+    
+    // INTUITION CHECK on KOL signals too
+    // (will be evaluated after we fetch token info below)
     if (activeKols.length < 2 && !hasElite && stackingBonus === 0) continue;
 
     log('📊 CONVERGENCE SCORE: ' + activeKols.map(k => {
@@ -1191,7 +1530,7 @@ async function scanKOLs(state) {
       if (convVol24 < 10000) { log(`⛔ ${info.symbol}: low volume ${Math.round(convVol24)} 24h — ghost token`); ALERTED.add(mint); continue; }
       const tokenScore = await scoreToken(info, pairForScore, convergenceScore);
       // Elite KOL convergence (score 9+) lowers bar to 4, otherwise need 5+
-      const minScore = convergenceScore >= 9 ? 3 : 3;
+      const minScore = SCORE_THRESHOLD;
       if (tokenScore < minScore) {
         log(`⛔ ${info.symbol}: 9-signal score ${tokenScore}/9 below min ${minScore} — skip`);
         continue;
@@ -1204,7 +1543,14 @@ async function scanKOLs(state) {
       }
       if (rugCheck.newCount > 5) log(`⚠️ ${info.symbol}: ${rugCheck.newCount}/${rugCheck.total} new wallets detected (below block threshold)`);
       // ────────────────────────────────────────────────────────
-      log(`🎯 CONVERGENCE BUY: ${info.symbol} Score:${tokenScore}/9 ${uniqueKols.length} KOLs — buying ${size} SOL`);
+      // ELITE GATE: require at least one ELITE+ (w>=3) KOL
+      const hasElite = activeKols.some(k => {
+        const lw = livePerf[k]?.weight;
+        const sw = WALLETS.find(w => w.name === k)?.weight || 1;
+        return (lw !== undefined ? lw : sw) >= MIN_KOL_WEIGHT;
+      });
+      if (!hasElite) { log(`⛔ ${info.symbol}: no ELITE+ KOL (w>=${MIN_KOL_WEIGHT}) in convergence [${activeKols.join(', ')}] — skip`); continue; }
+      log(`🎯 CONVERGENCE BUY: ${info.symbol} Score:${tokenScore}/9 ${activeKols.length} KOLs — buying ${size} SOL`);
       // ENTRY FILTER: reject if sells dominating — rug/dump already in progress
       const convEntryBuys = pairForScore?.txns?.m5?.buys || 0;
       const convEntrySells = pairForScore?.txns?.m5?.sells || 0;
@@ -1389,6 +1735,17 @@ async function marketScan() {
       if (h6 < 0 && m5 > 5) score++;
 
       if (score < 7) continue; // raised from 5 — only strong independent plays
+      
+      // INTUITION CHECK: does this match our winner or loser patterns?
+      const mktBuysCount = p.txns?.h1?.buys || 0;
+      const mktSellsCount = p.txns?.h1?.sells || 0;
+      const mktBSRatio = mktBuysCount / Math.max(mktSellsCount, 1);
+      const iScore = intuitionScore(p.fdv, mktBSRatio, liq, p.volume?.h1 || 0);
+      if (iScore <= -2) {
+        log(`\u{1F9E0} INTUITION BLOCK: ${p.baseToken.symbol} score:${score}/9 but intuition:${iScore} (matches loser pattern) MC:$${Math.round(p.fdv)} B/S:${mktBuysCount}/${mktSellsCount}`);
+        continue;
+      }
+      if (iScore >= 2) score += 1; // intuition bonus for matching winner patterns
       const mktWallet = await getWalletBalance();
       const size = await safeBuySize(mktWallet, liq, 2);
       if (size < 0.08) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
@@ -1427,7 +1784,7 @@ const TWEETS_NIGHT = [
 
 async function autoTweet(state) {
   const h = parseInt(new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
-  const interval = (h >= 0 && h < 8) ? 3 * 3600000 : 3600000;
+  const interval = (h >= 2 && h < 7) ? 3 * 3600000 : 3600000;
   if (Date.now() - (state.lastTweet || 0) < interval) return;
   state.lastTweet = Date.now();
   let tweet;
@@ -1705,11 +2062,11 @@ async function runCycle() {
     running = false;
     return;
   }
-  // TIME FILTER: no buys midnight–8am EST
+  // TIME FILTER: no buys 2am–7am EST
   const estHour = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false });
   const h = parseInt(estHour);
-  if (h >= 0 && h < 8) {
-    log(`⏰ Time filter: ${h}:00 EST — no buys midnight–8am. Managing open positions only.`);
+  if (h >= 2 && h < 7) {
+    log(`⏰ Time filter: ${h}:00 EST — no buys 2am–7am. Managing open positions only.`);
     await managePositions();
     running = false;
     return;
