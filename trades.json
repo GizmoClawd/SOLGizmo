@@ -1,5 +1,29 @@
 [
   {
+    "n": 887,
+    "date": "2026-03-18",
+    "token": "EA",
+    "action": "BUY",
+    "amount": "0.2066 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5GKCe9MqytFoMRfXFDSSJv97bVS1revVKdyLorgnpump",
+    "ts": 1773794676,
+    "mc": 21195.32,
+    "vol24": 33644.1,
+    "vol1h": 33644.1,
+    "buys": 302,
+    "sells": 236,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 886,
     "date": "2026-03-18",
     "token": "murt",
