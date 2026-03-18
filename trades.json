@@ -1,5 +1,30 @@
 [
   {
+    "n": 935,
+    "date": "2026-03-18",
+    "token": "Drone",
+    "action": "BUY",
+    "amount": "0.1632 SOL",
+    "result": "2 KOL convergence: Silver, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4Z2hrQjbbvYCrckdLNiCTb4VFRRp7CNy6C2CvUJfBwVi",
+    "ts": 1773857322,
+    "mc": 6919.32,
+    "vol24": 16030.66,
+    "vol1h": 16030.66,
+    "buys": 278,
+    "sells": 174,
+    "liq": null,
+    "kols": [
+      "Silver",
+      "Cented"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 934,
     "date": "2026-03-18",
     "token": "Cook",
