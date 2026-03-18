@@ -1,5 +1,27 @@
 [
   {
+    "n": 892,
+    "date": "2026-03-18",
+    "token": "EN2nnxrg",
+    "action": "SELL",
+    "amount": "0.517 SOL",
+    "result": "Sold 100% | PnL: +450.2%",
+    "pnl": "+0.5170 SOL",
+    "color": "teal",
+    "ca": "EN2nnxrg8uUi6x2sJkzNPd2eT6rB9rdSoQNNaENA4RZA",
+    "ts": 1773875930,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 891,
     "date": "2026-03-18",
     "token": "EN2nnxrg",
