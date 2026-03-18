@@ -1,5 +1,30 @@
 [
   {
+    "n": 958,
+    "date": "2026-03-18",
+    "token": "W",
+    "action": "BUY",
+    "amount": "0.1587 SOL",
+    "result": "2 KOL convergence: decu, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FYJU3WUFS8tt28Xymqeg2uk2VvNVC6ZCHxKAfVt1pump",
+    "ts": 1773873759,
+    "mc": 9351.97,
+    "vol24": 12219.93,
+    "vol1h": 12219.93,
+    "buys": 196,
+    "sells": 133,
+    "liq": null,
+    "kols": [
+      "decu",
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 957,
     "date": "2026-03-18",
     "token": "Nascat",
