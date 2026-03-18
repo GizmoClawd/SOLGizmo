@@ -1,5 +1,27 @@
 [
   {
+    "n": 934,
+    "date": "2026-03-18",
+    "token": "Cook",
+    "action": "SELL",
+    "amount": "0.1519 SOL",
+    "result": "Sold 100% | PnL: +96.3%",
+    "pnl": "+0.1519 SOL",
+    "color": "teal",
+    "ca": "89kMgX6VLMg3Q1Np5RatAsL7e15EwGohjh3ncc4hF9wJ",
+    "ts": 1773856983,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 933,
     "date": "2026-03-18",
     "token": "Cook",
