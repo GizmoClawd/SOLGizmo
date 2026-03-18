@@ -1,5 +1,29 @@
 [
   {
+    "n": 785,
+    "date": "2026-03-18",
+    "token": "CRASHOUT",
+    "action": "BUY",
+    "amount": "0.1593 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DAaiAvqJdbmup9j7WedgHBCNAkxqhDbQYd2p6LzVpump",
+    "ts": 1773795702,
+    "mc": 24670.48,
+    "vol24": 54824.72,
+    "vol1h": 54824.72,
+    "buys": 985,
+    "sells": 568,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 784,
     "date": "2026-03-18",
     "token": "Qi",
