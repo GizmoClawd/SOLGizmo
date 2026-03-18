@@ -1,5 +1,34 @@
 [
   {
+    "n": 837,
+    "date": "2026-03-18",
+    "token": "AWn4JKLv",
+    "action": "BUY",
+    "amount": "0.16997772074999998 SOL",
+    "result": "Sniper dip entry -- 6 KOLs (decu,Jijo,Silver,dv,Cented,Kadenox)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AWn4JKLvuJhywm8M91sMux16bai5srt3d4TABPC2pump",
+    "ts": 1773859858,
+    "mc": 70649,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "decu",
+      "Jijo",
+      "Silver",
+      "dv",
+      "Cented",
+      "Kadenox"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 836,
     "date": "2026-03-18",
     "token": "8SaxSaVY",
