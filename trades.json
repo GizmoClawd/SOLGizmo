@@ -1,5 +1,29 @@
 [
   {
+    "n": 779,
+    "date": "2026-03-18",
+    "token": "dog",
+    "action": "BUY",
+    "amount": "0.119 SOL",
+    "result": "1 KOL convergence: Silver",
+    "pnl": "",
+    "color": "teal",
+    "ca": "J33i9h14QfExQgSoAtS4HuD19AexnaEfzuFJcwRppump",
+    "ts": 1773792405,
+    "mc": 134515,
+    "vol24": 310653.24,
+    "vol1h": 310653.24,
+    "buys": 3854,
+    "sells": 6039,
+    "liq": 30743.21,
+    "kols": [
+      "Silver"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 778,
     "date": "2026-03-18",
     "token": "MERTAI",
