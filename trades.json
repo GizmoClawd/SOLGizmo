@@ -1,5 +1,31 @@
 [
   {
+    "n": 832,
+    "date": "2026-03-18",
+    "token": "2YVHgKfk",
+    "action": "BUY",
+    "amount": "0.18141490724999998 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (Cupsey,Cented,dv)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2YVHgKfkdukjnhVq4fme3EBSQn32BFtCPT378WmWpump",
+    "ts": 1773858423,
+    "mc": 13406.99,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "Cented",
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 831,
     "date": "2026-03-18",
     "token": "8SaxSaVY",
