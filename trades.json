@@ -1,5 +1,30 @@
 [
   {
+    "n": 826,
+    "date": "2026-03-18",
+    "token": "8pRzPY6b",
+    "action": "BUY",
+    "amount": "0.20695929885 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (theo,decu)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8pRzPY6bQJreNqhrXZedKksUhutzio9svhyWjLAfpump",
+    "ts": 1773857055,
+    "mc": 17682.34,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "theo",
+      "decu"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 825,
     "date": "2026-03-18",
     "token": "F36jnGyi",
