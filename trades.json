@@ -1,5 +1,29 @@
 [
   {
+    "n": 931,
+    "date": "2026-03-18",
+    "token": "Clanker",
+    "action": "BUY",
+    "amount": "0.176 SOL",
+    "result": "1 KOL convergence: CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2zdJEWj1AWLUAAiSkc9LbpY1q4GQu5t1CZme3qFnpump",
+    "ts": 1773856122,
+    "mc": 50514,
+    "vol24": 178336.99,
+    "vol1h": 178336.99,
+    "buys": 2101,
+    "sells": 1493,
+    "liq": 18218.15,
+    "kols": [
+      "CLOWN"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 930,
     "date": "2026-03-18",
     "token": "Clanker",
