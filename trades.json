@@ -1,5 +1,30 @@
 [
   {
+    "n": 945,
+    "date": "2026-03-18",
+    "token": "Nascat",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: decu, theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Gu8NShW9XfhAgcGD1Af3w2KRBHDFKbypr2j9oj3Jpump",
+    "ts": 1773869234,
+    "mc": 13632.33,
+    "vol24": 44679.01,
+    "vol1h": 44679.01,
+    "buys": 903,
+    "sells": 698,
+    "liq": null,
+    "kols": [
+      "decu",
+      "theo"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 944,
     "date": "2026-03-18",
     "token": "memestock",
