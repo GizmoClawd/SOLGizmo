@@ -1,5 +1,27 @@
 [
   {
+    "n": 857,
+    "date": "2026-03-18",
+    "token": "CD40",
+    "action": "SELL",
+    "amount": "0.1177 SOL",
+    "result": "Sold 100% | PnL: -38.8%",
+    "pnl": "+0.1177 SOL",
+    "color": "teal",
+    "ca": "6pTmx7a4CXq5sNkcWAuZFSdQSrS4Usig4FVXc5UH1DmB",
+    "ts": 1773868410,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 856,
     "date": "2026-03-18",
     "token": "CLAWXIOM",
