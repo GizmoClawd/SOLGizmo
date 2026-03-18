@@ -1,5 +1,27 @@
 [
   {
+    "n": 830,
+    "date": "2026-03-18",
+    "token": "A3ixcLNc",
+    "action": "SELL",
+    "amount": "0.111 SOL",
+    "result": "Sold 100% | PnL: -37.8%",
+    "pnl": "+0.1110 SOL",
+    "color": "teal",
+    "ca": "A3ixcLNc5DZ1mEFxAVgqBWLxX7QujBpZaXifon7Npump",
+    "ts": 1773857731,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 829,
     "date": "2026-03-18",
     "token": "A3ixcLNc",
