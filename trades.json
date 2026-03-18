@@ -1,5 +1,29 @@
 [
   {
+    "n": 786,
+    "date": "2026-03-18",
+    "token": "Unemployed",
+    "action": "BUY",
+    "amount": "0.1675 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "E32CyEcbFq1y73qzDrGJSSrTpqLqxvp3F3HXsu7hpump",
+    "ts": 1773796782,
+    "mc": 18802.8,
+    "vol24": 56795.98,
+    "vol1h": 56795.98,
+    "buys": 808,
+    "sells": 514,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 785,
     "date": "2026-03-18",
     "token": "CRASHOUT",
