@@ -1,5 +1,29 @@
 [
   {
+    "n": 952,
+    "date": "2026-03-18",
+    "token": "Nascat",
+    "action": "BUY",
+    "amount": "0.1317 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BoZuK3fgsUbQK178r4B9yfjmUbKijNgtDcr3xWDWpump",
+    "ts": 1773871959,
+    "mc": 37435,
+    "vol24": 143484.68,
+    "vol1h": 143484.68,
+    "buys": 2938,
+    "sells": 2101,
+    "liq": 15749.48,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 951,
     "date": "2026-03-18",
     "token": "Manchas",
