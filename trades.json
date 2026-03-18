@@ -1,5 +1,31 @@
 [
   {
+    "n": 874,
+    "date": "2026-03-18",
+    "token": "Nascat",
+    "action": "BUY",
+    "amount": "0.2591 SOL",
+    "result": "3 KOL convergence: decu, bandit, radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BoZuK3fgsUbQK178r4B9yfjmUbKijNgtDcr3xWDWpump",
+    "ts": 1773871296,
+    "mc": 36684,
+    "vol24": 39406.46,
+    "vol1h": 39406.46,
+    "buys": 795,
+    "sells": 568,
+    "liq": 15423.41,
+    "kols": [
+      "decu",
+      "bandit",
+      "radiance"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 873,
     "date": "2026-03-18",
     "token": "OPOS",
