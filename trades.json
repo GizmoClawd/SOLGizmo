@@ -1,5 +1,34 @@
 [
   {
+    "n": 835,
+    "date": "2026-03-18",
+    "token": "Handprint",
+    "action": "BUY",
+    "amount": "0.2695 SOL",
+    "result": "6 KOL convergence: decu, Jijo, Silver, dv, Cented, Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AWn4JKLvuJhywm8M91sMux16bai5srt3d4TABPC2pump",
+    "ts": 1773859479,
+    "mc": 30546.18,
+    "vol24": 50300.67,
+    "vol1h": 50300.67,
+    "buys": 491,
+    "sells": 479,
+    "liq": null,
+    "kols": [
+      "decu",
+      "Jijo",
+      "Silver",
+      "dv",
+      "Cented",
+      "Kadenox"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 834,
     "date": "2026-03-18",
     "token": "8SaxSaVY",
