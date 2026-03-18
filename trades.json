@@ -1,5 +1,27 @@
 [
   {
+    "n": 870,
+    "date": "2026-03-18",
+    "token": "BAXATE",
+    "action": "SELL",
+    "amount": "0.2864 SOL",
+    "result": "Sold 100% | PnL: -39.3%",
+    "pnl": "+0.2864 SOL",
+    "color": "teal",
+    "ca": "8Q7FprHqM8pyyqmWaHmDdvQty27xEp5mM5vybViDpump",
+    "ts": 1773870282,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 869,
     "date": "2026-03-18",
     "token": "BAXATE",
