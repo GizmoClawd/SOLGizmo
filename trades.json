@@ -1,5 +1,31 @@
 [
   {
+    "n": 791,
+    "date": "2026-03-18",
+    "token": "D19x63RZ",
+    "action": "BUY",
+    "amount": "0.15755500005 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (Cupsey,S,decu)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "D19x63RZFJ7upsJd5c32LymJR71mpspGRTbc87Gs8TMi",
+    "ts": 1773798337,
+    "mc": 10767.61,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "S",
+      "decu"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 790,
     "date": "2026-03-18",
     "token": "FpsmZijN",
