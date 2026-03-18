@@ -1,5 +1,27 @@
 [
   {
+    "n": 792,
+    "date": "2026-03-18",
+    "token": "FpsmZijN",
+    "action": "SELL",
+    "amount": "0.1299 SOL",
+    "result": "Sold 100% | PnL: -24.6%",
+    "pnl": "+0.1299 SOL",
+    "color": "teal",
+    "ca": "FpsmZijNUpbf9XXvwmU2NFuGQpdCz4PdykSYX1dEpump",
+    "ts": 1773798379,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 791,
     "date": "2026-03-18",
     "token": "D19x63RZ",
