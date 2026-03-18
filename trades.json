@@ -1,5 +1,33 @@
 [
   {
+    "n": 871,
+    "date": "2026-03-18",
+    "token": "OPOS",
+    "action": "BUY",
+    "amount": "0.332 SOL",
+    "result": "5 KOL convergence: theo, dov7, Jijo, CLOWN, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7APdmdu3VMBDsUtBsS6PAwY5Xx37AkUtxf26bHSVpump",
+    "ts": 1773870517,
+    "mc": 9667.62,
+    "vol24": 10164.53,
+    "vol1h": 10164.53,
+    "buys": 117,
+    "sells": 53,
+    "liq": null,
+    "kols": [
+      "theo",
+      "dov7",
+      "Jijo",
+      "CLOWN",
+      "bandit"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 870,
     "date": "2026-03-18",
     "token": "BAXATE",
