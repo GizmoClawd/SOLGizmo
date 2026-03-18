@@ -1,5 +1,27 @@
 [
   {
+    "n": 890,
+    "date": "2026-03-18",
+    "token": "EeCvtGpC",
+    "action": "SELL",
+    "amount": "0.1141 SOL",
+    "result": "Sold 100% | PnL: -28.7%",
+    "pnl": "+0.1141 SOL",
+    "color": "teal",
+    "ca": "EeCvtGpCzkHj3dEJ4mpRZNQfwoUpLUzAxUW6EmHGpump",
+    "ts": 1773875506,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 889,
     "date": "2026-03-18",
     "token": "EeCvtGpC",
