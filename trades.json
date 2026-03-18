@@ -1,5 +1,27 @@
 [
   {
+    "n": 789,
+    "date": "2026-03-18",
+    "token": "FYnKnJe6",
+    "action": "SELL",
+    "amount": "0.1131 SOL",
+    "result": "Sold 100% | PnL: -17.4%",
+    "pnl": "+0.1131 SOL",
+    "color": "teal",
+    "ca": "FYnKnJe6BQuGVxWdWp4pwiGHP1DgL422pCjJ7Jzxpump",
+    "ts": 1773797762,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 788,
     "date": "2026-03-18",
     "token": "FYnKnJe6",
