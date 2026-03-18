@@ -1,5 +1,27 @@
 [
   {
+    "n": 797,
+    "date": "2026-03-18",
+    "token": "DT1gkELm",
+    "action": "SELL",
+    "amount": "0.1065 SOL",
+    "result": "Sold 100% | PnL: -51.3%",
+    "pnl": "+0.1065 SOL",
+    "color": "teal",
+    "ca": "DT1gkELmssoFvw9yvD2C7px9kLthomB3HLifXSP4pump",
+    "ts": 1773798889,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 796,
     "date": "2026-03-18",
     "token": "DT1gkELm",
