@@ -1,5 +1,27 @@
 [
   {
+    "n": 828,
+    "date": "2026-03-18",
+    "token": "F36jnGyi",
+    "action": "SELL",
+    "amount": "0.0602 SOL",
+    "result": "Sold 100% | PnL: -56.5%",
+    "pnl": "+0.0602 SOL",
+    "color": "teal",
+    "ca": "F36jnGyinQTvM79tYYyAgLmc4n1t3oze5nnTkupKpump",
+    "ts": 1773857120,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 827,
     "date": "2026-03-18",
     "token": "8pRzPY6b",
