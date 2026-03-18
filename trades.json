@@ -1,5 +1,29 @@
 [
   {
+    "n": 890,
+    "date": "2026-03-18",
+    "token": "CRASHOUT",
+    "action": "BUY",
+    "amount": "0.1387 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DAaiAvqJdbmup9j7WedgHBCNAkxqhDbQYd2p6LzVpump",
+    "ts": 1773795247,
+    "mc": 19572.51,
+    "vol24": 38911.72,
+    "vol1h": 38911.72,
+    "buys": 605,
+    "sells": 356,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 889,
     "date": "2026-03-18",
     "token": "Qi",
