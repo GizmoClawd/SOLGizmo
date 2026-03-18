@@ -1,5 +1,30 @@
 [
   {
+    "n": 883,
+    "date": "2026-03-18",
+    "token": "Atlas",
+    "action": "BUY",
+    "amount": "0.2313 SOL",
+    "result": "2 KOL convergence: Kadenox, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "A8jDJWPR9Ea2CPkN8HYpKhAmU56h2MrnrPPPwTaFpump",
+    "ts": 1773792758,
+    "mc": 26076.16,
+    "vol24": 25776.12,
+    "vol1h": 25776.12,
+    "buys": 370,
+    "sells": 204,
+    "liq": null,
+    "kols": [
+      "Kadenox",
+      "Cented"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 882,
     "date": "2026-03-17",
     "token": "BQmex8VA",
