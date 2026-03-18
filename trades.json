@@ -1,5 +1,27 @@
 [
   {
+    "n": 941,
+    "date": "2026-03-18",
+    "token": "Solana",
+    "action": "BUY",
+    "amount": "0.10805479008 SOL",
+    "result": "Boost scan score 7/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "De4ULouuU2cAQkhKuYrsrFtJGRRmcSwQD5esmnAUpump",
+    "ts": 1773859999,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 940,
     "date": "2026-03-18",
     "token": "Handprint",
