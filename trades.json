@@ -1,5 +1,31 @@
 [
   {
+    "n": 901,
+    "date": "2026-03-18",
+    "token": "SEC",
+    "action": "BUY",
+    "amount": "0.2996 SOL",
+    "result": "3 KOL convergence: decu, Coasty, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "56b2gfoKhJwWnjvE4qEhG2TC6w1vaHu7LkyRshmLmcMt",
+    "ts": 1773801428,
+    "mc": 8076.75,
+    "vol24": 25810.04,
+    "vol1h": 25810.04,
+    "buys": 134,
+    "sells": 115,
+    "liq": null,
+    "kols": [
+      "decu",
+      "Coasty",
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 900,
     "date": "2026-03-18",
     "token": "An2SMosC",
