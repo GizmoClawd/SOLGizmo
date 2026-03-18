@@ -1,5 +1,27 @@
 [
   {
+    "n": 864,
+    "date": "2026-03-18",
+    "token": "Manchas",
+    "action": "SELL",
+    "amount": "0.1953 SOL",
+    "result": "Sold 100% | PnL: +6.3%",
+    "pnl": "+0.1953 SOL",
+    "color": "teal",
+    "ca": "EY5HJfpnrFeYjwxeKbGcVUvT8ujot8QEvmQBbhvYpump",
+    "ts": 1773869820,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 863,
     "date": "2026-03-18",
     "token": "FUCKENING",
