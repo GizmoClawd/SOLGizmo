@@ -1,5 +1,27 @@
 [
   {
+    "n": 946,
+    "date": "2026-03-18",
+    "token": "Nascat",
+    "action": "SELL",
+    "amount": "0.121 SOL",
+    "result": "Sold 50% | PnL: +63.8%",
+    "pnl": "+0.1210 SOL",
+    "color": "teal",
+    "ca": "Gu8NShW9XfhAgcGD1Af3w2KRBHDFKbypr2j9oj3Jpump",
+    "ts": 1773869315,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 945,
     "date": "2026-03-18",
     "token": "Nascat",
