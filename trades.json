@@ -1,5 +1,27 @@
 [
   {
+    "n": 924,
+    "date": "2026-03-18",
+    "token": "Chair",
+    "action": "SELL",
+    "amount": "0.3886 SOL",
+    "result": "Sold 100% | PnL: -42.0%",
+    "pnl": "+0.3886 SOL",
+    "color": "teal",
+    "ca": "2Vt62r6HxcwCuuasT4t5AUNJqmgfhq2URmPKuwrtpump",
+    "ts": 1773850513,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 923,
     "date": "2026-03-18",
     "token": "Chair",
