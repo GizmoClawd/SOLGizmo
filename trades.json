@@ -1,5 +1,27 @@
 [
   {
+    "n": 894,
+    "date": "2026-03-18",
+    "token": "DAaiAvqJ",
+    "action": "SELL",
+    "amount": "0.4544 SOL",
+    "result": "Sold 100% | PnL: +31.2%",
+    "pnl": "+0.4544 SOL",
+    "color": "teal",
+    "ca": "DAaiAvqJdbmup9j7WedgHBCNAkxqhDbQYd2p6LzVpump",
+    "ts": 1773795779,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 893,
     "date": "2026-03-18",
     "token": "DAaiAvqJ",
