@@ -1,5 +1,27 @@
 [
   {
+    "n": 915,
+    "date": "2026-03-18",
+    "token": "UHY",
+    "action": "BUY",
+    "amount": "0.4185 SOL",
+    "result": "Boost scan score 8/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FZvhhggPbBn5j1CiSRUvy4iD9cENpWdWtAFF9KAupump",
+    "ts": 1773841970,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 914,
     "date": "2026-03-18",
     "token": "PICKLE",
