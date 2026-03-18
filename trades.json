@@ -1,5 +1,33 @@
 [
   {
+    "n": 869,
+    "date": "2026-03-18",
+    "token": "BAXATE",
+    "action": "BUY",
+    "amount": "0.3452 SOL",
+    "result": "5 KOL convergence: decu, theo, CLOWN, Casino, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8Q7FprHqM8pyyqmWaHmDdvQty27xEp5mM5vybViDpump",
+    "ts": 1773870189,
+    "mc": 74600,
+    "vol24": 128582.1,
+    "vol1h": 128582.1,
+    "buys": 899,
+    "sells": 1118,
+    "liq": 22039.07,
+    "kols": [
+      "decu",
+      "theo",
+      "CLOWN",
+      "Casino",
+      "Cupsey"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 868,
     "date": "2026-03-18",
     "token": "BAXATE",
