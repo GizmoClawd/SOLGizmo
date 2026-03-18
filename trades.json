@@ -1,5 +1,30 @@
 [
   {
+    "n": 937,
+    "date": "2026-03-18",
+    "token": "pattern",
+    "action": "BUY",
+    "amount": "0.1359 SOL",
+    "result": "2 KOL convergence: theo, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2GBDnSVnRMJPxyQo6Hsh1ZbWFJxxdGv6xhHUvNxppump",
+    "ts": 1773858252,
+    "mc": 15710.71,
+    "vol24": 13463.04,
+    "vol1h": 13463.04,
+    "buys": 121,
+    "sells": 60,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Cented"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 936,
     "date": "2026-03-18",
     "token": "Drone",
