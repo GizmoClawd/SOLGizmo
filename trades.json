@@ -1,5 +1,27 @@
 [
   {
+    "n": 922,
+    "date": "2026-03-18",
+    "token": "Solana",
+    "action": "SELL",
+    "amount": "0.2676 SOL",
+    "result": "Sold 100% | PnL: -18.2%",
+    "pnl": "+0.2676 SOL",
+    "color": "teal",
+    "ca": "De4ULouuU2cAQkhKuYrsrFtJGRRmcSwQD5esmnAUpump",
+    "ts": 1773850379,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 921,
     "date": "2026-03-18",
     "token": "Solana",
