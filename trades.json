@@ -1,5 +1,29 @@
 [
   {
+    "n": 855,
+    "date": "2026-03-18",
+    "token": "CD40",
+    "action": "BUY",
+    "amount": "0.201 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6pTmx7a4CXq5sNkcWAuZFSdQSrS4Usig4FVXc5UH1DmB",
+    "ts": 1773868348,
+    "mc": 6339.45,
+    "vol24": 69568.15,
+    "vol1h": 69568.15,
+    "buys": 898,
+    "sells": 705,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 854,
     "date": "2026-03-18",
     "token": "6pTmx7a4",
