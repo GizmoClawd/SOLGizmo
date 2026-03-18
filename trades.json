@@ -1,5 +1,27 @@
 [
   {
+    "n": 912,
+    "date": "2026-03-18",
+    "token": "PICKLE",
+    "action": "SELL",
+    "amount": "0.2116 SOL",
+    "result": "Sold 100% | PnL: +31.2%",
+    "pnl": "+0.2116 SOL",
+    "color": "teal",
+    "ca": "883GeVb468Vs2wa1ScwJEubQ4Pz1gmqhxzrzqisgpump",
+    "ts": 1773804596,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 911,
     "date": "2026-03-18",
     "token": "PICKLE",
