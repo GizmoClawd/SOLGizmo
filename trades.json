@@ -1,5 +1,27 @@
 [
   {
+    "n": 811,
+    "date": "2026-03-18",
+    "token": "copycat",
+    "action": "SELL",
+    "amount": "0.0648 SOL",
+    "result": "Sold 100% | PnL: -3.9%",
+    "pnl": "+0.0648 SOL",
+    "color": "teal",
+    "ca": "CEEnLbJ7N4qozAWPuJQWGfSvW6V6Ny5ZigGzjnNtpump",
+    "ts": 1773806604,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 810,
     "date": "2026-03-18",
     "token": "copycat",
