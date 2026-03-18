@@ -1,5 +1,30 @@
 [
   {
+    "n": 865,
+    "date": "2026-03-18",
+    "token": "BAXATE",
+    "action": "BUY",
+    "amount": "0.1898 SOL",
+    "result": "2 KOL convergence: bandit, CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9DzmN1tGt4jT6ee8k3mkSgyMAxerAh6EYkaNAt42pump",
+    "ts": 1773869982,
+    "mc": 25336.84,
+    "vol24": 25031.96,
+    "vol1h": 25031.96,
+    "buys": 355,
+    "sells": 191,
+    "liq": null,
+    "kols": [
+      "bandit",
+      "CLOWN"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 864,
     "date": "2026-03-18",
     "token": "Manchas",
