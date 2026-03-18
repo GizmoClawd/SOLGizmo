@@ -1,5 +1,29 @@
 [
   {
+    "n": 781,
+    "date": "2026-03-18",
+    "token": "Atlas",
+    "action": "BUY",
+    "amount": "0.2077 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "A8jDJWPR9Ea2CPkN8HYpKhAmU56h2MrnrPPPwTaFpump",
+    "ts": 1773793418,
+    "mc": 21410.38,
+    "vol24": 73373.08,
+    "vol1h": 73373.08,
+    "buys": 943,
+    "sells": 615,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 780,
     "date": "2026-03-18",
     "token": "dog",
