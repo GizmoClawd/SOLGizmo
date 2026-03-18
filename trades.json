@@ -1,5 +1,31 @@
 [
   {
+    "n": 806,
+    "date": "2026-03-18",
+    "token": "JOE",
+    "action": "BUY",
+    "amount": "0.2723 SOL",
+    "result": "3 KOL convergence: theo, bandit, CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "wx8jFrVSfBVv31Qo9sZ1gpboZLDrnvuSSMH9wzhpump",
+    "ts": 1773805668,
+    "mc": 8958.43,
+    "vol24": 29871.67,
+    "vol1h": 29871.67,
+    "buys": 397,
+    "sells": 318,
+    "liq": null,
+    "kols": [
+      "theo",
+      "bandit",
+      "CLOWN"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 805,
     "date": "2026-03-18",
     "token": "G6k9KpHC",
