@@ -1,5 +1,29 @@
 [
   {
+    "n": 950,
+    "date": "2026-03-18",
+    "token": "Manchas",
+    "action": "BUY",
+    "amount": "0.1704 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EY5HJfpnrFeYjwxeKbGcVUvT8ujot8QEvmQBbhvYpump",
+    "ts": 1773869624,
+    "mc": 33202.92,
+    "vol24": 51543.18,
+    "vol1h": 51543.18,
+    "buys": 625,
+    "sells": 479,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 949,
     "date": "2026-03-18",
     "token": "Pumpfun",
