@@ -1,5 +1,29 @@
 [
   {
+    "n": 856,
+    "date": "2026-03-18",
+    "token": "CLAWXIOM",
+    "action": "BUY",
+    "amount": "0.1733 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "De5zcqFmnhBdoJEWmVfGJgNdQYNFtRW8BcbzVjcPpump",
+    "ts": 1773868387,
+    "mc": 15052.5,
+    "vol24": 18927.72,
+    "vol1h": 18927.72,
+    "buys": 248,
+    "sells": 186,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 855,
     "date": "2026-03-18",
     "token": "CD40",
