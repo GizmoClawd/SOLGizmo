@@ -1,5 +1,30 @@
 [
   {
+    "n": 923,
+    "date": "2026-03-18",
+    "token": "Chair",
+    "action": "BUY",
+    "amount": "0.3878 SOL",
+    "result": "2 KOL convergence: Jijo, theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2Vt62r6HxcwCuuasT4t5AUNJqmgfhq2URmPKuwrtpump",
+    "ts": 1773850492,
+    "mc": 6786.15,
+    "vol24": 11890.31,
+    "vol1h": 11890.31,
+    "buys": 79,
+    "sells": 63,
+    "liq": null,
+    "kols": [
+      "Jijo",
+      "theo"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 922,
     "date": "2026-03-18",
     "token": "Solana",
