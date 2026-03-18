@@ -1,5 +1,29 @@
 [
   {
+    "n": 799,
+    "date": "2026-03-18",
+    "token": "ENTHUSIAST",
+    "action": "BUY",
+    "amount": "0.1713 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2g6mDB34KbAsdQYqE3pZqAqC8GBvNmHANSXE7iBQpump",
+    "ts": 1773802964,
+    "mc": 9280.14,
+    "vol24": 76158.19,
+    "vol1h": 13863.12,
+    "buys": 166,
+    "sells": 137,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 798,
     "date": "2026-03-18",
     "token": "4.25",
