@@ -1,5 +1,27 @@
 [
   {
+    "n": 795,
+    "date": "2026-03-18",
+    "token": "HKH1N3KV",
+    "action": "SELL",
+    "amount": "0.1267 SOL",
+    "result": "Sold 100% | PnL: -33.7%",
+    "pnl": "+0.1267 SOL",
+    "color": "teal",
+    "ca": "HKH1N3KVLAj3KrW1DXnuxG6vQUaAV63wcNka5zQzpump",
+    "ts": 1773798483,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 794,
     "date": "2026-03-18",
     "token": "HKH1N3KV",
