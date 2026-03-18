@@ -1,5 +1,30 @@
 [
   {
+    "n": 801,
+    "date": "2026-03-18",
+    "token": "DtCZGB5J",
+    "action": "BUY",
+    "amount": "0.14229038219999998 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (decu,bandit)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DtCZGB5J3iBrXRKVTppD1N23MoWWsxk28yPbfiPMpump",
+    "ts": 1773803834,
+    "mc": 15284.12,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "decu",
+      "bandit"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 800,
     "date": "2026-03-18",
     "token": "ENTHUSIAST",
