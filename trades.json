@@ -1,5 +1,29 @@
 [
   {
+    "n": 851,
+    "date": "2026-03-18",
+    "token": "memestock",
+    "action": "BUY",
+    "amount": "0.2064 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HRzPgDGpxSVeWNFxVgzyc6WH7VbECd1pwqaiPcgdpump",
+    "ts": 1773868198,
+    "mc": 35431,
+    "vol24": 70808.37,
+    "vol1h": 70808.37,
+    "buys": 992,
+    "sells": 819,
+    "liq": 15029.72,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 850,
     "date": "2026-03-18",
     "token": "POLSIA",
