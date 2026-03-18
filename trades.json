@@ -1,5 +1,29 @@
 [
   {
+    "n": 913,
+    "date": "2026-03-18",
+    "token": "PICKLE",
+    "action": "BUY",
+    "amount": "0.147 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "883GeVb468Vs2wa1ScwJEubQ4Pz1gmqhxzrzqisgpump",
+    "ts": 1773804641,
+    "mc": 92904,
+    "vol24": 366538.21,
+    "vol1h": 366538.21,
+    "buys": 3739,
+    "sells": 3475,
+    "liq": 25717.18,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 912,
     "date": "2026-03-18",
     "token": "PICKLE",
