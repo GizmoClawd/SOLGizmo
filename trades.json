@@ -1,5 +1,31 @@
 [
   {
+    "n": 794,
+    "date": "2026-03-18",
+    "token": "HKH1N3KV",
+    "action": "BUY",
+    "amount": "0.19170102 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (CLOWN,Silver,Cupsey)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HKH1N3KVLAj3KrW1DXnuxG6vQUaAV63wcNka5zQzpump",
+    "ts": 1773798454,
+    "mc": 9795.08,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "CLOWN",
+      "Silver",
+      "Cupsey"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 793,
     "date": "2026-03-18",
     "token": "D19x63RZ",
