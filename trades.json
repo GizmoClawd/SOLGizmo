@@ -1,5 +1,30 @@
 [
   {
+    "n": 933,
+    "date": "2026-03-18",
+    "token": "Cook",
+    "action": "BUY",
+    "amount": "0.2121 SOL",
+    "result": "2 KOL convergence: theo, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "89kMgX6VLMg3Q1Np5RatAsL7e15EwGohjh3ncc4hF9wJ",
+    "ts": 1773856962,
+    "mc": 6927.55,
+    "vol24": 24992.72,
+    "vol1h": 24992.72,
+    "buys": 212,
+    "sells": 169,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Jijo"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 932,
     "date": "2026-03-18",
     "token": "Clanker",
