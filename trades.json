@@ -1,5 +1,27 @@
 [
   {
+    "n": 802,
+    "date": "2026-03-18",
+    "token": "DtCZGB5J",
+    "action": "SELL",
+    "amount": "0.1271 SOL",
+    "result": "Sold 100% | PnL: +2.7%",
+    "pnl": "+0.1271 SOL",
+    "color": "teal",
+    "ca": "DtCZGB5J3iBrXRKVTppD1N23MoWWsxk28yPbfiPMpump",
+    "ts": 1773803887,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 801,
     "date": "2026-03-18",
     "token": "DtCZGB5J",
