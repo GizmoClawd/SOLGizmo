@@ -1,5 +1,31 @@
 [
   {
+    "n": 895,
+    "date": "2026-03-18",
+    "token": "E32CyEcb",
+    "action": "BUY",
+    "amount": "0.23370772574999998 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (decu,bandit,Cupsey)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "E32CyEcbFq1y73qzDrGJSSrTpqLqxvp3F3HXsu7hpump",
+    "ts": 1773796686,
+    "mc": 13193.79,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "decu",
+      "bandit",
+      "Cupsey"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 894,
     "date": "2026-03-18",
     "token": "DAaiAvqJ",
