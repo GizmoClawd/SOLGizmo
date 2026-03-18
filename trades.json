@@ -1,5 +1,30 @@
 [
   {
+    "n": 897,
+    "date": "2026-03-18",
+    "token": "COMMODITY",
+    "action": "BUY",
+    "amount": "0.2117 SOL",
+    "result": "2 KOL convergence: Silver, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "An2SMosCgrh27WyoNXebYkSeNQ8C6PXUqw4JnHeMpump",
+    "ts": 1773800528,
+    "mc": 16041.93,
+    "vol24": 12648.95,
+    "vol1h": 12648.95,
+    "buys": 193,
+    "sells": 81,
+    "liq": null,
+    "kols": [
+      "Silver",
+      "bandit"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 896,
     "date": "2026-03-18",
     "token": "E32CyEcb",
