@@ -1,5 +1,27 @@
 [
   {
+    "n": 877,
+    "date": "2026-03-18",
+    "token": "STONKS",
+    "action": "SELL",
+    "amount": "0.0475 SOL",
+    "result": "Sold 25% | PnL: +108.3%",
+    "pnl": "+0.0475 SOL",
+    "color": "teal",
+    "ca": "VQ2NUnFMTURwr2WVaVZA1eq9esACWvhodf22QLVy5Le",
+    "ts": 1773871469,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 876,
     "date": "2026-03-18",
     "token": "STONKS",
