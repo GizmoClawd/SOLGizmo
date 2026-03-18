@@ -1,5 +1,30 @@
 [
   {
+    "n": 947,
+    "date": "2026-03-18",
+    "token": "Pumpfun",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: theo, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CVZ7PDwYaEiRQ1Msd5QmVzecKsEeSVyF6Rjgbxu1pump",
+    "ts": 1773869416,
+    "mc": 17511.68,
+    "vol24": 38367.98,
+    "vol1h": 38367.98,
+    "buys": 339,
+    "sells": 168,
+    "liq": null,
+    "kols": [
+      "theo",
+      "bandit"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 946,
     "date": "2026-03-18",
     "token": "Nascat",
