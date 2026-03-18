@@ -1,5 +1,29 @@
 [
   {
+    "n": 885,
+    "date": "2026-03-18",
+    "token": "murt",
+    "action": "BUY",
+    "amount": "0.1959 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6eFymuUeBHgqRdQdKqdc3UtGqbFrEsWJyh1sjgJhPWwW",
+    "ts": 1773793146,
+    "mc": 11605.82,
+    "vol24": 34411.93,
+    "vol1h": 34411.93,
+    "buys": 402,
+    "sells": 349,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 884,
     "date": "2026-03-18",
     "token": "Atlas",
