@@ -1,5 +1,30 @@
 [
   {
+    "n": 927,
+    "date": "2026-03-18",
+    "token": "Agentcoin",
+    "action": "BUY",
+    "amount": "0.2941 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F28Cej4TSFKVbatjVE2L8sfwdsNi9SGteNx1fdn3SkVU",
+    "ts": 1773854123,
+    "mc": 7550.74,
+    "vol24": 10837.34,
+    "vol1h": 10837.34,
+    "buys": 130,
+    "sells": 76,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Cupsey"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 926,
     "date": "2026-03-18",
     "token": "ALIENS",
