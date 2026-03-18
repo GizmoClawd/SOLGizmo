@@ -1,5 +1,30 @@
 [
   {
+    "n": 831,
+    "date": "2026-03-18",
+    "token": "8SaxSaVY",
+    "action": "BUY",
+    "amount": "0.18141490724999998 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (CLOWN,Silver)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8SaxSaVY1m8NQoiWMwkgWFpVfa8oxTQvS8VpvM6Apump",
+    "ts": 1773858417,
+    "mc": 9447.99,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "CLOWN",
+      "Silver"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 830,
     "date": "2026-03-18",
     "token": "A3ixcLNc",
