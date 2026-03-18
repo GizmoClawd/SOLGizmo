@@ -1,5 +1,30 @@
 [
   {
+    "n": 954,
+    "date": "2026-03-18",
+    "token": "GROKTRADER",
+    "action": "BUY",
+    "amount": "0.1496 SOL",
+    "result": "2 KOL convergence: dv, dov7",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CUbHRANs9MPeKiDQgM2FG4egsxBYJSHonSVrVoG8pump",
+    "ts": 1773872403,
+    "mc": 51716,
+    "vol24": 90229.79,
+    "vol1h": 90229.79,
+    "buys": 1145,
+    "sells": 1089,
+    "liq": 18243.69,
+    "kols": [
+      "dv",
+      "dov7"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 953,
     "date": "2026-03-18",
     "token": "Nascat",
