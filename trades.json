@@ -1,5 +1,30 @@
 [
   {
+    "n": 848,
+    "date": "2026-03-18",
+    "token": "POLSIA",
+    "action": "BUY",
+    "amount": "0.2092 SOL",
+    "result": "2 KOL convergence: Casino, CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BfXjW2YMaatKPgo7Y6qsp3ftJok2gKyJwKzqu4hEpump",
+    "ts": 1773864510,
+    "mc": 30591,
+    "vol24": 154674.34,
+    "vol1h": 154674.34,
+    "buys": 1774,
+    "sells": 1527,
+    "liq": 13919.61,
+    "kols": [
+      "Casino",
+      "CLOWN"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 847,
     "date": "2026-03-18",
     "token": "7oYDfNrB",
