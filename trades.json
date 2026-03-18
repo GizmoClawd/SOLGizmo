@@ -1,5 +1,29 @@
 [
   {
+    "n": 893,
+    "date": "2026-03-18",
+    "token": "NASDANQ",
+    "action": "BUY",
+    "amount": "0.2122 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3QyXKwWRb5YPW7wsw38L5h6wFsENFonbf41hsL1vpump",
+    "ts": 1773878201,
+    "mc": 19406.94,
+    "vol24": 186676.97,
+    "vol1h": 35484.09,
+    "buys": 408,
+    "sells": 295,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 892,
     "date": "2026-03-18",
     "token": "EN2nnxrg",
