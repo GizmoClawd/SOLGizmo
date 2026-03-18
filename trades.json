@@ -1,5 +1,30 @@
 [
   {
+    "n": 942,
+    "date": "2026-03-18",
+    "token": "memestock",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: theo, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HRzPgDGpxSVeWNFxVgzyc6WH7VbECd1pwqaiPcgdpump",
+    "ts": 1773867974,
+    "mc": 17861.59,
+    "vol24": 16707.17,
+    "vol1h": 16707.17,
+    "buys": 174,
+    "sells": 85,
+    "liq": null,
+    "kols": [
+      "theo",
+      "decu"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 941,
     "date": "2026-03-18",
     "token": "Solana",
