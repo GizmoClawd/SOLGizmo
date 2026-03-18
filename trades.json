@@ -1,5 +1,30 @@
 [
   {
+    "n": 906,
+    "date": "2026-03-18",
+    "token": "PICKLE",
+    "action": "BUY",
+    "amount": "0.1671 SOL",
+    "result": "2 KOL convergence: Silver, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "883GeVb468Vs2wa1ScwJEubQ4Pz1gmqhxzrzqisgpump",
+    "ts": 1773803787,
+    "mc": 47773,
+    "vol24": 71417.47,
+    "vol1h": 71417.47,
+    "buys": 670,
+    "sells": 947,
+    "liq": 17907.07,
+    "kols": [
+      "Silver",
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 905,
     "date": "2026-03-18",
     "token": "Qi",
