@@ -1,5 +1,31 @@
 [
   {
+    "n": 1013,
+    "date": "2026-03-19",
+    "token": "K'lorh",
+    "action": "BUY",
+    "amount": "0.18 SOL",
+    "result": "3 KOL convergence: decu, bandit, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BLZyLTPFrzkzLXTnT14XG9HkCWyNCMLE6ni8czwvpump",
+    "ts": 1773948801,
+    "mc": 23712,
+    "vol24": 198710.73,
+    "vol1h": 198710.73,
+    "buys": 1460,
+    "sells": 1000,
+    "liq": 12223.53,
+    "kols": [
+      "decu",
+      "bandit",
+      "Cented"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1012,
     "date": "2026-03-19",
     "token": "C4c8PYmM",
