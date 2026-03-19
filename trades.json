@@ -1,5 +1,31 @@
 [
   {
+    "n": 897,
+    "date": "2026-03-19",
+    "token": "NASDAQ",
+    "action": "BUY",
+    "amount": "0.3822 SOL",
+    "result": "3 KOL convergence: Jijo, theo, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7fwejnkopLFAmoyiHQiV8efqQhGYPRcZj5p31fvkpump",
+    "ts": 1773883125,
+    "mc": 40281,
+    "vol24": 20411.96,
+    "vol1h": 20411.96,
+    "buys": 353,
+    "sells": 220,
+    "liq": 16021.43,
+    "kols": [
+      "Jijo",
+      "theo",
+      "bandit"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 896,
     "date": "2026-03-19",
     "token": "BpkNCovb",
