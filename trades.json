@@ -1,5 +1,27 @@
 [
   {
+    "n": 1071,
+    "date": "2026-03-19",
+    "token": "Pete",
+    "action": "SELL",
+    "amount": "0.0164 SOL",
+    "result": "Sold 15% | PnL: +30.5%",
+    "pnl": "+0.0164 SOL",
+    "color": "teal",
+    "ca": "8Ak4jBMfwdBxvze3DgDcieEBZCP2xjNxrTCfggmkpump",
+    "ts": 1773962660,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1070,
     "date": "2026-03-19",
     "token": "HqMPmr1M",
