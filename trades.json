@@ -1,5 +1,29 @@
 [
   {
+    "n": 908,
+    "date": "2026-03-19",
+    "token": "Forever",
+    "action": "BUY",
+    "amount": "0.1661 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GjaVnmAVzSNVB9q3XFuWTsKNQZxvX2j7DGdjigC5pump",
+    "ts": 1773887449,
+    "mc": 10600.31,
+    "vol24": 19262.55,
+    "vol1h": 19262.55,
+    "buys": 295,
+    "sells": 142,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 907,
     "date": "2026-03-19",
     "token": "BORING ",
