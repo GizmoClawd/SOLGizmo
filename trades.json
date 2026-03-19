@@ -1,5 +1,27 @@
 [
   {
+    "n": 974,
+    "date": "2026-03-19",
+    "token": "BOAT",
+    "action": "SELL",
+    "amount": "0.6232 SOL",
+    "result": "Sold 100% | PnL: +1.3%",
+    "pnl": "+0.6232 SOL",
+    "color": "teal",
+    "ca": "hdk6bBixNGmypyncvpixkRQD4aHtMGJcFqC1afYpump",
+    "ts": 1773940840,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 973,
     "date": "2026-03-19",
     "token": "War",
