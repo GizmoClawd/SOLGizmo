@@ -1,5 +1,30 @@
 [
   {
+    "n": 902,
+    "date": "2026-03-19",
+    "token": "Takeru",
+    "action": "BUY",
+    "amount": "0.2163 SOL",
+    "result": "2 KOL convergence: bandit, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EeSu9w71iqLG73SBJN5hkUFVCA7PBi1PpLEmKTXHpump",
+    "ts": 1773884746,
+    "mc": 9596.81,
+    "vol24": 15106.37,
+    "vol1h": 15106.37,
+    "buys": 180,
+    "sells": 85,
+    "liq": null,
+    "kols": [
+      "bandit",
+      "decu"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 901,
     "date": "2026-03-19",
     "token": "NASDAQ",
