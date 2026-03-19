@@ -1,5 +1,30 @@
 [
   {
+    "n": 1011,
+    "date": "2026-03-19",
+    "token": "AeTbghju",
+    "action": "BUY",
+    "amount": "0.13674129074999997 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Cented,decu)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AeTbghjuFdDYR6XJneT782RCpgWMvrQAcLtDsWGYpump",
+    "ts": 1773948567,
+    "mc": 15543.93,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "decu"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1010,
     "date": "2026-03-19",
     "token": "K'lorh",
