@@ -1,5 +1,31 @@
 [
   {
+    "n": 992,
+    "date": "2026-03-19",
+    "token": "42pV7T4n",
+    "action": "BUY",
+    "amount": "0.20200441095 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (decu,theo,CLOWN)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "42pV7T4njV2RwnqqCy31Hxe148xVzEASxP2TUoPtpump",
+    "ts": 1773943545,
+    "mc": 9171.71,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "decu",
+      "theo",
+      "CLOWN"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 991,
     "date": "2026-03-19",
     "token": "Pssh",
