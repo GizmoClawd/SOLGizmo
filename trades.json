@@ -1,5 +1,30 @@
 [
   {
+    "n": 920,
+    "date": "2026-03-19",
+    "token": "EizYb96T",
+    "action": "BUY",
+    "amount": "0.234647538 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Kadenox,theo)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EizYb96TRLXuf8y9AMPaEkW1ZiBpmYtbhr1b5mBLpump",
+    "ts": 1773891194,
+    "mc": 12535.34,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Kadenox",
+      "theo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 919,
     "date": "2026-03-19",
     "token": "Simulation",
