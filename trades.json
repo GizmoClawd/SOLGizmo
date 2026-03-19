@@ -1,5 +1,29 @@
 [
   {
+    "n": 906,
+    "date": "2026-03-19",
+    "token": "BORING ",
+    "action": "BUY",
+    "amount": "0.1537 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9oz8YqsCuF1z3JvmjtXZGhx6zQsVWAMZ59EpQXghpump",
+    "ts": 1773886697,
+    "mc": 7179.93,
+    "vol24": 18755.47,
+    "vol1h": 18755.47,
+    "buys": 271,
+    "sells": 135,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 905,
     "date": "2026-03-19",
     "token": "ABDUCTED",
