@@ -1,5 +1,30 @@
 [
   {
+    "n": 986,
+    "date": "2026-03-19",
+    "token": "RAWDOG",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: decu, theo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AfCtc7hyfgRyeufKW4JWQvSAhxs3Dc16vkkHEWYXpump",
+    "ts": 1773893877,
+    "mc": 7695.09,
+    "vol24": 15625.02,
+    "vol1h": 15625.02,
+    "buys": 240,
+    "sells": 152,
+    "liq": null,
+    "kols": [
+      "decu",
+      "theo"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 985,
     "date": "2026-03-19",
     "token": "QuickRiches",
