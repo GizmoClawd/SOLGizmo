@@ -1,5 +1,30 @@
 [
   {
+    "n": 1060,
+    "date": "2026-03-19",
+    "token": "tendies",
+    "action": "BUY",
+    "amount": "0.1142 SOL",
+    "result": "2 KOL convergence: CLOWN, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "G8JaybyaSCnJWKdGhMQgD6odj2UKpKtYjYxXwfBApump",
+    "ts": 1773959235,
+    "mc": 16221.25,
+    "vol24": 82537.91,
+    "vol1h": 82537.91,
+    "buys": 1342,
+    "sells": 1272,
+    "liq": null,
+    "kols": [
+      "CLOWN",
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1059,
     "date": "2026-03-19",
     "token": "8Gi8WXGa",
