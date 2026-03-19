@@ -1,5 +1,29 @@
 [
   {
+    "n": 938,
+    "date": "2026-03-19",
+    "token": "SURVIVOR",
+    "action": "BUY",
+    "amount": "0.1819 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BT53gHSgS62sKUqe7HxZV7pGvxNKJczspBasU5jPRVw6",
+    "ts": 1773922408,
+    "mc": 45448,
+    "vol24": 35761.28,
+    "vol1h": 35761.28,
+    "buys": 426,
+    "sells": 350,
+    "liq": 16934,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 937,
     "date": "2026-03-19",
     "token": "AI",
