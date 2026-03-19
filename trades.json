@@ -1,5 +1,29 @@
 [
   {
+    "n": 981,
+    "date": "2026-03-19",
+    "token": "￼",
+    "action": "BUY",
+    "amount": "0.1788 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9Yx1GRQc1jn9g7xeKdgqs1cwqQUqyqWu84eNcjKXpump",
+    "ts": 1773891689,
+    "mc": 12682.7,
+    "vol24": 72667.36,
+    "vol1h": 72667.36,
+    "buys": 688,
+    "sells": 774,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 980,
     "date": "2026-03-19",
     "token": "Quit",
