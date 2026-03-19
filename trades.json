@@ -1,5 +1,30 @@
 [
   {
+    "n": 951,
+    "date": "2026-03-19",
+    "token": "2zsomZTq",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Cented,Casino)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2zsomZTqkN79ET65esdsL6ajBhZcwi6P7P6CcJGDpump",
+    "ts": 1773933566,
+    "mc": 11605.52,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Casino"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 950,
     "date": "2026-03-19",
     "token": "beecat",
