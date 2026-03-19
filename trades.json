@@ -1,5 +1,27 @@
 [
   {
+    "n": 1076,
+    "date": "2026-03-19",
+    "token": "Massive",
+    "action": "SELL",
+    "amount": "0.026 SOL",
+    "result": "Sold 25% | PnL: +109.2%",
+    "pnl": "+0.0260 SOL",
+    "color": "teal",
+    "ca": "BHyJ3FujnudpFdYi2FRzxoDRSQ6fK39H7iszqZpQpump",
+    "ts": 1773963972,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1075,
     "date": "2026-03-19",
     "token": "Massive",
