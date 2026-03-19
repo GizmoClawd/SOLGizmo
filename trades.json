@@ -1,5 +1,27 @@
 [
   {
+    "n": 993,
+    "date": "2026-03-19",
+    "token": "CHUCK",
+    "action": "SELL",
+    "amount": "0.1943 SOL",
+    "result": "Sold 100% | PnL: -61.7%",
+    "pnl": "+0.1943 SOL",
+    "color": "teal",
+    "ca": "2my4BrVaSWXiHN5b41Eij8PKUKHBVAtyWbbfLUQipump",
+    "ts": 1773938928,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 992,
     "date": "2026-03-19",
     "token": "CHUCK",
