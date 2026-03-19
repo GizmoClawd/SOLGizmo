@@ -1,5 +1,31 @@
 [
   {
+    "n": 917,
+    "date": "2026-03-19",
+    "token": "Simulation",
+    "action": "BUY",
+    "amount": "0.2816 SOL",
+    "result": "3 KOL convergence: dv, Cupsey, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FhvaznSrMJteFmDY7YTQ51CvKpC7MFH7oFum8J8zpump",
+    "ts": 1773890839,
+    "mc": 54986,
+    "vol24": 58012.97,
+    "vol1h": 58012.97,
+    "buys": 781,
+    "sells": 720,
+    "liq": 18876.72,
+    "kols": [
+      "dv",
+      "Cupsey",
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 916,
     "date": "2026-03-19",
     "token": "WirKV2et",
