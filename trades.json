@@ -1,5 +1,33 @@
 [
   {
+    "n": 965,
+    "date": "2026-03-19",
+    "token": "ישראל",
+    "action": "BUY",
+    "amount": "0.3558 SOL",
+    "result": "5 KOL convergence: dv, decu, CLOWN, theo, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8HBUpL8grTsGm356Xw3usMuFxHQWw3aUALy22PqYaSYC",
+    "ts": 1773938688,
+    "mc": 9245.01,
+    "vol24": 56415.93,
+    "vol1h": 56415.93,
+    "buys": 753,
+    "sells": 662,
+    "liq": null,
+    "kols": [
+      "dv",
+      "decu",
+      "CLOWN",
+      "theo",
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 964,
     "date": "2026-03-19",
     "token": "Gh9zXPdx",
