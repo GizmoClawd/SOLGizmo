@@ -1,5 +1,30 @@
 [
   {
+    "n": 973,
+    "date": "2026-03-19",
+    "token": "ANTIAI",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: dv, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Af5XKbY97TUmdwznH3MYZJG5fmgGC1LEZPZEcUmxpump",
+    "ts": 1773885539,
+    "mc": 9082.84,
+    "vol24": 15489.23,
+    "vol1h": 15489.23,
+    "buys": 211,
+    "sells": 140,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Cupsey"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 972,
     "date": "2026-03-19",
     "token": "BLACKLINE",
