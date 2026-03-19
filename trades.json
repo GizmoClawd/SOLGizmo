@@ -1,5 +1,31 @@
 [
   {
+    "n": 1004,
+    "date": "2026-03-19",
+    "token": "6N23nBrn",
+    "action": "BUY",
+    "amount": "0.18118037385 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (Cupsey,Cented,CLOWN)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6N23nBrnxJ2m7gFcLUtPfMHn5heLRu5iqD3ucJnRpump",
+    "ts": 1773947266,
+    "mc": 18423.2,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cupsey",
+      "Cented",
+      "CLOWN"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1003,
     "date": "2026-03-19",
     "token": "mentally",
