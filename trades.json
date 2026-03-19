@@ -1,5 +1,30 @@
 [
   {
+    "n": 989,
+    "date": "2026-03-19",
+    "token": "Finger",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: dv, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EX4Y2vMjg7GUEb9QoRF7uNey6w5wq3omPMhzChdFpump",
+    "ts": 1773938248,
+    "mc": 11791.28,
+    "vol24": 10396.53,
+    "vol1h": 10396.53,
+    "buys": 120,
+    "sells": 60,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Jijo"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 988,
     "date": "2026-03-19",
     "token": "RAWDOG",
