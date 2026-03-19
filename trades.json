@@ -1,5 +1,30 @@
 [
   {
+    "n": 930,
+    "date": "2026-03-19",
+    "token": "3wFevmXJ",
+    "action": "BUY",
+    "amount": "0.27558594885 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (theo,Silver)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3wFevmXJ2VxPkDp73bhMSVAmkrqJMdXwK4CtcmHspump",
+    "ts": 1773892791,
+    "mc": 25901.67,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Silver"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 929,
     "date": "2026-03-19",
     "token": "3wFevmXJ",
