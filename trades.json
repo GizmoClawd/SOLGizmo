@@ -1,5 +1,32 @@
 [
   {
+    "n": 1008,
+    "date": "2026-03-19",
+    "token": "K'lorh",
+    "action": "BUY",
+    "amount": "0.2407 SOL",
+    "result": "4 KOL convergence: dv, Cupsey, theo, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AqF297BCbPABfLo3HLj6ASwvxPeXxAqRELA39hakpump",
+    "ts": 1773948029,
+    "mc": 41640,
+    "vol24": 24289.14,
+    "vol1h": 24289.14,
+    "buys": 231,
+    "sells": 221,
+    "liq": 16197.8,
+    "kols": [
+      "dv",
+      "Cupsey",
+      "theo",
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1007,
     "date": "2026-03-19",
     "token": "C4c8PYmM",
