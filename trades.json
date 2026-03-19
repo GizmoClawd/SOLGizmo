@@ -1,5 +1,27 @@
 [
   {
+    "n": 1040,
+    "date": "2026-03-19",
+    "token": "6s1eyjRH",
+    "action": "SELL",
+    "amount": "0.0818 SOL",
+    "result": "Sold 100% | PnL: +35.1%",
+    "pnl": "+0.0818 SOL",
+    "color": "teal",
+    "ca": "6s1eyjRHDik5MEWdkmBgX3K17ppniBpVNaF5rrscpump",
+    "ts": 1773953412,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1039,
     "date": "2026-03-19",
     "token": "6s1eyjRH",
