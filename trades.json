@@ -1,5 +1,29 @@
 [
   {
+    "n": 978,
+    "date": "2026-03-19",
+    "token": "BOAT",
+    "action": "BUY",
+    "amount": "0.1486 SOL",
+    "result": "1 KOL convergence: CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "hdk6bBixNGmypyncvpixkRQD4aHtMGJcFqC1afYpump",
+    "ts": 1773940929,
+    "mc": 26594.73,
+    "vol24": 65511.37,
+    "vol1h": 65511.37,
+    "buys": 951,
+    "sells": 644,
+    "liq": null,
+    "kols": [
+      "CLOWN"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 977,
     "date": "2026-03-19",
     "token": "human",
