@@ -1,5 +1,29 @@
 [
   {
+    "n": 1068,
+    "date": "2026-03-19",
+    "token": "Pete",
+    "action": "BUY",
+    "amount": "0.0868 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8Ak4jBMfwdBxvze3DgDcieEBZCP2xjNxrTCfggmkpump",
+    "ts": 1773962552,
+    "mc": 133833,
+    "vol24": 503933.54,
+    "vol1h": 503933.54,
+    "buys": 6792,
+    "sells": 4868,
+    "liq": 29975.14,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1067,
     "date": "2026-03-19",
     "token": "ARDAeDG5",
