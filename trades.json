@@ -1,5 +1,30 @@
 [
   {
+    "n": 962,
+    "date": "2026-03-19",
+    "token": "AIFRUIT",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: GOYIM, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "B7xnoHXkDK8zKAkJxGXvpB8nqdKeWPVt8CFYHHYzpump",
+    "ts": 1773882778,
+    "mc": 24716.06,
+    "vol24": 15420.25,
+    "vol1h": 15420.25,
+    "buys": 213,
+    "sells": 109,
+    "liq": null,
+    "kols": [
+      "GOYIM",
+      "Cupsey"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 961,
     "date": "2026-03-19",
     "token": "URX",
