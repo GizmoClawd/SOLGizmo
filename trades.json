@@ -1,5 +1,31 @@
 [
   {
+    "n": 1066,
+    "date": "2026-03-19",
+    "token": "ARDAeDG5",
+    "action": "BUY",
+    "amount": "0.10963455719999998 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (dv,Cented,Cupsey)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ARDAeDG5VEnSzTt8YseT1LQzK7aibjjgojnZVSaWpump",
+    "ts": 1773961249,
+    "mc": 11521.91,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Cented",
+      "Cupsey"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1065,
     "date": "2026-03-19",
     "token": "Lana",
