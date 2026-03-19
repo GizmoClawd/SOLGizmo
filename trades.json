@@ -1,5 +1,29 @@
 [
   {
+    "n": 975,
+    "date": "2026-03-19",
+    "token": "Lobsty",
+    "action": "BUY",
+    "amount": "0.1712 SOL",
+    "result": "1 KOL convergence: Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3kKD1N2NdFb8gKissQjt8wgeoVewh6puKRWE8chmpump",
+    "ts": 1773886260,
+    "mc": 48464,
+    "vol24": 10522.02,
+    "vol1h": 10522.02,
+    "buys": 108,
+    "sells": 84,
+    "liq": 17552.97,
+    "kols": [
+      "Kadenox"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 974,
     "date": "2026-03-19",
     "token": "ANTIAI",
