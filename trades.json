@@ -1,5 +1,30 @@
 [
   {
+    "n": 1024,
+    "date": "2026-03-19",
+    "token": "FRc7yyNS",
+    "action": "BUY",
+    "amount": "0.11427701864999999 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (decu,CLOWN)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FRc7yyNSnkHy61V7LzzzQEvo1Y4yY3KRf988KTbApump",
+    "ts": 1773951332,
+    "mc": 10527.8,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "decu",
+      "CLOWN"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1023,
     "date": "2026-03-19",
     "token": "Change",
