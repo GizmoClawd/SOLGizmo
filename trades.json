@@ -1,5 +1,29 @@
 [
   {
+    "n": 1027,
+    "date": "2026-03-19",
+    "token": "Taylor",
+    "action": "BUY",
+    "amount": "0.0773 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BAYScs261Bpr7oJ66eCP5Yyp6oKM99B3ReQCKTWapump",
+    "ts": 1773951614,
+    "mc": 31977.13,
+    "vol24": 82485.57,
+    "vol1h": 82485.57,
+    "buys": 1115,
+    "sells": 868,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1026,
     "date": "2026-03-19",
     "token": "9TNAEnyy",
