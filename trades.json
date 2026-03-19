@@ -1,5 +1,30 @@
 [
   {
+    "n": 977,
+    "date": "2026-03-19",
+    "token": "human",
+    "action": "BUY",
+    "amount": "0.1783 SOL",
+    "result": "2 KOL convergence: decu, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7FPBHm6wYDnkqtfbzgWQttZ1Nz5LjxWPMpY1ZUVjpump",
+    "ts": 1773940924,
+    "mc": 11726.27,
+    "vol24": 48645.05,
+    "vol1h": 48645.05,
+    "buys": 688,
+    "sells": 612,
+    "liq": null,
+    "kols": [
+      "decu",
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 976,
     "date": "2026-03-19",
     "token": "RETURN",
