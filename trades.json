@@ -1,5 +1,29 @@
 [
   {
+    "n": 983,
+    "date": "2026-03-19",
+    "token": "QuickRiches",
+    "action": "BUY",
+    "amount": "0.1387 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "79SwEt7rHtBgSPdcFw4qWwUsMBSCytECpGtJVU3fpump",
+    "ts": 1773892827,
+    "mc": 16949.05,
+    "vol24": 28433.19,
+    "vol1h": 28433.19,
+    "buys": 341,
+    "sells": 234,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 982,
     "date": "2026-03-19",
     "token": "￼",
