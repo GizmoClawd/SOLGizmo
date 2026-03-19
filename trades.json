@@ -1,5 +1,29 @@
 [
   {
+    "n": 936,
+    "date": "2026-03-19",
+    "token": "AI",
+    "action": "BUY",
+    "amount": "0.1855 SOL",
+    "result": "1 KOL convergence: Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6XPD2unokFain9gWRSq7VMsBjBFam3ShZu1WAeeUpump",
+    "ts": 1773921326,
+    "mc": 62007,
+    "vol24": 79349.68,
+    "vol1h": 79349.68,
+    "buys": 853,
+    "sells": 835,
+    "liq": 19928.94,
+    "kols": [
+      "Jijo"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 935,
     "date": "2026-03-19",
     "token": "ALIENBABY",
