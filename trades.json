@@ -1,5 +1,27 @@
 [
   {
+    "n": 983,
+    "date": "2026-03-19",
+    "token": "RETURN",
+    "action": "SELL",
+    "amount": "0.0805 SOL",
+    "result": "Sold 25% | PnL: +114.3%",
+    "pnl": "+0.0805 SOL",
+    "color": "teal",
+    "ca": "CMt4uqjSJKqgyjVSeouJ3wRgGjaAfoSDCrEiNyJZpump",
+    "ts": 1773941094,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 982,
     "date": "2026-03-19",
     "token": "human",
