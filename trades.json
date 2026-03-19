@@ -1,5 +1,29 @@
 [
   {
+    "n": 953,
+    "date": "2026-03-19",
+    "token": "OKAY",
+    "action": "BUY",
+    "amount": "0.2519 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3QEohc7x2Bt1QrzrGdDakuKAoPB9Fjs2uCzzwHRkpump",
+    "ts": 1773934135,
+    "mc": 17920.66,
+    "vol24": 36900.96,
+    "vol1h": 36900.96,
+    "buys": 482,
+    "sells": 292,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 952,
     "date": "2026-03-19",
     "token": "2zsomZTq",
