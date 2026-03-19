@@ -1,5 +1,30 @@
 [
   {
+    "n": 1047,
+    "date": "2026-03-19",
+    "token": "Virgin",
+    "action": "BUY",
+    "amount": "0.1175 SOL",
+    "result": "2 KOL convergence: Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8Z5bWawngP4BpWGkxBJkfVNDSDD4iki3S4Qik4DDpump",
+    "ts": 1773955431,
+    "mc": 11665.95,
+    "vol24": 18523.66,
+    "vol1h": 18523.66,
+    "buys": 347,
+    "sells": 236,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1046,
     "date": "2026-03-19",
     "token": "nostalgia",
