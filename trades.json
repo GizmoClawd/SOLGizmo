@@ -1,5 +1,27 @@
 [
   {
+    "n": 1046,
+    "date": "2026-03-19",
+    "token": "nostalgia",
+    "action": "SELL",
+    "amount": "0.1334 SOL",
+    "result": "Sold 100% | PnL: +44.0%",
+    "pnl": "+0.1334 SOL",
+    "color": "teal",
+    "ca": "D739Fdsa1S7jk4MBkYJmXDtnRGCWe5A2Pb7LTxdqpump",
+    "ts": 1773955190,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1045,
     "date": "2026-03-19",
     "token": "AxUDWHpU",
