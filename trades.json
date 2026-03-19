@@ -1,5 +1,27 @@
 [
   {
+    "n": 995,
+    "date": "2026-03-19",
+    "token": "TRUMPED",
+    "action": "SELL",
+    "amount": "0.0867 SOL",
+    "result": "Sold 50% | PnL: +37.1%",
+    "pnl": "+0.0867 SOL",
+    "color": "teal",
+    "ca": "BkUE3GKmSNgUtJYsVJ24vKriCVzJwexNKjjLcMnypump",
+    "ts": 1773939109,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 994,
     "date": "2026-03-19",
     "token": "TRUMPED",
