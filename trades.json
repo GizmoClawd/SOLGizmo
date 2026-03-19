@@ -1,5 +1,29 @@
 [
   {
+    "n": 986,
+    "date": "2026-03-19",
+    "token": "LUMO",
+    "action": "BUY",
+    "amount": "0.1337 SOL",
+    "result": "1 KOL convergence: Kadenox",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5X49StRS5R7eWXydZ16woCcYkzcMYtsGgGgL4ah4pump",
+    "ts": 1773941570,
+    "mc": 22379.33,
+    "vol24": 166105.39,
+    "vol1h": 53286.97,
+    "buys": 633,
+    "sells": 444,
+    "liq": null,
+    "kols": [
+      "Kadenox"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 985,
     "date": "2026-03-19",
     "token": "George",
