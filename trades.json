@@ -1,5 +1,30 @@
 [
   {
+    "n": 967,
+    "date": "2026-03-19",
+    "token": "NASDAQ",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: Jijo, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7fwejnkopLFAmoyiHQiV8efqQhGYPRcZj5p31fvkpump",
+    "ts": 1773883137,
+    "mc": 41580,
+    "vol24": 23620.61,
+    "vol1h": 23620.61,
+    "buys": 411,
+    "sells": 250,
+    "liq": 16283.66,
+    "kols": [
+      "Jijo",
+      "bandit"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 966,
     "date": "2026-03-19",
     "token": "URX",
