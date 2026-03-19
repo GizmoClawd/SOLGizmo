@@ -1,5 +1,30 @@
 [
   {
+    "n": 1058,
+    "date": "2026-03-19",
+    "token": "8Gi8WXGa",
+    "action": "BUY",
+    "amount": "0.12227259945 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Cented,bandit)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8Gi8WXGafnjabAQGV7NZrWJhdJHgwFQ17MDr1e1apump",
+    "ts": 1773958790,
+    "mc": 38153,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "bandit"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1057,
     "date": "2026-03-19",
     "token": "DLORP",
