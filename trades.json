@@ -1,5 +1,29 @@
 [
   {
+    "n": 990,
+    "date": "2026-03-19",
+    "token": "Pssh",
+    "action": "BUY",
+    "amount": "0.175 SOL",
+    "result": "1 KOL convergence: S",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3KihxVQPe92YsrkaLx5BHEk7vKDsP1TmyAj6zBPvpump",
+    "ts": 1773942948,
+    "mc": 57112,
+    "vol24": 346917.81,
+    "vol1h": 346917.81,
+    "buys": 5741,
+    "sells": 3928,
+    "liq": 19386.89,
+    "kols": [
+      "S"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 989,
     "date": "2026-03-19",
     "token": "LUMO",
