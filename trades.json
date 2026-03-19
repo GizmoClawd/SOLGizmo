@@ -1,5 +1,27 @@
 [
   {
+    "n": 926,
+    "date": "2026-03-19",
+    "token": "Ab5uo59Q",
+    "action": "SELL",
+    "amount": "0.2304 SOL",
+    "result": "Sold 100% | PnL: -44.6%",
+    "pnl": "+0.2304 SOL",
+    "color": "teal",
+    "ca": "Ab5uo59Q2usTGz9yc1DifYz9qVGcXXbcVPYp13SJohht",
+    "ts": 1773891969,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 925,
     "date": "2026-03-19",
     "token": "Ab5uo59Q",
