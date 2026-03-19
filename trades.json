@@ -1,5 +1,30 @@
 [
   {
+    "n": 969,
+    "date": "2026-03-19",
+    "token": "見詰める",
+    "action": "BUY",
+    "amount": "0.1138 SOL",
+    "result": "2 KOL convergence: Cented, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2vEzNnqEu2YEqBi5svYCWoy5VLQ4bGP1YcK6usmypump",
+    "ts": 1773940536,
+    "mc": 7394.89,
+    "vol24": 16419.22,
+    "vol1h": 16419.22,
+    "buys": 213,
+    "sells": 129,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Cupsey"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 968,
     "date": "2026-03-19",
     "token": "War",
