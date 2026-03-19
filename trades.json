@@ -1,5 +1,31 @@
 [
   {
+    "n": 925,
+    "date": "2026-03-19",
+    "token": "Ab5uo59Q",
+    "action": "BUY",
+    "amount": "0.2815417164 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (cryptovillain,Silver,theo)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Ab5uo59Q2usTGz9yc1DifYz9qVGcXXbcVPYp13SJohht",
+    "ts": 1773891924,
+    "mc": 16744.67,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "cryptovillain",
+      "Silver",
+      "theo"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 924,
     "date": "2026-03-19",
     "token": "Simulation",
