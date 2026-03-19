@@ -1,5 +1,29 @@
 [
   {
+    "n": 977,
+    "date": "2026-03-19",
+    "token": "Quit",
+    "action": "BUY",
+    "amount": "0.148 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HA2w91LWLVwHfZVJQPRhDkXHwhXd2tV4RTnDPtJypump",
+    "ts": 1773887607,
+    "mc": 6721.73,
+    "vol24": 15286.93,
+    "vol1h": 15286.93,
+    "buys": 237,
+    "sells": 133,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 976,
     "date": "2026-03-19",
     "token": "Lobsty",
