@@ -1,5 +1,30 @@
 [
   {
+    "n": 910,
+    "date": "2026-03-19",
+    "token": "4dbqAVE6",
+    "action": "BUY",
+    "amount": "0.27968916375 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (bandit,decu)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4dbqAVE6vKEwRnD1RfWcE65kzi25Wp1DCUAjafVApump",
+    "ts": 1773889305,
+    "mc": 11870.77,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "bandit",
+      "decu"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 909,
     "date": "2026-03-19",
     "token": "Forever",
