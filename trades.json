@@ -1,5 +1,30 @@
 [
   {
+    "n": 1073,
+    "date": "2026-03-19",
+    "token": "Massive",
+    "action": "BUY",
+    "amount": "0.0899 SOL",
+    "result": "2 KOL convergence: Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BHyJ3FujnudpFdYi2FRzxoDRSQ6fK39H7iszqZpQpump",
+    "ts": 1773963824,
+    "mc": 34327,
+    "vol24": 42371.11,
+    "vol1h": 42371.11,
+    "buys": 467,
+    "sells": 371,
+    "liq": 14650.66,
+    "kols": [
+      "Cented",
+      "bandit"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1072,
     "date": "2026-03-19",
     "token": "HqMPmr1M",
