@@ -1,5 +1,27 @@
 [
   {
+    "n": 994,
+    "date": "2026-03-19",
+    "token": "Flork",
+    "action": "SELL",
+    "amount": "0.0275 SOL",
+    "result": "Sold 15% | PnL: +30.1%",
+    "pnl": "+0.0275 SOL",
+    "color": "teal",
+    "ca": "4abq2MfQiZRWv1GqwyrZgqGdW7ZesdfNU6oCGmFypump",
+    "ts": 1773943778,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 993,
     "date": "2026-03-19",
     "token": "Flork",
