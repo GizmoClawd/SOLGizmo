@@ -1,5 +1,31 @@
 [
   {
+    "n": 1078,
+    "date": "2026-03-19",
+    "token": "9PXibKTv",
+    "action": "BUY",
+    "amount": "0.11159849219999997 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (dv,decu,Cupsey)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9PXibKTvpk4oZQG3N8jYcWbp8STNjrRojNC6dvyepump",
+    "ts": 1773964429,
+    "mc": 10047.54,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "dv",
+      "decu",
+      "Cupsey"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1077,
     "date": "2026-03-19",
     "token": "Massive",
