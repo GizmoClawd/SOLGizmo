@@ -1,5 +1,30 @@
 [
   {
+    "n": 992,
+    "date": "2026-03-19",
+    "token": "CHUCK",
+    "action": "BUY",
+    "amount": "0.1969 SOL",
+    "result": "2 KOL convergence: Jijo, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2my4BrVaSWXiHN5b41Eij8PKUKHBVAtyWbbfLUQipump",
+    "ts": 1773938908,
+    "mc": 11972.49,
+    "vol24": 19358.93,
+    "vol1h": 19358.93,
+    "buys": 177,
+    "sells": 111,
+    "liq": null,
+    "kols": [
+      "Jijo",
+      "decu"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 991,
     "date": "2026-03-19",
     "token": "6",
