@@ -1,5 +1,29 @@
 [
   {
+    "n": 1002,
+    "date": "2026-03-19",
+    "token": "mentally",
+    "action": "BUY",
+    "amount": "0.1561 SOL",
+    "result": "1 KOL convergence: CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4ssNBY5ERmnPkdtXLZjuraRirf2ovL3BaVFsaYrppump",
+    "ts": 1773946968,
+    "mc": 21791.06,
+    "vol24": 66333.74,
+    "vol1h": 66333.74,
+    "buys": 952,
+    "sells": 658,
+    "liq": null,
+    "kols": [
+      "CLOWN"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1001,
     "date": "2026-03-19",
     "token": "NIGGA",
