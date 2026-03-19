@@ -1,5 +1,29 @@
 [
   {
+    "n": 1049,
+    "date": "2026-03-19",
+    "token": "Beecat",
+    "action": "BUY",
+    "amount": "0.0905 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7hRAmhvwhDRhBYfz6Nb1E6ahKu8wrBfv98dHE1gxpump",
+    "ts": 1773957591,
+    "mc": 7520.79,
+    "vol24": 10230.36,
+    "vol1h": 10230.36,
+    "buys": 73,
+    "sells": 39,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1048,
     "date": "2026-03-19",
     "token": "Virgin",
