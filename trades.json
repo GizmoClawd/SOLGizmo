@@ -1,5 +1,31 @@
 [
   {
+    "n": 1042,
+    "date": "2026-03-19",
+    "token": "nostalgia",
+    "action": "BUY",
+    "amount": "0.1473 SOL",
+    "result": "3 KOL convergence: Cupsey, S, Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "D739Fdsa1S7jk4MBkYJmXDtnRGCWe5A2Pb7LTxdqpump",
+    "ts": 1773954945,
+    "mc": 25835,
+    "vol24": 60247.08,
+    "vol1h": 60247.08,
+    "buys": 906,
+    "sells": 643,
+    "liq": 12747.53,
+    "kols": [
+      "Cupsey",
+      "S",
+      "Cented"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1041,
     "date": "2026-03-19",
     "token": "AxUDWHpU",
