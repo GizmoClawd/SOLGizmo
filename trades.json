@@ -1,5 +1,29 @@
 [
   {
+    "n": 976,
+    "date": "2026-03-19",
+    "token": "RETURN",
+    "action": "BUY",
+    "amount": "0.1486 SOL",
+    "result": "1 KOL convergence: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CMt4uqjSJKqgyjVSeouJ3wRgGjaAfoSDCrEiNyJZpump",
+    "ts": 1773940919,
+    "mc": 25339.77,
+    "vol24": 24846.17,
+    "vol1h": 16594.97,
+    "buys": 176,
+    "sells": 87,
+    "liq": null,
+    "kols": [
+      "radiance"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 975,
     "date": "2026-03-19",
     "token": "RETURN",
