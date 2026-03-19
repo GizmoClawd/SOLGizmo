@@ -1,5 +1,30 @@
 [
   {
+    "n": 994,
+    "date": "2026-03-19",
+    "token": "TRUMPED",
+    "action": "BUY",
+    "amount": "0.1976 SOL",
+    "result": "2 KOL convergence: Casino, CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BkUE3GKmSNgUtJYsVJ24vKriCVzJwexNKjjLcMnypump",
+    "ts": 1773939088,
+    "mc": 14236.52,
+    "vol24": 30307.13,
+    "vol1h": 30307.13,
+    "buys": 395,
+    "sells": 266,
+    "liq": null,
+    "kols": [
+      "Casino",
+      "CLOWN"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 993,
     "date": "2026-03-19",
     "token": "CHUCK",
