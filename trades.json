@@ -1,5 +1,30 @@
 [
   {
+    "n": 1022,
+    "date": "2026-03-19",
+    "token": "Change",
+    "action": "BUY",
+    "amount": "0.1301 SOL",
+    "result": "2 KOL convergence: decu, CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FRc7yyNSnkHy61V7LzzzQEvo1Y4yY3KRf988KTbApump",
+    "ts": 1773951168,
+    "mc": 11943.69,
+    "vol24": 11202.65,
+    "vol1h": 11202.65,
+    "buys": 202,
+    "sells": 106,
+    "liq": null,
+    "kols": [
+      "decu",
+      "CLOWN"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1021,
     "date": "2026-03-19",
     "token": "HE4gCdZi",
