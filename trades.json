@@ -1,5 +1,27 @@
 [
   {
+    "n": 961,
+    "date": "2026-03-19",
+    "token": "URX",
+    "action": "SELL",
+    "amount": "0.1115 SOL",
+    "result": "Sold 50% | PnL: +38.1%",
+    "pnl": "+0.1115 SOL",
+    "color": "teal",
+    "ca": "44fa9PPgZ2cLzNpeV5BsBQWckC8EnhKp1pEDUa7apump",
+    "ts": 1773882595,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 960,
     "date": "2026-03-19",
     "token": "URX",
