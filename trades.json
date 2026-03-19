@@ -1,5 +1,31 @@
 [
   {
+    "n": 1069,
+    "date": "2026-03-19",
+    "token": "HqMPmr1M",
+    "action": "BUY",
+    "amount": "0.1106328705 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (dv,Cented,Coasty)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HqMPmr1Mn5R8AsGwiM5foBjfKHCvJeCm9sbMTJXLpump",
+    "ts": 1773962563,
+    "mc": 12988.46,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Cented",
+      "Coasty"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1068,
     "date": "2026-03-19",
     "token": "Pete",
