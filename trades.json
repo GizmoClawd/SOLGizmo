@@ -1,5 +1,31 @@
 [
   {
+    "n": 911,
+    "date": "2026-03-19",
+    "token": "6XcuejgD",
+    "action": "BUY",
+    "amount": "0.2374224273 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (theo,Cupsey,bandit)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6XcuejgD1MxjQhFrMianEHvA2SYTHzUJ2cFFq7zepump",
+    "ts": 1773889328,
+    "mc": 15121.77,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "theo",
+      "Cupsey",
+      "bandit"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 910,
     "date": "2026-03-19",
     "token": "4dbqAVE6",
