@@ -1,5 +1,30 @@
 [
   {
+    "n": 971,
+    "date": "2026-03-19",
+    "token": "BLACKLINE",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: theo, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6MeQXudhkYWH6Sfz7K1kgAo5eKNKRjNLRT6ExUfHpump",
+    "ts": 1773885359,
+    "mc": 15204.11,
+    "vol24": 19343.4,
+    "vol1h": 19343.4,
+    "buys": 97,
+    "sells": 33,
+    "liq": null,
+    "kols": [
+      "theo",
+      "bandit"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 970,
     "date": "2026-03-19",
     "token": "NASDAQ",
