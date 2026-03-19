@@ -1,5 +1,30 @@
 [
   {
+    "n": 1014,
+    "date": "2026-03-19",
+    "token": "broski",
+    "action": "BUY",
+    "amount": "0.0933 SOL",
+    "result": "2 KOL convergence: Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8RuTX8FGF5dZFBxBj8j9vuQdjRs4Pg4t1VfaBtecpump",
+    "ts": 1773948881,
+    "mc": 10586.97,
+    "vol24": 13989.39,
+    "vol1h": 13989.39,
+    "buys": 139,
+    "sells": 105,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1013,
     "date": "2026-03-19",
     "token": "K'lorh",
