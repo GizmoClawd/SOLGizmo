@@ -1,5 +1,30 @@
 [
   {
+    "n": 1056,
+    "date": "2026-03-19",
+    "token": "DLORP",
+    "action": "BUY",
+    "amount": "0.1167 SOL",
+    "result": "2 KOL convergence: Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8Gi8WXGafnjabAQGV7NZrWJhdJHgwFQ17MDr1e1apump",
+    "ts": 1773958244,
+    "mc": 25253.8,
+    "vol24": 33356.51,
+    "vol1h": 27995.63,
+    "buys": 361,
+    "sells": 232,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "bandit"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1055,
     "date": "2026-03-19",
     "token": "Beecat",
