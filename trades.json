@@ -1,5 +1,29 @@
 [
   {
+    "n": 969,
+    "date": "2026-03-19",
+    "token": "War",
+    "action": "BUY",
+    "amount": "0.0557 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2r15321TZ5MmECVpELNEqPxG1Bvue2vk3C3zGYv4pump",
+    "ts": 1773940569,
+    "mc": 5498.17,
+    "vol24": 31294.69,
+    "vol1h": 31294.69,
+    "buys": 432,
+    "sells": 294,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 968,
     "date": "2026-03-19",
     "token": "BOAT",
