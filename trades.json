@@ -1,5 +1,30 @@
 [
   {
+    "n": 960,
+    "date": "2026-03-19",
+    "token": "URX",
+    "action": "BUY",
+    "amount": "0.2 SOL",
+    "result": "2 KOL convergence: theo, CLOWN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "44fa9PPgZ2cLzNpeV5BsBQWckC8EnhKp1pEDUa7apump",
+    "ts": 1773882505,
+    "mc": 7102.28,
+    "vol24": 12321.36,
+    "vol1h": 12321.36,
+    "buys": 135,
+    "sells": 96,
+    "liq": null,
+    "kols": [
+      "theo",
+      "CLOWN"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 959,
     "date": "2026-03-18",
     "token": "W",
