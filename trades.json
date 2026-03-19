@@ -1,5 +1,27 @@
 [
   {
+    "n": 972,
+    "date": "2026-03-19",
+    "token": "BLACKLINE",
+    "action": "SELL",
+    "amount": "0.1471 SOL",
+    "result": "Sold 100% | PnL: +2.5%",
+    "pnl": "+0.1471 SOL",
+    "color": "teal",
+    "ca": "6MeQXudhkYWH6Sfz7K1kgAo5eKNKRjNLRT6ExUfHpump",
+    "ts": 1773885469,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 971,
     "date": "2026-03-19",
     "token": "BLACKLINE",
