@@ -1,5 +1,27 @@
 [
   {
+    "n": 973,
+    "date": "2026-03-19",
+    "token": "War",
+    "action": "SELL",
+    "amount": "0.0865 SOL",
+    "result": "Sold 100% | PnL: -34.4%",
+    "pnl": "+0.0865 SOL",
+    "color": "teal",
+    "ca": "2r15321TZ5MmECVpELNEqPxG1Bvue2vk3C3zGYv4pump",
+    "ts": 1773940661,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 972,
     "date": "2026-03-19",
     "token": "RETURN",
