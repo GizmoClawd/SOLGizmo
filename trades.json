@@ -1,5 +1,29 @@
 [
   {
+    "n": 1051,
+    "date": "2026-03-19",
+    "token": "Lana",
+    "action": "BUY",
+    "amount": "0.08 SOL",
+    "result": "1 KOL convergence: radiance",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7MghDPn9wPb1amEvxVMmwQXERkMnMuGoRzFSpWutpump",
+    "ts": 1773957742,
+    "mc": 7167.53,
+    "vol24": 11579.8,
+    "vol1h": 11579.8,
+    "buys": 122,
+    "sells": 118,
+    "liq": null,
+    "kols": [
+      "radiance"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1050,
     "date": "2026-03-19",
     "token": "Beecat",
