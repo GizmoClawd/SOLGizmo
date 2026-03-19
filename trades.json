@@ -1,5 +1,27 @@
 [
   {
+    "n": 950,
+    "date": "2026-03-19",
+    "token": "beecat",
+    "action": "SELL",
+    "amount": "0.1663 SOL",
+    "result": "Sold 100% | PnL: -50.1%",
+    "pnl": "+0.1663 SOL",
+    "color": "teal",
+    "ca": "CHXYRSDVaqbmAVZLpHqtWGEbUV1yRrDQWAAuTowypump",
+    "ts": 1773932028,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 949,
     "date": "2026-03-19",
     "token": "beecat",
