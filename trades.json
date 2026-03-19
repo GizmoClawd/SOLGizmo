@@ -1,5 +1,32 @@
 [
   {
+    "n": 1029,
+    "date": "2026-03-19",
+    "token": "Antigravity",
+    "action": "BUY",
+    "amount": "0.1487 SOL",
+    "result": "4 KOL convergence: decu, theo, Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "95vhfhKjx6n3p6dad4eUiJjwVtwvV1f2DZ7NgNMYpump",
+    "ts": 1773951884,
+    "mc": 9918.02,
+    "vol24": 23775.25,
+    "vol1h": 23775.25,
+    "buys": 322,
+    "sells": 235,
+    "liq": null,
+    "kols": [
+      "decu",
+      "theo",
+      "Cented",
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1028,
     "date": "2026-03-19",
     "token": "Taylor",
