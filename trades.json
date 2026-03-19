@@ -1,5 +1,29 @@
 [
   {
+    "n": 997,
+    "date": "2026-03-19",
+    "token": "ישראל",
+    "action": "BUY",
+    "amount": "0.1548 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8HBUpL8grTsGm356Xw3usMuFxHQWw3aUALy22PqYaSYC",
+    "ts": 1773939210,
+    "mc": 6204.72,
+    "vol24": 75156.28,
+    "vol1h": 75156.28,
+    "buys": 988,
+    "sells": 869,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 996,
     "date": "2026-03-19",
     "token": "TRUMPED",
