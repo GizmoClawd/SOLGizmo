@@ -1,5 +1,27 @@
 [
   {
+    "n": 916,
+    "date": "2026-03-19",
+    "token": "WirKV2et",
+    "action": "SELL",
+    "amount": "0.2289 SOL",
+    "result": "Sold 100% | PnL: +17.0%",
+    "pnl": "+0.2289 SOL",
+    "color": "teal",
+    "ca": "WirKV2etWWk7MiYCYJMg7rsiskZ8oYLMgSUupXApump",
+    "ts": 1773890538,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 915,
     "date": "2026-03-19",
     "token": "WirKV2et",
