@@ -1,5 +1,30 @@
 [
   {
+    "n": 941,
+    "date": "2026-03-19",
+    "token": "5eekpgje",
+    "action": "BUY",
+    "amount": "0.27708306344999994 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Cented,CLOWN)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5eekpgje1jtGKMiKHV6rWun9EABQx3ZRF5eCWFUgpump",
+    "ts": 1773926306,
+    "mc": 15194.81,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "CLOWN"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 940,
     "date": "2026-03-19",
     "token": "SURVIVOR",
