@@ -1,5 +1,27 @@
 [
   {
+    "n": 1079,
+    "date": "2026-03-19",
+    "token": "9PXibKTv",
+    "action": "SELL",
+    "amount": "0.0392 SOL",
+    "result": "Sold 100% | PnL: -65.1%",
+    "pnl": "+0.0392 SOL",
+    "color": "teal",
+    "ca": "9PXibKTvpk4oZQG3N8jYcWbp8STNjrRojNC6dvyepump",
+    "ts": 1773964722,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1078,
     "date": "2026-03-19",
     "token": "9PXibKTv",
