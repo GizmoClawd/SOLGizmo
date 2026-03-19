@@ -1,5 +1,27 @@
 [
   {
+    "n": 978,
+    "date": "2026-03-19",
+    "token": "Quit",
+    "action": "SELL",
+    "amount": "0.0859 SOL",
+    "result": "Sold 50% | PnL: +62.1%",
+    "pnl": "+0.0859 SOL",
+    "color": "teal",
+    "ca": "HA2w91LWLVwHfZVJQPRhDkXHwhXd2tV4RTnDPtJypump",
+    "ts": 1773887666,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 977,
     "date": "2026-03-19",
     "token": "Quit",
