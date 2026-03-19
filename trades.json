@@ -1,5 +1,32 @@
 [
   {
+    "n": 996,
+    "date": "2026-03-19",
+    "token": "7CYjm8PJ",
+    "action": "BUY",
+    "amount": "0.18760286879999996 SOL",
+    "result": "Sniper dip entry -- 4 KOLs (Cented,Cupsey,Jijo,dv)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7CYjm8PJgtPWLa4Yv5EyBukNatrcMa6APXfgUTdjpump",
+    "ts": 1773945525,
+    "mc": 24401,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Cupsey",
+      "Jijo",
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 995,
     "date": "2026-03-19",
     "token": "Flork",
