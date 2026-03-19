@@ -1,5 +1,27 @@
 [
   {
+    "n": 919,
+    "date": "2026-03-19",
+    "token": "Simulation",
+    "action": "SELL",
+    "amount": "0.0934 SOL",
+    "result": "Sold 25% | PnL: +106.8%",
+    "pnl": "+0.0934 SOL",
+    "color": "teal",
+    "ca": "FhvaznSrMJteFmDY7YTQ51CvKpC7MFH7oFum8J8zpump",
+    "ts": 1773891189,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 918,
     "date": "2026-03-19",
     "token": "Simulation",
