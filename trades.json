@@ -1,5 +1,30 @@
 [
   {
+    "n": 943,
+    "date": "2026-03-19",
+    "token": "LIBERTY",
+    "action": "BUY",
+    "amount": "0.2955 SOL",
+    "result": "2 KOL convergence: CLOWN, Casino",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6uWtT3rvtRKYVCnXnYBFS5XiP84SMXDvYyP3tfrCpump",
+    "ts": 1773926846,
+    "mc": 20210,
+    "vol24": 142483.15,
+    "vol1h": 142483.15,
+    "buys": 1598,
+    "sells": 1925,
+    "liq": 11238.52,
+    "kols": [
+      "CLOWN",
+      "Casino"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 942,
     "date": "2026-03-19",
     "token": "5eekpgje",
