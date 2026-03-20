@@ -1,5 +1,27 @@
 [
   {
+    "n": 1103,
+    "date": "2026-03-20",
+    "token": "LIVINGLADY",
+    "action": "SELL",
+    "amount": "0.0702 SOL",
+    "result": "Sold 100% | PnL: -25.4%",
+    "pnl": "+0.0702 SOL",
+    "color": "teal",
+    "ca": "4bZz6epavwNf16EA526WAbqmEmg5W51WQRVNKSpfpump",
+    "ts": 1773972898,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1102,
     "date": "2026-03-20",
     "token": "LIVINGLADY",
