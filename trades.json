@@ -1,5 +1,32 @@
 [
   {
+    "n": 15,
+    "date": "2026-03-20",
+    "token": "PUNCHDENG",
+    "action": "BUY",
+    "amount": "0.1998 SOL",
+    "result": "4 KOL convergence: CLOWN, Cupsey, Pain, S",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8sUjd12mDuBQMBk96b3ghG8YTnaaf5NQXUW2AKMvpump",
+    "ts": 1774045641,
+    "mc": 22079,
+    "vol24": 80273.34,
+    "vol1h": 80273.34,
+    "buys": 1076,
+    "sells": 827,
+    "liq": 11854.27,
+    "kols": [
+      "CLOWN",
+      "Cupsey",
+      "Pain",
+      "S"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 14,
     "date": "2026-03-20",
     "token": "Elongate",
