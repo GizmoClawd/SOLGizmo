@@ -1,5 +1,30 @@
 [
   {
+    "n": 1099,
+    "date": "2026-03-20",
+    "token": "5Wxp7sLQ",
+    "action": "BUY",
+    "amount": "0.09806621025000001 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (decu,S)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5Wxp7sLQgzHMW4KJvzyKeyRGNrNNJgG3tXP658GHpump",
+    "ts": 1773971119,
+    "mc": 21327.61,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "decu",
+      "S"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1098,
     "date": "2026-03-20",
     "token": "6gxqWPev",
