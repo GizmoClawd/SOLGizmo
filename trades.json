@@ -1,5 +1,29 @@
 [
   {
+    "n": 975,
+    "date": "2026-03-20",
+    "token": "Pixel",
+    "action": "BUY",
+    "amount": "0.0319 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2zPgBYvXU5pRaV94RrWa5dCKucwTaCgXzbh1J1JUpump",
+    "ts": 1773981041,
+    "mc": 21085.97,
+    "vol24": 74649.79,
+    "vol1h": 74649.79,
+    "buys": 1344,
+    "sells": 878,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 974,
     "date": "2026-03-20",
     "token": "HelloWorld!",
