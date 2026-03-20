@@ -1,5 +1,27 @@
 [
   {
+    "n": 28,
+    "date": "2026-03-20",
+    "token": "BJc9sUpK",
+    "action": "SELL",
+    "amount": "0.2374 SOL",
+    "result": "Sold 100% | PnL: -6.4%",
+    "pnl": "+0.2374 SOL",
+    "color": "teal",
+    "ca": "BJc9sUpKJW5Z3Ly2P3yFhYoRDJXanVvovKqmPqtppump",
+    "ts": 1774028802,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 27,
     "date": "2026-03-20",
     "token": "BJc9sUpK",
