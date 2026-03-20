@@ -1,5 +1,31 @@
 [
   {
+    "n": 13,
+    "date": "2026-03-20",
+    "token": "Elongate",
+    "action": "BUY",
+    "amount": "0.2136 SOL",
+    "result": "3 KOL convergence: Casino, Joji, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3JxGmwUE5ssNgQEstZB3cwnFTrtNSkg7BRQ7k21Vpump",
+    "ts": 1774045489,
+    "mc": 15415.1,
+    "vol24": 64964.55,
+    "vol1h": 64964.55,
+    "buys": 1194,
+    "sells": 685,
+    "liq": null,
+    "kols": [
+      "Casino",
+      "Joji",
+      "bandit"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 12,
     "date": "2026-03-20",
     "token": "HfyevJVA",
