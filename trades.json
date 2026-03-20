@@ -1,5 +1,29 @@
 [
   {
+    "n": 1102,
+    "date": "2026-03-20",
+    "token": "LIVINGLADY",
+    "action": "BUY",
+    "amount": "0.0722 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4bZz6epavwNf16EA526WAbqmEmg5W51WQRVNKSpfpump",
+    "ts": 1773972592,
+    "mc": 3373.08,
+    "vol24": 11817.04,
+    "vol1h": 11817.04,
+    "buys": 105,
+    "sells": 61,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1101,
     "date": "2026-03-20",
     "token": "5Wxp7sLQ",
