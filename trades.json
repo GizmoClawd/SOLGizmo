@@ -1,5 +1,29 @@
 [
   {
+    "n": 1080,
+    "date": "2026-03-20",
+    "token": "Dickus",
+    "action": "BUY",
+    "amount": "0.0773 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EzEqnLokaFunoP5dDJ2KJR3Yh6fqB7C3YJtTEhs53kx5",
+    "ts": 1773965963,
+    "mc": 24915,
+    "vol24": 149823.24,
+    "vol1h": 149823.24,
+    "buys": 2671,
+    "sells": 1915,
+    "liq": 12619.51,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1079,
     "date": "2026-03-19",
     "token": "9PXibKTv",
