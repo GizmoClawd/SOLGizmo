@@ -1,5 +1,27 @@
 [
   {
+    "n": 980,
+    "date": "2026-03-20",
+    "token": "ERH5gEdV",
+    "action": "SELL",
+    "amount": "0.0567 SOL",
+    "result": "Sold 100% | PnL: -8.7%",
+    "pnl": "+0.0567 SOL",
+    "color": "teal",
+    "ca": "ERH5gEdVE3ErfvaPMYYGtDafDtcMXm3PZKG5h9nopump",
+    "ts": 1773982361,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 979,
     "date": "2026-03-20",
     "token": "ERH5gEdV",
