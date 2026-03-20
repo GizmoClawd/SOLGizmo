@@ -1,5 +1,32 @@
 [
   {
+    "n": 1097,
+    "date": "2026-03-20",
+    "token": "6gxqWPev",
+    "action": "BUY",
+    "amount": "0.10403553689999999 SOL",
+    "result": "Sniper dip entry -- 4 KOLs (theo,dv,mercy,cryptovillain)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6gxqWPevoYLUGVED5W9k6pq3hFBePgrXKL2qH25zpump",
+    "ts": 1773970219,
+    "mc": 13220.46,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "theo",
+      "dv",
+      "mercy",
+      "cryptovillain"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1096,
     "date": "2026-03-20",
     "token": "GPD",
