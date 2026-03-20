@@ -1,5 +1,31 @@
 [
   {
+    "n": 20,
+    "date": "2026-03-20",
+    "token": "CR6E8QQD",
+    "action": "BUY",
+    "amount": "0.21075912659999999 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (Cented,Casino,Cupsey)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CR6E8QQDjNGJFWovof6Ti1cRocFUdSZ6wydD4Dqzpump",
+    "ts": 1774047177,
+    "mc": 8455.55,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Casino",
+      "Cupsey"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 19,
     "date": "2026-03-20",
     "token": "YEPE",
