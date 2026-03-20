@@ -1,5 +1,27 @@
 [
   {
+    "n": 31,
+    "date": "2026-03-20",
+    "token": "EffVFbvB",
+    "action": "SELL",
+    "amount": "0.1926 SOL",
+    "result": "Sold 100% | PnL: -30.9%",
+    "pnl": "+0.1926 SOL",
+    "color": "teal",
+    "ca": "EffVFbvBjHQw24FT1xt6L18QtHbAotR9DSXqBAvrpump",
+    "ts": 1774051001,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 30,
     "date": "2026-03-20",
     "token": "EffVFbvB",
