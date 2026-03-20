@@ -1,5 +1,30 @@
 [
   {
+    "n": 1106,
+    "date": "2026-03-20",
+    "token": "6GiUYHDE",
+    "action": "BUY",
+    "amount": "0.08585596274999999 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (dv,Cented)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6GiUYHDEBscgfBpoUwXvpmauPFEQMkQ248aehA3UScxv",
+    "ts": 1773974570,
+    "mc": 8211.34,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "dv",
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1105,
     "date": "2026-03-20",
     "token": "IDR",
