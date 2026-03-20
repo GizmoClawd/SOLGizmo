@@ -1,5 +1,29 @@
 [
   {
+    "n": 1084,
+    "date": "2026-03-20",
+    "token": "Spoder",
+    "action": "BUY",
+    "amount": "0.0744 SOL",
+    "result": "1 KOL convergence: S",
+    "pnl": "",
+    "color": "teal",
+    "ca": "JCZH7o7TSeLVzzsMiQEwbg66fD2KN6rLiHJwFxyLpump",
+    "ts": 1773966441,
+    "mc": 12967.02,
+    "vol24": 19542.05,
+    "vol1h": 19542.05,
+    "buys": 244,
+    "sells": 192,
+    "liq": null,
+    "kols": [
+      "S"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1083,
     "date": "2026-03-20",
     "token": "Dickus",
