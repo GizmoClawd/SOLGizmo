@@ -1,5 +1,30 @@
 [
   {
+    "n": 17,
+    "date": "2026-03-20",
+    "token": "5jegDkpf",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (decu,S)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5jegDkpfeVPbCMkAN5cUkq3FE4bTPJEK2zgZLzTdpump",
+    "ts": 1774026663,
+    "mc": 15639.67,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "decu",
+      "S"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 16,
     "date": "2026-03-20",
     "token": "Chonk",
