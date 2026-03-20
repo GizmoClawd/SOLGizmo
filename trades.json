@@ -1,5 +1,31 @@
 [
   {
+    "n": 11,
+    "date": "2026-03-20",
+    "token": "HfyevJVA",
+    "action": "BUY",
+    "amount": "0.26009578995 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (CLOWN,S,dv)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HfyevJVA9iEa1b6mESzoAGupzRCc7Ht4WBXEfkSnpump",
+    "ts": 1774044978,
+    "mc": 40590,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "CLOWN",
+      "S",
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 10,
     "date": "2026-03-20",
     "token": "p-token",
