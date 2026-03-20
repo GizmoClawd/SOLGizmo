@@ -1,5 +1,27 @@
 [
   {
+    "n": 6,
+    "date": "2026-03-20",
+    "token": "7gkEGHge",
+    "action": "SELL",
+    "amount": "0.3051 SOL",
+    "result": "Sold 100% | PnL: +41.7%",
+    "pnl": "+0.3051 SOL",
+    "color": "teal",
+    "ca": "7gkEGHgeun1at22tyquVFB5J1WeE8Mi8LvFofcPzWWYo",
+    "ts": 1774022996,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 5,
     "date": "2026-03-20",
     "token": "7gkEGHge",
