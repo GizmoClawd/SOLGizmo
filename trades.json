@@ -1,5 +1,31 @@
 [
   {
+    "n": 22,
+    "date": "2026-03-20",
+    "token": "AshozQA5",
+    "action": "BUY",
+    "amount": "0.20523827535 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (Cented,bandit,Kadenox)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AshozQA5TuV9Xi8UGKAwi69jVTfUcz8ztTbvh316pump",
+    "ts": 1774047690,
+    "mc": 54477,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "bandit",
+      "Kadenox"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 21,
     "date": "2026-03-20",
     "token": "CR6E8QQD",
