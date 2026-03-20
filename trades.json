@@ -1,5 +1,31 @@
 [
   {
+    "n": 1112,
+    "date": "2026-03-20",
+    "token": "Sentinel",
+    "action": "BUY",
+    "amount": "0.0525 SOL",
+    "result": "3 KOL convergence: decu, Cented, bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2K5AX3CR2WnfsLh2C716fvyxmvdjA2bWS2PCFDjGpump",
+    "ts": 1773975331,
+    "mc": 10480.81,
+    "vol24": 20171.52,
+    "vol1h": 20171.52,
+    "buys": 233,
+    "sells": 174,
+    "liq": null,
+    "kols": [
+      "decu",
+      "Cented",
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1111,
     "date": "2026-03-20",
     "token": "ATsUwGVQ",
