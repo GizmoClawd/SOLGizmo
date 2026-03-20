@@ -1,5 +1,30 @@
 [
   {
+    "n": 1104,
+    "date": "2026-03-20",
+    "token": "IDR",
+    "action": "BUY",
+    "amount": "0.0859 SOL",
+    "result": "2 KOL convergence: Jijo, Cupsey",
+    "pnl": "",
+    "color": "teal",
+    "ca": "g1Ln12nJUUsKLPqv56Fds2RQBBvrZPFy3s69Tkv52y4",
+    "ts": 1773973882,
+    "mc": 9426.42,
+    "vol24": 16084.27,
+    "vol1h": 16084.27,
+    "buys": 305,
+    "sells": 138,
+    "liq": null,
+    "kols": [
+      "Jijo",
+      "Cupsey"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1103,
     "date": "2026-03-20",
     "token": "LIVINGLADY",
