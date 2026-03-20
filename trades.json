@@ -1,5 +1,27 @@
 [
   {
+    "n": 18,
+    "date": "2026-03-20",
+    "token": "5jegDkpf",
+    "action": "SELL",
+    "amount": "0.2956 SOL",
+    "result": "Sold 100% | PnL: -26.2%",
+    "pnl": "+0.2956 SOL",
+    "color": "teal",
+    "ca": "5jegDkpfeVPbCMkAN5cUkq3FE4bTPJEK2zgZLzTdpump",
+    "ts": 1774026776,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 17,
     "date": "2026-03-20",
     "token": "5jegDkpf",
