@@ -1,5 +1,27 @@
 [
   {
+    "n": 5,
+    "date": "2026-03-20",
+    "token": "STICKERS",
+    "action": "SELL",
+    "amount": "0.2416 SOL",
+    "result": "Sold 100% | PnL: +33.4%",
+    "pnl": "+0.2416 SOL",
+    "color": "teal",
+    "ca": "2ij8Hi3byD36n1YGLza2yeom3zNkydMCHx5z5gCupump",
+    "ts": 1774044102,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 4,
     "date": "2026-03-20",
     "token": "STICKERS",
