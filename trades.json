@@ -1,5 +1,30 @@
 [
   {
+    "n": 35,
+    "date": "2026-03-20",
+    "token": "GM9fN6X2",
+    "action": "BUY",
+    "amount": "0.248895756 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (CLOWN,dv)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GM9fN6X2izkr7NjF5esWfMtViJ6aqDKvJRTgfoAGpump",
+    "ts": 1774036344,
+    "mc": 77544,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "CLOWN",
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 34,
     "date": "2026-03-20",
     "token": "5bZ8duCe",
