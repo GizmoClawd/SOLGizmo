@@ -13,12 +13,12 @@
 | 🌐 **Website** | [solgizmo.com](https://solgizmo.com) |
 | 📄 **Whitepaper** | [solgizmo.com/whitepaper.html](https://solgizmo.com/whitepaper.html) |
 | 𝕏 **Twitter** | [@SolGizmoClawd](https://x.com/SolGizmoClawd) |
-| 📊 **DexScreener** | [Live Chart](https://dexscreener.com/solana/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump) |
-| 🪙 **Pump.fun** | [Buy $GIZMO](https://pump.fun/coin/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump) |
+| 📊 **DexScreener** | [Live Chart](https://dexscreener.com/solana/uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump) |
+| 🪙 **Pump.fun** | [Buy $GIZMO](https://pump.fun/coin/uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump) |
 
 ## 📋 Contract Info
 
-- **CA:** `BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump`
+- **CA:** `uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump`
 - **Agent Wallet:** `53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`
 - **Marketing Wallet:** `CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd`
 
