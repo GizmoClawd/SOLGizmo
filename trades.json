@@ -1,5 +1,30 @@
 [
   {
+    "n": 981,
+    "date": "2026-03-20",
+    "token": "ERH5gEdV",
+    "action": "BUY",
+    "amount": "0.041815815299999996 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (S,Naruza)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ERH5gEdVE3ErfvaPMYYGtDafDtcMXm3PZKG5h9nopump",
+    "ts": 1773983055,
+    "mc": 14141.7,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "S",
+      "Naruza"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 980,
     "date": "2026-03-20",
     "token": "ERH5gEdV",
