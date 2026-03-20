@@ -1,5 +1,29 @@
 [
   {
+    "n": 1125,
+    "date": "2026-03-20",
+    "token": "Patience",
+    "action": "BUY",
+    "amount": "0.0686 SOL",
+    "result": "1 KOL convergence: bandit",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3ksUsmk43r3TysgoHBMrnQntDDA4fgMVqQ8Jwb93pump",
+    "ts": 1773977483,
+    "mc": 12607.67,
+    "vol24": 83879.9,
+    "vol1h": 83879.9,
+    "buys": 1481,
+    "sells": 1135,
+    "liq": null,
+    "kols": [
+      "bandit"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1124,
     "date": "2026-03-20",
     "token": "3ksUsmk4",
