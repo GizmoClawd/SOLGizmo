@@ -1,5 +1,30 @@
 [
   {
+    "n": 24,
+    "date": "2026-03-20",
+    "token": "EHHcpRp9",
+    "action": "BUY",
+    "amount": "0.20850940275 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (dv,CLOWN)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EHHcpRp9aR9fBd7XGBPhsW3mgNDfaVHRJmCe2PRspump",
+    "ts": 1774049141,
+    "mc": 8037.73,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "dv",
+      "CLOWN"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 23,
     "date": "2026-03-20",
     "token": "AshozQA5",
