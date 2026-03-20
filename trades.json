@@ -1,5 +1,29 @@
 [
   {
+    "n": 19,
+    "date": "2026-03-20",
+    "token": "Jiji",
+    "action": "BUY",
+    "amount": "0.2721 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7YkKDARnzkxVTKj65aZgvoH1frVgbGDnhxM2vtVxpump",
+    "ts": 1774027023,
+    "mc": 23453.02,
+    "vol24": 60425.95,
+    "vol1h": 30632.33,
+    "buys": 420,
+    "sells": 248,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 18,
     "date": "2026-03-20",
     "token": "5jegDkpf",
