@@ -1,5 +1,31 @@
 [
   {
+    "n": 17,
+    "date": "2026-03-20",
+    "token": "3JxGmwUE",
+    "action": "BUY",
+    "amount": "0.23960462294999998 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (Casino,Joji,bandit)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3JxGmwUE5ssNgQEstZB3cwnFTrtNSkg7BRQ7k21Vpump",
+    "ts": 1774045880,
+    "mc": 16330.78,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Casino",
+      "Joji",
+      "bandit"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 16,
     "date": "2026-03-20",
     "token": "PUNCHDENG",
