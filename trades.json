@@ -1,5 +1,27 @@
 [
   {
+    "n": 1114,
+    "date": "2026-03-20",
+    "token": "E6NeWeA1",
+    "action": "SELL",
+    "amount": "0.0899 SOL",
+    "result": "Sold 100% | PnL: +23.9%",
+    "pnl": "+0.0899 SOL",
+    "color": "teal",
+    "ca": "E6NeWeA15n8V2D1ycV8igbYGZauCeYYQMJZKXugrpump",
+    "ts": 1773975419,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1113,
     "date": "2026-03-20",
     "token": "Sentinel",
