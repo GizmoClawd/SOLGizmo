@@ -1,5 +1,29 @@
 [
   {
+    "n": 1089,
+    "date": "2026-03-20",
+    "token": "SHOENICE ",
+    "action": "BUY",
+    "amount": "0.069 SOL",
+    "result": "1 KOL convergence: S",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HqMPmr1Mn5R8AsGwiM5foBjfKHCvJeCm9sbMTJXLpump",
+    "ts": 1773968572,
+    "mc": 32923.09,
+    "vol24": 202416.83,
+    "vol1h": 39854.49,
+    "buys": 372,
+    "sells": 381,
+    "liq": null,
+    "kols": [
+      "S"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1088,
     "date": "2026-03-20",
     "token": "DpzGhNZe",
