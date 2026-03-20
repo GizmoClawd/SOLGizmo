@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "n": 1,
+    "date": "2026-03-20",
+    "token": "2x6Stt63",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (decu,Cented)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2x6Stt63ToWD1E5uQWtH9KEiDaqVivR9DnFnLyHQpcCe",
+    "ts": 1774018779,
+    "mc": 9904.18,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "decu",
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  }
+]
