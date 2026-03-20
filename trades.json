@@ -1,5 +1,27 @@
 [
   {
+    "n": 29,
+    "date": "2026-03-20",
+    "token": "3hDn93kh",
+    "action": "SELL",
+    "amount": "0.3267 SOL",
+    "result": "Sold 100% | PnL: +52.3%",
+    "pnl": "+0.3267 SOL",
+    "color": "teal",
+    "ca": "3hDn93kh8m9VBJgesbhPoFGfSt6H1eYRAMXDbTfEpump",
+    "ts": 1774050477,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 28,
     "date": "2026-03-20",
     "token": "3hDn93kh",
