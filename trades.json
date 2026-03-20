@@ -1,5 +1,30 @@
 [
   {
+    "n": 37,
+    "date": "2026-03-20",
+    "token": "FHQrfB5R",
+    "action": "BUY",
+    "amount": "0.281016711 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Cented,Silver)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FHQrfB5RMCxfwYixTzZggMWSb7BuXsCY9nygFCHypump",
+    "ts": 1774037903,
+    "mc": 14431.8,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Silver"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 36,
     "date": "2026-03-20",
     "token": "GM9fN6X2",
