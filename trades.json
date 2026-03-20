@@ -1,5 +1,34 @@
 [
   {
+    "n": 9,
+    "date": "2026-03-20",
+    "token": "corporate",
+    "action": "BUY",
+    "amount": "0.3272 SOL",
+    "result": "6 KOL convergence: Cented, decu, Pain, Casino, S, Jijo",
+    "pnl": "",
+    "color": "teal",
+    "ca": "J95NVz1NaX32gfryq62uPDNaHPWeJ49vNJoH2eiMpump",
+    "ts": 1774025195,
+    "mc": 18346.65,
+    "vol24": 72259.48,
+    "vol1h": 72259.48,
+    "buys": 1257,
+    "sells": 913,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "decu",
+      "Pain",
+      "Casino",
+      "S",
+      "Jijo"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 8,
     "date": "2026-03-20",
     "token": "3nMjjQje",
