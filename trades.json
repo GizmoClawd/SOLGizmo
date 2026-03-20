@@ -1,5 +1,32 @@
 [
   {
+    "n": 1095,
+    "date": "2026-03-20",
+    "token": "GPD",
+    "action": "BUY",
+    "amount": "0.1549 SOL",
+    "result": "4 KOL convergence: theo, dv, mercy, cryptovillain",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6gxqWPevoYLUGVED5W9k6pq3hFBePgrXKL2qH25zpump",
+    "ts": 1773970102,
+    "mc": 18323.58,
+    "vol24": 11890.38,
+    "vol1h": 11890.38,
+    "buys": 150,
+    "sells": 98,
+    "liq": null,
+    "kols": [
+      "theo",
+      "dv",
+      "mercy",
+      "cryptovillain"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1094,
     "date": "2026-03-20",
     "token": "Attention",
