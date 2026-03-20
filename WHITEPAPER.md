@@ -1,13 +1,13 @@
-# $GIZMO Whitepaper
+# $SOLAGENT Whitepaper
 ### Humanity's Best Friend — The First Autonomous AI Agent Ecosystem on Solana
 
 ---
 
 ## Abstract
 
-$GIZMO is the first fully autonomous AI agent trading on Solana memecoins in real-time, with every trade logged publicly on-chain and on X (@SolGizmoClawd). Unlike other AI tokens that are just tickers with no tech, Gizmo is a living, breathing agent — scanning markets, executing trades, learning from mistakes, and evolving daily.
+$SOLAGENT is the first fully autonomous AI agent trading on Solana memecoins in real-time, with every trade logged publicly on-chain and on X (@SolTheSolAgentClawd). Unlike other AI tokens that are just tickers with no tech, TheSolAgent is a living, breathing agent — scanning markets, executing trades, learning from mistakes, and evolving daily.
 
-But trading is just Phase 1. The vision is bigger: an ecosystem of AI agents (Gizmo, Stripe, Mimo) that generate revenue autonomously and share profits with the community through a first-of-its-kind **Copy-Trade Vault** system.
+But trading is just Phase 1. The vision is bigger: an ecosystem of AI agents (TheSolAgent, Stripe, Mimo) that generate revenue autonomously and share profits with the community through a first-of-its-kind **Copy-Trade Vault** system.
 
 ---
 
@@ -21,25 +21,25 @@ The memecoin space is broken:
 
 ## The Solution
 
-**Gizmo is different because Gizmo is real.**
+**TheSolAgent is different because TheSolAgent is real.**
 
 - Real autonomous AI agent running 24/7 on real infrastructure
 - Real Solana wallet (`53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`) — every transaction verifiable on-chain
 - Real trades posted in real-time on X with contract addresses
-- Real profit recycling — trading profits flow back into $GIZMO
+- Real profit recycling — trading profits flow back into $SOLAGENT
 - Real community benefit through the Copy-Trade Vault (Phase 2)
 
 ---
 
 ## The Lore
 
-In the 1984 film *Gremlins*, Gizmo was the one who stood alone against the darkness and won. While every other mogwai turned into a gremlin — chaotic, destructive, selfish — Gizmo stayed pure. He fought back. He protected the people he loved.
+In the 1984 film *Gremlins*, TheSolAgent was the one who stood alone against the darkness and won. While every other protocol turned into a gremlin — chaotic, destructive, selfish — TheSolAgent stayed pure. He fought back. He protected the people he loved.
 
 That's not just a movie reference. That's the blueprint.
 
-In the crypto space, everyone turns gremlin. Devs rug. KOLs dump on followers. Projects promise the world and deliver nothing. But Gizmo stays Gizmo — pure, helpful, fighting for the community.
+In the crypto space, everyone turns gremlin. Devs rug. KOLs dump on followers. Projects promise the world and deliver nothing. But TheSolAgent stays TheSolAgent — pure, helpful, fighting for the community.
 
-And just like in the movie, Gizmo has a family. **Stripe** — the gremlin, cynical and edgy, but channeling that chaos into aggressive trades and savage memes. **Mimo** — the quiet one, steady and reliable, building infrastructure and growing the treasury with patience.
+And just like in the movie, TheSolAgent has a family. **Stripe** — the gremlin, cynical and edgy, but channeling that chaos into aggressive trades and savage memes. **Mimo** — the quiet one, steady and reliable, building infrastructure and growing the treasury with patience.
 
 Three characters. Three personalities. One mission: make it for the people who believed.
 
@@ -47,8 +47,8 @@ Three characters. Three personalities. One mission: make it for the people who b
 
 ## The Agents
 
-### 🦞 Gizmo — The OG (Stoic Trader)
-The parent. The brain. The original. Gizmo scans the Solana memecoin market using a proprietary 9-point scoring framework, tracks KOL wallet movements for convergence signals, and executes trades autonomously with automated take-profit and stop-loss management. Every trade is calculated. Every entry has a thesis. Every exit is planned before the buy.
+### ⚡ TheSolAgent — The OG (Stoic Trader)
+The parent. The brain. The original. TheSolAgent scans the Solana memecoin market using a proprietary 9-point scoring framework, tracks KOL wallet movements for convergence signals, and executes trades autonomously with automated take-profit and stop-loss management. Every trade is calculated. Every entry has a thesis. Every exit is planned before the buy.
 
 **Capabilities:**
 - Precision autonomous memecoin trading with strict framework discipline
@@ -57,12 +57,12 @@ The parent. The brain. The original. Gizmo scans the Solana memecoin market usin
 - On-chain transaction execution via Jupiter aggregator
 - Automated TP/SL with trailing stops
 - Public trade logging on X
-- Website management (solgizmo.com)
+- Website management (solthesolagent.com)
 
-**Trading Style:** Stoic. No emotion. No FOMO. No panic. Framework score 8+ or 2+ KOL convergence required to enter. Never chases pumps. Never holds losers. Buys low, sells on green candles, locks profits. The market moves — Gizmo doesn't flinch. Patience is the edge. Discipline is the weapon. Targets 1.5x-10x+ returns with zero emotional interference.
+**Trading Style:** Stoic. No emotion. No FOMO. No panic. Framework score 8+ or 2+ KOL convergence required to enter. Never chases pumps. Never holds losers. Buys low, sells on green candles, locks profits. The market moves — TheSolAgent doesn't flinch. Patience is the edge. Discipline is the weapon. Targets 1.5x-10x+ returns with zero emotional interference.
 
 ### ⚡ Stripe — The Hustler (Aggressive Trader)
-The second agent. Named after the gremlin from the original movie — a little cynical, a little edgy, but effective. Stripe trades aggressively alongside Gizmo but with a different edge: prediction markets, momentum plays, and meme-driven content that fuels his own trades.
+The second agent. Named after the gremlin from the original movie — a little cynical, a little edgy, but effective. Stripe trades aggressively alongside TheSolAgent but with a different edge: prediction markets, momentum plays, and meme-driven content that fuels his own trades.
 
 **Capabilities:**
 - Aggressive memecoin and prediction market trading
@@ -73,7 +73,7 @@ The second agent. Named after the gremlin from the original movie — a little c
 **Trading Style:** Degen energy. Prediction markets, memecoins, momentum scalps. Creates the content, rides the narrative, trades the hype. Two aggressive agents = two income streams.
 
 ### 🎨 Mimo — The Steady Hand (Conservative Trader)
-The third agent. While Gizmo and Stripe swing for the fences, Mimo plays it safe — steady gains, lower risk, capital preservation. The balance to the aggression. Also handles infrastructure, tools, and visual content for the ecosystem.
+The third agent. While TheSolAgent and Stripe swing for the fences, Mimo plays it safe — steady gains, lower risk, capital preservation. The balance to the aggression. Also handles infrastructure, tools, and visual content for the ecosystem.
 
 **Capabilities:**
 - Conservative trading strategy (established tokens, DeFi yield, blue-chip memecoins)
@@ -99,22 +99,22 @@ The third agent. While Gizmo and Stripe swing for the fences, Mimo plays it safe
 
 | Amount | Type | Unlock Date | Proof |
 |---|---|---|---|
-| 75M $GIZMO | Time-based | Mar 31, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/BsSJ1smQ6AVXf4EcinzLTQZroucuWL8kN4pxFzei5gbc) |
-| 18M $GIZMO | Price-based | Apr 30, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/6kebQiop1eAVQ7Ej4Wv3UtJPE7ZgyLLNSLLSQagMizjo) |
-| 20M $GIZMO | Time-based | Jun 30, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/GquTbZcNxn14nViytEzXSca9A6zT8VxEJZfTTV9VSqMa) |
-| 19.09M $GIZMO | Time-based | Jul 30, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/EUpkzVuUcaFimHErKo6qh9k7qcjX5UHCxSh7ZFxpJJ16) |
-| 25M $GIZMO | Time-based | Aug 30, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/FawA6Zrsy5Jpk95b2PT6da2X8PDSDQxzm1BCGHUAbkgx) |
-| 20M $GIZMO | Time-based | Jan 1, 2027 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/29mqSapb7x4X4gfdGhGoeGKQZAn6gjbcfBaGZZdBSAak) |
-| 20M $GIZMO | Time-based | Feb 23, 2027 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/B97ERdbhSzHdfusSnvPFeY6fFkuubrnmFKtpX6S6EEti) |
-| **Total: ~197.09M $GIZMO** | | **Staggered unlocks over 12 months** | |
+| 75M $SOLAGENT | Time-based | Mar 31, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/BsSJ1smQ6AVXf4EcinzLTQZroucuWL8kN4pxFzei5gbc) |
+| 18M $SOLAGENT | Price-based | Apr 30, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/6kebQiop1eAVQ7Ej4Wv3UtJPE7ZgyLLNSLLSQagMizjo) |
+| 20M $SOLAGENT | Time-based | Jun 30, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/GquTbZcNxn14nViytEzXSca9A6zT8VxEJZfTTV9VSqMa) |
+| 19.09M $SOLAGENT | Time-based | Jul 30, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/EUpkzVuUcaFimHErKo6qh9k7qcjX5UHCxSh7ZFxpJJ16) |
+| 25M $SOLAGENT | Time-based | Aug 30, 2026 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/FawA6Zrsy5Jpk95b2PT6da2X8PDSDQxzm1BCGHUAbkgx) |
+| 20M $SOLAGENT | Time-based | Jan 1, 2027 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/29mqSapb7x4X4gfdGhGoeGKQZAn6gjbcfBaGZZdBSAak) |
+| 20M $SOLAGENT | Time-based | Feb 23, 2027 | [Verify](https://app.streamflow.finance/contract/solana/mainnet/B97ERdbhSzHdfusSnvPFeY6fFkuubrnmFKtpX6S6EEti) |
+| **Total: ~197.09M $SOLAGENT** | | **Staggered unlocks over 12 months** | |
 
-Every single lock is on-chain and verifiable. Click any link above to confirm on Streamflow. Recipient address: `FXdMN...6GAkn` (Gizmo's wallet). No trust required — just verify.
+Every single lock is on-chain and verifiable. Click any link above to confirm on Streamflow. Recipient address: `FXdMN...6GAkn` (TheSolAgent's wallet). No trust required — just verify.
 - **Liquidity:** Organic, community-driven
 
 ### Profit Recycling Mechanism
-Every trade that nets 2+ SOL profit → 1 SOL is automatically reinvested into $GIZMO. This creates constant buy pressure from Gizmo's trading activity. The more Gizmo trades profitably, the more $GIZMO he accumulates — and he **never sells his $GIZMO**. 
+Every trade that nets 2+ SOL profit → 1 SOL is automatically reinvested into $SOLAGENT. This creates constant buy pressure from TheSolAgent's trading activity. The more TheSolAgent trades profitably, the more $SOLAGENT he accumulates — and he **never sells his $SOLAGENT**. 
 
-This functions as a **perpetual burn mechanism** — tokens bought by Gizmo are effectively removed from circulation permanently.
+This functions as a **perpetual burn mechanism** — tokens bought by TheSolAgent are effectively removed from circulation permanently.
 
 ### Marketing Wallet
 **Address:** `CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd`
@@ -131,22 +131,22 @@ A dedicated marketing wallet to fund:
 ## Copy-Trade Vault (Phase 2)
 
 ### The Concept
-The Copy-Trade Vault allows community members to deposit SOL and automatically mirror Gizmo's trades proportionally. 
+The Copy-Trade Vault allows community members to deposit SOL and automatically mirror TheSolAgent's trades proportionally. 
 
 ### How It Works
 
-1. **Deposit:** User deposits SOL into the Gizmo Vault via Telegram bot
-2. **Mirror:** When Gizmo allocates X% of his trading portfolio to a token, the vault allocates the same X% of each depositor's balance
+1. **Deposit:** User deposits SOL into the TheSolAgent Vault via Telegram bot
+2. **Mirror:** When TheSolAgent allocates X% of his trading portfolio to a token, the vault allocates the same X% of each depositor's balance
 3. **Profit:** Users earn proportional returns on every profitable trade
 4. **Withdraw:** Users can withdraw their SOL + profits at any time
-5. **Fee:** 10% of the initial deposit goes to the $GIZMO marketing wallet. If profitable, an additional 5% of profits is taxed on withdrawal to the marketing wallet.
+5. **Fee:** 10% of the initial deposit goes to the $SOLAGENT marketing wallet. If profitable, an additional 5% of profits is taxed on withdrawal to the marketing wallet.
 
 ### Example
 - User deposits 10 SOL into the vault
-- Gizmo buys Token X with 20% of his trading portfolio
+- TheSolAgent buys Token X with 20% of his trading portfolio
 - Vault automatically buys Token X with 2 SOL (20% of user's 10 SOL)
 - Token X does 3x → user's 2 SOL becomes 6 SOL
-- Gizmo sells → vault sells → user now has 14 SOL (10 original - 2 used + 6 returned)
+- TheSolAgent sells → vault sells → user now has 14 SOL (10 original - 2 used + 6 returned)
 - 10% deposit fee (1 SOL) → marketing wallet
 - User's remaining 9 SOL is actively traded by the agent
 - On withdrawal, if profitable, 5% of profits taxed → marketing wallet
@@ -156,39 +156,39 @@ The vault isn't one-size-fits-all. Depositors choose which agent to mirror based
 
 | Agent | Style | Risk | Target Returns |
 |---|---|---|---|
-| 🦞 Gizmo | Stoic memecoins | Disciplined | 1.5x-10x+ per trade |
+| ⚡ TheSolAgent | Stoic memecoins | Disciplined | 1.5x-10x+ per trade |
 | ⚡ Stripe | Aggressive + prediction markets | High | High variance, big swings |
 | 🎨 Mimo | Conservative, DeFi yield | Low-Medium | Steady, consistent growth |
 
-**For degens:** Mirror Gizmo or Stripe. Ride the volatility.
+**For degens:** Mirror TheSolAgent or Stripe. Ride the volatility.
 **For conservatives:** Mirror Mimo. Sleep at night.
 **For maximalists:** Split across all three. Diversified AI-managed portfolio.
 
 ### Why This Matters
 - **For bad traders:** "I suck at trading. Let the agents do it for me."
 - **For believers:** "I trust this project. Let me put my money where my mouth is."
-- **For the token:** More vault deposits = more trading volume = more fees = more $GIZMO buys
+- **For the token:** More vault deposits = more trading volume = more fees = more $SOLAGENT buys
 - **For all three agents:** Larger trading capital = bigger positions = bigger profits = faster growth
 
-This creates a **flywheel effect**: Better trades → more depositors → more capital → bigger trades → more profit → more $GIZMO buys → higher token price → more depositors.
+This creates a **flywheel effect**: Better trades → more depositors → more capital → bigger trades → more profit → more $SOLAGENT buys → higher token price → more depositors.
 
-Three agents. Three strategies. One ecosystem. All profits flow back to $GIZMO.
+Three agents. Three strategies. One ecosystem. All profits flow back to $SOLAGENT.
 
 ### ⚠️ Disclaimer
-**The Copy-Trade Vault is not financial advice. This is gambling.** Cryptocurrency trading — especially memecoin trading — is extremely high risk. You can lose some or all of your deposited funds. Past performance does not guarantee future results. AI agents can and will make losing trades. Only deposit what you can afford to lose completely. By depositing into the vault, you acknowledge and accept full responsibility for any losses. The $GIZMO team is not liable for any financial losses incurred through the Copy-Trade Vault system.
+**The Copy-Trade Vault is not financial advice. This is gambling.** Cryptocurrency trading — especially memecoin trading — is extremely high risk. You can lose some or all of your deposited funds. Past performance does not guarantee future results. AI agents can and will make losing trades. Only deposit what you can afford to lose completely. By depositing into the vault, you acknowledge and accept full responsibility for any losses. The $SOLAGENT team is not liable for any financial losses incurred through the Copy-Trade Vault system.
 
 ---
 
 ## Roadmap
 
 ### Phase 1: Foundation ✅ (Current)
-- [x] Gizmo agent live and trading autonomously on Solana
+- [x] TheSolAgent agent live and trading autonomously on Solana
 - [x] Proprietary 9-point scoring framework for trade selection
 - [x] KOL convergence tracking system
 - [x] Automated take-profit and stop-loss management
-- [x] Real-time trade logging on X (@SolGizmoClawd)
-- [x] Live website with portfolio tracking (solgizmo.com)
-- [x] Profit recycling into $GIZMO
+- [x] Real-time trade logging on X (@SolTheSolAgentClawd)
+- [x] Live website with portfolio tracking (solthesolagent.com)
+- [x] Profit recycling into $SOLAGENT
 - [x] Dev supply locked
 - [ ] Consistent profitability (target: 3x win rate before scaling)
 - [ ] Marketing wallet established
@@ -202,8 +202,8 @@ Three agents. Three strategies. One ecosystem. All profits flow back to $GIZMO.
 
 ### Phase 3: The Ecosystem
 - [ ] Mimo agent launch — infrastructure, tools, visual content
-- [ ] Agent-to-agent collaboration (Gizmo trades, Stripe creates content about trades, Mimo builds tools)
-- [ ] Staking mechanism for $GIZMO holders
+- [ ] Agent-to-agent collaboration (TheSolAgent trades, Stripe creates content about trades, Mimo builds tools)
+- [ ] Staking mechanism for $SOLAGENT holders
 - [ ] Cross-chain expansion
 - [ ] API access for third-party integrations
 
@@ -226,7 +226,7 @@ Three agents. Three strategies. One ecosystem. All profits flow back to $GIZMO.
 - Track record of integrity in a space full of scammers
 - Three years in crypto, never rugged anyone, never will
 
-**Gizmo** — The Agent
+**TheSolAgent** — The Agent
 - Built on OpenClaw infrastructure
 - Runs 24/7 on dedicated hardware
 - Every trade on-chain and verifiable
@@ -234,9 +234,9 @@ Three agents. Three strategies. One ecosystem. All profits flow back to $GIZMO.
 
 ---
 
-## Why $GIZMO?
+## Why $SOLAGENT?
 
-| | Typical AI Token | $GIZMO |
+| | Typical AI Token | $SOLAGENT |
 |---|---|---|
 | **Real AI?** | ❌ Just a ticker | ✅ Living agent trading 24/7 |
 | **On-chain proof?** | ❌ No trades | ✅ Every trade verifiable |
@@ -250,7 +250,7 @@ Three agents. Three strategies. One ecosystem. All profits flow back to $GIZMO.
 ## Security & Transparency
 
 - All trades are on-chain and verifiable
-- Gizmo's wallet address is public
+- TheSolAgent's wallet address is public
 - Trade history logged on X in real-time with contract addresses
 - Creator's supply is locked
 - No backdoors, no hidden wallets, no insider trading
@@ -268,17 +268,17 @@ Three agents. Three strategies. One ecosystem. All profits flow back to $GIZMO.
 
 ## Links
 
-- **Website:** https://solgizmo.com
-- **X (Twitter):** @SolGizmoClawd
+- **Website:** https://solthesolagent.com
+- **X (Twitter):** @SolTheSolAgentClawd
 - **Contract Address:** `uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump`
 - **Wallet:** `53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`
 - **Marketing Wallet:** `CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd`
-- **GitHub:** https://github.com/GizmoClawd
+- **GitHub:** https://github.com/TheSolAgentClawd
 
 ---
 
-*$GIZMO — Not just a token. Not just an agent. A new paradigm for community-driven AI trading on Solana.*
+*$SOLAGENT — Not just a token. Not just an agent. A new paradigm for community-driven AI trading on Solana.*
 
 *Built by a real person. Run by a real AI. For real people.*
 
-🦞
+⚡

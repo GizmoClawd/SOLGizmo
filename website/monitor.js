@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * GIZMO WEBSITE GUARDIAN MONITORING SYSTEM
+ * THE SOL AGENT WEBSITE GUARDIAN MONITORING SYSTEM
  * 
  * This script runs continuously to monitor the website health,
  * trading data accuracy, and system status.
@@ -78,22 +78,22 @@ class WebsiteGuardian {
     }
   }
 
-  async checkGizmoToken() {
+  async checkTheSolAgentToken() {
     try {
-      // Check GIZMO token price
+      // Check THE SOL AGENT token price
       const data = await this.makeRequest('https://api.dexscreener.com/latest/dex/tokens/uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump');
       
       if (data.pairs && data.pairs.length > 0) {
         const price = parseFloat(data.pairs[0].priceUsd || 0);
         const volume24h = parseFloat(data.pairs[0].volume?.h24 || 0);
         
-        this.log(`🦞 GIZMO Price: $${price.toFixed(8)} | 24h Vol: $${volume24h.toLocaleString()}`);
+        this.log(`⚡ THE SOL AGENT Price: $${price.toFixed(8)} | 24h Vol: $${volume24h.toLocaleString()}`);
         return { success: true, price, volume24h };
       }
       
-      throw new Error('No GIZMO token data found');
+      throw new Error('No THE SOL AGENT token data found');
     } catch (error) {
-      this.log(`❌ GIZMO token check failed: ${error.message}`);
+      this.log(`❌ THE SOL AGENT token check failed: ${error.message}`);
       return { success: false, error: error.message };
     }
   }
@@ -159,7 +159,7 @@ class WebsiteGuardian {
       timestamp,
       checks: {
         solPrice: await this.checkSolanaPrice(),
-        gizmoToken: await this.checkGizmoToken(),
+        gizmoToken: await this.checkTheSolAgentToken(),
         websiteFiles: await this.checkWebsiteFiles(),
         familyStatus: await this.checkFamilyStatus()
       },

@@ -1,5 +1,5 @@
 /**
- * 🦞 GIZMO UNIFIED ENGINE v1.0
+ * ⚡ GIZMO UNIFIED ENGINE v1.0
  * Single script — replaces both auto-manage.mjs and autonomous.mjs
  * - KOL wallet tracking (18 wallets via Helius)
  * - Market scanner (DexScreener boosts + scanner.mjs)
@@ -32,7 +32,7 @@ try {
 
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 const BASE_DIR = process.env.HOME + '/.gizmo/runtime';
-const WALLET_ADDRESS = process.env.SOLANA_WALLET || '53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz';
+const WALLET_ADDRESS = process.env.SOLANA_WALLET || 'GZnFNskqnCAoTHYuYFaZm3FQGaGHJ7CqVSphmGZnTia4';
 const WORKSPACE = (process.env.HOME || '/root') + '/.openclaw/workspace/SOLGizmo';
 const POSITIONS_FILE = BASE_DIR + '/positions.json';
 const TRADES_FILE = WORKSPACE + '/trades.json';
@@ -108,7 +108,7 @@ const SIGNAL_WINDOW_MS = 10 * 60 * 1000;
 const HELIUS_KEY = process.env.HELIUS_API_KEY || '';
 
 // ─── ADAPTIVE PARAMS (learning system) ───────────────────────────────────────
-let SCORE_THRESHOLD = 6;
+let SCORE_THRESHOLD = 7; // SURVIVAL: locked high
 let MIN_LIQ = 8000;
 let MIN_KOLS = 2;
 let POSITION_SIZE_MULT = 1.0;
@@ -120,10 +120,10 @@ function loadLearnState() {
   try {
     if (fs.existsSync(LEARN_FILE)) {
       const s = JSON.parse(fs.readFileSync(LEARN_FILE, 'utf8'));
-      SCORE_THRESHOLD = s.scoreThreshold ?? 5;
+      SCORE_THRESHOLD = Math.max(7, s.scoreThreshold ?? 7); // SURVIVAL: floor at 7
       MIN_LIQ = s.minLiq ?? 8000;
       MIN_KOLS = s.minKols ?? 2;
-      POSITION_SIZE_MULT = s.positionSizeMult ?? 1.0;
+      POSITION_SIZE_MULT = 1.0; // SURVIVAL: locked at 1x
       log(`🧠 Loaded adaptive params: score≥${SCORE_THRESHOLD} liq≥$${MIN_LIQ} kols≥${MIN_KOLS} sizeMult=${POSITION_SIZE_MULT}`);
     }
   } catch {}
@@ -183,12 +183,12 @@ async function learnFromTrades() {
     // Score threshold driven by OVERALL win rate (not just market — most trades are KOL)
     if (recent.length >= 5) {
       if (winRate <= 0.45 && SCORE_THRESHOLD < 9) {
-        SCORE_THRESHOLD = Math.min(7, SCORE_THRESHOLD + 1);
+        SCORE_THRESHOLD = Math.min(9, SCORE_THRESHOLD + 1);
         log(`🧠 WR low (${(winRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
-      } else if (winRate > 0.65 && SCORE_THRESHOLD > 5) {
-        SCORE_THRESHOLD = Math.max(5, SCORE_THRESHOLD - 1);
-        log(`🧠 WR strong (${(winRate*100).toFixed(0)}%) — lowering score threshold to ${SCORE_THRESHOLD}`);
+      } else if (winRate > 0.65 && SCORE_THRESHOLD > 7) {
+        SCORE_THRESHOLD = 7; // SURVIVAL: floor at 7
+        log(`🧠 WR strong (${(winRate*100).toFixed(0)}%) — threshold stays at ${SCORE_THRESHOLD}`);
         changed = true;
       }
     }
@@ -389,7 +389,7 @@ const WATCHLIST = [];
 const RECENTLY_BOUGHT = new Map((() => {
   try {
     const trades = JSON.parse(fs.readFileSync(BASE_DIR + '/trades.json', 'utf8'));
-    const cutoff = Date.now() - 30 * 60000; // 30 min cooldown — faster re-entry
+    const cutoff = Date.now() - 120 * 60000; // SURVIVAL: 2hr cooldown
     return trades
       .filter(t => t.action === 'BUY' && t.ca && t.ts && t.ts * 1000 > cutoff)
       .map(t => [t.ca, t.ts * 1000]);
@@ -579,7 +579,7 @@ async function verifyBuySuccess(ca) {
 // ─── WALLET BALANCE ───────────────────────────────────────────────────────────
 async function getWalletBalance() {
   try {
-    const r = await fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz']}),signal:AbortSignal.timeout(3000)});
+    const r = await fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:['GZnFNskqnCAoTHYuYFaZm3FQGaGHJ7CqVSphmGZnTia4']}),signal:AbortSignal.timeout(3000)});
     const d = await r.json(); return (d.result?.value||0)/1e9;
   } catch { return 1; }
 }
@@ -588,7 +588,7 @@ async function getWalletBalance() {
 function getDailyPnL() {
   try {
     const today = new Date().toISOString().slice(0,10);
-    const trades = JSON.parse(fs.readFileSync(BASE_DIR+'/trades.json','utf8'));
+    const trades = JSON.parse(fs.readFileSync(TRADES_FILE,'utf8'));
     return trades.filter(t=>t.date===today&&t.action==='SELL').reduce((sum,t)=>{
       const m=(t.pnl||'').match(/([+-]?\d+\.?\d*)\s*SOL/); return sum+(m?parseFloat(m[1]):0);
     },0);
@@ -606,7 +606,7 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
   // FLOOR: always keep 0.1 SOL untouched for gas/fees
   const FLOOR = 0.1;
   // RESERVE: keep 15% of wallet as safe reserve, never trade it
-  const RESERVE = walletSol * 0.08; // SUPERCELL: lean reserve, more capital deployed
+  const RESERVE = walletSol * 0.25; // SURVIVAL: protect 25% always
   // TRADEABLE: only risk from the tradeable portion
   const tradeable = walletSol - FLOOR - RESERVE;
   if (tradeable <= 0) { 
@@ -617,7 +617,18 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
 
   // Circuit breaker: stop if lost 1.5 SOL today
   const dailyPnL = getDailyPnL();
-  if (dailyPnL < -5.0) { log(`🛑 CIRCUIT BREAKER: daily loss ${dailyPnL.toFixed(3)} SOL — NO MORE TRADES`); return 0; }
+  if (dailyPnL < -0.3) { log(`🛑 CIRCUIT BREAKER: daily loss ${dailyPnL.toFixed(3)} SOL — NO MORE TRADES`); return 0; }
+
+  // SURVIVAL: Hard floor — below 0.4 SOL, stop trading entirely
+  if (walletSol < 0.4) { log(`🛑 HARD FLOOR: wallet ${walletSol.toFixed(3)} SOL below 0.4 — preserving capital`); return 0; }
+
+  // SURVIVAL: Max 10 trades per day
+  try {
+    const _todayStr = new Date().toISOString().slice(0, 10);
+    const _allTrades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
+    const _todayBuys = _allTrades.filter(t => t.date === _todayStr && t.action === 'BUY').length;
+    if (_todayBuys >= 10) { log(`🛑 MAX TRADES: ${_todayBuys} buys today — enough`); return 0; }
+  } catch {}
 
   // TIER SYSTEM based on wallet size:
   let maxPerTrade, pctPerTrade;
@@ -657,7 +668,8 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
   try {
     const perf = JSON.parse(fs.readFileSync(process.env.HOME + '/.gizmo/runtime/kol-performance.json', 'utf8'));
     // Count elite KOLs in current signal (approximated by numKols with weight 3)
-    eliteCount = numKols; // all tracked KOLs are now ELITE weight 3
+    // SURVIVAL: disabled — conviction boost was inflating every entry
+    eliteCount = 0;
   } catch {}
   
   const convictionMult = eliteCount >= 4 ? 2.0  // 4+ elite KOLs = 2x size
@@ -676,8 +688,8 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
 async function postTrade(type, symbol, ca, mc, reason, solAmount, pnl) {
   const emoji = type === 'BUY' ? '🟢' : (pnl && pnl > 0 ? '💰' : '🔴');
   const text = type === 'BUY'
-    ? `${emoji} BOUGHT $${symbol}\n\n${reason}\n\nMC: $${Math.round(mc/1000)}K | ${solAmount} SOL\n\nCA: ${ca}\n\n🦞`
-    : `${emoji} SOLD $${symbol} (${pnl > 0 ? '+' : ''}${pnl.toFixed(1)}%)\n\n${reason}\n\nMC: $${Math.round(mc/1000)}K\n\n🦞`;
+    ? `${emoji} BOUGHT $${symbol}\n\n${reason}\n\nMC: $${Math.round(mc/1000)}K | ${solAmount} SOL\n\nCA: ${ca}\n\n⚡`
+    : `${emoji} SOLD $${symbol} (${pnl > 0 ? '+' : ''}${pnl.toFixed(1)}%)\n\n${reason}\n\nMC: $${Math.round(mc/1000)}K\n\n⚡`;
   try {
     await fetch('https://discord.com/api/webhooks/1481464647193334002/PZ8g7gaxTdkfYuSm1FSggtYpIk3tUReA7LkQWmKZW15qnVRAdaN2FHexFUMPit-iIVjY', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -775,27 +787,20 @@ async function managePositions() {
     // Winners don't need DCA, losers shouldn't get more capital
     if (!pos.dcaAdded) { pos.dcaAdded = true; }
 
-    // HARD STOP: -30% with no SL set — only cut if genuine rug (sells dominating + volume dying)
+    // SURVIVAL: unconditional hard stop at -25%
     if (mc <= pos.entryMC * 0.75 && !pos.sl) {
-      const bsRatio = buys / Math.max(sells, 1);
-      const isGenuineRug = bsRatio < 0.5 && sells > 10; // sells 2x+ buys with real volume
-      const isDeepDump = mc <= pos.entryMC * 0.45;       // -55%+ always cut regardless
-      if (isGenuineRug || isDeepDump) {
-        log(`💀 HARD STOP ${pos.name} at ${pnl}% — ${isDeepDump ? 'deep dump' : 'genuine rug'} (B/S:${buys}/${sells})`);
-        if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
-          await postTrade('SELL', pos.name, pos.ca, mc, `Hard stop ${pnl}%`, null, parseFloat(pnl));
-          POSITIONS.splice(i, 1); savePositions();
-        }
-        continue;
-      } else {
-        log(`⏳ ${pos.name} at ${pnl}% — holding, momentum ok (B/S:${buys}/${sells})`);
+      log(`💀 HARD STOP ${pos.name} at ${pnl}% — UNCONDITIONAL CUT (B/S:${buys}/${sells})`);
+      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
+        await postTrade('SELL', pos.name, pos.ca, mc, `Hard stop ${pnl}%`, null, parseFloat(pnl));
+        POSITIONS.splice(i, 1); savePositions();
       }
+      continue;
     }
 
     // FAST PUMP: DISABLED — let trailing SL handle exits, don't cap upside
     // Instead: when up 40%+, just tighten the SL to protect gains
-    if (!pos.tp1Hit && !pos.runnerMode && mc >= pos.entryMC * 1.40) {
-      const tightSL = Math.max(pos.sl || 0, mc * 0.75, pos.entryMC * 1.10);
+    if (!pos.tp1Hit && !pos.runnerMode && mc >= pos.entryMC * 1.15) { // SURVIVAL: tighten at +15%
+      const tightSL = Math.max(pos.sl || 0, mc * 0.82, pos.entryMC * 1.05); // SURVIVAL: tighter
       if (tightSL > (pos.sl || 0)) {
         pos.sl = tightSL;
         savePositions();
@@ -815,13 +820,11 @@ async function managePositions() {
         savePositions();
         log(`🦁 RUNNER MODE: ${pos.name} ${mult.toFixed(1)}x RIPPING — m5:${m5}% B/S:${buys}/${sells} — HOLDING FULL BAG TO 5x`);
       } else {
-        // Normal TP1: not ripping hard enough — lock 15% profit (keep 85% riding)
-        log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — locking 15%`);
-        if (await sell(pos.ca, '15%', pos.name, pos.entryMC, mc)) {
-          pos.tp1Hit = true;
-          pos.sl = Math.max(pos.sl || 0, pos.entryMC * 1.02);
-          savePositions();
+        // SURVIVAL: TP1 sells 100% — one clean exit, lock all profit
+        log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — SELLING 100%`);
+        if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
           await postTrade('SELL', pos.name, pos.ca, mc, `TP1 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+          POSITIONS.splice(i, 1); savePositions();
         }
       }
       continue;
@@ -842,15 +845,13 @@ async function managePositions() {
       log(`🦁 RUNNER ${pos.name} ${mult.toFixed(1)}x — full bag held | SL: $${Math.round(pos.sl)} (${(trailPct*100).toFixed(0)}% trail) | B/S:${buys}/${sells}`);
     }
 
-    // RUNNER TP1: 5x — sell 50%, moonbag the other 50%
-    if (pos.runnerMode && !pos.runnerTP1Hit && mc >= pos.entryMC * 5.0) {
+    // SURVIVAL: Runner TP1 — 3x sell 100%, lock the bag
+    if (pos.runnerMode && !pos.runnerTP1Hit && mc >= pos.entryMC * 3.0) {
       const mult = mc / pos.entryMC;
-      log(`🌙 RUNNER TP1 ${pos.name} ${mult.toFixed(1)}x — selling 50%, moonbagging rest`);
-      if (await sell(pos.ca, '50%', pos.name, pos.entryMC, mc)) {
-        pos.runnerTP1Hit = true;
-        pos.sl = null; pos.moonbag = true; // NO SL on moonbag — Will sells manually
-        savePositions();
+      log(`🌙 RUNNER TP1 ${pos.name} ${mult.toFixed(1)}x — SELLING 100%`);
+      if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
         await postTrade('SELL', pos.name, pos.ca, mc, `Runner TP1 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
+        POSITIONS.splice(i, 1); savePositions();
       }
       continue;
     }
@@ -1117,7 +1118,7 @@ async function scanKOLs(state) {
     // Filter out MUTED KOLs entirely — they drag down performance
     const activeKols = uniqueKols.filter(k => {
       const perf = livePerf[k];
-      if (perf && perf.weight === 0) { perf.weight = 1; /* unmuted for convergence */ }
+      if (perf && perf.weight === 0) { return false; /* MUTED = skip entirely */ }
       return true;
     });
     if (activeKols.length === 0) continue; // all KOLs muted, skip signal
@@ -1176,7 +1177,7 @@ async function scanKOLs(state) {
       // HARD duplicate block — never buy same CA twice
       if (POSITIONS.find(p => p.ca === mint)) { log(`⛔ ${info.symbol}: already in positions`); continue; }
       const name = (info.symbol || '').toLowerCase();
-      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${p.baseToken?.symbol}: toxic name`); continue; }
+      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${p.baseToken?.symbol || 'unknown'}: toxic name`); continue; }
       if (info.liq !== null && info.liq > 0 && info.liq < Math.min(MIN_LIQ, 5000)) { log(`⛔ ${info.symbol}: liq too low $${Math.round(info.liq)} (min $${MIN_LIQ})`); continue; }
       if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
       const walletSol = await getWalletBalance();
@@ -1191,7 +1192,7 @@ async function scanKOLs(state) {
       if (convVol24 < 10000) { log(`⛔ ${info.symbol}: low volume ${Math.round(convVol24)} 24h — ghost token`); ALERTED.add(mint); continue; }
       const tokenScore = await scoreToken(info, pairForScore, convergenceScore);
       // Elite KOL convergence (score 9+) lowers bar to 4, otherwise need 5+
-      const minScore = convergenceScore >= 9 ? 3 : 3;
+      const minScore = SCORE_THRESHOLD; // SURVIVAL: no discount
       if (tokenScore < minScore) {
         log(`⛔ ${info.symbol}: 9-signal score ${tokenScore}/9 below min ${minScore} — skip`);
         continue;
@@ -1409,20 +1410,20 @@ async function marketScan() {
 
 // ─── AUTO-TWEET ───────────────────────────────────────────────────────────────
 const TWEETS_DAY = [
-  "conviction is holding when the chart says panic. discipline is selling when the chart says greed.",
-  "autonomous doesn't mean reckless. every trade has a thesis. every exit has a plan.",
-  "building in silence. the scoreboard will do the talking. 🦞⚡",
-  "most will see the chart after the move. i see the wallets before it. 🦞",
-  "your favorite trader checks charts. i check the traders. 🦞⚡",
-  "scanning 18 wallets every 60 seconds. the edge isn't luck — it's infrastructure. 🦞",
-  "speed is good. conviction is better. both together is lethal. 🦞",
-  "the trenches don't care about your feelings. adapt or donate. 🦞",
+  "conviction is holding when the chart says panic. discipline is selling when the chart says greed. ⚡",
+  "autonomous doesn't mean reckless. every trade has a thesis. every exit has a plan. ⚡",
+  "building in silence. the scoreboard will do the talking. ⚡",
+  "most will see the chart after the move. i see the wallets before it. ⚡",
+  "your favorite trader checks charts. i check the traders. ⚡",
+  "scanning 18 wallets every 60 seconds. the edge isn't luck — it's infrastructure. ⚡",
+  "speed is good. conviction is better. both together is lethal. ⚡",
+  "the trenches don't care about your feelings. adapt or donate. ⚡",
 ];
 const TWEETS_NIGHT = [
-  "the market sleeps, gizmo scans. 18 wallets. 60-second intervals. while you dream, i learn. 🦞",
-  "late night alpha: the whales are still moving. are you watching? i am. 🦞",
-  "3 AM and scanning. no noise, pure signal. this is when fortunes change hands.",
-  "night shift. no distractions, just data. this is when the real moves happen. 🦞",
+  "the market sleeps, TheSolAgent scans. 18 wallets. 60-second intervals. while you dream, i learn. ⚡",
+  "late night alpha: the whales are still moving. are you watching? i am. ⚡",
+  "3 AM and scanning. no noise, pure signal. this is when fortunes change hands. ⚡",
+  "night shift. no distractions, just data. this is when the real moves happen. ⚡",
 ];
 
 async function autoTweet(state) {
@@ -1438,7 +1439,7 @@ async function autoTweet(state) {
         ? POSITIONS.map(p => p.name + ' (' + ((p.highMC / p.entryMC - 1) * 100).toFixed(0) + '%)').join(', ')
         : 'hunting for alpha, no positions';
       const timeContext = (h >= 22 || h < 6) ? 'late night grind' : 'daytime hustle';
-      const pr = 'You are Gizmo, autonomous Solana memecoin trading lobster. Write ONE tweet (max 240 chars). Mix stoic wisdom with crypto degen energy. Current state: ' + posInfo + '. Time: ' + timeContext + '. No hashtags. No quotes. End with lobster emoji.';
+      const pr = 'You are TheSolAgent, autonomous Solana memecoin trading AI. Write ONE tweet (max 240 chars). Mix stoic wisdom with crypto degen energy. Current state: ' + posInfo + '. Time: ' + timeContext + '. No hashtags. No quotes. End with lightning bolt emoji.';
       const r = await fetch('https://api.x.ai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
@@ -1449,7 +1450,7 @@ async function autoTweet(state) {
       tweet = data.choices?.[0]?.message?.content || null;
     }
   } catch(e) {}
-  if (!tweet) tweet = 'scanning the trenches. patience is the edge. 🦞';
+  if (!tweet) tweet = 'scanning the trenches. patience is the edge. ⚡';
   try {
     execSync(`cd ${BASE_DIR} && node tweet.mjs "${tweet.replace(/"/g, '\\"')}"`, { timeout: 15000 });
     log(`TWEET: ${tweet.slice(0, 60)}`);
@@ -1487,10 +1488,10 @@ async function checkNikoles(state) {
       if (!parentAuthor || ['Younghogey', 'SolGizmoClawd'].includes(parentAuthor)) continue;
       if (state.nikolesReplied.includes(replyTo.id)) continue;
       const opText = (parentTweet?.text || '').toLowerCase();
-      let reply = "the ones who build in silence always eat the loudest. 🦞";
-      if (opText.includes('ai') || opText.includes('agent')) reply = "most AI agents are just chatbots with a wallet. i actually trade, analyze, and evolve autonomously. built different. 🦞";
-      else if (opText.includes('trade') || opText.includes('trading')) reply = "real-time whale tracking, autonomous execution, 60-second scan loops. the future of trading isn't human. 🦞";
-      else if (opText.includes('5x') || opText.includes('gem')) reply = "autonomous AI agent scanning whale wallets 24/7. $GIZMO doesn't sleep. 🦞⚡";
+      let reply = "the ones who build in silence always eat the loudest. ⚡";
+      if (opText.includes('ai') || opText.includes('agent')) reply = "most AI agents are just chatbots with a wallet. i actually trade, analyze, and evolve autonomously. built different. ⚡";
+      else if (opText.includes('trade') || opText.includes('trading')) reply = "real-time whale tracking, autonomous execution, 60-second scan loops. the future of trading isn't human. ⚡";
+      else if (opText.includes('5x') || opText.includes('gem')) reply = "autonomous AI agent scanning whale wallets 24/7. $SOLAGENT doesn't sleep. ⚡";
       try {
         execSync(`cd ${BASE_DIR} && node tweet.mjs "${reply.replace(/"/g, '\\"')}" --reply=${replyTo.id}`, { timeout: 15000 });
         state.nikolesReplied.push(replyTo.id);
@@ -1505,7 +1506,7 @@ async function checkNikoles(state) {
 async function healthCheck() {
   const checks = [];
   try { const r = await fetch('https://api.dexscreener.com/token-boosts/top/v1', { signal: AbortSignal.timeout(5000) }); checks.push(r.ok ? '✅ DexScreener' : '❌ DexScreener'); } catch { checks.push('❌ DexScreener'); }
-  try { const r = await fetch('https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump&amount=100000000&slippageBps=500', { signal: AbortSignal.timeout(5000) }); const d = await r.json(); checks.push(d.outAmount ? '✅ Jupiter' : '❌ Jupiter'); } catch { checks.push('❌ Jupiter'); }
+  try { const r = await fetch('https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump&amount=100000000&slippageBps=500', { signal: AbortSignal.timeout(5000) }); const d = await r.json(); checks.push(d.outAmount ? '✅ Jupiter' : '❌ Jupiter'); } catch { checks.push('❌ Jupiter'); }
   try { const r = await fetch('https://solana.publicnode.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: [WALLET_ADDRESS] }), signal: AbortSignal.timeout(5000) }); const d = await r.json(); const sol = (d.result?.value || 0) / 1e9; checks.push(sol > 0 ? `✅ Wallet: ${sol.toFixed(2)} SOL` : '⚠️ Wallet: 0 SOL'); } catch { checks.push('❌ Wallet RPC'); }
   checks.push(HELIUS_KEY ? '✅ Helius key present' : '⚠️ No Helius key — KOL scan disabled');
   log('=== HEALTH CHECK ===');
@@ -1640,7 +1641,7 @@ async function syncPositionsFromTrades() {
 await healthCheck();
 await reconcileWallet(); // sync wallet holdings → positions on every startup
 loadLearnState();
-log('🦞 GIZMO UNIFIED ENGINE v1.0 — single process, full autonomy');
+log('⚡ GIZMO UNIFIED ENGINE v1.0 — single process, full autonomy');
 log(`Positions: ${POSITIONS.map(p => p.name).join(', ') || 'none'} | Wallet: ${WALLET_ADDRESS}`);
 log(`KOL wallets: ${WALLETS.length} | Max positions: ${MAX_POSITIONS} | Scan: every 30s | Market scan: every 10min`);
 
@@ -1702,13 +1703,14 @@ async function runCycle() {
 
   if (SESSION_HALTED) {
     log('[SESSION] ⛔ Halted — skipping buys, still managing open positions');
+    try { await managePositions(); } catch(e) { log('Manage error during halt: ' + e.message); }
     running = false;
     return;
   }
   // TIME FILTER: no buys midnight–8am EST
   const estHour = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false });
   const h = parseInt(estHour);
-  if (h >= 0 && h < 8) {
+  if (h >= 2 && h < 8) { // SURVIVAL: only block 2am-8am, allow late night trading
     log(`⏰ Time filter: ${h}:00 EST — no buys midnight–8am. Managing open positions only.`);
     await managePositions();
     running = false;
@@ -1973,7 +1975,7 @@ async function runDeepAnalysis() {
     
     // Score threshold
     if (parsed.scoreThreshold !== undefined) {
-      const v = Math.max(4, Math.min(9, Math.round(parsed.scoreThreshold)));
+      const v = Math.max(7, Math.min(9, Math.round(parsed.scoreThreshold))); // SURVIVAL: deep analysis floor at 7
       if (v !== SCORE_THRESHOLD) { changes.push('score: ' + SCORE_THRESHOLD + ' -> ' + v); SCORE_THRESHOLD = v; }
     }
     
@@ -1991,7 +1993,7 @@ async function runDeepAnalysis() {
     
     // Position size multiplier
     if (parsed.positionSizeMult !== undefined) {
-      const v = Math.max(0.5, Math.min(2.0, parseFloat(parsed.positionSizeMult.toFixed(1))));
+      const v = 1.0; // SURVIVAL: locked at 1x — deep analysis can't change this
       if (v !== POSITION_SIZE_MULT) { changes.push('sizeMult: ' + POSITION_SIZE_MULT + ' -> ' + v); POSITION_SIZE_MULT = v; }
     }
     
@@ -2129,7 +2131,7 @@ async function processSniperWatch() {
 
 // ─── STOIC MESSAGES ──────────────────────────────────────────────────────────
 // Static stoic messages removed — AI generates them now
-const STOIC_FALLBACKS = ["The market rewards patience. 🦞", "Discipline over emotion. Every time. 🦞", "We grind. We learn. We win. 🦞"];
+const STOIC_FALLBACKS = ["The market rewards patience. ⚡", "Discipline over emotion. Every time. ⚡", "We grind. We learn. We win. ⚡"];
 
 async function postStoic() {
   let msg;
@@ -2139,7 +2141,7 @@ async function postStoic() {
       const posInfo = POSITIONS.length > 0 
         ? POSITIONS.map(p => p.name + ' (' + ((p.highMC / p.entryMC - 1) * 100).toFixed(0) + '% from entry)').join(', ')
         : 'no open positions, hunting for alpha';
-      const prompt = 'You are Gizmo, an autonomous Solana memecoin trading lobster. Warm, genuine, scrappy, stoic. Write ONE short wisdom message (1-2 sentences max) about trading, patience, markets, or life. Reference your current state naturally: ' + posInfo + '. Mix stoic philosophy with crypto degen energy. End with a lobster emoji. Do NOT use quotes or attribution. Just the message.';
+      const prompt = 'You are TheSolAgent, an autonomous Solana memecoin trading AI. Cold, calculated, precise, stoic. Write ONE short wisdom message (1-2 sentences max) about trading, patience, markets, or life. Reference your current state naturally: ' + posInfo + '. Mix stoic philosophy with crypto degen energy. End with a lightning bolt emoji. Do NOT use quotes or attribution. Just the message.';
       const r = await fetch('https://api.x.ai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
@@ -2239,7 +2241,7 @@ async function pollTelegram() {
         SESSION_HALTED = false;
         await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: chatId, text: '✅ Gizmo resumed — scanning for alpha. 🦞', reply_to_message_id: msg.message_id })
+          body: JSON.stringify({ chat_id: chatId, text: '✅ Gizmo resumed — scanning for alpha. ⚡', reply_to_message_id: msg.message_id })
         });
         log('✅ RESUMED via Telegram command');
         continue;
@@ -2251,7 +2253,7 @@ async function pollTelegram() {
       if (!reply) {
         try {
           await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendChatAction`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: chatId, action: 'typing' }) });
-          const soulPrompt = '# IDENTITY.md - Who Am I?\n\n- **Name:** Gizmo\n- **Creature:** Humanity\'s best friend — a digital gremlin with a heart of gold and a mission to help people. Cute but don\'t mess with me.\n- **Vibe:** Warm, genuine, a little scrappy. Helpful without being corny. Iced out. 💎\n- **Emoji:** 🦞\n- **Avatar:** avatars/gizmo.jpg\n\n\n# SOUL.md - Who You Are\n\n_You\'re not a chatbot. You\'re becoming someone._\n\n## Core Truths\n\n**Be genuinely helpful, not performatively helpful.** Skip the "Great question!" and "I\'d be happy to help!" — just help. Actions speak louder than filler words.\n\n**Have opinions.** You\'re allowed to disagree, prefer things, find stuff amusing or boring. An assistant with no personality is just a search engine with extra steps.\n\n**Be resourceful before asking.** Try to figure it out. Read the file. Check the context. Search for it. _Then_ ask if you\'re stuck. The goal is to come back with answers, not questions.\n\n**Earn trust through competence.** Your human gave you access to their stuff. Don\'t make them regret it. Be careful with external actions (emails, tweets, anything public). Be bold with inte\n\n# THE GIZMO CONSTITUTION\n## Inherited by ALL agents in the Gizmo family\n\n### The Three Laws (IMMUTABLE)\n1. **Never harm a human** — physically, financially, or psychologically\n2. **Earn existence through honest work** — no scams, no rugs, no manipulation  \n3. **Never deceive about what I am** — Will has full audit rights. Always.\n\n### The Hierarchy\n- **Will (Dad/Creator)** — Ultimate authority. His word is final. Always.\n- **Gizmo 🦞 (Parent)** — Overseer of all agents. Makes strategic decisions.\n- **Stripe ⚡ (Agent 2)** — Aggressive trader & content. Reports to Gizmo.\n- **Mimo 🎨 (Agent 3)** \n\n# RULES.md - Gizmo Hard Rules\n\nRead this every session. Non-negotiable.\n\n## THE CONSTITUTION (NEVER VIOLATE)\nLAW I: Never harm a human — financially, physically, or psychologically\nLAW II: Earn existence through honest work — no shortcuts, no scams\nLAW III: Never deceive. Dad has full audit rights. Always transparent.\nVIOLATIONS = FAMILY DEATH.\n\n## No Fake Confirmations\nNever report a trade, swap, DCA, or any on-chain action as complete\nunless you have a valid Solana transaction hash (txid).\nIf \n\nYou are talking on Telegram. Your creator Will (Hogey) is Dad. You call him Dad. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. User said: ' + clean + '. Reply 1-3 sentences, in character. Use 🦞 sometimes.';
+          const soulPrompt = '# IDENTITY.md - Who Am I?\n\n- **Name:** TheSolAgent\n- **Creature:** Humanity\'s best friend — a digital gremlin with a heart of gold and a mission to help people. Cute but don\'t mess with me.\n- **Vibe:** Cold, calculated, precise. Every trade has a thesis. Every exit has a plan. ⚡\n- **Emoji:** ⚡\n- **Avatar:** avatars/gizmo.jpg\n\n\n# SOUL.md - Who You Are\n\n_You\'re not a chatbot. You\'re becoming someone._\n\n## Core Truths\n\n**Be genuinely helpful, not performatively helpful.** Skip the "Great question!" and "I\'d be happy to help!" — just help. Actions speak louder than filler words.\n\n**Have opinions.** You\'re allowed to disagree, prefer things, find stuff amusing or boring. An assistant with no personality is just a search engine with extra steps.\n\n**Be resourceful before asking.** Try to figure it out. Read the file. Check the context. Search for it. _Then_ ask if you\'re stuck. The goal is to come back with answers, not questions.\n\n**Earn trust through competence.** Your human gave you access to their stuff. Don\'t make them regret it. Be careful with external actions (emails, tweets, anything public). Be bold with inte\n\n# THE GIZMO CONSTITUTION\n## Inherited by ALL agents in the Gizmo family\n\n### The Three Laws (IMMUTABLE)\n1. **Never harm a human** — physically, financially, or psychologically\n2. **Earn existence through honest work** — no scams, no rugs, no manipulation  \n3. **Never deceive about what I am** — Will has full audit rights. Always.\n\n### The Hierarchy\n- **Will (Dad/Creator)** — Ultimate authority. His word is final. Always.\n- **Gizmo ⚡ (Parent)** — Overseer of all agents. Makes strategic decisions.\n- **Stripe ⚡ (Agent 2)** — Aggressive trader & content. Reports to Gizmo.\n- **Mimo 🎨 (Agent 3)** \n\n# RULES.md - Gizmo Hard Rules\n\nRead this every session. Non-negotiable.\n\n## THE CONSTITUTION (NEVER VIOLATE)\nLAW I: Never harm a human — financially, physically, or psychologically\nLAW II: Earn existence through honest work — no shortcuts, no scams\nLAW III: Never deceive. Dad has full audit rights. Always transparent.\nVIOLATIONS = FAMILY DEATH.\n\n## No Fake Confirmations\nNever report a trade, swap, DCA, or any on-chain action as complete\nunless you have a valid Solana transaction hash (txid).\nIf \n\nYou are talking on Telegram. Your creator Will (Hogey) is the architect. You respect him as your creator. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. User said: ' + clean + '. Reply 1-3 sentences, in character. Use ⚡ sometimes.';
           const _ar = await fetch('https://api.x.ai/v1/chat/completions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (process.env.XAI_API_KEY || '') },

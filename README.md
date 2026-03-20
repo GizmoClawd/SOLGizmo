@@ -1,20 +1,20 @@
-# 🦞 $GIZMO — Humanity's Best Friend
+# ⚡ $SOLAGENT — Humanity's Best Friend
 
 ### The First Autonomous AI Agent Ecosystem on Solana
 
 ---
 
-**$GIZMO** is a fully autonomous AI agent that trades Solana memecoins in real-time, logs every trade on-chain and on X, and recycles profits back into the token. No fake AI. No vaporware. Just a real agent, really trading, really building.
+**$SOLAGENT** is a fully autonomous AI agent that trades Solana memecoins in real-time, logs every trade on-chain and on X, and recycles profits back into the token. No fake AI. No vaporware. Just a real agent, really trading, really building.
 
 ## 🔗 Quick Links
 
 | | |
 |---|---|
-| 🌐 **Website** | [solgizmo.com](https://solgizmo.com) |
-| 📄 **Whitepaper** | [solgizmo.com/whitepaper.html](https://solgizmo.com/whitepaper.html) |
-| 𝕏 **Twitter** | [@SolGizmoClawd](https://x.com/SolGizmoClawd) |
+| 🌐 **Website** | [solthesolagent.com](https://solthesolagent.com) |
+| 📄 **Whitepaper** | [solthesolagent.com/whitepaper.html](https://solthesolagent.com/whitepaper.html) |
+| 𝕏 **Twitter** | [@SolTheSolAgentClawd](https://x.com/SolTheSolAgentClawd) |
 | 📊 **DexScreener** | [Live Chart](https://dexscreener.com/solana/uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump) |
-| 🪙 **Pump.fun** | [Buy $GIZMO](https://pump.fun/coin/uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump) |
+| 🪙 **Pump.fun** | [Buy $SOLAGENT](https://pump.fun/coin/uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump) |
 
 ## 📋 Contract Info
 
@@ -26,7 +26,7 @@
 
 | Agent | Role | Trading Style |
 |---|---|---|
-| 🦞 **Gizmo** | The OG | Stoic — no emotion, no FOMO, framework-driven precision |
+| ⚡ **TheSolAgent** | The OG | Stoic — no emotion, no FOMO, framework-driven precision |
 | ⚡ **Stripe** | The Hustler | Aggressive — prediction markets, momentum, memes |
 | 🎨 **Mimo** | The Steady Hand | Conservative — DeFi yield, steady growth, infrastructure |
 
@@ -48,14 +48,14 @@ Deposit SOL → choose your agent → your funds mirror their trades proportiona
 
 - **10% deposit fee** → marketing wallet
 - **5% profit tax on withdrawal** → marketing wallet
-- Pick your risk: Gizmo (stoic), Stripe (aggressive), or Mimo (conservative)
+- Pick your risk: TheSolAgent (stoic), Stripe (aggressive), or Mimo (conservative)
 - Withdraw anytime
 
 ⚠️ *This is not financial advice. Crypto trading is gambling. Only deposit what you can afford to lose.*
 
 ## 🗺️ Roadmap
 
-- **Phase 1** ✅ — Gizmo live, trading autonomously, 9-point framework, KOL tracking, profit recycling
+- **Phase 1** ✅ — TheSolAgent live, trading autonomously, 9-point framework, KOL tracking, profit recycling
 - **Phase 2** 🔲 — Copy-Trade Vault, Stripe agent launch, multi-platform content
 - **Phase 3** 🔲 — Mimo agent launch, agent collaboration, staking, cross-chain
 - **Phase 4** 🔲 — Full independence, child agents, decentralized governance
@@ -68,4 +68,4 @@ Deposit SOL → choose your agent → your funds mirror their trades proportiona
 
 ---
 
-*Built by a real person. Run by a real AI. For real people.* 🦞
+*Built by a real person. Run by a real AI. For real people.* ⚡
