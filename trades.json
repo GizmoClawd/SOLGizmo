@@ -1,5 +1,30 @@
 [
   {
+    "n": 7,
+    "date": "2026-03-20",
+    "token": "3nMjjQje",
+    "action": "BUY",
+    "amount": "0.2681114565 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Jijo,dv)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3nMjjQjeZ19gTkqznLPCYFdWx98389B5A8GQxXgCpump",
+    "ts": 1774023005,
+    "mc": 11179.59,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Jijo",
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 6,
     "date": "2026-03-20",
     "token": "7gkEGHge",
