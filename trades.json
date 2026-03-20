@@ -1,5 +1,30 @@
 [
   {
+    "n": 2,
+    "date": "2026-03-20",
+    "token": "13B2d6mP",
+    "action": "BUY",
+    "amount": "0.22188997484999998 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Pain,S)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "13B2d6mPB43Mm4aUc8n67BbymkTpJCEvXnE14bvBpump",
+    "ts": 1774043980,
+    "mc": 10015,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Pain",
+      "S"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1,
     "date": "2026-03-20",
     "token": "grandpa",
