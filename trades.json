@@ -1,5 +1,30 @@
 [
   {
+    "n": 1115,
+    "date": "2026-03-20",
+    "token": "Singularity",
+    "action": "BUY",
+    "amount": "0.0669 SOL",
+    "result": "2 KOL convergence: bandit, dv",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BTNMbi6nhwLJGmPoFNF57ShjZFko9FALLhKXb7Fdpump",
+    "ts": 1773975502,
+    "mc": 6544.12,
+    "vol24": 11662.99,
+    "vol1h": 11662.99,
+    "buys": 147,
+    "sells": 94,
+    "liq": null,
+    "kols": [
+      "bandit",
+      "dv"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1114,
     "date": "2026-03-20",
     "token": "E6NeWeA1",
