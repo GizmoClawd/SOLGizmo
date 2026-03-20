@@ -1,5 +1,31 @@
 [
   {
+    "n": 21,
+    "date": "2026-03-20",
+    "token": "7YkKDARn",
+    "action": "BUY",
+    "amount": "0.3 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (S,Casino,Dad)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7YkKDARnzkxVTKj65aZgvoH1frVgbGDnhxM2vtVxpump",
+    "ts": 1774027833,
+    "mc": 17013.6,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "S",
+      "Casino",
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 20,
     "date": "2026-03-20",
     "token": "Jiji",
