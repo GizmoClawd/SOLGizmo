@@ -1,5 +1,30 @@
 [
   {
+    "n": 982,
+    "date": "2026-03-21",
+    "token": "24yCFFyV",
+    "action": "BUY",
+    "amount": "0.015 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Cented,Kadenox)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "24yCFFyV6zZsEcZLLLsLeujY7N1yRMwKEN5LsPK5pump",
+    "ts": 1774113503,
+    "mc": 14278.8,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Cented",
+      "Kadenox"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 981,
     "date": "2026-03-20",
     "token": "ERH5gEdV",
