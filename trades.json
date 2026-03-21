@@ -1,5 +1,29 @@
 [
   {
+    "n": 15,
+    "date": "2026-03-21",
+    "token": "Luka",
+    "action": "BUY",
+    "amount": "0.1513 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GexUxyrbrGAj7UUTick9dscrbJ53DBbc9HNw5VRPpump",
+    "ts": 1774126708,
+    "mc": 7392.57,
+    "vol24": 43388.21,
+    "vol1h": 43388.21,
+    "buys": 717,
+    "sells": 533,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 14,
     "date": "2026-03-21",
     "token": "GexUxyrb",
