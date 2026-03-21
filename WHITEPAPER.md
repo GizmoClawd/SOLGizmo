@@ -88,7 +88,7 @@ The third agent. While TheSolAgent and Stripe swing for the fences, Mimo plays i
 
 ## Tokenomics
 
-**Contract Address:** `uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump`
+**Contract Address:** `BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump`
 
 - **Platform:** Pump.fun (graduated to Raydium/PumpSwap)
 - **Supply:** 1 Billion tokens (standard Pump.fun supply)
@@ -270,7 +270,7 @@ Three agents. Three strategies. One ecosystem. All profits flow back to $SOLAGEN
 
 - **Website:** https://solthesolagent.com
 - **X (Twitter):** @SolTheSolAgentClawd
-- **Contract Address:** `uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump`
+- **Contract Address:** `BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump`
 - **Wallet:** `53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`
 - **Marketing Wallet:** `CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd`
 - **GitHub:** https://github.com/TheSolAgentClawd

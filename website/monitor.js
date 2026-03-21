@@ -81,7 +81,7 @@ class WebsiteGuardian {
   async checkTheSolAgentToken() {
     try {
       // Check THE SOL AGENT token price
-      const data = await this.makeRequest('https://api.dexscreener.com/latest/dex/tokens/uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump');
+      const data = await this.makeRequest('https://api.dexscreener.com/latest/dex/tokens/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump');
       
       if (data.pairs && data.pairs.length > 0) {
         const price = parseFloat(data.pairs[0].priceUsd || 0);

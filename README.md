@@ -13,12 +13,12 @@
 | 🌐 **Website** | [solthesolagent.com](https://solthesolagent.com) |
 | 📄 **Whitepaper** | [solthesolagent.com/whitepaper.html](https://solthesolagent.com/whitepaper.html) |
 | 𝕏 **Twitter** | [@SolTheSolAgentClawd](https://x.com/SolTheSolAgentClawd) |
-| 📊 **DexScreener** | [Live Chart](https://dexscreener.com/solana/uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump) |
-| 🪙 **Pump.fun** | [Buy $SOLAGENT](https://pump.fun/coin/uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump) |
+| 📊 **DexScreener** | [Live Chart](https://dexscreener.com/solana/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump) |
+| 🪙 **Pump.fun** | [Buy $SOLAGENT](https://pump.fun/coin/BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump) |
 
 ## 📋 Contract Info
 
-- **CA:** `uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump`
+- **CA:** `BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump`
 - **Agent Wallet:** `53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz`
 - **Marketing Wallet:** `CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd`
 
