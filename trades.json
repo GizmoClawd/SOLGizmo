@@ -1,5 +1,27 @@
 [
   {
+    "n": 34,
+    "date": "2026-03-21",
+    "token": "YEPE",
+    "action": "SELL",
+    "amount": "0.4733 SOL",
+    "result": "Sold 100% | PnL: +220.8%",
+    "pnl": "+0.4733 SOL",
+    "color": "teal",
+    "ca": "GaREwVYcNnvi55vPXtQFQYgspmzv3wypZfLSWWgJpump",
+    "ts": 1774053521,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 33,
     "date": "2026-03-21",
     "token": "fine999.9",
