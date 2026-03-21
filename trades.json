@@ -1,5 +1,27 @@
 [
   {
+    "n": 38,
+    "date": "2026-03-21",
+    "token": "Jameela",
+    "action": "SELL",
+    "amount": "0.1784 SOL",
+    "result": "Sold 100% | PnL: +4.4%",
+    "pnl": "+0.1784 SOL",
+    "color": "teal",
+    "ca": "4jBEAPLqo3HZZv1REhuE6NotoDsvrjD4yN6Hms3Npump",
+    "ts": 1774055421,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 37,
     "date": "2026-03-21",
     "token": "Jameela",
