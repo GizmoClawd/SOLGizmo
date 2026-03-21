@@ -1,5 +1,30 @@
 [
   {
+    "n": 37,
+    "date": "2026-03-21",
+    "token": "Jameela",
+    "action": "BUY",
+    "amount": "0.2441 SOL",
+    "result": "2 KOL convergence: chester, Padre",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4jBEAPLqo3HZZv1REhuE6NotoDsvrjD4yN6Hms3Npump",
+    "ts": 1774055331,
+    "mc": 20068.33,
+    "vol24": 12448.66,
+    "vol1h": 12448.66,
+    "buys": 101,
+    "sells": 31,
+    "liq": null,
+    "kols": [
+      "chester",
+      "Padre"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 36,
     "date": "2026-03-21",
     "token": "fine999.9",
