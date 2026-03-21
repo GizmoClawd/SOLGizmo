@@ -1,5 +1,29 @@
 [
   {
+    "n": 41,
+    "date": "2026-03-21",
+    "token": "JAMEELA",
+    "action": "BUY",
+    "amount": "0.1968 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Hp3GZg4bR2FEZA5uamuHk44aaTUDiBR8h52JKhRJpump",
+    "ts": 1774057069,
+    "mc": 18677.68,
+    "vol24": 49720.66,
+    "vol1h": 26944.43,
+    "buys": 435,
+    "sells": 315,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 40,
     "date": "2026-03-21",
     "token": "4jBEAPLq",
