@@ -1,5 +1,27 @@
 [
   {
+    "n": 20,
+    "date": "2026-03-21",
+    "token": "Chibi",
+    "action": "SELL",
+    "amount": "0.0671 SOL",
+    "result": "Sold 100% | PnL: -34.6%",
+    "pnl": "+0.0671 SOL",
+    "color": "teal",
+    "ca": "F7akYbnpt6Zq6NsUXwJDcZdJLvU2mY72pARyKUVma7pJ",
+    "ts": 1774128216,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 19,
     "date": "2026-03-21",
     "token": "Chibi",
