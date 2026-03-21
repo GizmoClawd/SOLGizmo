@@ -1,5 +1,29 @@
 [
   {
+    "n": 19,
+    "date": "2026-03-21",
+    "token": "Chibi",
+    "action": "BUY",
+    "amount": "0.1134 SOL",
+    "result": "HW KOL: Red",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F7akYbnpt6Zq6NsUXwJDcZdJLvU2mY72pARyKUVma7pJ",
+    "ts": 1774128118,
+    "mc": 64284,
+    "vol24": 10328.29,
+    "vol1h": 10328.29,
+    "buys": 199,
+    "sells": 86,
+    "liq": 20201.79,
+    "kols": [
+      "Red"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 18,
     "date": "2026-03-21",
     "token": "GexUxyrb",
