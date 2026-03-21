@@ -1,5 +1,30 @@
 [
   {
+    "n": 3,
+    "date": "2026-03-21",
+    "token": "Odds",
+    "action": "BUY",
+    "amount": "0.1137 SOL",
+    "result": "2 KOL convergence: CLOWN, exotic",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AFxEyjzUECiUav2iLDsx2yyY6s6USiU8wScUpomHpump",
+    "ts": 1774134166,
+    "mc": 6883.6,
+    "vol24": 27997.24,
+    "vol1h": 4351.28,
+    "buys": 49,
+    "sells": 23,
+    "liq": null,
+    "kols": [
+      "CLOWN",
+      "exotic"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 2,
     "date": "2026-03-21",
     "token": "Odds",
