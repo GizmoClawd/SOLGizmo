@@ -1,5 +1,29 @@
 [
   {
+    "n": 49,
+    "date": "2026-03-21",
+    "token": "chwog",
+    "action": "BUY",
+    "amount": "0.1881 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EPDtmDimQUiiszTatr2xduUwVCoMSeeXgtzL5Yoepump",
+    "ts": 1774101860,
+    "mc": 11530.63,
+    "vol24": 34695.46,
+    "vol1h": 34695.46,
+    "buys": 481,
+    "sells": 324,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 48,
     "date": "2026-03-21",
     "token": "fine999.9",
