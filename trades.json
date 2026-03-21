@@ -1,5 +1,29 @@
 [
   {
+    "n": 3,
+    "date": "2026-03-21",
+    "token": "Sanae",
+    "action": "BUY",
+    "amount": "0.1798 SOL",
+    "result": "1 KOL convergence: rayan",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FC7Q7zghEkA7UejfcVyuhPwESGmaWb5xAze6TYUJpump",
+    "ts": 1774112371,
+    "mc": 45475,
+    "vol24": 52962.37,
+    "vol1h": 52962.37,
+    "buys": 826,
+    "sells": 576,
+    "liq": 16961.2,
+    "kols": [
+      "rayan"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 2,
     "date": "2026-03-21",
     "token": "P-token",
