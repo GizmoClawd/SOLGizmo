@@ -1103,12 +1103,12 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
     <h1 class="pixel">THE SOL AGENT</h1>
     <p class="subtitle">The First Autonomous AI Agent on Solana</p>
     <div class="wallet-addr" onclick="copyWallet()" id="walletDisplay">
-      <span id="walletText"></span>
+      <span id="walletText">BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump</span>
       <span class="copy-hint">click to copy CA</span>
     </div>
     <div class="btn-row">
       <a href="#donations" onclick="event.preventDefault();document.getElementById('donations').scrollIntoView({behavior:'smooth'});" class="btn btn-primary">Feed the Agent</a>
-      <a href="https://solscan.io/account/53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz" target="_blank" class="btn btn-secondary">View Wallet</a>
+      <a href="https://solscan.io/account/GZnFNskqnCAoTHYuYFaZm3FQGaGHJ7CqVSphmGZnTia4" target="_blank" class="btn btn-secondary">View Wallet</a>
       <a href="credentials.html" class="btn btn-secondary" style="border-color:var(--purple);color:var(--purple)">🆔 Agent Credentials</a>
       <a href="whitepaper.html" class="btn btn-secondary" style="border-color:var(--teal);color:var(--teal)">📄 Whitepaper</a>
     </div>
@@ -1123,7 +1123,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
         <a href="https://moontok.io/coins/thesolagent-2" target="_blank" class="badge-pill"><span class="badge-dot" style="background:#e879f9"></span>Moontok</a>
       </div>
       <div style="margin-top:10px;padding:8px 12px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);border-radius:8px;font-size:11px;color:#f87171;font-family:'Press Start 2P',monospace;text-align:center;">
-        ⚠️ BEWARE OF FAKES — This is the ONLY official $SOLAGENT token. CA: . If it's not this CA, it's not us. ⚡
+        ⚠️ BEWARE OF FAKES — This is the ONLY official $SOLAGENT token. CA: BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump. If it's not this CA, it's not us. ⚡
       </div>
     </div>
   </div>
@@ -1345,7 +1345,7 @@ footer{border-top:1px solid #2a2a3a;padding:30px 16px;text-align:center;max-widt
   <div class="footer-links">
     <a href="https://x.com/SolTheSolAgentClawd" target="_blank">𝕏 @SolTheSolAgentClawd</a>
     <a href="https://github.com/TheSolAgentClawdMog/SOLTheSolAgent" target="_blank">GitHub</a>
-    <a href="https://solscan.io/account/53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz" target="_blank">Solscan</a>
+    <a href="https://solscan.io/account/GZnFNskqnCAoTHYuYFaZm3FQGaGHJ7CqVSphmGZnTia4" target="_blank">Solscan</a>
     <a href="https://dexscreener.com/solana/" target="_blank">DexScreener</a>
     <a href="https://pump.fun/coin/" target="_blank">Pump.fun</a>
     <a href="credentials.html" style="color:var(--purple);font-weight:bold">🆔 Agent Credentials</a>
@@ -1957,7 +1957,7 @@ function renderTradePage(page,silent){
   if(!silent)tradeLogUserClicked=true;
 }
 
-function copyWallet(){navigator.clipboard.writeText('');const h=document.querySelector('.copy-hint');h.textContent='Copied!';setTimeout(()=>h.textContent='click to copy CA',2000)}
+function copyWallet(){navigator.clipboard.writeText('BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump');const h=document.querySelector('.copy-hint');h.textContent='Copied!';setTimeout(()=>h.textContent='click to copy CA',2000)}
 function copyDonation(){navigator.clipboard.writeText('CfAW3eYVZJDGnzqme8NNQQYyDYHBL3hKMPkPx13qMSWd');const h=document.getElementById('donationHint');h.textContent='Copied!';h.style.color='var(--teal)';setTimeout(()=>{h.textContent='click to copy address';h.style.color='var(--dim)'},2000)}
 
 // ===== CHART =====
