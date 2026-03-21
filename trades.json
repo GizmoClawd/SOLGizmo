@@ -1,5 +1,29 @@
 [
   {
+    "n": 11,
+    "date": "2026-03-21",
+    "token": "Grokputer",
+    "action": "BUY",
+    "amount": "0.1776 SOL",
+    "result": "1 KOL convergence: unprofitable",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9WpkZ5dr6RNJDxaLD4535ssRg6vNcnhZMj2LzAQa8AmP",
+    "ts": 1774119750,
+    "mc": 43130,
+    "vol24": 381168.42,
+    "vol1h": 4099.44,
+    "buys": 69,
+    "sells": 57,
+    "liq": 17847.98,
+    "kols": [
+      "unprofitable"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 10,
     "date": "2026-03-21",
     "token": "24yCFFyV",
