@@ -1,5 +1,27 @@
 [
   {
+    "n": 21,
+    "date": "2026-03-21",
+    "token": "UGOR",
+    "action": "SELL",
+    "amount": "0.0161 SOL",
+    "result": "Sold 100% | PnL: 0.0%",
+    "pnl": "+0.0161 SOL",
+    "color": "teal",
+    "ca": "UGoRwdj9SK78V6Pq9YMz9BvmNuJTLNqPZyS5WnGd8uW",
+    "ts": 1774132360,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 20,
     "date": "2026-03-21",
     "token": "Chibi",
