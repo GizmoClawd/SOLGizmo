@@ -1,5 +1,27 @@
 [
   {
+    "n": 16,
+    "date": "2026-03-21",
+    "token": "Luka",
+    "action": "SELL",
+    "amount": "0.1384 SOL",
+    "result": "Sold 100% | PnL: +46.1%",
+    "pnl": "+0.1384 SOL",
+    "color": "teal",
+    "ca": "GexUxyrbrGAj7UUTick9dscrbJ53DBbc9HNw5VRPpump",
+    "ts": 1774126738,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 15,
     "date": "2026-03-21",
     "token": "Luka",
