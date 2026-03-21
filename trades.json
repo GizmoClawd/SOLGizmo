@@ -1,5 +1,29 @@
 [
   {
+    "n": 7,
+    "date": "2026-03-21",
+    "token": "WOLFIE",
+    "action": "BUY",
+    "amount": "0.1499 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "24yCFFyV6zZsEcZLLLsLeujY7N1yRMwKEN5LsPK5pump",
+    "ts": 1774112964,
+    "mc": 6654.54,
+    "vol24": 11304.63,
+    "vol1h": 11304.63,
+    "buys": 83,
+    "sells": 88,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 6,
     "date": "2026-03-21",
     "token": "8YhQZfvk",
