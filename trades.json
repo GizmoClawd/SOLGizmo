@@ -1,5 +1,30 @@
 [
   {
+    "n": 13,
+    "date": "2026-03-21",
+    "token": "GexUxyrb",
+    "action": "BUY",
+    "amount": "0.24842199179999996 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (chester,dv)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GexUxyrbrGAj7UUTick9dscrbJ53DBbc9HNw5VRPpump",
+    "ts": 1774126289,
+    "mc": 8305.32,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "chester",
+      "dv"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 12,
     "date": "2026-03-21",
     "token": "Grokputer",
