@@ -1,5 +1,27 @@
 [
   {
+    "n": 14,
+    "date": "2026-03-21",
+    "token": "GexUxyrb",
+    "action": "SELL",
+    "amount": "0.1825 SOL",
+    "result": "Sold 100% | PnL: +39.0%",
+    "pnl": "+0.1825 SOL",
+    "color": "teal",
+    "ca": "GexUxyrbrGAj7UUTick9dscrbJ53DBbc9HNw5VRPpump",
+    "ts": 1774126318,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 13,
     "date": "2026-03-21",
     "token": "GexUxyrb",
