@@ -120,9 +120,9 @@ function loadLearnState() {
   try {
     if (fs.existsSync(LEARN_FILE)) {
       const s = JSON.parse(fs.readFileSync(LEARN_FILE, 'utf8'));
-      SCORE_THRESHOLD = Math.max(7, s.scoreThreshold ?? 7); // SURVIVAL: floor at 7
-      MIN_LIQ = s.minLiq ?? 8000;
-      MIN_KOLS = s.minKols ?? 2;
+      SCORE_THRESHOLD = 7; // SURVIVAL: floor at 7
+      MIN_LIQ = 8000;
+      MIN_KOLS = 2;
       POSITION_SIZE_MULT = 1.0; // SURVIVAL: locked at 1x
       log(`🧠 Loaded adaptive params: score≥${SCORE_THRESHOLD} liq≥$${MIN_LIQ} kols≥${MIN_KOLS} sizeMult=${POSITION_SIZE_MULT}`);
     }
@@ -183,7 +183,7 @@ async function learnFromTrades() {
     // Score threshold driven by OVERALL win rate (not just market — most trades are KOL)
     if (recent.length >= 5) {
       if (winRate <= 0.45 && SCORE_THRESHOLD < 9) {
-        SCORE_THRESHOLD = Math.min(9, SCORE_THRESHOLD + 1);
+        SCORE_THRESHOLD = 7; // LOCKED;
         log(`🧠 WR low (${(winRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
       } else if (winRate > 0.65 && SCORE_THRESHOLD > 7) {
@@ -196,7 +196,7 @@ async function learnFromTrades() {
     // Adjust KOL min threshold
     if (kolTrades.length >= 3) {
       if (kolWinRate < 0.35 && MIN_KOLS < 3) {
-        MIN_KOLS = 3;
+        MIN_KOLS = 2;
         log(`🧠 KOL WR low (${(kolWinRate*100).toFixed(0)}%) — requiring 3+ KOLs`);
         changed = true;
       } else if (kolWinRate > 0.60 && MIN_KOLS > 2) {
@@ -411,32 +411,71 @@ try { xKeys = JSON.parse(process.env.X_API_KEYS_JSON || fs.readFileSync(process.
 
 // ─── KOL WALLETS ─────────────────────────────────────────────────────────────
 const WALLETS = [
-  { name: "Cented", address: "CyaE1VxvBrahnPWkqm5VsdCvyS2QmNht2UFrKJHga54o", weight: 3 },
-  { name: "bandit", address: "5B79fMkcFeRTiwm7ehsZsFiKsC7m7n1Bgv9yLxPp9q2X", weight: 3 },
-  { name: "dov7", address: "8nqtxpFpuXwfXG4pBLsDkkuMMPK9FjSkBMCn542HiM3v", weight: 3 },
-  { name: "Jijo", address: "4BdKaxN8G6ka4GYtQQWk4G4dZRUTX2vQH9GcXdBREFUk", weight: 3 },
-  { name: "Kadenox", address: "B32QbbdDAyhvUQzjcaM5j6ZVKwjCxAwGH5Xgvb9SJqnC", weight: 3 },
-  { name: "theo", address: "Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt", weight: 3 },
-  { name: "Dali", address: "CvNiezB8hofusHCKqu8irJ6t2FKY7VjzpSckofMzk5mB", weight: 3 },
-  { name: "radiance", address: "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke", weight: 3 },
-  { name: "Coasty", address: "CATk62cYqDFXTh3rsRbS1ibCyzBeovc2KXpXEaxEg3nB", weight: 1 },
+  // ═══ UXPLORER TOP PERFORMERS (ranked by real PnL) ═══
+  { name: "Cented", address: "CyaE1VxvBrahnPWkqm5VsdCvyS2QmNht2UFrKJHga54o", weight: 4 },
+  { name: "tech", address: "5d3jQcuUvsuHyZkhdp78FFqc7WogrzZpTtec1X9VNkuE", weight: 4 },
+  { name: "Tom", address: "CEUA7zVoDRqRYoeHTP58UHU6TR8yvtVbeLrX1dppqoXJ", weight: 4 },
+  { name: "Red", address: "7ABz8qEFZTHPkovMDsmQkm64DZWN5wRtU7LEtD2ShkQ6", weight: 4 },
   { name: "clukz", address: "G6fUXjMKPJzCY1rveAE6Qm7wy5U3vZgKDJmN1VPAdiZC", weight: 3 },
+  { name: "coco", address: "FqojC24nUn3x6oMQC2ypBHmtH7rFAnKS6DvwsJoCMaiv", weight: 3 },
+  { name: "nillburt", address: "FaBGrHWjcJ8vKnbgUtsdpZjvF7YAAajtQTWmmEHiKtQr", weight: 3 },
+  { name: "spuno", address: "GfXQesPe3Zuwg8JhAt6Cg8euJDTVx751enp9EQQmhzPH", weight: 3 },
+  { name: "cooker", address: "8deJ9xeUvXSJwicYptA9mHsU2rN2pDx37KWzkDkEXhU6", weight: 3 },
   { name: "dv", address: "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd", weight: 3 },
-  { name: "cryptovillain", address: "5sNnKuWKUtZkdC1eFNyqz3XHpNoCRQ1D1DfHcNHMV7gn", weight: 1 },
-  { name: "Joji", address: "525LueqAyZJueCoiisfWy6nyh4MTvmF4X9jSqi6efXJT", weight: 3 },
-  { name: "decu", address: "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9", weight: 3 },
-  { name: "Cupsey", address: "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f", weight: 1, scalper: true },
-  { name: "mercy", address: "F5jWYuiDLTiaLYa54D88YbpXgEsA6NKHzWy4SN4bMYjt", weight: 1 },
-  { name: "Silver", address: "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U", weight: 3 },
-  { name: "Pain", address: "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa", weight: 3 },
-  { name: "Casino", address: "8rvAsDKeAcEjEkiZMug9k8v1y8mW6gQQiMobd89Uy7qR", weight: 3 },
-  { name: "Naruza", address: "ASVzakePP6GNg9r95d4LPZHJDMXun6L6E4um4pu5ybJk", weight: 3 },
-  { name: "GOYIM", address: "G3gZWqrYkNmYFKYCyfRCNtGuxdyuE2wiYKkZpiZn4WSS", weight: 3 },
+  { name: "milito", address: "EeXvxkcGqMDZeTaVeawzxm9mbzZwqDUMmfG3bF7uzumH", weight: 3 },
+  { name: "mamba", address: "4nvNc7dDEqKKLM4Sr9Kgk3t1of6f8G66kT64VoC95LYh", weight: 3 },
+  { name: "adolfshiller", address: "Aqje5DsN4u2PHmQxGF9PKfpsDGwQRCBhWeLKHCFhSMXk", weight: 3 },
+  { name: "Kadenox", address: "B32QbbdDAyhvUQzjcaM5j6ZVKwjCxAwGH5Xgvb9SJqnC", weight: 3 },
+  { name: "rayan", address: "BNahnx13rLru9zxuWNGBD7vVv1pGQXB11Q7qeTyupdWf", weight: 3 },
+  { name: "brox", address: "7VBTpiiEjkwRbRGHJFUz6o5fWuhPFtAmy8JGhNqwHNnn", weight: 3 },
+  { name: "Jijo", address: "4BdKaxN8G6ka4GYtQQWk4G4dZRUTX2vQH9GcXdBREFUk", weight: 3 },
   { name: "SHEEP", address: "78N177fzNJpp8pG49xDv1efYcTMSzo9tPTKEA9mAVkh2", weight: 3 },
+  { name: "bigwarz", address: "7bsTkeWcSPG6nzsbXucxV89YUULoSExNJdX2WqfLHwZ4", weight: 3 },
+  { name: "chester", address: "PMJA8UQDyWTFw2Smhyp9jGA6aTaP7jKHR7BPudrgyYN", weight: 3 },
+  { name: "ddemonoyogy", address: "A2MwjTFz4jzT1mY4xrqkwm1vAbZDrqnA6QJoyTAU8Djw", weight: 3 },
+  { name: "kreo", address: "BCnqsPEtA1TkgednYEebRpkmwFRJDCjMQcKZMMtEdArc", weight: 3 },
+  { name: "exotic", address: "Dwo2kj88YYhwcFJiybTjXezR9a6QjkMASz5xXD7kujXC", weight: 3 },
+  { name: "k4ye", address: "5fHJszey2UdB2nETS1y6NS2wSG4ic9byKtbgJzaYzGeV", weight: 3 },
+  { name: "fashr", address: "719sfKUjiMThumTt2u39VMGn612BZyCcwbM5Pe8SqFYz", weight: 3 },
+  { name: "asdfghdevv", address: "69aiAKU3uJMxMLRkUEGFNt6nQ43PiVimE4ZbErJ7VSM1", weight: 3 },
+  { name: "giann", address: "GNrmKZCxYyNiSUsjduwwPJzhed3LATjciiKVuSGrsHEC", weight: 3 },
+  { name: "Betman", address: "BoYHJoKntk3pjkaV8qFojEonSPWmWMfQocZTwDd1bcGG", weight: 3 },
+  { name: "dior100x", address: "87rRdssFiTJKY4MGARa4G5vQ31hmR7MxSmhzeaJ5AAxJ", weight: 3 },
+  { name: "LJC", address: "6HJetMbdHBuk3mLUainxAPpBpWzDgYbHGTS2TqDAUSX2", weight: 3 },
+  { name: "Joji", address: "525LueqAyZJueCoiisfWy6nyh4MTvmF4X9jSqi6efXJT", weight: 3 },
+  { name: "ogantd", address: "215nhcAHjQQGgwpQSJQ7zR26etbjjtVdW74NLzwEgQjP", weight: 3 },
+  { name: "unprofitable", address: "DYmsQudNqJyyDvq86XmzAvrU9T7xwfQEwh6gPQw9TPNF", weight: 3 },
+  { name: "rem", address: "3pfqebV65sHMbF5z86HsPKSiTxwpNhCzjK5X7GUqCbtK", weight: 3 },
+  { name: "huava", address: "43FiZWbqc7DDTyhGpGSqQdbEokaDMuCy5nsFtv4P664Z", weight: 3 },
+  { name: "danny", address: "EaVboaPxFCYanjoNWdkxTbPvt57nhXGu5i6m9m6ZS2kK", weight: 3 },
+  { name: "Cupsey", address: "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f", weight: 3 },
+  { name: "10kdavid", address: "CY88tFMoUXiUab1pBhaa2FoqjSeWezwnehdy7LysAans", weight: 3 },
   { name: "CLOWN", address: "EDXHdSFdadFbYFFjxPXBqMe1kCEDFqpPu552uvp48HR8", weight: 3 },
-  { name: "S", address: "ApRnQN2HkbCn7W2WWiT2FEKvuKJp9LugRyAE1a9Hdz1", weight: 3 },
+  { name: "pikalosi", address: "9cdZg6xR4c9kZiqKSzqjn4QHCXNQuC9HEWBzzMJ3mzqw", weight: 3 },
+  { name: "1s1mple", address: "AeLaMjzxErZt4drbWVWvcxpVyo8p94xu5vrg41eZPFe3", weight: 3 },
+  { name: "megga", address: "H31vEBxSJk1nQdUN11qZgZyhScyShhscKhvhZZU3dQoU", weight: 3 },
+  { name: "putrick", address: "AVjEtg2ECYKXYeqdRQXvaaAZBjfTjYuSMTR4WLhKoeQN", weight: 3 },
+  { name: "samsrep", address: "CUHBzSPSaNS3tArEtM3maSV6pNdJhHJFYZpurPPK9P7H", weight: 3 },
+  { name: "Files", address: "DtjYbZntc2mEm1UrZHNcKguak6h6QM4S5xobnwFgg92Y", weight: 3 },
+  { name: "Pain", address: "GEpM1SmE8ExgznJwyZX64F2Mv5LLFgvBCxm5zNWYUXL4", weight: 3 },
+  { name: "asta", address: "AstaWuJuQiAS3AfqmM3xZxrJhkkZNXtW4VyaGQfqV6JL", weight: 3 },
+  { name: "bobby", address: "8oQoMhfBQnRspn7QtNAq2aPThRE4q94kLSTwaaFQvRgs", weight: 3 },
+  { name: "CowboyBNB", address: "6EDaVsS6enYgJ81tmhEkiKFcb4HuzPUVFZeom6PHUqN3", weight: 3 },
+  { name: "sarahmilady", address: "AAMnoNo3TpezKcT7ah9puLFZ4D59muEhQHJJqpX16ccg", weight: 2 },
+  { name: "zeropnl", address: "4xY9T1Q7foJzJsJ6YZDSsfp9zkzeZsXnxd45SixduMmr", weight: 2 },
+  { name: "publix", address: "86AEJExyjeNNgcp7GrAvCXTDicf5aGWgoERbXFiG1EdD", weight: 2 },
+  { name: "limfork", address: "BQVz7fQ1WsQmSTMY3umdPEPPTm1sdcBcX9sP7o6kPRmB", weight: 2 },
+  { name: "cesco", address: "7wr4Hf1v72q9eYXRYYg4jpfud3QPL3xLQHFYkZqRMdo4", weight: 2 },
+  { name: "jamessmith", address: "EQaxqKT3N981QBmdSUGNzAGK5S26zUwAdRHhBCgn87zD", weight: 2 },
+  { name: "Bluey", address: "6TAHDM5Tod7dBTZdYQxzgJZKxxPfiNV9udPHMiUNumyK", weight: 2 },
+  { name: "hood", address: "91sP85Ds9A4EXJ3gU3iHyLtUNJimxz8LrxRb2qhBNod9", weight: 2 },
+  { name: "Mike", address: "A8i6J8B1DgVdQaoeyrCmc18473EzYocEtZGavHT4sXzw", weight: 2 },
+  { name: "Coler", address: "99xnE2zEFi8YhmKDaikc1EvH6ELTQJppnqUwMzmpLXrs", weight: 2 },
+  { name: "Padre", address: "4Ff9dbi9L93qMvevpESY4YLHtdqTd8Yj8jXj3VwCNY4g", weight: 2 },
+  { name: "MarlonAlpha", address: "3PwXa9BRA2sUdjtcGxs4bVLBau2dHTuZwtb6CbpTpdvA", weight: 2 },
+  { name: "Classic", address: "DsqRyTUh1R37asYcVf1KdX4CNnz5DKEFmnXvgT4NfTPE", weight: 2 },
+  { name: "Daumen", address: "8MaVa9kdt3NW4Q5HyNAm1X5LbR8PQRVDc1W8NMVK88D5", weight: 2 },
   { name: "Dad", address: "9KPMHW2FuTrHBkPa8YQb2PR58V2KQcBXvyM21AFXvhQV", weight: 4 },
-  // ── AUTO-DISCOVERED SMART MONEY (Mon Mar 09 2026) ──
 ];
 
 // ─── PRICE CHECK ──────────────────────────────────────────────────────────────
@@ -617,7 +656,7 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
 
   // Circuit breaker: stop if lost 1.5 SOL today
   const dailyPnL = getDailyPnL();
-  if (dailyPnL < -0.3) { log(`🛑 CIRCUIT BREAKER: daily loss ${dailyPnL.toFixed(3)} SOL — NO MORE TRADES`); return 0; }
+  if (dailyPnL < -0.75) { log(`🛑 CIRCUIT BREAKER: daily loss ${dailyPnL.toFixed(3)} SOL — NO MORE TRADES`); return 0; }
 
   // SURVIVAL: Hard floor — below 0.4 SOL, stop trading entirely
   if (walletSol < 0.4) { log(`🛑 HARD FLOOR: wallet ${walletSol.toFixed(3)} SOL below 0.4 — preserving capital`); return 0; }
@@ -1085,7 +1124,18 @@ async function scanKOLs(state) {
     const hwSize = await safeBuySize(hwWallet, hwInfo.liq, 1);
     if (hwSize < 0.03) { log(`⛔ HW KOL ${hwInfo.symbol}: circuit breaker or wallet too low (${hwWallet.toFixed(3)} SOL)`); ALERTED.add(signal.mint); continue; }
     // Don't add to ALERTED on successful buy — allow convergence to also evaluate
-    log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' size:' + hwSize.toFixed(3) + ' SOL');
+    // SURVIVAL: HW path must also pass 9-signal score check
+    const hwPairData = entryPair?.pairs?.[0] || null;
+    const hwTokenScore = await scoreToken(hwInfo, hwPairData, signal.kolWeight);
+    if (hwTokenScore < 5) { log('⛔ HW ' + hwInfo.symbol + ': 9-signal score ' + hwTokenScore + '/9 below 7 — skip'); ALERTED.add(signal.mint); continue; }
+    // SURVIVAL: daily trade cap (HW path was bypassing safeBuySize cap)
+    try {
+      const _hwToday = new Date().toISOString().slice(0,10);
+      const _hwTrades = JSON.parse(require('fs').readFileSync('/root/.openclaw/workspace/SOLGizmo/trades.json','utf8'));
+      const _hwBuys = _hwTrades.filter(t => t.date === _hwToday && t.action === 'BUY').length;
+      if (_hwBuys >= 10) { log('🛑 MAX TRADES: ' + _hwBuys + ' buys today — HW path blocked too'); continue; }
+    } catch {}
+    log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' score:' + hwTokenScore + '/9 size:' + hwSize.toFixed(3) + ' SOL');
     if (await buy(signal.mint, hwSize)) {
       const hwMc = hwInfo.mcap;
       const hwPairAge = entryPair?.pairs?.[0]?.pairCreatedAt ? Date.now() - entryPair.pairs[0].pairCreatedAt : 0;
@@ -1177,7 +1227,7 @@ async function scanKOLs(state) {
       // HARD duplicate block — never buy same CA twice
       if (POSITIONS.find(p => p.ca === mint)) { log(`⛔ ${info.symbol}: already in positions`); continue; }
       const name = (info.symbol || '').toLowerCase();
-      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${p.baseToken?.symbol || 'unknown'}: toxic name`); continue; }
+      if (TOXIC_WORDS.some(w => name.includes(w))) { log(`⛔ ${info.symbol}: toxic name`); continue; }
       if (info.liq !== null && info.liq > 0 && info.liq < Math.min(MIN_LIQ, 5000)) { log(`⛔ ${info.symbol}: liq too low $${Math.round(info.liq)} (min $${MIN_LIQ})`); continue; }
       if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
       const walletSol = await getWalletBalance();
@@ -2279,3 +2329,25 @@ setInterval(pollTelegram, 3000); // poll every 3 seconds
 
 // ─── TELEGRAM REPLY LISTENER ─────────────────────────────────────────────────
 // runCycle(); // REMOVED — startAdaptiveCycle already handles this
+
+// ─── METEORA FARM SCANNER (discovery only — execution coming) ─────────────
+let lastFarmScan = 0;
+async function scanFarmPools() {
+  if (Date.now() - lastFarmScan < 10 * 60000) return;
+  lastFarmScan = Date.now();
+  try {
+    const r = await fetch('https://dlmm-api.meteora.ag/pair/all', {signal: AbortSignal.timeout(15000)});
+    const pairs = await r.json();
+    const sol = 'So11111111111111111111111111111111111111112';
+    const top = pairs.filter(p => {
+      const v = parseFloat(p.trade_volume_24h||0);
+      const l = parseFloat(p.liquidity||0);
+      return (p.mint_x===sol||p.mint_y===sol) && v>50000 && l>5000;
+    }).map(p => {
+      const f=parseFloat(p.fees_24h||p.fee_volume_24h||0);
+      const l=parseFloat(p.liquidity||0);
+      return {name:p.name,apr:l>0?Math.round(f*365/l*100):0,fees:Math.round(f),vol:Math.round(parseFloat(p.trade_volume_24h||0)/1000),addr:p.address};
+    }).sort((a,b)=>b.apr-a.apr).slice(0,3);
+    if(top.length) log('🌾 FARM SCAN: ' + top.map(p=>p.name+' APR:'+p.apr+'% Fees:$'+p.fees).join(' | '));
+  } catch(e) { log('Farm scan error: '+e.message?.slice(0,50)); }
+}
