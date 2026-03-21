@@ -1,5 +1,31 @@
 [
   {
+    "n": 51,
+    "date": "2026-03-21",
+    "token": "CZTq2Awf",
+    "action": "BUY",
+    "amount": "0.279351918 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (putrick,milito,cesco)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CZTq2AwffvGAV4zPUJP8So7eLqrAx5VnGLnfK8ghpump",
+    "ts": 1774102730,
+    "mc": 8240,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "putrick",
+      "milito",
+      "cesco"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 50,
     "date": "2026-03-21",
     "token": "chwog",
