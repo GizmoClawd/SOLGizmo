@@ -1,5 +1,29 @@
 [
   {
+    "n": 18,
+    "date": "2026-03-22",
+    "token": "LarpGPT",
+    "action": "BUY",
+    "amount": "0.0506 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GaUN7DvQ9JXyPLEjyMEyMotT7Jg3LjvqVZMUwyE2pump",
+    "ts": 1774209066,
+    "mc": 13026.65,
+    "vol24": 12343.84,
+    "vol1h": 12343.84,
+    "buys": 113,
+    "sells": 57,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 17,
     "date": "2026-03-22",
     "token": "Wish",
