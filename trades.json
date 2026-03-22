@@ -1,5 +1,27 @@
 [
   {
+    "n": 2,
+    "date": "2026-03-22",
+    "token": "Gulpo",
+    "action": "SELL",
+    "amount": "0.1158 SOL",
+    "result": "Sold 100% | PnL: -42.2%",
+    "pnl": "+0.1158 SOL",
+    "color": "teal",
+    "ca": "4VQ2cBmAVmNywGZ9aWJ8nbV4D5bNHyAQzjMUFtCepump",
+    "ts": 1774212838,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1,
     "date": "2026-03-22",
     "token": "Gulpo",
