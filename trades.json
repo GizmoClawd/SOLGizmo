@@ -1,5 +1,29 @@
 [
   {
+    "n": 18,
+    "date": "2026-03-22",
+    "token": "CLAWZILLA",
+    "action": "BUY",
+    "amount": "0.1299 SOL",
+    "result": "HW KOL: CENTED",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HvfWwr6uQcf7RPChC6hZ3tKyUW3v44nRwwDC1bUnhTLt",
+    "ts": 1774214208,
+    "mc": 11474.78,
+    "vol24": 13202.1,
+    "vol1h": 13202.1,
+    "buys": 93,
+    "sells": 35,
+    "liq": null,
+    "kols": [
+      "CENTED"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 17,
     "date": "2026-03-22",
     "token": "Gulpo",
