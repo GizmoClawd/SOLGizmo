@@ -1,5 +1,27 @@
 [
   {
+    "n": 19,
+    "date": "2026-03-22",
+    "token": "CLAWZILLA",
+    "action": "SELL",
+    "amount": "0.08 SOL",
+    "result": "Sold 100% | PnL: -28.0%",
+    "pnl": "+0.0800 SOL",
+    "color": "teal",
+    "ca": "HvfWwr6uQcf7RPChC6hZ3tKyUW3v44nRwwDC1bUnhTLt",
+    "ts": 1774214268,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 18,
     "date": "2026-03-22",
     "token": "CLAWZILLA",
