@@ -1,5 +1,30 @@
 [
   {
+    "n": 20,
+    "date": "2026-03-22",
+    "token": "LarpGPT",
+    "action": "BUY",
+    "amount": "0.0575 SOL",
+    "result": "2 KOL convergence: publix, danny",
+    "pnl": "",
+    "color": "teal",
+    "ca": "H5uCxGeDxk4CRo6aKgt6N6tNWmebCw8QeNWhDXBJpump",
+    "ts": 1774210058,
+    "mc": 9879.62,
+    "vol24": 24579.5,
+    "vol1h": 24579.5,
+    "buys": 384,
+    "sells": 255,
+    "liq": null,
+    "kols": [
+      "publix",
+      "danny"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 19,
     "date": "2026-03-22",
     "token": "LarpGPT",
