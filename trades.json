@@ -1,5 +1,30 @@
 [
   {
+    "n": 12,
+    "date": "2026-03-22",
+    "token": "wish",
+    "action": "BUY",
+    "amount": "0.0629 SOL",
+    "result": "2 KOL convergence: Coler, rem",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9zhNFsFmzq9VicHuLgmE6CStXHiyMgLk7khRKyyvpump",
+    "ts": 1774205677,
+    "mc": 6080.59,
+    "vol24": 62048.23,
+    "vol1h": 62048.23,
+    "buys": 1302,
+    "sells": 903,
+    "liq": null,
+    "kols": [
+      "Coler",
+      "rem"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 11,
     "date": "2026-03-22",
     "token": "2ADZRiE8",
