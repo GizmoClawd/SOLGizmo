@@ -1,5 +1,27 @@
 [
   {
+    "n": 27,
+    "date": "2026-03-22",
+    "token": "GLpbZXSy",
+    "action": "SELL",
+    "amount": "0.0936 SOL",
+    "result": "Sold 100% | PnL: -38.1%",
+    "pnl": "+0.0936 SOL",
+    "color": "teal",
+    "ca": "GLpbZXSyJVYsbfbjgUSRLaCtyfwMf9ggHZmEFK5ijK54",
+    "ts": 1774216308,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 26,
     "date": "2026-03-22",
     "token": "GLpbZXSy",
