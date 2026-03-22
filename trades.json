@@ -1,5 +1,29 @@
 [
   {
+    "n": 3,
+    "date": "2026-03-22",
+    "token": ":)",
+    "action": "BUY",
+    "amount": "0.1809 SOL",
+    "result": "1 KOL convergence: DV",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ErfKasJa48sYq8GBJXd73vJBjx5zG5w1xGDDRhqppump",
+    "ts": 1774213099,
+    "mc": 3138.05,
+    "vol24": 13275.32,
+    "vol1h": 13275.32,
+    "buys": 162,
+    "sells": 172,
+    "liq": null,
+    "kols": [
+      "DV"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 2,
     "date": "2026-03-22",
     "token": "Gulpo",
