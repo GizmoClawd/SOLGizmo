@@ -1,5 +1,27 @@
 [
   {
+    "n": 19,
+    "date": "2026-03-22",
+    "token": "LarpGPT",
+    "action": "SELL",
+    "amount": "0.029 SOL",
+    "result": "Sold 100% | PnL: -26.4%",
+    "pnl": "+0.0290 SOL",
+    "color": "teal",
+    "ca": "GaUN7DvQ9JXyPLEjyMEyMotT7Jg3LjvqVZMUwyE2pump",
+    "ts": 1774209104,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 18,
     "date": "2026-03-22",
     "token": "LarpGPT",
