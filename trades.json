@@ -1,5 +1,29 @@
 [
   {
+    "n": 6,
+    "date": "2026-03-22",
+    "token": "Ichi",
+    "action": "BUY",
+    "amount": "0.0602 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2ADZRiE8gsW5pWVWvbER5LeFnzNT2RNYQQwPcjompump",
+    "ts": 1774202766,
+    "mc": 85140,
+    "vol24": 165356.74,
+    "vol1h": 165356.74,
+    "buys": 2549,
+    "sells": 2007,
+    "liq": 23206.74,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 5,
     "date": "2026-03-21",
     "token": "UGOR",
