@@ -1,5 +1,30 @@
 [
   {
+    "n": 4,
+    "date": "2026-03-22",
+    "token": "Gulpo",
+    "action": "BUY",
+    "amount": "0.1923 SOL",
+    "result": "2 KOL convergence: ART 2, ART",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HVKmT4xLoVm3fBunDg9xorRJp46ya4LCXFK2WG7upump",
+    "ts": 1774213182,
+    "mc": 5579.76,
+    "vol24": 16908.32,
+    "vol1h": 16908.32,
+    "buys": 179,
+    "sells": 120,
+    "liq": null,
+    "kols": [
+      "ART 2",
+      "ART"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 3,
     "date": "2026-03-22",
     "token": ":)",
