@@ -1,5 +1,29 @@
 [
   {
+    "n": 24,
+    "date": "2026-03-22",
+    "token": "THUMBSUP",
+    "action": "BUY",
+    "amount": "0.043 SOL",
+    "result": "HW KOL: Cented",
+    "pnl": "",
+    "color": "teal",
+    "ca": "49VZ9JZeh7CibpeMHgGC8rEeYdMwFV77uCLYcxnH6p34",
+    "ts": 1774211466,
+    "mc": 28735.72,
+    "vol24": 24103.91,
+    "vol1h": 24103.91,
+    "buys": 195,
+    "sells": 168,
+    "liq": null,
+    "kols": [
+      "Cented"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 23,
     "date": "2026-03-22",
     "token": "NAPOLEON",
