@@ -1,5 +1,32 @@
 [
   {
+    "n": 33,
+    "date": "2026-03-22",
+    "token": "4T8eGDXb",
+    "action": "BUY",
+    "amount": "0.16499505105 SOL",
+    "result": "Sniper dip entry -- 4 KOLs (TUNA,CONSTATUEUR,CONSTATEUR 2,VPON DEV)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4T8eGDXbEX4MBsipXMZ2WUiHWqUfFysWKF1wXujupump",
+    "ts": 1774220096,
+    "mc": 12081.91,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "TUNA",
+      "CONSTATUEUR",
+      "CONSTATEUR 2",
+      "VPON DEV"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 32,
     "date": "2026-03-22",
     "token": "AagMFEQX",
