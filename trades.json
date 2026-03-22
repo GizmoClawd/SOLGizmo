@@ -1,5 +1,29 @@
 [
   {
+    "n": 11,
+    "date": "2026-03-22",
+    "token": "@GROK",
+    "action": "BUY",
+    "amount": "0.1322 SOL",
+    "result": "HW KOL: CENTED",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2cQqEkpgoC5haRBuiWeSVhW1QcCDXs9roa1YmTTXpump",
+    "ts": 1774213938,
+    "mc": 8944,
+    "vol24": 10513.14,
+    "vol1h": 10513.14,
+    "buys": 66,
+    "sells": 59,
+    "liq": 7353.17,
+    "kols": [
+      "CENTED"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 10,
     "date": "2026-03-22",
     "token": "@GROK",
