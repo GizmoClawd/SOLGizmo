@@ -1,5 +1,35 @@
 [
   {
+    "n": 37,
+    "date": "2026-03-22",
+    "token": "GmSjb7ca",
+    "action": "BUY",
+    "amount": "0.18550107119999998 SOL",
+    "result": "Sniper dip entry -- 7 KOLs (BEANZZZ,TUNA,QTDEGEN,ART,ART 2,CONSTATUEUR,CONSTATEUR 2)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GmSjb7caPVagBwUNnmW67HACub56fnhfEpoDwsKmpump",
+    "ts": 1774223996,
+    "mc": 11259.64,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "BEANZZZ",
+      "TUNA",
+      "QTDEGEN",
+      "ART",
+      "ART 2",
+      "CONSTATUEUR",
+      "CONSTATEUR 2"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 36,
     "date": "2026-03-22",
     "token": "GmSjb7ca",
