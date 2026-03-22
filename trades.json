@@ -1,5 +1,27 @@
 [
   {
+    "n": 23,
+    "date": "2026-03-22",
+    "token": "NAPOLEON",
+    "action": "SELL",
+    "amount": "0.0304 SOL",
+    "result": "Sold 100% | PnL: -29.9%",
+    "pnl": "+0.0304 SOL",
+    "color": "teal",
+    "ca": "DyzUQcTifU9gTRr1xTWFP8mkY68RH1FTA67Zycpqpump",
+    "ts": 1774210259,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 22,
     "date": "2026-03-22",
     "token": "NAPOLEON",
