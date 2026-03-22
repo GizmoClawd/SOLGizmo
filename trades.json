@@ -1,5 +1,30 @@
 [
   {
+    "n": 25,
+    "date": "2026-03-22",
+    "token": "HVKmT4xL",
+    "action": "BUY",
+    "amount": "0.19020500819999997 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (VPON DEV,ART 3)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HVKmT4xLoVm3fBunDg9xorRJp46ya4LCXFK2WG7upump",
+    "ts": 1774215746,
+    "mc": 16344.42,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "VPON DEV",
+      "ART 3"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 24,
     "date": "2026-03-22",
     "token": "GLpbZXSy",
