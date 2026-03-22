@@ -1,5 +1,31 @@
 [
   {
+    "n": 17,
+    "date": "2026-03-22",
+    "token": "Gulpo",
+    "action": "BUY",
+    "amount": "0.1802 SOL",
+    "result": "3 KOL convergence: BEANZZZ, BEAZN ALT, BEANZ 3",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4VQ2cBmAVmNywGZ9aWJ8nbV4D5bNHyAQzjMUFtCepump",
+    "ts": 1774214149,
+    "mc": 4184.62,
+    "vol24": 30668.93,
+    "vol1h": 30668.93,
+    "buys": 407,
+    "sells": 504,
+    "liq": null,
+    "kols": [
+      "BEANZZZ",
+      "BEAZN ALT",
+      "BEANZ 3"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 16,
     "date": "2026-03-22",
     "token": "@GROK",
