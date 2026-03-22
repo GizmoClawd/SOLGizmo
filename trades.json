@@ -1,5 +1,29 @@
 [
   {
+    "n": 10,
+    "date": "2026-03-22",
+    "token": "@GROK",
+    "action": "BUY",
+    "amount": "0.1492 SOL",
+    "result": "HW KOL: CUPSEY",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CTc4y2eHbTApoCAo2rNJFHkvPFHMnNygqEcBMyNcpump",
+    "ts": 1774213900,
+    "mc": 24597.42,
+    "vol24": 55461.63,
+    "vol1h": 55461.63,
+    "buys": 531,
+    "sells": 547,
+    "liq": null,
+    "kols": [
+      "CUPSEY"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 9,
     "date": "2026-03-22",
     "token": "HVKmT4xL",
