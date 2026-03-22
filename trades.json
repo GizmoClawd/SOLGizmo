@@ -1,5 +1,30 @@
 [
   {
+    "n": 9,
+    "date": "2026-03-22",
+    "token": "Hvaldimir",
+    "action": "BUY",
+    "amount": "0.0533 SOL",
+    "result": "2 KOL convergence: danny, 1s1mple",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GNk2wPtiF5V9DVes2zg8X6GoJvfvZFKFCTbTcAABpump",
+    "ts": 1774203631,
+    "mc": 6563.86,
+    "vol24": 21630.07,
+    "vol1h": 21630.07,
+    "buys": 341,
+    "sells": 267,
+    "liq": null,
+    "kols": [
+      "danny",
+      "1s1mple"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 8,
     "date": "2026-03-22",
     "token": "2ADZRiE8",
