@@ -1,5 +1,29 @@
 [
   {
+    "n": 985,
+    "date": "2026-03-22",
+    "token": "Chad",
+    "action": "BUY",
+    "amount": "0.0981 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6Yd2SSCzQDSTme6owEBqmCzD4ugqBPy3MtXWTMPUpump",
+    "ts": 1774193175,
+    "mc": 10242.85,
+    "vol24": 25330.28,
+    "vol1h": 25330.28,
+    "buys": 435,
+    "sells": 347,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 984,
     "date": "2026-03-21",
     "token": "24yCFFyV",
