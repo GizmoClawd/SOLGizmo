@@ -1,5 +1,29 @@
 [
   {
+    "n": 13,
+    "date": "2026-03-23",
+    "token": "one",
+    "action": "BUY",
+    "amount": "0.0984 SOL",
+    "result": "1 KOL convergence: CLADZ ELITE",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5acDNntk9SHyzoyUkkQjd4d8t3d6mdT4Wsg8VPXypump",
+    "ts": 1774243425,
+    "mc": 11945.74,
+    "vol24": 11193.16,
+    "vol1h": 11193.16,
+    "buys": 94,
+    "sells": 29,
+    "liq": null,
+    "kols": [
+      "CLADZ ELITE"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 12,
     "date": "2026-03-23",
     "token": "NOMAD",
