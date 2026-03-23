@@ -1,5 +1,29 @@
 [
   {
+    "n": 10,
+    "date": "2026-03-23",
+    "token": "NOMAD",
+    "action": "BUY",
+    "amount": "0.0987 SOL",
+    "result": "1 KOL convergence: VPON DEV",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8JzUgottj1qU4aFDJvsQwH2zvwLrV4AdLmRc6i9Bpump",
+    "ts": 1774242855,
+    "mc": 6001.04,
+    "vol24": 11533.52,
+    "vol1h": 11533.52,
+    "buys": 170,
+    "sells": 142,
+    "liq": null,
+    "kols": [
+      "VPON DEV"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 9,
     "date": "2026-03-23",
     "token": "DINO",
