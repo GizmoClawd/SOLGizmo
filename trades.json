@@ -1,5 +1,27 @@
 [
   {
+    "n": 66,
+    "date": "2026-03-23",
+    "token": "HLREP6qq",
+    "action": "SELL",
+    "amount": "0.0877 SOL",
+    "result": "Sold 100% | PnL: -26.3%",
+    "pnl": "+0.0877 SOL",
+    "color": "teal",
+    "ca": "HLREP6qqJ614EV2jMtcxcCFHvbwxmZ8FoXXRHFfXpump",
+    "ts": 1774274361,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 65,
     "date": "2026-03-23",
     "token": "4SscNYTo",
