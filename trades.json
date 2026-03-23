@@ -1,5 +1,30 @@
 [
   {
+    "n": 51,
+    "date": "2026-03-23",
+    "token": "IMMORTAL",
+    "action": "BUY",
+    "amount": "0.0954 SOL",
+    "result": "2 KOL convergence: TUULTS, CRIME",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AzjXEFpuhecoAmQqV8hTtMfw2NTfKhFcyJRaPzZ4pump",
+    "ts": 1774226464,
+    "mc": 15499.59,
+    "vol24": 40289.94,
+    "vol1h": 40289.94,
+    "buys": 659,
+    "sells": 446,
+    "liq": null,
+    "kols": [
+      "TUULTS",
+      "CRIME"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 50,
     "date": "2026-03-23",
     "token": "Benchpress",
