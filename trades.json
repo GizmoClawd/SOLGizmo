@@ -1,5 +1,27 @@
 [
   {
+    "n": 22,
+    "date": "2026-03-23",
+    "token": "income",
+    "action": "SELL",
+    "amount": "0.0569 SOL",
+    "result": "Sold 100% | PnL: -33.1%",
+    "pnl": "+0.0569 SOL",
+    "color": "teal",
+    "ca": "DZX3hoLoVz7Bx1uqMT9huDkCbmHpC4KRxru48Wskpump",
+    "ts": 1774235377,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 21,
     "date": "2026-03-23",
     "token": "CAPYBARA",
