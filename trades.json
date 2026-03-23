@@ -1,5 +1,27 @@
 [
   {
+    "n": 8,
+    "date": "2026-03-23",
+    "token": "DINO",
+    "action": "SELL",
+    "amount": "0.0909 SOL",
+    "result": "Sold 50% | PnL: +46.9%",
+    "pnl": "+0.0909 SOL",
+    "color": "teal",
+    "ca": "FfTQVFkfqUu53XfJin1YfrvtDP8NgnAP58cj54mrpump",
+    "ts": 1774241264,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 7,
     "date": "2026-03-23",
     "token": "DINO",
