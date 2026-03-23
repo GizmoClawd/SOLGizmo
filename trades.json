@@ -1,5 +1,27 @@
 [
   {
+    "n": 72,
+    "date": "2026-03-23",
+    "token": "CRTJA9en",
+    "action": "SELL",
+    "amount": "0.0661 SOL",
+    "result": "Sold 100% | PnL: -30.9%",
+    "pnl": "+0.0661 SOL",
+    "color": "teal",
+    "ca": "CRTJA9enRbrQpFwjVuD9hUn9kzdzPbyYpZYEtsWopump",
+    "ts": 1774275077,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 71,
     "date": "2026-03-23",
     "token": "4SscNYTo",
