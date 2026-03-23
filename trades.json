@@ -1,5 +1,27 @@
 [
   {
+    "n": 31,
+    "date": "2026-03-23",
+    "token": "DPKHfCEi",
+    "action": "SELL",
+    "amount": "0.1111 SOL",
+    "result": "Sold 100% | PnL: -30.8%",
+    "pnl": "+0.1111 SOL",
+    "color": "teal",
+    "ca": "DPKHfCEiqZRbSrFZDYKfzepgfeEHf5eLvGMGCSgTpump",
+    "ts": 1774237718,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 30,
     "date": "2026-03-23",
     "token": "DPKHfCEi",
