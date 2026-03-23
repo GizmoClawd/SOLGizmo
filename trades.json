@@ -1,5 +1,27 @@
 [
   {
+    "n": 58,
+    "date": "2026-03-23",
+    "token": "VwXXt5gJ",
+    "action": "SELL",
+    "amount": "0.0769 SOL",
+    "result": "Sold 100% | PnL: -29.8%",
+    "pnl": "+0.0769 SOL",
+    "color": "teal",
+    "ca": "VwXXt5gJyRTc4S98fQ7FDpV3jR6KXnFVGNPZkFTpump",
+    "ts": 1774273511,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 57,
     "date": "2026-03-23",
     "token": "VwXXt5gJ",
