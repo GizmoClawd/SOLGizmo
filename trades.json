@@ -1,5 +1,30 @@
 [
   {
+    "n": 13,
+    "date": "2026-03-23",
+    "token": "FCz1Zpif",
+    "action": "BUY",
+    "amount": "0.1395096753 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (CONSTATEUR 2,CONSTATUEUR)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FCz1ZpifR9xdvupQG3SBQsw6EXwreFSfsFmJ6GtQpump",
+    "ts": 1774232220,
+    "mc": 19629.64,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "CONSTATEUR 2",
+      "CONSTATUEUR"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 12,
     "date": "2026-03-23",
     "token": "one",
