@@ -1,5 +1,32 @@
 [
   {
+    "n": 30,
+    "date": "2026-03-23",
+    "token": "DPKHfCEi",
+    "action": "BUY",
+    "amount": "0.15477917219999998 SOL",
+    "result": "Sniper dip entry -- 4 KOLs (Pandora,CENTED,CRIME,RISK)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DPKHfCEiqZRbSrFZDYKfzepgfeEHf5eLvGMGCSgTpump",
+    "ts": 1774237540,
+    "mc": 20033,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Pandora",
+      "CENTED",
+      "CRIME",
+      "RISK"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 29,
     "date": "2026-03-23",
     "token": "DPKHfCEi",
