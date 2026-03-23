@@ -1,5 +1,29 @@
 [
   {
+    "n": 2,
+    "date": "2026-03-23",
+    "token": "CUM",
+    "action": "BUY",
+    "amount": "0.0924 SOL",
+    "result": "1 KOL convergence: ART 3",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3y3gANshT8jLLgSXGHpEMjNp1a9JLcUBnnHsDJAepump",
+    "ts": 1774230043,
+    "mc": 68243,
+    "vol24": 810391.31,
+    "vol1h": 291090.78,
+    "buys": 3539,
+    "sells": 2535,
+    "liq": 21671.04,
+    "kols": [
+      "ART 3"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1,
     "date": "2026-03-23",
     "token": "PIXEL",
