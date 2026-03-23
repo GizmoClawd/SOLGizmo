@@ -1,5 +1,33 @@
 [
   {
+    "n": 73,
+    "date": "2026-03-23",
+    "token": "7eQfRYw9",
+    "action": "BUY",
+    "amount": "0.0901339554 SOL",
+    "result": "Sniper dip entry -- 5 KOLs (WADDLES 2,WADDLES 3,WADDLES,ASSASSONE,ASSASSIn 2)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7eQfRYw9SQo7q8QuAisN7iyfWyJWMhjt1pVsi32Bpump",
+    "ts": 1774275125,
+    "mc": 9802.06,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "WADDLES 2",
+      "WADDLES 3",
+      "WADDLES",
+      "ASSASSONE",
+      "ASSASSIn 2"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 72,
     "date": "2026-03-23",
     "token": "CRTJA9en",
