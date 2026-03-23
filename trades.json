@@ -1,5 +1,30 @@
 [
   {
+    "n": 78,
+    "date": "2026-03-23",
+    "token": "HySY1Ary",
+    "action": "BUY",
+    "amount": "0.0653099643 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (decu,LETTRERBOMB)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HySY1ArycFvc3AZUy4VW6xcB9aciN4AnHcVE3Ve7pump",
+    "ts": 1774277139,
+    "mc": 24709,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "decu",
+      "LETTRERBOMB"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 77,
     "date": "2026-03-23",
     "token": "DqzjdgkE",
