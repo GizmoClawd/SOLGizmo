@@ -1,5 +1,32 @@
 [
   {
+    "n": 67,
+    "date": "2026-03-23",
+    "token": "CUQ7R1PR",
+    "action": "BUY",
+    "amount": "0.09228469199999999 SOL",
+    "result": "Sniper dip entry -- 4 KOLs (WADDLES 3,WADDLES,WADDLES 2,BEPIS CABAL)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CUQ7R1PR7ZGeZBG8naj5ZLhhLA5GeZbodEXWbVM3pump",
+    "ts": 1774274496,
+    "mc": 8694.25,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "WADDLES 3",
+      "WADDLES",
+      "WADDLES 2",
+      "BEPIS CABAL"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 66,
     "date": "2026-03-23",
     "token": "HLREP6qq",
