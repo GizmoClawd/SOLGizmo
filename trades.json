@@ -1,5 +1,30 @@
 [
   {
+    "n": 77,
+    "date": "2026-03-23",
+    "token": "DqzjdgkE",
+    "action": "BUY",
+    "amount": "0.07720391295000001 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (KING 3,KING)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DqzjdgkEZjVE4XhypvdDaeCfiCRPAFjyrAaJfncPpump",
+    "ts": 1774276117,
+    "mc": 8665,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "KING 3",
+      "KING"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 76,
     "date": "2026-03-23",
     "token": "96G5yUGi",
