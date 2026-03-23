@@ -1,5 +1,29 @@
 [
   {
+    "n": 2,
+    "date": "2026-03-23",
+    "token": "7",
+    "action": "BUY",
+    "amount": "0.0503 SOL",
+    "result": "HW KOL: CENTED",
+    "pnl": "",
+    "color": "teal",
+    "ca": "84cAEWqiDsV5xXh6CB69Hi3HcnumBbdjH4THfyorpump",
+    "ts": 1774282479,
+    "mc": 264784,
+    "vol24": 625889.79,
+    "vol1h": 332622.26,
+    "buys": 3474,
+    "sells": 3078,
+    "liq": 43046.64,
+    "kols": [
+      "CENTED"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1,
     "date": "2026-03-23",
     "token": "Solana",
