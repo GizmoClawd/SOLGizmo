@@ -1,5 +1,29 @@
 [
   {
+    "n": 21,
+    "date": "2026-03-23",
+    "token": "LOTUS",
+    "action": "BUY",
+    "amount": "0.117 SOL",
+    "result": "HW KOL: MAMBA",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2Dbzy7VYdJKZfXrXdTvtxzJabyo7gJcwp8KqMsPTpump",
+    "ts": 1774267214,
+    "mc": 11467.95,
+    "vol24": 50827.48,
+    "vol1h": 50827.48,
+    "buys": 732,
+    "sells": 574,
+    "liq": null,
+    "kols": [
+      "MAMBA"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 20,
     "date": "2026-03-23",
     "token": "Brain",
