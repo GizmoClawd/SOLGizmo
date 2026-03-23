@@ -1,5 +1,29 @@
 [
   {
+    "n": 55,
+    "date": "2026-03-23",
+    "token": "CAPYBARA ",
+    "action": "BUY",
+    "amount": "0.0956 SOL",
+    "result": "1 KOL convergence: THEO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4iJp8EwxS5CHMbsZDm2tryVrtYWguUjo6App56UZpump",
+    "ts": 1774226757,
+    "mc": 10896.54,
+    "vol24": 18883.19,
+    "vol1h": 18883.19,
+    "buys": 163,
+    "sells": 144,
+    "liq": null,
+    "kols": [
+      "THEO"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 54,
     "date": "2026-03-23",
     "token": "POMNI",
