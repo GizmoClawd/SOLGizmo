@@ -1,5 +1,35 @@
 [
   {
+    "n": 37,
+    "date": "2026-03-23",
+    "token": "96G5yUGi",
+    "action": "BUY",
+    "amount": "0.15573433665 SOL",
+    "result": "Sniper dip entry -- 7 KOLs (BEAZN ALT,BEANZ 3,BEANZZZ,DOC 2,DOC,JIZZY,STINK)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "96G5yUGiC1JhZ2yiyyPULoYrFXAEdodmVLnXfCUQpump",
+    "ts": 1774269226,
+    "mc": 9034.46,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "BEAZN ALT",
+      "BEANZ 3",
+      "BEANZZZ",
+      "DOC 2",
+      "DOC",
+      "JIZZY",
+      "STINK"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 36,
     "date": "2026-03-23",
     "token": "4iYF4U9L",
