@@ -1,5 +1,30 @@
 [
   {
+    "n": 7,
+    "date": "2026-03-23",
+    "token": "DINO",
+    "action": "BUY",
+    "amount": "0.1178 SOL",
+    "result": "2 KOL convergence: SOMEONE GOOD, ART 3",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FfTQVFkfqUu53XfJin1YfrvtDP8NgnAP58cj54mrpump",
+    "ts": 1774241205,
+    "mc": 9757.16,
+    "vol24": 36842.48,
+    "vol1h": 36842.48,
+    "buys": 535,
+    "sells": 615,
+    "liq": null,
+    "kols": [
+      "SOMEONE GOOD",
+      "ART 3"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 6,
     "date": "2026-03-23",
     "token": "Price",
