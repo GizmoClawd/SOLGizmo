@@ -1,5 +1,31 @@
 [
   {
+    "n": 64,
+    "date": "2026-03-23",
+    "token": "4SscNYTo",
+    "action": "BUY",
+    "amount": "0.08376257745 SOL",
+    "result": "Sniper dip entry -- 3 KOLs (BEANZZZ,OGAntD CABAL,VPON DEV)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4SscNYTok9oL5m9YNKnfy4bgjT5tQ8Qwf8zvJZxkpump",
+    "ts": 1774274152,
+    "mc": 20612.85,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "BEANZZZ",
+      "OGAntD CABAL",
+      "VPON DEV"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 63,
     "date": "2026-03-23",
     "token": "3jBDA8NC",
