@@ -1,5 +1,29 @@
 [
   {
+    "n": 25,
+    "date": "2026-03-23",
+    "token": "BUCK ",
+    "action": "BUY",
+    "amount": "0.1024 SOL",
+    "result": "HW KOL: CENTED",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DPKHfCEiqZRbSrFZDYKfzepgfeEHf5eLvGMGCSgTpump",
+    "ts": 1774236180,
+    "mc": 13418.82,
+    "vol24": 24576.34,
+    "vol1h": 24576.34,
+    "buys": 275,
+    "sells": 173,
+    "liq": null,
+    "kols": [
+      "CENTED"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 24,
     "date": "2026-03-23",
     "token": "FCz1Zpif",
