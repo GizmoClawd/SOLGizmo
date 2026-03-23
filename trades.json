@@ -1,5 +1,33 @@
 [
   {
+    "n": 4,
+    "date": "2026-03-23",
+    "token": "A2EufgJq",
+    "action": "BUY",
+    "amount": "0.04401243180000001 SOL",
+    "result": "Sniper dip entry -- 5 KOLs (DOV,EustazZ,RELJOOO 3,RELJOO SHOCKED,PAIN CABAL)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "A2EufgJq8q38A1U5nUBGBzadxAZ9cPvncSCQmYUvpump",
+    "ts": 1774279031,
+    "mc": 17165.56,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "DOV",
+      "EustazZ",
+      "RELJOOO 3",
+      "RELJOO SHOCKED",
+      "PAIN CABAL"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 3,
     "date": "2026-03-23",
     "token": "4Ro9yfdx",
