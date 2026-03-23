@@ -1,5 +1,30 @@
 [
   {
+    "n": 11,
+    "date": "2026-03-23",
+    "token": "TWEET",
+    "action": "BUY",
+    "amount": "0.1062 SOL",
+    "result": "2 KOL convergence: Slowie, EYIS TIKTOK GOD",
+    "pnl": "",
+    "color": "teal",
+    "ca": "523gPx6UJRgRcTLDsuyxh2BtaFy6vpwJdBD738Zmpump",
+    "ts": 1774231704,
+    "mc": 11781.74,
+    "vol24": 54662.18,
+    "vol1h": 17463.03,
+    "buys": 210,
+    "sells": 300,
+    "liq": null,
+    "kols": [
+      "Slowie",
+      "EYIS TIKTOK GOD"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 10,
     "date": "2026-03-23",
     "token": "P18",
