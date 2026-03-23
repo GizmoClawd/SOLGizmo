@@ -1,5 +1,27 @@
 [
   {
+    "n": 69,
+    "date": "2026-03-23",
+    "token": "A1FBVzsD",
+    "action": "SELL",
+    "amount": "0.0172 SOL",
+    "result": "Sold 100% | PnL: -41.4%",
+    "pnl": "+0.0172 SOL",
+    "color": "teal",
+    "ca": "A1FBVzsDDhmvNxEhUN9nWoJEhDXPcEjDpYEVj2ASpump",
+    "ts": 1774274567,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 68,
     "date": "2026-03-23",
     "token": "CUQ7R1PR",
