@@ -1,5 +1,32 @@
 [
   {
+    "n": 3,
+    "date": "2026-03-23",
+    "token": "4Ro9yfdx",
+    "action": "BUY",
+    "amount": "0.0521479926 SOL",
+    "result": "Sniper dip entry -- 4 KOLs (BEANZ,BEANZZ 3,EYIS TIKTOK GOD,milito)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4Ro9yfdxjJV9Gp7Lkzf2if3MRYPPPWfjdhNWDNrQpump",
+    "ts": 1774278978,
+    "mc": 10350.17,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "BEANZ",
+      "BEANZZ 3",
+      "EYIS TIKTOK GOD",
+      "milito"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 2,
     "date": "2026-03-23",
     "token": "B96bG2K3",
