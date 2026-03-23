@@ -1,5 +1,30 @@
 [
   {
+    "n": 20,
+    "date": "2026-03-23",
+    "token": "income",
+    "action": "BUY",
+    "amount": "0.0969 SOL",
+    "result": "2 KOL convergence: ART 3, EYIS TIKTOK GOD",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DZX3hoLoVz7Bx1uqMT9huDkCbmHpC4KRxru48Wskpump",
+    "ts": 1774235213,
+    "mc": 5309.38,
+    "vol24": 40289.38,
+    "vol1h": 40289.38,
+    "buys": 486,
+    "sells": 450,
+    "liq": null,
+    "kols": [
+      "ART 3",
+      "EYIS TIKTOK GOD"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 19,
     "date": "2026-03-23",
     "token": "Income",
