@@ -1,5 +1,27 @@
 [
   {
+    "n": 20,
+    "date": "2026-03-23",
+    "token": "Brain",
+    "action": "SELL",
+    "amount": "0.109 SOL",
+    "result": "Sold 100% | PnL: +303.2%",
+    "pnl": "+0.1090 SOL",
+    "color": "teal",
+    "ca": "3ZS6EWzxxk4nya8H1bVxWqFx8ZnmCUtDRihZ2vEPpump",
+    "ts": 1774246454,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 19,
     "date": "2026-03-23",
     "token": "Brain",
