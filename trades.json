@@ -1,5 +1,33 @@
 [
   {
+    "n": 79,
+    "date": "2026-03-23",
+    "token": "7kMWtJ9D",
+    "action": "BUY",
+    "amount": "0.05520010770000001 SOL",
+    "result": "Sniper dip entry -- 5 KOLs (k4aye,SCHARO,JIZZY,VPON DEV,STINK)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7kMWtJ9DPMbSZEd1pjpye7guDcsc73Fn5jQdA8qipump",
+    "ts": 1774277185,
+    "mc": 25396.99,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "k4aye",
+      "SCHARO",
+      "JIZZY",
+      "VPON DEV",
+      "STINK"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 78,
     "date": "2026-03-23",
     "token": "HySY1Ary",
