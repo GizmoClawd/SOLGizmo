@@ -1,5 +1,30 @@
 [
   {
+    "n": 42,
+    "date": "2026-03-23",
+    "token": "COMPUTER",
+    "action": "BUY",
+    "amount": "0.126 SOL",
+    "result": "2 KOL convergence: EDDY, EDDY DEV",
+    "pnl": "",
+    "color": "teal",
+    "ca": "623LJRxYyhE6fpkVbJhF9PwNV2gTCkHgkLjSFFdpump",
+    "ts": 1774225177,
+    "mc": 46504,
+    "vol24": 77495.07,
+    "vol1h": 4116.56,
+    "buys": 68,
+    "sells": 33,
+    "liq": 17033.13,
+    "kols": [
+      "EDDY",
+      "EDDY DEV"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 41,
     "date": "2026-03-23",
     "token": "LNG",
