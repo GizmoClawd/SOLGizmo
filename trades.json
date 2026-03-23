@@ -1,5 +1,27 @@
 [
   {
+    "n": 40,
+    "date": "2026-03-23",
+    "token": "EMBgcVSN",
+    "action": "SELL",
+    "amount": "0.0537 SOL",
+    "result": "Sold 100% | PnL: -39.9%",
+    "pnl": "+0.0537 SOL",
+    "color": "teal",
+    "ca": "EMBgcVSN61e5SSLdaxfGrPS61extp3CkYbJa7yiipump",
+    "ts": 1774269324,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 39,
     "date": "2026-03-23",
     "token": "96G5yUGi",
