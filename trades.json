@@ -1,5 +1,29 @@
 [
   {
+    "n": 15,
+    "date": "2026-03-23",
+    "token": "CAPYBARA",
+    "action": "BUY",
+    "amount": "0.0827 SOL",
+    "result": "1 KOL convergence: BANDEEZ",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FdADAP27BApNGBx6uaMeK4CazFCUZgAkXgKPmHoYpump",
+    "ts": 1774233040,
+    "mc": 22360.21,
+    "vol24": 93983.91,
+    "vol1h": 13956.8,
+    "buys": 198,
+    "sells": 201,
+    "liq": null,
+    "kols": [
+      "BANDEEZ"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 14,
     "date": "2026-03-23",
     "token": "TWEET",
