@@ -1,5 +1,27 @@
 [
   {
+    "n": 63,
+    "date": "2026-03-23",
+    "token": "3jBDA8NC",
+    "action": "SELL",
+    "amount": "0.0751 SOL",
+    "result": "Sold 100% | PnL: -33.6%",
+    "pnl": "+0.0751 SOL",
+    "color": "teal",
+    "ca": "3jBDA8NCYtRp4xiK2K2hhAJgPw4dkNLYhZeWod8rpump",
+    "ts": 1774274000,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 62,
     "date": "2026-03-23",
     "token": "3jBDA8NC",
