@@ -1,5 +1,30 @@
 [
   {
+    "n": 32,
+    "date": "2026-03-23",
+    "token": "EMBgcVSN",
+    "action": "BUY",
+    "amount": "0.17042748284999998 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (Henn100x,FASHR)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EMBgcVSN61e5SSLdaxfGrPS61extp3CkYbJa7yiipump",
+    "ts": 1774268715,
+    "mc": 11354.56,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "Henn100x",
+      "FASHR"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 31,
     "date": "2026-03-23",
     "token": "CUs8789X",
