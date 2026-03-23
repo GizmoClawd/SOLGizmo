@@ -1,5 +1,29 @@
 [
   {
+    "n": 22,
+    "date": "2026-03-23",
+    "token": "IRAN",
+    "action": "BUY",
+    "amount": "0.117 SOL",
+    "result": "HW KOL: MAMBA",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Cvg9gRA3fD2MXxBWAHLJhj29gboZ5ag2JbvciMJDTso9",
+    "ts": 1774267217,
+    "mc": 23591,
+    "vol24": 101262.17,
+    "vol1h": 101262.17,
+    "buys": 1265,
+    "sells": 927,
+    "liq": 12164.22,
+    "kols": [
+      "MAMBA"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 21,
     "date": "2026-03-23",
     "token": "LOTUS",
