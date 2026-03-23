@@ -1,5 +1,30 @@
 [
   {
+    "n": 40,
+    "date": "2026-03-23",
+    "token": "POMNI",
+    "action": "BUY",
+    "amount": "0.1265 SOL",
+    "result": "2 KOL convergence: cap, CHAIRMAN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GgfMESPfyjzUk6FUCWDHhN33Tb5sYNesHxzfoYXapump",
+    "ts": 1774224816,
+    "mc": 14841,
+    "vol24": 31340.93,
+    "vol1h": 4246.33,
+    "buys": 39,
+    "sells": 9,
+    "liq": 10357.93,
+    "kols": [
+      "cap",
+      "CHAIRMAN"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 39,
     "date": "2026-03-23",
     "token": "GmSjb7ca",
