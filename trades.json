@@ -1,5 +1,30 @@
 [
   {
+    "n": 4,
+    "date": "2026-03-23",
+    "token": "Price",
+    "action": "BUY",
+    "amount": "0.1079 SOL",
+    "result": "2 KOL convergence: LEXA, SMOKEZ",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9qdH1fNSXgFBaDc7MaAGAAJKEnZytsfeKgutBku2pump",
+    "ts": 1774238906,
+    "mc": 31903.06,
+    "vol24": 47594.85,
+    "vol1h": 47594.85,
+    "buys": 829,
+    "sells": 660,
+    "liq": null,
+    "kols": [
+      "LEXA",
+      "SMOKEZ"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 3,
     "date": "2026-03-23",
     "token": "Adog",
