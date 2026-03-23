@@ -1,5 +1,27 @@
 [
   {
+    "n": 3,
+    "date": "2026-03-23",
+    "token": "PIXEL",
+    "action": "SELL",
+    "amount": "0.0658 SOL",
+    "result": "Sold 50% | PnL: +35.8%",
+    "pnl": "+0.0658 SOL",
+    "color": "teal",
+    "ca": "4oMe7xKqF9yurq4adMqWX7d7wiayd3fTeiVK2ydQpump",
+    "ts": 1774230270,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 2,
     "date": "2026-03-23",
     "token": "CUM",
