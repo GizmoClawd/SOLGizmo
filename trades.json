@@ -1,5 +1,29 @@
 [
   {
+    "n": 17,
+    "date": "2026-03-23",
+    "token": "Brain",
+    "action": "BUY",
+    "amount": "0.097 SOL",
+    "result": "1 KOL convergence: VPON DEV",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3ZS6EWzxxk4nya8H1bVxWqFx8ZnmCUtDRihZ2vEPpump",
+    "ts": 1774245315,
+    "mc": 13015.08,
+    "vol24": 10359.48,
+    "vol1h": 10359.48,
+    "buys": 144,
+    "sells": 128,
+    "liq": null,
+    "kols": [
+      "VPON DEV"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 16,
     "date": "2026-03-23",
     "token": "one",
