@@ -1,5 +1,27 @@
 [
   {
+    "n": 48,
+    "date": "2026-03-23",
+    "token": "96G5yUGi",
+    "action": "SELL",
+    "amount": "0.0454 SOL",
+    "result": "Sold 100% | PnL: -26.2%",
+    "pnl": "+0.0454 SOL",
+    "color": "teal",
+    "ca": "96G5yUGiC1JhZ2yiyyPULoYrFXAEdodmVLnXfCUQpump",
+    "ts": 1774271566,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 47,
     "date": "2026-03-23",
     "token": "A1FBVzsD",
