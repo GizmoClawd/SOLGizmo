@@ -1,5 +1,33 @@
 [
   {
+    "n": 62,
+    "date": "2026-03-23",
+    "token": "3jBDA8NC",
+    "action": "BUY",
+    "amount": "0.08571308865 SOL",
+    "result": "Sniper dip entry -- 5 KOLs (LETTRERBOMB,milito,TUULTS,RELJOOO 3,RELJOO SHOCKED)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3jBDA8NCYtRp4xiK2K2hhAJgPw4dkNLYhZeWod8rpump",
+    "ts": 1774273939,
+    "mc": 16533.74,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "LETTRERBOMB",
+      "milito",
+      "TUULTS",
+      "RELJOOO 3",
+      "RELJOO SHOCKED"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 61,
     "date": "2026-03-23",
     "token": "HLREP6qq",
