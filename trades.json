@@ -1,5 +1,30 @@
 [
   {
+    "n": 6,
+    "date": "2026-03-23",
+    "token": "EmJkeVj4",
+    "action": "BUY",
+    "amount": "0.04235466525 SOL",
+    "result": "Sniper dip entry -- 2 KOLs (FIRETOAD,TOAD 2)",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EmJkeVj4c5UdVSkbbsya5oP5LXnpyZBMj8UB4y6Cpump",
+    "ts": 1774280135,
+    "mc": 8960.51,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": [
+      "FIRETOAD",
+      "TOAD 2"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 5,
     "date": "2026-03-23",
     "token": "A2EufgJq",
