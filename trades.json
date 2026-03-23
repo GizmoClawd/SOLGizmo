@@ -1,5 +1,31 @@
 [
   {
+    "n": 50,
+    "date": "2026-03-23",
+    "token": "Benchpress",
+    "action": "BUY",
+    "amount": "0.1102 SOL",
+    "result": "3 KOL convergence: DINERO GRATIS, WALTA, WALTA 2",
+    "pnl": "",
+    "color": "teal",
+    "ca": "f3npBo3XNK5j1K9r8hGFKYDkx5i6rJCwTrab7CKpump",
+    "ts": 1774226331,
+    "mc": 5994,
+    "vol24": 42836.84,
+    "vol1h": 42836.84,
+    "buys": 606,
+    "sells": 660,
+    "liq": 6019.92,
+    "kols": [
+      "DINERO GRATIS",
+      "WALTA",
+      "WALTA 2"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 49,
     "date": "2026-03-23",
     "token": "COMPUTER",
