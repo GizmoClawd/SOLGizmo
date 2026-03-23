@@ -1,5 +1,30 @@
 [
   {
+    "n": 19,
+    "date": "2026-03-23",
+    "token": "Income",
+    "action": "BUY",
+    "amount": "0.1124 SOL",
+    "result": "2 KOL convergence: CONSTATEUR 2, CONSTATUEUR",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6N23nBrnxJ2m7gFcLUtPfMHn5heLRu5iqD3ucJnRpump",
+    "ts": 1774234885,
+    "mc": 13160,
+    "vol24": 31958.3,
+    "vol1h": 4696.97,
+    "buys": 107,
+    "sells": 56,
+    "liq": 9145.05,
+    "kols": [
+      "CONSTATEUR 2",
+      "CONSTATUEUR"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 18,
     "date": "2026-03-23",
     "token": "FCz1Zpif",
