@@ -1,5 +1,27 @@
 [
   {
+    "n": 51,
+    "date": "2026-03-23",
+    "token": "54sJs4jE",
+    "action": "SELL",
+    "amount": "0.0728 SOL",
+    "result": "Sold 50% | PnL: +32.9%",
+    "pnl": "+0.0728 SOL",
+    "color": "teal",
+    "ca": "54sJs4jEFQoYwGebJtSfeLnjZDCet5ZZCtAp13Ygpump",
+    "ts": 1774271746,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 50,
     "date": "2026-03-23",
     "token": "8AVUDLCy",
