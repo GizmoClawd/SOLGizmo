@@ -1,5 +1,27 @@
 [
   {
+    "n": 71,
+    "date": "2026-03-23",
+    "token": "4SscNYTo",
+    "action": "SELL",
+    "amount": "0.0429 SOL",
+    "result": "Sold 100% | PnL: +20.7%",
+    "pnl": "+0.0429 SOL",
+    "color": "teal",
+    "ca": "4SscNYTok9oL5m9YNKnfy4bgjT5tQ8Qwf8zvJZxkpump",
+    "ts": 1774274875,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 70,
     "date": "2026-03-23",
     "token": "CRTJA9en",
