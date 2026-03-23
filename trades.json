@@ -1,5 +1,31 @@
 [
   {
+    "n": 23,
+    "date": "2026-03-23",
+    "token": "LARP",
+    "action": "BUY",
+    "amount": "0.1404 SOL",
+    "result": "3 KOL convergence: CEFULI, CEFULI MAIN, JIZZY",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EygStH4gHv1h4E8w4raYv6NGsrDiij3nbfCc26iTpump",
+    "ts": 1774267228,
+    "mc": 248043,
+    "vol24": 39205.36,
+    "vol1h": 5167.48,
+    "buys": 31,
+    "sells": 16,
+    "liq": 48531.24,
+    "kols": [
+      "CEFULI",
+      "CEFULI MAIN",
+      "JIZZY"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 22,
     "date": "2026-03-23",
     "token": "IRAN",
