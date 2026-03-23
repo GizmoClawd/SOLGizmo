@@ -1,5 +1,27 @@
 [
   {
+    "n": 12,
+    "date": "2026-03-23",
+    "token": "one",
+    "action": "SELL",
+    "amount": "0.1181 SOL",
+    "result": "Sold 100% | PnL: +0.9%",
+    "pnl": "+0.1181 SOL",
+    "color": "teal",
+    "ca": "3mecmcGqs4q9RMzFKZFZTBEcbtA7SPFKPKb9kDvxpump",
+    "ts": 1774232010,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 11,
     "date": "2026-03-23",
     "token": "TWEET",
