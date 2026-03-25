@@ -1,5 +1,27 @@
 [
   {
+    "n": 2,
+    "date": "2026-03-25",
+    "token": "Stable",
+    "action": "SELL",
+    "amount": "0.006 SOL",
+    "result": "Sold 50% | PnL: +40.0%",
+    "pnl": "+0.0060 SOL",
+    "color": "teal",
+    "ca": "FKt5tCDW1rhWn7C8aV8yDYgWcaMNmgQvXbXRepuKpump",
+    "ts": 1774413963,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1,
     "date": "2026-03-25",
     "token": "Cwat",
