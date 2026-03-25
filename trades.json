@@ -1,5 +1,31 @@
 [
   {
+    "n": 7,
+    "date": "2026-03-25",
+    "token": "Greg",
+    "action": "BUY",
+    "amount": "0.1024 SOL",
+    "result": "3 KOL convergence: cap, DLN GOATED CABALL, CABAL",
+    "pnl": "",
+    "color": "teal",
+    "ca": "J3HZ1sxS2U8wK9wMuTujdv47PCfah4TzkWoFSEnzpump",
+    "ts": 1774467173,
+    "mc": 175458,
+    "vol24": 1111844.25,
+    "vol1h": 272921.8,
+    "buys": 3081,
+    "sells": 2079,
+    "liq": 36124.54,
+    "kols": [
+      "cap",
+      "DLN GOATED CABALL",
+      "CABAL"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 6,
     "date": "2026-03-25",
     "token": "Gerald",
