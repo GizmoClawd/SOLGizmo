@@ -1,5 +1,27 @@
 [
   {
+    "n": 12,
+    "date": "2026-03-25",
+    "token": "FUND",
+    "action": "SELL",
+    "amount": "0.0316 SOL",
+    "result": "Sold 100% | PnL: -13.3%",
+    "pnl": "+0.0316 SOL",
+    "color": "teal",
+    "ca": "EQWq3H1UE9tMtFibeUQkkkWTmyN6SoPkEEWC5DGEpump",
+    "ts": 1774471689,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 11,
     "date": "2026-03-25",
     "token": "FUND",
