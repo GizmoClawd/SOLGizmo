@@ -1,5 +1,27 @@
 [
   {
+    "n": 8,
+    "date": "2026-03-25",
+    "token": "Greg",
+    "action": "SELL",
+    "amount": "0.022 SOL",
+    "result": "Sold 100% | PnL: -26.6%",
+    "pnl": "+0.0220 SOL",
+    "color": "teal",
+    "ca": "J3HZ1sxS2U8wK9wMuTujdv47PCfah4TzkWoFSEnzpump",
+    "ts": 1774468093,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 7,
     "date": "2026-03-25",
     "token": "Greg",
