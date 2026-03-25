@@ -1,5 +1,30 @@
 [
   {
+    "n": 9,
+    "date": "2026-03-25",
+    "token": "Rocky",
+    "action": "BUY",
+    "amount": "0.101 SOL",
+    "result": "2 KOL convergence: NILLA, NILLA 2",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EMEQgt5GDtxAnUFwp3yyBZkKsMeewF18HGASuzcapump",
+    "ts": 1774469660,
+    "mc": 70471,
+    "vol24": 38158.45,
+    "vol1h": 4348.48,
+    "buys": 31,
+    "sells": 28,
+    "liq": 22582.91,
+    "kols": [
+      "NILLA",
+      "NILLA 2"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 8,
     "date": "2026-03-25",
     "token": "Greg",
