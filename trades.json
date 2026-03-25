@@ -1,5 +1,27 @@
 [
   {
+    "n": 4,
+    "date": "2026-03-25",
+    "token": "eth",
+    "action": "SELL",
+    "amount": "0.0373 SOL",
+    "result": "Sold 100% | PnL: -44.9%",
+    "pnl": "+0.0373 SOL",
+    "color": "teal",
+    "ca": "BLr2Jjp5RXNztNaYV37i7gqCw438LJRKiMu8FtW8fwer",
+    "ts": 1774413968,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 3,
     "date": "2026-03-25",
     "token": "Gerald",
