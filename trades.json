@@ -1,5 +1,29 @@
 [
   {
+    "n": 13,
+    "date": "2026-03-25",
+    "token": "chad",
+    "action": "BUY",
+    "amount": "0.0837 SOL",
+    "result": "1 KOL convergence: HYDRAZE",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DrS9ULnnAhYwVpFjvSicFYXWsvzJLTSJJ5WKVYF5pump",
+    "ts": 1774481709,
+    "mc": 123745,
+    "vol24": 446869.54,
+    "vol1h": 58993.73,
+    "buys": 358,
+    "sells": 304,
+    "liq": 29541.47,
+    "kols": [
+      "HYDRAZE"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 12,
     "date": "2026-03-25",
     "token": "FUND",
