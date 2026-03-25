@@ -1,5 +1,30 @@
 [
   {
+    "n": 11,
+    "date": "2026-03-25",
+    "token": "FUND",
+    "action": "BUY",
+    "amount": "0.1006 SOL",
+    "result": "2 KOL convergence: ART 3, ORANGE 3",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EQWq3H1UE9tMtFibeUQkkkWTmyN6SoPkEEWC5DGEpump",
+    "ts": 1774471061,
+    "mc": 70976,
+    "vol24": 234935.25,
+    "vol1h": 234935.25,
+    "buys": 2359,
+    "sells": 1941,
+    "liq": 21816.04,
+    "kols": [
+      "ART 3",
+      "ORANGE 3"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 10,
     "date": "2026-03-25",
     "token": "Rocky",
