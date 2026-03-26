@@ -1,5 +1,29 @@
 [
   {
+    "n": 24,
+    "date": "2026-03-26",
+    "token": "AARAV",
+    "action": "BUY",
+    "amount": "0.0775 SOL",
+    "result": "HW KOL: JIJO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ARk5ZfD1xPU7q4ioEKveVP47vC5bR22QoaGf67Scpump",
+    "ts": 1774529788,
+    "mc": 11772.02,
+    "vol24": 10908.21,
+    "vol1h": 10908.21,
+    "buys": 102,
+    "sells": 39,
+    "liq": null,
+    "kols": [
+      "JIJO"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 23,
     "date": "2026-03-26",
     "token": "Pika",
