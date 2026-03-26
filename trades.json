@@ -1,5 +1,27 @@
 [
   {
+    "n": 30,
+    "date": "2026-03-26",
+    "token": "BULLY",
+    "action": "SELL",
+    "amount": "0.0602 SOL",
+    "result": "Sold 100% | PnL: +238.9%",
+    "pnl": "+0.0602 SOL",
+    "color": "teal",
+    "ca": "DU4LApzYfC9W3V8dZ65foRr37Keq16C72e6CCqnPpump",
+    "ts": 1774538881,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 29,
     "date": "2026-03-26",
     "token": "BULLY",
