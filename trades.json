@@ -1,5 +1,29 @@
 [
   {
+    "n": 39,
+    "date": "2026-03-26",
+    "token": "FROG",
+    "action": "BUY",
+    "amount": "0.0638 SOL",
+    "result": "HW KOL: MAMBA",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Ae8QsSmAoW4vPD5pQaA4eLcwcH3AVjBTxfmwzbhipump",
+    "ts": 1774540376,
+    "mc": 21097.47,
+    "vol24": 12510.47,
+    "vol1h": 12510.47,
+    "buys": 77,
+    "sells": 20,
+    "liq": null,
+    "kols": [
+      "MAMBA"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 38,
     "date": "2026-03-26",
     "token": "farthouse",
