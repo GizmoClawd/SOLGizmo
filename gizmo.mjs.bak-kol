@@ -32,7 +32,7 @@ try {
 
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 const BASE_DIR = process.env.HOME + '/.gizmo/runtime';
-const WALLET_ADDRESS = process.env.SOLANA_WALLET || '53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz';
+const WALLET_ADDRESS = process.env.SOLANA_WALLET || 'GZnFNskqnCAoTHYuYFaZm3FQGaGHJ7CqVSphmGZnTia4';
 const WORKSPACE = (process.env.HOME || '/root') + '/.openclaw/workspace/SOLGizmo';
 const POSITIONS_FILE = BASE_DIR + '/positions.json';
 const TRADES_FILE = WORKSPACE + '/trades.json';
@@ -798,7 +798,7 @@ async function verifyBuySuccess(ca) {
 // ─── WALLET BALANCE ───────────────────────────────────────────────────────────
 async function getWalletBalance() {
   try {
-    const r = await fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:['53hSYdMWfDkhBsNaYg1uKMmxiVMv192fp6t3NVhnF4rz']}),signal:AbortSignal.timeout(3000)});
+    const r = await fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:['GZnFNskqnCAoTHYuYFaZm3FQGaGHJ7CqVSphmGZnTia4']}),signal:AbortSignal.timeout(3000)});
     const d = await r.json(); return (d.result?.value||0)/1e9;
   } catch { return 1; }
 }
