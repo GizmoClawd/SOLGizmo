@@ -1,5 +1,27 @@
 [
   {
+    "n": 25,
+    "date": "2026-03-26",
+    "token": "WORLD",
+    "action": "SELL",
+    "amount": "0.0632 SOL",
+    "result": "Sold 100% | PnL: -70.0%",
+    "pnl": "+0.0632 SOL",
+    "color": "teal",
+    "ca": "DBtf82ebMSYXbUM3vmqqEWDcUWdtrY18jyPg13yJpump",
+    "ts": 1774537493,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 24,
     "date": "2026-03-26",
     "token": "WORLD",
