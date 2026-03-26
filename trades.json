@@ -1,5 +1,29 @@
 [
   {
+    "n": 26,
+    "date": "2026-03-26",
+    "token": "POKEMON",
+    "action": "BUY",
+    "amount": "0.0775 SOL",
+    "result": "HW KOL: Dad",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EvnduvgzxAhSPRKiLxTGVy5A7itwM9rTCoQzxvd9pump",
+    "ts": 1774530538,
+    "mc": 13735.87,
+    "vol24": 34015.91,
+    "vol1h": 34015.91,
+    "buys": 841,
+    "sells": 638,
+    "liq": null,
+    "kols": [
+      "Dad"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 25,
     "date": "2026-03-26",
     "token": "Gwynne",
