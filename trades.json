@@ -1,5 +1,29 @@
 [
   {
+    "n": 27,
+    "date": "2026-03-26",
+    "token": "BULLY",
+    "action": "BUY",
+    "amount": "0.0661 SOL",
+    "result": "HW KOL: CUPSEY",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DU4LApzYfC9W3V8dZ65foRr37Keq16C72e6CCqnPpump",
+    "ts": 1774538426,
+    "mc": 29373,
+    "vol24": 18974.8,
+    "vol1h": 18974.8,
+    "buys": 121,
+    "sells": 112,
+    "liq": 13438.11,
+    "kols": [
+      "CUPSEY"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 26,
     "date": "2026-03-26",
     "token": "FORGEX",
