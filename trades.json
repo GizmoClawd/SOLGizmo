@@ -1,5 +1,29 @@
 [
   {
+    "n": 31,
+    "date": "2026-03-26",
+    "token": "Whale",
+    "action": "BUY",
+    "amount": "0.0788 SOL",
+    "result": "HW KOL: RADIANCE",
+    "pnl": "",
+    "color": "teal",
+    "ca": "B7GPLudn7hkVmHR8LimKVzeDz3eEnGWdf56E6JEopump",
+    "ts": 1774539056,
+    "mc": 9892.19,
+    "vol24": 16653.33,
+    "vol1h": 16653.33,
+    "buys": 191,
+    "sells": 112,
+    "liq": null,
+    "kols": [
+      "RADIANCE"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 30,
     "date": "2026-03-26",
     "token": "BULLY",
