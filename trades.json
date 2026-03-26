@@ -1,5 +1,29 @@
 [
   {
+    "n": 17,
+    "date": "2026-03-26",
+    "token": "Kirkski",
+    "action": "BUY",
+    "amount": "0.0812 SOL",
+    "result": "HW KOL: TOM",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GFik7LH45rqwGjSp73zsnX4DPtx3G1opUqPEEuBApump",
+    "ts": 1774484755,
+    "mc": 137486,
+    "vol24": 167028.29,
+    "vol1h": 167028.29,
+    "buys": 1837,
+    "sells": 1576,
+    "liq": 30119.06,
+    "kols": [
+      "TOM"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 16,
     "date": "2026-03-26",
     "token": "chad",
