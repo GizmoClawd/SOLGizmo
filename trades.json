@@ -1,5 +1,29 @@
 [
   {
+    "n": 35,
+    "date": "2026-03-26",
+    "token": "Tribe V2",
+    "action": "BUY",
+    "amount": "0.071 SOL",
+    "result": "HW KOL: CUPSEY",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AJdfNmNMtDgbnBeG3u7SPaXjKv2SjqtBPh2XRcLHpump",
+    "ts": 1774539536,
+    "mc": 46389,
+    "vol24": 29291.23,
+    "vol1h": 29291.23,
+    "buys": 395,
+    "sells": 208,
+    "liq": 16916.96,
+    "kols": [
+      "CUPSEY"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 34,
     "date": "2026-03-26",
     "token": "Whale",
