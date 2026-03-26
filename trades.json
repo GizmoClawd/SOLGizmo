@@ -1,5 +1,31 @@
 [
   {
+    "n": 18,
+    "date": "2026-03-26",
+    "token": "FUND",
+    "action": "BUY",
+    "amount": "0.0974 SOL",
+    "result": "3 KOL convergence: JIZZY, BRUSKI, BEANZZZ",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EQWq3H1UE9tMtFibeUQkkkWTmyN6SoPkEEWC5DGEpump",
+    "ts": 1774485695,
+    "mc": 187022,
+    "vol24": 980561.71,
+    "vol1h": 147591.69,
+    "buys": 1017,
+    "sells": 759,
+    "liq": 37525.91,
+    "kols": [
+      "JIZZY",
+      "BRUSKI",
+      "BEANZZZ"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 17,
     "date": "2026-03-26",
     "token": "Kirkski",
