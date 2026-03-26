@@ -1,5 +1,29 @@
 [
   {
+    "n": 27,
+    "date": "2026-03-26",
+    "token": "Globe",
+    "action": "BUY",
+    "amount": "0.0775 SOL",
+    "result": "HW KOL: JIJO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3pfJdyjcU7ft7Evn43oDiPEcQ57s8dQKbsXvYT9Epump",
+    "ts": 1774530561,
+    "mc": 13729.81,
+    "vol24": 29839.44,
+    "vol1h": 29839.44,
+    "buys": 313,
+    "sells": 233,
+    "liq": null,
+    "kols": [
+      "JIJO"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 26,
     "date": "2026-03-26",
     "token": "POKEMON",
