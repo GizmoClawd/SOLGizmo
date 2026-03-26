@@ -1,5 +1,29 @@
 [
   {
+    "n": 32,
+    "date": "2026-03-26",
+    "token": "Whale",
+    "action": "BUY",
+    "amount": "0.0697 SOL",
+    "result": "HW KOL: JIJO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ffh5dkC2f177ekGHKfQSjYBYx7yzw3iy5eXeYizpump",
+    "ts": 1774539125,
+    "mc": 18415.48,
+    "vol24": 36539.53,
+    "vol1h": 36539.53,
+    "buys": 399,
+    "sells": 291,
+    "liq": null,
+    "kols": [
+      "JIJO"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 31,
     "date": "2026-03-26",
     "token": "Whale",
