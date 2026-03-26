@@ -1,5 +1,29 @@
 [
   {
+    "n": 24,
+    "date": "2026-03-26",
+    "token": "WORLD",
+    "action": "BUY",
+    "amount": "0.0721 SOL",
+    "result": "HW KOL: JIJO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DBtf82ebMSYXbUM3vmqqEWDcUWdtrY18jyPg13yJpump",
+    "ts": 1774537465,
+    "mc": 9511.12,
+    "vol24": 10792.09,
+    "vol1h": 10792.09,
+    "buys": 102,
+    "sells": 54,
+    "liq": null,
+    "kols": [
+      "JIJO"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 23,
     "date": "2026-03-26",
     "token": ".CAT",
