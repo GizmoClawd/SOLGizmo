@@ -1,5 +1,31 @@
 [
   {
+    "n": 26,
+    "date": "2026-03-26",
+    "token": "FORGEX",
+    "action": "BUY",
+    "amount": "0.085 SOL",
+    "result": "3 KOL convergence: CHINAMAN, RELJOO SHOCKED, PAIN CABAL",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8YLagEpe3E1Ms8TVwYZn6zgKottbyWJeNtNXVXEBujbm",
+    "ts": 1774538269,
+    "mc": 40280,
+    "vol24": 86200.1,
+    "vol1h": 86200.1,
+    "buys": 969,
+    "sells": 793,
+    "liq": 15757.24,
+    "kols": [
+      "CHINAMAN",
+      "RELJOO SHOCKED",
+      "PAIN CABAL"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 25,
     "date": "2026-03-26",
     "token": "WORLD",
