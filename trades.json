@@ -1,5 +1,27 @@
 [
   {
+    "n": 34,
+    "date": "2026-03-26",
+    "token": "Whale",
+    "action": "SELL",
+    "amount": "0.047 SOL",
+    "result": "Sold 100% | PnL: -14.3%",
+    "pnl": "+0.0470 SOL",
+    "color": "teal",
+    "ca": "ffh5dkC2f177ekGHKfQSjYBYx7yzw3iy5eXeYizpump",
+    "ts": 1774539483,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 33,
     "date": "2026-03-26",
     "token": "Whale",
