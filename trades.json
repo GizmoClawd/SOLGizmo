@@ -1,5 +1,27 @@
 [
   {
+    "n": 16,
+    "date": "2026-03-26",
+    "token": "chad",
+    "action": "SELL",
+    "amount": "0.0218 SOL",
+    "result": "Sold 100% | PnL: -26.1%",
+    "pnl": "+0.0218 SOL",
+    "color": "teal",
+    "ca": "DrS9ULnnAhYwVpFjvSicFYXWsvzJLTSJJ5WKVYF5pump",
+    "ts": 1774484724,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 15,
     "date": "2026-03-26",
     "token": "G0DM0D3",
