@@ -1,5 +1,29 @@
 [
   {
+    "n": 22,
+    "date": "2026-03-26",
+    "token": "WHITEHOUSE",
+    "action": "BUY",
+    "amount": "0.0793 SOL",
+    "result": "HW KOL: JIJO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EjLqcZVMyfDyERDrpoCZhimd5AbgBRcJQNP5npqnpump",
+    "ts": 1774488148,
+    "mc": 13609.22,
+    "vol24": 16576.48,
+    "vol1h": 16576.48,
+    "buys": 108,
+    "sells": 71,
+    "liq": null,
+    "kols": [
+      "JIJO"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 21,
     "date": "2026-03-26",
     "token": "MIRESH",
