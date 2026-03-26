@@ -1,5 +1,35 @@
 [
   {
+    "n": 19,
+    "date": "2026-03-26",
+    "token": "MIRESH",
+    "action": "BUY",
+    "amount": "0.092 SOL",
+    "result": "7 KOL convergence: milito, OZARK, ALEC, DAVE PORTNOY, BLIXSE, CONSTATUEUR, TUULTS",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4h1up7hpUUkUD1dNg1RtAiS66XJ9YGya2F2sesEXpump",
+    "ts": 1774486323,
+    "mc": 43517,
+    "vol24": 152192.29,
+    "vol1h": 152192.29,
+    "buys": 1286,
+    "sells": 1212,
+    "liq": 16973.86,
+    "kols": [
+      "milito",
+      "OZARK",
+      "ALEC",
+      "DAVE PORTNOY",
+      "BLIXSE",
+      "CONSTATUEUR",
+      "TUULTS"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 18,
     "date": "2026-03-26",
     "token": "FUND",
