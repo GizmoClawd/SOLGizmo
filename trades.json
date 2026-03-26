@@ -1,5 +1,29 @@
 [
   {
+    "n": 40,
+    "date": "2026-03-26",
+    "token": "FROG",
+    "action": "BUY",
+    "amount": "0.0638 SOL",
+    "result": "HW KOL: JIJO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "76hap4pCzcAzJmxAxHJbckzYKkN1rj67xW1ws8n5pump",
+    "ts": 1774540379,
+    "mc": 68280,
+    "vol24": 53146.09,
+    "vol1h": 53146.09,
+    "buys": 257,
+    "sells": 224,
+    "liq": 20614.2,
+    "kols": [
+      "JIJO"
+    ],
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 39,
     "date": "2026-03-26",
     "token": "FROG",
