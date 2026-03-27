@@ -1,5 +1,29 @@
 [
   {
+    "n": 41,
+    "date": "2026-03-27",
+    "token": "AIFRUITS",
+    "action": "BUY",
+    "amount": "0.1012 SOL",
+    "result": "1 KOL convergence: CONSTATEUR 2",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6Bp9LWtyVXcEATi5nuquX5p1hPGUg1cVoUuXGN9Epump",
+    "ts": 1774577179,
+    "mc": 381960,
+    "vol24": 224473.21,
+    "vol1h": 8274.82,
+    "buys": 78,
+    "sells": 69,
+    "liq": 63147.34,
+    "kols": [
+      "CONSTATEUR 2"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 40,
     "date": "2026-03-26",
     "token": "FROG",
