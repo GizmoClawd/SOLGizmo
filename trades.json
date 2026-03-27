@@ -1,5 +1,30 @@
 [
   {
+    "n": 47,
+    "date": "2026-03-27",
+    "token": "Pomni",
+    "action": "BUY",
+    "amount": "0.0773 SOL",
+    "result": "2 KOL convergence: DIALED, CEFULI MAIN",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DSSXu6XbYDgWnjMVzagcVF9QpVWXY2H9iexAc4mpump",
+    "ts": 1774629503,
+    "mc": 54896,
+    "vol24": 112373.6,
+    "vol1h": 112373.6,
+    "buys": 2005,
+    "sells": 1451,
+    "liq": 18011.65,
+    "kols": [
+      "DIALED",
+      "CEFULI MAIN"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 46,
     "date": "2026-03-27",
     "token": "bp",
