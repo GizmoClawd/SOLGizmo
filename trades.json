@@ -1,5 +1,29 @@
 [
   {
+    "n": 45,
+    "date": "2026-03-27",
+    "token": "bp",
+    "action": "BUY",
+    "amount": "0.0696 SOL",
+    "result": "1 KOL convergence: JIZZY",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Hz5umnpTrCjXNUrZtZAdviEfmXDzmaBZiQefVdb9pump",
+    "ts": 1774627976,
+    "mc": 108508,
+    "vol24": 15566.89,
+    "vol1h": 620.03,
+    "buys": 15,
+    "sells": 1,
+    "liq": 34779.88,
+    "kols": [
+      "JIZZY"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 44,
     "date": "2026-03-27",
     "token": "Mii",
