@@ -1,5 +1,27 @@
 [
   {
+    "n": 44,
+    "date": "2026-03-27",
+    "token": "Mii",
+    "action": "SELL",
+    "amount": "0.0302 SOL",
+    "result": "Sold 100% | PnL: +1.1%",
+    "pnl": "+0.0302 SOL",
+    "color": "teal",
+    "ca": "FsCawsntD9PHw3fCn6SGjcxRuXopWoVQwJ8UyhQupump",
+    "ts": 1774622805,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 43,
     "date": "2026-03-27",
     "token": "Mii",
