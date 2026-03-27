@@ -1,5 +1,29 @@
 [
   {
+    "n": 43,
+    "date": "2026-03-27",
+    "token": "Mii",
+    "action": "BUY",
+    "amount": "0.0699 SOL",
+    "result": "1 KOL convergence: WAITER",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FsCawsntD9PHw3fCn6SGjcxRuXopWoVQwJ8UyhQupump",
+    "ts": 1774620808,
+    "mc": 75969,
+    "vol24": 258860.69,
+    "vol1h": 18470.39,
+    "buys": 260,
+    "sells": 145,
+    "liq": 22019.65,
+    "kols": [
+      "WAITER"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 42,
     "date": "2026-03-27",
     "token": "AIFRUITS",
