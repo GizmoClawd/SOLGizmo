@@ -6,7 +6,7 @@
  */
 
 import fs from 'fs';
-const BASE_DIR = process.env.RAILWAY_SERVICE_NAME ? '/app' : '/tmp/gizmo-trade';
+const BASE_DIR = process.env.RAILWAY_SERVICE_NAME ? '/app' : '/Users/younghogey/.openclaw/workspace/SOLGizmo';
 import { execSync } from 'child_process';
 
 const keys = JSON.parse(process.env.X_API_KEYS_JSON || fs.readFileSync(process.env.HOME + '/.gizmo/x-api-keys.json', 'utf-8'));
