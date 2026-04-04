@@ -112,7 +112,7 @@ const HELIUS_KEY = process.env.HELIUS_API_KEY || '';
 let SCORE_THRESHOLD = 7;
 =======
 let SCORE_THRESHOLD = 7; // SURVIVAL: locked high
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
 let MIN_LIQ = 8000;
 let MIN_KOLS = 2;
 let MIN_KOL_WEIGHT = 3; // require at least one ELITE+ (w>=3) KOL in convergence
@@ -249,7 +249,7 @@ function loadLearnState() {
       MIN_KOLS = 2;
       POSITION_SIZE_MULT = 1.0; // SURVIVAL: locked at 1x
       log(`🧠 Loaded adaptive params: score≥${SCORE_THRESHOLD} liq≥$${MIN_LIQ} kols≥${MIN_KOLS} sizeMult=${POSITION_SIZE_MULT}`);
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
     }
   } catch {}
 }
@@ -326,7 +326,7 @@ async function learnFromTrades() {
       } else if (winRate > 0.65 && SCORE_THRESHOLD > 7) {
         SCORE_THRESHOLD = 7; // SURVIVAL: floor at 7
         log(`🧠 WR strong (${(winRate*100).toFixed(0)}%) — threshold stays at ${SCORE_THRESHOLD}`);
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
         changed = true;
       }
     }
@@ -339,7 +339,7 @@ async function learnFromTrades() {
 =======
       if (kolWinRate < 0.35 && MIN_KOLS < 3) {
         MIN_KOLS = 2;
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
         log(`🧠 KOL WR low (${(kolWinRate*100).toFixed(0)}%) — requiring 3+ KOLs`);
         changed = true;
       } else if (kolWinRate > 0.60 && MIN_KOLS > 2) {
@@ -1173,7 +1173,7 @@ async function managePositions() {
       if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
         await postTrade('SELL', pos.name, pos.ca, mc, `Hard stop ${pnl}%`, null, parseFloat(pnl));
         POSITIONS.splice(i, 1); savePositions();
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
       }
       continue;
     }
@@ -1212,7 +1212,7 @@ async function managePositions() {
         // SURVIVAL: TP1 sells 100% — one clean exit, lock all profit
         log(`🎯 TP1 ${pos.name} ${mult.toFixed(1)}x — SELLING 100%`);
         if (await sell(pos.ca, '100%', pos.name, pos.entryMC, mc)) {
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
           await postTrade('SELL', pos.name, pos.ca, mc, `TP1 ${mult.toFixed(1)}x`, null, parseFloat(pnl));
           POSITIONS.splice(i, 1); savePositions();
         }
@@ -1526,7 +1526,7 @@ async function scanKOLs(state) {
       if (_hwBuys >= 10) { log('🛑 MAX TRADES: ' + _hwBuys + ' buys today — HW path blocked too'); continue; }
     } catch {}
     log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' score:' + hwTokenScore + '/9 size:' + hwSize.toFixed(3) + ' SOL');
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
     if (await buy(signal.mint, hwSize)) {
       const hwMc = hwInfo.mcap;
       const hwPairAge = entryPair?.pairs?.[0]?.pairCreatedAt ? Date.now() - entryPair.pairs[0].pairCreatedAt : 0;
@@ -1566,7 +1566,7 @@ async function scanKOLs(state) {
 =======
       const perf = livePerf[k];
       if (perf && perf.weight === 0) { return false; /* MUTED = skip entirely */ }
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
       return true;
     });
     if (activeKols.length === 0) { log('⛔ All KOLs in signal are MUTED/WATCH — skipping'); continue; }
@@ -1647,7 +1647,7 @@ async function scanKOLs(state) {
       const minScore = SCORE_THRESHOLD;
 =======
       const minScore = SCORE_THRESHOLD; // SURVIVAL: no discount
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
       if (tokenScore < minScore) {
         log(`⛔ ${info.symbol}: 9-signal score ${tokenScore}/9 below min ${minScore} — skip`);
         continue;
@@ -2189,7 +2189,7 @@ async function runCycle() {
 =======
   if (h >= 2 && h < 8) { // SURVIVAL: only block 2am-8am, allow late night trading
     log(`⏰ Time filter: ${h}:00 EST — no buys midnight–8am. Managing open positions only.`);
->>>>>>> fd1e1d2a20ff632eb0e8324e5b7de80b6e962152
+>>>>>>> c425d95155c3743868a20f690f50049d1d0bfdc3
     await managePositions();
     running = false;
     return;
