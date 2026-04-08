@@ -1,5 +1,30 @@
 [
   {
+    "n": 49,
+    "date": "2026-04-08",
+    "token": "PETS",
+    "action": "BUY",
+    "amount": "0.021 SOL",
+    "result": "2 KOL convergence: Slowie, LUNAR",
+    "pnl": "",
+    "color": "teal",
+    "ca": "71YpyLBKpsfTeR9MSrwCawLJgYnwEXYr5pmXNHw9pump",
+    "ts": 1775688320,
+    "mc": 12231.79,
+    "vol24": 33525.21,
+    "vol1h": 33525.21,
+    "buys": 399,
+    "sells": 299,
+    "liq": null,
+    "kols": [
+      "Slowie",
+      "LUNAR"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 48,
     "date": "2026-03-27",
     "token": "Pomni",
