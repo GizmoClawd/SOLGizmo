@@ -1,5 +1,33 @@
 [
   {
+    "n": 3,
+    "date": "2026-04-09",
+    "token": "RSM",
+    "action": "BUY",
+    "amount": "0.2344 SOL",
+    "result": "5 KOL convergence: ART, ART 2, EustazZ, cap, CAP 2",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4C9QZJGvppuCpuThz4wBqgnjCMhQ5Qb4qnTe4cd1pump",
+    "ts": 1775746684,
+    "mc": 4168.09,
+    "vol24": 47269.17,
+    "vol1h": 47269.17,
+    "buys": 525,
+    "sells": 478,
+    "liq": null,
+    "kols": [
+      "ART",
+      "ART 2",
+      "EustazZ",
+      "cap",
+      "CAP 2"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 2,
     "date": "2026-04-09",
     "token": "GLORY",
