@@ -1,5 +1,33 @@
 [
   {
+    "n": 19,
+    "date": "2026-04-09",
+    "token": "MEMECOIN",
+    "action": "BUY",
+    "amount": "0.2765 SOL",
+    "result": "5 KOL convergence: Grimace, JIZZY, JOJI, EYIS TIKTOK GOD, decu",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2chgjVEV9zyjebj3JvxYDAE8j6JXDW5Gcb9vKBWvpump",
+    "ts": 1775754882,
+    "mc": 20087.94,
+    "vol24": 101043.1,
+    "vol1h": 101043.1,
+    "buys": 1274,
+    "sells": 1102,
+    "liq": null,
+    "kols": [
+      "Grimace",
+      "JIZZY",
+      "JOJI",
+      "EYIS TIKTOK GOD",
+      "decu"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 18,
     "date": "2026-04-09",
     "token": "Tortellini",
