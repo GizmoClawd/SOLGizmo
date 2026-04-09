@@ -1,5 +1,30 @@
 [
   {
+    "n": 59,
+    "date": "2026-04-09",
+    "token": "Marshtomp",
+    "action": "BUY",
+    "amount": "0.0312 SOL",
+    "result": "2 KOL convergence: cap, CAP 2",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CgKukvCnhs1mramWUvUkhEE3PcVj8SBYCoXjcFVbpump",
+    "ts": 1775704832,
+    "mc": 15355.23,
+    "vol24": 68431.54,
+    "vol1h": 14071.74,
+    "buys": 159,
+    "sells": 103,
+    "liq": null,
+    "kols": [
+      "cap",
+      "CAP 2"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 58,
     "date": "2026-04-09",
     "token": "Verde",
