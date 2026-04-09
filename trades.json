@@ -1,5 +1,30 @@
 [
   {
+    "n": 12,
+    "date": "2026-04-09",
+    "token": "Enough",
+    "action": "BUY",
+    "amount": "0.2834 SOL",
+    "result": "2 KOL convergence: SCHARO, QWICK",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Fc1mGwtNZthtxfaKDLvTMJXjM2Bvyy5XtHq9Jarupump",
+    "ts": 1775749079,
+    "mc": 49991,
+    "vol24": 91953.06,
+    "vol1h": 91953.06,
+    "buys": 1106,
+    "sells": 894,
+    "liq": 17287.12,
+    "kols": [
+      "SCHARO",
+      "QWICK"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 11,
     "date": "2026-04-09",
     "token": "Masturbador",
