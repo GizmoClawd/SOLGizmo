@@ -1,5 +1,30 @@
 [
   {
+    "n": 16,
+    "date": "2026-04-09",
+    "token": "Nguyen",
+    "action": "BUY",
+    "amount": "0.2878 SOL",
+    "result": "2 KOL convergence: DOV, k4aye",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GMt2fGJ5x1wZamx3xNKvbhKKtv25iURLeR4NkHBLpump",
+    "ts": 1775752553,
+    "mc": 13721.73,
+    "vol24": 198919.38,
+    "vol1h": 11796.37,
+    "buys": 188,
+    "sells": 111,
+    "liq": null,
+    "kols": [
+      "DOV",
+      "k4aye"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 15,
     "date": "2026-04-09",
     "token": "Masturbador",
