@@ -1,5 +1,29 @@
 [
   {
+    "n": 58,
+    "date": "2026-04-09",
+    "token": "Verde",
+    "action": "BUY",
+    "amount": "0.036 SOL",
+    "result": "1 KOL convergence: ETHAN PROSPER",
+    "pnl": "",
+    "color": "teal",
+    "ca": "U1TmQe35HwPSNrjV6CjwVSCjEZTDqrXGPYQA76Ypump",
+    "ts": 1775697984,
+    "mc": 10237.63,
+    "vol24": 38443.29,
+    "vol1h": 38443.29,
+    "buys": 537,
+    "sells": 330,
+    "liq": null,
+    "kols": [
+      "ETHAN PROSPER"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 57,
     "date": "2026-04-09",
     "token": "Bloomerism",
