@@ -1,5 +1,27 @@
 [
   {
+    "n": 9,
+    "date": "2026-04-09",
+    "token": "RSM",
+    "action": "SELL",
+    "amount": "0.0185 SOL",
+    "result": "Sold 100% | PnL: -36.8%",
+    "pnl": "+0.0185 SOL",
+    "color": "teal",
+    "ca": "4C9QZJGvppuCpuThz4wBqgnjCMhQ5Qb4qnTe4cd1pump",
+    "ts": 1775748213,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 8,
     "date": "2026-04-09",
     "token": "ANTHEM",
