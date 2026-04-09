@@ -1,5 +1,27 @@
 [
   {
+    "n": 78,
+    "date": "2026-04-09",
+    "token": "Tortellini",
+    "action": "SELL",
+    "amount": "0.0243 SOL",
+    "result": "Sold 100% | PnL: -11.3%",
+    "pnl": "+0.0243 SOL",
+    "color": "teal",
+    "ca": "8jjJztqnvx62yAtj4rwUQWxboU52MqBjtZztc76tpump",
+    "ts": 1775714126,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 77,
     "date": "2026-04-09",
     "token": "APOPHENOTH",
