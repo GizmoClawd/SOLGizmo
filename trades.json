@@ -1,5 +1,27 @@
 [
   {
+    "n": 4,
+    "date": "2026-04-09",
+    "token": "GLORY",
+    "action": "SELL",
+    "amount": "0.027 SOL",
+    "result": "Sold 50% | PnL: +32.3%",
+    "pnl": "+0.0270 SOL",
+    "color": "teal",
+    "ca": "FX7Y7oAzm2ttKvMzWZtCKyZuARmZz12Y5UgWuiASpump",
+    "ts": 1775746798,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 3,
     "date": "2026-04-09",
     "token": "RSM",
