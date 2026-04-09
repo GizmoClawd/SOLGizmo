@@ -1,5 +1,27 @@
 [
   {
+    "n": 53,
+    "date": "2026-04-09",
+    "token": "Forgotten",
+    "action": "SELL",
+    "amount": "0.0292 SOL",
+    "result": "Sold 100% | PnL: -8.3%",
+    "pnl": "+0.0292 SOL",
+    "color": "teal",
+    "ca": "AE5U1kejSm3JrnvPKzcMvq7c9HmkYjdGkHz2utCzpump",
+    "ts": 1775695334,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 52,
     "date": "2026-04-09",
     "token": "Forgotten",
