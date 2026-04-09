@@ -1,5 +1,29 @@
 [
   {
+    "n": 73,
+    "date": "2026-04-09",
+    "token": "Tortellini",
+    "action": "BUY",
+    "amount": "0.1987 SOL",
+    "result": "1 KOL convergence: GAKE ALT",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8jjJztqnvx62yAtj4rwUQWxboU52MqBjtZztc76tpump",
+    "ts": 1775710481,
+    "mc": 413061,
+    "vol24": 1212959.19,
+    "vol1h": 184365.94,
+    "buys": 1782,
+    "sells": 1644,
+    "liq": 53113.29,
+    "kols": [
+      "GAKE ALT"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 72,
     "date": "2026-04-09",
     "token": "BUBBLES",
