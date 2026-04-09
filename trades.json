@@ -1,5 +1,31 @@
 [
   {
+    "n": 74,
+    "date": "2026-04-09",
+    "token": "APAAS",
+    "action": "BUY",
+    "amount": "0.2335 SOL",
+    "result": "3 KOL convergence: PUBLIX, CASINO, CLUKZ",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3cEoADo9Jm6dMg91Kfuxsz9ExgNncdgy1XQaZxxwpump",
+    "ts": 1775711007,
+    "mc": 3672.75,
+    "vol24": 73196.67,
+    "vol1h": 73196.67,
+    "buys": 665,
+    "sells": 489,
+    "liq": null,
+    "kols": [
+      "PUBLIX",
+      "CASINO",
+      "CLUKZ"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 73,
     "date": "2026-04-09",
     "token": "Tortellini",
