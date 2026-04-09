@@ -1,5 +1,29 @@
 [
   {
+    "n": 68,
+    "date": "2026-04-09",
+    "token": "Daraprim",
+    "action": "BUY",
+    "amount": "0.2001 SOL",
+    "result": "1 KOL convergence: RENO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FjREZiTgWZWbzeQ4QJoRAEQceawKKDZ75gQAGuy6pump",
+    "ts": 1775709652,
+    "mc": 4277.74,
+    "vol24": 21757.75,
+    "vol1h": 21757.75,
+    "buys": 320,
+    "sells": 253,
+    "liq": null,
+    "kols": [
+      "RENO"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 67,
     "date": "2026-04-09",
     "token": "Verde",
