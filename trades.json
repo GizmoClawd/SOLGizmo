@@ -1,5 +1,30 @@
 [
   {
+    "n": 50,
+    "date": "2026-04-09",
+    "token": "zen",
+    "action": "BUY",
+    "amount": "0.0855 SOL",
+    "result": "2 KOL convergence: ART, ART 2",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Fs9oCEknpjJ5TiGJH762wqqNn1oXnQjw77Y57uLTpump",
+    "ts": 1775694056,
+    "mc": 7394.07,
+    "vol24": 26626.18,
+    "vol1h": 26626.18,
+    "buys": 369,
+    "sells": 368,
+    "liq": null,
+    "kols": [
+      "ART",
+      "ART 2"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 49,
     "date": "2026-04-08",
     "token": "PETS",
