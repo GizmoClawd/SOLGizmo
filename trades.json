@@ -1,5 +1,29 @@
 [
   {
+    "n": 75,
+    "date": "2026-04-09",
+    "token": "APOPHENOTH",
+    "action": "BUY",
+    "amount": "0.1905 SOL",
+    "result": "1 KOL convergence: LUNAR",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9XurnbbWr4iexTW8DCYX7iZNRihDG1P5MJBT2gvRpump",
+    "ts": 1775711209,
+    "mc": 41990,
+    "vol24": 16630.1,
+    "vol1h": 12294.41,
+    "buys": 74,
+    "sells": 46,
+    "liq": 18027.12,
+    "kols": [
+      "LUNAR"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 74,
     "date": "2026-04-09",
     "token": "APAAS",
