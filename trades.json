@@ -1,5 +1,29 @@
 [
   {
+    "n": 70,
+    "date": "2026-04-09",
+    "token": "BUBBLES",
+    "action": "BUY",
+    "amount": "0.1983 SOL",
+    "result": "1 KOL convergence: CTO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AVxNf8fR2NFnZpaXfw29D6P64ztbeYHuKY6ChZRHpump",
+    "ts": 1775710059,
+    "mc": 5608.58,
+    "vol24": 67373.01,
+    "vol1h": 518.27,
+    "buys": 8,
+    "sells": 2,
+    "liq": null,
+    "kols": [
+      "CTO"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 69,
     "date": "2026-04-09",
     "token": "Daraprim",
