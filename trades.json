@@ -1,5 +1,27 @@
 [
   {
+    "n": 63,
+    "date": "2026-04-09",
+    "token": "GIGGLES",
+    "action": "SELL",
+    "amount": "0.0072 SOL",
+    "result": "Sold 50% | PnL: +611.6%",
+    "pnl": "+0.0072 SOL",
+    "color": "teal",
+    "ca": "Bsow2wFkVzy1itJnhLke6VRTqoEkYQZp7kbwPtS87FyN",
+    "ts": 1775706053,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 62,
     "date": "2026-04-09",
     "token": "Bloomerism",
