@@ -1,5 +1,29 @@
 [
   {
+    "n": 8,
+    "date": "2026-04-09",
+    "token": "ANTHEM",
+    "action": "BUY",
+    "amount": "0.2052 SOL",
+    "result": "1 KOL convergence: GORY",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4i9S6teZyUpTfeWYUYczFouoWb8Qvu2aoKzzy5ERpump",
+    "ts": 1775747598,
+    "mc": 3123.22,
+    "vol24": 23992.99,
+    "vol1h": 783.74,
+    "buys": 11,
+    "sells": 8,
+    "liq": null,
+    "kols": [
+      "GORY"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 7,
     "date": "2026-04-09",
     "token": "GLORY",
