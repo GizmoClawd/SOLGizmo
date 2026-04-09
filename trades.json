@@ -1,5 +1,27 @@
 [
   {
+    "n": 72,
+    "date": "2026-04-09",
+    "token": "BUBBLES",
+    "action": "SELL",
+    "amount": "0.0242 SOL",
+    "result": "Sold 100% | PnL: -18.2%",
+    "pnl": "+0.0242 SOL",
+    "color": "teal",
+    "ca": "AVxNf8fR2NFnZpaXfw29D6P64ztbeYHuKY6ChZRHpump",
+    "ts": 1775710421,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 71,
     "date": "2026-04-09",
     "token": "Daraprim",
