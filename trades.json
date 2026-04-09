@@ -1,5 +1,32 @@
 [
   {
+    "n": 2,
+    "date": "2026-04-09",
+    "token": "GLORY",
+    "action": "BUY",
+    "amount": "0.2411 SOL",
+    "result": "4 KOL convergence: BIGWARZ, 67FNF FOUNDER, DANI, LUNAR",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FX7Y7oAzm2ttKvMzWZtCKyZuARmZz12Y5UgWuiASpump",
+    "ts": 1775746525,
+    "mc": 22644.22,
+    "vol24": 42951.58,
+    "vol1h": 42951.58,
+    "buys": 457,
+    "sells": 315,
+    "liq": null,
+    "kols": [
+      "BIGWARZ",
+      "67FNF FOUNDER",
+      "DANI",
+      "LUNAR"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1,
     "date": "2026-04-09",
     "token": "Alien",
