@@ -1,5 +1,30 @@
 [
   {
+    "n": 55,
+    "date": "2026-04-09",
+    "token": "Bloomerism",
+    "action": "BUY",
+    "amount": "0.0478 SOL",
+    "result": "2 KOL convergence: VILLAIN GOD, RENO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8E51gq3egRf7Uo6DcekMgR8Trpxcrev8jZnDNKFqpump",
+    "ts": 1775697077,
+    "mc": 11521.69,
+    "vol24": 26589.06,
+    "vol1h": 26589.06,
+    "buys": 424,
+    "sells": 286,
+    "liq": null,
+    "kols": [
+      "VILLAIN GOD",
+      "RENO"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 54,
     "date": "2026-04-09",
     "token": "Marshtomp",
