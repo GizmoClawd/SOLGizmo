@@ -1,5 +1,27 @@
 [
   {
+    "n": 26,
+    "date": "2026-04-10",
+    "token": "PTP",
+    "action": "SELL",
+    "amount": "0.0239 SOL",
+    "result": "Sold 100% | PnL: -22.5%",
+    "pnl": "+0.0239 SOL",
+    "color": "teal",
+    "ca": "2fdH5k8z96i4EMeFDDkTHAQZ9xAJRat9aPeAnRgpwzzq",
+    "ts": 1775863010,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 25,
     "date": "2026-04-10",
     "token": "PTP",
