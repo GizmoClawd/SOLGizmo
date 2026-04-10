@@ -1,5 +1,27 @@
 [
   {
+    "n": 19,
+    "date": "2026-04-10",
+    "token": "LOONGCLAW",
+    "action": "SELL",
+    "amount": "0.0147 SOL",
+    "result": "Sold 100% | PnL: -43.8%",
+    "pnl": "+0.0147 SOL",
+    "color": "teal",
+    "ca": "BAbDBRn2qaxziUZVW8i6UW8BsoNG9Df4VHT2oggMpump",
+    "ts": 1775847396,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 18,
     "date": "2026-04-10",
     "token": "LOONGCLAW",
