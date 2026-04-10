@@ -1,5 +1,29 @@
 [
   {
+    "n": 7,
+    "date": "2026-04-10",
+    "token": ": - )",
+    "action": "BUY",
+    "amount": "0.1328 SOL",
+    "result": "1 KOL convergence: RAMBO GOD",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9mogtCxcCvSqyyCkt1eAG4Tg5jjFfDDQPiGg3mMWpump",
+    "ts": 1775839499,
+    "mc": 56931,
+    "vol24": 154121.01,
+    "vol1h": 26889.27,
+    "buys": 498,
+    "sells": 218,
+    "liq": 20497.76,
+    "kols": [
+      "RAMBO GOD"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 6,
     "date": "2026-04-10",
     "token": "HAL-BOT",
