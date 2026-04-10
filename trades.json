@@ -1,5 +1,27 @@
 [
   {
+    "n": 18,
+    "date": "2026-04-10",
+    "token": "CHIMPOUT",
+    "action": "SELL",
+    "amount": "0.0177 SOL",
+    "result": "Sold 100% | PnL: -56.7%",
+    "pnl": "+0.0177 SOL",
+    "color": "teal",
+    "ca": "EvCtrbT8jkFh8yB3HZYjS7VG16sN87EJKkdrSoDspump",
+    "ts": 1775798599,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 17,
     "date": "2026-04-10",
     "token": "CHIMPOUT",
