@@ -1,5 +1,30 @@
 [
   {
+    "n": 7,
+    "date": "2026-04-10",
+    "token": "Groucho",
+    "action": "BUY",
+    "amount": "0.18 SOL",
+    "result": "2 KOL convergence: LEXA, marcell",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ukwDnxk56MnqpCXsxNE8xpWwZ4qafjpt16KVogHpump",
+    "ts": 1775790885,
+    "mc": 65614,
+    "vol24": 851428.02,
+    "vol1h": 456044.77,
+    "buys": 5066,
+    "sells": 4408,
+    "liq": 21086.57,
+    "kols": [
+      "LEXA",
+      "marcell"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 6,
     "date": "2026-04-10",
     "token": "toa",
