@@ -1,5 +1,31 @@
 [
   {
+    "n": 8,
+    "date": "2026-04-10",
+    "token": "SHROCK",
+    "action": "BUY",
+    "amount": "0.175 SOL",
+    "result": "3 KOL convergence: LEXA, cap, CAP 2",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AP8Kdm3oPbmEKAcFHTEFLF1PmHmjRwphvKJj12nppump",
+    "ts": 1775793556,
+    "mc": 4723.38,
+    "vol24": 48075.3,
+    "vol1h": 48075.3,
+    "buys": 617,
+    "sells": 553,
+    "liq": null,
+    "kols": [
+      "LEXA",
+      "cap",
+      "CAP 2"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 7,
     "date": "2026-04-10",
     "token": "Groucho",
