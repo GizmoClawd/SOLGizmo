@@ -1,5 +1,31 @@
 [
   {
+    "n": 4,
+    "date": "2026-04-10",
+    "token": "toa",
+    "action": "BUY",
+    "amount": "0.1808 SOL",
+    "result": "3 KOL convergence: LEXA, NUMER0, TIME CABAL",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GTBMZLaKTGng6UWznizHGhuUxzvvRdUdWFdLxtdzpump",
+    "ts": 1775789154,
+    "mc": 2597.55,
+    "vol24": 20305.05,
+    "vol1h": 20305.05,
+    "buys": 204,
+    "sells": 190,
+    "liq": null,
+    "kols": [
+      "LEXA",
+      "NUMER0",
+      "TIME CABAL"
+    ],
+    "entryScore": 4,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 3,
     "date": "2026-04-10",
     "token": "memes",
