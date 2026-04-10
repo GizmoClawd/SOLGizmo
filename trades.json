@@ -1,5 +1,29 @@
 [
   {
+    "n": 20,
+    "date": "2026-04-10",
+    "token": "Sahur",
+    "action": "BUY",
+    "amount": "0.1348 SOL",
+    "result": "1 KOL convergence: JIZZY",
+    "pnl": "",
+    "color": "teal",
+    "ca": "F28UWka8PSyG1jUtVZ2CfFdF1dkLEA4rw7GkFBW7pump",
+    "ts": 1775847524,
+    "mc": 97494,
+    "vol24": 97109.38,
+    "vol1h": 69149.06,
+    "buys": 461,
+    "sells": 339,
+    "liq": 30979.85,
+    "kols": [
+      "JIZZY"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 19,
     "date": "2026-04-10",
     "token": "LOONGCLAW",
