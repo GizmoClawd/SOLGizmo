@@ -1,5 +1,31 @@
 [
   {
+    "n": 5,
+    "date": "2026-04-10",
+    "token": "Animals",
+    "action": "BUY",
+    "amount": "0.1628 SOL",
+    "result": "3 KOL convergence: CHINAMAN, k4aye, LUNAR",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DUdfMLdpmHkizrNYNqUxZP1fa1Cr5xJAVrfrWWqcpump",
+    "ts": 1775838617,
+    "mc": 15269,
+    "vol24": 27911.17,
+    "vol1h": 19071.53,
+    "buys": 229,
+    "sells": 137,
+    "liq": 11304.62,
+    "kols": [
+      "CHINAMAN",
+      "k4aye",
+      "LUNAR"
+    ],
+    "entryScore": 3,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 4,
     "date": "2026-04-10",
     "token": "Doglon",
