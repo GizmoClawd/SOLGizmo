@@ -1,5 +1,30 @@
 [
   {
+    "n": 14,
+    "date": "2026-04-10",
+    "token": "HoTP",
+    "action": "BUY",
+    "amount": "0.1629 SOL",
+    "result": "2 KOL convergence: 67FNF FOUNDER, CESCO",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7cdrkiEUHp2d9BpUUCc2s7biPoA3AuRv7KRTzC8qpump",
+    "ts": 1775845594,
+    "mc": 188393,
+    "vol24": 1029612.88,
+    "vol1h": 727947.06,
+    "buys": 5809,
+    "sells": 5115,
+    "liq": 35997.27,
+    "kols": [
+      "67FNF FOUNDER",
+      "CESCO"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 13,
     "date": "2026-04-10",
     "token": "FATU",
