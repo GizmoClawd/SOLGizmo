@@ -1,5 +1,31 @@
 [
   {
+    "n": 10,
+    "date": "2026-04-10",
+    "token": "SpeedDate",
+    "action": "BUY",
+    "amount": "0.1751 SOL",
+    "result": "3 KOL convergence: SCHARO, VEIN 2, YENNI",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EPLTYx3vh8Y5iVnWV65QLaRqN83bzpgatxBK5vedpump",
+    "ts": 1775793797,
+    "mc": 42391,
+    "vol24": 138791.85,
+    "vol1h": 138791.85,
+    "buys": 1996,
+    "sells": 1595,
+    "liq": 15954.07,
+    "kols": [
+      "SCHARO",
+      "VEIN 2",
+      "YENNI"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 9,
     "date": "2026-04-10",
     "token": "MMIWG2S",
