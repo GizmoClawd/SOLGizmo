@@ -1,5 +1,30 @@
 [
   {
+    "n": 19,
+    "date": "2026-04-10",
+    "token": "Garrison",
+    "action": "BUY",
+    "amount": "0.1741 SOL",
+    "result": "2 KOL convergence: LEXA, JIZZY",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3JQNRbZo9d3jteWg6FjxtUTNR1hLrLmriWGbaaZWpump",
+    "ts": 1775800337,
+    "mc": 121949,
+    "vol24": 644476.49,
+    "vol1h": 644476.49,
+    "buys": 6853,
+    "sells": 5970,
+    "liq": 28085.98,
+    "kols": [
+      "LEXA",
+      "JIZZY"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 18,
     "date": "2026-04-10",
     "token": "CHIMPOUT",
