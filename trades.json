@@ -1,5 +1,27 @@
 [
   {
+    "n": 13,
+    "date": "2026-04-10",
+    "token": "SHROCK",
+    "action": "SELL",
+    "amount": "0.0256 SOL",
+    "result": "Sold 100% | PnL: -33.4%",
+    "pnl": "+0.0256 SOL",
+    "color": "teal",
+    "ca": "AP8Kdm3oPbmEKAcFHTEFLF1PmHmjRwphvKJj12nppump",
+    "ts": 1775794299,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 12,
     "date": "2026-04-10",
     "token": "Groucho",
