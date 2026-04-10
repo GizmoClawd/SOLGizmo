@@ -1,5 +1,31 @@
 [
   {
+    "n": 17,
+    "date": "2026-04-10",
+    "token": "CHIMPOUT",
+    "action": "BUY",
+    "amount": "0.1777 SOL",
+    "result": "3 KOL convergence: JIZZY, BEANZZZ, cap",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EvCtrbT8jkFh8yB3HZYjS7VG16sN87EJKkdrSoDspump",
+    "ts": 1775798245,
+    "mc": 103940,
+    "vol24": 162665.31,
+    "vol1h": 50162.3,
+    "buys": 521,
+    "sells": 395,
+    "liq": 24978.95,
+    "kols": [
+      "JIZZY",
+      "BEANZZZ",
+      "cap"
+    ],
+    "entryScore": 6,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 16,
     "date": "2026-04-10",
     "token": "ペットID",
