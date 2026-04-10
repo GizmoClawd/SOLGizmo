@@ -1,5 +1,31 @@
 [
   {
+    "n": 2,
+    "date": "2026-04-10",
+    "token": "memes",
+    "action": "BUY",
+    "amount": "0.1816 SOL",
+    "result": "3 KOL convergence: SCHARO, decu, LEXA",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8o2BLgfbBXCZ28LAXw7A6Qkf3nQJJbw6Y3k8ut4Ypump",
+    "ts": 1775788729,
+    "mc": 5177.63,
+    "vol24": 26917.56,
+    "vol1h": 26917.56,
+    "buys": 412,
+    "sells": 403,
+    "liq": null,
+    "kols": [
+      "SCHARO",
+      "decu",
+      "LEXA"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1,
     "date": "2026-04-10",
     "token": "MMIWG2S",
