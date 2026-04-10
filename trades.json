@@ -1,5 +1,27 @@
 [
   {
+    "n": 12,
+    "date": "2026-04-10",
+    "token": "Groucho",
+    "action": "SELL",
+    "amount": "0.0178 SOL",
+    "result": "Sold 100% | PnL: -37.6%",
+    "pnl": "+0.0178 SOL",
+    "color": "teal",
+    "ca": "ukwDnxk56MnqpCXsxNE8xpWwZ4qafjpt16KVogHpump",
+    "ts": 1775794167,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 11,
     "date": "2026-04-10",
     "token": "SpeedDate",
