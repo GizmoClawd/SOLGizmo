@@ -1,5 +1,30 @@
 [
   {
+    "n": 2,
+    "date": "2026-04-10",
+    "token": "lilmd",
+    "action": "BUY",
+    "amount": "0.1695 SOL",
+    "result": "2 KOL convergence: THEO, HOLY FUCK",
+    "pnl": "",
+    "color": "teal",
+    "ca": "H5wJcybTe3qMF6nmF2zMDYR5LC2eFNeCeLBFWB6s4nYH",
+    "ts": 1775837002,
+    "mc": 8530.49,
+    "vol24": 33706.34,
+    "vol1h": 33706.34,
+    "buys": 364,
+    "sells": 304,
+    "liq": null,
+    "kols": [
+      "THEO",
+      "HOLY FUCK"
+    ],
+    "entryScore": 7,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1,
     "date": "2026-04-10",
     "token": "HAL-BOT",
