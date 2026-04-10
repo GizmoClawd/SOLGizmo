@@ -1,5 +1,31 @@
 [
   {
+    "n": 4,
+    "date": "2026-04-10",
+    "token": "Doglon",
+    "action": "BUY",
+    "amount": "0.1677 SOL",
+    "result": "3 KOL convergence: INNER CIRCLE, EARLY FRONTRUN, k4aye",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Da2egGSrSWRSVzeDPQmUKnhJunTfJm6ZVJEzrbACpump",
+    "ts": 1775838224,
+    "mc": 7832,
+    "vol24": 19245.89,
+    "vol1h": 12867.99,
+    "buys": 144,
+    "sells": 108,
+    "liq": 7594.19,
+    "kols": [
+      "INNER CIRCLE",
+      "EARLY FRONTRUN",
+      "k4aye"
+    ],
+    "entryScore": 5,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 3,
     "date": "2026-04-10",
     "token": "lilmd",
