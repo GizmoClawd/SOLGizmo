@@ -1,5 +1,31 @@
 [
   {
+    "n": 18,
+    "date": "2026-04-10",
+    "token": "LOONGCLAW",
+    "action": "BUY",
+    "amount": "0.1644 SOL",
+    "result": "3 KOL convergence: LUNAR, MIKI BAZOOKAS, MIKI 2",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BAbDBRn2qaxziUZVW8i6UW8BsoNG9Df4VHT2oggMpump",
+    "ts": 1775846960,
+    "mc": 11016.89,
+    "vol24": 42032.13,
+    "vol1h": 42032.13,
+    "buys": 542,
+    "sells": 444,
+    "liq": null,
+    "kols": [
+      "LUNAR",
+      "MIKI BAZOOKAS",
+      "MIKI 2"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 17,
     "date": "2026-04-10",
     "token": "Animals",
