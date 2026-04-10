@@ -1,5 +1,27 @@
 [
   {
+    "n": 21,
+    "date": "2026-04-10",
+    "token": "Sahur",
+    "action": "SELL",
+    "amount": "0.0278 SOL",
+    "result": "Sold 100% | PnL: -39.2%",
+    "pnl": "+0.0278 SOL",
+    "color": "teal",
+    "ca": "F28UWka8PSyG1jUtVZ2CfFdF1dkLEA4rw7GkFBW7pump",
+    "ts": 1775848366,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 20,
     "date": "2026-04-10",
     "token": "Sahur",
