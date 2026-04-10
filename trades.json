@@ -1,5 +1,27 @@
 [
   {
+    "n": 17,
+    "date": "2026-04-10",
+    "token": "Animals",
+    "action": "SELL",
+    "amount": "0.0176 SOL",
+    "result": "Sold 100% | PnL: +77.8%",
+    "pnl": "+0.0176 SOL",
+    "color": "teal",
+    "ca": "DUdfMLdpmHkizrNYNqUxZP1fa1Cr5xJAVrfrWWqcpump",
+    "ts": 1775846594,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 16,
     "date": "2026-04-10",
     "token": "Animals",
