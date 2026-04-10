@@ -1,5 +1,27 @@
 [
   {
+    "n": 3,
+    "date": "2026-04-10",
+    "token": "memes",
+    "action": "SELL",
+    "amount": "0.0369 SOL",
+    "result": "Sold 100% | PnL: -16.0%",
+    "pnl": "+0.0369 SOL",
+    "color": "teal",
+    "ca": "8o2BLgfbBXCZ28LAXw7A6Qkf3nQJJbw6Y3k8ut4Ypump",
+    "ts": 1775789039,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 2,
     "date": "2026-04-10",
     "token": "memes",
