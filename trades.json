@@ -1,5 +1,31 @@
 [
   {
+    "n": 13,
+    "date": "2026-04-10",
+    "token": "FATU",
+    "action": "BUY",
+    "amount": "0.1678 SOL",
+    "result": "3 KOL convergence: lucas, TUULTS, FASHR",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DXQ2ajNDRs82JwXchi1DSwEBeK3aGeMLXnXwDyj1pump",
+    "ts": 1775845524,
+    "mc": 53228,
+    "vol24": 95254.43,
+    "vol1h": 95254.43,
+    "buys": 1148,
+    "sells": 1054,
+    "liq": 17988.85,
+    "kols": [
+      "lucas",
+      "TUULTS",
+      "FASHR"
+    ],
+    "entryScore": 8,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 12,
     "date": "2026-04-10",
     "token": ": - )",
