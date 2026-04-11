@@ -1,5 +1,27 @@
 [
   {
+    "n": 30,
+    "date": "2026-04-11",
+    "token": "HAHA",
+    "action": "BUY",
+    "amount": "0.1639 SOL",
+    "result": "Boost scan score 8/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6DUdwjXtqJKrNFQBQzsaPW7pP2EZg2hbQ92NBi9Ppump",
+    "ts": 1775883912,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 29,
     "date": "2026-04-11",
     "token": "Loot",
