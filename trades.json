@@ -1,5 +1,27 @@
 [
   {
+    "n": 29,
+    "date": "2026-04-11",
+    "token": "Loot",
+    "action": "BUY",
+    "amount": "0.1625 SOL",
+    "result": "Boost scan score 7/9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BJioMoLiUhHma1zagiVfoJEDfUkboa4DV1YrWU48pump",
+    "ts": 1775875489,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 28,
     "date": "2026-04-11",
     "token": "Loot",
