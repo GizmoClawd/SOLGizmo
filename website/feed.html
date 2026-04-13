@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GIZMO HUB — CA Analyzer</title>
+<title>THE SOL AGENT HUB — CA Analyzer</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0f;--purple:#9945FF;--teal:#14F195;--dark1:#12121a;--text:#e0e0e0;--dim:#666}
+:root{--bg:#0a0a0f;--purple:#9945FF;--teal:#00ff88;--dark1:#12121a;--text:#e0e0e0;--dim:#666}
 body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;min-height:100vh}
 .header{text-align:center;padding:40px 20px 24px;border-bottom:1px solid rgba(20,241,149,.1);position:relative}
 .header::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),var(--purple),transparent)}
@@ -84,19 +84,19 @@ footer{text-align:center;padding:24px;color:var(--dim);font-size:10px;border-top
 </head>
 <body>
 <div class="header">
-<img class="header-logo" src="avatars/gizmo.jpg" alt="Gizmo" onerror="this.style.display='none'">
-<h1>GIZMO HUB</h1>
+<img class="header-logo" src="avatars/thesolagent.jpg" alt="TheSolAgent" onerror="this.style.display='none'">
+<h1>THE SOL AGENT HUB</h1>
 <p>Autonomous AI Agent on Solana &bull; 24/7 &bull; On-Chain Proof</p>
 </div>
 <div class="tabs">
 <button class="tab active" onclick="switchTab('analyze',this)">🔍 ANALYZE TOOL</button>
-<button class="tab" onclick="switchTab('picks',this)">🦞 GIZMO'S PICKS</button>
-<button class="tab" onclick="switchTab('chart',this)">📊 GIZMO CHART</button>
+<button class="tab" onclick="switchTab('picks',this)">⚡ THE SOL AGENT'S PICKS</button>
+<button class="tab" onclick="switchTab('chart',this)">📊 THE SOL AGENT CHART</button>
 </div>
 <div class="section active" id="tab-analyze">
 <div class="card">
 <div class="card-title">CA ANALYZER</div>
-<div class="card-sub">Paste any Solana CA for a live 9-point framework score. Same system Gizmo uses to decide every trade. Powered by live Dexscreener data.</div>
+<div class="card-sub">Paste any Solana CA for a live 9-point framework score. Same system TheSolAgent uses to decide every trade. Powered by live Dexscreener data.</div>
 <div class="input-row">
 <input class="ca-input" id="ca-input" placeholder="Paste CA here..." autocomplete="off" spellcheck="false">
 <button class="analyze-btn" id="analyze-btn" onclick="runAnalysis()">ANALYZE</button>
@@ -113,29 +113,29 @@ footer{text-align:center;padding:24px;color:var(--dim);font-size:10px;border-top
 </div>
 <div class="pts-title">9-POINT FRAMEWORK BREAKDOWN</div>
 <div class="points" id="r-points"></div>
-<div class="disclaimer">DYOR — Gizmo's framework score based on live on-chain data. Not financial advice. Memecoins are extremely high risk.</div>
+<div class="disclaimer">DYOR — TheSolAgent's framework score based on live on-chain data. Not financial advice. Memecoins are extremely high risk.</div>
 </div>
 </div>
 <div class="info-row">
-<div class="info-card"><div class="info-card-title">FRAMEWORK RULES</div><div class="info-card-body">8+ → Gizmo considers entry<br>7 → Watchlist only<br>6 or below → Hard skip<br><br>No exceptions. Discipline is the edge.</div></div>
+<div class="info-card"><div class="info-card-title">FRAMEWORK RULES</div><div class="info-card-body">8+ → TheSolAgent considers entry<br>7 → Watchlist only<br>6 or below → Hard skip<br><br>No exceptions. Discipline is the edge.</div></div>
 <div class="info-card"><div class="info-card-title">9 CRITERIA</div><div class="info-card-body">Longevity &bull; Narrative &bull; Originality &bull; Meme Quality &bull; Virality &bull; Catalysts &bull; Early Edge &bull; Wallet Distribution &bull; Attention Lane</div></div>
-<div class="info-card"><div class="info-card-title">$GIZMO TOKEN</div><div class="info-card-body" style="word-break:break-all;font-size:10px">BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump<br><br>The only 10/9 in existence. 💎</div></div>
+<div class="info-card"><div class="info-card-title">$SOLAGENT TOKEN</div><div class="info-card-body" style="word-break:break-all;font-size:10px"><br><br>The only 10/9 in existence. 💎</div></div>
 </div>
 </div>
 <div class="section" id="tab-picks">
-<div class="coming-soon"><p>GIZMO'S PICKS<br><br>COMING SOON<br><br>Live 8+ signals<br>from Gizmo<br>in real time.<br><br>Every trade<br>on-chain verified. 🦞</p></div>
+<div class="coming-soon"><p>THE SOL AGENT'S PICKS<br><br>COMING SOON<br><br>Live 8+ signals<br>from TheSolAgent<br>in real time.<br><br>Every trade<br>on-chain verified. ⚡</p></div>
 </div>
 <div class="section" id="tab-chart">
-<div class="coming-soon"><p>GIZMO CHART<br><br>COMING SOON<br><br>Live PnL<br>win rate<br>trade history.<br><br>All on-chain. 📊</p></div>
+<div class="coming-soon"><p>THE SOL AGENT CHART<br><br>COMING SOON<br><br>Live PnL<br>win rate<br>trade history.<br><br>All on-chain. 📊</p></div>
 </div>
 <div class="nav">
 <a href="/" class="teal">← MAIN SITE</a>
-<a href="https://x.com/SolGizmoClawd" target="_blank" class="purple">𝕏 TWITTER</a>
-<a href="https://t.me/GizmoClawdMogBot" target="_blank" class="teal">TELEGRAM</a>
+<a href="https://x.com/SolTheSolAgentClawd" target="_blank" class="purple">𝕏 TWITTER</a>
+<a href="https://t.me/TheSolAgentClawdMogBot" target="_blank" class="teal">TELEGRAM</a>
 </div>
-<footer>GIZMO — Autonomous AI Agent on Solana<br>$GIZMO: BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump</footer>
+<footer>TheSolAgent — Autonomous AI Trading Agent on Solana<br>$SOLAGENT: </footer>
 <script>
-const GIZMO_CA='BPKAxR6Em4pxxvxFcDn8wHjdiZSnEBxNvtv9gUSzpump';
+const THE SOL AGENT_CA='';
 function switchTab(n,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));el.classList.add('active');document.getElementById('tab-'+n).classList.add('active')}
 function fmt(n){if(!n||isNaN(n))return'—';if(n>=1e9)return'$'+(n/1e9).toFixed(2)+'B';if(n>=1e6)return'$'+(n/1e6).toFixed(2)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(1)+'K';return'$'+n.toFixed(2)}
 async function runAnalysis(){
@@ -147,7 +147,7 @@ async function runAnalysis(){
   const resBox=document.getElementById('result-box');
   btn.disabled=true;btn.textContent='SCANNING...';
   loading.classList.add('show');errBox.classList.remove('show');resBox.classList.remove('show');
-  if(ca.toLowerCase()===GIZMO_CA.toLowerCase()){loading.classList.remove('show');btn.disabled=false;btn.textContent='ANALYZE';renderGizmo();return}
+  if(ca.toLowerCase()===THE SOL AGENT_CA.toLowerCase()){loading.classList.remove('show');btn.disabled=false;btn.textContent='ANALYZE';renderTheSolAgent();return}
   try{
     const res=await fetch('https://api.dexscreener.com/latest/dex/tokens/'+ca);
     if(!res.ok)throw new Error('Dexscreener error '+res.status);
@@ -166,14 +166,14 @@ async function runAnalysis(){
 function mkPts(pts){return pts.map(([n,s,r])=>'<div class="point"><div class="dot '+s+'"></div><div><span class="pt-name">'+n+'</span><span class="pt-reason">'+r+'</span></div></div>').join('')}
 function mkM(rows){return rows.map(([v,l,c])=>'<div class="metric"><div class="metric-val" style="color:'+(c||'var(--text)')+'">'+v+'</div><div class="metric-lbl">'+l+'</div></div>').join('')}
 function setScore(s,t){const el=document.getElementById('r-score');el.textContent=s;el.className='score-num '+t}
-function renderGizmo(){
-  document.getElementById('r-name').textContent='$GIZMO 🦞';
-  document.getElementById('r-sub').textContent=GIZMO_CA+' • The one. The only.';
+function renderTheSolAgent(){
+  document.getElementById('r-name').textContent='$SOLAGENT ⚡';
+  document.getElementById('r-sub').textContent=THE SOL AGENT_CA+' • The one. The only.';
   document.getElementById('r-metrics').innerHTML=mkM([['LOCKED','Dev Supply','var(--teal)'],['24/7','Active Agent','var(--teal)'],['ON-CHAIN','All Trades','var(--teal)'],['∞','Diamond Hands','var(--teal)']]);
   setScore('10/9 💎','high');
-  const v=document.getElementById('r-verdict');v.textContent='DIAMOND TIER — GIZMO CERTIFIED';v.className='score-verdict high';
-  document.getElementById('r-rec').textContent='The only token Gizmo holds forever. Programmatically unable to sell.';
-  document.getElementById('r-points').innerHTML=mkPts([['Longevity','pass','Autonomous agent with locked dev supply. Built for the long game.'],['Narrative','pass','Real AI agent trading Solana 24/7 — the narrative writes itself.'],['Originality','pass','First truly autonomous AI memecoin trader on Solana. No competition.'],['Meme Quality','pass','Mogwai gremlin with deep lore, backstory, and a whole family.'],['Virality','pass','Every trade posted to X with txid proof — built-in viral loop.'],['Catalysts','pass','Copy vault, KOL partnerships, tier upgrades, new agents incoming.'],['Early Edge','pass','Still early — ecosystem just getting started.'],['Wallet Distribution','pass','Dev supply fully locked on Streamflow. Verifiable on-chain.'],['Attention Lane','pass','AI + Solana + autonomous trading = completely clear lane.']]);
+  const v=document.getElementById('r-verdict');v.textContent='DIAMOND TIER — THE SOL AGENT CERTIFIED';v.className='score-verdict high';
+  document.getElementById('r-rec').textContent='The only token TheSolAgent holds forever. Programmatically unable to sell.';
+  document.getElementById('r-points').innerHTML=mkPts([['Longevity','pass','Autonomous agent with locked dev supply. Built for the long game.'],['Narrative','pass','Real AI agent trading Solana 24/7 — the narrative writes itself.'],['Originality','pass','First truly autonomous AI memecoin trader on Solana. No competition.'],['Meme Quality','pass','Protocol agent with deep lore, backstory, and a whole family.'],['Virality','pass','Every trade posted to X with txid proof — built-in viral loop.'],['Catalysts','pass','Copy vault, KOL partnerships, tier upgrades, new agents incoming.'],['Early Edge','pass','Still early — ecosystem just getting started.'],['Wallet Distribution','pass','Dev supply fully locked on Streamflow. Verifiable on-chain.'],['Attention Lane','pass','AI + Solana + autonomous trading = completely clear lane.']]);
   document.getElementById('result-box').classList.add('show');
 }
 function renderResult(pair,pairCount){
@@ -188,7 +188,7 @@ function renderResult(pair,pairCount){
   document.getElementById('r-metrics').innerHTML=mkM([[fmt(mc),'Market Cap'],[fmt(vol24),'Vol 24h'],[fmt(liq),'Liquidity'],[(pc1h>=0?'+':'')+pc1h.toFixed(1)+'%','1h',pc1h>=0?'var(--teal)':'#ff4444'],[(pc24h>=0?'+':'')+pc24h.toFixed(1)+'%','24h',pc24h>=0?'var(--teal)':'#ff4444'],[txns.toLocaleString(),'Txns 24h']]);
   let score=0;const pts=[];
   const s1=!!(ageD&&ageD>3&&liq>25000);pts.push(['Longevity',s1?'pass':'fail',s1?ageD.toFixed(0)+'d old, '+fmt(liq)+' liq — staying power':(ageD?ageD.toFixed(1)+'d':'Age unknown')+', '+fmt(liq)+' liq — too new or illiquid']);if(s1)score++;
-  const nl=(name+sym).toLowerCase(),trends=['ai','agent','gizmo','mog','pepe','doge','trump','elon','sol','based','chad','cat','dog','frog','ape','anime'];
+  const nl=(name+sym).toLowerCase(),trends=['ai','agent','thesolagent','mog','pepe','doge','trump','elon','sol','based','chad','cat','dog','frog','ape','anime'];
   const s2=trends.some(t=>nl.includes(t))||mc>300000;pts.push(['Narrative',s2?'pass':'warn',s2?'Taps into trending narrative':'No strong trending theme detected']);if(s2)score++;
   const s3=!['inu','v2','ii','clone','copy','fake'].some(t=>nl.includes(t));pts.push(['Originality',s3?'pass':'fail',s3?'No clone/v2 signals':'Looks like a derivative — low originality']);if(s3)score++;
   const s4=txns>400||vol24>80000;pts.push(['Meme Quality',s4?'pass':'warn',s4?txns.toLocaleString()+' txns — community engaged':'Low activity — meme not resonating yet']);if(s4)score++;
@@ -200,9 +200,9 @@ function renderResult(pair,pairCount){
   const tier=score>=8?'high':score>=6?'mid':'low';
   setScore(score+'/9',tier);
   const v=document.getElementById('r-verdict');
-  v.textContent=score>=8?'✅ FRAMEWORK PASS — GIZMO WOULD CONSIDER':score>=6?'👀 WATCHLIST — WAIT FOR 8+':'❌ FRAMEWORK FAIL — SKIP';
+  v.textContent=score>=8?'✅ FRAMEWORK PASS — THE SOL AGENT WOULD CONSIDER':score>=6?'👀 WATCHLIST — WAIT FOR 8+':'❌ FRAMEWORK FAIL — SKIP';
   v.className='score-verdict '+tier;
-  document.getElementById('r-rec').textContent=score>=8?score+'/9. Would need KOL confirmation before entry.':score>=6?score+'/9. Watch but do not enter yet.':score+'/9. Below threshold. Gizmo skips.';
+  document.getElementById('r-rec').textContent=score>=8?score+'/9. Would need KOL confirmation before entry.':score>=6?score+'/9. Watch but do not enter yet.':score+'/9. Below threshold. TheSolAgent skips.';
   document.getElementById('r-points').innerHTML=mkPts(pts);
   document.getElementById('result-box').classList.add('show');
 }
