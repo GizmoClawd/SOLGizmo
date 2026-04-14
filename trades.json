@@ -1,5 +1,27 @@
 [
   {
+    "n": 34,
+    "date": "2026-04-14",
+    "token": "UNTRACKED",
+    "action": "SELL",
+    "amount": "0.061 SOL",
+    "result": "Sold 50%",
+    "pnl": "+0.0610 SOL",
+    "color": "teal",
+    "ca": "EpshewhitzGS4xKpPWcYr1NJ9DsRMGLQJj2954Kpump",
+    "ts": 1776137775,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 33,
     "date": "2026-04-14",
     "token": "UNTRACKED",
