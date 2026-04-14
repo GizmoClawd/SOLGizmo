@@ -1,5 +1,27 @@
 [
   {
+    "n": 39,
+    "date": "2026-04-14",
+    "token": "fren",
+    "action": "SELL",
+    "amount": "0.0781 SOL",
+    "result": "Sold 100% | PnL: -5.9%",
+    "pnl": "+0.0781 SOL",
+    "color": "teal",
+    "ca": "FqV9fmCVVCpfstxrG5HHkJpdt3xjn9EQn5WY1uAypump",
+    "ts": 1776207677,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 38,
     "date": "2026-04-14",
     "token": "PEPE6900",
