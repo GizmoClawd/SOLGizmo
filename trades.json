@@ -1,5 +1,27 @@
 [
   {
+    "n": 37,
+    "date": "2026-04-14",
+    "token": "Rise",
+    "action": "SELL",
+    "amount": "0.0391 SOL",
+    "result": "Sold 100% | PnL: +1.6%",
+    "pnl": "+0.0391 SOL",
+    "color": "teal",
+    "ca": "CpFJrfYq32Wae2Bt36hEAUwzdyT29WwVLpZmYDF7pump",
+    "ts": 1776207612,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 36,
     "date": "2026-04-14",
     "token": "PEPE6900",
