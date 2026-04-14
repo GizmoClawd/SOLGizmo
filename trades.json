@@ -1,5 +1,27 @@
 [
   {
+    "n": 45,
+    "date": "2026-04-14",
+    "token": "Skibidi",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FFvp48WygUSxCCNP3n9Zu5G7F2yatwXQHbpD2Mkkpump",
+    "ts": 1776208375,
+    "mc": 127648,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 44,
     "date": "2026-04-14",
     "token": "M2M",
