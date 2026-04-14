@@ -1,5 +1,27 @@
 [
   {
+    "n": 41,
+    "date": "2026-04-14",
+    "token": "PEPE6900",
+    "action": "SELL",
+    "amount": "0.0109 SOL",
+    "result": "Sold 100% | PnL: +427.2%",
+    "pnl": "+0.0109 SOL",
+    "color": "teal",
+    "ca": "9kkqTtCkXb9qzSbU3rLsPiUv1Jfz6NgACT6hsLuvpump",
+    "ts": 1776207736,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 40,
     "date": "2026-04-14",
     "token": "PEPE6900",
