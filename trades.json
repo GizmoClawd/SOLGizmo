@@ -1,5 +1,27 @@
 [
   {
+    "n": 83,
+    "date": "2026-04-15",
+    "token": "SuccessKid",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HedEKKqFHHLAbByaWuRHKJKseij9myqf66vsxnvTriz1",
+    "ts": 1776218005,
+    "mc": 120930,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 82,
     "date": "2026-04-15",
     "token": "Sadie",
