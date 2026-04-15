@@ -1,5 +1,27 @@
 [
   {
+    "n": 129,
+    "date": "2026-04-15",
+    "token": "KOKOP",
+    "action": "SELL",
+    "amount": "0.0605 SOL",
+    "result": "Sold 100% | PnL: +2.6%",
+    "pnl": "+0.0605 SOL",
+    "color": "teal",
+    "ca": "ENcwYGVhRsEqKpH4SzRH4mcYSGc9Cb6s4WJGS9ojpump",
+    "ts": 1776229126,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 128,
     "date": "2026-04-15",
     "token": "pumphouse",
