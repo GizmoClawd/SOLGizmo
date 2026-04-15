@@ -1,5 +1,27 @@
 [
   {
+    "n": 152,
+    "date": "2026-04-15",
+    "token": "M2M",
+    "action": "BUY",
+    "amount": "0.02309844828 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3E7nd9oom8Wdvc6jdHWRSLhpZ6kymd8oYXT5zaU2pump",
+    "ts": 1776261932,
+    "mc": 256929,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 151,
     "date": "2026-04-15",
     "token": "Peepa",
