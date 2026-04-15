@@ -1,5 +1,27 @@
 [
   {
+    "n": 140,
+    "date": "2026-04-15",
+    "token": "RALLY",
+    "action": "BUY",
+    "amount": "0.031244460119999998 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GmGQaJ46EFdYYxrNPSAiEVoRdiejJR4hsVvtbUc8pump",
+    "ts": 1776255408,
+    "mc": 365895,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 139,
     "date": "2026-04-15",
     "token": "DUMBMONEY",
