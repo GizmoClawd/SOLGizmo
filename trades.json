@@ -1,5 +1,27 @@
 [
   {
+    "n": 137,
+    "date": "2026-04-15",
+    "token": "DUMBMONEY",
+    "action": "BUY",
+    "amount": "0.029393235599999998 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CAjtTHvC878f8cZ4zEwdvgjkjFM7rbYN8Mb1go1cpump",
+    "ts": 1776231562,
+    "mc": 1556463,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 136,
     "date": "2026-04-15",
     "token": "Sadie",
