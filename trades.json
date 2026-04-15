@@ -1,5 +1,27 @@
 [
   {
+    "n": 106,
+    "date": "2026-04-15",
+    "token": "SNI",
+    "action": "SELL",
+    "amount": "0.0097 SOL",
+    "result": "Sold 50% | PnL: +112.4%",
+    "pnl": "+0.0097 SOL",
+    "color": "teal",
+    "ca": "T1Ko7x1BVdodeth8bHbjBcE3JFUnHGY1VK2Urr6pump",
+    "ts": 1776223351,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 105,
     "date": "2026-04-15",
     "token": "pumphouse",
