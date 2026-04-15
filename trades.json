@@ -1,5 +1,27 @@
 [
   {
+    "n": 100,
+    "date": "2026-04-15",
+    "token": "SNI",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "T1Ko7x1BVdodeth8bHbjBcE3JFUnHGY1VK2Urr6pump",
+    "ts": 1776221638,
+    "mc": 442364,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 99,
     "date": "2026-04-15",
     "token": "SuccessKid",
