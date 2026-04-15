@@ -1,5 +1,27 @@
 [
   {
+    "n": 82,
+    "date": "2026-04-15",
+    "token": "Sadie",
+    "action": "SELL",
+    "amount": "0.0781 SOL",
+    "result": "Sold 100% | PnL: +100.3%",
+    "pnl": "+0.0781 SOL",
+    "color": "teal",
+    "ca": "GEpGe4yRVLAJ9sFLaVFHRPPusC49sncFvYHUt6Qopump",
+    "ts": 1776217432,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 81,
     "date": "2026-04-15",
     "token": "Sadie",
