@@ -1,5 +1,27 @@
 [
   {
+    "n": 85,
+    "date": "2026-04-15",
+    "token": "ELON",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2akXpuyFXAVN5YofZpZMfBp2Vxognpmv9NooBMuHpump",
+    "ts": 1776218813,
+    "mc": 1280666,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 84,
     "date": "2026-04-15",
     "token": "X",
