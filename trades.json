@@ -1,5 +1,27 @@
 [
   {
+    "n": 77,
+    "date": "2026-04-15",
+    "token": "X",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9XeizW4yMfUqfGmqF3niSL9zkWwGJQ8EY9EQopWQmM7S",
+    "ts": 1776215976,
+    "mc": 308888,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 76,
     "date": "2026-04-15",
     "token": "DUMBMONEY",
