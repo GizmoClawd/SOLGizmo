@@ -1,5 +1,27 @@
 [
   {
+    "n": 123,
+    "date": "2026-04-15",
+    "token": "Sadie",
+    "action": "BUY",
+    "amount": "0.027265488 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GEpGe4yRVLAJ9sFLaVFHRPPusC49sncFvYHUt6Qopump",
+    "ts": 1776227218,
+    "mc": 118838,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 122,
     "date": "2026-04-15",
     "token": "X",
