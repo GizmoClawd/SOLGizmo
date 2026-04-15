@@ -1,5 +1,27 @@
 [
   {
+    "n": 70,
+    "date": "2026-04-15",
+    "token": "LOLA",
+    "action": "SELL",
+    "amount": "0.0891 SOL",
+    "result": "Sold 100% | PnL: +12.2%",
+    "pnl": "+0.0891 SOL",
+    "color": "teal",
+    "ca": "7BeoEbgJepbf4mAyw4PZ48TcgrDK25kR7zexV42Apump",
+    "ts": 1776213654,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 69,
     "date": "2026-04-15",
     "token": "Sadie",
