@@ -1,5 +1,27 @@
 [
   {
+    "n": 142,
+    "date": "2026-04-15",
+    "token": "PEPE",
+    "action": "BUY",
+    "amount": "0.02085069132 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Drfv7jnfTXpEMuppzBZnBxpSyfpTWUqeTqMhoGfzpump",
+    "ts": 1776255626,
+    "mc": 50496,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 141,
     "date": "2026-04-15",
     "token": "CHIBI",
