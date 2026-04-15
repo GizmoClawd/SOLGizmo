@@ -1,5 +1,27 @@
 [
   {
+    "n": 103,
+    "date": "2026-04-15",
+    "token": "pumphouse",
+    "action": "BUY",
+    "amount": "0.0351426846 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AnAVK1B3ZQRcUVriqLNTYFZ32PgJUSDDvJmT4WdXpump",
+    "ts": 1776222676,
+    "mc": 31047,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 102,
     "date": "2026-04-15",
     "token": "SNI",
