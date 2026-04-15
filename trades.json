@@ -1,5 +1,27 @@
 [
   {
+    "n": 141,
+    "date": "2026-04-15",
+    "token": "CHIBI",
+    "action": "BUY",
+    "amount": "0.02370828552 SOL",
+    "result": "HUNT score=13",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2TpMjYXnrgxoeVCq2i6EAR8vNWqe5MNvHCz3bENNpump",
+    "ts": 1776255448,
+    "mc": 362195,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 140,
     "date": "2026-04-15",
     "token": "RALLY",
