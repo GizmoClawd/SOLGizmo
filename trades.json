@@ -1,5 +1,27 @@
 [
   {
+    "n": 71,
+    "date": "2026-04-15",
+    "token": "LOLA",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7BeoEbgJepbf4mAyw4PZ48TcgrDK25kR7zexV42Apump",
+    "ts": 1776213754,
+    "mc": 389809,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 70,
     "date": "2026-04-15",
     "token": "LOLA",
