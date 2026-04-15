@@ -1,5 +1,27 @@
 [
   {
+    "n": 86,
+    "date": "2026-04-15",
+    "token": "X",
+    "action": "SELL",
+    "amount": "0.0333 SOL",
+    "result": "Sold 100% | PnL: -8.9%",
+    "pnl": "+0.0333 SOL",
+    "color": "teal",
+    "ca": "9XeizW4yMfUqfGmqF3niSL9zkWwGJQ8EY9EQopWQmM7S",
+    "ts": 1776218930,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 85,
     "date": "2026-04-15",
     "token": "ELON",
