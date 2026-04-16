@@ -1,5 +1,27 @@
 [
   {
+    "n": 166,
+    "date": "2026-04-16",
+    "token": "Hyrax",
+    "action": "BUY",
+    "amount": "0.02013766428 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9Y4kbrPr2ck2FHubhjLcd9jmANqArZAzrYscvNTTpump",
+    "ts": 1776361335,
+    "mc": 156053,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 165,
     "date": "2026-04-16",
     "token": "Punch",
