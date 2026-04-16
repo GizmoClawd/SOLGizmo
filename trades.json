@@ -1,5 +1,27 @@
 [
   {
+    "n": 163,
+    "date": "2026-04-16",
+    "token": "Punch",
+    "action": "BUY",
+    "amount": "0.021806418719999998 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump",
+    "ts": 1776359571,
+    "mc": 6393818,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 162,
     "date": "2026-04-16",
     "token": "DOGE",
