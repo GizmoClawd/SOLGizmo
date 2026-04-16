@@ -1,5 +1,27 @@
 [
   {
+    "n": 155,
+    "date": "2026-04-16",
+    "token": "EPHYRA",
+    "action": "BUY",
+    "amount": "0.02297131332 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "38keizi1moepsk3E5Uv8w1z8Si7PbkE2YfpdUuKhpump",
+    "ts": 1776355535,
+    "mc": 107861,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 154,
     "date": "2026-04-16",
     "token": "AINL",
