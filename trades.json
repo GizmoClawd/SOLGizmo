@@ -1,5 +1,27 @@
 [
   {
+    "n": 160,
+    "date": "2026-04-16",
+    "token": "WHALLY",
+    "action": "BUY",
+    "amount": "0.02482969308 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4rcN9Zpx6sAba39S722CwrVoA9BDmVZ5KdQDdVsSpump",
+    "ts": 1776357163,
+    "mc": 209710,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 159,
     "date": "2026-04-16",
     "token": "Hyrax",
