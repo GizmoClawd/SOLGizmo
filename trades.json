@@ -1,5 +1,27 @@
 [
   {
+    "n": 209,
+    "date": "2026-04-20",
+    "token": "TRUMPOIL",
+    "action": "SELL",
+    "amount": "0.0008 SOL",
+    "result": "Sold 100% | PnL: -98.1%",
+    "pnl": "+0.0008 SOL",
+    "color": "teal",
+    "ca": "HQRLbYUHcL33AkRJdfRuYGsauYx7Q9EQKo1QvDcPpump",
+    "ts": 1776708620,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 208,
     "date": "2026-04-20",
     "token": "TRUMPOIL",
