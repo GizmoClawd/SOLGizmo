@@ -1,5 +1,27 @@
 [
   {
+    "n": 232,
+    "date": "2026-04-20",
+    "token": "ELONBOAR",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GHz3EMwdyQQbJ2b9ds6Bd99qKHBDrKyvH8wBXBjjpump",
+    "ts": 1776716204,
+    "mc": 98376,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 231,
     "date": "2026-04-20",
     "token": "SAEP",
