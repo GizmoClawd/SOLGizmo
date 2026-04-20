@@ -1,5 +1,27 @@
 [
   {
+    "n": 184,
+    "date": "2026-04-20",
+    "token": "PEACE",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HcbsqQC3sn2LMwbjVafiEd8nJ2ATZHH2wXH4xqV2pump",
+    "ts": 1776700374,
+    "mc": 5295423,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 183,
     "date": "2026-04-20",
     "token": "33",
