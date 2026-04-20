@@ -1,5 +1,27 @@
 [
   {
+    "n": 198,
+    "date": "2026-04-20",
+    "token": "RECOVERED",
+    "action": "SELL",
+    "amount": "0.01 SOL",
+    "result": "Sold 100% | PnL: +360.0%",
+    "pnl": "+0.0100 SOL",
+    "color": "teal",
+    "ca": "FCbkxpEMKRJLw8kikXN6VwTZbKzvuWRdqcLaBpz6pump",
+    "ts": 1776707626,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 197,
     "date": "2026-04-20",
     "token": "YESBUT",
