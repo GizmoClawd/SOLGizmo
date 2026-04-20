@@ -1,5 +1,27 @@
 [
   {
+    "n": 268,
+    "date": "2026-04-20",
+    "token": "GME",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=14",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4wMWXp7okGLbTcJpcmhfoVNa3B2JLx2yuzGFD51Ppump",
+    "ts": 1776728375,
+    "mc": 72860,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 267,
     "date": "2026-04-20",
     "token": "ASTROID",
