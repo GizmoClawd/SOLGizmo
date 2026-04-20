@@ -1,5 +1,27 @@
 [
   {
+    "n": 230,
+    "date": "2026-04-20",
+    "token": "ASCEND",
+    "action": "SELL",
+    "amount": "0.0646 SOL",
+    "result": "Sold 100% | PnL: -17.8%",
+    "pnl": "+0.0646 SOL",
+    "color": "teal",
+    "ca": "GZApYdWpViQ7jgaWMjsbc22fV8wAirJ9iAbzAf8yEzLT",
+    "ts": 1776715378,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 229,
     "date": "2026-04-20",
     "token": "SAEP",
