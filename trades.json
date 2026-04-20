@@ -1,5 +1,27 @@
 [
   {
+    "n": 213,
+    "date": "2026-04-20",
+    "token": "TARDI",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4JBeo37fKhEsTXp6PtAYktYRnDAa8DcXZaZ4tTuPpump",
+    "ts": 1776709622,
+    "mc": 2012188,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 212,
     "date": "2026-04-20",
     "token": "MOLTING",
