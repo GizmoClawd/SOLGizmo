@@ -1,5 +1,27 @@
 [
   {
+    "n": 199,
+    "date": "2026-04-20",
+    "token": "TRUMPOIL",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HQRLbYUHcL33AkRJdfRuYGsauYx7Q9EQKo1QvDcPpump",
+    "ts": 1776707663,
+    "mc": 113587,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 198,
     "date": "2026-04-20",
     "token": "RECOVERED",
