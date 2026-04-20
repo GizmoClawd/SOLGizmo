@@ -1,5 +1,27 @@
 [
   {
+    "n": 181,
+    "date": "2026-04-20",
+    "token": "33",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "79YR2D6s2CgRsw7saq3vLNYAazfuNzuvfNGuJxKcpump",
+    "ts": 1776690614,
+    "mc": 47647,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 180,
     "date": "2026-04-20",
     "token": "RAM900",
