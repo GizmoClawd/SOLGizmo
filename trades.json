@@ -1,5 +1,27 @@
 [
   {
+    "n": 180,
+    "date": "2026-04-20",
+    "token": "RAM900",
+    "action": "SELL",
+    "amount": "0.0382 SOL",
+    "result": "Sold 100% | PnL: +0.2%",
+    "pnl": "+0.0382 SOL",
+    "color": "teal",
+    "ca": "FCbkxpEMKRJLw8kikXN6VwTZbKzvuWRdqcLaBpz6pump",
+    "ts": 1776689230,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 179,
     "date": "2026-04-20",
     "token": "RAM900",
