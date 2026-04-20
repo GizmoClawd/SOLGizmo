@@ -1,5 +1,27 @@
 [
   {
+    "n": 214,
+    "date": "2026-04-20",
+    "token": "LAYOFF",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9voQQTTdfbqfXwc9rZAdJEeXXjUWjHnB4wkShMT8pump",
+    "ts": 1776710186,
+    "mc": 928799,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 213,
     "date": "2026-04-20",
     "token": "TARDI",
