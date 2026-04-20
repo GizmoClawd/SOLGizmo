@@ -1,5 +1,27 @@
 [
   {
+    "n": 262,
+    "date": "2026-04-20",
+    "token": "STC",
+    "action": "SELL",
+    "amount": "0.0645 SOL",
+    "result": "Sold 100% | PnL: +3.5%",
+    "pnl": "+0.0645 SOL",
+    "color": "teal",
+    "ca": "EApN7X2Kqcz5GdjECgqccvGhzuryLARKDqrkV6Ghpump",
+    "ts": 1776724068,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 261,
     "date": "2026-04-20",
     "token": "PIVOT",
