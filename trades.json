@@ -1,5 +1,27 @@
 [
   {
+    "n": 259,
+    "date": "2026-04-20",
+    "token": "UFC",
+    "action": "SELL",
+    "amount": "0.0224 SOL",
+    "result": "Sold 100% | PnL: -26.1%",
+    "pnl": "+0.0224 SOL",
+    "color": "teal",
+    "ca": "EjpxUZ9H348j4XABTFCcBskHcjppXget7UaLZHvDpump",
+    "ts": 1776720943,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 258,
     "date": "2026-04-20",
     "token": "UFC",
