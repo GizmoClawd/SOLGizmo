@@ -1,5 +1,27 @@
 [
   {
+    "n": 176,
+    "date": "2026-04-20",
+    "token": "SOL",
+    "action": "SELL",
+    "amount": "0.078 SOL",
+    "result": "Sold 100% | PnL: -9.3%",
+    "pnl": "+0.0780 SOL",
+    "color": "teal",
+    "ca": "H87dfDDWhE2GnBeWC7oQz793rRqmE4b3mw1QY3zcpump",
+    "ts": 1776662324,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 175,
     "date": "2026-04-20",
     "token": "ASTEROID",
