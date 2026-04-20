@@ -1,5 +1,27 @@
 [
   {
+    "n": 197,
+    "date": "2026-04-20",
+    "token": "YESBUT",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "iRyerk4kEdXq8qGeMYPcJDPQbnezqKv4EEhmuSBpump",
+    "ts": 1776707448,
+    "mc": 27391,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 196,
     "date": "2026-04-20",
     "token": "MOLTING",
