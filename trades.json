@@ -1,5 +1,27 @@
 [
   {
+    "n": 239,
+    "date": "2026-04-20",
+    "token": "trust",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3zxyYUZ5qF6tY5Sg2Wc9vqPucyZUX5m917pTgZSfpump",
+    "ts": 1776716780,
+    "mc": 128955,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 238,
     "date": "2026-04-20",
     "token": "BRO",
