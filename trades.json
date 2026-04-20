@@ -1,5 +1,27 @@
 [
   {
+    "n": 256,
+    "date": "2026-04-20",
+    "token": "SAEP",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HEKVx7cxn4afiDKW56sWJGxzJe7wVBmhZhFzdqjApump",
+    "ts": 1776720684,
+    "mc": 108034,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 255,
     "date": "2026-04-20",
     "token": "STC",
