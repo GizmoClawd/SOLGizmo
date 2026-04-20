@@ -1,5 +1,27 @@
 [
   {
+    "n": 233,
+    "date": "2026-04-20",
+    "token": "ONBOARD",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4vdNSSkbZon7anE857GA7pNjd7dUaStJG39XhcTxpump",
+    "ts": 1776716296,
+    "mc": 53355,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 232,
     "date": "2026-04-20",
     "token": "ELONBOAR",
