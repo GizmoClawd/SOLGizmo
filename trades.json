@@ -1,5 +1,27 @@
 [
   {
+    "n": 271,
+    "date": "2026-04-21",
+    "token": "MARYJ",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "MARYJkS2kHxmVkQp8baNUL7d3R1pddLr65GgsArJAYY",
+    "ts": 1776730012,
+    "mc": 119887,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 270,
     "date": "2026-04-20",
     "token": "GME",
