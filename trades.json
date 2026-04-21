@@ -1,5 +1,27 @@
 [
   {
+    "n": 429,
+    "date": "2026-04-21",
+    "token": "FOF",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7udhnYmvHJFgRYGBeAioQNfzd95JtGTUjrRwNe8VCoG4",
+    "ts": 1776793953,
+    "mc": 4722769,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 428,
     "date": "2026-04-21",
     "token": "Skibidi",
