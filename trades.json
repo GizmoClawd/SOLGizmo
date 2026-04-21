@@ -1,5 +1,27 @@
 [
   {
+    "n": 389,
+    "date": "2026-04-21",
+    "token": "TERMINAL",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=13",
+    "pnl": "",
+    "color": "teal",
+    "ca": "NjixGUrygRPWquTCgVzy2czJKzZ5pLCthafS675pump",
+    "ts": 1776787680,
+    "mc": 79116,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 388,
     "date": "2026-04-21",
     "token": "SAM",
