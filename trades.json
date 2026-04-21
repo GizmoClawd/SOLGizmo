@@ -1,5 +1,27 @@
 [
   {
+    "n": 339,
+    "date": "2026-04-21",
+    "token": "SAEP",
+    "action": "BUY",
+    "amount": "0.03902102064 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HEKVx7cxn4afiDKW56sWJGxzJe7wVBmhZhFzdqjApump",
+    "ts": 1776772854,
+    "mc": 135307,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 338,
     "date": "2026-04-21",
     "token": "POLYWOG",
