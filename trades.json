@@ -1,5 +1,27 @@
 [
   {
+    "n": 417,
+    "date": "2026-04-21",
+    "token": "AIFRUITS",
+    "action": "SELL",
+    "amount": "0.0393 SOL",
+    "result": "Sold 100% | PnL: -1.7%",
+    "pnl": "+0.0393 SOL",
+    "color": "teal",
+    "ca": "6Bp9LWtyVXcEATi5nuquX5p1hPGUg1cVoUuXGN9Epump",
+    "ts": 1776791459,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 416,
     "date": "2026-04-21",
     "token": "MAGA",
