@@ -1,5 +1,27 @@
 [
   {
+    "n": 439,
+    "date": "2026-04-21",
+    "token": "Plakoro",
+    "action": "SELL",
+    "amount": "0.039 SOL",
+    "result": "Sold 100% | PnL: -1.0%",
+    "pnl": "+0.0390 SOL",
+    "color": "teal",
+    "ca": "817TC4ut67iRqDA9wAifpf7BD8c4zAeakQCWy7Bwpump",
+    "ts": 1776797817,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 438,
     "date": "2026-04-21",
     "token": "TERMINAL",
