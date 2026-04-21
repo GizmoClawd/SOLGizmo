@@ -1,5 +1,27 @@
 [
   {
+    "n": 301,
+    "date": "2026-04-21",
+    "token": "DUMBMONEY",
+    "action": "BUY",
+    "amount": "0.02357401416 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CAjtTHvC878f8cZ4zEwdvgjkjFM7rbYN8Mb1go1cpump",
+    "ts": 1776742936,
+    "mc": 3554442,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 300,
     "date": "2026-04-21",
     "token": "ASTERMISA",
