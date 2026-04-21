@@ -1,5 +1,27 @@
 [
   {
+    "n": 440,
+    "date": "2026-04-21",
+    "token": "Skibidi",
+    "action": "SELL",
+    "amount": "0.0813 SOL",
+    "result": "Sold 100% | PnL: -1.1%",
+    "pnl": "+0.0813 SOL",
+    "color": "teal",
+    "ca": "FFvp48WygUSxCCNP3n9Zu5G7F2yatwXQHbpD2Mkkpump",
+    "ts": 1776797992,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 439,
     "date": "2026-04-21",
     "token": "Plakoro",
