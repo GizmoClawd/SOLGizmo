@@ -1,5 +1,27 @@
 [
   {
+    "n": 278,
+    "date": "2026-04-21",
+    "token": "SPIKE",
+    "action": "BUY",
+    "amount": "0.0382474488 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BFiGUxnidogqcZAPVPDZRCfhx3nXnFLYqpQUaUGpump",
+    "ts": 1776734109,
+    "mc": 8998268,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 277,
     "date": "2026-04-21",
     "token": "GME",
