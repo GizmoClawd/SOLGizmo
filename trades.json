@@ -1,5 +1,27 @@
 [
   {
+    "n": 388,
+    "date": "2026-04-21",
+    "token": "SAM",
+    "action": "SELL",
+    "amount": "0.0265 SOL",
+    "result": "Sold 100% | PnL: -40.3%",
+    "pnl": "+0.0265 SOL",
+    "color": "teal",
+    "ca": "6GE91BNuKzE7WsXnyhsWCVU8dpQBVciAxZ5z9vWeVR2W",
+    "ts": 1776787627,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 387,
     "date": "2026-04-21",
     "token": "AIFRUITS",
