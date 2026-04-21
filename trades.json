@@ -1,5 +1,27 @@
 [
   {
+    "n": 304,
+    "date": "2026-04-21",
+    "token": "ADHD",
+    "action": "SELL",
+    "amount": "0.1268 SOL",
+    "result": "Sold 100% | PnL: +3.3%",
+    "pnl": "+0.1268 SOL",
+    "color": "teal",
+    "ca": "nHtKdt67T4DHX5FfcXuwAviHEhJM552nrXmHW7xpump",
+    "ts": 1776743692,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 303,
     "date": "2026-04-21",
     "token": "DUMBMONEY",
