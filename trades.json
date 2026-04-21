@@ -1,5 +1,27 @@
 [
   {
+    "n": 344,
+    "date": "2026-04-21",
+    "token": "APU",
+    "action": "BUY",
+    "amount": "0.0294966978 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "CKPmmwT3YRheAUrhL4oQENwcvxxt4HgZf1ptcDSWCjp4",
+    "ts": 1776773684,
+    "mc": 136211,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 343,
     "date": "2026-04-21",
     "token": "WTF",
