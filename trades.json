@@ -1,5 +1,27 @@
 [
   {
+    "n": 306,
+    "date": "2026-04-21",
+    "token": "GME",
+    "action": "BUY",
+    "amount": "0.03674674344 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4wMWXp7okGLbTcJpcmhfoVNa3B2JLx2yuzGFD51Ppump",
+    "ts": 1776743774,
+    "mc": 139706,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 305,
     "date": "2026-04-21",
     "token": "LOLA",
