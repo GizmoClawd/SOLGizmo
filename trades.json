@@ -1,5 +1,27 @@
 [
   {
+    "n": 383,
+    "date": "2026-04-21",
+    "token": "MCDUCK",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "FKs24XTqaRNJPVh4Pv36WNCu4ExENL9PhqF8jUdEpump",
+    "ts": 1776787153,
+    "mc": 81479,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 382,
     "date": "2026-04-21",
     "token": "AIFRUITS",
