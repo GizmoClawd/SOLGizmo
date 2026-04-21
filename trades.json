@@ -1,5 +1,27 @@
 [
   {
+    "n": 366,
+    "date": "2026-04-21",
+    "token": "Rudi",
+    "action": "SELL",
+    "amount": "0.0369 SOL",
+    "result": "Sold 100% | PnL: +1.9%",
+    "pnl": "+0.0369 SOL",
+    "color": "teal",
+    "ca": "Hc2CZzfiuBuSjTg6mpUByHVryy5e4yu8L7L4vtppump",
+    "ts": 1776782214,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 365,
     "date": "2026-04-21",
     "token": "SAEP",
