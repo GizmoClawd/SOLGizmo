@@ -1,5 +1,27 @@
 [
   {
+    "n": 446,
+    "date": "2026-04-21",
+    "token": "$MDN",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6tB6j4d2XdN63fgnQnRdxymCJq6SubgKc6raNrF7pump",
+    "ts": 1776802391,
+    "mc": 55073,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 445,
     "date": "2026-04-21",
     "token": "FOF",
