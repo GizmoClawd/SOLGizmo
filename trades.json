@@ -1,5 +1,27 @@
 [
   {
+    "n": 403,
+    "date": "2026-04-21",
+    "token": "TERMINAL",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6shs3zHtEAvpPKhaKjpSqZQMpK3aJQT7xvoy4se6pump",
+    "ts": 1776789093,
+    "mc": 217523,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 402,
     "date": "2026-04-21",
     "token": "FOF",
