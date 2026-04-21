@@ -1,5 +1,27 @@
 [
   {
+    "n": 385,
+    "date": "2026-04-21",
+    "token": "MAGA",
+    "action": "SELL",
+    "amount": "0.0484 SOL",
+    "result": "Sold 50% | PnL: +31.2%",
+    "pnl": "+0.0484 SOL",
+    "color": "teal",
+    "ca": "Hon2rHAiqkcDtUzL5gA2vjXPr7T1MPCK2UT2AHKCpump",
+    "ts": 1776787361,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 384,
     "date": "2026-04-21",
     "token": "SIF",
