@@ -1,5 +1,27 @@
 [
   {
+    "n": 355,
+    "date": "2026-04-21",
+    "token": "MHGA",
+    "action": "BUY",
+    "amount": "0.02253823344 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2b9iJWg3sppbAAQMuKBXa1iuSSsuPvKwcdiA4VdNpump",
+    "ts": 1776777142,
+    "mc": 55668,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 354,
     "date": "2026-04-21",
     "token": "ASTEROID",
