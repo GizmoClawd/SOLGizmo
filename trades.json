@@ -1,5 +1,27 @@
 [
   {
+    "n": 297,
+    "date": "2026-04-21",
+    "token": "GME",
+    "action": "SELL",
+    "amount": "0.0619 SOL",
+    "result": "Sold 100% | PnL: -29.8%",
+    "pnl": "+0.0619 SOL",
+    "color": "teal",
+    "ca": "4wMWXp7okGLbTcJpcmhfoVNa3B2JLx2yuzGFD51Ppump",
+    "ts": 1776741177,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 296,
     "date": "2026-04-21",
     "token": "ADHD",
