@@ -1,5 +1,27 @@
 [
   {
+    "n": 432,
+    "date": "2026-04-21",
+    "token": "OFFCHAIN",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BPiECaSntw8LVGYimofpNcU5eKrjrSvKz5VY7mr9pump",
+    "ts": 1776796615,
+    "mc": 78713,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 431,
     "date": "2026-04-21",
     "token": "ROSHI",
