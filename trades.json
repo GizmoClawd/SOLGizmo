@@ -1,5 +1,27 @@
 [
   {
+    "n": 312,
+    "date": "2026-04-21",
+    "token": "WTF",
+    "action": "BUY",
+    "amount": "0.02259477732 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "WTF69x41ZbgyxCCXi6qpyLyDZdPpv5yRSLpga8JQ5cR",
+    "ts": 1776744233,
+    "mc": 205032,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 311,
     "date": "2026-04-21",
     "token": "ASTERMISA",
