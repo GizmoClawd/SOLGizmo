@@ -1,5 +1,27 @@
 [
   {
+    "n": 315,
+    "date": "2026-04-21",
+    "token": "MLG",
+    "action": "SELL",
+    "amount": "0.05 SOL",
+    "result": "Sold 100% | PnL: -9.0%",
+    "pnl": "+0.0500 SOL",
+    "color": "teal",
+    "ca": "A1u5BNJQ8GpuEU5MAkJCLxXpr5aAahtG18oiJTYupump",
+    "ts": 1776744546,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 314,
     "date": "2026-04-21",
     "token": "BioLLM",
