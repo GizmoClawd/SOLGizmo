@@ -1,5 +1,27 @@
 [
   {
+    "n": 493,
+    "date": "2026-04-21",
+    "token": "STAKE",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HL4xjGSuqaSBTxTH4puRDuQ9sGBQPpcRfPeTTB6Ypump",
+    "ts": 1776815632,
+    "mc": 16504,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 492,
     "date": "2026-04-21",
     "token": "ASDFH",
