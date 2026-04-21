@@ -1,5 +1,27 @@
 [
   {
+    "n": 367,
+    "date": "2026-04-21",
+    "token": "Peepa",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "EamB9vqC1b4aoyPR6t3hn6CWf48yny84xzCuFJMbpump",
+    "ts": 1776782277,
+    "mc": 49814,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 366,
     "date": "2026-04-21",
     "token": "Rudi",
