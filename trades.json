@@ -1,5 +1,27 @@
 [
   {
+    "n": 334,
+    "date": "2026-04-21",
+    "token": "WTF",
+    "action": "SELL",
+    "amount": "0.0241 SOL",
+    "result": "Sold 50% | PnL: +30.0%",
+    "pnl": "+0.0241 SOL",
+    "color": "teal",
+    "ca": "WTF69x41ZbgyxCCXi6qpyLyDZdPpv5yRSLpga8JQ5cR",
+    "ts": 1776749101,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 333,
     "date": "2026-04-21",
     "token": "BioLLM",
