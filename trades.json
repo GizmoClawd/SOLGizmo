@@ -1,5 +1,27 @@
 [
   {
+    "n": 473,
+    "date": "2026-04-21",
+    "token": "Andrew",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7JNpb6is7YAEqcbrccfhoppNjQFjRsxgfxwmCBoDpump",
+    "ts": 1776809461,
+    "mc": 29596,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 472,
     "date": "2026-04-21",
     "token": "MOONDOGE",
