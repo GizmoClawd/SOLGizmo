@@ -1,5 +1,27 @@
 [
   {
+    "n": 454,
+    "date": "2026-04-21",
+    "token": "CATEROID",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HUbf8NZyYQjeCMtGAUyPkR6DGTkZXF3v4hCgnfNhpump",
+    "ts": 1776803933,
+    "mc": 27564,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 453,
     "date": "2026-04-21",
     "token": "MAGA",
