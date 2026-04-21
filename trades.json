@@ -1,5 +1,27 @@
 [
   {
+    "n": 354,
+    "date": "2026-04-21",
+    "token": "ASTEROID",
+    "action": "BUY",
+    "amount": "0.02562594708 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4UeLCRqARmfb6e6KQijtiktqqXUxbfk6jZng7DhuBAGS",
+    "ts": 1776776934,
+    "mc": 1738565,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 353,
     "date": "2026-04-21",
     "token": "Rudi",
