@@ -1,5 +1,27 @@
 [
   {
+    "n": 279,
+    "date": "2026-04-21",
+    "token": "MLG",
+    "action": "BUY",
+    "amount": "0.02959513644 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "A1u5BNJQ8GpuEU5MAkJCLxXpr5aAahtG18oiJTYupump",
+    "ts": 1776734318,
+    "mc": 42618,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 278,
     "date": "2026-04-21",
     "token": "SPIKE",
