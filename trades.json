@@ -1,5 +1,27 @@
 [
   {
+    "n": 336,
+    "date": "2026-04-21",
+    "token": "BRETT",
+    "action": "BUY",
+    "amount": "0.03223845036 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "ESjuJW4cAhTaVT3YZ9s9qdP3zoPZNNmrvdNTmsCUTKkX",
+    "ts": 1776750710,
+    "mc": 21115,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 335,
     "date": "2026-04-21",
     "token": "POLYWOG",
