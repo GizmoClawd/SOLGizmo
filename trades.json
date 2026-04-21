@@ -1,5 +1,27 @@
 [
   {
+    "n": 342,
+    "date": "2026-04-21",
+    "token": "SAEP",
+    "action": "SELL",
+    "amount": "0.038 SOL",
+    "result": "Sold 100% | PnL: -2.3%",
+    "pnl": "+0.0380 SOL",
+    "color": "teal",
+    "ca": "HEKVx7cxn4afiDKW56sWJGxzJe7wVBmhZhFzdqjApump",
+    "ts": 1776773247,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 341,
     "date": "2026-04-21",
     "token": "Bitshark",
