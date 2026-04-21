@@ -1,5 +1,27 @@
 [
   {
+    "n": 289,
+    "date": "2026-04-21",
+    "token": "MOONDOGE",
+    "action": "SELL",
+    "amount": "0.085 SOL",
+    "result": "Sold 100% | PnL: +90.6%",
+    "pnl": "+0.0850 SOL",
+    "color": "teal",
+    "ca": "BiUkiHrBS7pfBXBD9H4vYfcVxGQXdLmMqTJR9Djepump",
+    "ts": 1776738943,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 288,
     "date": "2026-04-21",
     "token": "MOONDOGE",
