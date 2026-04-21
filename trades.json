@@ -1,5 +1,27 @@
 [
   {
+    "n": 470,
+    "date": "2026-04-21",
+    "token": "FCS",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9kcgjPLUB1Twq6NWHd51jGQJsd8Lgc1xZVyioCAWpump",
+    "ts": 1776809090,
+    "mc": 37404,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 469,
     "date": "2026-04-21",
     "token": "MOONDOGE",
