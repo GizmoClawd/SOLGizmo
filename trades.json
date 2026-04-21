@@ -1,5 +1,27 @@
 [
   {
+    "n": 392,
+    "date": "2026-04-21",
+    "token": "SIF",
+    "action": "SELL",
+    "amount": "0.0373 SOL",
+    "result": "Sold 100% | PnL: -8.3%",
+    "pnl": "+0.0373 SOL",
+    "color": "teal",
+    "ca": "554b7hiCBBbd1wT7XvqRMhsCcFuHSFXkfZdTeVzupump",
+    "ts": 1776787879,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 391,
     "date": "2026-04-21",
     "token": "TERMINAL",
