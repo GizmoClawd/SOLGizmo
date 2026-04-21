@@ -1,5 +1,27 @@
 [
   {
+    "n": 324,
+    "date": "2026-04-21",
+    "token": "BioLLM",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9oxGicd5KXNcthYM6yD23X9zcznQVnHjrAEN38fFpump",
+    "ts": 1776746412,
+    "mc": 535216,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 323,
     "date": "2026-04-21",
     "token": "WTF",
