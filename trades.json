@@ -1,5 +1,27 @@
 [
   {
+    "n": 386,
+    "date": "2026-04-21",
+    "token": "SAM",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6GE91BNuKzE7WsXnyhsWCVU8dpQBVciAxZ5z9vWeVR2W",
+    "ts": 1776787532,
+    "mc": 66286,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 385,
     "date": "2026-04-21",
     "token": "MAGA",
