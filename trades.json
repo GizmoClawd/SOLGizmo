@@ -1,5 +1,27 @@
 [
   {
+    "n": 565,
+    "date": "2026-04-22",
+    "token": "KIMCHI",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AWpD39myXc7emw5M9cMCofkbo92x5FKWdGHWYpZFdoge",
+    "ts": 1776859908,
+    "mc": 197637,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 564,
     "date": "2026-04-22",
     "token": "POPE",
