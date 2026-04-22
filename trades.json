@@ -1,5 +1,27 @@
 [
   {
+    "n": 505,
+    "date": "2026-04-22",
+    "token": "OLDMONEY",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HegkFY5St8AzqekxWpQywi6Djdjtrr9SF7nVxVSCpump",
+    "ts": 1776817283,
+    "mc": 105805,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 504,
     "date": "2026-04-22",
     "token": "PEACE",
