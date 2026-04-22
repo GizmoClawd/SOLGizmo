@@ -1,5 +1,27 @@
 [
   {
+    "n": 513,
+    "date": "2026-04-22",
+    "token": "SCUBACAT",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Eu1PL2C8sUEDpcRv3V6Dh8Ch8noHYSm26EgaEKkmpump",
+    "ts": 1776819487,
+    "mc": 38437,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 512,
     "date": "2026-04-22",
     "token": "MOJO",
