@@ -1,5 +1,27 @@
 [
   {
+    "n": 598,
+    "date": "2026-04-22",
+    "token": "CloudCoin",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HTz6BQw1NHR86uuetFuVkPEB5vAnYYZ2aNogNc2spump",
+    "ts": 1776866234,
+    "mc": 68165,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 597,
     "date": "2026-04-22",
     "token": "pSOQ",
