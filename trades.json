@@ -1,5 +1,27 @@
 [
   {
+    "n": 511,
+    "date": "2026-04-22",
+    "token": "Flork",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "w4JaiVxShfQRGDL9DEeBTYmzYL2QzrmN2QwgKmXpump",
+    "ts": 1776819305,
+    "mc": 97687,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 510,
     "date": "2026-04-22",
     "token": "OLDMONEY",
