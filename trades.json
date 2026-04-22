@@ -1,5 +1,27 @@
 [
   {
+    "n": 600,
+    "date": "2026-04-22",
+    "token": "UFO",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5ShTu5pKrmXrgymu9ijELh4JQ7t6nJXGyj6kQE3bpump",
+    "ts": 1776866532,
+    "mc": 46041,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 599,
     "date": "2026-04-22",
     "token": "BULL",
