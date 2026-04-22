@@ -1,5 +1,27 @@
 [
   {
+    "n": 695,
+    "date": "2026-04-22",
+    "token": "wif2",
+    "action": "SELL",
+    "amount": "0.0652 SOL",
+    "result": "Sold 100% | PnL: -8.5%",
+    "pnl": "+0.0652 SOL",
+    "color": "teal",
+    "ca": "9tCjcZFwaqMFSFkiYDRAGd3kxChxVguHDCREb6eSpump",
+    "ts": 1776893405,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 694,
     "date": "2026-04-22",
     "token": "MTGA",
