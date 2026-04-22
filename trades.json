@@ -1,5 +1,27 @@
 [
   {
+    "n": 657,
+    "date": "2026-04-22",
+    "token": "S&P500",
+    "action": "BUY",
+    "amount": "0.021593311559999998 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "xZdS8URkGWvkYt3dJvc4X2qLRwzzHKaoWEQ2bHJbrrr",
+    "ts": 1776884789,
+    "mc": 66882,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 656,
     "date": "2026-04-22",
     "token": "wif2",
