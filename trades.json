@@ -1,5 +1,27 @@
 [
   {
+    "n": 655,
+    "date": "2026-04-22",
+    "token": "MEGA",
+    "action": "BUY",
+    "amount": "0.02529710724 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8sYCjDzxJGcbnyW9fEa7NWLvtv6e8sgP6kgfn3ofpump",
+    "ts": 1776884661,
+    "mc": 55283,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 654,
     "date": "2026-04-22",
     "token": "BRETT",
