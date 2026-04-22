@@ -1,5 +1,27 @@
 [
   {
+    "n": 575,
+    "date": "2026-04-22",
+    "token": "pSOQ",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=26",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6NX2MWBuJM2Fn63K4hUgMPivLXHV8pwsU1yTdmjKpump",
+    "ts": 1776860616,
+    "mc": 705913,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 574,
     "date": "2026-04-22",
     "token": "PEACE",
