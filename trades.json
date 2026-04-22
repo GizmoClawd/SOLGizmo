@@ -1,5 +1,27 @@
 [
   {
+    "n": 640,
+    "date": "2026-04-22",
+    "token": "BRETT",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BR6CaZYnN7ZodDyqXY38VzsucrScyRMN3qszbPVApump",
+    "ts": 1776875229,
+    "mc": 73972,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 639,
     "date": "2026-04-22",
     "token": "MARS",
