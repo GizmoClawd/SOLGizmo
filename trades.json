@@ -1,5 +1,27 @@
 [
   {
+    "n": 687,
+    "date": "2026-04-22",
+    "token": "PEPTIDE",
+    "action": "SELL",
+    "amount": "0.0247 SOL",
+    "result": "Sold 100% | PnL: -22.4%",
+    "pnl": "+0.0247 SOL",
+    "color": "teal",
+    "ca": "2fXcg8jZ7zByFhhdwPz7oyTjEpC7AsxdfbaAntsgAgzt",
+    "ts": 1776890674,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 686,
     "date": "2026-04-22",
     "token": "PEPTIDE",
