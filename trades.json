@@ -1,5 +1,27 @@
 [
   {
+    "n": 589,
+    "date": "2026-04-22",
+    "token": "GYARU",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=17",
+    "pnl": "",
+    "color": "teal",
+    "ca": "45wXh7heZ2wz9yvgGGN4EfMbt4WsCwEe467vBVYypump",
+    "ts": 1776865212,
+    "mc": 84682,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 588,
     "date": "2026-04-22",
     "token": "PUMPSTER",
