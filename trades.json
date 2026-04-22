@@ -1,5 +1,27 @@
 [
   {
+    "n": 577,
+    "date": "2026-04-22",
+    "token": "fomo",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4TC5nT1B7p3YpYUqiJcGSFjgLoASiH1Upxi1h1Jdpump",
+    "ts": 1776860680,
+    "mc": 27669,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 576,
     "date": "2026-04-22",
     "token": "ALIENPEPE",
