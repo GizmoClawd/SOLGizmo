@@ -1,5 +1,27 @@
 [
   {
+    "n": 515,
+    "date": "2026-04-22",
+    "token": "Roadster",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "6wmubHn7vnEcqcngsVK31stSVgUJq7cTTzYiqN2Mpump",
+    "ts": 1776819944,
+    "mc": 123731,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 514,
     "date": "2026-04-22",
     "token": "Flork",
