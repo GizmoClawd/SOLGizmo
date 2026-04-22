@@ -1,5 +1,27 @@
 [
   {
+    "n": 689,
+    "date": "2026-04-22",
+    "token": "BRETT",
+    "action": "SELL",
+    "amount": "0.0211 SOL",
+    "result": "Sold 50% | PnL: +30.6%",
+    "pnl": "+0.0211 SOL",
+    "color": "teal",
+    "ca": "BR6CaZYnN7ZodDyqXY38VzsucrScyRMN3qszbPVApump",
+    "ts": 1776892436,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 688,
     "date": "2026-04-22",
     "token": "BRETT",
