@@ -1,5 +1,27 @@
 [
   {
+    "n": 631,
+    "date": "2026-04-22",
+    "token": "WTF",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "WTF69x41ZbgyxCCXi6qpyLyDZdPpv5yRSLpga8JQ5cR",
+    "ts": 1776873572,
+    "mc": 680528,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 630,
     "date": "2026-04-22",
     "token": "ALIENPEPE",
