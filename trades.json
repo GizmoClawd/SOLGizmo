@@ -1,5 +1,27 @@
 [
   {
+    "n": 530,
+    "date": "2026-04-22",
+    "token": "TRU",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "LpPHCbteUCfTBP94oAVq83qS7qT53aKL4TXNd6kpump",
+    "ts": 1776828146,
+    "mc": 82327,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 529,
     "date": "2026-04-22",
     "token": "MOJO",
