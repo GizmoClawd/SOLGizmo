@@ -1,5 +1,27 @@
 [
   {
+    "n": 664,
+    "date": "2026-04-22",
+    "token": "FOF",
+    "action": "BUY",
+    "amount": "0.033251997719999996 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7udhnYmvHJFgRYGBeAioQNfzd95JtGTUjrRwNe8VCoG4",
+    "ts": 1776886052,
+    "mc": 6031787,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 663,
     "date": "2026-04-22",
     "token": "MEGA",
