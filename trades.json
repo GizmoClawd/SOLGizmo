@@ -1,5 +1,27 @@
 [
   {
+    "n": 570,
+    "date": "2026-04-22",
+    "token": "ALIENPEPE",
+    "action": "SELL",
+    "amount": "0.0266 SOL",
+    "result": "Sold 50% | PnL: +36.7%",
+    "pnl": "+0.0266 SOL",
+    "color": "teal",
+    "ca": "Ai9HeYDrjpJtrjpHfDwVXfVoCR5ja9Cmt9cHGg2kpump",
+    "ts": 1776860223,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 569,
     "date": "2026-04-22",
     "token": "MPGA",
