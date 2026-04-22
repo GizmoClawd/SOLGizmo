@@ -1,5 +1,27 @@
 [
   {
+    "n": 712,
+    "date": "2026-04-22",
+    "token": "EVELYN",
+    "action": "BUY",
+    "amount": "0.020322507 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3ZL5VHZSjhoXBcSWxfbePmRXgCJhqD4E8j4HXpGtpump",
+    "ts": 1776897864,
+    "mc": 149473,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 711,
     "date": "2026-04-22",
     "token": "EVELYN",
