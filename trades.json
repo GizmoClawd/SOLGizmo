@@ -1,5 +1,27 @@
 [
   {
+    "n": 635,
+    "date": "2026-04-22",
+    "token": "WTF",
+    "action": "SELL",
+    "amount": "0.0404 SOL",
+    "result": "Sold 100% | PnL: +1.9%",
+    "pnl": "+0.0404 SOL",
+    "color": "teal",
+    "ca": "WTF69x41ZbgyxCCXi6qpyLyDZdPpv5yRSLpga8JQ5cR",
+    "ts": 1776874311,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 634,
     "date": "2026-04-22",
     "token": "69",
