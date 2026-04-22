@@ -1,5 +1,27 @@
 [
   {
+    "n": 697,
+    "date": "2026-04-22",
+    "token": "1SOL",
+    "action": "SELL",
+    "amount": "0.0254 SOL",
+    "result": "Sold 50% | PnL: +34.4%",
+    "pnl": "+0.0254 SOL",
+    "color": "teal",
+    "ca": "3qDzKJ1mVz4ZEMKXbVr5XAUV3ot9qNbcfnfBhucf4YtT",
+    "ts": 1776893622,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 696,
     "date": "2026-04-22",
     "token": "MTGA",
