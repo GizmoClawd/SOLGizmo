@@ -1,5 +1,27 @@
 [
   {
+    "n": 596,
+    "date": "2026-04-22",
+    "token": "PEACE",
+    "action": "SELL",
+    "amount": "0.0374 SOL",
+    "result": "Sold 100% | PnL: -2.8%",
+    "pnl": "+0.0374 SOL",
+    "color": "teal",
+    "ca": "HcbsqQC3sn2LMwbjVafiEd8nJ2ATZHH2wXH4xqV2pump",
+    "ts": 1776866047,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 595,
     "date": "2026-04-22",
     "token": "GYARU",
