@@ -1,5 +1,27 @@
 [
   {
+    "n": 522,
+    "date": "2026-04-22",
+    "token": "P",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DxcDfCWBJCp2Ux5iys3NBJE5R7cvPDiGvyB3fVmpump",
+    "ts": 1776825943,
+    "mc": 117581,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 521,
     "date": "2026-04-22",
     "token": "MAGA",
