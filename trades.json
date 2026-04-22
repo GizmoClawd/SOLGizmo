@@ -1,5 +1,27 @@
 [
   {
+    "n": 580,
+    "date": "2026-04-22",
+    "token": "pSOQ",
+    "action": "SELL",
+    "amount": "0.0392 SOL",
+    "result": "Sold 100% | PnL: +13.7%",
+    "pnl": "+0.0392 SOL",
+    "color": "teal",
+    "ca": "6NX2MWBuJM2Fn63K4hUgMPivLXHV8pwsU1yTdmjKpump",
+    "ts": 1776860931,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 579,
     "date": "2026-04-22",
     "token": "MPGA",
