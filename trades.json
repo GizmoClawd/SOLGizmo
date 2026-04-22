@@ -1,5 +1,27 @@
 [
   {
+    "n": 622,
+    "date": "2026-04-22",
+    "token": "MPGA",
+    "action": "BUY",
+    "amount": "0.037534303559999996 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GomVkoQFG3H8YEmcDqP2Xkp7DN1mzWhMAU41ci3ypump",
+    "ts": 1776871303,
+    "mc": 1746917,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 621,
     "date": "2026-04-22",
     "token": "OLDMONEY",
