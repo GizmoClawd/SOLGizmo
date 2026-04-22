@@ -1,5 +1,27 @@
 [
   {
+    "n": 684,
+    "date": "2026-04-22",
+    "token": "MTGA",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9VimYprbUJDzkpnQb2VNpaZ8yXiipfdj2w1M14RGpump",
+    "ts": 1776889882,
+    "mc": 1602571,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 683,
     "date": "2026-04-22",
     "token": "MEGA",
