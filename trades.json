@@ -1,5 +1,27 @@
 [
   {
+    "n": 624,
+    "date": "2026-04-22",
+    "token": "RƎ́V",
+    "action": "BUY",
+    "amount": "0.0353941896 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9AEtb967xTMosjp9XFhvHLhscPNYgDWc15jFAZR8pump",
+    "ts": 1776871480,
+    "mc": 136306,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 623,
     "date": "2026-04-22",
     "token": "ALIENPEPE",
