@@ -1,5 +1,27 @@
 [
   {
+    "n": 583,
+    "date": "2026-04-22",
+    "token": "Meme",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HAkt7Kud64HHfpmUUYwfjTUeTyZqzbnyXZBmDxYgpump",
+    "ts": 1776862168,
+    "mc": 79116,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 582,
     "date": "2026-04-22",
     "token": "fomo",
