@@ -1,5 +1,27 @@
 [
   {
+    "n": 661,
+    "date": "2026-04-22",
+    "token": "MHSA",
+    "action": "BUY",
+    "amount": "0.03174744576 SOL",
+    "result": "HUNT score=15",
+    "pnl": "",
+    "color": "teal",
+    "ca": "58FgCJenaF7jCko8bqndTpSvCtccuNHBhr36zzBpump",
+    "ts": 1776885931,
+    "mc": 124644,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 660,
     "date": "2026-04-22",
     "token": "MEGA",
