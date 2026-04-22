@@ -1,5 +1,27 @@
 [
   {
+    "n": 571,
+    "date": "2026-04-22",
+    "token": "KIMCHI",
+    "action": "SELL",
+    "amount": "0.0384 SOL",
+    "result": "Sold 100% | PnL: +0.1%",
+    "pnl": "+0.0384 SOL",
+    "color": "teal",
+    "ca": "AWpD39myXc7emw5M9cMCofkbo92x5FKWdGHWYpZFdoge",
+    "ts": 1776860246,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 570,
     "date": "2026-04-22",
     "token": "ALIENPEPE",
