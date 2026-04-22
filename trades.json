@@ -1,5 +1,27 @@
 [
   {
+    "n": 595,
+    "date": "2026-04-22",
+    "token": "GYARU",
+    "action": "SELL",
+    "amount": "0.0391 SOL",
+    "result": "Sold 100% | PnL: -3.1%",
+    "pnl": "+0.0391 SOL",
+    "color": "teal",
+    "ca": "45wXh7heZ2wz9yvgGGN4EfMbt4WsCwEe467vBVYypump",
+    "ts": 1776865950,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 594,
     "date": "2026-04-22",
     "token": "MPGA",
