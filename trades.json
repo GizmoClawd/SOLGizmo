@@ -1,5 +1,27 @@
 [
   {
+    "n": 592,
+    "date": "2026-04-22",
+    "token": "PUMPSTER",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9wDk4whJZPmKrQMXa2Nx5uhsGki9df15rSgB3Hbjpump",
+    "ts": 1776865429,
+    "mc": 124665,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 591,
     "date": "2026-04-22",
     "token": "PEACE",
