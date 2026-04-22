@@ -1,5 +1,27 @@
 [
   {
+    "n": 616,
+    "date": "2026-04-22",
+    "token": "POPE",
+    "action": "SELL",
+    "amount": "0.0252 SOL",
+    "result": "Sold 50% | PnL: +30.8%",
+    "pnl": "+0.0252 SOL",
+    "color": "teal",
+    "ca": "AVpXhoX6PMkp3tT5VvSXs7jvQb16BoJTkpEracW4pump",
+    "ts": 1776868248,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 615,
     "date": "2026-04-22",
     "token": "pSOQ",
