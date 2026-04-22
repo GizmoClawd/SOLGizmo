@@ -1,5 +1,27 @@
 [
   {
+    "n": 528,
+    "date": "2026-04-22",
+    "token": "DUMBMONEY",
+    "action": "SELL",
+    "amount": "0.0379 SOL",
+    "result": "Sold 100% | PnL: -2.7%",
+    "pnl": "+0.0379 SOL",
+    "color": "teal",
+    "ca": "CAjtTHvC878f8cZ4zEwdvgjkjFM7rbYN8Mb1go1cpump",
+    "ts": 1776827978,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 527,
     "date": "2026-04-22",
     "token": "DUMBMONEY",
