@@ -1,5 +1,27 @@
 [
   {
+    "n": 672,
+    "date": "2026-04-22",
+    "token": "MHSA",
+    "action": "BUY",
+    "amount": "0.03577613748 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "58FgCJenaF7jCko8bqndTpSvCtccuNHBhr36zzBpump",
+    "ts": 1776887531,
+    "mc": 156985,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 671,
     "date": "2026-04-22",
     "token": "wif2",
