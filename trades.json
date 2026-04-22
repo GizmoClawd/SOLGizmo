@@ -1,5 +1,27 @@
 [
   {
+    "n": 602,
+    "date": "2026-04-22",
+    "token": "JINDO",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=14",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Gaqt6hKqBSRga8pfJ43CfTbc9ZGw8ostPnjytfbNpump",
+    "ts": 1776866724,
+    "mc": 1521193,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 601,
     "date": "2026-04-22",
     "token": "CloudCoin",
