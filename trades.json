@@ -1,5 +1,27 @@
 [
   {
+    "n": 679,
+    "date": "2026-04-22",
+    "token": "wif2",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "9tCjcZFwaqMFSFkiYDRAGd3kxChxVguHDCREb6eSpump",
+    "ts": 1776888503,
+    "mc": 55513,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 678,
     "date": "2026-04-22",
     "token": "MEGA",
