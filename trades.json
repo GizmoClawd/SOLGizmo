@@ -1,5 +1,27 @@
 [
   {
+    "n": 529,
+    "date": "2026-04-22",
+    "token": "MOJO",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "sGzragYKDrmRgCGvJUn9WKwrmnUZwfmkNQLTSPfdMNq",
+    "ts": 1776828063,
+    "mc": 38035,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 528,
     "date": "2026-04-22",
     "token": "DUMBMONEY",
