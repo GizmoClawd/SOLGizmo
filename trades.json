@@ -1,5 +1,27 @@
 [
   {
+    "n": 599,
+    "date": "2026-04-22",
+    "token": "BULL",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "ts": 1776866343,
+    "mc": 5020080,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 598,
     "date": "2026-04-22",
     "token": "CloudCoin",
