@@ -1,5 +1,27 @@
 [
   {
+    "n": 610,
+    "date": "2026-04-22",
+    "token": "ALIENPEPE",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=9",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Ai9HeYDrjpJtrjpHfDwVXfVoCR5ja9Cmt9cHGg2kpump",
+    "ts": 1776867626,
+    "mc": 67208,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 609,
     "date": "2026-04-22",
     "token": "JINDO",
