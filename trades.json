@@ -1,5 +1,27 @@
 [
   {
+    "n": 858,
+    "date": "2026-04-23",
+    "token": "IMOUT",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=23",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DACYVx34V5aQaehN3MZGYxPfoyQYHZSnFAFw3T2Vbonk",
+    "ts": 1776979465,
+    "mc": 57416,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 857,
     "date": "2026-04-23",
     "token": "AIX6900",
