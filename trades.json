@@ -1,5 +1,27 @@
 [
   {
+    "n": 753,
+    "date": "2026-04-23",
+    "token": "Solvivor",
+    "action": "SELL",
+    "amount": "0.0236 SOL",
+    "result": "Sold 50% | PnL: +42.8%",
+    "pnl": "+0.0236 SOL",
+    "color": "teal",
+    "ca": "GV2oUrHo9H5ZNiBTSqnVw59GE2Afaw1b8EPcTtZQpump",
+    "ts": 1776911460,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 752,
     "date": "2026-04-23",
     "token": "Solvivor",
