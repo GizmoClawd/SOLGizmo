@@ -1,5 +1,27 @@
 [
   {
+    "n": 855,
+    "date": "2026-04-23",
+    "token": "AlienPippin",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Ai5miuSWAhMzi2bWAAkSVrAUi8oG3xRX1n24CYgpump",
+    "ts": 1776970184,
+    "mc": 203807,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 854,
     "date": "2026-04-23",
     "token": "VESPR",
