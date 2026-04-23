@@ -1,5 +1,27 @@
 [
   {
+    "n": 738,
+    "date": "2026-04-23",
+    "token": "FROGDOG",
+    "action": "BUY",
+    "amount": "0.020946720119999998 SOL",
+    "result": "HUNT score=13",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Ca5k6vEMSff3Kk2fcnWgRAPP6AMC2PBvre72CgEYpump",
+    "ts": 1776906979,
+    "mc": 114274,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 737,
     "date": "2026-04-23",
     "token": "420",
