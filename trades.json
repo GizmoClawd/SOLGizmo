@@ -1,5 +1,27 @@
 [
   {
+    "n": 811,
+    "date": "2026-04-23",
+    "token": "CRAFT",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=13",
+    "pnl": "",
+    "color": "teal",
+    "ca": "AdD5EMoGMDiGXcgepXQXneB4fEZuS1QvKqDrN876pump",
+    "ts": 1776956575,
+    "mc": 69176,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 810,
     "date": "2026-04-23",
     "token": "POSTER",
