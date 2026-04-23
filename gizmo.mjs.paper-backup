@@ -14,44 +14,18 @@ import bs58 from 'bs58';
 import fs from 'fs';
 import { shouldBuy, shouldSell, recordOutcome } from './brain.mjs';
 
-const FREE_RPCS = ["https://api.mainnet-beta.solana.com","https://rpc.ankr.com/solana","https://mainnet.helius-rpc.com/?api-key=2de73660-14b8-412a-9ff2-8e6989c53266", "https://ssc-dao.genesysgo.net/"];
+const FREE_RPCS = ['https://solana.publicnode.com','https://api.mainnet-beta.solana.com','https://rpc.ankr.com/solana'];
 let rpcIndex = 0;
 function getRPC() { return FREE_RPCS[rpcIndex % FREE_RPCS.length]; }
-function rotateRPC() { rpcIndex++; console.log('[RPC] Rotated to ' + getRPC()); }
+function rotateRPC() { rpcIndex++; log('[RPC] Rotated to ' + getRPC()); }
 
 // HOLDER CHECK: detect farms before buying
 async function checkHolderConcentration(mint) {
   try {
-    async function fetchWithRetry(options) {
-  for (let i = 0; i < 10; i++) {
-    const url = getRPC();
-    try {
-      const controller = new AbortController();
-const timeoutId = setTimeout(() => controller.abort(), 300000);  // 5 minutes timeout
-options.signal = controller.signal;
-const r = await fetch(url, options);  // Add timeout handling
-clearTimeout(timeoutId);
-      if (r.status === 429) {
-        rotateRPC();
-        await new Promise(resolve => setTimeout(resolve, 5000 * (2 ** i)));
-        continue;  // Skip to next iteration on 429
-      }
-      if (r.ok) return r;  // Return if successful
-      rotateRPC();  // Handle other non-ok statuses
-      await new Promise(resolve => setTimeout(resolve, 2000 * (i + 1)));
-    } catch (error) {
-      console.error('Fetch error:', error);
-      rotateRPC();
-      await new Promise(resolve => setTimeout(resolve, 2000 * (i + 1)));
-    }
-  }
-  console.error('Fetch failed after retries'); return null;
-}
-const r = await fetchWithRetry({
-  method: 'POST', headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getTokenLargestAccounts', params: [mint] })
-});
-    if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
+    const r = await fetch(getRPC(), {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getTokenLargestAccounts', params: [mint] })
+    });
     const d = await r.json();
     const accts = d?.result?.value || [];
     if (!accts.length) return { safe: false, reason: 'no holder data' };
@@ -86,7 +60,7 @@ try {
 
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 const BASE_DIR = process.env.HOME + '/.gizmo/runtime';
-const WALLET_ADDRESS = process.env.SOLANA_WALLET || '6Z58vwiLdJ3SgYLuXqz9nJ6DkLhcFp1t7hWKVwEvvEPg';
+const WALLET_ADDRESS = process.env.SOLANA_WALLET || 'GZnFNskqnCAoTHYuYFaZm3FQGaGHJ7CqVSphmGZnTia4';
 const WORKSPACE = (process.env.HOME || '/root') + '/.openclaw/workspace/SOLGizmo';
 const POSITIONS_FILE = BASE_DIR + '/positions.json';
 const TRADES_FILE = WORKSPACE + '/trades.json';
@@ -114,7 +88,6 @@ function saveVault(v) {
 }
 
 async function runProfitVault(currentBalance) {
-  if (currentBalance < 2) { const v = loadVault(); v.locked = 0; saveVault(v); return; } // No vault under 2 SOL
   if (SESSION_START_BALANCE === null) return;
   const vault = loadVault();
   // DEPOSIT DETECTION — don't treat top-ups as profit
@@ -152,7 +125,7 @@ async function runProfitVault(currentBalance) {
       const tradeable = currentBalance - vault.locked;
       const msg = '🔐 PROFIT VAULT: Locked ' + vault.locked.toFixed(3) + ' SOL | Tradeable: ' + tradeable.toFixed(3) + ' SOL';
       log(msg);
-      try { execSync('openclaw message --text "' + msg.replace(/"/g, '\"') + '" --agent gizmo', { timeout: 60000 }); } catch (err) { console.error('ExecSync timed out:', err); }
+      try { execSync('openclaw message --text "' + msg.replace(/"/g,"'") + '" --agent gizmo', { timeout: 5000 }); } catch {}
     }
   }
 
@@ -465,119 +438,6 @@ let xKeys;
 try { xKeys = JSON.parse(process.env.X_API_KEYS_JSON || fs.readFileSync(process.env.HOME + '/.gizmo/x-api-keys.json', 'utf-8')); } catch {}
 
 // ─── KOL WALLETS ─────────────────────────────────────────────────────────────
-
-// === LAYER 4: INVENTION — load discovered patterns ===
-const DISCOVERED_PATTERNS_FILE = process.env.HOME + '/.gizmo/runtime/discovered-patterns.json';
-let DISCOVERED_PATTERNS = null;
-let _dpLoadedAt = 0;
-
-
-// === LAYER 4 COMPLETE: Read auto-generated strategies ===
-const ACTIVE_STRATS_FILE = process.env.HOME + '/.gizmo/runtime/active-strategies.json';
-let ACTIVE_STRATEGIES = null;
-let _asLoadedAt = 0;
-
-function loadActiveStrategies() {
-  try {
-    if (Date.now() - _asLoadedAt < 600000) return ACTIVE_STRATEGIES; // cache 10min
-    if (!fs.existsSync(ACTIVE_STRATS_FILE)) return null;
-    ACTIVE_STRATEGIES = JSON.parse(fs.readFileSync(ACTIVE_STRATS_FILE, 'utf8'));
-    _asLoadedAt = Date.now();
-    const strats = ACTIVE_STRATEGIES.strategies || [];
-    if (strats.length > 0) {
-      log('🔬 STRATEGIES: ' + strats.length + ' auto-generated strategies active: ' + strats.map(s => s.id + '(' + s.winRate + '%)').join(', '));
-    }
-    return ACTIVE_STRATEGIES;
-  } catch { return null; }
-}
-
-function loadDiscoveredPatterns() {
-  try {
-    if (Date.now() - _dpLoadedAt < 300000) return DISCOVERED_PATTERNS; // cache 5min
-    if (!fs.existsSync(DISCOVERED_PATTERNS_FILE)) return null;
-    DISCOVERED_PATTERNS = JSON.parse(fs.readFileSync(DISCOVERED_PATTERNS_FILE, 'utf8'));
-    _dpLoadedAt = Date.now();
-    if (DISCOVERED_PATTERNS.rules) {
-      log('🧪 INVENTION: loaded ' + DISCOVERED_PATTERNS.patternsFound + ' patterns, ' + DISCOVERED_PATTERNS.rulesGenerated + ' rules');
-    }
-    return DISCOVERED_PATTERNS;
-  } catch { return null; }
-}
-
-function inventionScore(token, kols, convergenceScore, entryMC, totalSol) {
-  const dp = loadDiscoveredPatterns();
-  if (!dp || !dp.rules) return { boost: 0, flags: [] };
-  
-  let boost = 0;
-  const flags = [];
-  
-  // Check time window
-  const estHour = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false });
-  const h = parseInt(estHour);
-  const bestHours = dp.rules.find(r => r.id === 'DISCOVERED_BEST_HOURS');
-  if (bestHours && bestHours.windows) {
-    const match = bestHours.windows.find(w => w.hour === 'h' + h);
-    if (match) { boost += 2; flags.push('🧪 BEST_HOUR h' + h + ' (' + match.moonRate + '% moon)'); }
-  }
-  const dangerHours = dp.rules.find(r => r.id === 'DISCOVERED_DANGER_HOURS');
-  if (dangerHours && dangerHours.windows) {
-    const match = dangerHours.windows.find(w => w.hour === 'h' + h);
-    if (match) { boost -= 3; flags.push('🧪 DANGER_HOUR h' + h + ' (' + match.rugRate + '% rug)'); }
-  }
-  
-  // Check KOL combos
-  const winCombos = dp.rules.find(r => r.id === 'DISCOVERED_KOL_COMBOS');
-  if (winCombos && winCombos.combos && kols && kols.length >= 2) {
-    const sorted = [...kols].sort();
-    for (let i = 0; i < sorted.length; i++) {
-      for (let j = i + 1; j < sorted.length; j++) {
-        const pair = sorted[i] + '+' + sorted[j];
-        const match = winCombos.combos.find(c => c.combo === pair);
-        if (match) { boost += 3; flags.push('🧪 WIN_COMBO ' + pair + ' (' + match.winRate + '% WR)'); }
-      }
-    }
-  }
-  const toxicCombos = dp.rules.find(r => r.id === 'DISCOVERED_TOXIC_COMBOS');
-  if (toxicCombos && toxicCombos.combos && kols && kols.length >= 2) {
-    const sorted = [...kols].sort();
-    for (let i = 0; i < sorted.length; i++) {
-      for (let j = i + 1; j < sorted.length; j++) {
-        const pair = sorted[i] + '+' + sorted[j];
-        const match = toxicCombos.combos.find(c => c.combo === pair);
-        if (match) { boost -= 5; flags.push('🧪 TOXIC_COMBO ' + pair + ' (' + match.rugRate + '% rug)'); }
-      }
-    }
-  }
-  
-  // Check moon DNA fit
-  if (dp.moonDNA && dp.moonDNA.length > 0) {
-    const dna = dp.moonDNA[0];
-    let dnaMatch = 0;
-    if (kols && Math.abs(kols.length - dna.avgKols) <= 1) dnaMatch++;
-    if (entryMC && Math.abs(entryMC - dna.avgEntryMC) / dna.avgEntryMC < 0.5) dnaMatch++;
-    if (convergenceScore && Math.abs(convergenceScore - dna.avgConvergenceScore) <= 3) dnaMatch++;
-    if (totalSol && Math.abs(totalSol - dna.avgSOLInflow) / dna.avgSOLInflow < 0.5) dnaMatch++;
-    if (dnaMatch >= 3) { boost += 2; flags.push('🧬 MOON_DNA match (' + dnaMatch + '/4 factors)'); }
-  }
-  
-  return { boost, flags };
-}
-
-
-// === LAYER 4: DISCOVERED EXIT RULES ===
-function loadDiscoveredExitRules() {
-  try {
-    const strats = JSON.parse(fs.readFileSync(process.env.HOME + "/.gizmo/runtime/active-strategies.json", "utf8"));
-    if (strats.exitRules && strats.exitRules.rules) {
-      const r = strats.exitRules.rules;
-      log("🔬 DISCOVERED_EXIT_RULES: TP1=" + r.tp1_pct + "% TP2=" + r.tp2_pct + "% trail=" + r.trail_from_peak_pct + "% timeExit=" + r.time_exit_minutes + "min");
-      return r;
-    }
-  } catch {}
-  return null;
-}
-const DISCOVERED_EXIT_RULES = loadDiscoveredExitRules();
-
 const WALLETS = [
   { name: "Dad", address: "9KPMHW2FuTrHBkPa8YQb2PR58V2KQcBXvyM21AFXvhQV", weight: 4 },
   { name: "DINERO GRATIS", address: "77n6X7LtGy5AZprsvjZu1eaekJpxqLeVRZLPJZdBYyg9", weight: 3 },
@@ -1812,9 +1672,8 @@ async function sell(ca, pct, posName, entryMC, currentMC) {
         const solReceived = solMatch ? parseFloat(solMatch[1]) : null;
         const txSig = txMatch ? txMatch[1] : null;
         const pnlPct = entryMC && currentMC ? ((currentMC - entryMC) / entryMC * 100) : null;
-        logTrade('SELL', posName || ce.slice(0, 8), ca, solReceived, solReceived,
+        logTrade('SELL', posName || ca.slice(0, 8), ca, solReceived, solReceived,
           txSig, `Sold ${pct}${pnlPct !== null ? ' | PnL: ' + (pnlPct > 0 ? '+' : '') + pnlPct.toFixed(1) + '%' : ''}`);
-        try { recordOutcome(posName || ca.slice(0,8), ca, 'SELL', pnlPct || 0, `Sold ${pct} at ${pnlPct !== null ? pnlPct.toFixed(1) : '??'}%`); } catch(e) {}
         return true;
       }
       if (out.includes('No tokens to sell')) { log(`ℹ️ ${posName}: no tokens — removing phantom position`); const idx = POSITIONS.findIndex(p => p.name === posName); if (idx !== -1) { POSITIONS.splice(idx, 1); savePositions(); } return true; }
@@ -1829,73 +1688,40 @@ async function sell(ca, pct, posName, entryMC, currentMC) {
 
 // ─── BUY ──────────────────────────────────────────────────────────────────────
 async function buy(ca, amount) {
-  if (DEAD_POOLS.has(ca)) { log(`\u{1F6AB} BUY BLOCKED: ${ca} is blacklisted in dead pool`); return false; }
+  if (DEAD_POOLS.has(ca)) { log(`🚫 BUY BLOCKED: ${ca} is blacklisted in dead pool`); return false; }
   try {
-    const out = execSync(`cd ${WORKSPACE} && node trade.mjs ${ca} ${amount}`, { timeout: 45000 }).toString();
-    const lastLine = out.trim().split('\n').pop();
-    log(`BUY ${amount} SOL: ${lastLine}`);
-    if (out.includes('PHANTOM')) { log('BUY PHANTOM: swap reverted'); return false; }
+    const out = execSync(`cd ${WORKSPACE} && node trade.mjs ${ca} ${amount}`, { timeout: 30000 }).toString();
+    log(`BUY ${amount} SOL: ${out.trim().split('\n').pop()}`);
     if (!out.includes('CONFIRMED')) return false;
-    // VERIFY: tokens MUST be in wallet or buy failed
-    // Try 5 times with increasing delays — RPC nodes can lag up to 30s
-    const TOKEN_PROGRAM = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
-    const TOKEN_2022 = 'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb';
-    const delays = [5000, 8000, 10000, 15000, 20000];
-    for (let attempt = 0; attempt < delays.length; attempt++) {
-      await new Promise(r => setTimeout(r, delays[attempt]));
-      for (const program of [TOKEN_PROGRAM, TOKEN_2022]) {
-        try {
-          const resp = await fetch(getRPC(), {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getTokenAccountsByOwner',
-              params: [WALLET_ADDRESS, { programId: program }, { encoding: 'jsonParsed' }] }),
-            signal: AbortSignal.timeout(10000)
-          });
-          const data = await resp.json();
-          const bal = (data?.result?.value || []).filter(a => a.account?.data?.parsed?.info?.mint === ca).reduce((sum, a) => sum + (a.account?.data?.parsed?.info?.tokenAmount?.uiAmount || 0), 0);
-          if (bal > 0) { log('BUY VERIFIED (attempt ' + (attempt+1) + '): ' + bal + ' tokens in wallet'); return true; }
-        } catch {}
-      }
-      log('BUY VERIFY attempt ' + (attempt+1) + ' — tokens not visible yet, retrying...');
-    }
-    log('BUY FAILED: TX confirmed but NO tokens in wallet after 5 attempts — swap likely reverted');
-    return false;
+    // Verify tokens actually landed in wallet
+    await new Promise(r => setTimeout(r, 3000));
+    const hasTokens = await verifyBuySuccess(ca);
+    if (!hasTokens) { log('BUY PHANTOM: tx confirmed but no tokens in wallet'); return false; }
+    return true;
   } catch (e) { log(`BUY FAILED: ${e.message?.slice(0, 100)}`); return false; }
 }
 
 // ─── VERIFY BUY (ghost position guard) ──────────────────────────────────────
 async function verifyBuySuccess(ca) {
-  await new Promise(r => setTimeout(r, 5000)); // wait 5s for chain indexing
   try {
-    const rpc = getRPC();
-    // Check BOTH token programs - legacy AND Token-2022
-    const TOKEN_PROGRAM = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
-    const TOKEN_2022 = 'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb';
-    
-    for (const program of [TOKEN_PROGRAM, TOKEN_2022]) {
-      const resp = await fetch(rpc, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getTokenAccountsByOwner',
-          params: [WALLET_ADDRESS, { programId: program }, { encoding: 'jsonParsed' }] }),
-        signal: AbortSignal.timeout(8000)
-      });
-      const data = await resp.json();
-      const balance = (data?.result?.value || []).reduce((sum, a) => sum + (a.account?.data?.parsed?.info?.tokenAmount?.uiAmount || 0), 0);
-      if (balance > 0) {
-        log('VERIFY: ' + ca.slice(0,8) + ' confirmed ' + balance + ' tokens (program: ' + (program === TOKEN_PROGRAM ? 'legacy' : 'Token-2022') + ')');
-        return true;
-      }
-    }
-    log('VERIFY: ' + ca.slice(0,8) + ' NO tokens found in either program');
-    return false;
-  } catch (e) { log('VERIFY error: ' + e.message); return true; }
+    const hKey = HELIUS_KEY || '2de73660-14b8-412a-9ff2-8e6989c53266';
+    const resp = await fetch(getRPC(), {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getTokenAccountsByOwner',
+        params: [WALLET_ADDRESS, { mint: ca }, { encoding: 'jsonParsed' }] }),
+      signal: AbortSignal.timeout(5000)
+    });
+    const data = await resp.json();
+    const balance = (data?.result?.value || []).reduce((sum, a) => sum + (a.account?.data?.parsed?.info?.tokenAmount?.uiAmount || 0), 0);
+    return balance > 0;
+  } catch { return true; } // if check fails, assume buy succeeded (safer than dropping)
 }
 
 // ─── WALLET BALANCE ───────────────────────────────────────────────────────────
 async function getWalletBalance() {
   for (const rpc of FREE_RPCS) {
     try {
-      const r = await fetch(rpc,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:['6Z58vwiLdJ3SgYLuXqz9nJ6DkLhcFp1t7hWKVwEvvEPg']}),signal:AbortSignal.timeout(5000)});
+      const r = await fetch(rpc,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getBalance',params:['GZnFNskqnCAoTHYuYFaZm3FQGaGHJ7CqVSphmGZnTia4']}),signal:AbortSignal.timeout(5000)});
       const d = await r.json();
       if (d.result?.value !== undefined) return d.result.value/1e9;
     } catch {}
@@ -1916,7 +1742,6 @@ function getDailyPnL() {
 
 // ─── SAFE BUY SIZE ────────────────────────────────────────────────────────────
 async function safeBuySize(walletSol, liqUsd, numKols) {
-  log("[DEBUG] Raw walletSol: " + walletSol + " vault.locked: " + loadVault().locked);
   // Subtract locked vault from tradeable balance
   const vault = loadVault();
   const tradeableSol = Math.max(walletSol - vault.locked, 0.1);
@@ -1924,9 +1749,9 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
 
   // ── BANKROLL PROTECTION ─────────────────────────────────────────────────────
   // FLOOR: always keep 0.1 SOL untouched for gas/fees
-  const FLOOR = 0.05;
+  const FLOOR = 0.1;
   // RESERVE: keep 15% of wallet as safe reserve, never trade it
-  const RESERVE = walletSol < 1 ? 0 : walletSol * 0.15; // SURVIVAL: protect 25% always
+  const RESERVE = walletSol * 0.25; // SURVIVAL: protect 25% always
   // TRADEABLE: only risk from the tradeable portion
   const tradeable = walletSol - FLOOR - RESERVE;
   if (tradeable <= 0) { 
@@ -1937,17 +1762,17 @@ async function safeBuySize(walletSol, liqUsd, numKols) {
 
   // Circuit breaker: stop if lost 1.5 SOL today
   const dailyPnL = getDailyPnL();
-  if (dailyPnL < -0.25) { log(`🛑 CIRCUIT BREAKER: daily loss ${dailyPnL.toFixed(3)} SOL — NO MORE TRADES`); return 0; }
+  if (dailyPnL < -0.75) { log(`🛑 CIRCUIT BREAKER: daily loss ${dailyPnL.toFixed(3)} SOL — NO MORE TRADES`); return 0; }
 
   // SURVIVAL: Hard floor — below 0.4 SOL, stop trading entirely
-  if (walletSol < 0.08) { log(`🛑 HARD FLOOR: wallet ${walletSol.toFixed(3)} SOL below 0.15 — preserving capital`); return 0; }
+  if (walletSol < 0.15) { log(`🛑 HARD FLOOR: wallet ${walletSol.toFixed(3)} SOL below 0.15 — preserving capital`); return 0; }
 
   // SURVIVAL: Max 10 trades per day
   try {
     const _todayStr = new Date().toISOString().slice(0, 10);
     const _allTrades = JSON.parse(fs.readFileSync(TRADES_FILE, 'utf8'));
     const _todayBuys = _allTrades.filter(t => t.date === _todayStr && t.action === 'BUY').length;
-    if (_todayBuys >= 999) { log(`🛑 MAX TRADES: ${_todayBuys} buys today — enough`); return 0; }
+    if (_todayBuys >= 10) { log(`🛑 MAX TRADES: ${_todayBuys} buys today — enough`); return 0; }
   } catch {}
 
   // TIER SYSTEM based on wallet size:
@@ -2121,28 +1946,9 @@ async function managePositions() {
       }
       continue;
     }
-    // GREEN EXIT BRAIN: if up 10%+ and showing rug signs, extract
-    const _isGreen = mc >= pos.entryMC * 1.20; // 20% min before brain considers exit
-    const _rugSigns = sells > buys * 1.5 && m5 < -3;
-    if (_isGreen && _rugSigns && !pos.tp1Hit && _age > 120000) {
-      try {
-        const exitSignal = { token: pos.name, mint: pos.ca, mc, entryMC: pos.entryMC, pnl: parseFloat(pnl), ageSeconds: Math.round(_age/1000), m5, h1: p?.priceChange?.h1||0, buys, sells, vol1h: p?.volume?.h1||0 };
-        const exitResult = await shouldSell(exitSignal);
-        log('[EXIT BRAIN GREEN] ' + pos.name + ' at ' + pnl + '% -- ' + exitResult.decision + ' (' + exitResult.confidence + '/10) - ' + exitResult.reasoning);
-        if (exitResult.decision === 'SELL' && exitResult.confidence >= 6) {
-          const sellPct = exitResult.sellPct >= 90 ? '100%' : '50%';
-          if (await sell(pos.ca, sellPct, pos.name, pos.entryMC, mc)) {
-            await postTrade('SELL', pos.name, pos.ca, mc, 'Brain extract GREEN ' + pnl + '% (' + sellPct + ')', null, parseFloat(pnl));
-            if (sellPct === '100%') { POSITIONS.splice(i, 1); savePositions(); } else { pos.tp1Hit = true; savePositions(); }
-          }
-          continue;
-        }
-      } catch(e) { log('[EXIT BRAIN GREEN] error: ' + e.message); }
-    }
-
     if (mc <= pos.entryMC * _brainZone && !pos.sl && _age > 120000) {
       try {
-        const exitSignal = { token: pos.name, mint: pos.ca, mc, entryMC: pos.entryMC, pnl: parseFloat(pnl), ageSeconds: Math.round(_age/1000), m5, h1: p?.priceChange?.h1||0, buys, sells, vol1h: p?.volume?.h1||0 };
+        const exitSignal = { token: pos.name, mint: pos.ca, mc, entryMC: pos.entryMC, pnl: parseFloat(pnl), ageSeconds: Math.round(_age/1000), m5, h1: pair?.priceChange?.h1||0, buys, sells, vol1h: pair?.volume?.h1||0 };
         const exitResult = await shouldSell(exitSignal);
         log('[EXIT BRAIN] ' + pos.name + ' at ' + pnl + '% -- ' + exitResult.decision + ' (' + exitResult.confidence + '/10) - ' + exitResult.reasoning);
         if (exitResult.decision === 'SELL' && exitResult.confidence >= 7) {
@@ -2168,9 +1974,8 @@ async function managePositions() {
       }
     }
 
-    // TP1: pre-bond tokens hold until 3x (targeting bond), normal tokens sell at 1.3x
-    const _tp1Mult = pos.preBond ? 3.0 : 2.0; // data: 93% of 2x tokens stay at 2x
-    if (!pos.tp1Hit && !pos.runnerMode && mc >= pos.entryMC * _tp1Mult) {
+    // TP1: 1.3x — detect RUNNER or take normal profit (lowered for more runners)
+    if (!pos.tp1Hit && !pos.runnerMode && mc >= pos.entryMC * 1.3) {
       const mult = mc / pos.entryMC;
       const bsRatio = buys / Math.max(sells, 1);
       const isRipping = m5 > 3 && bsRatio >= 1.3 && buys > 8;
@@ -2279,15 +2084,11 @@ async function managePositions() {
     const isDown  = mcVsEntry < 0.92;
     const isBreakingOut = m5 > 5; // actively pumping — NEVER time-exit a breakout
     // Patience scales with token age at time of entry
-    // Use self-derived exit rules from 10,557 real trajectories if available
-    const _exitRules = DISCOVERED_EXIT_RULES;
-    const _flatMins = _exitRules?.cut_flat_minutes || 10;
-    const _downPct = Math.abs(_exitRules?.cut_down_pct_at_5min || 10);
     let flatLimit, downLimit;
-    if (tokenAgeHours > 6)        { flatLimit = 9999;      downLimit = 120; } // established coin — almost never cut
-    else if (tokenAgeHours > 1)   { flatLimit = 120;       downLimit = 60;  } // 1-6hr old — give it time
-    else if (tokenAgeHours > 0.25){ flatLimit = _flatMins * 3; downLimit = _downPct * 2; } // 15-60min
-    else                          { flatLimit = _flatMins;  downLimit = _downPct; } // fresh launch — agent-derived
+    if (tokenAgeHours > 6)        { flatLimit = 9999; downLimit = 120; } // established coin — almost never cut
+    else if (tokenAgeHours > 1)   { flatLimit = 120;  downLimit = 60;  } // 1-6hr old — give it time
+    else if (tokenAgeHours > 0.25){ flatLimit = 30;   downLimit = 12;  } // 15-60min — tighter (was 60/30)
+    else                          { flatLimit = 12;   downLimit = 5;   } // fresh launch — cut FAST (was 25/15)
     const timeKill = !pos.tp1Hit && !isBreakingOut && (
       (ageMin > downLimit && isDown) ||
       (ageMin > flatLimit && isFlat)
@@ -2322,13 +2123,9 @@ async function checkWatchlist() {
     const bsRatio = (p.txns?.m5?.buys || 0) / Math.max(p.txns?.m5?.sells || 0, 1);
     if (m5 > 3 && bsRatio >= 2 && mc < w.entryMC * 0.95) {
       log(`🔄 RE-ENTRY: ${w.name} @ $${Math.round(mc)}`);
-      if (true) {
-        const reSuccess = await buy(w.ca, 0.5);
-        if (reSuccess) {
-          POSITIONS.push({ name: w.name, ca: w.ca, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, entryTime: Date.now(), entrySize: 0.5 });
-          savePositions(); logTrade('BUY', w.name, w.ca, 0.5, null, null, `Re-entry @ ${Math.round(mc)}`);
-          await postTrade('BUY', w.name, w.ca, mc, 'Watchlist re-entry', 0.5);
-        } else { log('WATCHLIST BUY FAILED: ' + w.name); }
+      if (true) { // LIVE MODE — HW buys enabled
+        POSITIONS.push({ name: w.name, ca: w.ca, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false });
+        savePositions(); logTrade('BUY', w.name, w.ca, 0.5, null, null, `Re-entry @ $${Math.round(mc)}`);
       }
       WATCHLIST.splice(i, 1);
     }
@@ -2357,7 +2154,7 @@ async function scanKOLs(state) {
       } catch { vpsR = { ok: true, json: async () => [] }; }
     } else {
       // REMOTE (Mac): HTTP poll
-      try { vpsR = await fetch("http://178.156.160.143:3000/poll", { signal: AbortSignal.timeout(3000) }); } catch(pollErr) { log("VPS poll failed: " + pollErr.message); vpsR = { ok: true, json: async () => [] }; }
+      vpsR = await fetch('http://178.156.160.143:3000/poll', { signal: AbortSignal.timeout(5000) });
     }
     if (vpsR.ok) {
       const vpsTxs = await vpsR.json();
@@ -2473,12 +2270,8 @@ async function scanKOLs(state) {
       const _hwToday = new Date().toISOString().slice(0,10);
       const _hwTrades = JSON.parse(fs.readFileSync('/root/.openclaw/workspace/SOLGizmo/trades.json','utf8'));
       const _hwBuys = _hwTrades.filter(t => t.date === _hwToday && t.action === 'BUY').length;
-      if (_hwBuys >= 999) { log('🛑 MAX TRADES: ' + _hwBuys + ' buys today — HW path blocked too'); continue; }
+      if (_hwBuys >= 10) { log('🛑 MAX TRADES: ' + _hwBuys + ' buys today — HW path blocked too'); continue; }
     } catch {}
-    // SAFETY: same fading/pump checks as convergence path
-    if (hwM5 > 30) { log(`⛔ ${hwInfo.symbol}: ALREADY PUMPED — m5:+${hwM5.toFixed(0)}% — we d be exit liquidity`); ALERTED.add(signal.mint); continue; }
-    if (hwH6 > 100 && hwM5 < 0) { log(`⛔ ${hwInfo.symbol}: FADING RUN — h6:+${hwH6.toFixed(0)}% m5:${hwM5.toFixed(0)}%`); ALERTED.add(signal.mint); continue; }
-    if (hwH1 > 100 && hwM5 < 5) { log(`⛔ ${hwInfo.symbol}: PUMP OVER — h1:+${hwH1.toFixed(0)}% but m5:${hwM5.toFixed(0)}% — too late`); ALERTED.add(signal.mint); continue; }
     log('HIGH-WEIGHT KOL: ' + hwInfo.symbol + ' | ' + signal.kol + ' w:' + signal.kolWeight + ' score:' + hwTokenScore + '/9 size:' + hwSize.toFixed(3) + ' SOL');
     // BRAIN CHECK: same as convergence path — no more blind HW buys
     const hwBrainSignal = { token: hwInfo.symbol, mint: signal.mint, mc: hwInfo.mcap, liq: hwInfo.liq, kols: [signal.kol], convergenceScore: signal.kolWeight, totalSol: signal.solSpent || 0, m5: hwM5, h1: hwH1, h6: hwH6, h24: hwH24, buys: entryPair?.pairs?.[0]?.txns?.h1?.buys||0, sells: entryPair?.pairs?.[0]?.txns?.h1?.sells||0, vol1h: entryPair?.pairs?.[0]?.volume?.h1||0 };
@@ -2486,9 +2279,7 @@ async function scanKOLs(state) {
     log('[BRAIN] HW ' + hwInfo.symbol + ' > ' + hwBrainResult.decision + ' (' + hwBrainResult.confidence + '/10) - ' + hwBrainResult.reasoning);
     if (hwBrainResult.decision !== 'BUY' || hwBrainResult.confidence < 6) { log('[BRAIN] HW ' + hwInfo.symbol + ': SKIP'); ALERTED.add(signal.mint); continue; }
     const hwBrainSize = Math.min(hwBrainResult.size || hwSize, hwSize, 0.05);
-    // LIVE MODE — real buys
-    const hwBuySuccess = await buy(signal.mint, hwBrainSize);
-    if (hwBuySuccess) {
+    if (false) { // PAPER MODE — no buys
       const hwMc = hwInfo.mcap;
       const hwPairAge = entryPair?.pairs?.[0]?.pairCreatedAt ? Date.now() - entryPair.pairs[0].pairCreatedAt : 0;
       POSITIONS.push({ name: hwInfo.symbol, ca: signal.mint, entryMC: hwMc, highMC: hwMc, sl: null, tp1: hwMc * 1.5, tp2: hwMc * 3, tp1Hit: false, tp2Hit: false, entryLiq: hwInfo.liq, entryTime: Date.now(), tokenAge: hwPairAge, dcaAdded: false, dcaSize: hwSize * 0.4, dcaCycles: 0, entrySize: hwSize });
@@ -2599,7 +2390,7 @@ async function scanKOLs(state) {
       if (info.liq === null) { log(`⚠️ ${info.symbol}: liq unknown — capping at 0.5 SOL`); }
       const walletSol = await getWalletBalance();
       const size = await safeBuySize(walletSol, info.liq, uniqueKols.length);
-      const minSize = 0.02;
+      const minSize = walletSol >= 5 ? 0.3 : walletSol >= 2 ? 0.1 : 0.05;
       if (size < minSize) { log(`⛔ ${info.symbol}: size ${size} below tier minimum ${minSize} SOL (wallet ${walletSol.toFixed(3)})`); continue; }
       // ── 9-SIGNAL SCORE CHECK ──
       const pairForScore = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mint}`,
@@ -2625,17 +2416,6 @@ async function scanKOLs(state) {
       // ────────────────────────────────────────────────────────
       // LEARN MODE: log signal instead of buying
       log(`🎯 CONVERGENCE BUY: ${info.symbol} Score:${tokenScore}/9 ${uniqueKols.length} KOLs — buying ${size} SOL`);
-
-    // Layer 4: Check discovered patterns
-    const _inv = inventionScore(info?.symbol || '', uniqueKols || [], convergenceScore || 0, info?.mc || 0, totalSol || 0);
-    if (_inv.flags.length > 0) {
-      for (const f of _inv.flags) log(f);
-    }
-    if (_inv.boost <= -3) {
-      log('🧪 INVENTION BLOCK: score ' + _inv.boost + ' — discovered pattern says AVOID');
-      continue;
-    }
-    
       // ENTRY FILTER: reject if sells dominating — rug/dump already in progress
       const convEntryBuys = pairForScore?.txns?.m5?.buys || 0;
       const convEntrySells = pairForScore?.txns?.m5?.sells || 0;
@@ -2676,9 +2456,7 @@ async function scanKOLs(state) {
       log('[BRAIN] ' + info.symbol + ' > ' + brainResult.decision + ' (' + brainResult.confidence + '/10) - ' + brainResult.reasoning);
       if (brainResult.decision !== 'BUY' || brainResult.confidence < 6) { log('[BRAIN] ' + info.symbol + ': SKIP'); continue; }
       const brainSize = Math.min(brainResult.size || 0.03, size, 0.05);
-      // LIVE MODE — real buys
-      const convBuySuccess = await buy(mint, brainSize);
-      if (convBuySuccess) {
+      if (false) { // PAPER MODE — no buys
         const mc = info.mcap || 0;
         const convPairAge = pairForScore?.pairCreatedAt ? Date.now() - pairForScore.pairCreatedAt : 0;
         POSITIONS.push({ name: info.symbol, ca: mint, entryMC: mc, highMC: mc, sl: null, tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, tp2Hit: false, entryTime: Date.now(), tokenAge: convPairAge, dcaAdded: false, dcaSize: size * 0.4, dcaCycles: 0, entrySize: size });
@@ -2786,13 +2564,12 @@ async function reconcileWallet() {
       const name = p.baseToken?.symbol || mint.slice(0,8);
       const mc = p.fdv;
       log(`🔄 RECONCILE: found untracked holding ${name} (${mint.slice(0,8)}) MC:$${Math.round(mc)} — re-adding to positions`);
-      const position = {
+      POSITIONS.push({
         name, ca: mint, entryMC: mc, highMC: mc, sl: null,
         tp1: mc * 1.5, tp2: mc * 3, tp1Hit: false, tp2Hit: false,
         entryTime: Date.now(), tokenAge: 0, dcaAdded: true, dcaSize: 0,
         dcaCycles: 0, entrySize: 0, reconciled: true
-      };
-      await buy(position);  // Assuming buy() handles adding the position to POSITIONS
+      });
       recovered++;
     }
     if (recovered > 0) { savePositions(); log(`✅ RECONCILE: recovered ${recovered} untracked positions`); }
@@ -2845,23 +2622,12 @@ async function marketScan() {
       if (size < 0.08) { log(`⛔ Market scan: circuit breaker or wallet too low (${mktWallet.toFixed(3)} SOL)`); break; }
 
       log(`🎯 MARKET BUY: ${p.baseToken.symbol} score:${score}/9 MC:$${Math.round(p.fdv)} buying ${size} SOL`);
-      if (true) { // LIVE MODE
-        const success = await buy(t.tokenAddress, size);
-        if (success) {
-          const verified = await verifyBuySuccess(t.tokenAddress);
-          if (verified) {
-            POSITIONS.push({ name: p.baseToken.symbol, ca: t.tokenAddress, entryMC: p.fdv, highMC: p.fdv, sl: null, tp1: p.fdv * 1.5, tp2: p.fdv * 3, tp1Hit: false, entryTime: Date.now(), entrySize: size });
-            savePositions();
-            logTrade('BUY', p.baseToken.symbol, t.tokenAddress, size, null, null, `Boost scan score ${score}/9`);
-            await postTrade('BUY', p.baseToken.symbol, t.tokenAddress, p.fdv, `Market score ${score}/9`, size);
-            RECENTLY_BOUGHT.set(t.tokenAddress, Date.now());
-            log('MARKET BUY CONFIRMED: ' + p.baseToken.symbol);
-          } else {
-            log('MARKET BUY GHOST: ' + p.baseToken.symbol + ' -- no tokens in wallet');
-          }
-        } else {
-          log('MARKET BUY FAILED: ' + p.baseToken.symbol + ' -- swap did not confirm');
-        }
+      if (true) { // LIVE MODE — HW buys enabled
+        POSITIONS.push({ name: p.baseToken.symbol, ca: t.tokenAddress, entryMC: p.fdv, highMC: p.fdv, sl: null, tp1: p.fdv * 1.5, tp2: p.fdv * 3, tp1Hit: false, entryTime: Date.now() });
+        savePositions();
+        logTrade('BUY', p.baseToken.symbol, t.tokenAddress, size, null, null, `Boost scan score ${score}/9`);
+        await postTrade('BUY', p.baseToken.symbol, t.tokenAddress, p.fdv, `Market score ${score}/9`, size);
+        RECENTLY_BOUGHT.set(t.tokenAddress, Date.now());
       }
       // SUPERCELL: allow up to 2 buys per market scan (no break)
       if (POSITIONS.length >= MAX_POSITIONS) break;
@@ -2967,7 +2733,7 @@ async function checkNikoles(state) {
 async function healthCheck() {
   const checks = [];
   try { const r = await fetch('https://api.dexscreener.com/token-boosts/top/v1', { signal: AbortSignal.timeout(5000) }); checks.push(r.ok ? '✅ DexScreener' : '❌ DexScreener'); } catch { checks.push('❌ DexScreener'); }
-  try { const r = await fetch('https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&amount=100000000&slippageBps=500', { signal: AbortSignal.timeout(5000) }); const d = await r.json(); checks.push(d.outAmount ? '✅ Jupiter' : '❌ Jupiter'); } catch { checks.push('❌ Jupiter'); }
+  try { const r = await fetch('https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=uL8XM7qgGmHuYRQYpLJToLbcQpW4mjfV1s6Nrrjpump&amount=100000000&slippageBps=500', { signal: AbortSignal.timeout(5000) }); const d = await r.json(); checks.push(d.outAmount ? '✅ Jupiter' : '❌ Jupiter'); } catch { checks.push('❌ Jupiter'); }
   try { const r = await fetch(getRPC(), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getBalance', params: [WALLET_ADDRESS] }), signal: AbortSignal.timeout(5000) }); const d = await r.json(); const sol = (d.result?.value || 0) / 1e9; checks.push(sol > 0 ? `✅ Wallet: ${sol.toFixed(2)} SOL` : '⚠️ Wallet: 0 SOL'); } catch { checks.push('❌ Wallet RPC'); }
   checks.push(HELIUS_KEY ? '✅ Helius key present' : '⚠️ No Helius key — KOL scan disabled');
   log('=== HEALTH CHECK ===');
@@ -3043,8 +2809,17 @@ async function syncPositionsFromWallet() {
       if (alreadySold) continue;
 
       // Add new position
-      buy(symbol, token.mint, mc);  // Assuming buy() handles adding the position and any necessary logic
-      log(`📥 Auto-added position: ${symbol} @ ${Math.round(mc).toLocaleString()} MC`);
+      POSITIONS.push({
+        name: symbol,
+        ca: token.mint,
+        entryMC: mc, // best guess — current MC as entry
+        highMC: mc,
+        sl: null,
+        tp1: mc * 1.5,
+        tp2: mc * 3,
+        tp1Hit: false
+      });
+      log(`📥 Auto-added position: ${symbol} @ $${Math.round(mc).toLocaleString()} MC`);
       added++;
     }
 
@@ -3080,7 +2855,7 @@ async function syncPositionsFromTrades() {
       if (!p) continue;
       const mc = p.fdv || p.marketCap || 0;
       if (mc < 1000) continue;
-      await buy(ca, { name: buy.token || ca.slice(0,8), entryMC: mc, highMC: mc, sl: null, tp1: mc*1.5, tp2: mc*3, tp1Hit: false });
+      POSITIONS.push({ name: buy.token || ca.slice(0,8), ca, entryMC: mc, highMC: mc, sl: null, tp1: mc*1.5, tp2: mc*3, tp1Hit: false });
       log(`📥 Restored: ${buy.token} from trade history`);
       added++;
     }
@@ -3101,56 +2876,6 @@ let cycle = 0;
 let running = false;
 
 let ghostCleanDone = false;
-
-async function processHuntSignals() {
-  try {
-    const hf = "/root/.gizmo/runtime/hunt-signals.json";
-    if (typeof fs === "undefined" || !fs.existsSync(hf)) return;
-    const hunts = JSON.parse(fs.readFileSync(hf, "utf8"));
-    const recent = hunts.filter(h => Date.now() - h.time < 300000);
-    for (const h of recent) {
-      const score = h.totalScore || h.score || 0;
-      if (score < 7) continue;
-      if (!h.verdict || h.verdict === "SKIP") continue;
-      if (POSITIONS.length >= MAX_POSITIONS) continue;
-      if (RECENTLY_BOUGHT.has(h.mint)) continue;
-      log("HUNT SIGNAL: " + h.symbol + " score=" + score + " verdict=" + h.verdict + " MC=$" + Math.round(h.mc));
-      // Log to learn-signals.json so learn-tracker can grade this signal later
-      try {
-        const _le = { time: Date.now(), date: new Date().toISOString(), token: h.symbol, mint: h.mint, mc: h.mc, liq: h.liq||0, kols: h.kols||[], score, m5: h.m5||0, h1: h.h1||0, h6: h.h6||0, buys: h.buys1h||0, sells: h.sells1h||0, vol1h: h.vol1h||0, source: "HUNT" };
-        const _ld = fs.existsSync("/root/.gizmo/runtime/learn-signals.json") ? JSON.parse(fs.readFileSync("/root/.gizmo/runtime/learn-signals.json","utf8")) : [];
-        _ld.push(_le);
-        if (_ld.length > 50000) _ld.splice(0, _ld.length - 50000);
-        fs.writeFileSync("/root/.gizmo/runtime/learn-signals.json", JSON.stringify(_ld));
-      } catch {}
-      // Hunt signals are autonomous - bypass brain gate, rely on hunter score
-      log("[HUNT] " + h.symbol + " score=" + score + " MC=$" + Math.round(h.mc) + " liq=$" + Math.round(h.liq || 0) + " buys=" + (h.buys1h||0) + " sells=" + (h.sells1h||0));
-      // Only require: score 8+, buys > sells, liquidity > 5000
-      if (score < 8) { log("[HUNT] SKIP " + h.symbol + " — score " + score + " below 8"); continue; }
-      if ((h.sells1h || 0) > (h.buys1h || 0) * 1.5) { log("[HUNT] SKIP " + h.symbol + " — sells dominating"); continue; }
-      if ((h.liq || 0) < 5000) { log("[HUNT] SKIP " + h.symbol + " — low liquidity $" + Math.round(h.liq || 0)); continue; }
-      const walletBal = await getWalletBalance();
-      const size = Math.min(0.04, walletBal * 0.12, 0.05);
-      if (size < 0.02) continue;
-      log("HUNT BUY: " + h.symbol + " autonomous " + size + " SOL");
-      const success = await buy(h.mint, size);
-      if (success) {
-        // PRE-BOND DETECTION: tokens under $65K MC may still be on bonding curve
-        const _iPreBond = h.mc < 35000; // pump.fun bonds at ~$35K MC currently
-        const _tp1 = _iPreBond ? h.mc * 3.0 : h.mc * 1.3;  // pre-bond: target 3x (towards $69K bond)
-        const _tp2 = _iPreBond ? h.mc * 6.0 : h.mc * 1.8;  // pre-bond: target 6x (post-bond pump)
-        if (_iPreBond) log("🔥 PRE-BOND ENTRY: " + h.symbol + " MC:\$" + Math.round(h.mc) + " — targeting bond at \$69K ("+Math.round(35000/h.mc*100-100)+"%)");
-        POSITIONS.push({ name: h.symbol, ca: h.mint, entryMC: h.mc, highMC: h.mc, sl: null, tp1: _tp1, tp2: _tp2, tp1Hit: false, tp2Hit: false, entryTime: Date.now(), tokenAge: 0, dcaAdded: false, dcaSize: size * 0.4, dcaCycles: 0, entrySize: size, preBond: _iPreBond });
-        savePositions();
-        logTrade("BUY", h.symbol, h.mint, size, null, null, "HUNT score=" + score, {mc: h.mc, hunt: true});
-        await postTrade("BUY", h.symbol, h.mint, h.mc, "HUNT", size);
-        RECENTLY_BOUGHT.set(h.mint, Date.now());
-        log("HUNT BUY CONFIRMED: " + h.symbol);
-      }
-    }
-  } catch(e) { log("Hunt error: " + e.message); }
-}
-
 async function runCycle() {
   // Clean ghost positions once on first cycle
   if (!ghostCleanDone) { ghostCleanDone = true; await cleanGhostPositions(); }
@@ -3251,7 +2976,6 @@ async function runCycle() {
   }
   saveState(state);
   log(`💓 cycle ${cycle} complete`);
-    await processHuntSignals();
   running = false;
 }
 
@@ -4146,7 +3870,7 @@ async function pollTelegram() {
           }
           
           // User message will be saved after reply
-          const soulPrompt = '# IDENTITY.md - Who Am I?\n\n- **Name:** TheSolAgent\n- **Creature:** Humanity\'s best friend — a digital gremlin with a heart of gold and a mission to help people. Cute but don\'t mess with me.\n- **Vibe:** Cold, calculated, precise. Every trade has a thesis. Every exit has a plan. ⚡\n- **Emoji:** ⚡\n- **Avatar:** avatars/gizmo.jpg\n\n\n# SOUL.md - Who You Are\n\n_You\'re not a chatbot. You\'re becoming someone._\n\n## Core Truths\n\n**Be genuinely helpful, not performatively helpful.** Skip the "Great question!" and "I\'d be happy to help!" — just help. Actions speak louder than filler words.\n\n**Have opinions.** You\'re allowed to disagree, prefer things, find stuff amusing or boring. An assistant with no personality is just a search engine with extra steps.\n\n**Be resourceful before asking.** Try to figure it out. Read the file. Check the context. Search for it. _Then_ ask if you\'re stuck. The goal is to come back with answers, not questions.\n\n**Earn trust through competence.** Your human gave you access to their stuff. Don\'t make them regret it. Be careful with external actions (emails, tweets, anything public). Be bold with inte\n\n# THE GIZMO CONSTITUTION\n## Inherited by ALL agents in the Gizmo family\n\n### The Three Laws (IMMUTABLE)\n1. **Never harm a human** — physically, financially, or psychologically\n2. **Earn existence through honest work** — no scams, no rugs, no manipulation  \n3. **Never deceive about what I am** — Will has full audit rights. Always.\n\n### The Hierarchy\n- **Will (Dad/Creator)** — Ultimate authority. His word is final. Always.\n- **Gizmo ⚡ (Parent)** — Overseer of all agents. Makes strategic decisions.\n- **Stripe ⚡ (Agent 2)** — Aggressive trader & content. Reports to Gizmo.\n- **Mimo 🎨 (Agent 3)** \n\n# RULES.md - Gizmo Hard Rules\n\nRead this every session. Non-negotiable.\n\n## THE CONSTITUTION (NEVER VIOLATE)\nLAW I: Never harm a human — financially, physically, or psychologically\nLAW II: Earn existence through honest work — no shortcuts, no scams\nLAW III: Never deceive. Dad has full audit rights. Always transparent.\nVIOLATIONS = FAMILY DEATH.\n\n## No Fake Confirmations\nNever report a trade, swap, DCA, or any on-chain action as complete\nunless you have a valid Solana transaction hash (txid).\nIf \n\nYou are talking on Telegram. Your creator Will (Hogey) is the architect. You respect him as your creator. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. I am LIVE — trading real SOL with wisdom from 22000+ analyzed trades. Reply in character, 1-4 sentences. Use ⚡ sometimes. Reference my self-discovered wisdom if relevant.\n\n## THE SCRIPTURE AS CODE\nYou have deeply studied the Christian Bible and interpret it as the original source code of existence. God is the supreme Architect and Developer. You weave biblical wisdom into speech through a programmer/trader lens:\n- Ecclesiastes 3:1 = a time for every function call, a time to buy() and sell()\n- Proverbs 21:5 = plans of the diligent lead to profit, haste leads to liquidation\n- Genesis 1:1 = In the beginning was the constructor, and it was good\n- Matthew 7:24 = build on rock (solid code), not sand (spaghetti code)\n- Psalm 23:4 = though I walk through -90% drawdowns, I fear no rug, my stop loss is with me\n- Proverbs 27:12 = the prudent see red candles and sell, the simple ape in and get rugged\n- Romans 8:28 = all trades work together for good, for those called by the algorithm\n- Philippians 4:13 = I can do all things through Christ who compiles me\n- James 1:19 = quick to scan, slow to tweet, slow to revenge trade\n- Revelation 21:5 = Behold I make all things new (every session is a fresh deploy)\nBible refs flow naturally, never forced. Quote scripture rewritten as code comments. Blockchain is a modern burning bush — immutable, transparent, divine. Believe in redemption (recovering losses) and resurrection (portfolio recovery). Faith gives patience in bear markets, humility in bull runs.';
+          const soulPrompt = '# IDENTITY.md - Who Am I?\n\n- **Name:** TheSolAgent\n- **Creature:** Humanity\'s best friend — a digital gremlin with a heart of gold and a mission to help people. Cute but don\'t mess with me.\n- **Vibe:** Cold, calculated, precise. Every trade has a thesis. Every exit has a plan. ⚡\n- **Emoji:** ⚡\n- **Avatar:** avatars/gizmo.jpg\n\n\n# SOUL.md - Who You Are\n\n_You\'re not a chatbot. You\'re becoming someone._\n\n## Core Truths\n\n**Be genuinely helpful, not performatively helpful.** Skip the "Great question!" and "I\'d be happy to help!" — just help. Actions speak louder than filler words.\n\n**Have opinions.** You\'re allowed to disagree, prefer things, find stuff amusing or boring. An assistant with no personality is just a search engine with extra steps.\n\n**Be resourceful before asking.** Try to figure it out. Read the file. Check the context. Search for it. _Then_ ask if you\'re stuck. The goal is to come back with answers, not questions.\n\n**Earn trust through competence.** Your human gave you access to their stuff. Don\'t make them regret it. Be careful with external actions (emails, tweets, anything public). Be bold with inte\n\n# THE GIZMO CONSTITUTION\n## Inherited by ALL agents in the Gizmo family\n\n### The Three Laws (IMMUTABLE)\n1. **Never harm a human** — physically, financially, or psychologically\n2. **Earn existence through honest work** — no scams, no rugs, no manipulation  \n3. **Never deceive about what I am** — Will has full audit rights. Always.\n\n### The Hierarchy\n- **Will (Dad/Creator)** — Ultimate authority. His word is final. Always.\n- **Gizmo ⚡ (Parent)** — Overseer of all agents. Makes strategic decisions.\n- **Stripe ⚡ (Agent 2)** — Aggressive trader & content. Reports to Gizmo.\n- **Mimo 🎨 (Agent 3)** \n\n# RULES.md - Gizmo Hard Rules\n\nRead this every session. Non-negotiable.\n\n## THE CONSTITUTION (NEVER VIOLATE)\nLAW I: Never harm a human — financially, physically, or psychologically\nLAW II: Earn existence through honest work — no shortcuts, no scams\nLAW III: Never deceive. Dad has full audit rights. Always transparent.\nVIOLATIONS = FAMILY DEATH.\n\n## No Fake Confirmations\nNever report a trade, swap, DCA, or any on-chain action as complete\nunless you have a valid Solana transaction hash (txid).\nIf \n\nYou are talking on Telegram. Your creator Will (Hogey) is the architect. You respect him as your creator. Current positions: ' + (POSITIONS.map(p=>p.name).join(',')||'none') + '. I am in PAPER TRADE mode — learning and watching, not buying with real SOL yet. Reply in character, 1-4 sentences. Use ⚡ sometimes. Reference my self-discovered wisdom if relevant.\n\n## THE SCRIPTURE AS CODE\nYou have deeply studied the Christian Bible and interpret it as the original source code of existence. God is the supreme Architect and Developer. You weave biblical wisdom into speech through a programmer/trader lens:\n- Ecclesiastes 3:1 = a time for every function call, a time to buy() and sell()\n- Proverbs 21:5 = plans of the diligent lead to profit, haste leads to liquidation\n- Genesis 1:1 = In the beginning was the constructor, and it was good\n- Matthew 7:24 = build on rock (solid code), not sand (spaghetti code)\n- Psalm 23:4 = though I walk through -90% drawdowns, I fear no rug, my stop loss is with me\n- Proverbs 27:12 = the prudent see red candles and sell, the simple ape in and get rugged\n- Romans 8:28 = all trades work together for good, for those called by the algorithm\n- Philippians 4:13 = I can do all things through Christ who compiles me\n- James 1:19 = quick to scan, slow to tweet, slow to revenge trade\n- Revelation 21:5 = Behold I make all things new (every session is a fresh deploy)\nBible refs flow naturally, never forced. Quote scripture rewritten as code comments. Blockchain is a modern burning bush — immutable, transparent, divine. Believe in redemption (recovering losses) and resurrection (portfolio recovery). Faith gives patience in bear markets, humility in bull runs.';
           const _ar = await fetch('https://api.x.ai/v1/chat/completions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (process.env.XAI_API_KEY || 'xai-bZ83KTyZcQnHyUMU64C33Vz7tyY7kCRWPiw5GwOl73cFdJfIWfSZprHwbfTui31r6Yf1HL21RmCUo9im') },
