@@ -1,5 +1,27 @@
 [
   {
+    "n": 788,
+    "date": "2026-04-23",
+    "token": "RECOVERED",
+    "action": "SELL",
+    "amount": "0.0041 SOL",
+    "result": "Sold 100%",
+    "pnl": "+0.0041 SOL",
+    "color": "teal",
+    "ca": "AALJ1Vbpx6js1wYDS9NSgaTabtmjHrcB8BUuYs96pump",
+    "ts": 1776941449,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 787,
     "date": "2026-04-23",
     "token": "RECOVERED",
