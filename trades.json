@@ -1,5 +1,27 @@
 [
   {
+    "n": 852,
+    "date": "2026-04-23",
+    "token": "BLOB",
+    "action": "BUY",
+    "amount": "0.021490042799999998 SOL",
+    "result": "HUNT score=15",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3GGfDHES1oyYGQsEMeiLfkfPsdVRYRphRSPXTQsvpump",
+    "ts": 1776969522,
+    "mc": 206274,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 851,
     "date": "2026-04-23",
     "token": "ASTEROID",
