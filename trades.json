@@ -1,5 +1,27 @@
 [
   {
+    "n": 750,
+    "date": "2026-04-23",
+    "token": "XERO",
+    "action": "BUY",
+    "amount": "0.0335007186 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "B82yjD7yiWS5BkKRNmfLABdYNma3vxz18L4sAkhxpump",
+    "ts": 1776910106,
+    "mc": 247334,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 749,
     "date": "2026-04-23",
     "token": "RISE",
