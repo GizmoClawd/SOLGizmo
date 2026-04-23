@@ -1,5 +1,27 @@
 [
   {
+    "n": 873,
+    "date": "2026-04-23",
+    "token": "$ASTR",
+    "action": "BUY",
+    "amount": "0.0303927024 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GEr3mpSoqQiQsxYKUH8GZqyMConyJSNz3uVRL9bmpump",
+    "ts": 1776988797,
+    "mc": 276001,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 872,
     "date": "2026-04-23",
     "token": "AIB",
