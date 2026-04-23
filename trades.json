@@ -1,5 +1,27 @@
 [
   {
+    "n": 835,
+    "date": "2026-04-23",
+    "token": "BULLTRUMP",
+    "action": "SELL",
+    "amount": "0.0219 SOL",
+    "result": "Sold 50% | PnL: +102.2%",
+    "pnl": "+0.0219 SOL",
+    "color": "teal",
+    "ca": "Ff4yJaJ6hhmBsEXrFwM8QpXFUKDeL7sZSsv3jWSXpump",
+    "ts": 1776966748,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 834,
     "date": "2026-04-23",
     "token": "PORINGMAN",
