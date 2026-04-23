@@ -1,5 +1,27 @@
 [
   {
+    "n": 729,
+    "date": "2026-04-23",
+    "token": "BULL",
+    "action": "BUY",
+    "amount": "0.02372076348 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "ts": 1776905698,
+    "mc": 3944491,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 728,
     "date": "2026-04-23",
     "token": "ACEO",
