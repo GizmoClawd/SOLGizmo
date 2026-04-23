@@ -1,5 +1,27 @@
 [
   {
+    "n": 737,
+    "date": "2026-04-23",
+    "token": "420",
+    "action": "BUY",
+    "amount": "0.02792211804 SOL",
+    "result": "HUNT score=8",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8wiK5otr25uY5htJn9wNURnA5muh7yuoyHG34SAfpump",
+    "ts": 1776906837,
+    "mc": 265921,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 736,
     "date": "2026-04-23",
     "token": "TARDI",
