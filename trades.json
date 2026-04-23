@@ -1,5 +1,27 @@
 [
   {
+    "n": 867,
+    "date": "2026-04-23",
+    "token": "SPIKE",
+    "action": "SELL",
+    "amount": "0.0401 SOL",
+    "result": "Sold 100% | PnL: +2.3%",
+    "pnl": "+0.0401 SOL",
+    "color": "teal",
+    "ca": "BFiGUxnidogqcZAPVPDZRCfhx3nXnFLYqpQUaUGpump",
+    "ts": 1776986408,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 866,
     "date": "2026-04-23",
     "token": "Homer",
