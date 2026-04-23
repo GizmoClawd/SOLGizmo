@@ -1,5 +1,27 @@
 [
   {
+    "n": 746,
+    "date": "2026-04-23",
+    "token": "SAFEMOON",
+    "action": "BUY",
+    "amount": "0.03942848112 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5HrSQ2F679YsKpYwmZDDxhVD9kbPNyn6UV3QPDbjbrrr",
+    "ts": 1776908286,
+    "mc": 172977,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 745,
     "date": "2026-04-23",
     "token": "BRETT",
