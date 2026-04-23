@@ -1,5 +1,27 @@
 [
   {
+    "n": 762,
+    "date": "2026-04-23",
+    "token": "BRETT",
+    "action": "BUY",
+    "amount": "0.02233086228 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BR6CaZYnN7ZodDyqXY38VzsucrScyRMN3qszbPVApump",
+    "ts": 1776915275,
+    "mc": 50529,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 761,
     "date": "2026-04-23",
     "token": "pigeon",
