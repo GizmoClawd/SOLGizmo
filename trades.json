@@ -1,5 +1,27 @@
 [
   {
+    "n": 861,
+    "date": "2026-04-23",
+    "token": "Wasabi",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DSZeB6pCzZsM43gTz7jakiYeCafinsNMKcpeB1FApump",
+    "ts": 1776982792,
+    "mc": 375068,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 860,
     "date": "2026-04-23",
     "token": "CULT",
