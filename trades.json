@@ -1,5 +1,27 @@
 [
   {
+    "n": 874,
+    "date": "2026-04-24",
+    "token": "CULT",
+    "action": "BUY",
+    "amount": "0.02648826456 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8XLobbxncGMuaNiSZ2eymJW73RHihfC7gwkW8kuvpump",
+    "ts": 1776988840,
+    "mc": 50006,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 873,
     "date": "2026-04-23",
     "token": "$ASTR",
