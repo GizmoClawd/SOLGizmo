@@ -1,5 +1,27 @@
 [
   {
+    "n": 893,
+    "date": "2026-04-24",
+    "token": "AINL",
+    "action": "BUY",
+    "amount": "0.02260086624 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "56hrCR3n7danhHNjWaU4VeUHpE1eRE9VRBWpHRPKpump",
+    "ts": 1776993768,
+    "mc": 168527,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 892,
     "date": "2026-04-24",
     "token": "RECOVERED",
