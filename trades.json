@@ -1,5 +1,27 @@
 [
   {
+    "n": 910,
+    "date": "2026-04-24",
+    "token": "eic",
+    "action": "SELL",
+    "amount": "0.028 SOL",
+    "result": "Sold 100% | PnL: -50.8%",
+    "pnl": "+0.0280 SOL",
+    "color": "teal",
+    "ca": "GKso6RQ8aJavfVvNHD8g6GiKuvJBijSy1U2KA6Mpbonk",
+    "ts": 1776996572,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 909,
     "date": "2026-04-24",
     "token": "AINL",
