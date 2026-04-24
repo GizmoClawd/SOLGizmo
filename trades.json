@@ -1,5 +1,27 @@
 [
   {
+    "n": 1008,
+    "date": "2026-04-24",
+    "token": "ADHD",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=13",
+    "pnl": "",
+    "color": "teal",
+    "ca": "nHtKdt67T4DHX5FfcXuwAviHEhJM552nrXmHW7xpump",
+    "ts": 1777063551,
+    "mc": 69464,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1007,
     "date": "2026-04-24",
     "token": "AIB",
