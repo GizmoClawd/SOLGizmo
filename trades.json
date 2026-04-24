@@ -1,5 +1,27 @@
 [
   {
+    "n": 899,
+    "date": "2026-04-24",
+    "token": "$ORG",
+    "action": "BUY",
+    "amount": "0.02019937368 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7XD1HNr265hKEo9UgzSMoTbc4pAxuQg4anrEoJ16pump",
+    "ts": 1776993978,
+    "mc": 95178,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 898,
     "date": "2026-04-24",
     "token": "RECOVERED",
