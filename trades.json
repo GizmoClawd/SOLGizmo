@@ -1,5 +1,27 @@
 [
   {
+    "n": 1026,
+    "date": "2026-04-24",
+    "token": "ADHD",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=15",
+    "pnl": "",
+    "color": "teal",
+    "ca": "nHtKdt67T4DHX5FfcXuwAviHEhJM552nrXmHW7xpump",
+    "ts": 1777067214,
+    "mc": 74512,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1025,
     "date": "2026-04-24",
     "token": "Mirumi",
