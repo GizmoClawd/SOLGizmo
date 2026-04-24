@@ -1,5 +1,27 @@
 [
   {
+    "n": 924,
+    "date": "2026-04-24",
+    "token": "asterunc",
+    "action": "SELL",
+    "amount": "0.0015 SOL",
+    "result": "Sold 100% | PnL: -95.3%",
+    "pnl": "+0.0015 SOL",
+    "color": "teal",
+    "ca": "374G3uFEcNyVAMM2rd7zyNkrWHUjYQ1f7ZqciK8Xpump",
+    "ts": 1777038579,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 923,
     "date": "2026-04-24",
     "token": "MAGA",
