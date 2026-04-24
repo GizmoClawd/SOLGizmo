@@ -1,5 +1,27 @@
 [
   {
+    "n": 933,
+    "date": "2026-04-24",
+    "token": "S&P500",
+    "action": "SELL",
+    "amount": "0.0479 SOL",
+    "result": "Sold 100% | PnL: +22.4%",
+    "pnl": "+0.0479 SOL",
+    "color": "teal",
+    "ca": "xZdS8URkGWvkYt3dJvc4X2qLRwzzHKaoWEQ2bHJbrrr",
+    "ts": 1777049273,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 932,
     "date": "2026-04-24",
     "token": "AIB",
