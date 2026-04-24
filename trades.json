@@ -1,5 +1,27 @@
 [
   {
+    "n": 1062,
+    "date": "2026-04-24",
+    "token": "16P",
+    "action": "SELL",
+    "amount": "0.0193 SOL",
+    "result": "Sold 100% | PnL: -54.4%",
+    "pnl": "+0.0193 SOL",
+    "color": "teal",
+    "ca": "5LzTPu8H4V1D4gTG2MHMF6gdfGZamyQ1uLSWh3ripump",
+    "ts": 1777074206,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1061,
     "date": "2026-04-24",
     "token": "WCOR",
