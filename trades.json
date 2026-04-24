@@ -1,5 +1,27 @@
 [
   {
+    "n": 1066,
+    "date": "2026-04-24",
+    "token": "ROTUS",
+    "action": "SELL",
+    "amount": "0.039 SOL",
+    "result": "Sold 100% | PnL: +3.1%",
+    "pnl": "+0.0390 SOL",
+    "color": "teal",
+    "ca": "C8Lwj83fBz9bPKSUxNLEc2QkLF7oVkV7Ja9UKSFLbrrr",
+    "ts": 1777074854,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1065,
     "date": "2026-04-24",
     "token": "Savvy",
