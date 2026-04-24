@@ -1,5 +1,27 @@
 [
   {
+    "n": 947,
+    "date": "2026-04-24",
+    "token": "PORK",
+    "action": "SELL",
+    "amount": "0.1274 SOL",
+    "result": "Sold 100% | PnL: +4.4%",
+    "pnl": "+0.1274 SOL",
+    "color": "teal",
+    "ca": "5BWWJb2ddwv1URaFCXqujM8djSTnKLkNjyP6TMmpump",
+    "ts": 1777051930,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 946,
     "date": "2026-04-24",
     "token": "Mirumi",
