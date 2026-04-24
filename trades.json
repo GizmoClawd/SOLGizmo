@@ -1,5 +1,27 @@
 [
   {
+    "n": 887,
+    "date": "2026-04-24",
+    "token": "AIB",
+    "action": "BUY",
+    "amount": "0.023931473879999998 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "GgieLnjHjwYwSvscVNc2xB2qN1K3YhjYPngzY9c2bonk",
+    "ts": 1776992518,
+    "mc": 555044,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 886,
     "date": "2026-04-24",
     "token": "AINL",
