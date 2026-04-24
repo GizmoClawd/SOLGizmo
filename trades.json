@@ -1,5 +1,27 @@
 [
   {
+    "n": 1036,
+    "date": "2026-04-24",
+    "token": "Mirumi",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3BRC7ZfRXXfXNFwYkQr1dJCPNZKDRYc4n7KGwrtzpump",
+    "ts": 1777068905,
+    "mc": 389347,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1035,
     "date": "2026-04-24",
     "token": "AINI",
