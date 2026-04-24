@@ -163,7 +163,7 @@ const SIGNAL_WINDOW_MS = 10 * 60 * 1000;
 const HELIUS_KEY = process.env.HELIUS_API_KEY || '2de73660-14b8-412a-9ff2-8e6989c53266';
 
 // ─── ADAPTIVE PARAMS (learning system) ───────────────────────────────────────
-let SCORE_THRESHOLD = 5; // SURVIVAL: locked high
+let SCORE_THRESHOLD = 10; // DATA: scores <10 are 85-98% rug from 3000 signals
 let MIN_LIQ = 8000;
 let MIN_KOLS = 2;
 let POSITION_SIZE_MULT = 1.0;
@@ -175,7 +175,7 @@ function loadLearnState() {
   try {
     if (fs.existsSync(LEARN_FILE)) {
       const s = JSON.parse(fs.readFileSync(LEARN_FILE, 'utf8'));
-      SCORE_THRESHOLD = 5;
+      SCORE_THRESHOLD = 10;
       MIN_LIQ = 8000;
       MIN_KOLS = 2;
       POSITION_SIZE_MULT = 1.0; // SURVIVAL: locked at 1x
@@ -238,11 +238,11 @@ async function learnFromTrades() {
     // Score threshold driven by OVERALL win rate (not just market — most trades are KOL)
     if (recent.length >= 5) {
       if (winRate <= 0.45 && SCORE_THRESHOLD < 9) {
-        SCORE_THRESHOLD = 5;;
+        SCORE_THRESHOLD = 10;;
         log(`🧠 WR low (${(winRate*100).toFixed(0)}%) — raising score threshold to ${SCORE_THRESHOLD}`);
         changed = true;
       } else if (winRate > 0.65 && SCORE_THRESHOLD > 7) {
-        SCORE_THRESHOLD = 5;
+        SCORE_THRESHOLD = 10;
         log(`🧠 WR strong (${(winRate*100).toFixed(0)}%) — threshold stays at ${SCORE_THRESHOLD}`);
         changed = true;
       }
@@ -3126,7 +3126,7 @@ async function processHuntSignals() {
       // Hunt signals are autonomous - bypass brain gate, rely on hunter score
       log("[HUNT] " + h.symbol + " score=" + score + " MC=$" + Math.round(h.mc) + " liq=$" + Math.round(h.liq || 0) + " buys=" + (h.buys1h||0) + " sells=" + (h.sells1h||0));
       // Only require: score 8+, buys > sells, liquidity > 5000
-      if (score < 8) { log("[HUNT] SKIP " + h.symbol + " — score " + score + " below 8"); continue; }
+      if (score < 10) { log("[HUNT] SKIP " + h.symbol + " — score " + score + " below 10 (data-derived)"); continue; }
       if ((h.sells1h || 0) > (h.buys1h || 0) * 1.5) { log("[HUNT] SKIP " + h.symbol + " — sells dominating"); continue; }
       if ((h.liq || 0) < 5000) { log("[HUNT] SKIP " + h.symbol + " — low liquidity $" + Math.round(h.liq || 0)); continue; }
       const walletBal = await getWalletBalance();
