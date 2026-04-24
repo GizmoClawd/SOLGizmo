@@ -1,5 +1,27 @@
 [
   {
+    "n": 1045,
+    "date": "2026-04-24",
+    "token": "SHIB",
+    "action": "SELL",
+    "amount": "0.259 SOL",
+    "result": "Sold 100% | PnL: -18.4%",
+    "pnl": "+0.2590 SOL",
+    "color": "teal",
+    "ca": "4ccSbmYAQNavZcNttwJ3UFfiUmHRJb18WkLPu1C3pump",
+    "ts": 1777071210,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1044,
     "date": "2026-04-24",
     "token": "BULLISH",
