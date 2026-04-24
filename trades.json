@@ -1,5 +1,27 @@
 [
   {
+    "n": 1053,
+    "date": "2026-04-24",
+    "token": "ADHD",
+    "action": "SELL",
+    "amount": "0.0772 SOL",
+    "result": "Sold 100% | PnL: +2.7%",
+    "pnl": "+0.0772 SOL",
+    "color": "teal",
+    "ca": "nHtKdt67T4DHX5FfcXuwAviHEhJM552nrXmHW7xpump",
+    "ts": 1777071930,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1052,
     "date": "2026-04-24",
     "token": "MASCOTS",
