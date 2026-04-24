@@ -1,5 +1,27 @@
 [
   {
+    "n": 976,
+    "date": "2026-04-24",
+    "token": "AEP",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=15",
+    "pnl": "",
+    "color": "teal",
+    "ca": "5nMaxpXACjJZBd5FFNPsKXAp7bMhmeqNs9P1G8bXpump",
+    "ts": 1777058008,
+    "mc": 45226,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 975,
     "date": "2026-04-24",
     "token": "CATCOIN",
