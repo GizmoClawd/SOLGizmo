@@ -1,5 +1,27 @@
 [
   {
+    "n": 960,
+    "date": "2026-04-24",
+    "token": "assface",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "BnXWvsVZYgBxTUDyDqHZjvFbQGvEZeipY4ZdmqCbpump",
+    "ts": 1777054762,
+    "mc": 312382,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 959,
     "date": "2026-04-24",
     "token": "assface",
