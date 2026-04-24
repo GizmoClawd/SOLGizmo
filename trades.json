@@ -1,5 +1,27 @@
 [
   {
+    "n": 983,
+    "date": "2026-04-24",
+    "token": "AINI",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "222ctdtoVgjWfLFMZLVXkj1pWFDBhYFPzzewFqLypump",
+    "ts": 1777059267,
+    "mc": 1767572,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 982,
     "date": "2026-04-24",
     "token": "assface",
