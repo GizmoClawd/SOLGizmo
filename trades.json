@@ -1,5 +1,27 @@
 [
   {
+    "n": 1013,
+    "date": "2026-04-24",
+    "token": "ANIME",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=13",
+    "pnl": "",
+    "color": "teal",
+    "ca": "82MmG1uH2BWLyoU7VCFYMohP9CT63q5paiKHAAAn3zWx",
+    "ts": 1777064207,
+    "mc": 129848,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1012,
     "date": "2026-04-24",
     "token": "ADHD",
