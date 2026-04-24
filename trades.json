@@ -1,5 +1,27 @@
 [
   {
+    "n": 1051,
+    "date": "2026-04-24",
+    "token": "POLYWOG",
+    "action": "SELL",
+    "amount": "0.0815 SOL",
+    "result": "Sold 100% | PnL: +0.8%",
+    "pnl": "+0.0815 SOL",
+    "color": "teal",
+    "ca": "DRrcvcWHUNJqRj81LHVKC1wzLiRxyncq7ctiLrfYpump",
+    "ts": 1777071890,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1050,
     "date": "2026-04-24",
     "token": "USPIG",
