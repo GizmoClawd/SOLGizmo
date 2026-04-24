@@ -1,5 +1,27 @@
 [
   {
+    "n": 1042,
+    "date": "2026-04-24",
+    "token": "SHIB",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4ccSbmYAQNavZcNttwJ3UFfiUmHRJb18WkLPu1C3pump",
+    "ts": 1777070511,
+    "mc": 181151,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1041,
     "date": "2026-04-24",
     "token": "FCS",
