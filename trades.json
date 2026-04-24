@@ -1,5 +1,27 @@
 [
   {
+    "n": 1060,
+    "date": "2026-04-24",
+    "token": "ROTUS",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "C8Lwj83fBz9bPKSUxNLEc2QkLF7oVkV7Ja9UKSFLbrrr",
+    "ts": 1777073683,
+    "mc": 2364081,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1059,
     "date": "2026-04-24",
     "token": "WCOR",
