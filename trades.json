@@ -1,5 +1,27 @@
 [
   {
+    "n": 1021,
+    "date": "2026-04-24",
+    "token": "pigeon",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "3AmTiVi5L4rDuf1CCQLkx8kBEZ52N6Mr7DrZwfDYjizz",
+    "ts": 1777065212,
+    "mc": 56812,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1020,
     "date": "2026-04-24",
     "token": "Mirumi",
