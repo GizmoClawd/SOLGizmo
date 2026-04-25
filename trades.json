@@ -1,5 +1,27 @@
 [
   {
+    "n": 1093,
+    "date": "2026-04-25",
+    "token": "UNCBRICK",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "Cbws5mSehUEQRguJ9LPj8a9YaHnWQpZ4JFJ7WEnSpump",
+    "ts": 1777091728,
+    "mc": 264256,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1092,
     "date": "2026-04-25",
     "token": "Skibidi",
