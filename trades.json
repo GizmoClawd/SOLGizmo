@@ -1,5 +1,27 @@
 [
   {
+    "n": 1120,
+    "date": "2026-04-25",
+    "token": "AIB",
+    "action": "BUY",
+    "amount": "0.03217537536 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "2EqXwLbVHe83FUbnpNcyxXR4QtKKiPiVe3tXSGp9pump",
+    "ts": 1777130481,
+    "mc": 108971,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1119,
     "date": "2026-04-25",
     "token": "IMOUT",
