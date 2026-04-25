@@ -1,5 +1,27 @@
 [
   {
+    "n": 1087,
+    "date": "2026-04-25",
+    "token": "USPIG",
+    "action": "SELL",
+    "amount": "0.1182 SOL",
+    "result": "Sold 100% | PnL: +1.6%",
+    "pnl": "+0.1182 SOL",
+    "color": "teal",
+    "ca": "4r3KKtWsYFeH96HJAkktEbQ2YJjQr8SSYV2zaykVpump",
+    "ts": 1777085741,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1086,
     "date": "2026-04-25",
     "token": "SHIB",
