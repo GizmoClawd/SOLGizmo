@@ -1,5 +1,27 @@
 [
   {
+    "n": 1094,
+    "date": "2026-04-25",
+    "token": "MOJO",
+    "action": "SELL",
+    "amount": "0.0351 SOL",
+    "result": "Sold 100% | PnL: +2.9%",
+    "pnl": "+0.0351 SOL",
+    "color": "teal",
+    "ca": "sGzragYKDrmRgCGvJUn9WKwrmnUZwfmkNQLTSPfdMNq",
+    "ts": 1777091808,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1093,
     "date": "2026-04-25",
     "token": "UNCBRICK",
