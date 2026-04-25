@@ -1,5 +1,27 @@
 [
   {
+    "n": 1110,
+    "date": "2026-04-25",
+    "token": "Aliens",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "65YnRAiThkUda2czNFXVuMaCTiNpiq3LLLWbtGTLpump",
+    "ts": 1777120626,
+    "mc": 95303,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1109,
     "date": "2026-04-25",
     "token": "MESK",
