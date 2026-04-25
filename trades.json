@@ -1,5 +1,27 @@
 [
   {
+    "n": 1113,
+    "date": "2026-04-25",
+    "token": "Sotashi",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=12",
+    "pnl": "",
+    "color": "teal",
+    "ca": "28JSdoZcfPJmnVTsxWVBQKmjhE1AFprsb68ntLbxpump",
+    "ts": 1777122413,
+    "mc": 100433,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1112,
     "date": "2026-04-25",
     "token": "ONLYPUMPS",
