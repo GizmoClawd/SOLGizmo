@@ -1,5 +1,27 @@
 [
   {
+    "n": 1128,
+    "date": "2026-04-25",
+    "token": "LASTMAN",
+    "action": "SELL",
+    "amount": "0.1389 SOL",
+    "result": "Sold 100% | PnL: -15.9%",
+    "pnl": "+0.1389 SOL",
+    "color": "teal",
+    "ca": "AmSYbLUcwYmBZc8G9GTenSn2dsLjsZiVeMxMQvcUpump",
+    "ts": 1777142908,
+    "mc": null,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1127,
     "date": "2026-04-25",
     "token": "MAGA",
