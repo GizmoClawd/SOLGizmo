@@ -1,5 +1,27 @@
 [
   {
+    "n": 1085,
+    "date": "2026-04-25",
+    "token": "MAGA",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "HzvmZP3Gt5tJLTk5Wyzy7bXnjJQP9iDTHw1UFVkFpump",
+    "ts": 1777085434,
+    "mc": 13177,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1084,
     "date": "2026-04-25",
     "token": "USPIG",
