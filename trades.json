@@ -1,5 +1,27 @@
 [
   {
+    "n": 1130,
+    "date": "2026-04-25",
+    "token": "MASCOTS",
+    "action": "BUY",
+    "amount": "0.02912893836 SOL",
+    "result": "HUNT score=29",
+    "pnl": "",
+    "color": "teal",
+    "ca": "8GxLxKA8tf3h8JUkXFfP4dNyn6D2vvwyGif5wanRpump",
+    "ts": 1777143392,
+    "mc": 224873,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1129,
     "date": "2026-04-25",
     "token": "Skibidi",
