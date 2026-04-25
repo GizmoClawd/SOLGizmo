@@ -1,5 +1,27 @@
 [
   {
+    "n": 1072,
+    "date": "2026-04-25",
+    "token": "USPIG",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=11",
+    "pnl": "",
+    "color": "teal",
+    "ca": "4r3KKtWsYFeH96HJAkktEbQ2YJjQr8SSYV2zaykVpump",
+    "ts": 1777076993,
+    "mc": 91603,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1071,
     "date": "2026-04-25",
     "token": "Trwump",
