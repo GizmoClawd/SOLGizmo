@@ -1,5 +1,27 @@
 [
   {
+    "n": 1105,
+    "date": "2026-04-25",
+    "token": "SHIBABUTT",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=10",
+    "pnl": "",
+    "color": "teal",
+    "ca": "DiyUY3XkEG8ZBjoiX9i38oFHmjToCnTZFYNWJqxBpump",
+    "ts": 1777119002,
+    "mc": 42803,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1104,
     "date": "2026-04-25",
     "token": "Aliens",
