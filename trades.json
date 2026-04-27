@@ -1,5 +1,27 @@
 [
   {
+    "n": 1161,
+    "date": "2026-04-27",
+    "token": "TIP",
+    "action": "BUY",
+    "amount": "0.0317741556 SOL",
+    "result": "HUNT score=18",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7oV1umUt47cmDgGKoqZc8TDkVvv9upK9HZqqZRH9pump",
+    "ts": 1777311154,
+    "mc": 190022,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1160,
     "date": "2026-04-27",
     "token": "NICE",
