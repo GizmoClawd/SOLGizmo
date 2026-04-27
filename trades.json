@@ -1,5 +1,27 @@
 [
   {
+    "n": 1160,
+    "date": "2026-04-27",
+    "token": "NICE",
+    "action": "BUY",
+    "amount": "0.04 SOL",
+    "result": "HUNT score=13",
+    "pnl": "",
+    "color": "teal",
+    "ca": "7fj85y28pKMndm4So66Szkb5GMGfLHFEkwsZdDx2pump",
+    "ts": 1777310972,
+    "mc": 88995,
+    "vol24": null,
+    "vol1h": null,
+    "buys": null,
+    "sells": null,
+    "liq": null,
+    "kols": null,
+    "entryScore": null,
+    "exitReason": null,
+    "pnlPct": null
+  },
+  {
     "n": 1159,
     "date": "2026-04-26",
     "token": "RECOVERED",
