@@ -3,7 +3,7 @@ import bs58 from 'bs58';
 import fs from 'fs';
 
 const walletData = JSON.parse(process.env.SOLANA_WALLET_JSON || fs.readFileSync(process.env.HOME + '/.gizmo/solana-wallet.json', 'utf-8'));
-const keypair = Keypair.fromSecretKey(bs58.decode(walletData.secretKey));
+const keypair = Array.isArray(walletData) ? Keypair.fromSecretKey(Uint8Array.from(walletData)) : Keypair.fromSecretKey(bs58.decode(walletData.secretKey));
 // Fallback RPC chain: env override → Helius → PublicNode
 const RPC_CHAIN = [
   process.env.RPC_URL,
@@ -41,7 +41,7 @@ async function main() {
       userPublicKey: keypair.publicKey.toBase58(),
       wrapAndUnwrapSol: true,
       dynamicComputeUnitLimit: true,
-      prioritizationFeeLamports: 10000
+      prioritizationFeeLamports: 100000
     })
   });
   if (!swapResp.ok) throw new Error('Swap failed: ' + await swapResp.text());

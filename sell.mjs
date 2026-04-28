@@ -3,7 +3,7 @@ import bs58 from 'bs58';
 import fs from 'fs';
 
 const walletData = JSON.parse(process.env.SOLANA_WALLET_JSON || fs.readFileSync(process.env.HOME + '/.gizmo/solana-wallet.json', 'utf-8'));
-const keypair = Keypair.fromSecretKey(bs58.decode(walletData.secretKey));
+const keypair = Array.isArray(walletData) ? Keypair.fromSecretKey(Uint8Array.from(walletData)) : Keypair.fromSecretKey(bs58.decode(walletData.secretKey));
 // Fallback RPC chain: env override → Helius → PublicNode
 const RPC_CHAIN = [
   process.env.RPC_URL,
@@ -65,12 +65,24 @@ async function main() {
   // Try with increasing slippage: 30% → 50% → 90%
   let quote;
   let lastError = '';
+  const JUP_ENDPOINTS = [
+    'https://lite-api.jup.ag/swap/v1',
+    'https://api.jup.ag/swap/v6',
+  ];
+  let usedEndpoint = JUP_ENDPOINTS[0];
   for (const slippage of [3000, 5000, 9000]) {
-    const quoteResp = await fetch(`https://lite-api.jup.ag/swap/v1/quote?inputMint=${TOKEN}&outputMint=${SOL_MINT}&amount=${sellAmount}&slippageBps=${slippage}&onlyDirectRoutes=false`, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-    quote = await quoteResp.json();
-    if (!quote.error) break;
-    lastError = quote.error;
-    console.log(`Quote failed at ${slippage}bps: ${quote.error} — retrying higher slippage`);
+    let gotQuote = false;
+    for (const endpoint of JUP_ENDPOINTS) {
+      try {
+        const quoteResp = await fetch(`${endpoint}/quote?inputMint=${TOKEN}&outputMint=${SOL_MINT}&amount=${sellAmount}&slippageBps=${slippage}&onlyDirectRoutes=false`, { headers: { 'User-Agent': 'Mozilla/5.0' }, signal: AbortSignal.timeout(10000) });
+        if (quoteResp.status === 429) { console.log(`429 on ${endpoint} — trying next`); continue; }
+        quote = await quoteResp.json();
+        if (!quote.error) { usedEndpoint = endpoint; gotQuote = true; break; }
+        lastError = quote.error;
+      } catch(e) { console.log(`${endpoint} error: ${e.message}`); }
+    }
+    if (gotQuote) break;
+    console.log(`Quote failed at ${slippage}bps — retrying higher slippage`);
     await new Promise(r => setTimeout(r, 1000));
   }
 
@@ -91,7 +103,7 @@ async function main() {
   const outSol = Number(quote.outAmount) / LAMPORTS_PER_SOL;
   console.log(`Output: ~${outSol.toFixed(4)} SOL | Impact: ${quote.priceImpactPct || '0'}%`);
 
-  const swapResp = await fetch('https://lite-api.jup.ag/swap/v1/swap', {
+  const swapResp = await fetch(`${usedEndpoint}/swap`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0' },
     body: JSON.stringify({
